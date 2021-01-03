@@ -1,6 +1,6 @@
 (function () {
   //console.log("navigationFIle");
-  let count = 0;
+  let count = '';
   function getContent(fragmentId, callback) {
     //console.log("getContent-Baire");
     $.get(fragmentId + '.html', function (content) {
@@ -26,13 +26,11 @@
   }
 
   function navigate() {
-    if (count === 1 && (location.hash.substr(1) === "settingsOrg" ||
-      location.hash.substr(1) === "settingsMer")) {
+    let fragmentId = location.hash.substr(1);
+    if (fragmentId === count) {
       return;
     }
-    count++;
-    var fragmentId = location.hash.substr(1);
-
+    count = fragmentId;
     //console.log("Navigate");
     getContent(fragmentId, function (content) {
       $('#contentMain').html(content);

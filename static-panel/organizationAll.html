@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <style>
 div.hideKoro{
 	display:none;
@@ -37,373 +38,519 @@ table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
     text-decoration: none;
 }
 </style>
-<link rel="stylesheet" href="static/css/panelLoader.css">
-<link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
-
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
-
 <div id="loaderMama" style="margin-top:8%;">
     <div class="multi-spinner-container" style="color:#fff">
-      <div class="multi-spinner">
         <div class="multi-spinner">
-          <div class="multi-spinner">
             <div class="multi-spinner">
-              <div class="multi-spinner">
                 <div class="multi-spinner">
+                    <div class="multi-spinner">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner"></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-	<h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
+    <h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
 </div>
-	<div class="card naV hideKoro" id="hideKoro">
-		<div class="card-body table-responsive">
-<div class="row">
-    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="one" style="width:100%;font-size: 13px" onclick="registeredOrg()">Registered Organizations</button></div>
-    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="two" style="width:100%;font-size: 13px" onclick="approvedOrg()">Approved Organizations</button></div>
-    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="three" style="width:100%;font-size: 13px" onclick="unApprovedOrg()">Unapproved Organizations</button></div>
-    <div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="four" style="width:100%;font-size: 13px" onclick="activated()">Activated Organizations</button></div>
-	<div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="five" style="width:100%;font-size: 13px" onclick="disabledd()">Disabled Organizations</button></div>
-</div>
-</div>
-	<div class="card a">
-		<div class="card-body table-responsive a">
-		<table id="dtBasicExample" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  <th class="th-sm">Approved ID
-
-		  </th>
-		  <th class="th-sm">Organization Name
-
-		  </th>
-		  <th class="th-sm">Trade License
-
-		  </th>
-		  <th class="th-sm">Business Field
-
-		  </th>
-		  <th class="th-sm">Contact Number
-
-		  </th>
-		  <th class="th-sm">Email ID
-
-		  </th>
-		  <th class="th-sm">Delivery Range
-
-		  </th>
-		  <th class="th-sm">SMS Count
-
-		  </th>
-		  <th class="th-sm">Package
-
-		  </th>
-		  <th class="th-sm">Organization FaceBook Link
-
-		  </th>
-		  <th class="th-sm">Organization Website
-
-		  </th>
-		  <th class="th-sm">Update Package
-
-		  </th>
-		  <th class="th-sm">Update Message Count
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
-</div>
-</div>
-	<div class="card b">
-		<div class="card-body table-responsive b blur">
-		<table id="dtBasicExampleAp" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  <th class="th-sm">Organization Name
-
-		  </th>
-		  <th class="th-sm">Trade License
-
-		  </th>
-		  <th class="th-sm">Business Field
-
-		  </th>
-		  <th class="th-sm">Contact Number
-
-		  </th>
-		  <th class="th-sm">Email ID
-
-		  </th>
-		  <th class="th-sm">Delivery Range
-
-		  </th>
-		  <th class="th-sm">Organization FaceBook Link
-
-		  </th>
-		  <th class="th-sm">Organization Website
-
-		  </th>
-		  <th class="th-sm">Approve?
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
-</div>
-</div>
-
-<div class="card c">
-		<div class="card-body table-responsive c">
-		<table id="dtBasicExampleActivate" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  <th class="th-sm">Approved ID
-
-		  </th>
-		  <th class="th-sm">Organization Name
-
-		  </th>
-		  <th class="th-sm">Trade License
-
-		  </th>
-		  <th class="th-sm">Business Field
-
-		  </th>
-		  <th class="th-sm">Contact Number
-
-		  </th>
-		  <th class="th-sm">Email ID
-
-		  </th>
-		  <th class="th-sm">Delivery Range
-
-		  </th>
-		  <th class="th-sm">Organization FaceBook Link
-
-		  </th>
-		  <th class="th-sm">Organization Website
-
-		  </th>
-		  <th class="th-sm">Disable?
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
-</div>
-</div>
-<div class="card d">
-		<div class="card-body table-responsive d">
-		<table id="dtBasicExampleDisable" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  <th class="th-sm">Approved ID
-
-		  </th>
-		  <th class="th-sm">Organization Name
-
-		  </th>
-		  <th class="th-sm">Trade License
-
-		  </th>
-		  <th class="th-sm">Business Field
-
-		  </th>
-		  <th class="th-sm">Contact Number
-
-		  </th>
-		  <th class="th-sm">Email ID
-
-		  </th>
-		  <th class="th-sm">Delivery Range
-
-		  </th>
-		  <th class="th-sm">Organization FaceBook Link
-
-		  </th>
-		  <th class="th-sm">Organization Website
-
-		  </th>
-		  <th class="th-sm">Activate?
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
-</div>
-</div>
-
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" id="myModalLabel" style="color:#0066b3">Approve this organization?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center">
-							
-				<div class="circle-loader" style="text-align:center">
-				  <div class="checkmark draw" id="tick"></div>
-				</div>
-				<h4 id="sure" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-ok" id="modalApprove">Approve</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<div class="modal fade" id="myModalDeliveryCostUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Update SMS Count?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center;overflow-y:scroll;">
-					<form class="p-1" style="color:#0066b3" id="formUpdateDC">
-						<h5 style="margin-top:9px;">Message Count:</h5>
-						<h5 id="agerSMS"></h5>
-						<h5>+</h5>
-						<input type="text" style="color:#0066b3;text-align:center;width:50%;margin:0 auto;" id="delivery_cost_update" class="form-control" placeholder="">
-					</form>
-					
-					<div class="circle-loader" style="text-align:center" id="circleLoad3DC">
-					  <div class="checkmark draw" id="tick3DC"></div>
-					</div>
-					<h4 id="sure3DC" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default cancelModDC" id="modalCancelDC" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-info btn-ok-updateDC" id="modalApproveDC">Update</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="myModalPackageUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Update Package?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center;overflow-y:scroll;">
-					<form class="p-1" style="color:#0066b3" id="formUpdateDCX">
-						<select class="custom-select col-lg-12 btn" id="managersU" style="color:#0066b3;text-align-last:center;text-align:center;width:50%;margin:0 auto;">
-				
-						</select>
-					</form>
-					
-					<div class="circle-loader" style="text-align:center" id="circleLoad3DCX">
-					  <div class="checkmark draw" id="tick3DCX"></div>
-					</div>
-					<h4 id="sure3DCX" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default cancelModDCX" id="modalCancelDCX" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-info btn-ok-updateDCX" id="modalApproveDCX">Update</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="myModalMerActivate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Disable Organization?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center">
-							
-				<div class="circle-loader" style="text-align:center">
-				  <div class="checkmark draw" id="tickActivate"></div>
-				</div>
-				<h4 id="sureActivate" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel1Activate" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-okActivate" id="modalApprove1Activate">Disable</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="myModalMerDisable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Activate Organization?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center">
-							
-				<div class="circle-loader" style="text-align:center">
-				  <div class="checkmark draw" id="tickDisable"></div>
-				</div>
-				<h4 id="sureDisable" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel1Disable" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-okDisable" id="modalApprove1Disable">Activate</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<div id="myModal2" class="modal fade" data-backdrop="static">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			
-			<div class="modal-body text-center">
-				<h4 style="color:#0066b3">Ooops!</h4>	
-				<p style="color:#0066b3"> Something went wrong. Please try again!</p>
-				<button class="btn btn-outline btn-primary" style="color:#0066b3" data-dismiss="modal">Try Again</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div id="myModalWrongDeliveryCreate" class="modal fade">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			<!--<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>-->
-			<div class="modal-body text-center">
-				<p id="wrongThisDeliveryCreate"></p>
-				<button class="btn btn-success" data-dismiss="modal">Correct it!</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
-
-<script src="static/js/importantVar.js"></script>
-
-<script>
+<div class="card naV hideKoro" id="hideKoro">
+    <div class="card-body table-responsive">
+        <div class="row">
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="one"
+                    style="width:100%;font-size: 13px"
+                    onclick="registeredOrg()"
+                >Registered Organizations</button>
+            </div>
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="two"
+                    style="width:100%;font-size: 13px"
+                    onclick="approvedOrg()"
+                >Approved Organizations</button>
+            </div>
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="three"
+                    style="width:100%;font-size: 13px"
+                    onclick="unApprovedOrg()"
+                >Unapproved Organizations</button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="four"
+                    style="width:100%;font-size: 13px"
+                    onclick="activated()"
+                >Activated Organizations</button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="five"
+                    style="width:100%;font-size: 13px"
+                    onclick="disabledd()"
+                >Disabled Organizations</button>
+            </div>
+        </div>
+    </div>
+    <div class="card a">
+        <div class="card-body table-responsive a">
+            <table
+                id="dtBasicExample"
+                class="stripe hover"
+                style="color:#0066b3;"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">
+                            Approved ID
+                        </th>
+                        <th class="th-sm">
+                            Organization Name
+                        </th>
+                        <th class="th-sm">
+                            Trade License
+                        </th>
+                        <th class="th-sm">
+                            Business Field
+                        </th>
+                        <th class="th-sm">
+                            Contact Number
+                        </th>
+                        <th class="th-sm">
+                            Email ID
+                        </th>
+                        <th class="th-sm">
+                            Delivery Range
+                        </th>
+                        <th class="th-sm">
+                            SMS Count
+                        </th>
+                        <th class="th-sm">
+                            Package
+                        </th>
+                        <th class="th-sm">
+                            Organization FaceBook Link
+                        </th>
+                        <th class="th-sm">
+                            Organization Website
+                        </th>
+                        <th class="th-sm">
+                            Update Package
+                        </th>
+                        <th class="th-sm">
+                            Update Message Count
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="card b">
+            <div class="card-body table-responsive b blur">
+                <table
+                    id="dtBasicExampleAp"
+                    class="stripe hover"
+                    style="color:#0066b3;"
+                    cellspacing="0"
+                    width="100%"
+                >
+                    <thead>
+                        <tr>
+                            <th class="th-sm">
+                                Organization Name
+                            </th>
+                            <th class="th-sm">
+                                Trade License
+                            </th>
+                            <th class="th-sm">
+                                Business Field
+                            </th>
+                            <th class="th-sm">
+                                Contact Number
+                            </th>
+                            <th class="th-sm">
+                                Email ID
+                            </th>
+                            <th class="th-sm">
+                                Delivery Range
+                            </th>
+                            <th class="th-sm">
+                                Organization FaceBook Link
+                            </th>
+                            <th class="th-sm">
+                                Organization Website
+                            </th>
+                            <th class="th-sm">
+                                Approve?
+                            </th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="card c">
+                <div class="card-body table-responsive c">
+                    <table
+                        id="dtBasicExampleActivate"
+                        class="stripe hover"
+                        style="color:#0066b3;"
+                        cellspacing="0"
+                        width="100%"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="th-sm">
+                                    Approved ID
+                                </th>
+                                <th class="th-sm">
+                                    Organization Name
+                                </th>
+                                <th class="th-sm">
+                                    Trade License
+                                </th>
+                                <th class="th-sm">
+                                    Business Field
+                                </th>
+                                <th class="th-sm">
+                                    Contact Number
+                                </th>
+                                <th class="th-sm">
+                                    Email ID
+                                </th>
+                                <th class="th-sm">
+                                    Delivery Range
+                                </th>
+                                <th class="th-sm">
+                                    Organization FaceBook Link
+                                </th>
+                                <th class="th-sm">
+                                    Organization Website
+                                </th>
+                                <th class="th-sm">
+                                    Disable?
+                                </th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="card d">
+                    <div class="card-body table-responsive d">
+                        <table
+                            id="dtBasicExampleDisable"
+                            class="stripe hover"
+                            style="color:#0066b3;"
+                            cellspacing="0"
+                            width="100%"
+                        >
+                            <thead>
+                                <tr>
+                                    <th class="th-sm">
+                                        Approved ID
+                                    </th>
+                                    <th class="th-sm">
+                                        Organization Name
+                                    </th>
+                                    <th class="th-sm">
+                                        Trade License
+                                    </th>
+                                    <th class="th-sm">
+                                        Business Field
+                                    </th>
+                                    <th class="th-sm">
+                                        Contact Number
+                                    </th>
+                                    <th class="th-sm">
+                                        Email ID
+                                    </th>
+                                    <th class="th-sm">
+                                        Delivery Range
+                                    </th>
+                                    <th class="th-sm">
+                                        Organization FaceBook Link
+                                    </th>
+                                    <th class="th-sm">
+                                        Organization Website
+                                    </th>
+                                    <th class="th-sm">
+                                        Activate?
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="modal fade"
+                    id="myModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                    data-backdrop="static"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-hidden="true"
+                                ></button>
+                                <h4 class="modal-title" id="myModalLabel" style="color:#0066b3">Approve this organization?</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center">
+                                <div class="circle-loader" style="text-align:center">
+                                    <div class="checkmark draw" id="tick"></div>
+                                </div>
+                                <h4 id="sure" style="color:#0066b3"></h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-default"
+                                    id="modalCancel"
+                                    data-dismiss="modal"
+                                >Cancel</button>
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-danger btn-ok"
+                                    id="modalApprove"
+                                >Approve</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="modal fade"
+                    id="myModalDeliveryCostUpdate"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                    data-backdrop="static"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-hidden="true"
+                                ></button>
+                                <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Update SMS Count?</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center;overflow-y:scroll;">
+                                <form class="p-1" style="color:#0066b3" id="formUpdateDC">
+                                    <h5 style="margin-top:9px;">Message Count:</h5>
+                                    <h5 id="agerSMS"></h5>
+                                    <h5>+</h5>
+                                    <input
+                                        type="text"
+                                        style="color:#0066b3;text-align:center;width:50%;margin:0 auto;"
+                                        id="delivery_cost_update"
+                                        class="form-control"
+                                        placeholder=""
+                                    >
+                                </form>
+                                <div class="circle-loader" style="text-align:center" id="circleLoad3DC">
+                                    <div class="checkmark draw" id="tick3DC"></div>
+                                </div>
+                                <h4 id="sure3DC" style="color:#0066b3"></h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-default cancelModDC"
+                                    id="modalCancelDC"
+                                    data-dismiss="modal"
+                                >Cancel</button>
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-info btn-ok-updateDC"
+                                    id="modalApproveDC"
+                                >Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="modal fade"
+                    id="myModalPackageUpdate"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                    data-backdrop="static"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-hidden="true"
+                                ></button>
+                                <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Update Package?</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center;overflow-y:scroll;">
+                                <form class="p-1" style="color:#0066b3" id="formUpdateDCX">
+                                    <select class="custom-select col-lg-12 btn" id="managersU" style="color:#0066b3;text-align-last:center;text-align:center;width:50%;margin:0 auto;"></select>
+                                </form>
+                                <div class="circle-loader" style="text-align:center" id="circleLoad3DCX">
+                                    <div class="checkmark draw" id="tick3DCX"></div>
+                                </div>
+                                <h4 id="sure3DCX" style="color:#0066b3"></h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-default cancelModDCX"
+                                    id="modalCancelDCX"
+                                    data-dismiss="modal"
+                                >Cancel</button>
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-info btn-ok-updateDCX"
+                                    id="modalApproveDCX"
+                                >Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="modal fade"
+                    id="myModalMerActivate"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                    data-backdrop="static"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-hidden="true"
+                                ></button>
+                                <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Disable Organization?</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center">
+                                <div class="circle-loader" style="text-align:center">
+                                    <div class="checkmark draw" id="tickActivate"></div>
+                                </div>
+                                <h4 id="sureActivate" style="color:#0066b3"></h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-default"
+                                    id="modalCancel1Activate"
+                                    data-dismiss="modal"
+                                >Cancel</button>
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-danger btn-okActivate"
+                                    id="modalApprove1Activate"
+                                >Disable</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="modal fade"
+                    id="myModalMerDisable"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                    data-backdrop="static"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-hidden="true"
+                                ></button>
+                                <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Activate Organization?</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center">
+                                <div class="circle-loader" style="text-align:center">
+                                    <div class="checkmark draw" id="tickDisable"></div>
+                                </div>
+                                <h4 id="sureDisable" style="color:#0066b3"></h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-default"
+                                    id="modalCancel1Disable"
+                                    data-dismiss="modal"
+                                >Cancel</button>
+                                <button
+                                    type="button"
+                                    style="color:#0066b3"
+                                    class="btn btn-outline btn-danger btn-okDisable"
+                                    id="modalApprove1Disable"
+                                >Activate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModal2" class="modal fade" data-backdrop="static">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+                                <h4 style="color:#0066b3">Ooops!</h4>
+                                <p style="color:#0066b3"> Something went wrong. Please try again!</p>
+                                <button class="btn btn-outline btn-primary" style="color:#0066b3" data-dismiss="modal">Try Again</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModalWrongDeliveryCreate" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+                                <p id="wrongThisDeliveryCreate"></p>
+                                <button class="btn btn-success" data-dismiss="modal">Correct it!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
 function one1(){
 setTimeout(function() { $('#loaderMama').fadeOut(); }, 2100);
 	
@@ -496,8 +643,8 @@ setTimeout(function() {
 		$('.a').show();
 	}, 3600);
 }
-</script>
-<script>
+                </script>
+                <script>
 
 $(document).ready(function() {
 	$('#loaderMama').show();
@@ -521,8 +668,8 @@ $(document).ready(function() {
 		}
 	});
 } );
-</script>
-<script>
+                </script>
+                <script>
 	var registeredOrg = () =>
 	{
 		document.getElementById('one').disabled = true;
@@ -951,9 +1098,6 @@ $(document).ready(function() {
 	
 		$("#sure").html("Are you sure?");
 		$("#myModal").modal();
-		//$(".container").show();
-		//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-		/**/
 	});
 	$('.btn-ok').click(function(){
 	$("#sure").html("Please wait!");
@@ -1011,44 +1155,7 @@ $(document).ready(function() {
 			}
 		});
 	});
-	/*var approveByID = (id) => 
-	{
-		console.log(`id -> ${id.id}`);
-		var table = $('#dtBasicExampleAp').DataTable();
-		$('#dtBasicExampleAp tbody tr').on( 'click', 'button', function (e) {
-				e.preventDefault();
-				console.log("Bhitre");
-				if ( $(this).hasClass('sele') ) {
-					$(this).removeClass('sele');
-					console.log("A\n");
-				}
-				else {
-					console.log("B\n");
-					table.$('tr.sele').removeClass('sele');
-					$(this).addClass('sele');
-					
-					table.row('.sele').remove().draw( false );
-					/*$.ajax
-					({
-						async: true,
-						type: "GET",
-						
-						url: urlForAll + "approved/org/" + id.id,
-						
-						headers: 
-						{
-						  'Accept': 'application/json',
-						  'Content-Type': 'application/json',
-						  "Authorization": 'Bearer ' + localStorage.getItem('token')
-						},
-						success: function(data) 
-						{
-							console.log(data);
-						}
-					});
-				}
-			} );			
-	};*/
+	
 	var arr;
 	var id_delivery_update, del_id, creator_ID;
 	$('#dtBasicExample').on('click', '.updateCh', function () 
@@ -1424,5 +1531,4 @@ $('.btn-ok-updateDCX').click(function(){
 		}
 	});
 });
-
-</script>
+                </script>

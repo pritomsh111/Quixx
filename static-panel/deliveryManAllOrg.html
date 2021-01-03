@@ -1,429 +1,571 @@
+<!DOCTYPE html>
 <style>
-div.hideKoro2{
-	display:none;
-}
+  div.hideKoro2 {
+    display: none;
+  }
 </style>
 <script src="static/js/deliveryManORG_00.js"></script>
 <link rel="stylesheet" href="static/css/deliveryManORG.css">
-<link rel="stylesheet" href="static/css/panelLoader.css">
-<div id="loaderMama2" style="margin-top:8%;">
-    <div class="multi-spinner-container" style="color:#fff">
-      <div class="multi-spinner">
+<div id="loaderMama2" style="margin-top: 8%">
+    <div class="multi-spinner-container" style="color: #fff">
         <div class="multi-spinner">
-          <div class="multi-spinner">
             <div class="multi-spinner">
-              <div class="multi-spinner">
                 <div class="multi-spinner">
+                    <div class="multi-spinner">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner"></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-	<h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
+    <h3 style="
+      font-family: 'Didact Gothic';
+      font-size: 24px;
+      text-align: center;
+      color: #0066b3;
+    ">
+        Please Wait...
+    </h3>
 </div>
-	<div class="card naV hideKoro2" id="hideKoro2">
-	<script>
-		$('#loaderMama2').show();
-		one1();
-		two2();
-		three3();
-	</script>
-	<div class="card-body table-responsive">
-		<div class="row">
-				<div class="col-md-3"><button class="btn-outline btn-round btn-default btn btn-info" id="four" style="width:100%;font-size: 13px" onclick="createDeliveryMan()">Create Delivery Man</button></div>
-				<div class="col-md-3"><button class="btn-outline btn-round btn-default btn btn-info" id="onea" style="width:100%;font-size: 13px" onclick="registeredDeliveryMan()">Registered Delivery Man</button></div>
-				<div class="col-md-3"><button class="btn-outline btn-round btn-default btn btn-info" id="twoa" style="width:100%;font-size: 13px" onclick="approvedDeliveryMan()">Approved Delivery Man</button></div>
-				<div class="col-md-3"><button class="btn-outline btn-round btn-default btn btn-info" id="threea" style="width:100%;font-size: 13px" onclick="unApprovedDeliveryMan()">Unapproved Delivery Man</button></div>
-				<div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="foura" style="width:100%;font-size: 13px" onclick="activatedd()">Activated Delivery Man</button></div>
-				<div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="fivea" style="width:100%;font-size: 13px" onclick="disableddd()">Disabled Delivery Man</button></div>
-			</div>
-	</div>
-	
-	<div class="row" id="deliveryManCreate">
-		<div class="col-lg-12">
-		  <div class="card">
-			<div class="card-body table-responsive blur">
-				<form class="text-center p-5" style="color:#0066b3">
-
-				<div class="form-row mb-4">
-					<div class="col" style="text-align:left">Delivery Man's Name:
-						<input type="text" id="deliveryManName" style="color:#0066b3" class="form-control" placeholder="">
-					</div>
-					
-				</div><div style="text-align:left" >Delivery Man's E-mail:</div>
-				<input type="email" id="deliveryManEmail" style="color:#0066b3" class="form-control mb-4" placeholder="">
-				<div style="text-align:left">Delivery Man's Phone No:</div>
-				<input type="text" id="deliveryManPhone" style="color:#0066b3" class="form-control mb-4" placeholder="">			
-				<label style="text-align:center;color:#0066b3">Delivery Area:</label>
-				<br>
-				<div>
-				    <button id="btn" class="btn btn-outline">Check / Uncheck All</button>
-					<br>
-					<input type='checkbox' name="mycheckboxes" value="Adabor">
-					<label>Adabar</label>
-					<input type='checkbox' name="mycheckboxes" value="Badda">
-					<label>Badda</label>
-					<input type='checkbox' name="mycheckboxes" value="Bangshal">
-					<label>Bangshal</label>
-					<input type='checkbox' name="mycheckboxes" value="Bimanbandar">
-					<label>Bimanbandar</label>
-					<input type='checkbox' name="mycheckboxes" value="Cantonment">
-					<label>Cantonment</label>
-					<input type='checkbox' name="mycheckboxes" value="Chawkbazar Model">
-					<label>Chawkbazar Model</label>
-					<input type='checkbox' name="mycheckboxes" value="Dakshinkhan">
-					<label>Dakshinkhan</label>
-					<input type='checkbox' name="mycheckboxes" value="Darus Salam">
-					<label>Darus Salam</label>
-					<input type='checkbox' name="mycheckboxes" value="Demra">
-					<label>Demra</label>
-					
-					<input type='checkbox' name="mycheckboxes" value="Dhanmondi">
-					<label>Dhanmondi</label>
-					<input type='checkbox' name="mycheckboxes" value="Gendaria">
-					<label>Gendaria</label>
-					<input type='checkbox' name="mycheckboxes" value="Gulshan">
-					<label>Gulshan</label>
-					<input type='checkbox' name="mycheckboxes" value="Hazaribagh">
-					<label>Hazaribagh</label>
-					<input type='checkbox' name="mycheckboxes" value="Jatrabari">
-					<label>Jatrabari</label>
-					<input type='checkbox' name="mycheckboxes" value="Kadamtali">
-					<label>Kadamtali</label>
-					<input type='checkbox' name="mycheckboxes" value="Kafrul">
-					<label>Kafrul</label>
-					<input type='checkbox' name="mycheckboxes" value="Kalabagan">
-					<label>Kalabagan</label>
-					<input type='checkbox' name="mycheckboxes" value="Kamrangirchar">
-					<label>Kamrangirchar</label>
-					<input type='checkbox' name="mycheckboxes" value="Khilgaon">
-					<label>Khilgaon</label>
-					<input type='checkbox' name="mycheckboxes" value="Khilkhet">
-					<label>Khilkhet</label>
-					<input type='checkbox' name="mycheckboxes" value="Kotwali">
-					<label>Kotwali</label>
-					<input type='checkbox' name="mycheckboxes" value="Lalbagh">
-					<label>Lalbagh</label>
-					<input type='checkbox' name="mycheckboxes" value="Mirpur Model">
-					<label>Mirpur Model</label>
-					<input type='checkbox' name="mycheckboxes" value="Mohammadpur">
-					<label>Mohammadpur</label>
-					<input type='checkbox' name="mycheckboxes" value="Motijheel">
-					<label>Motijheel</label>
-					<input type='checkbox' name="mycheckboxes" value="New Market">
-					<label>New Market</label>
-					<input type='checkbox' name="mycheckboxes" value="Pallabi">
-					<label>Pallabi</label>
-					<input type='checkbox' name="mycheckboxes" value="Paltan">
-					<label>Paltan</label>
-					<input type='checkbox' name="mycheckboxes" value="Ramna">
-					<label>Ramna</label>
-					<input type='checkbox' name="mycheckboxes" value="Rampura">
-					<label>Rampura</label>
-					<input type='checkbox' name="mycheckboxes" value="Sabujbagh">
-					<label>Sabujbagh</label>
-					<input type='checkbox' name="mycheckboxes" value="Shah Ali">
-					<label>Shah Ali</label>
-					<input type='checkbox' name="mycheckboxes" value="Shahbagh">
-					<label>Shahbagh</label>
-					<input type='checkbox' name="mycheckboxes" value="Sher-e-Bangla Nagar">
-					<label>Sher-e-Bangla Nagar</label>
-					<input type='checkbox' name="mycheckboxes" value="Shyampur">
-					<label>Shyampur</label>
-					<input type='checkbox' name="mycheckboxes" value="Sutrapur">
-					<label>Sutrapur</label>
-					<input type='checkbox' name="mycheckboxes" value="Tejgaon">
-					<label>Tejgaon</label>
-					<input type='checkbox' name="mycheckboxes" value="Tejgaon I/A">
-					<label>Tejgaon I/A</label>
-					<input type='checkbox' name="mycheckboxes" value="Turag">
-					<label>Turag</label>
-					<input type='checkbox' name="mycheckboxes" value="Uttar Khan">
-					<label>Uttar Khan</label>
-					<input type='checkbox' name="mycheckboxes" value="Uttara">
-					<label>Uttara</label>
-				</div>
-				<br>
-				
-				
-				<label style="text-align:none;color:#0066b3">Reporting Boss:</label>
-				<select class="browser-default custom-select col-lg-12 btn" id="managers">
-					
-				</select>
-				
-				</form>
-				<center><button class="btn btn-round btn-outline" style="background:#ffffd4;margin-top:-20px;" type="submit" id="DeliveryMan_CREATION" onclick="addDeliveryMan()"><center>Create Delivery Man</center></button></center>
-					
-			</div>
-		  </div>
-		</div>
-	</div>
-
-	<div class="card a">
-		<div class="card-body table-responsive a">
-			<table id="dtBasicExample" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-				<thead>
-				<tr>
-				  <th class="th-sm">ID
-
-				  </th>
-				  <th class="th-sm">Delivery Man's Name
-
-				  </th>
-				  <th class="th-sm">Delivery Man's Email
-
-				  </th>
-				  <th class="th-sm">Phone Number
-
-				  </th>
-				  <th class="th-sm">Delivery Area
-
-				  </th>
-				  <th class="th-sm">Reporting Boss Email
-
-				  </th>
-				  <th class="th-sm">Invoice
-
-				  </th>
-				</tr>
-			  </thead>
-			  <tfoot>
-			</table>
-		</div>
-	</div>
-	<div class="card b">
-		<div class="card-body table-responsive b">
-			<table id="dtBasicExample2" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-				<thead>
-				<tr>
-				  <th class="th-sm">ID
-
-				  </th>
-				  <th class="th-sm">Delivery Man's Name
-
-				  </th>
-				  <th class="th-sm">Delivery Man's Email
-
-				  </th>
-				  <th class="th-sm">Phone Number
-
-				  </th>
-				  <th class="th-sm">Delivery Area
-
-				  </th>
-				  <th class="th-sm">Reporting Boss Email
-
-				  </th>
-				  <th class="th-sm">Approve?
-
-				  </th>
-				</tr>
-			  </thead>
-			  <tfoot>
-			</table>
-		</div>
-	</div>
-	<div class="card c">
-		<div class="card-body table-responsive c">
-		<table id="dtBasicExampleActivate" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  <th class="th-sm">ID
-
-		  </th>
-		  <th class="th-sm">Delivery Man's Name
-
-		  </th>
-		  <th class="th-sm">Delivery Man's Email
-
-		  </th>
-		  <th class="th-sm">Phone Number
-
-		  </th>
-		  <th class="th-sm">Delivery Area
-
-		  </th>
-		  <th class="th-sm">Reporting Boss Email
-
-		  </th>
-		  <th class="th-sm">Disable?
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
+<div class="card naV hideKoro2" id="hideKoro2">
+    <script>
+    $("#loaderMama2").show();
+    one1();
+    two2();
+    three3();
+    </script>
+    <div class="card-body table-responsive">
+        <div class="row">
+            <div class="col-md-3">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="four"
+                    style="width: 100%; font-size: 13px"
+                    onclick="createDeliveryMan()"
+                >
+                    Create Delivery Man
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="onea"
+                    style="width: 100%; font-size: 13px"
+                    onclick="registeredDeliveryMan()"
+                >
+                    Registered Delivery Man
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="twoa"
+                    style="width: 100%; font-size: 13px"
+                    onclick="approvedDeliveryMan()"
+                >
+                    Approved Delivery Man
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="threea"
+                    style="width: 100%; font-size: 13px"
+                    onclick="unApprovedDeliveryMan()"
+                >
+                    Unapproved Delivery Man
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="foura"
+                    style="width: 100%; font-size: 13px"
+                    onclick="activatedd()"
+                >
+                    Activated Delivery Man
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="fivea"
+                    style="width: 100%; font-size: 13px"
+                    onclick="disableddd()"
+                >
+                    Disabled Delivery Man
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="deliveryManCreate">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body table-responsive blur">
+                    <form class="text-center p-5" style="color: #0066b3">
+                        <div class="form-row mb-4">
+                            <div class="col" style="text-align: left">
+                                Delivery Man's Name:
+                                <input
+                                    type="text"
+                                    id="deliveryManName"
+                                    style="color: #0066b3"
+                                    class="form-control"
+                                    placeholder=""
+                                >
+                            </div>
+                        </div>
+                        <div style="text-align: left">Delivery Man's E-mail:</div>
+                        <input
+                            type="email"
+                            id="deliveryManEmail"
+                            style="color: #0066b3"
+                            class="form-control mb-4"
+                            placeholder=""
+                        >
+                        <div style="text-align: left">Delivery Man's Phone No:</div>
+                        <input
+                            type="text"
+                            id="deliveryManPhone"
+                            style="color: #0066b3"
+                            class="form-control mb-4"
+                            placeholder=""
+                        >
+                        <label style="text-align: center; color: #0066b3">
+                            Delivery Area:
+                        </label
+            >
+                        <br>
+                        <div>
+                            <button id="btn" class="btn btn-outline">
+                                Check / Uncheck All
+                            </button>
+                            <br>
+                            <input type="checkbox" name="mycheckboxes" value="Adabor">
+                            <label>Adabar</label>
+                            <input type="checkbox" name="mycheckboxes" value="Badda">
+                            <label>Badda</label>
+                            <input type="checkbox" name="mycheckboxes" value="Bangshal">
+                            <label>Bangshal</label>
+                            <input type="checkbox" name="mycheckboxes" value="Bimanbandar">
+                            <label>Bimanbandar</label>
+                            <input type="checkbox" name="mycheckboxes" value="Cantonment">
+                            <label>Cantonment</label>
+                            <input type="checkbox" name="mycheckboxes" value="Chawkbazar Model">
+                            <label>Chawkbazar Model</label>
+                            <input type="checkbox" name="mycheckboxes" value="Dakshinkhan">
+                            <label>Dakshinkhan</label>
+                            <input type="checkbox" name="mycheckboxes" value="Darus Salam">
+                            <label>Darus Salam</label>
+                            <input type="checkbox" name="mycheckboxes" value="Demra">
+                            <label>Demra</label>
+                            <input type="checkbox" name="mycheckboxes" value="Dhanmondi">
+                            <label>Dhanmondi</label>
+                            <input type="checkbox" name="mycheckboxes" value="Gendaria">
+                            <label>Gendaria</label>
+                            <input type="checkbox" name="mycheckboxes" value="Gulshan">
+                            <label>Gulshan</label>
+                            <input type="checkbox" name="mycheckboxes" value="Hazaribagh">
+                            <label>Hazaribagh</label>
+                            <input type="checkbox" name="mycheckboxes" value="Jatrabari">
+                            <label>Jatrabari</label>
+                            <input type="checkbox" name="mycheckboxes" value="Kadamtali">
+                            <label>Kadamtali</label>
+                            <input type="checkbox" name="mycheckboxes" value="Kafrul">
+                            <label>Kafrul</label>
+                            <input type="checkbox" name="mycheckboxes" value="Kalabagan">
+                            <label>Kalabagan</label>
+                            <input type="checkbox" name="mycheckboxes" value="Kamrangirchar">
+                            <label>Kamrangirchar</label>
+                            <input type="checkbox" name="mycheckboxes" value="Khilgaon">
+                            <label>Khilgaon</label>
+                            <input type="checkbox" name="mycheckboxes" value="Khilkhet">
+                            <label>Khilkhet</label>
+                            <input type="checkbox" name="mycheckboxes" value="Kotwali">
+                            <label>Kotwali</label>
+                            <input type="checkbox" name="mycheckboxes" value="Lalbagh">
+                            <label>Lalbagh</label>
+                            <input type="checkbox" name="mycheckboxes" value="Mirpur Model">
+                            <label>Mirpur Model</label>
+                            <input type="checkbox" name="mycheckboxes" value="Mohammadpur">
+                            <label>Mohammadpur</label>
+                            <input type="checkbox" name="mycheckboxes" value="Motijheel">
+                            <label>Motijheel</label>
+                            <input type="checkbox" name="mycheckboxes" value="New Market">
+                            <label>New Market</label>
+                            <input type="checkbox" name="mycheckboxes" value="Pallabi">
+                            <label>Pallabi</label>
+                            <input type="checkbox" name="mycheckboxes" value="Paltan">
+                            <label>Paltan</label>
+                            <input type="checkbox" name="mycheckboxes" value="Ramna">
+                            <label>Ramna</label>
+                            <input type="checkbox" name="mycheckboxes" value="Rampura">
+                            <label>Rampura</label>
+                            <input type="checkbox" name="mycheckboxes" value="Sabujbagh">
+                            <label>Sabujbagh</label>
+                            <input type="checkbox" name="mycheckboxes" value="Shah Ali">
+                            <label>Shah Ali</label>
+                            <input type="checkbox" name="mycheckboxes" value="Shahbagh">
+                            <label>Shahbagh</label>
+                            <input type="checkbox" name="mycheckboxes" value="Sher-e-Bangla Nagar">
+                            <label>Sher-e-Bangla Nagar</label>
+                            <input type="checkbox" name="mycheckboxes" value="Shyampur">
+                            <label>Shyampur</label>
+                            <input type="checkbox" name="mycheckboxes" value="Sutrapur">
+                            <label>Sutrapur</label>
+                            <input type="checkbox" name="mycheckboxes" value="Tejgaon">
+                            <label>Tejgaon</label>
+                            <input type="checkbox" name="mycheckboxes" value="Tejgaon I/A">
+                            <label>Tejgaon I/A</label>
+                            <input type="checkbox" name="mycheckboxes" value="Turag">
+                            <label>Turag</label>
+                            <input type="checkbox" name="mycheckboxes" value="Uttar Khan">
+                            <label>Uttar Khan</label>
+                            <input type="checkbox" name="mycheckboxes" value="Uttara">
+                            <label>Uttara</label>
+                        </div>
+                        <br>
+                        <label style="text-align: none; color: #0066b3">
+                            Reporting Boss:
+                        </label
+            >
+                        <select class="browser-default custom-select col-lg-12 btn" id="managers"></select>
+                    </form>
+                    <center>
+                        <button
+                            class="btn btn-round btn-outline"
+                            style="background: #ffffd4; margin-top: -20px"
+                            type="submit"
+                            id="DeliveryMan_CREATION"
+                            onclick="addDeliveryMan()"
+                        >
+                            <center>Create Delivery Man</center>
+                        </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card a">
+        <div class="card-body table-responsive a">
+            <table
+                id="dtBasicExample"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">ID</th>
+                        <th class="th-sm">Delivery Man's Name</th>
+                        <th class="th-sm">Delivery Man's Email</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">Delivery Area</th>
+                        <th class="th-sm">Reporting Boss Email</th>
+                        <th class="th-sm">Invoice</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card b">
+        <div class="card-body table-responsive b">
+            <table
+                id="dtBasicExample2"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">ID</th>
+                        <th class="th-sm">Delivery Man's Name</th>
+                        <th class="th-sm">Delivery Man's Email</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">Delivery Area</th>
+                        <th class="th-sm">Reporting Boss Email</th>
+                        <th class="th-sm">Approve?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card c">
+        <div class="card-body table-responsive c">
+            <table
+                id="dtBasicExampleActivate"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">ID</th>
+                        <th class="th-sm">Delivery Man's Name</th>
+                        <th class="th-sm">Delivery Man's Email</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">Delivery Area</th>
+                        <th class="th-sm">Reporting Boss Email</th>
+                        <th class="th-sm">Disable?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card d">
+        <div class="card-body table-responsive d">
+            <table
+                id="dtBasicExampleDisable"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">ID</th>
+                        <th class="th-sm">Delivery Man's Name</th>
+                        <th class="th-sm">Delivery Man's Email</th>
+                        <th class="th-sm">Delivery Area</th>
+                        <th class="th-sm">Reporting Boss Email</th>
+                        <th class="th-sm">Activate?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
 </div>
+<div
+    class="modal fade"
+    id="myModalMer"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Approve Delivery Man?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tick2"></div>
+                </div>
+                <h4 id="sure2" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancelX"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-ok"
+                    id="modalApproveX"
+                >
+                    Approve
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="card d">
-		<div class="card-body table-responsive d">
-		<table id="dtBasicExampleDisable" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  
-		  <th class="th-sm">ID
-
-		  </th>
-		  <th class="th-sm">Delivery Man's Name
-
-		  </th>
-		  <th class="th-sm">Delivery Man's Email
-
-		  </th>
-		  <th class="th-sm">Delivery Area
-
-		  </th>
-		  <th class="th-sm">Reporting Boss Email
-
-		  </th>
-		  <th class="th-sm">Activate?
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
+<div
+    class="modal fade"
+    id="myModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tick"></div>
+                </div>
+                <h4 id="sure" style="color: #0066b3"></h4>
+            </div>
+        </div>
+    </div>
 </div>
+<div
+    class="modal fade"
+    id="myModalMerActivate"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Disable Delivery Man?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tickActivate"></div>
+                </div>
+                <h4 id="sureActivate" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancel1Activate"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-okActivate"
+                    id="modalApprove1Activate"
+                >
+                    Disable
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
+<div
+    class="modal fade"
+    id="myModalMerDisable"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Activate Delivery Man?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tickDisable"></div>
+                </div>
+                <h4 id="sureDisable" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancel1Disable"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-okDisable"
+                    id="modalApprove1Disable"
+                >
+                    Activate
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-<div class="modal fade" id="myModalMer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Approve Delivery Man?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center">
-							
-				<div class="circle-loader" style="text-align:center">
-				  <div class="checkmark draw" id="tick2"></div>
-				</div>
-				<h4 id="sure2" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancelX" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-ok" id="modalApproveX">Approve</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body" style="text-align:center">
-							
-				<div class="circle-loader" style="text-align:center">
-				  <div class="checkmark draw" id="tick"></div>
-				</div>
-				<h4 id="sure" style="color:#0066b3"></h4>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<div class="modal fade" id="myModalMerActivate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Disable Delivery Man?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center">
-							
-				<div class="circle-loader" style="text-align:center">
-				  <div class="checkmark draw" id="tickActivate"></div>
-				</div>
-				<h4 id="sureActivate" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel1Activate" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-okActivate" id="modalApprove1Activate">Disable</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="myModalMerDisable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Activate Delivery Man?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center">
-							
-				<div class="circle-loader" style="text-align:center">
-				  <div class="checkmark draw" id="tickDisable"></div>
-				</div>
-				<h4 id="sureDisable" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel1Disable" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-okDisable" id="modalApprove1Disable">Activate</button>
-			</div>
-		</div>
-	</div>
-</div>
-
 <div id="myModal2" class="modal fade" data-backdrop="static">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			
-			<div class="modal-body text-center">
-				<h3 style="color:#0066b3" id="wrong"></h3>
-				<button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h3 style="color: #0066b3" id="wrong"></h3>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-
 <div id="myModalE" class="modal fade" data-backdrop="static">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			
-			<div class="modal-body text-center">
-				<h4 style="color:#0066b3">Ooops!</h4>	
-				<p style="color:#0066b3">Something went wrong. Please try again!</p>
-				<button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 style="color: #0066b3">Ooops!</h4>
+                <p style="color: #0066b3">Something went wrong. Please try again!</p>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-
 <div id="myModal23" class="modal fade" data-backdrop="static">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			
-			<div class="modal-body text-center">
-				<h4 style="color:#0066b3">Ooops!</h4>	
-				<p style="color:#0066b3">Please fill up properly!</p>
-				<button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 style="color: #0066b3">Ooops!</h4>
+                <p style="color: #0066b3">Please fill up properly!</p>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-
 <div id="myModalWrongDManCreate" class="modal fade">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			<!--<div class="modal-header">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <!--<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>-->
-			<div class="modal-body text-center">
-				<p id="wrongThisDManCreate"></p>
-				<button class="btn btn-success" data-dismiss="modal">Correct it!</button>
-			</div>
-		</div>
-	</div>
+            <div class="modal-body text-center">
+                <p id="wrongThisDManCreate"></p>
+                <button class="btn btn-success" data-dismiss="modal">
+                    Correct it!
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-<script src="static/js/importantVar.js"></script>
 <script src="static/js/deliveryManORG_1.js"></script>
 <script src="static/js/deliveryManORG_2.js"></script>

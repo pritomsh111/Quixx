@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <style>
   div.hideKoro5 {
     display: none;
@@ -64,87 +65,81 @@
     background-color: red;
   }
 </style>
-<link rel="stylesheet" href="static/css/panelLoader.css" />
 <div id="loaderMama5" style="margin-top: 8%">
-  <div class="multi-spinner-container" style="color: #fff">
-    <div class="multi-spinner">
-      <div class="multi-spinner">
+    <div class="multi-spinner-container" style="color: #fff">
         <div class="multi-spinner">
-          <div class="multi-spinner">
             <div class="multi-spinner">
-              <div class="multi-spinner"></div>
+                <div class="multi-spinner">
+                    <div class="multi-spinner">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <h3
-    style="
+    <h3 style="
       font-family: 'Didact Gothic';
       font-size: 24px;
       text-align: center;
       color: #0066b3;
-    "
-  >
-    Please Wait...
-  </h3>
+    ">
+        Please Wait...
+    </h3>
 </div>
 <div id="hideKoro5" class="hideKoro5">
-  <div class="card naV">
-    <div class="card-body table-responsive">
-      <div class="row">
-        <div class="col-md-6">
-          <button
-            class="btn-outline btn-round btn-default btn btn-info"
-            style="width: 100%; font-size: 13px"
-            onclick="deliveryManOnMap()"
-            id="oned"
-          >
-            Delivery Man on Map
-          </button>
+    <div class="card naV">
+        <div class="card-body table-responsive">
+            <div class="row">
+                <div class="col-md-6">
+                    <button
+                        class="btn-outline btn-round btn-default btn btn-info"
+                        style="width: 100%; font-size: 13px"
+                        onclick="deliveryManOnMap()"
+                        id="oned"
+                    >
+                        Delivery Man on Map
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <button
+                        class="btn-outline btn-round btn-default btn btn-info"
+                        style="width: 100%; font-size: 13px"
+                        onclick="deliveryManWithProduct()"
+                        id="twod"
+                    >
+                        Details of Deliveries and Delivery Man
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-          <button
-            class="btn-outline btn-round btn-default btn btn-info"
-            style="width: 100%; font-size: 13px"
-            onclick="deliveryManWithProduct()"
-            id="twod"
-          >
-            Details of Deliveries and Delivery Man
-          </button>
+        <div class="card a">
+            <div class="card-body table-responsive a">
+                <table
+                    id="dtBasicExample"
+                    class="stripe hover"
+                    style="color: #0066b3"
+                    cellspacing="0"
+                    width="100%"
+                >
+                    <thead>
+                        <tr>
+                            <th class="th-sm">ID</th>
+                            <th class="th-sm">Delivery Man's Name</th>
+                            <th class="th-sm">Delivery Man's Email</th>
+                            <th class="th-sm">Phone Number</th>
+                            <th class="th-sm">Total Deliveries Assigned</th>
+                            <th class="th-sm">More Details</th>
+                        </tr>
+                    </thead>
+                    <tfoot></tfoot>
+                </table>
+            </div>
         </div>
-      </div>
     </div>
-
-    <div class="card a">
-      <div class="card-body table-responsive a">
-        <table
-          id="dtBasicExample"
-          class="stripe hover"
-          style="color: #0066b3"
-          cellspacing="0"
-          width="100%"
-        >
-          <thead>
-            <tr>
-              <th class="th-sm">ID</th>
-              <th class="th-sm">Delivery Man's Name</th>
-              <th class="th-sm">Delivery Man's Email</th>
-              <th class="th-sm">Phone Number</th>
-              <th class="th-sm">Total Deliveries Assigned</th>
-              <th class="th-sm">More Details</th>
-            </tr>
-          </thead>
-          <tfoot></tfoot>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div id="map" style="border: 2px solid #ffcf5c"></div>
+    <div id="map" style="border: 2px solid #ffcf5c"></div>
 </div>
-<script src="static/js/importantVar.js"></script>
-
 <script>
   function one1() {
     setTimeout(function () {
@@ -189,7 +184,6 @@
     });
   });
 </script>
-
 <script>
   var map, infoWindow;
   function initMap() {
@@ -397,8 +391,4 @@
     window.open("deliveryManOnMapAndDetails.html" + "#" + deliveryData.id);
   };
 </script>
-<script
-  async
-  defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&callback=initMap"
-></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&callback=initMap"></script>
