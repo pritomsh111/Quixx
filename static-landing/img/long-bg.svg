@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920px" height="2642px" viewBox="0 0 1920 2642" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="97.0946436%" y1="61.6634288%" x2="9.25852593%" y2="72.7635541%" id="linearGradient-1">
+            <stop stop-color="#FCFCFC" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="97.0946436%" y1="61.6634288%" x2="46.762428%" y2="33.9130858%" id="linearGradient-2">
+            <stop stop-color="#FAF9FF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="97.0946436%" y1="61.6634288%" x2="46.762428%" y2="33.9130858%" id="linearGradient-3">
+            <stop stop-color="#ECFAFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="97.0946436%" y1="61.6634288%" x2="0%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#ECFAFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-5" points="1441.73802 1097.79404 3667.54902 1097.79404 3667.54902 1322.54687 3667.54902 1517.78853 1441.73802 1517.78853"></polygon>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="2225.81099" height="419.994496" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(0.000000, -2024.000000)">
+            <g id="Group-2" transform="translate(-1285.000000, 2024.000000)">
+                <rect id="Rectangle-4-Copy-8" fill="url(#linearGradient-1)" transform="translate(1936.309044, 637.132232) rotate(-23.000000) translate(-1936.309044, -637.132232) " x="807.490103" y="424.132232" width="2257.63788" height="426"></rect>
+                <rect id="Rectangle-4-Copy-14" fill="url(#linearGradient-1)" transform="translate(1153.309044, 2466.132232) rotate(-23.000000) translate(-1153.309044, -2466.132232) " x="24.4901032" y="2253.13223" width="2257.63788" height="426"></rect>
+                <rect id="Rectangle-4-Copy-9" fill="url(#linearGradient-2)" transform="translate(1122.309044, 1375.132232) rotate(-23.000000) translate(-1122.309044, -1375.132232) " x="-6.50989678" y="1162.13223" width="2257.63788" height="426"></rect>
+                <rect id="Rectangle-4-Copy-11" fill="url(#linearGradient-2)" transform="translate(3832.085879, 955.872882) rotate(-210.000000) translate(-3832.085879, -955.872882) " x="2703.26694" y="742.872882" width="2257.63788" height="426"></rect>
+                <rect id="Rectangle-4-Copy-10" fill="url(#linearGradient-3)" transform="translate(840.448532, 1213.215513) rotate(-23.000000) translate(-840.448532, -1213.215513) " x="97.7166667" y="1073.06736" width="1485.46373" height="280.296302"></rect>
+                <polygon id="Rectangle-4-Copy-12" fill="url(#linearGradient-4)" transform="translate(3044.298739, 1179.737792) rotate(-210.000000) translate(-3044.298739, -1179.737792) " points="2301.56687 1039.58964 3787.03061 1039.58964 3787.03061 1189.58539 3787.03061 1319.88594 2301.56687 1319.88594"></polygon>
+                <use id="Rectangle-4-Copy-15" stroke="#A5F1FF" mask="url(#mask-6)" stroke-width="2" transform="translate(2554.643519, 1307.791284) rotate(-210.000000) translate(-2554.643519, -1307.791284) " xlink:href="#path-5"></use>
+            </g>
+        </g>
+    </g>
+</svg>

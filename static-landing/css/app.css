@@ -1,0 +1,2080 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Didact Gothic';
+}
+
+.backdrop {
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    bottom: -9999px;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    transition: 300ms ease-in;
+}
+
+.backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.Button__Quixx {
+    outline: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    /* box-shadow: inset 3px 2px 3px 1px #1d2b42, -3px -4px 1px -1px #1d2b42; */
+    transition: opacity 250ms ease-in, color 250ms ease-in;
+    color: #fff;
+    border-radius: 5px 5px / 10px;
+    background-color: #1d2b42;
+}
+
+.Button__Quixx:hover {
+    /* box-shadow: none; */
+    /* transform: translateY(-10%); */
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0.8;
+}
+
+.Button__Quixx:active {
+    transform: scale(0.90);
+}
+
+.Button__Quixx:disabled {
+    cursor: not-allowed;
+    background-color: #959595;
+}
+
+.Button__Quixx:not(:disabled) {
+    animation: enable 300ms ease-in;
+}
+
+@keyframes enable {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Nav Style */
+
+.Quixx__Header {
+    padding: 1rem 5rem;
+}
+
+.Quixx__Nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Quixx__Logo {
+    cursor: pointer;
+    transition: opacity 350ms ease-in-out 100ms;
+}
+
+.Quixx__Logo>div {
+    height: 45px;
+    width: 125px;
+    background: url('../img/Logo.png') center/contain no-repeat;
+}
+
+.Quixx__Login__Signup ul {
+    display: flex;
+}
+
+.Quixx__Login__Signup li {
+    padding: 0.8rem;
+}
+
+.Nav__Only {
+    display: none;
+}
+
+.Quixx__Login__Signup li a {
+    color: #000;
+    position: relative;
+    padding-bottom: 0.7rem;
+    transition: opacity 150ms ease-in;
+}
+
+.Quixx__Login__Signup li a:hover {
+    opacity: 0.7;
+}
+
+.Quixx__Login__Signup li a::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: -3px;
+    transform-origin: right;
+    transform: scaleX(0);
+    background-color: #0066b3;
+    transition: transform 150ms ease-in;
+}
+
+.Quixx__Login__Signup li a:hover::after {
+    transform: scaleX(1);
+}
+
+.Quixx__Login__Signup li a.active {
+    position: relative;
+    cursor: default;
+    pointer-events: none;
+}
+
+.Quixx__Login__Signup li a.active::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: -3px;
+    transform: scaleX(1);
+    background-color: #0066b3;
+}
+
+.Quixx__Login__Signup li:last-child a {
+    cursor: default;
+}
+
+.Quixx__Login__Signup li:last-child a::after {
+    position: absolute;
+    content: "";
+}
+
+.Quixx__Login__Signup li:last-child a:hover::after {
+    transform: scaleX(0);
+}
+
+.Quixx__Login__Signup li:last-child a.active::after {
+    transform: scaleX(0);
+}
+
+.Quixx__Login__Signup li:last-child {
+    position: relative;
+}
+
+.Quixx__Login__Signup li:last-child ul {
+    position: absolute;
+    top: 3rem;
+    left: -10rem;
+    right: -3rem;
+    display: flex;
+    height: 300px;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    z-index: 50;
+    transform: scale(0);
+    transform-origin: top;
+    transition: transform 250ms ease-in-out;
+    background-color: #f2f1f7;
+}
+
+.Quixx__Login__Signup li:last-child:hover ul {
+    transform: scale(1);
+}
+
+.Quixx__Login__Signup li:last-child li a {
+    cursor: pointer;
+}
+
+.Quixx__Login__Signup li:last-child li a div {
+    width: 100px;
+    height: 100px;
+}
+
+.Quixx__Login__Signup li:last-child li:nth-child(1) a div {
+    background: url("../img/Parrot.png") center/contain no-repeat;
+}
+
+.Quixx__Login__Signup li:last-child li:nth-child(2) a div {
+    background: url("../img/Quixx\ Maps-01.jpg") center/contain no-repeat;
+}
+
+.Quixx__Login__Signup li:last-child li:nth-child(3) a div {
+    background: url("../img/quixx_digital.png") center/contain no-repeat;
+}
+
+.Quixx__Login__Signup li:last-child i {
+    font-size: 0.8rem;
+    margin-left: 0.2rem;
+    vertical-align: middle;
+    transition: transform 250ms ease-in;
+}
+
+.Quixx__Login__Signup li:last-child:hover i {
+    transform: rotate(90deg);
+}
+
+.Quixx__Navigation__Toggler {
+    display: none;
+    position: relative;
+    z-index: 1000;
+}
+
+@media (max-width: 800px) {
+    .Quixx__Header {
+        padding: 1rem 2rem;
+    }
+    .Quixx__Navigation__Toggler {
+        display: block;
+        cursor: pointer;
+        transition: opacity 200ms ease-in;
+    }
+    .Quixx__Navigation__Toggler:hover {
+        opacity: 0.5;
+    }
+    .Quixx__Navigation__Toggler>div {
+        height: 3px;
+        width: 25px;
+        margin: 5px;
+        background: #000;
+        transition: 350ms ease-in;
+    }
+    .Quixx__Login__Signup ul {
+        z-index: 999;
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        background-color: rgb(235, 234, 238);
+        transform: translate(200%);
+        transition: transform 350ms ease-in;
+    }
+    .Quixx__Login__Signup li:last-child ul {
+        top: 2.8rem;
+        width: unset;
+        left: -5rem;
+        right: -5rem;
+        height: 280px;
+        flex-direction: row;
+        background-color: rgb(235, 234, 238);
+    }
+    .Quixx__Login__Signup ul li {
+        margin-bottom: 1rem;
+    }
+    .Quixx__Login__Signup.toggle ul {
+        transform: translateX(100%);
+        overflow: hidden;
+    }
+    .toggle_nav div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .toggle_nav div:nth-child(2) {
+        transform: translateX(-30px) scaleX(0);
+    }
+    .toggle_nav div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+.Top__Scroll {
+    height: 40px;
+    cursor: pointer;
+    width: 40px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: url("../img/paper.png") center/contain no-repeat;
+    transform: rotate(-45deg) scale(0) translateX(-100px);
+    transition: transform 600ms cubic-bezier(0.5, 0.23, 0.03, 1.43), opacity 250ms ease-in;
+    z-index: 800;
+}
+
+.topScroll_visible {
+    transform: rotate(-90deg) scale(1) translateX(0px);
+}
+
+.Top__Scroll:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 500px) {
+    .Top__Scroll {
+        height: 32px;
+        cursor: pointer;
+        width: 32px;
+    }
+}
+
+.Main__Page {
+    background: url("../img/2slideparal.jpg") 0 0/cover no-repeat;
+    /* background-attachment: fixed; */
+    height: 100vh;
+    position: relative;
+}
+
+.Home__Quixx__Container {
+    padding: 0rem 2.5rem 1rem 5.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1d2b42;
+    width: 100%;
+    column-gap: 2rem;
+    position: relative;
+}
+
+.Home__L {
+    flex: 0 0 50%;
+    font-weight: 100;
+    position: relative;
+}
+
+.Home__L .Headline__Top {
+    margin-bottom: 3rem;
+    font-weight: 100;
+}
+
+.Home__L .Summmary__Bottom {
+    font-weight: 100;
+    width: 85%;
+    opacity: 0.9;
+}
+
+.Home__L .Home__CTA {
+    margin-top: 3rem;
+    padding: 0.7rem;
+}
+
+.Home__L img:first-of-type {
+    display: block;
+    position: absolute;
+    width: 20px;
+}
+
+.animation_IMG_1 {
+    margin-left: 1rem;
+    margin-top: 3rem;
+    animation: oneIMG 3s infinite ease-in;
+}
+
+.animation_IMG_2 {
+    margin-top: -6rem;
+    margin-left: 12rem;
+    animation: oneIMG 3s infinite ease-in;
+}
+
+.animation_IMG_3 {
+    margin-bottom: -4rem;
+    margin-left: 10rem;
+    animation: oneIMG 3s infinite ease-in;
+}
+
+.animation_IMG_4 {
+    margin-top: -22rem;
+    margin-left: 5rem;
+    animation: oneIMG 3s infinite ease-in;
+}
+
+@keyframes oneIMG {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    75% {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* 
+.Home__L img:last-of-type {
+    display: block;
+    position: absolute;
+    width: 35px;
+    top: 6rem;
+    animation: flyerAnimation 10s infinite ease-in;
+} */
+
+.Home__R {
+    overflow: hidden;
+    flex: 0 0 50%;
+}
+
+.Home__R img {
+    width: 102%;
+    object-fit: contain;
+    position: relative;
+}
+
+@media (min-width: 1600px) {
+    .Home__L .Headline__Top {
+        font-size: 2.5rem;
+    }
+    .Home__L .Summmary__Bottom {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 1400px) {
+    .Home__Quixx__Container {
+        height: 100%;
+    }
+}
+
+@media (max-width: 1000px) {
+    /* .Home__L::before {
+        left: 0;
+    }
+    .Home__L::after {
+        position: absolute;
+        content: "";
+        height: 130px;
+        width: 130px;
+        background-color: rgba(0, 0, 0, 0.05);
+        z-index: 100;
+        border-radius: 10%;
+        right: 0;
+        top: 0;
+    } */
+    .Home__Quixx__Container {
+        padding: 0rem 2rem;
+        height: 100vh;
+        /* background: url("../img/main_800.png") center/cover no-repeat; */
+    }
+    .Home__L {
+        flex: 100%;
+        text-align: center;
+    }
+    .Home__L .Summmary__Bottom {
+        display: none;
+    }
+    .Home__L .Home__CTA {
+        margin-top: 2rem;
+    }
+    .Home__R {
+        display: none;
+    }
+}
+
+/* Home - Section 2 - Side__Prod*/
+
+.Quixx__Side__Prod {
+    padding: 1rem 5.1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Quixx__Side__Prod a div {
+    height: 130px;
+    width: 130px;
+}
+
+.Quixx__Side__Prod a:nth-child(1) div {
+    background: url("../img/quixx_digital.png") center/contain no-repeat;
+}
+
+/* .Quixx__Side__Prod a:nth-child(2) div {
+    width: 180px;
+    background: url("../img/quixx_nilkhetian.jpg") center/contain no-repeat;
+} */
+
+.Quixx__Side__Prod a:nth-child(2) div {
+    background: url("../img/quixx_projects.png") center/contain no-repeat;
+}
+
+@media (max-width:800px) {
+    .Quixx__Side__Prod {
+        padding: 1rem 2rem;
+    }
+}
+
+/* Home - Section 3 - Delivery__Agent__Application */
+
+/* .Quixx__Mobile {
+    background-color: #f2f1f7;
+    background-color: #f8f8ff;
+} */
+
+.Quixx__Mobile>h1 {
+    text-align: center;
+    font-weight: 100;
+    padding: 0.5rem 2rem 3rem;
+    position: relative;
+}
+
+.Quixx__Mobile>h4 {
+    text-align: center;
+    font-weight: 100;
+    opacity: 0.7;
+    padding-top: 5rem;
+}
+
+.Quixx__Mobile__Applications {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    column-gap: 2.5rem;
+    position: relative;
+    padding: 1rem 5rem;
+}
+
+.Quixx__Mobile__Applications .background__ab {
+    position: absolute;
+    height: 3%;
+    width: 25%;
+    left: 14.5%;
+    bottom: .3rem;
+    background: #00000015;
+    border-radius: 44% 56% 49% 51% / 19% 17% 83% 81%;
+}
+
+.Mobile__Left {
+    position: relative;
+    width: 100%;
+    /* border-radius: 58% 42% 70% 30% / 30% 30% 70% 70%;
+    background-color: #00000010; */
+}
+
+.Mobile__Left .Main__Phone {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.Mobile__Left .Main__Phone__Over {
+    position: absolute;
+    width: 36%;
+    height: 95%;
+    opacity: 1;
+    display: block;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    transition: opacity 250ms ease-in;
+}
+
+#overlay2, #overlay3, #overlay4 {
+    opacity: 0;
+}
+
+.Mobile__Left img {
+    width: 40%;
+}
+
+.Top__Select, .Middle__Select, .Bottom__Select {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    place-items: center;
+    margin-bottom: 3rem;
+}
+
+.Mobile__Right {
+    width: 100%;
+    min-height: 250px;
+}
+
+.Mobile__Right img {
+    width: 30px;
+    opacity: 0.6;
+    transition: width 250ms ease-in, opacity 250ms ease-in;
+}
+
+.Mobile__Right .scaleUpImage {
+    width: 50px;
+    opacity: 1;
+}
+
+.Mobile__Right p {
+    text-align: left;
+    transition: font-size 250ms ease-in, color 250ms ease-in, opacity 250ms ease-in;
+    width: 100%;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.Mobile__Right .scaleUpPara {
+    font-size: 1.3rem;
+    color: #0066b3;
+    opacity: 1;
+}
+
+.Bottom__Select {
+    margin: 0;
+}
+
+@media (max-width: 1093px) {
+    .Quixx__Mobile__Applications {
+        grid-template-columns: 1fr;
+    }
+    .Quixx__Mobile__Applications .background__ab {
+        display: none;
+    }
+    .Mobile__Left .Main__Phone__Over {
+        width: 31.5%;
+        height: 95%;
+    }
+    .Mobile__Left img {
+        width: 35%;
+    }
+    .Mobile__Right {
+        min-height: 270px;
+        margin: 3.5rem 0;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .Top__Select, .Middle__Select, .Bottom__Select {
+        width: 68%;
+    }
+}
+
+@media (max-width: 700px) {
+    .Quixx__Mobile__Applications {
+        padding: 1rem 2rem;
+    }
+    .Mobile__Left .Main__Phone__Over {
+        width: 39.5%;
+        height: 95%;
+    }
+    .Mobile__Left img {
+        width: 44%;
+    }
+    .Top__Select, .Middle__Select, .Bottom__Select {
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .Mobile__Left .Main__Phone__Over {
+        width: 39.5%;
+        height: 95%;
+    }
+    .Mobile__Left img {
+        width: 44%;
+    }
+}
+
+@media (max-width: 559px) {
+    .Mobile__Left .Main__Phone__Over {
+        width: 44.5%;
+        height: 95%;
+    }
+    .Mobile__Left img {
+        width: 50%;
+    }
+    .Mobile__Right img {
+        width: 20px;
+    }
+    .Mobile__Right .scaleUpImage {
+        width: 35px;
+    }
+    .Mobile__Right p {
+        font-size: 0.9rem;
+    }
+    .Mobile__Right .scaleUpPara {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .Mobile__Right img {
+        width: 45px;
+    }
+    .Mobile__Right .scaleUpImage {
+        width: 60px;
+    }
+    .Mobile__Right p {
+        font-size: 0.8rem;
+    }
+    .Mobile__Right .scaleUpPara {
+        font-size: 1.3rem;
+    }
+}
+
+/* Section: 4 -> Quixx Features */
+
+.Paper__Flyer__Animation {
+    position: relative;
+    /* background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); */
+    /* height: 100vh; */
+    overflow: hidden;
+}
+
+.Paper__Flyer {
+    position: absolute;
+    height: 80px;
+    bottom: 0;
+    left: 0;
+}
+
+/* Real Time Tracking */
+
+.Real__Time__Tracking {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding: 5rem 4.8rem 0rem;
+}
+
+.Real__Time__Tracking .RTT__IMG {
+    order: 2;
+    height: 650px;
+    width: 650px;
+    background: url("../img/SLIDER 2 SVG-01.svg") center/contain no-repeat;
+}
+
+.RTT__DES {
+    order: 1;
+    display: block;
+    text-align: left;
+}
+
+.RTT__DES h2 {
+    margin-bottom: 2rem;
+}
+
+.RTT__DES p {
+    opacity: 0.8;
+}
+
+@media (max-width: 1200px) {
+    .Real__Time__Tracking .RTT__IMG {
+        height: 400px;
+        width: 400px;
+    }
+    .Real__Time__Tracking {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .Real__Time__Tracking {
+        grid-template-columns: 1fr;
+    }
+    .RTT__DES {
+        text-align: center;
+    }
+    .Real__Time__Tracking .RTT__IMG {
+        height: 300px;
+        width: 300px;
+        margin-bottom: 3.5rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .Real__Time__Tracking {
+        padding: 3rem 2rem 1rem;
+    }
+    .Real__Time__Tracking .RTT__IMG {
+        height: 250px;
+        width: 250px;
+    }
+}
+
+/* Route Optimization with Google Map */
+
+.Route__Optimization {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding: 0rem 4.8rem 0rem;
+}
+
+.Route__Optimization .RO__IMG {
+    order: 1;
+    height: 500px;
+    width: 500px;
+    background: url("../img/Tracking cycle-001.svg") center/contain no-repeat;
+}
+
+.RO__DES {
+    order: 2;
+    display: block;
+    text-align: left;
+}
+
+.RO__DES h2 {
+    margin-bottom: 2rem;
+}
+
+.RO__DES p {
+    width: 70%;
+    opacity: 0.8;
+}
+
+@media (max-width: 1200px) {
+    .Route__Optimization .RO__IMG {
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 900px) {
+    .Route__Optimization {
+        grid-template-columns: 1fr;
+    }
+    .RO__DES {
+        order: 1;
+        text-align: center;
+    }
+    .RO__DES p {
+        margin: 0rem auto 4rem;
+    }
+    .Route__Optimization .RO__IMG {
+        height: 250px;
+        width: 250px;
+        margin-bottom: 3rem;
+        order: 2;
+    }
+}
+
+@media (max-width: 700px) {
+    .Route__Optimization {
+        padding: 1rem 2rem;
+    }
+    .Route__Optimization .RO__IMG {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+/* Real Time SMS Update */
+
+.Real__SMS {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding: 1rem 4.8rem 0rem;
+}
+
+.Real__SMS .Real__IMG {
+    order: 2;
+    height: 650px;
+    width: 650px;
+    background: url("../img/SMS INTEGRATION-01.svg") center/contain no-repeat;
+}
+
+.Real__DES {
+    order: 1;
+    display: block;
+    text-align: left;
+}
+
+.Real__DES h2 {
+    margin-bottom: 2rem;
+}
+
+.Real__DES p {
+    opacity: 0.8;
+    width: 70%;
+}
+
+@media (max-width: 1200px) {
+    .Real__SMS .Real__IMG {
+        height: 450px;
+        width: 450px;
+    }
+}
+
+@media (max-width: 900px) {
+    .Real__SMS {
+        grid-template-columns: 1fr;
+    }
+    .Real__DES {
+        text-align: center;
+        margin-top: 3rem;
+    }
+    .Real__SMS .Real__IMG {
+        height: 380px;
+        width: 380px;
+    }
+    .Real__DES p {
+        margin: auto;
+    }
+}
+
+@media (max-width: 700px) {
+    .Real__SMS {
+        padding: 1rem 2rem;
+    }
+    .Real__SMS .Real__IMG {
+        height: 280px;
+        width: 280px;
+    }
+}
+
+/* Automatic Delivery Assign */
+
+.Auto__Delivery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding: 1rem 4.8rem 0rem;
+}
+
+.Auto__Delivery .Auto__IMG {
+    order: 1;
+    height: 550px;
+    width: 550px;
+    background: url("../img/Auto Delivery assign-01.svg") center/contain no-repeat;
+}
+
+.Auto__DES {
+    order: 2;
+    display: block;
+    text-align: left;
+}
+
+.Auto__DES h2 {
+    margin-bottom: 2rem;
+}
+
+.Auto__DES p {
+    opacity: 0.8;
+    width: 80%;
+}
+
+@media (max-width: 1200px) {
+    .Auto__Delivery .Auto__IMG {
+        height: 400px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 900px) {
+    .Auto__Delivery {
+        grid-template-columns: 1fr;
+    }
+    .Auto__DES {
+        order: 1;
+        text-align: center;
+        margin-top: 3rem;
+    }
+    .Auto__Delivery .Auto__IMG {
+        height: 300px;
+        width: 300px;
+        order: 2;
+    }
+    .Auto__DES p {
+        margin: auto;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .Auto__Delivery {
+        padding: 1rem 2rem;
+    }
+    .Auto__Delivery .Auto__IMG {
+        height: 280px;
+        width: 280px;
+    }
+}
+
+/* Create Bulk Deliveries in One Click */
+
+.Bulk__Delivery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding: 1rem 4.8rem 0rem;
+}
+
+.Bulk__Delivery .Bulk__IMG {
+    order: 2;
+    height: 550px;
+    width: 550px;
+    background: url("../img/Excel\ Bulk-01.svg") center/contain no-repeat;
+}
+
+.Bulk__DES {
+    order: 1;
+    display: block;
+    text-align: left;
+}
+
+.Bulk__DES h2 {
+    margin-bottom: 2rem;
+}
+
+.Bulk__DES p {
+    opacity: 0.8;
+    width: 80%;
+}
+
+@media (max-width: 1200px) {
+    .Bulk__Delivery .Bulk__IMG {
+        height: 400px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 900px) {
+    .Bulk__Delivery {
+        grid-template-columns: 1fr;
+    }
+    .Bulk__DES {
+        order: 1;
+        text-align: center;
+        margin-top: 3rem;
+    }
+    .Bulk__Delivery .Bulk__IMG {
+        height: 320px;
+        width: 320px;
+        order: 2;
+    }
+    .Bulk__DES p {
+        margin: auto;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .Bulk__Delivery {
+        padding: 1rem 2rem;
+    }
+    .Bulk__Delivery .Bulk__IMG {
+        height: 280px;
+        width: 280px;
+    }
+}
+
+/* Company Growth Analysis */
+
+.Company__Analysis {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding: 1rem 4.8rem 0rem;
+}
+
+.Company__Analysis .Company__IMG {
+    order: 1;
+    height: 550px;
+    width: 550px;
+    background: url("../img/GRAPH-01.svg") center/contain no-repeat;
+}
+
+.Company__DES {
+    order: 2;
+    display: block;
+    text-align: left;
+}
+
+.Company__DES h2 {
+    margin-bottom: 2rem;
+}
+
+.Company__DES p {
+    opacity: 0.8;
+    width: 80%;
+}
+
+@media (max-width: 1200px) {
+    .Company__Analysis .Company__IMG {
+        height: 380px;
+        width: 380px;
+    }
+}
+
+@media (max-width: 900px) {
+    .Company__Analysis {
+        grid-template-columns: 1fr;
+    }
+    .Company__DES {
+        order: 1;
+        text-align: center;
+        margin-top: 3rem;
+    }
+    .Company__Analysis .Company__IMG {
+        height: 300px;
+        width: 300px;
+        order: 2;
+    }
+    .Company__DES p {
+        margin: auto;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .Company__Analysis {
+        padding: 1rem 2rem;
+    }
+    .Company__Analysis .Company__IMG {
+        height: 280px;
+        width: 280px;
+    }
+}
+
+/* Section: 5  -> Merchant Panel Mobile */
+
+.Quixx__Mobile__Merchant>h1 {
+    text-align: center;
+    font-weight: 100;
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 200;
+}
+
+/* Section: 6  -> Mobile Application Links */
+
+.Quixx__Application__Links {
+    padding: 4rem 4.8rem 4rem;
+    margin-top: 4.5rem;
+    background: #f2f1f7;
+}
+
+.Quixx__Application__Links h4 {
+    font-weight: 100;
+    opacity: 0.7;
+}
+
+.Quixx__Application__Links h4, .Quixx__Application__Links h1 {
+    text-align: center;
+}
+
+.Quixx__Application__Links h1 {
+    padding: 0.5rem 0rem;
+    font-weight: 100;
+}
+
+.Quixx__Application__Links h3 {
+    font-weight: 100;
+}
+
+.Q__A__L {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    text-align: center;
+}
+
+.Q__A__L div:nth-child(2) {
+    background: rgba(0, 0, 0, 0.1);
+    width: 1px;
+    height: 70%;
+    position: relative;
+    top: 40px;
+}
+
+.Delivery__Agent__App a, .Merchant__App a {
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.Delivery__Agent__App a div, .Merchant__App a div {
+    width: 150px;
+    margin: auto;
+}
+
+.Delivery__Agent__App a div img, .Merchant__App a div img {
+    width: 100%;
+}
+
+@media (max-width: 610px) {
+    .Q__A__L {
+        grid-template-columns: 1fr;
+        padding: 0rem 2rem 2rem;
+    }
+    .Delivery__Agent__App a div, .Merchant__App a div {
+        width: 110px;
+    }
+    .Q__A__L div:nth-child(2) {
+        display: none;
+    }
+}
+
+/* Section 7: Panels */
+
+.Quixx__Panels {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    place-items: center;
+    padding: 2rem 0rem 2rem 2.5rem;
+    overflow: hidden;
+}
+
+.Quixx__Panels h1, .Quixx__Panels h4 {
+    font-weight: 100;
+    text-align: left;
+}
+
+.Quixx__Panels h1 {
+    padding: 0.5rem 0;
+    text-align: left;
+}
+
+.Quixx__Panels h4 {
+    opacity: 0.8;
+}
+
+.Quixx__Panel__R {
+    width: 100%;
+    margin-left: 10rem;
+    overflow: hidden;
+}
+
+@media (min-width: 1800px) {
+    .Quixx__Panel__R {
+        margin-left: 30rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .Quixx__Panels {
+        /* display: grid;
+        margin-top: 5rem;
+        grid-template-columns: 1fr; */
+        display: none;
+    }
+    /* .Quixx__Panel__L {
+        text-align: center;
+    }
+    .Quixx__Panel__R {
+        display: none;
+    } */
+}
+
+.Quixx__Panel__L h4 {
+    opacity: 0.8;
+    font-weight: 100;
+}
+
+.Quixx__Panel__L .org_span, .Quixx__Panel__L .mer_span {
+    display: inline-block;
+    transition: color 200ms ease-in, transform 200ms ease-in;
+}
+
+.slide_active {
+    color: #0066b3;
+    transform: scale(1.02);
+}
+
+/* Section: 8 -> Pricing */
+
+.Quixx__Pricing {
+    padding: 5rem 3rem;
+    background-color: #f2f1f7;
+}
+
+.Quixx__Pricing h1, .Quixx__Pricing h4 {
+    font-weight: 100;
+    text-align: center;
+}
+
+.Quixx__Pricing h1 {
+    padding: 0.5rem 2rem 3rem;
+}
+
+.Quixx__Pricing h4 {
+    opacity: 0.8;
+}
+
+.pricing-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* background: #fff url("../img/line-bg-min.png") center/contain no-repeat; */
+}
+
+.pricing-card {
+    flex: 50%;
+    max-width: 340px;
+    margin: 20px 10px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 20px/20px;
+    box-shadow: -5px 1px 5px 1px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+.pricing-card-header {
+    display: inline-block;
+    color: #000;
+    padding: 2rem;
+    color: #959595;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.15rem;
+}
+
+.pricing-card .del-c {
+    color: #000;
+}
+
+.price {
+    font-size: 3rem;
+    color: #000;
+    margin: 3rem 0;
+}
+
+.price span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #959595;
+}
+
+.price sup {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.pricing-card strong {
+    font-size: 1.2rem;
+}
+
+.price2 {
+    font-size: 16px;
+    color: #000;
+    margin: 10px 2px;
+}
+
+.price2 sup, .price2 span {
+    font-size: 12x;
+    font-weight: 300;
+}
+
+.pricing-card li {
+    font-size: 1.2rem;
+    padding: 1.2rem 0;
+}
+
+.order-btn {
+    display: inline-block;
+    margin: 1.3rem 0 1.5rem;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+    transition: color 250ms ease-in, box-shadow 250ms ease-in;
+}
+
+.Quixx__Pricing .pricing-card:nth-child(2) .order-btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+}
+
+.order-btn::before {
+    position: absolute;
+    content: "";
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.842);
+    color: #fff;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in;
+}
+
+.order-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.order-btn:hover {
+    box-shadow: 0 0 18.8em rgb(97, 97, 97);
+    color: #fff;
+}
+
+.Quixx__Pricing .pricing-card:nth-child(2) .order-btn::before {
+    background: #fff;
+}
+
+@media (max-width: 600px) {
+    .Quixx__Pricing {
+        padding: 5rem 2rem;
+        background: #fff;
+    }
+}
+
+@media (max-width: 921px) {
+    .Quixx__Pricing {
+        background: #fff;
+    }
+}
+
+/* Section:9 -> Video */
+
+.Quixx__Video {
+    padding: 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+}
+
+.Quixx__Video h1, .Quixx__Video h4 {
+    font-weight: 100;
+    text-align: center;
+}
+
+.Quixx__Video h1 {
+    padding: 0.5rem 2rem 3rem;
+}
+
+.Quixx__Video h4 {
+    padding-top: 3rem;
+    opacity: 0.8;
+}
+
+.Quixx__Video .video {
+    height: 480px;
+    width: 100%;
+    margin: 0 auto;
+    background: url('../img/quixx_video_overlay.png') no-repeat center/cover;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.Quixx__Video .play_button {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    /* border: 1px solid #FF0000; */
+    /* border: 1px solid #fdb814; */
+    /* height: 50px;
+    width: 50px; */
+    border-radius: 50%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: youtube-circle 2s infinite;
+}
+
+/* 
+@keyframes youtube-circle {
+    0% {
+        height: 60px;
+        width: 60px;
+    }
+    20% {}
+    40% {
+        height: 70px;
+        width: 70px;
+    }
+    60% {}
+    80% {
+        height: 80px;
+        width: 80px;
+    }
+    100% {
+        height: 60px;
+        width: 60px;
+    }
+} */
+
+.fa-play {
+    color: #FF0000;
+    position: absolute;
+    opacity: 1;
+    font-size: 2rem;
+    transition: opacity 250ms ease-in, transform 250ms ease-in;
+    cursor: pointer;
+}
+
+.fa-play:hover {
+    opacity: 0.7;
+    transform: scale(1.2);
+}
+
+.Quixx__Video iframe {
+    position: fixed;
+    width: 60%;
+    height: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1200;
+}
+
+@media (max-width: 750px) {
+    .Quixx__Video iframe {
+        width: 80%;
+        height: 40%;
+    }
+    .Quixx__Video .video {
+        width: 100%;
+    }
+}
+
+/* Section:10 -> Customer Feedback*/
+
+.Quixx__Customer {
+    padding: 2rem 4.9rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+}
+
+.Quixx__Customer h1, .Quixx__Customer h4 {
+    font-weight: 100;
+    text-align: left;
+}
+
+.Quixx__Customer h1 {
+    padding: 0.5rem 0;
+    text-align: left;
+}
+
+.Quixx__Customer h4 {
+    padding-top: 3rem;
+    opacity: 0.8;
+}
+
+.Customer__L {
+    margin-right: auto;
+}
+
+.Customer__R {
+    width: 100%;
+    overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+    .Quixx__Customer {
+        padding: 2rem 2rem;
+        grid-template-columns: 1fr;
+    }
+    .Customer__L {
+        margin-right: 0;
+    }
+    .Quixx__Customer h1, .Quixx__Customer h4 {
+        text-align: center;
+    }
+}
+
+/* Section:11 -> Quixx Footer */
+
+.Quixx__Footer {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    padding: 5rem 5rem 4rem;
+    color: #fff;
+    background-color: #363636;
+}
+
+.Footer__L {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Footer__L .Quixx__Logo {
+    cursor: auto;
+}
+
+.Footer__L h2 {
+    font-weight: 100;
+    font-size: 1rem;
+    width: 60%;
+    padding: 1.6rem 0 1.7rem;
+    opacity: 1;
+}
+
+.Footer__L .Quixx__Social a i {
+    color: #fff;
+    transition: color 150ms ease-in;
+    margin-right: 12px;
+}
+
+.Footer__L .Quixx__Social a:nth-child(1) i:hover {
+    color: #3b5998;
+}
+
+.Footer__L .Quixx__Social a:nth-child(2) i:hover {
+    color: #007bb6;
+}
+
+.Footer__L .Quixx__Social a:nth-child(3) i:hover {
+    color: #E1306C;
+}
+
+.Footer__L .Quixx__Social a:last-of-type i {
+    margin-right: 0px;
+}
+
+.Footer__R {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.Footer__R ul li {
+    opacity: 0.8;
+}
+
+.Footer__R ul li:first-child {
+    padding-bottom: 2rem;
+    font-size: 1.1rem;
+    opacity: 1;
+    font-weight: 450;
+}
+
+.Footer__R ul:first-child li:last-child {
+    cursor: pointer;
+    transition: 150ms ease-in;
+    margin-top: 0.3rem;
+    opacity: 1;
+}
+
+.Footer__R ul:first-child li:last-child:hover {
+    opacity: 0.7;
+}
+
+.Footer__R ul:last-child li {
+    display: inline-block;
+}
+
+.Footer__R ul:last-child li:first-child {
+    display: block;
+}
+
+.Footer__R ul:last-child li img {
+    width: 50px;
+    margin-right: 1.2rem;
+}
+
+.Footer__R ul:last-child li:last-of-type img {
+    margin-right: 0;
+}
+
+@media (max-width: 1000px) {
+    .Quixx__Footer {
+        grid-template-columns: 1fr;
+        row-gap: 3rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .Footer__L h3 {
+        font-weight: 100;
+        width: 80%;
+    }
+    .Footer__R {
+        grid-template-columns: 1fr;
+        row-gap: 3rem;
+    }
+    .Footer__R ul li:first-child {
+        padding-bottom: 1.4rem;
+    }
+}
+
+/* Section:12 -> Copyright */
+
+.Quixx__Copyright__Issue {
+    text-align: center;
+    padding: 2rem 5rem;
+    background: #252525;
+    color: #f4f4f4;
+}
+
+/* LOGIN/SIGNUP -> Will Be transferred to separate css file!*/
+
+.Quixx__Form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 4rem 5rem;
+    place-items: center;
+    /* height: 100vh; */
+}
+
+.Quixx__Form__Main {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 5rem 3rem;
+    height: 470px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 1px 2px 2px rgba(0, 0, 0, 0.1);
+    transition: height 500ms ease-in-out;
+}
+
+.height_login {
+    height: 470px;
+}
+
+.height_signup {
+    height: 1030px;
+}
+
+.Quixx__Form__Main button:hover {
+    opacity: 0.8;
+}
+
+.Quixx__Form__Main .Buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 4rem;
+}
+
+.Quixx__Form__Main .Buttons button {
+    padding: .5rem;
+    width: 100px;
+    border-radius: 5px 10px / 20px;
+    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: color 250ms ease-in, 100ms ease-in-out, border 450ms ease-in-out, font-size 350ms ease-in-out;
+    background: transparent;
+    font-family: inherit;
+}
+
+.Quixx__Form__Main .Buttons button.active-btn {
+    color: #0066b3;
+    font-size: 1.05rem;
+    cursor: auto;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+.Quixx__Form__Main .Buttons button:first-of-type {
+    margin-right: 1.4rem;
+}
+
+.Quixx__Form__Main .Container button {
+    padding: 0.6rem 1rem;
+    border: 1px solid #1d2b42;
+    background: transparent;
+    display: block;
+    border-radius: 5px 5px / 15px;
+    font-family: inherit;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 2rem;
+    transition: transform 100ms ease-in-out;
+}
+
+.Quixx__Form__Main .Container button:focus, .Quixx__Form__Main .Buttons button:focus {
+    outline: none;
+}
+
+.Quixx__Form__Main .Container button:active, .Quixx__Form__Main .Buttons button:active {
+    transform: scale(0.95);
+}
+
+.Quixx__Form__Main .Container input {
+    font-family: inherit;
+    padding: 0.7rem;
+    display: block;
+    margin: 1rem 0;
+    width: 100%;
+    border: 1px solid #1d2b42;
+    border-radius: 5px;
+    transition: border 250ms ease-in;
+}
+
+.password {
+    position: relative;
+}
+
+.password i {
+    font-size: 0.8rem;
+    position: absolute;
+    height: 100%;
+    right: 10px;
+    top: 0;
+    display: grid;
+    place-items: center;
+    transition: 250ms ease-in;
+    cursor: pointer;
+}
+
+.password i:hover {
+    opacity: 0.8;
+}
+
+.Quixx__Login p.forgot_pass {
+    text-align: right;
+    cursor: pointer;
+    transition: opacity 250ms ease-in, color 250ms ease-in;
+}
+
+.Quixx__Login p:last-of-type:hover {
+    color: #e22b2b;
+    opacity: 0.8;
+}
+
+.Quixx__Q {
+    margin-right: auto;
+}
+
+.Quixx__Q>h1 {
+    font-size: 2.2rem;
+    font-weight: 100;
+}
+
+.Q__Us {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(5px);
+    transform-origin: top;
+    margin-top: 1rem;
+    transition: visibility 350ms ease-in, 350ms ease-in, transform 350ms ease-in;
+}
+
+.Q__Us.show {
+    transform: translateX(0px);
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+}
+
+.Container {
+    position: absolute;
+    width: 57%;
+    transition: transform 550ms ease-in-out;
+    top: 8rem;
+}
+
+.HideOut {
+    transform: translateX(200%);
+}
+
+.Show {
+    transform: translateX(0%);
+}
+
+.login:focus {
+    outline: 1px solid rgb(0, 102, 179);
+}
+
+p.error {
+    color: #e22b2b;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
+@media (max-width: 960px) {
+    .Quixx__Form {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 4rem 2rem;
+    }
+    .Quixx__Form__Main {
+        box-shadow: none;
+        border: none;
+    }
+    .Quixx__Q {
+        display: none;
+    }
+}
+
+/* Modal For All Purpose */
+
+.Modal__Quixx {
+    text-align: center;
+    text-transform: capitalize;
+    overflow: hidden;
+    position: fixed;
+    padding: 1rem;
+    top: 20%;
+    display: grid;
+    left: calc(50% - 300px);
+    width: 600px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(-200%);
+    background: #fff;
+    transition: opacity 350ms ease-in, transform 350ms ease-in;
+    z-index: 1199;
+}
+
+.Modal__Quixx.show {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.Modal__Quixx .modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.Modal__Quixx .modal-body {
+    padding: 2rem 0;
+}
+
+.Modal__Quixx .modal-body input {
+    font-family: inherit;
+    padding: 0.7rem;
+    display: block;
+    margin: 1rem auto;
+    width: 50%;
+    border: 1px solid #1d2b42;
+    border-radius: 5px;
+}
+
+.Modal__Quixx .modal-footer {
+    padding: 1rem 0 0 1rem;
+    margin-left: auto;
+    margin-top: 10rem;
+}
+
+.modal-footer button {
+    padding: 0.7rem 0.9rem;
+    color: #fff;
+    background: #000;
+}
+
+/* Modal Inner Body For Different Actions */
+
+.Modal__Quixx .modal-body .forgot-pass {
+    position: relative;
+}
+
+.Modal__Quixx .modal-body .forgot-pass .FP h2 {
+    font-weight: 100;
+    font-size: 1.2rem;
+}
+
+.Modal__Quixx .modal-body .forgot-pass .FP h2:last-of-type {
+    padding-top: 1rem;
+}
+
+.Modal__Quixx .modal-body .forgot-pass .FP {
+    position: absolute;
+    width: 100%;
+    transition: transform 450ms ease-in;
+}
+
+.FP.show {
+    transform: translateX(0);
+}
+
+.FP.hide {
+    transform: translateX(200%);
+}
+
+.modal-error {
+    color: #e22b2b;
+}
+
+/* Loader [Signup] */
+
+.circle-loader {
+    margin-bottom: 1rem;
+    border: 1px solid rgb(0, 102, 179);
+    border-left-color: #ffcf5c;
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: loader-spin 1.2s infinite linear;
+}
+
+.load-complete {
+    -webkit-animation: none;
+    animation: none;
+    border-color: #0066b3;
+    transition: border 500ms ease-out;
+}
+
+.checkmark {
+    display: none;
+}
+
+.checkmark.draw:after {
+    animation-duration: 800ms;
+    animation-timing-function: ease;
+    animation-name: checkmark;
+    transform: scaleX(-1) rotate(135deg);
+}
+
+.checkmark:after {
+    opacity: 1;
+    height: 3.5rem;
+    width: 1.75rem;
+    transform-origin: left top;
+    border-right: 3px solid #0066b3;
+    border-top: 3px solid #0066b3;
+    content: '';
+    left: 2rem;
+    top: 3.8rem;
+    position: absolute;
+}
+
+@keyframes loader-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes checkmark {
+    0% {
+        height: 0;
+        width: 0;
+        opacity: 1;
+    }
+    20% {
+        height: 0;
+        width: 1.75rem;
+        opacity: 1;
+    }
+    40% {
+        height: 3.5rem;
+        width: 1.75rem;
+        opacity: 1;
+    }
+    100% {
+        height: 3.5rem;
+        width: 1.75rem;
+        opacity: 1;
+    }
+}

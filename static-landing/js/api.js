@@ -1,0 +1,1 @@
+const api = "https://prod.quixx.xyz/api/quixx/v1/";
