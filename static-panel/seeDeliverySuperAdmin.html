@@ -1,218 +1,241 @@
 <style>
-div.hideKoro5{
-	display:none;
-}
-.gm-style-iw{
-	width:170px;
-}
-
-table#dtBasicExample.dataTable tbody tr:hover {
-	background-color: #FFFFEA;
-    border-color: #0066b3;
-}
-
-table#dtBasicExample.dataTable tbody tr:hover > .sorting_1 {
-	background-color: #FFFFEA;
-    border-color: #0066b3;
-}
-table#dtBasicExampleAp.dataTable tbody tr:hover {
-	background-color: #FFFFEA;
-    border-color: #0066b3; 
-}
-
-table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
-	background-color: #FFFFEA;
-    border-color: #0066b3;
-}
-	#map {
-	margin-top: -29px;
-	height: 52%;
-	width: 94.5%;
-	border:2px;
-	border-radius:10px;
-	position: absolute;
-}
-
-@media (max-width: 500px) {
-	#map {
-	width: 91%;
+  div.hideKoro5 {
+    display: none;
   }
-}
-
-@media (max-width: 783px) {
-  .main-panel>.footer{
-    margin-top:53%;
+  .gm-style-iw {
+    width: 170px;
   }
-}
-	.naV {
-		background:#ffcf5c;
-	}
-	.row {
-	  display: flex;
-	}
-	.col-md-4 {
-	  flex-grow: 1;
-	  text-align: center;
-}
-	.cool-link {
-		display: inline-block;
-		color: #000;
-		text-decoration: none;
-	}
 
-	#aRow:hover {
-	  background-color: red;
-	}
+  table#dtBasicExample.dataTable tbody tr:hover {
+    background-color: #ffffea;
+    border-color: #0066b3;
+  }
+
+  table#dtBasicExample.dataTable tbody tr:hover > .sorting_1 {
+    background-color: #ffffea;
+    border-color: #0066b3;
+  }
+  table#dtBasicExampleAp.dataTable tbody tr:hover {
+    background-color: #ffffea;
+    border-color: #0066b3;
+  }
+
+  table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
+    background-color: #ffffea;
+    border-color: #0066b3;
+  }
+  #map {
+    margin-top: -29px;
+    height: 52%;
+    width: 94.5%;
+    border: 2px;
+    border-radius: 10px;
+    position: absolute;
+  }
+
+  @media (max-width: 500px) {
+    #map {
+      width: 91%;
+    }
+  }
+
+  @media (max-width: 783px) {
+    .main-panel > .footer {
+      margin-top: 53%;
+    }
+  }
+  .naV {
+    background: #ffcf5c;
+  }
+  .row {
+    display: flex;
+  }
+  .col-md-4 {
+    flex-grow: 1;
+    text-align: center;
+  }
+  .cool-link {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+  }
+
+  #aRow:hover {
+    background-color: red;
+  }
 </style>
-<link rel="stylesheet" href="static/css/panelLoader.css">
-	<div id="loaderMama5" style="margin-top:8%;">
-    <div class="multi-spinner-container" style="color:#fff">
+<link rel="stylesheet" href="static/css/panelLoader.css" />
+<div id="loaderMama5" style="margin-top: 8%">
+  <div class="multi-spinner-container" style="color: #fff">
+    <div class="multi-spinner">
       <div class="multi-spinner">
         <div class="multi-spinner">
           <div class="multi-spinner">
             <div class="multi-spinner">
-              <div class="multi-spinner">
-                <div class="multi-spinner">
-                </div>
-              </div>
+              <div class="multi-spinner"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-	<h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
+  </div>
+  <h3
+    style="
+      font-family: 'Didact Gothic';
+      font-size: 24px;
+      text-align: center;
+      color: #0066b3;
+    "
+  >
+    Please Wait...
+  </h3>
 </div>
-	<div id="hideKoro5" class="hideKoro5">
-	<div class="card naV">
-	<div class="card-body table-responsive">
-		<div class="row">
-				<div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" style="width:100%;font-size: 13px" onclick="deliveryManOnMap()" id="oned">Delivery Man on Map</button></div>
-				<div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" style="width:100%;font-size: 13px" onclick="deliveryManWithProduct()" id="twod">Details of Deliveries and Delivery Man</button></div>
-			</div>
-	</div>
-	
-	<div class="card a">
-		<div class="card-body table-responsive a">
-		<table id="dtBasicExample" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  <th class="th-sm">ID
+<div id="hideKoro5" class="hideKoro5">
+  <div class="card naV">
+    <div class="card-body table-responsive">
+      <div class="row">
+        <div class="col-md-6">
+          <button
+            class="btn-outline btn-round btn-default btn btn-info"
+            style="width: 100%; font-size: 13px"
+            onclick="deliveryManOnMap()"
+            id="oned"
+          >
+            Delivery Man on Map
+          </button>
+        </div>
+        <div class="col-md-6">
+          <button
+            class="btn-outline btn-round btn-default btn btn-info"
+            style="width: 100%; font-size: 13px"
+            onclick="deliveryManWithProduct()"
+            id="twod"
+          >
+            Details of Deliveries and Delivery Man
+          </button>
+        </div>
+      </div>
+    </div>
 
-		  </th>
-		  <th class="th-sm">Delivery Man's Name
-
-		  </th>
-		  <th class="th-sm">Delivery Man's Email
-
-		  </th>
-		  <th class="th-sm">Phone Number
-
-		  </th>
-		  <th class="th-sm">Total Deliveries Assigned
-
-		  </th>
-		  <th class="th-sm">More Details
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
-	</div>
-</div>
-</div>
-<div id="map"  style="border:2px solid #ffcf5c"></div>
-
+    <div class="card a">
+      <div class="card-body table-responsive a">
+        <table
+          id="dtBasicExample"
+          class="stripe hover"
+          style="color: #0066b3"
+          cellspacing="0"
+          width="100%"
+        >
+          <thead>
+            <tr>
+              <th class="th-sm">ID</th>
+              <th class="th-sm">Delivery Man's Name</th>
+              <th class="th-sm">Delivery Man's Email</th>
+              <th class="th-sm">Phone Number</th>
+              <th class="th-sm">Total Deliveries Assigned</th>
+              <th class="th-sm">More Details</th>
+            </tr>
+          </thead>
+          <tfoot></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div id="map" style="border: 2px solid #ffcf5c"></div>
 </div>
 <script src="static/js/importantVar.js"></script>
 
-
 <script>
-function one1(){
-	setTimeout(function() { $('#loaderMama5').fadeOut(); }, 2100);
-}
-function two2(){
-	setTimeout(function() { $('div#hideKoro5').removeClass("hidden");$('#hideKoro5').fadeIn(); }, 2800);
-}
-function three3(){
-	setTimeout(function() {
-		
-		document.getElementById('oned').disabled = true;
-		document.getElementById('twod').disabled = false;
-		document.getElementById('oned').style.fontSize = '14.5px';
-		document.getElementById('twod').style.fontSize = '13px';
-		
-		document.getElementById('twod').innerHTML = 'Details of Deliveries and Delivery Man';
-		$('#dtBasicExample').hide();
-		$('.a').hide();
-		$('#map').show();
-	}, 3600);
-}
+  function one1() {
+    setTimeout(function () {
+      $("#loaderMama5").fadeOut();
+    }, 2100);
+  }
+  function two2() {
+    setTimeout(function () {
+      $("div#hideKoro5").removeClass("hidden");
+      $("#hideKoro5").fadeIn();
+    }, 2800);
+  }
+  function three3() {
+    setTimeout(function () {
+      document.getElementById("oned").disabled = true;
+      document.getElementById("twod").disabled = false;
+      document.getElementById("oned").style.fontSize = "14.5px";
+      document.getElementById("twod").style.fontSize = "13px";
+
+      document.getElementById("twod").innerHTML =
+        "Details of Deliveries and Delivery Man";
+      $("#dtBasicExample").hide();
+      $(".a").hide();
+      $("#map").show();
+    }, 3600);
+  }
 </script>
 <script>
-$(document).ready(function() {
-	$('#loaderMama5').show();
-	one1();
-	two2();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#map').hide();
-	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
-	three3();
-	window.addEventListener('storage', function(event){
-		if (event.key == 'logout-event') { 
-			window.location.href="/assets#login";
-		}
-	});
-} );
+  $(document).ready(function () {
+    $("#loaderMama5").show();
+    one1();
+    two2();
+    $("#dtBasicExample").hide();
+    $(".a").hide();
+    $("#map").hide();
+    $.fn.dataTable.ext.classes.sPageButton = "btn btn-outline btn-round"; // Change Pagination Button Class
+    three3();
+    window.addEventListener("storage", function (event) {
+      if (event.key == "logout-event") {
+        window.location.href = "#login";
+      }
+    });
+  });
 </script>
 
 <script>
-	var map, infoWindow;
-	function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 23.8103, lng: 90.4125},
-		zoom: 8,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		mapTypeControl: true,
-		mapTypeControlOptions: {
-		style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-		position: google.maps.ControlPosition.BOTTOM_CENTER
-		},
-		panControl: true,
-		panControlOptions: {
-		position: google.maps.ControlPosition.TOP_RIGHT
-		},
-		zoomControl: true,
-		zoomControlOptions: {
-		style: google.maps.ZoomControlStyle.LARGE,
-		position: google.maps.ControlPosition.RIGHT_CENTER
-		},
-		scaleControl: true,
-		scaleControlOptions: {
-		position: google.maps.ControlPosition.TOP_LEFT
-		},
-		streetViewControl: true,
-		streetViewControlOptions: {
-		position: google.maps.ControlPosition.LEFT_TOP
-		}
-	});
-	infoWindow = new google.maps.InfoWindow;
-	setMarkers(map);
-	}
+  var map, infoWindow;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 23.8103, lng: 90.4125 },
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.BOTTOM_CENTER,
+      },
+      panControl: true,
+      panControlOptions: {
+        position: google.maps.ControlPosition.TOP_RIGHT,
+      },
+      zoomControl: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.RIGHT_CENTER,
+      },
+      scaleControl: true,
+      scaleControlOptions: {
+        position: google.maps.ControlPosition.TOP_LEFT,
+      },
+      streetViewControl: true,
+      streetViewControlOptions: {
+        position: google.maps.ControlPosition.LEFT_TOP,
+      },
+    });
+    infoWindow = new google.maps.InfoWindow();
+    setMarkers(map);
+  }
 
-	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-	
-	infoWindow.setPosition(pos);
-	infoWindow.setContent(browserHasGeolocation ?
-						  'Error: The Geolocation service failed.' :
-						  'Error: Your browser doesn\'t support geolocation.');
-	infoWindow.open(map);
-	}
-	
-	var dataa;
-	/*var locations = [
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+      browserHasGeolocation
+        ? "Error: The Geolocation service failed."
+        : "Error: Your browser doesn't support geolocation."
+    );
+    infoWindow.open(map);
+  }
+
+  var dataa;
+  /*var locations = [
 		['Motijheel', 23.7330 , 90.4172, 'Rahim'],
 		['Karwan Bazaar', 23.7516, 90.3943, 'Karim'],
 		['Kamlapur', 23.7337, 90.4261, 'Nahim'],
@@ -220,137 +243,162 @@ $(document).ready(function() {
 		['Mouchak', 23.7456, 90.4120, 'Aahim']
 
 	];*/
-	
-	function setMarkers(map) {
-	
-		var infowindow = new google.maps.InfoWindow();
 
-		var marker, i;
+  function setMarkers(map) {
+    var infowindow = new google.maps.InfoWindow();
 
-		$.ajax
-		({
-			async: false,
-			type: "GET",
-			url: urlForAll + "deliveryMan/all/",
-			headers: 
-			{
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json',
-			  "Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function(data)
-			{
-				dataa=data;
-			}
-		});
-		for (i = 0; i < dataa.data.length; i++) {  
-			
-			marker = new google.maps.Marker({
-			position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
-			map: map,
-			title: dataa.data[i].name
-			
-		  });
-		  
-		  google.maps.event.addListener(marker, 'click', (function(marker, i) {
-			return function() {
-			  //infowindow.setContent('<p style="color:#0066b3"><b>Delivery Man</b>:<br>'+dataa.data[i].name+'<br><br>'+"<button style='margin:5px;' class='content1 btn-round btn-outline btn' id="+dataa.data[i].current_lat+" name="+dataa.data[i].current_longi+" onclick=details(this);>Delivery Details</button><button style='margin:5px;' class='content2 btn-round btn-outline btn' id="+dataa.data[i].current_lat+" name="+dataa.data[i].current_longi+" onclick=details(this);>Delivery Man Details</button>");
-			  infowindow.setContent('<p style="color:#0066b3;text-align:center;font-family:Didact Gothic;"><b>Delivery Man</b>:<br>'+dataa.data[i].name+'<br><br>'+"<button class='content1 btn-round btn-outline btn' id="+dataa.data[i].delivery_man_id+" style='font-family:Didact Gothic;width:97%' onclick=detailDelivery(this);>Details</button>");
-			  infowindow.open(map, marker);
-			}
-		  })(marker, i));
-		}		
-	}
-	
-	function details(abc){
-		var name_element = abc.id;
-		var name_element2 = abc.name;
-		
-		localStorage.setItem("latValue", name_element);
-		localStorage.setItem("lngValue", name_element2);
-		window.open("delivery_location.html");
-	}
-	
-	var deliveryManOnMap = () => 
-	{	
-		document.getElementById('oned').disabled = true;
-		document.getElementById('twod').disabled = false;
-		document.getElementById('oned').style.fontSize = '14.5px';
-		document.getElementById('twod').style.fontSize = '13px';
-		
-		document.getElementById('twod').innerHTML = 'Details of Deliveries and Delivery Man';
-		$('#dtBasicExample').hide();
-		$('.a').hide();
-		$('#map').show();
-	}
-	
-	var deliveryManWithProduct = () =>
-	{
-		document.getElementById('oned').disabled = false;
-		document.getElementById('twod').disabled = true;
-		document.getElementById('twod').style.fontSize = '14.5px';
-		document.getElementById('oned').style.fontSize = '13px';
-		$('#map').hide();
-		$('#dtBasicExample').hide();
-		$('.a').hide();
-		var table = $('#dtBasicExample').DataTable( {
-			"processing": true,
-			"destroy": true,
-			"oSearch": { "bSmart": false, "bRegex": true }
-			} );
-			table.clear().draw();
-		$.ajax
-		({
-			async: false,
-			type: "GET",
-			cors: true,
-			contentType:'application/json',
-			secure: true,
-			crossDomain: true,
-			url: urlForAll + "deliveryMan/all/",
-			headers: 
-			{
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json',
-			  "Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function(data) 
-			{
-				document.getElementById('twod').innerHTML = 'Details of Deliveries and Delivery Man: ' + data.data.length;
-				var trHTML = '';
-				$.each(data.data, function (i, item) {
-				var table_rows = '<tr><td>'
-				+data.data[i].delivery_man_id+'</td><td>'
-				+data.data[i].name+'</td><td>'
-				+data.data[i].email+'</td><td>'
-				+data.data[i].phone_number+'</td><td>'
-				+data.data[i].assign_delivery_count+'</td><td>'
-				+'<button id="' + data.data[i].delivery_man_id + '" class="btn-round btn-outline btn" onclick=detailDelivery(this)>Details</button></td></tr>';
+    var marker, i;
 
-				table.rows.add($(table_rows)).draw();
-				});
-			}
-		});
-		
-		$('.dataTables_filter input[type="search"]').
-		attr('placeholder','Search anything!').
-		css({'width':'300px','display':'inline-block','background':'white'});
+    $.ajax({
+      async: false,
+      type: "GET",
+      url: urlForAll + "deliveryMan/all/",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        dataa = data;
+      },
+    });
+    for (i = 0; i < dataa.data.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(
+          dataa.data[i].current_lat,
+          dataa.data[i].current_longi
+        ),
+        map: map,
+        title: dataa.data[i].name,
+      });
 
-		$('.dataTables_filter input[type="search"]').
-		attr('class','btn btn-round').
-		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+      google.maps.event.addListener(
+        marker,
+        "click",
+        (function (marker, i) {
+          return function () {
+            //infowindow.setContent('<p style="color:#0066b3"><b>Delivery Man</b>:<br>'+dataa.data[i].name+'<br><br>'+"<button style='margin:5px;' class='content1 btn-round btn-outline btn' id="+dataa.data[i].current_lat+" name="+dataa.data[i].current_longi+" onclick=details(this);>Delivery Details</button><button style='margin:5px;' class='content2 btn-round btn-outline btn' id="+dataa.data[i].current_lat+" name="+dataa.data[i].current_longi+" onclick=details(this);>Delivery Man Details</button>");
+            infowindow.setContent(
+              '<p style="color:#0066b3;text-align:center;font-family:Didact Gothic;"><b>Delivery Man</b>:<br>' +
+                dataa.data[i].name +
+                "<br><br>" +
+                "<button class='content1 btn-round btn-outline btn' id=" +
+                dataa.data[i].delivery_man_id +
+                " style='font-family:Didact Gothic;width:97%' onclick=detailDelivery(this);>Details</button>"
+            );
+            infowindow.open(map, marker);
+          };
+        })(marker, i)
+      );
+    }
+  }
 
-		$('.dataTables_length select').
-		attr('class','btn btn-round').
-		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
-		$('#dtBasicExample').show();
-		$('.a').show();
-	}
-	
-	var detailDelivery = (deliveryData) => {
-		window.open("deliveryManOnMapAndDetails.html" + "#" +deliveryData.id);
-	}
+  function details(abc) {
+    var name_element = abc.id;
+    var name_element2 = abc.name;
+
+    localStorage.setItem("latValue", name_element);
+    localStorage.setItem("lngValue", name_element2);
+    window.open("delivery_location.html");
+  }
+
+  var deliveryManOnMap = () => {
+    document.getElementById("oned").disabled = true;
+    document.getElementById("twod").disabled = false;
+    document.getElementById("oned").style.fontSize = "14.5px";
+    document.getElementById("twod").style.fontSize = "13px";
+
+    document.getElementById("twod").innerHTML =
+      "Details of Deliveries and Delivery Man";
+    $("#dtBasicExample").hide();
+    $(".a").hide();
+    $("#map").show();
+  };
+
+  var deliveryManWithProduct = () => {
+    document.getElementById("oned").disabled = false;
+    document.getElementById("twod").disabled = true;
+    document.getElementById("twod").style.fontSize = "14.5px";
+    document.getElementById("oned").style.fontSize = "13px";
+    $("#map").hide();
+    $("#dtBasicExample").hide();
+    $(".a").hide();
+    var table = $("#dtBasicExample").DataTable({
+      processing: true,
+      destroy: true,
+      oSearch: { bSmart: false, bRegex: true },
+    });
+    table.clear().draw();
+    $.ajax({
+      async: false,
+      type: "GET",
+      cors: true,
+      contentType: "application/json",
+      secure: true,
+      crossDomain: true,
+      url: urlForAll + "deliveryMan/all/",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        document.getElementById("twod").innerHTML =
+          "Details of Deliveries and Delivery Man: " + data.data.length;
+        var trHTML = "";
+        $.each(data.data, function (i, item) {
+          var table_rows =
+            "<tr><td>" +
+            data.data[i].delivery_man_id +
+            "</td><td>" +
+            data.data[i].name +
+            "</td><td>" +
+            data.data[i].email +
+            "</td><td>" +
+            data.data[i].phone_number +
+            "</td><td>" +
+            data.data[i].assign_delivery_count +
+            "</td><td>" +
+            '<button id="' +
+            data.data[i].delivery_man_id +
+            '" class="btn-round btn-outline btn" onclick=detailDelivery(this)>Details</button></td></tr>';
+
+          table.rows.add($(table_rows)).draw();
+        });
+      },
+    });
+
+    $('.dataTables_filter input[type="search"]')
+      .attr("placeholder", "Search anything!")
+      .css({ width: "300px", display: "inline-block", background: "white" });
+
+    $('.dataTables_filter input[type="search"]')
+      .attr("class", "btn btn-round")
+      .css({
+        width: "300px",
+        display: "inline-block",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
+
+    $(".dataTables_length select")
+      .attr("class", "btn btn-round")
+      .css({
+        width: "80px",
+        "background-color": "white",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
+    $("#dtBasicExample").show();
+    $(".a").show();
+  };
+
+  var detailDelivery = (deliveryData) => {
+    window.open("deliveryManOnMapAndDetails.html" + "#" + deliveryData.id);
+  };
 </script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&callback=initMap">
-</script>
+<script
+  async
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&callback=initMap"
+></script>

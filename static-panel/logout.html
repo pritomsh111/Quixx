@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<script>
+  localStorage.setItem("logout-event", "logout" + Math.random());
+  var y = localStorage.getItem("wh-user");
+  localStorage.clear();
+  if (y === "main") {
+    localStorage.setItem("wh-user", "/#login");
+    window.location.href = "#home";
+  } else {
+    localStorage.setItem("wh-user", y);
+    window.location.href = "" + y;
+  }
+</script>

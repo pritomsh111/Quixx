@@ -1,68 +1,59 @@
-   
+<!DOCTYPE html>
 <link rel="stylesheet" href="static/css/deliveryManORG.css">
 <link rel="stylesheet" href="static/css/dashORG.css">
-<link rel="stylesheet" href="static/css/panelLoader.css">
-
-   <div class="row">
-
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-black17 card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">fact_check</i>
-		  </div>
-		  <h4 class="card-title">Package Name</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="packageName">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">update</i>
-			<p id="date7Package"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	
-	
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-black7 card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">sms</i>
-		  </div>
-		  <h4 class="card-title">Total SMS Count</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="messageCount">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">update</i>
-			<p id="date7"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-success card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">how_to_reg</i>
-		  </div>
-		  <h4 class="card-title">Total Approved Delivery Man</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="totalDeliveryMan">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">update</i>
-			<p id="date1"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<!--<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+<div class="row">
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black17 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">fact_check</i>
+                </div>
+                <h4 class="card-title">Package Name</h4>
+                <h4 class="card-title" style="color:#0066b3" id="packageName"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">update</i>
+                    <p id="date7Package"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black7 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">sms</i>
+                </div>
+                <h4 class="card-title">Total SMS Count</h4>
+                <h4 class="card-title" style="color:#0066b3" id="messageCount"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">update</i>
+                    <p id="date7"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">how_to_reg</i>
+                </div>
+                <h4 class="card-title">Total Approved Delivery Man</h4>
+                <h4 class="card-title" style="color:#0066b3" id="totalDeliveryMan"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">update</i>
+                    <p id="date1"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 	  <div class="card card-stats">
 		<div class="card-header card-header-success card-header-icon">
 		  <div class="card-icon">
@@ -80,268 +71,294 @@
 		</div>
 	  </div>
 	</div>-->
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-black15 card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">how_to_reg</i>
-		  </div>
-		  <h4 class="card-title">Total Approved Merchant</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="approvedMer">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">update</i>
-			<p id="date3"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-black13 card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">person</i>
-		  </div>
-		  <h4 class="card-title">Total Unapproved Merchant</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="unApprovedMer">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">update</i>
-			<p id="date4"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-black2 card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">check_circle</i>
-		  </div>
-		  <h4 class="card-title">Total Completed Deliveries</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="totalCompletedDeliveries">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">access_time</i>
-			<p id="date5"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-danger card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">announcement</i>
-		  </div>
-		  <h4 class="card-title">Total Incomplete Deliveries</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="totalIncompleteDeliveries">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">access_time</i>
-			<p id="date6"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-black14 card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">hourglass_bottom</i>
-		  </div>
-		  <h4 class="card-title">Total On-Hold Deliveries</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="totalOnHoldDeliveries">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">access_time</i>
-			<p id="date65"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-black8 card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">sync_problem</i>
-		  </div>
-		  <h4 class="card-title">Total Returned Deliveries</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="totalReturnedDeliveries">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">access_time</i>
-			<p id="date64"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-	  <div class="card card-stats">
-		<div class="card-header card-header-black12 card-header-icon">
-		  <div class="card-icon">
-			<i class="material-icons">cancel</i>
-		  </div>
-		  <h4 class="card-title">Total Cancelled Deliveries</h4>
-		  <h4 class="card-title" style="color:#0066b3" id="totalCancelledDeliveries">
-		  </h4>
-		</div>
-		<div class="card-footer">
-		  <div class="stats">
-			<i class="material-icons">access_time</i>
-			<p id="date66"></p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	
-  </div>
-  <div class="row">
-            <div class="col-lg-6 col-md-12">
-              <div class="card">
-                <div class="card-header card-header-black3">
-                  <h4 class="card-title" style="text-align:center">Total Payable [Completed Deliveries]</h4>
-                  <h6 class="card-category" style="text-align:center">Cash on Delivery</h6>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black15 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">how_to_reg</i>
                 </div>
-                <div class="card-body table-responsive b">
-					<table id="dtBasicExample" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-						<thead>
-						<tr>
-						  <th class="th-sm">Merchant Name
-
-						  </th>
-						  <th class="th-sm">Total Cost
-
-						  </th>
-						  <th class="th-sm">Details
-
-						  </th>
-						</tr>
-					  </thead>
-					  <tfoot>
-					</table>
-				</div>
-              </div>
+                <h4 class="card-title">Total Approved Merchant</h4>
+                <h4 class="card-title" style="color:#0066b3" id="approvedMer"></h4>
             </div>
-            <div class="col-lg-6 col-md-12">
-              <div class="card">
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">update</i>
+                    <p id="date3"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black13 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">person</i>
+                </div>
+                <h4 class="card-title">Total Unapproved Merchant</h4>
+                <h4 class="card-title" style="color:#0066b3" id="unApprovedMer"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">update</i>
+                    <p id="date4"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black2 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">check_circle</i>
+                </div>
+                <h4 class="card-title">Total Completed Deliveries</h4>
+                <h4 class="card-title" style="color:#0066b3" id="totalCompletedDeliveries"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date5"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">announcement</i>
+                </div>
+                <h4 class="card-title">Total Incomplete Deliveries</h4>
+                <h4 class="card-title" style="color:#0066b3" id="totalIncompleteDeliveries"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date6"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black14 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">hourglass_bottom</i>
+                </div>
+                <h4 class="card-title">Total On-Hold Deliveries</h4>
+                <h4 class="card-title" style="color:#0066b3" id="totalOnHoldDeliveries"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date65"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black8 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">sync_problem</i>
+                </div>
+                <h4 class="card-title">Total Returned Deliveries</h4>
+                <h4 class="card-title" style="color:#0066b3" id="totalReturnedDeliveries"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date64"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black12 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">cancel</i>
+                </div>
+                <h4 class="card-title">Total Cancelled Deliveries</h4>
+                <h4 class="card-title" style="color:#0066b3" id="totalCancelledDeliveries"></h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date66"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header card-header-black3">
+                <h4 class="card-title" style="text-align:center">Total Payable [Completed Deliveries]</h4>
+                <h6 class="card-category" style="text-align:center">Cash on Delivery</h6>
+            </div>
+            <div class="card-body table-responsive b">
+                <table
+                    id="dtBasicExample"
+                    class="stripe hover"
+                    style="color:#0066b3;"
+                    cellspacing="0"
+                    width="100%"
+                >
+                    <thead>
+                        <tr>
+                            <th class="th-sm">
+                                Merchant Name
+                            </th>
+                            <th class="th-sm">
+                                Total Cost
+                            </th>
+                            <th class="th-sm">
+                                Details
+                            </th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
                 <div class="card-header card-header-black4">
-                  <h4 class="card-title" style="text-align:center">Total Payable [Ongoing Deliveries]</h4>
-                  <h6 class="card-category" style="text-align:center">Cash on Delivery</h6>
+                    <h4 class="card-title" style="text-align:center">Total Payable [Ongoing Deliveries]</h4>
+                    <h6 class="card-category" style="text-align:center">Cash on Delivery</h6>
                 </div>
                 <div class="card-body table-responsive b">
-					<table id="dtBasicExample2" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-						<thead>
-						<tr>
-						  <th class="th-sm">Merchant Name
-
-						  </th>
-						  <th class="th-sm">Total Cost
-
-						  </th>
-						  <th class="th-sm">Details
-
-						  </th>
-						</tr>
-					  </thead>
-					  <tfoot>
-					</table>
-				</div>
-              </div>
+                    <table
+                        id="dtBasicExample2"
+                        class="stripe hover"
+                        style="color:#0066b3;"
+                        cellspacing="0"
+                        width="100%"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="th-sm">
+                                    Merchant Name
+                                </th>
+                                <th class="th-sm">
+                                    Total Cost
+                                </th>
+                                <th class="th-sm">
+                                    Details
+                                </th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </div>
-<div class="row">           
-	<div class="col-lg-12 col-md-12">
-	  <div class="card">
-		<div class="card-header card-header-tabs card-header-black">
-		  <div class="nav-tabs-navigation">
-			<div class="nav-tabs-wrapper">
-			  <span class="nav-tabs-title">Graph:</span>
-			  <ul class="nav nav-tabs" data-tabs="tabs">
-				<li class="nav-item">
-				  <a class="nav-link active" href="#profile" data-toggle="tab">
-					<i class="material-icons">announcement</i> Total Completed Deliveries
-					<div class="ripple-container"></div>
-				  </a>
-				</li>
-			  </ul>
-			</div>
-		  </div>
-		</div>
-		<div class="card-body">
-		  <div class="tab-content">
-			<div class="tab-pane active" id="profile">
-				
-				<div id="graphHide">
-					<span class="loader5"></span>
-					<h4 style="color:#0066b3">Loading...</h4>
-				</div>
-				<div id="chartContainer" style="
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-tabs card-header-black">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title">Graph:</span>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#profile" data-toggle="tab">
+                                            <i class="material-icons">announcement</i>
+                                            Total Completed Deliveries
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="profile">
+                                <div id="graphHide">
+                                    <span class="loader5"></span>
+                                    <h4 style="color:#0066b3">Loading...</h4>
+                                </div>
+                                <div id="chartContainer" style="
 					display: block;
 					width: 100%;
-					height: 400px;color:#0066b3">
-				</div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-  </div>
-  
-  
-<div class="modal" id="myModalz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" style="color:#000;" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<p class="modal-title" id="myModalLabelz"></h4>
-				<h4 class="modal-title" style="color:#000" id="myModalLabelzz"><h5>
-			</div>
-			<div class="modal-body" style="text-align:center">
-				<div class="card c">
-					<div class="card-body table-responsive c">
-						<table id="dtBasicExampled12" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-							<thead>
-							<tr>
-							  <th class="th-sm">Delivery ID
-							  
-							  </th>
-							  <th class="th-sm">Product Cost
-							  
-							  </th>
-							  <th class="th-sm">COD Charge
-							  
-							  </th>
-							</tr>
-						  </thead>
-						  <tfoot>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger" id="closeModal" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script src="static/js/importantVar.js"></script>
-<script src="static/js/dashORG_0.js"></script>
-<script src="static/js/dashORG.js"></script>
-<script src="static/js/canvasjs.min.js"></script>
-<script src="static/js/dashORG_1.js"></script>
-<script>
-</script>
+					height: 400px;color:#0066b3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="modal"
+            id="myModalz"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            style="color:#000;"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-hidden="true"
+                        ></button>
+                        <p class="modal-title" id="myModalLabelz">
+                        </h4>
+                        <h4 class="modal-title" style="color:#000" id="myModalLabelzz">
+                            <h5>
+                            </div>
+                            <div class="modal-body" style="text-align:center">
+                                <div class="card c">
+                                    <div class="card-body table-responsive c">
+                                        <table
+                                            id="dtBasicExampled12"
+                                            class="stripe hover"
+                                            style="color:#0066b3;"
+                                            cellspacing="0"
+                                            width="100%"
+                                        >
+                                            <thead>
+                                                <tr>
+                                                    <th class="th-sm">
+                                                        Delivery ID
+                                                    </th>
+                                                    <th class="th-sm">
+                                                        Product Cost
+                                                    </th>
+                                                    <th class="th-sm">
+                                                        COD Charge
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                        type="button"
+                                        style="color:#0066b3"
+                                        class="btn btn-outline btn-danger"
+                                        id="closeModal"
+                                        data-dismiss="modal"
+                                    >Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script src="static/js/importantVar.js"></script>
+                    <script src="static/js/dashORG_0.js"></script>
+                    <script src="static/js/dashORG.js"></script>
+                    <script src="static/js/canvasjs.min.js"></script>
+                    <script src="static/js/dashORG_1.js"></script>
+                    <script></script>

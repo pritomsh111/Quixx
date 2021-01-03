@@ -15,7 +15,7 @@ devtools.toString = function() {
 		if(y=='main')
 		{
 			localStorage.setItem('NginxCode', '/#login');
-			window.location.href="/assets#login";
+			window.location.href="#login";
 		}
 		else
 		{

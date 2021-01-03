@@ -220,6 +220,7 @@
             clearError();
             localStorage.setItem('user', username);
             localStorage.setItem('pass', password);
+            localStorage.setItem('wh-user', "main");
             $.ajax
                 ({
                     async: true,
@@ -237,7 +238,6 @@
                         }),
                     success: function (data) {
                         localStorage.setItem('login-event', 'login' + Math.random());
-                        // console.log(data);
                         window.location.href = "static-panel/indexPanel.html";
                     },
                     error: function (data) {
