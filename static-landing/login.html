@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<style> 
+    .Main__Page {
+        background: #fff;
+        height: unset;
+    }
+    .Home__Quixx__Container{
+        display: none;
+    }
+</style>
+<div class="Quixx__Form">
+    <div class="Quixx__Q">
+        <h1></h1>
+        <h2 class="Q__Us">With Us!</h2>
+    </div>
+    <div class="Quixx__Form__Main">
+        <div class="Buttons">
+            <button class="signInButton Button active-btn">Login</button>
+            <button class="signUpButton Button">Signup</button>
+        </div>
+        <div class="Quixx__Login Container Show">
+            <p>Username</p>
+            <div class="username">
+                <input type="text" id="username">
+                <p class="error"></p>
+            </div>
+            <p>Password</p>
+            <div class="password">
+                <input type="password" id="password">
+                <i class="fa fa fa-eye-slash"></i>
+            </div>
+            <p class="error"></p>
+            <p class="forgot_pass">Forgot Password</p>
+            <button type="submit" id="login">Login</button>
+        </div>
+        <div class="Quixx__Signup Container HideOut">
+            <p>Organization Name</p>
+            <div class="org">
+                <input type="text" id="org">
+                <p class="error"></p>
+            </div>
+            <p>Email</p>
+            <div class="email">
+                <input type="email" id="email">
+                <p class="error"></p>
+            </div>
+            <p>Contact Number</p>
+            <div class="contact">
+                <input type="text" id="contact">
+                <p class="error"></p>
+            </div>
+            <p>Business Field</p>
+            <div class="business">
+                <input type="text" id="business">
+                <p class="error"></p>
+            </div>
+            <p>
+                Number of Deliveries
+                <sub>/Month</sub>
+            </p>
+            <div class="deliveries">
+                <input type="text" id="deliveries">
+                <p class="error"></p>
+            </div>
+            <p>Trande License</p>
+            <div class="trade">
+                <input type="text" id="trade">
+                <p class="error"></p>
+            </div>
+            <p>Facebook Page</p>
+            <div class="fb">
+                <input type="text" id="fb">
+            </div>
+            <p>Website</p>
+            <div class="web">
+                <input type="text" id="web">
+            </div>
+            <button type="submit" id="signup">Signup</button>
+        </div>
+    </div>
+</div>
+<script src="js/login.js"></script>

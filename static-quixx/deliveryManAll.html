@@ -1,0 +1,595 @@
+<style>
+div.hideKoro4{
+	display:none;
+}
+table#dtBasicExample.dataTable tbody tr:hover {
+	background-color: #FFFFEA;
+    border-color: #0066b3;
+}
+
+table#dtBasicExample.dataTable tbody tr:hover > .sorting_1 {
+	background-color: #FFFFEA;
+    border-color: #0066b3;
+}
+table#dtBasicExampleAp.dataTable tbody tr:hover {
+	background-color: #FFFFEA;
+    border-color: #0066b3;
+}
+
+table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
+	background-color: #FFFFEA;
+    border-color: #0066b3;
+}
+.naV{
+ background:#ffcf5c;
+}
+.row {
+  display: flex;
+}
+.col-md-4 {
+  flex-grow: 1;
+  text-align: center;
+
+.cool-link {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+}
+
+#aRow:hover {
+  background-color: red;
+}
+</style>
+<link rel="stylesheet" href="static/css/panelLoader.css">
+<div id="loaderMama4" style="margin-top:8%;">
+    <div class="multi-spinner-container" style="color:#fff">
+      <div class="multi-spinner">
+        <div class="multi-spinner">
+          <div class="multi-spinner">
+            <div class="multi-spinner">
+              <div class="multi-spinner">
+                <div class="multi-spinner">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
+</div>
+	
+	<div class="card naV hideKoro4" id="hideKoro4">
+		<div class="card-body table-responsive">
+<div class="row">
+    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="onec" style="width:100%;font-size: 13px" onclick="registeredDeliveryMan()">Registered Delivery Man</button></div>
+    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="twoc" style="width:100%;font-size: 13px" onclick="approvedDeliveryMan()">Approved Delivery Man</button></div>
+    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="threec" style="width:100%;font-size: 13px" onclick="unApprovedDeliveryMan()">Unapproved Delivery Man</button></div>
+  </div>
+</div>
+	<div class="card a">
+		<div class="card-body table-responsive a">
+		<table id="dtBasicExample" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
+		<thead>
+		<tr>
+		  <th class="th-sm">ID
+
+		  </th>
+		  <th class="th-sm">Delivery Man's Name
+
+		  </th>
+		  <th class="th-sm">Delivery Man's Email
+
+		  </th>
+		  <th class="th-sm">Phone Number
+
+		  </th>
+		  <th class="th-sm">Reporting Boss Email
+
+		  </th>
+		</tr>
+	  </thead>
+	  <tfoot>
+	</table>
+	
+</div>
+</div>
+
+<div class="card b">
+		<div class="card-body table-responsive b blur">
+		<table id="dtBasicExampleAp" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
+		<thead>
+		<tr>
+		  <th class="th-sm">ID
+
+		  </th>
+		  <th class="th-sm">Delivery Man's Name
+
+		  </th>
+		  <th class="th-sm">Delivery Man's Email
+
+		  </th>
+		  <th class="th-sm">Phone Number
+
+		  </th>
+		  <th class="th-sm">Reporting Boss Email
+
+		  </th>
+		  <th class="th-sm">Approve?
+
+		  </th>
+		</tr>
+	  </thead>
+	  <tfoot>
+	</table>
+	
+</div>
+</div>
+
+
+	<div class="card c">
+		<div class="card-body table-responsive c">
+		<table id="dtBasicExampleApp" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
+		<thead>
+		<tr>
+		  <th class="th-sm">ID
+
+		  </th>
+		  <th class="th-sm">Delivery Man's Name
+
+		  </th>
+		  <th class="th-sm">Delivery Man's Email
+
+		  </th>
+		  <th class="th-sm">Phone Number
+
+		  </th>
+		  <th class="th-sm">Reporting Boss Email
+
+		  </th>
+		</tr>
+	  </thead>
+	  <tfoot>
+	</table>
+	
+</div>
+</div>
+
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Approve this delivery man?</h4>
+			</div>
+			<div class="modal-body" style="text-align:center">
+							
+				<div class="circle-loader" style="text-align:center">
+				  <div class="checkmark draw" id="tick"></div>
+				</div>
+				<h4 id="sure" style="color:#0066b3"></h4>
+			</div>
+			<div class="modal-footer">
+				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel" data-dismiss="modal">Cancel</button>
+				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-ok" id="modalApprove">Approve</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="myModal2" class="modal fade" data-backdrop="static">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			
+			<div class="modal-body text-center">
+				<h4 style="color:#0066b3">Ooops!</h4>	
+				<p style="color:#0066b3">Something went wrong. Please try again!</p>
+				<button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="static/js/importantVar.js"></script>
+
+<script>
+function one1(){
+	setTimeout(function() { $('#loaderMama4').fadeOut(); }, 2100);
+}
+function two2(){
+	setTimeout(function() { $('div#hideKoro4').removeClass("hidden");$('#hideKoro4').fadeIn(); }, 2700);
+}
+function three3(){
+	setTimeout(function() {
+		document.getElementById('onec').disabled = true;
+		document.getElementById('twoc').disabled = false;
+		document.getElementById('threec').disabled = false;
+		document.getElementById('onec').style.fontSize = '14.5px';
+		document.getElementById('twoc').style.fontSize = '13px';
+		document.getElementById('threec').style.fontSize = '13px';
+		$('#dtBasicExampleAp').hide();
+		$('.b').hide();
+		$('#dtBasicExampleApp').hide();
+		$('.c').hide();
+		var table = $('#dtBasicExample').DataTable( {
+			"processing": true,
+			"destroy": true,
+			"oSearch": { "bSmart": false, "bRegex": true }
+			} );
+			table.clear().draw();
+		$.ajax
+			({
+				async: true,
+				type: "GET",
+				url: urlForAll+ "deliveryMan/all",
+				headers: 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+					{
+						document.getElementById('threec').innerHTML = 'Unapproved Delivery Man';
+						document.getElementById('twoc').innerHTML = 'Approved Delivery Man';
+						document.getElementById('onec').innerHTML = 'Registered Delivery Man: ' + data.data.length;
+						var trHTML = '';
+						$.each(data.data, function (i, item) {
+						var table_rows = '<tr><td>'+data.data[i].delivery_man_id+'</td><td>'+data.data[i].name+'</td><td>'+data.data[i].email+'</td><td>'+data.data[i].phone_number+'</td><td>'+data.data[i].reporting_boss_email+'</td></tr>';
+
+						table.rows.add($(table_rows)).draw();
+						});
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						
+						alert("Please wait, we are working!");
+					}
+			});
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+
+		$('#dtBasicExample').show();
+		$('.a').show();
+	}, 3600);
+}
+</script>
+<script>
+$(document).ready(function() {
+	$('#loaderMama4').show();
+	one1();
+	two2();
+	$(".container").hide();
+	$('#dtBasicExample').hide();
+	$('#dtBasicExampleAp').hide();
+	$('#dtBasicExampleApp').hide();
+	$('.a').hide();
+	$('.b').hide();
+	$('.c').hide();
+	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
+	three3();
+	window.addEventListener('storage', function(event){
+		if (event.key == 'logout-event') { 
+			window.location.href="/assets#login";
+		}
+	});
+} );
+</script>
+<script>
+	var a;
+	/*$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "approved/all/organization/id",
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function(data) 
+		{
+			a =  data.data;
+		}
+	});*/
+	var registeredDeliveryMan = () => 
+	{
+		document.getElementById('onec').disabled = true;
+		document.getElementById('twoc').disabled = false;
+		document.getElementById('threec').disabled = false;
+		document.getElementById('onec').style.fontSize = '14.5px';
+		document.getElementById('twoc').style.fontSize = '13px';
+		document.getElementById('threec').style.fontSize = '13px';
+		$('#dtBasicExampleAp').hide();
+		$('.b').hide();
+		$('#dtBasicExampleApp').hide();
+		$('.c').hide();
+		var table = $('#dtBasicExample').DataTable( {
+			"processing": true,
+			"destroy": true,
+			"oSearch": { "bSmart": false, "bRegex": true }
+			} );
+			table.clear().draw();
+		$.ajax
+			({
+				async: true,
+				type: "GET",
+				url: urlForAll+ "deliveryMan/all",
+				headers: 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+					{
+						document.getElementById('threec').innerHTML = 'Unapproved Delivery Man';
+						document.getElementById('twoc').innerHTML = 'Approved Delivery Man';
+						document.getElementById('onec').innerHTML = 'Registered Delivery Man: ' + data.data.length;
+						var trHTML = '';
+						$.each(data.data, function (i, item) {
+						var table_rows = '<tr><td>'+data.data[i].delivery_man_id+'</td><td>'+data.data[i].name+'</td><td>'+data.data[i].email+'</td><td>'+data.data[i].phone_number+'</td><td>'+data.data[i].reporting_boss_email+'</td></tr>';
+
+						table.rows.add($(table_rows)).draw();
+						});
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						
+						alert("Please wait, we are working!");
+					}
+			});
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+
+		$('#dtBasicExample').show();
+		$('.a').show();
+	};
+	var approvedDeliveryMan = () =>
+	{
+		document.getElementById('twoc').disabled = true;
+		document.getElementById('onec').disabled = false;
+		document.getElementById('threec').disabled = false;
+		document.getElementById('twoc').style.fontSize = '14.5px';
+		document.getElementById('onec').style.fontSize = '13px';
+		document.getElementById('threec').style.fontSize = '13px';
+		$('#dtBasicExampleAp').hide();
+		$('.b').hide();
+		$('#dtBasicExample').hide();
+		$('.a').hide();
+			var table = $('#dtBasicExampleApp').DataTable( {
+			"processing": true,
+			"destroy": true,
+			"oSearch": { "bSmart": false, "bRegex": true }
+			} );
+			table.clear().draw();
+			var z=0;
+			//for(var j = 0; j<a.length;j++)
+			{
+				$.ajax
+				({
+					async: true,
+					type: "GET",
+					url: urlForAll+ "approved/all/approved/deliveryMan",
+					headers: 
+					{
+					  'Accept': 'application/json',
+					  'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+					},
+					success: function(data) 
+					{
+						document.getElementById('onec').innerHTML = 'Registered Delivery Man';
+						document.getElementById('threec').innerHTML = 'Unapproved Delivery Man';
+						document.getElementById('twoc').innerHTML = 'Approved Delivery Man: ' + data.data.length;
+						
+						var trHTML = '';
+						$.each(data.data, function (i, item) {
+						var table_rows = '<tr><td>'+data.data[i].delivery_man_id+'</td><td>'+data.data[i].name+'</td><td>'+data.data[i].email+'</td><td>'+data.data[i].phone_number+'</td><td>'+data.data[i].reporting_boss_email+'</td></tr>';
+
+						table.rows.add($(table_rows)).draw();
+						});
+						//z++;
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						
+						alert("Please wait, we are working!");
+					}
+				})
+			};
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+
+		$('#dtBasicExampleApp').show();
+		$('.c').show();
+	}
+	
+	var unApprovedDeliveryMan = () => 
+	{
+		document.getElementById('threec').disabled = true;
+		document.getElementById('twoc').disabled = false;
+		document.getElementById('onec').disabled = false;
+		document.getElementById('threec').style.fontSize = '14.5px';
+		document.getElementById('twoc').style.fontSize = '13px';
+		document.getElementById('onec').style.fontSize = '13px';
+		$('#dtBasicExample').hide();
+		$('.a').hide();
+		$('#dtBasicExampleApp').hide();
+		$('.c').hide();
+		var table = $('#dtBasicExampleAp').DataTable( {
+			"processing": true,
+			"destroy": true,
+			"oSearch": { "bSmart": false, "bRegex": true }
+			} );
+			table.clear().draw();
+			var z=0;
+			//for(var j = 0; j<a.length;j++)
+			{
+				$.ajax
+				({
+					async: true,
+					type: "GET",
+					url: urlForAll+ "approved/all/unApproved/deliveryMan",
+					headers: 
+					{
+					  'Accept': 'application/json',
+					  'Content-Type': 'application/json',
+					  "Authorization": 'Bearer ' + localStorage.getItem('token')
+					},
+					success: function(data) 
+					{
+						document.getElementById('onec').innerHTML = 'Registered Delivery Man';
+						document.getElementById('twoc').innerHTML = 'Approved Delivery Man';
+						document.getElementById('threec').innerHTML = 'Unapproved Delivery Man: ' + data.data.length;
+						
+						var trHTML = '';
+						$.each(data.data, function (i, item) {
+						var table_rows = '<tr><td>'
+						+data.data[i].delivery_man_id+'</td><td>'
+						+data.data[i].name+'</td><td>'
+						+data.data[i].email+'</td><td>'
+						+data.data[i].phone_number+'</td><td>'
+						+data.data[i].reporting_boss_email+'</td><td>'
+						+'<button id="' + data.data[i].delivery_man_id + '" name="' + data.data[i].name + '" class="deleteIt btn-round btn-outline btn">Approve</button></td></tr>';
+						table.rows.add($(table_rows)).draw();
+						});
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						
+						alert("Please wait, we are working!");
+					}
+				})
+			};
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+
+		$('#dtBasicExampleAp').show();
+		$('.b').show();
+	};
+	//return '<button id="' + id + '" name="' + userID + '" class="dodo" onclick=approveByID(this)>Approve?</button>'
+					 
+	/*var approveByID = (id) => 
+	{
+		$.ajax
+		({
+			type: "GET",
+			
+			url: urlForAll+ "approved/deliveryMan/" + id.id,
+			
+			headers: 
+			{
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  "Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function(data) 
+			{
+				console.log(data);
+			}
+		});
+	};*/
+	var id;
+	var $t;
+	$('#dtBasicExampleAp').on('click', '.deleteIt', function () 
+	{	
+		id = $(this).attr('id');
+		$t = $(this);
+		$('#tick').hide();
+		$(".circle-loader").removeClass("load-complete");
+	
+		$("#sure").html("Are you sure?");
+		$("#myModal").modal();
+		//$(".container").show();
+		//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+		/**/
+	});
+	$('.btn-ok').click(function(){
+	$("#sure").html("Please wait!");
+	
+	document.getElementById('modalCancel').disabled = true;
+	document.getElementById('modalApprove').disabled = true;
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			
+			url: urlForAll+ "approved/deliveryMan/" + id,
+			
+			headers: 
+			{
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  "Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function(data) 
+			{
+				setTimeout(function(){ 
+					$(".circle-loader").addClass("load-complete");
+					
+					$('#tick').show(); 
+				
+					$("#sure").html("Delivery man approved!");
+				}, 900);
+				
+				setTimeout(function(){ 
+					$("#myModal").modal('hide');
+					var table = $('#dtBasicExampleAp').DataTable();
+					table
+					.row($t.parents('tr'))
+					.remove()
+					.draw();
+					document.getElementById('threec').innerHTML = 'Unapproved Delivery Man: ' + table
+																								.column( 0 )
+																								.data()
+																								.length;
+																								
+					document.getElementById('modalCancel').disabled = false;
+					document.getElementById('modalApprove').disabled = false;
+					}, 2000);
+
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				
+				document.getElementById('modalCancel').disabled = false;
+				document.getElementById('modalApprove').disabled = false;
+				$('#myModal').modal('hide');
+				$('#myModal2').modal();
+			}
+		});
+	});
+</script>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" id="start">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="static/js/jquery-3.3.1.min.js"></script>
+        <script src="static/js/jquery-datatable.js"></script>
+        <link rel="stylesheet" type="text/css" href="static/css/datatable.css">
+        <link rel="stylesheet" type="text/css" href="static/css/buttons.bootstrap4.min.css">
+        <link href="static/css/quixx_sqdn298DJjw1.css" rel="stylesheet">
+        <link href="static/css/demo.css" rel="stylesheet">
+        <link rel="stylesheet" href="static/css/panelLoader2.css">
+        <link rel="stylesheet" href="static/css/pleaseWait.css">
+        <link href="static/css/template2.css" rel="stylesheet">
+        <link rel="shortcut icon" href="static/faviconQ.ico">
+        <script src="static/js/loader-file.js"></script>
+        <script src="static/js/responsive.js"></script>
+        <script src="static/js/jszip.js"></script>
+        <script src="static/js/xlsx.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Didact Gothic" rel="stylesheet">
+        <script src="static/js/scripts2.js"></script>
+        <script src="static/js/core/popper.min.js"></script>
+        <script src="static/js/core/bootstrap-design.min.js"></script>
+        <script src="static/js/quixx-dashboard.js"></script>
+        <script src="static/js/demo.js"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171039910-1"></script>
+        <style>
+          body {
+            font-family: "Didact Gothic";
+            font-size: 20px;
+          }
+          .field-icon {
+            float: right;
+            margin-right: 1px;
+            margin-top: -22px;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+          }
+          .fa-lg {
+            font-size: 0.93333333em;
+            line-height: 0.75em;
+            vertical-align: -15%;
+          }
+        </style>
+    </head>
+    <body id="body">
+        <div id="preloader">
+            <div class="preloader">
+                <div class="loader">
+                    <div class="shadow"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div
+                class="sidebar"
+                data-color="white"
+                data-background-color="white"
+                data-image=""
+            >
+                <div class="logo" style="text-align: center">
+                    <a>
+                        <img
+                            src=""
+                            id="preview"
+                            style="width: 120px; cursor: pointer; margin-bottom: 10px"
+                            onclick="dashio()"
+                        >
+                    </a>
+                    <br>
+                    <span id="namee" style="margin-top: 5px; color: #0066b3"></span>
+                    <div id="logooo" style="margin-top: 5px">
+                        <label class="btn btn-outline btn-sm center-block btn-file" id="one1" style="width: 60%">
+                            <i class="fa fa-upload fa-x" aria-hidden="true"></i>
+                            <input type="file" id="filetag" style="display: none">
+                            &nbsp;&nbsp;Set Logo
+                        </label>
+                        <label class="btn btn-outline btn-sm center-block btn-file" id="two2" style="width: 60% ;">
+                            <i class="fa fa-upload fa-x" aria-hidden="true"></i>
+                            <input type="file" id="filetag2" style="display: none">
+                            &nbsp;&nbsp;Update Logo
+                        </label>
+                    </div>
+                    <div id="passUpdate" style="margin-top: 5px">
+                        <button class="btn btn-outline btn-sm" style="width: 60%" onclick="passc()">
+                            <i class="fa fa-key"></i>
+                            &nbsp;&nbsp;Change Password
+                        </button>
+                    </div>
+                </div>
+                <div class="sidebar-wrapper">
+                    <ul class="nav">
+                        <div id="superAdmin">
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#dashboard">
+                                    <i class="material-icons">dashboard</i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#organizationAll">
+                                    <i class="material-icons">domain</i>
+                                    <p>Organizations</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#merchantAll">
+                                    <i class="material-icons">person</i>
+                                    <p>Merchants</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#deliveryManAll">
+                                    <i class="material-icons">directions_bike</i>
+                                    <p>Delivery Men</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#seeDeliverySuperAdmin">
+                                    <i class="material-icons">local_shipping</i>
+                                    <p>Watch Deliveries</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#messageSuperAdmin">
+                                    <i class="material-icons">message</i>
+                                    <p>Messages</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#managerAll">
+                                    <i class="material-icons">people</i>
+                                    <p>Managers</p>
+                                </a>
+                            </li>
+                        </div>
+                        <div id="organizationHead">
+                            <div id="alreadySet">
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#dashboardOrg">
+                                        <i class="material-icons">dashboard</i>
+                                        <p>Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#merchantOrg">
+                                        <i class="material-icons">people</i>
+                                        <p>Merchant</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#deliveryManAllOrg">
+                                        <i class="material-icons">directions_bike</i>
+                                        <p>Delivery Man</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#deliveryOrg">
+                                        <i class="material-icons">receipt_long</i>
+                                        <p>Delivery</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#deliverySearchOrg">
+                                        <i class="material-icons">search</i>
+                                        <p>Search Deliveries</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#seeDeliveryOrg">
+                                        <i class="material-icons">local_shipping</i>
+                                        <p>Watch Deliveries</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#setUpdateOrg">
+                                        <i class="material-icons">settings_applications</i>
+                                        <p>Update Settings</p>
+                                    </a>
+                                </li>
+                            </div>
+                            <div id="settings">
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#settingsOrg">
+                                        <i class="material-icons">settings</i>
+                                        <p>Settings</p>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+                        <div id="merchant">
+                            <div id="alreadySetMer">
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#dashboardMer">
+                                        <i class="material-icons">dashboard</i>
+                                        <p>Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#deliveryMerchant">
+                                        <i class="material-icons">local_shipping</i>
+                                        <p>Delivery</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#paymentDateWiseMerchant">
+                                        <i class="material-icons">payment</i>
+                                        <p>Date-wise Payment</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#deliverySearchMerchant">
+                                        <i class="material-icons">search</i>
+                                        <p>Search Deliveries</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#setUpdateMer">
+                                        <i class="material-icons">settings_applications</i>
+                                        <p>Update Settings</p>
+                                    </a>
+                                </li>
+                            </div>
+                            <div id="settingsMer">
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#settingsMer">
+                                        <i class="material-icons">settings</i>
+                                        <p>Settings</p>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+                        <!--<div id="manager">
+                        <li class="nav-item manager">
+                        <a class="nav-link" href="#dashboardMan">
+                          <i class="material-icons">dashboard</i>
+                          <p>Dashboard</p>
+                        </a>
+                        </li>
+                        <li class="nav-item manager">
+                        <a class="nav-link" href="#deliveryManManager">
+                          <i class="material-icons">person</i>
+                          <p>Delivery Man</p>
+                        </a>
+                        </li>
+                        <li class="nav-item manager">
+                        <a class="nav-link" href="#deliveryManager">
+                          <i class="material-icons">person</i>
+                          <p>Delivery</p>
+                        </a>
+                        </li>
+                        <li class="nav-item manager">
+                        <a class="nav-link" href="#seeDeliveryManager">
+                          <i class="material-icons">domain</i>
+                          <p>Watch Delivery</p>
+                        </a>
+                        </li>
+                        </div>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="main-panel" id="mainPanel">
+                <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top" id="navigation-example">
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <a class="navbar-brand" id="dashName">Dashboard</a>
+                        </div>
+                        <button
+                            class="navbar-toggler"
+                            id="navTog"
+                            type="button"
+                            data-toggle="collapse"
+                            aria-controls="navigation-index"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                            data-target="#navigation-example"
+                        >
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#logOutForAll">
+                                        <i class="material-icons">logout</i>
+                                        <p class="d-lg-none d-md-block">Log Out</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="content">
+                    <div class="container-fluid">
+                        <script>
+                          $.ajaxSetup({
+                            statusCode: {
+                              401: function () {
+                                $("#myModalForE2Setup").modal("show");
+                                setTimeout(function () {
+                                  localStorage.setItem(
+                                    "logout-event",
+                                    "logout" + Math.random()
+                                  );
+                                  var y = localStorage.getItem("NginxCode");
+                                  localStorage.clear();
+                                  // MAIN ->
+
+                                  if (y == "main") {
+                                    localStorage.setItem("NginxCode", "/#login");
+                                    window.location.href = "/assets#login";
+                                  } else {
+                                    localStorage.setItem("NginxCode", y);
+                                    window.location.href = "" + y;
+                                  }
+                                }, 2500);
+                              },
+                              0: function () {
+                                $("#myModalForE2Setup").modal("show");
+                                setTimeout(function () {
+                                  localStorage.setItem(
+                                    "logout-event",
+                                    "logout" + Math.random()
+                                  );
+                                  var y = localStorage.getItem("NginxCode");
+                                  localStorage.clear();
+                                  // MAIN ->
+
+                                  if (y == "main") {
+                                    localStorage.setItem("NginxCode", "/#login");
+                                    window.location.href = "/assets#login";
+                                  } else {
+                                    localStorage.setItem("NginxCode", y);
+                                    window.location.href = "" + y;
+                                  }
+                                }, 2500);
+                              },
+                            },
+                          });
+                        </script>
+                        <div id="contentMain"></div>
+                        <script src="static/js/importantVar.js"></script>
+                        <script src="static/js/indexScripts.js"></script>
+                        <script src="static/js/navigation.js"></script>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="copyright float-right">
+                            <!-- <ul class="social-links list-inline pull-right">
+					<li><a href="https://www.facebook.com/Quixx.xyz/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://twitter.com/Quixx12" target="_blank"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="https://www.instagram.com/quixx.xyz/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+					<li><a href="https://www.linkedin.com/company/quixxbd/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+				</ul> --></div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div
+            class="modal fade"
+            id="myModalFor"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+            data-backdrop="static"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-hidden="true"
+                        >
+                            &times;
+                        </button>
+                        <h4 class="modal-title" style="color: #0066b3; text-align: center; margin-left: 20px" id="myModalLabel">
+                            Change Password
+                        </h4>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <div class="circle-loader2" style="text-align: center">
+                            <div class="checkmark2 draw2" id="tick223"></div>
+                        </div>
+                        <h4 id="sure223" style="color: #0066b3"></h4>
+                        <div class="frm">
+                            <div class="">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <form class="form-horizontal" method="" action="">
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="col-md-12 control-label" style="color: #0066b3">
+                                                        Username:
+                                                    </label
+                          >
+                                                    <div class="col-md-12">
+                                                        <input
+                                                            id="userName"
+                                                            type="text"
+                                                            class="form-control"
+                                                            name="userName"
+                                                            style="text-align: center; color: #0066b3"
+                                                            disabled
+                                                        >
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="col-md-12 control-label" style="color: #0066b3">
+                                                        Previous Password:
+                                                    </label
+                          >
+                                                    <div class="col-md-12">
+                                                        <input
+                                                            id="password-field1"
+                                                            type="password"
+                                                            class="form-control"
+                                                            name="password"
+                                                            style="text-align: center"
+                                                            onkeyup="milse(this)"
+                                                            value=""
+                                                            autocomplete
+                                                        >
+                                                        <span toggle="#password-field1" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="col-md-12 control-label" style="color: #0066b3">
+                                                        Password:
+                                                    </label
+                          >
+                                                    <div class="col-md-12">
+                                                        <input
+                                                            id="password-field2"
+                                                            type="password"
+                                                            class="form-control"
+                                                            name="password"
+                                                            style="text-align: center"
+                                                            placeholder="Atleast 8 characters"
+                                                            value=""
+                                                            autocomplete
+                                                        >
+                                                        <span toggle="#password-field2" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="col-md-12 control-label" style="color: #0066b3">
+                                                        Confirm Password:
+                                                    </label
+                          >
+                                                    <div class="col-md-12">
+                                                        <input
+                                                            id="password-field3"
+                                                            type="password"
+                                                            class="form-control"
+                                                            name="password"
+                                                            placeholder="Atleast 8 characters"
+                                                            style="text-align: center"
+                                                            value=""
+                                                            autocomplete
+                                                        >
+                                                        <span toggle="#password-field3" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
+                                                    </div>
+                                                </div>
+                                                <h4 id="msg" style="
+                            margin-top: 10px;
+                            font-size: 16px;
+                            text-align: center;
+                          "></h4>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            style="color: #0066b3"
+                            class="btn btn-outline btn-default"
+                            id="modalCancelA"
+                            data-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="button"
+                            style="color: #0066b3"
+                            class="btn btn-outline btn-default btn-ok1k"
+                            id="modalUpdateA"
+                            disabled
+                        >
+                            Change
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModalForE2" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h4 style="color: #0066b3">Ooops!</h4>
+                        <p style="color: #0066b3" id="kiHoyeche">
+                            Something went wrong. Please try again!
+                        </p>
+                        <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModalForE2Setup" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <p style="color: #0066b3">Logging Out For Security Purpose!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="static/js/importantVar.js"></script>
+        <script src="static/js/indexPanel.js"></script>
+    </body>
+</html>

@@ -1,0 +1,509 @@
+<style>
+div.hideKoroMessage{
+	display:none;
+}
+
+table#dtBasicExample.dataTable tbody tr:hover {
+	background-color: #FFFFEA;
+    border-color: #0066b3; 
+}
+
+table#dtBasicExample.dataTable tbody tr:hover > .sorting_1 {
+	background-color: #FFFFEA;
+    border-color: #0066b3;
+}
+table#dtBasicExampleAp.dataTable tbody tr:hover {
+	background-color: #FFFFEA;
+    border-color: #0066b3;
+}
+
+table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
+	background-color: #FFFFEA;
+    border-color: #0066b3;
+}
+.naV{
+ background:#ffcf5c;
+}
+.row {
+  display: flex;
+}
+.col-md-4 {
+  flex-grow: 1;
+  text-align: center;
+}
+.cool-link {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+}
+</style>
+<link rel="stylesheet" href="static/css/panelLoader.css">
+<link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+
+<div id="loaderMamaMessage" style="margin-top:8%;">
+    <div class="multi-spinner-container" style="color:#fff">
+      <div class="multi-spinner">
+        <div class="multi-spinner">
+          <div class="multi-spinner">
+            <div class="multi-spinner">
+              <div class="multi-spinner">
+                <div class="multi-spinner">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
+</div>
+	<div class="card naV hideKoroMessage" id="hideKoroMessage">
+		<div class="card-body table-responsive">
+			<div class="row">
+				<div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="fourX" style="width:100%;font-size: 13px" onclick="unanswered()">Unanswered Messages</button></div>
+				<div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="fiveX" style="width:100%;font-size: 13px" onclick="answered()">Answered Messages</button></div>
+			</div>
+		</div>
+			<div class="card a">
+				<div class="card-body table-responsive a">
+				<table id="dtBasicExample" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
+				<thead>
+				<tr>
+				  <th class="th-sm">Name
+
+				  </th>
+				  <th class="th-sm">Email
+
+				  </th>
+				  <th class="th-sm">Message
+
+				  </th>
+				  <th class="th-sm">Answered?
+
+				  </th>
+				</tr>
+			  </thead>
+			  <tfoot>
+			</table>
+		   </div>
+		</div>
+		<div class="card b">
+		<div class="card-body table-responsive b blur">
+		<table id="dtBasicExampleAp" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
+		<thead>
+		<tr>
+		  <th class="th-sm">Name
+
+		  </th>
+		  <th class="th-sm">Email
+
+		  </th>
+		  <th class="th-sm">Message
+
+		  </th>
+		</tr>
+	  </thead>
+	  <tfoot>
+	</table>
+	
+</div>
+</div>
+
+</div>
+
+<div id="myModal2" class="modal fade" data-backdrop="static">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			
+			<div class="modal-body text-center">
+				<h4 style="color:#0066b3">Ooops!</h4>	
+				<p style="color:#0066b3"> Something went wrong. Please try again!</p>
+				<button class="btn btn-outline btn-primary" style="color:#0066b3" data-dismiss="modal">Try Again</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
+
+<script src="static/js/importantVar.js"></script>
+
+<script>
+function one1(){
+setTimeout(function() { $('#loaderMamaMessage').fadeOut(); }, 2100);
+	
+}
+function two2(){
+setTimeout(function() { $('div#hideKoroMessage').removeClass("hidden");$('#hideKoroMessage').fadeIn(); }, 2700);
+	
+}
+function three3(){
+setTimeout(function() {
+		document.getElementById('fiveX').style.fontSize = '13px';
+		document.getElementById('fiveX').innerHTML = 'Answered Messages';
+		document.getElementById('fiveX').disabled = false;
+		
+		document.getElementById('fourX').style.fontSize = '14.5px';
+		document.getElementById('fourX').innerHTML = 'Unanswered Messages';
+		document.getElementById('fourX').disabled = true;
+		$('#dtBasicExampleAp').hide();
+		$('.b').hide();
+		
+		/*var table = $('#dtBasicExample').DataTable( {
+			"processing": true,
+			"destroy": true,
+			"oSearch": { "bSmart": false, "bRegex": true }
+			} );
+			table.clear().draw();
+			$.ajax
+			({
+				async: true,
+				type: "GET",
+				url: urlForAll + "message/all/unAnswered",
+				headers: 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				  "Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					document.getElementById('fourX').innerHTML = 'Unanswered Messages: ' + data.data.length;
+					var trHTML = '';
+					$.each(data.data, function (i, item) {
+					var table_rows = '<tr><td>'
+					+data.data[i].name+'</td><td>'
+					+data.data[i].email+'</td><td>'+data.data[i].txt+'</td><td>'
+					+'<button id="'+data.data[i].id+'" class="btn-round btn-outline btn doneX" style="font-size:14.5px">Done</button>'
+					+'</td></tr>';
+					table.rows.add($(table_rows)).draw();
+					});
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("Please wait, we are working!");
+				}
+			})
+			*/
+			var table = $('#dtBasicExample').DataTable( {
+			"processing": true,
+			'language': {
+				'loadingRecords': '&nbsp;',
+				'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
+			},
+			"oSearch": { "bSmart": false, "bRegex": true },
+			"deferRender": true,
+			"destroy": true,
+			"ajax":
+			{
+				"url": urlForAll + "message/all/unAnswered",
+				"type": "GET",
+				"headers": 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				  "Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				"dataSrc": "data"
+			},
+			"columns": [
+					{ "targets": 0, "data": "name" },
+					{ "targets": 1, "data": "email" },
+					{ "targets": 2, "data": "txt" },
+					{ "targets": 3, "data": "button", render: function (data, type, row) {
+							
+							return '<button id="'+row.id+'" class="btn-round btn-outline btn doneX" style="font-size:14.5px">Done</button>'
+						}
+					}
+				]
+			});
+			table.on( 'xhr', function () {
+				var json = table.ajax.json();
+				console.log(json);
+				document.getElementById('fourX').innerHTML = 'Unanswered Messages: ' + json.data.length;
+			} );
+			table.clear().draw();
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+
+		$('#dtBasicExample').show();
+		$('.a').show();
+	}, 3600);
+}
+</script>
+<script>
+
+$(document).ready(function() {
+	$('#loaderMamaMessage').show();
+	//$("#hideKoro").hide();
+	one1();
+	two2();
+	$(".container").hide();
+	$('#dtBasicExample').hide();
+	$('.a').hide();
+	$('#dtBasicExampleAp').hide();
+	$('.b').hide();
+	$('#dtBasicExampleActivate').hide();
+	$('#dtBasicExampleDisable').hide();
+	$('.c').hide();
+	$('.d').hide();
+	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
+	three3();
+	window.addEventListener('storage', function(event){
+		if (event.key == 'logout-event') { 
+			window.location.href="/assets#login";
+		}
+	});
+} );
+</script>
+<script>
+	var unanswered = () =>
+	{
+		document.getElementById('fiveX').style.fontSize = '13px';
+		document.getElementById('fiveX').innerHTML = 'Answered Messages';
+		document.getElementById('fiveX').disabled = false;
+		
+		document.getElementById('fourX').style.fontSize = '14.5px';
+		document.getElementById('fourX').innerHTML = 'Unanswered Messages';
+		document.getElementById('fourX').disabled = true;
+		$('#dtBasicExampleAp').hide();
+		$('.b').hide();
+		
+		/*var table = $('#dtBasicExample').DataTable( {
+			"processing": true,
+			"destroy": true,
+			"oSearch": { "bSmart": false, "bRegex": true }
+			} );
+			table.clear().draw();
+			$.ajax
+			({
+				async: true,
+				type: "GET",
+				url: urlForAll + "message/all/unAnswered",
+				headers: 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				  "Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					document.getElementById('fourX').innerHTML = 'Unanswered Messages: ' + data.data.length;
+					var trHTML = '';
+					$.each(data.data, function (i, item) {
+					var table_rows = '<tr><td>'
+					+data.data[i].name+'</td><td>'
+					+data.data[i].email+'</td><td>'+data.data[i].txt+'</td><td>'
+					+'<button id="'+data.data[i].id+'" class="btn-round btn-outline btn doneX" style="font-size:14.5px">Done</button>'
+					+'</td></tr>';
+					table.rows.add($(table_rows)).draw();
+					});
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("Please wait, we are working!");
+				}
+			})
+			*/
+			var table = $('#dtBasicExample').DataTable( {
+			"processing": true,
+			'language': {
+				'loadingRecords': '&nbsp;',
+				'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
+			},
+			"oSearch": { "bSmart": false, "bRegex": true },
+			"deferRender": true,
+			"destroy": true,
+			"ajax":
+			{
+				"url": urlForAll + "message/all/unAnswered",
+				"type": "GET",
+				"headers": 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				  "Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				"dataSrc": "data"
+			},
+			"columns": [
+					{ "targets": 0, "data": "name" },
+					{ "targets": 1, "data": "email" },
+					{ "targets": 2, "data": "txt" },
+					{ "targets": 3, "data": "button", render: function (data, type, row) {
+							
+							return '<button id="'+row.id+'" class="btn-round btn-outline btn doneX" style="font-size:14.5px">Done</button>'
+						}
+					}
+				]
+			});
+			table.on( 'xhr', function () {
+				var json = table.ajax.json();
+				console.log(json);
+				document.getElementById('fourX').innerHTML = 'Unanswered Messages: ' + json.data.length;
+			} );
+			table.clear().draw();
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+
+		$('#dtBasicExample').show();
+		$('.a').show();
+	}
+	
+	var answered = () => 
+	{ 
+		document.getElementById('fiveX').style.fontSize = '14.5px';
+		document.getElementById('fiveX').innerHTML = 'Answered Messages';
+		document.getElementById('fiveX').disabled = true;
+		
+		document.getElementById('fourX').style.fontSize = '13px';
+		document.getElementById('fourX').innerHTML = 'Unanswered Messages';
+		document.getElementById('fourX').disabled = false;
+		$('#dtBasicExample').hide();
+		$('.a').hide();
+		
+		/*var table = $('#dtBasicExample').DataTable( {
+			"processing": true,
+			"destroy": true,
+			"oSearch": { "bSmart": false, "bRegex": true }
+			} );
+			table.clear().draw();
+			$.ajax
+			({
+				async: true,
+				type: "GET",
+				url: urlForAll + "message/all/unAnswered",
+				headers: 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				  "Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					document.getElementById('fourX').innerHTML = 'Unanswered Messages: ' + data.data.length;
+					var trHTML = '';
+					$.each(data.data, function (i, item) {
+					var table_rows = '<tr><td>'
+					+data.data[i].name+'</td><td>'
+					+data.data[i].email+'</td><td>'+data.data[i].txt+'</td><td>'
+					+'<button id="'+data.data[i].id+'" class="btn-round btn-outline btn doneX" style="font-size:14.5px">Done</button>'
+					+'</td></tr>';
+					table.rows.add($(table_rows)).draw();
+					});
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("Please wait, we are working!");
+				}
+			})
+			*/
+			var table = $('#dtBasicExampleAp').DataTable( {
+			"processing": true,
+			'language': {
+				'loadingRecords': '&nbsp;',
+				'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
+			},
+			"oSearch": { "bSmart": false, "bRegex": true },
+			"deferRender": true,
+			"destroy": true,
+			"ajax":
+			{
+				"url": urlForAll + "message/all/answered",
+				"type": "GET",
+				"headers": 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				  "Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				"dataSrc": "data"
+			},
+			"columns": [
+					{ "targets": 0, "data": "name" },
+					{ "targets": 1, "data": "email" },
+					{ "targets": 2, "data": "txt" }
+				]
+			});
+			table.on( 'xhr', function () {
+				var json = table.ajax.json();
+				console.log(json);
+				document.getElementById('fiveX').innerHTML = 'Answered Messages: ' + json.data.length;
+			} );
+			table.clear().draw();
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+
+		$('#dtBasicExampleAp').show();
+		$('.b').show();
+	};
+	var id;
+	var $t;
+	$('#dtBasicExample').on('click', '.doneX', function () 
+	{	
+		$('.doneX').attr('disabled', true);
+		id = $(this).attr('id');
+		$t = $(this);
+		$.ajax
+			({
+				async: true,
+				type: "PUT",
+				
+				url: urlForAll + "message/" + id,
+				
+				headers: 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				  "Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					var table = $('#dtBasicExample').DataTable();
+					
+					$('.doneX').attr('disabled', false);
+					table
+					.row($t.parents('tr'))
+					.remove()
+					.draw();
+					document.getElementById('fourX').innerHTML = 'Unanswered Messages: ' + table
+																								.column( 0 )
+																								.data()
+																								.length;
+
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					
+					$('.doneX').attr('disabled', false);
+					$('#myModal2').modal();
+				}
+			});
+	});
+</script>

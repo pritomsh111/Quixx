@@ -1,0 +1,1 @@
+var urlForAll = "https://prod.quixx.xyz/api/quixx/v1/";
