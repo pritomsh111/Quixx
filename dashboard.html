@@ -7,9 +7,7 @@
                     <i class="material-icons">domain</i>
                 </div>
                 <h4 class="card-title">Total Organizations</h4>
-                <h4 class="card-title">
-                    102
-                </h4>
+                <h4 class="card-title">102</h4>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -26,9 +24,7 @@
                     <i class="material-icons">how_to_reg</i>
                 </div>
                 <h4 class="card-title">Total Managers</h4>
-                <h4 class="card-title">
-                    90
-                </h4>
+                <h4 class="card-title">90</h4>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -45,9 +41,7 @@
                     <i class="material-icons">how_to_reg</i>
                 </div>
                 <h4 class="card-title">Total Delivery Men</h4>
-                <h4 class="card-title">
-                    1212
-                </h4>
+                <h4 class="card-title">1212</h4>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -64,9 +58,7 @@
                     <i class="material-icons">check_circle</i>
                 </div>
                 <h4 class="card-title">Total Completed Deliveries</h4>
-                <h4 class="card-title">
-                    23
-                </h4>
+                <h4 class="card-title">23</h4>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -83,9 +75,7 @@
                     <i class="material-icons">announcement</i>
                 </div>
                 <h4 class="card-title">Total Incomplete Deliveries</h4>
-                <h4 class="card-title">
-                    266
-                </h4>
+                <h4 class="card-title">266</h4>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -97,21 +87,20 @@
     </div>
 </div>
 <script>
-			
-			window.addEventListener('storage', function(event){
-				if (event.key == 'logout-event') { 
-					window.location.href="#login";
-				}
-			});
-			var today = new Date();
-			var dd = String(today.getDate()).padStart(2, '0');
-			var mm = String(today.getMonth() + 1).padStart(2, '0');
-			var yyyy = today.getFullYear();
+  window.addEventListener("storage", function (event) {
+    if (event.key == "logout-event") {
+      window.location.href = "/#login";
+    }
+  });
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, "0");
+  var mm = String(today.getMonth() + 1).padStart(2, "0");
+  var yyyy = today.getFullYear();
 
-			today = dd + '/' + mm + '/' + yyyy;
-			document.getElementById("date1").innerHTML = today;
-			document.getElementById("date2").innerHTML = today;
-			document.getElementById("date3").innerHTML = today;
-			document.getElementById("date4").innerHTML = today;
-			document.getElementById("date5").innerHTML = today;
+  today = dd + "/" + mm + "/" + yyyy;
+  document.getElementById("date1").innerHTML = today;
+  document.getElementById("date2").innerHTML = today;
+  document.getElementById("date3").innerHTML = today;
+  document.getElementById("date4").innerHTML = today;
+  document.getElementById("date5").innerHTML = today;
 </script>

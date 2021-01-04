@@ -2,7 +2,7 @@
     // Storage Event
     window.addEventListener('storage', function (event) {
         if (event.key == 'login-event') {
-            window.location.href = "static-panel/indexPanel.html";
+            window.location.href = "indexPanel.html";
         }
     });
 
@@ -239,7 +239,7 @@
                     success: function (data) {
                         localStorage.setItem('login-event', 'login' + Math.random());
                         localStorage.setItem('main-token', data.data);
-                        window.location.href = "static-panel/indexPanel.html";
+                        window.location.href = "indexPanel.html";
                     },
                     error: function (data) {
                         let ob = Object.keys(data);

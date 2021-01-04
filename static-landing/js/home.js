@@ -1,5 +1,9 @@
 (() => {
-
+    window.addEventListener('storage', function (event) {
+        if (event.key == 'login-event') {
+            window.location.href = "indexPanel.html";
+        }
+    });
     let count = 0, imgCount = 0;
     const imgClassArray = ["animation_IMG_1", "animation_IMG_2", "animation_IMG_3", "animation_IMG_4"];
     let img = document.querySelector(".Home__Quixx__Container img");
