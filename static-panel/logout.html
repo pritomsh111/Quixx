@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <script>
   localStorage.setItem("logout-event", "logout" + Math.random());
-  var y = localStorage.getItem("wh-user");
+  let y = localStorage.getItem("wh-user");
   localStorage.clear();
   if (y === "main") {
     localStorage.setItem("wh-user", "/#login");
