@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-	window.addEventListener('storage', function(event){
-				if (event.key == 'logout-event') { 
-					window.location.href="" + localStorage.getItem('NginxCode');
-				}
-			});
+	window.addEventListener('storage', function (event) {
+		if (event.key == 'logout-event') {
+			window.location.href = "" + localStorage.getItem("wh-user");
+		}
+	});
 	$('#settings').hide();
 	$('#hideUpdate').hide();
 	$('.container').hide();
@@ -17,6 +17,6 @@ $(document).ready(function() {
 	$('.b').hide();
 	$('.c').hide();
 	$('.d').hide();
-	
+
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
-} );
+});

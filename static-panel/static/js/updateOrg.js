@@ -197,7 +197,7 @@ $(document).ready(function () {
 	productType();
 	window.addEventListener('storage', function (event) {
 		if (event.key == 'logout-event') {
-			window.location.href = "" + localStorage.getItem('NginxCode');
+			window.location.href = "" + localStorage.getItem("wh-user");
 		}
 	});
 });

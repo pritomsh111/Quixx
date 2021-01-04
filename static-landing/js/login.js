@@ -238,6 +238,7 @@
                         }),
                     success: function (data) {
                         localStorage.setItem('login-event', 'login' + Math.random());
+                        localStorage.setItem('main-token', data.data);
                         window.location.href = "static-panel/indexPanel.html";
                     },
                     error: function (data) {

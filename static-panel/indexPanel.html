@@ -25,28 +25,26 @@
         <script src="static/js/core/popper.min.js"></script>
         <script src="static/js/core/bootstrap-design.min.js"></script>
         <script src="static/js/quixx-dashboard.js"></script>
-        <script src="static/js/demo.js"></script>
         <script src="static/js/importantVar.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171039910-1"></script>
         <link href="https://fonts.googleapis.com/css?family=Didact Gothic" rel="stylesheet">
         <style>
-      body {
-        font-family: "Didact Gothic";
-        font-size: 20px;
-      }
-      .field-icon {
-        float: right;
-        margin-right: 1px;
-        margin-top: -22px;
-        position: relative;
-        z-index: 2;
-        cursor: pointer;
-      }
-      .fa-lg {
-        font-size: 0.93333333em;
-        line-height: 0.75em;
-        vertical-align: -15%;
-      }
+            body {
+                font-family: "Didact Gothic";
+                font-size: 20px;
+            }
+            .field-icon {
+                float: right;
+                margin-right: 1px;
+                margin-top: -22px;
+                position: relative;
+                z-index: 2;
+                cursor: pointer;
+            }
+            .fa-lg {
+                font-size: 0.93333333em;
+                line-height: 0.75em;
+                vertical-align: -15%;
+            }
         </style>
     </head>
     <body id="body">
@@ -300,6 +298,9 @@
                                             getOut();
                                         },
                                         0: function () {
+                                            getOut();
+                                        },
+                                        400: function () {
                                             getOut();
                                         },
                                     },

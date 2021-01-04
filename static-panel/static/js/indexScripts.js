@@ -1,60 +1,19 @@
+var myNode;
 var user = localStorage.getItem('user');
 var pass = localStorage.getItem('pass');
-var myNode;
 var fileTag = document.getElementById("filetag");
 var fileTag2 = document.getElementById("filetag2");
 var preview = document.getElementById("preview");
-/*var devtools = function() {};
-devtools.toString = function() {
-  if (this.opened) {
-		localStorage.setItem('logout-event', 'logout' + Math.random());
-		var y = localStorage.getItem('NginxCode');
-		localStorage.clear();
-		// MAIN ->
 
-		if(y=='main')
-		{
-			localStorage.setItem('NginxCode', '/#login');
-			window.location.href="#login";
-		}
-		else
-		{
-			localStorage.setItem('NginxCode', y);
-			window.location.href="" + y;
-		}
-  }
-  this.opened = true;
-}
-console.log('%c', devtools);
-*/
-if (user && pass) {
-	localStorage.removeItem('pass');
-	$.ajax
-		({
-			async: false,
-			type: "POST",
-			url: urlForAll + "login",
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			data: JSON.stringify
-				({
-					"username": user,
-					"password": pass
-				}),
-			success: function (data) {
-				var token = data.data;
-				var decoded = jwt_decode(token);
-				localStorage.setItem('token', data.data);
-				localStorage.setItem('userID', decoded.id);
-				localStorage.setItem('userEmail', decoded.email);
-				localStorage.setItem('user', decoded.role[0].roleName);
-				user = decoded.role[0].roleName;
-			}
-		});
-}
+var token = localStorage.getItem('main-token');
+var decoded = jwt_decode(token);
+localStorage.setItem('token', token);
+localStorage.setItem('userID', decoded.id);
+localStorage.setItem('userEmail', decoded.email);
+localStorage.setItem('user', decoded.role[0].roleName);
+user = decoded.role[0].roleName;
+localStorage.removeItem('pass');
+
 if (user == 'SUPER_ADMIN') {
 	$('#logooo').hide();
 	document.title = "Super Admin";
@@ -81,7 +40,6 @@ if (user == 'SUPER_ADMIN') {
 else if (user == 'ORGANIZATIONAL_ADMIN') {
 	$.ajax
 		({
-			async: true,
 			type: "GET",
 			url: urlForAll + "orgHead/get/logo/" + localStorage.getItem('userID'),
 			headers:
@@ -117,7 +75,6 @@ else if (user == 'ORGANIZATIONAL_ADMIN') {
 			reader.onload = function (e) {
 				$.ajax
 					({
-						async: true,
 						type: "POST",
 						url: urlForAll + "approved/insert/logo",
 						data: JSON.stringify
@@ -159,7 +116,7 @@ else if (user == 'ORGANIZATIONAL_ADMIN') {
 
 				$.ajax
 					({
-						async: true,
+
 						type: "PUT",
 						url: urlForAll + "approved/update/logo",
 						data: JSON.stringify
@@ -188,7 +145,7 @@ else if (user == 'ORGANIZATIONAL_ADMIN') {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "orgHead/get/org/name/" + localStorage.getItem('userID'),
 			headers:
@@ -226,7 +183,7 @@ else if (user == 'ORGANIZATIONAL_ADMIN') {
 	document.title = "Manager";
 	$.ajax
 	({
-		async: true,
+		
 		type: "GET",
 		url: urlForAll + "manager/profile/" + localStorage.getItem('userID'),
 		headers: 
@@ -266,7 +223,7 @@ else if (user == 'MERCHANT') {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "merchant/get/org/logo/" + localStorage.getItem('userID'),
 			headers:
@@ -281,7 +238,7 @@ else if (user == 'MERCHANT') {
 		});
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "merchant/get/org/name/" + localStorage.getItem('userID'),
 			headers:
@@ -297,7 +254,7 @@ else if (user == 'MERCHANT') {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "profile/get/profile/" + localStorage.getItem('userID'),
 			headers:
