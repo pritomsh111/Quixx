@@ -10,6 +10,9 @@ let quixx_logo = document.querySelector(".Quixx__Logo");
 let home_cta = document.querySelector(".Home__CTA");
 let modal = document.querySelector(".Modal__Quixx");
 
+// Preloader
+let preloader = document.querySelector(".preloader");
+
 // Backdrop click
 
 backdrop.addEventListener("click", function () {
