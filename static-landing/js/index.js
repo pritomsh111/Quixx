@@ -12,7 +12,10 @@ let modal = document.querySelector(".Modal__Quixx");
 
 // Preloader
 let preloader = document.querySelector(".preloader");
-
+setTimeout(() => {
+    preloader.style.opacity = 0;
+    preloader.style.visibility = "hidden";
+}, 2500);
 // Backdrop click
 
 backdrop.addEventListener("click", function () {
