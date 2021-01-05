@@ -455,7 +455,7 @@ ul {
 }
 
 .Home__R img {
-    width: 102%;
+    width: 100%;
     object-fit: contain;
     position: relative;
 }
@@ -513,7 +513,7 @@ ul {
 /* Home - Section 2 - Side__Prod*/
 
 .Quixx__Side__Prod {
-    padding: 1rem 5.1rem;
+    padding: 2rem 5.1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -521,7 +521,7 @@ ul {
 }
 
 .Quixx__Side__Prod a div {
-    height: 130px;
+    height: 56px;
     width: 130px;
 }
 
