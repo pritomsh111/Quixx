@@ -1755,7 +1755,19 @@ ul {
     grid-template-columns: repeat(2, 1fr);
     padding: 4rem 5rem;
     place-items: center;
-    /* height: 100vh; */
+    position: relative;
+}
+
+.Quixx__Form::after {
+    position: absolute;
+    content: "";
+    opacity: 0.4;
+    background: url("/static-landing/img/bg3-mf.png") left/contain no-repeat, url("/static-landing/img/main.png") center/contain no-repeat;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -2;
 }
 
 .Quixx__Form__Main {
@@ -1932,6 +1944,10 @@ p.error {
         grid-template-columns: 1fr;
         padding: 4rem 2rem;
     }
+    .Quixx__Form::after {
+        opacity: 0.3;
+        background: url("/static-landing/img/bg3-mf.png") left/cover no-repeat, url("/static-landing/img/main.png") center/cover no-repeat;
+    }
     .Quixx__Form__Main {
         box-shadow: none;
         border: none;
@@ -1995,6 +2011,22 @@ p.error {
     padding: 0.7rem 0.9rem;
     color: #fff;
     background: #000;
+}
+
+@media (max-width: 700px) {
+    .Modal__Quixx {
+        padding: 1rem;
+        left: calc(50% - 225px);
+        width: 450px;
+    }
+}
+
+@media (max-width: 600px) {
+    .Modal__Quixx {
+        padding: 1rem;
+        left: calc(50% - 200px);
+        width: 400px;
+    }
 }
 
 /* Modal Inner Body For Different Actions */
