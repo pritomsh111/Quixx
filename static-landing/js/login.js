@@ -45,6 +45,7 @@
     let fp_step1 = document.querySelector(".FP-step-1");
     let fp_step2 = document.querySelector(".FP-step-2");
 
+    let quixxForm = document.querySelector(".Quixx__Form::after");
     let quixxFormMain = document.querySelector(".Quixx__Form__Main");
     let signInButtonTop = document.querySelector(".signInButton");
     let signUpButtonTop = document.querySelector(".signUpButton");
