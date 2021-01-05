@@ -50,6 +50,9 @@ document.addEventListener("click", function (event) {
 
 activeNav.forEach(item => item.addEventListener("click", function (event) {
     //Navbar Hide
+    if (item.classList.contains("dropdown")) {
+        return;
+    }
     quixx_sections.classList.remove("toggle");
     quixx_navigation_toggler.classList.remove("toggle_nav");
     backdrop.classList.remove("show");
@@ -68,7 +71,7 @@ quixx_navigation_toggler.addEventListener("click", function (event) {
 });
 
 const initNav = () => {
-    location.hash = "home";
+    location.hash = "#home";
 }
 
 let topScroll = document.querySelector(".Top__Scroll");
