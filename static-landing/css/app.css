@@ -224,20 +224,20 @@ ul {
 }
 
 .Quixx__Login__Signup li:last-child li a div {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 65px;
 }
 
 .Quixx__Login__Signup li:last-child li:nth-child(1) a div {
-    background: url("../img/Parrot.png") center/contain no-repeat;
+    background: url("../img/Parrot 2.png") center/contain no-repeat;
 }
 
 .Quixx__Login__Signup li:last-child li:nth-child(2) a div {
-    background: url("../img/Quixx\ Maps-01.jpg") center/contain no-repeat;
+    background: url("../img/Quixx maps 2.png") center/contain no-repeat;
 }
 
 .Quixx__Login__Signup li:last-child li:nth-child(3) a div {
-    background: url("../img/quixx_digital.png") center/contain no-repeat;
+    background: url("../img/Quixx stash.png") center/contain no-repeat;
 }
 
 .Quixx__Login__Signup li:last-child i {
@@ -1724,9 +1724,17 @@ ul {
     display: block;
 }
 
-.Footer__R ul:last-child li img {
-    width: 50px;
-    margin-right: 1.2rem;
+.Footer__R ul:last-child li a div {
+    width: 60px;
+    height: 60px;
+}
+
+.Footer__R ul:last-child li:nth-child(3) a div {
+    background: url("../img/Parrot\ logo-01.png") center/contain no-repeat;
+}
+
+.Footer__R ul:last-child li:nth-child(2) a div {
+    background: url("../img/QUIXX\ MAPS\ ICON-02.png") center/contain no-repeat;
 }
 
 .Footer__R ul:last-child li:last-of-type img {
