@@ -574,16 +574,6 @@ ul {
     padding: 1rem 5rem;
 }
 
-.Quixx__Mobile__Applications .background__ab {
-    position: absolute;
-    height: 3%;
-    width: 25%;
-    left: 14.5%;
-    bottom: .3rem;
-    background: #00000015;
-    border-radius: 44% 56% 49% 51% / 19% 17% 83% 81%;
-}
-
 .Mobile__Left {
     position: relative;
     width: 100%;
@@ -591,21 +581,33 @@ ul {
     background-color: #00000010; */
 }
 
+.Mobile__Left::after {
+    position: absolute;
+    content: "";
+    top: 16rem;
+    left: 8rem;
+    bottom: 0rem;
+    right: 0rem;
+    z-index: -10;
+    opacity: 0.9;
+    background: url("/static-landing/img/phoneFrameBG.svg") left/contain no-repeat;
+}
+
 .Mobile__Left .Main__Phone {
     display: block;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     position: relative;
     z-index: 10;
 }
 
 .Mobile__Left .Main__Phone__Over {
     position: absolute;
-    width: 36%;
-    height: 95%;
+    width: 37.5%;
     opacity: 1;
     display: block;
-    top: 50%;
-    left: 50%;
+    top: 54.5%;
+    left: 56%;
+    margin-left: auto;
     border-radius: 5px;
     transform: translate(-50%, -50%);
     transition: opacity 250ms ease-in;
@@ -616,7 +618,8 @@ ul {
 }
 
 .Mobile__Left img {
-    width: 40%;
+    width: 65%;
+    margin-left: auto;
 }
 
 .Top__Select, .Middle__Select, .Bottom__Select {
@@ -664,15 +667,16 @@ ul {
     .Quixx__Mobile__Applications {
         grid-template-columns: 1fr;
     }
-    .Quixx__Mobile__Applications .background__ab {
-        display: none;
-    }
     .Mobile__Left .Main__Phone__Over {
-        width: 31.5%;
-        height: 95%;
+        width: 28.8%;
+        left: 40.8%;
     }
     .Mobile__Left img {
-        width: 35%;
+        width: 50%;
+        margin: 0 auto;
+    }
+    .Mobile__Left::after {
+        left: 5rem;
     }
     .Mobile__Right {
         min-height: 270px;
@@ -686,39 +690,64 @@ ul {
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
     .Quixx__Mobile__Applications {
         padding: 1rem 2rem;
     }
     .Mobile__Left .Main__Phone__Over {
-        width: 39.5%;
-        height: 95%;
+        width: 28.8%;
+        left: 40.8%;
     }
     .Mobile__Left img {
-        width: 44%;
+        width: 50%;
+        margin: 0 auto;
+    }
+    .Mobile__Left::after {
+        left: 7rem;
     }
     .Top__Select, .Middle__Select, .Bottom__Select {
         width: 90%;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .Mobile__Left .Main__Phone__Over {
-        width: 39.5%;
-        height: 95%;
+        width: 40.8%;
+        left: 38%;
+        border-radius: 8%;
     }
     .Mobile__Left img {
-        width: 44%;
+        width: 70%;
+        margin: 0 auto;
+    }
+    .Mobile__Left::after {
+        left: 0rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .Mobile__Left .Main__Phone__Over {
+        width: 45.8%;
+        left: 45%;
+        border-radius: 8%;
+    }
+    .Mobile__Left img {
+        width: 80%;
+        margin: 0 0 0 auto;
+    }
+    .Mobile__Left::after {
+        display: none;
     }
 }
 
 @media (max-width: 559px) {
     .Mobile__Left .Main__Phone__Over {
-        width: 44.5%;
-        height: 95%;
+        width: 51.5%;
+        left: 38%;
     }
     .Mobile__Left img {
-        width: 50%;
+        width: 90%;
+        margin: 0 0 0 auto;
     }
     .Mobile__Right img {
         width: 20px;
