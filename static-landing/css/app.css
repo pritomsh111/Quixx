@@ -1762,7 +1762,7 @@ ul {
     position: absolute;
     content: "";
     opacity: 0.4;
-    background: url("/static-landing/img/bg3-mf.png") left/contain no-repeat, url("/static-landing/img/main.png") center/contain no-repeat;
+    background: url("/static-landing/img/bg3-mf.png") left/cover no-repeat, url("/static-landing/img/main.png") center/contain no-repeat;
     left: 0;
     right: 0;
     top: 0;
