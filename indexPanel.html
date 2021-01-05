@@ -282,10 +282,10 @@
                                         "logout" + Math.random()
                                         );
                                         let y = localStorage.getItem("wh-user");
-                                        localStorage.clear();                         
+                                        localStorage.clear();                     
                                         if (y === "main") {
                                             localStorage.setItem("wh-user", "/#login");
-                                            window.location.href = "#home";
+                                            window.location.href = "/#home";
                                         } else {
                                             localStorage.setItem("wh-user", y);
                                             window.location.href = "" + y;
