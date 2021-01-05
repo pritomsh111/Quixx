@@ -26,156 +26,189 @@ table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
 .row {
   display: flex;
 }
-.col-md-4 {
-  flex-grow: 1;
-  text-align: center;
-
-.cool-link {
-    display: inline-block;
-    color: #000;
-    text-decoration: none;
-}
-
 #aRow:hover {
   background-color: red;
 }
 </style>
-
 <link rel="stylesheet" href="static/css/panelLoader.css">
-	<div id="loaderMama3" style="margin-top:8%;">
+<div id="loaderMama3" style="margin-top:8%;">
     <div class="multi-spinner-container" style="color:#fff">
-      <div class="multi-spinner">
         <div class="multi-spinner">
-          <div class="multi-spinner">
             <div class="multi-spinner">
-              <div class="multi-spinner">
                 <div class="multi-spinner">
+                    <div class="multi-spinner">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner"></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-	<h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
+    <h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
 </div>
-	<div class="card naV hideKoro3" id="hideKoro3">
-		<div class="card-body table-responsive">
-<div class="row">
-    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="oneb" style="width:100%;font-size: 13px" onclick="registeredMan()">Registered Managers</button></div>
-    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="twob" style="width:100%;font-size: 13px" onclick="approvedMan()">Approved Managers</button></div>
-    <div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="threeb" style="width:100%;font-size: 13px" onclick="unApprovedMan()">Unapproved Managers</button></div>
-  </div>
-</div>
-	<div class="card a">
-		<div class="card-body table-responsive a">
-		<table id="dtBasicExample" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  <th class="th-sm">ID
-
-		  </th>
-		  <th class="th-sm">Manager's Name
-
-		  </th>
-		  <th class="th-sm">Manager's Email
-
-		  </th>
-		  <th class="th-sm">Can create delivery man?
-
-		  </th>
-		  <th class="th-sm">Can create delivery?
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
-</div>
-</div>
-
-<div class="card b">
-		<div class="container" style="background:#ffffff;border-radius:10px;border-color:#0066b3">
-			<img src="static/img/loadingApprove/1.png" >
-			<img src="static/img/loadingApprove/2.gif" >
-			
-		<h3 style="text-align:center;color:#0066b3">Approving...</h3>
-		</div>
-		<script>
+<div class="card naV hideKoro3" id="hideKoro3">
+    <div class="card-body table-responsive">
+        <div class="row">
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="oneb"
+                    style="width:100%;font-size: 13px"
+                    onclick="registeredMan()"
+                >Registered Managers</button>
+            </div>
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="twob"
+                    style="width:100%;font-size: 13px"
+                    onclick="approvedMan()"
+                >Approved Managers</button>
+            </div>
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="threeb"
+                    style="width:100%;font-size: 13px"
+                    onclick="unApprovedMan()"
+                >Unapproved Managers</button>
+            </div>
+        </div>
+    </div>
+    <div class="card a">
+        <div class="card-body table-responsive a">
+            <table
+                id="dtBasicExample"
+                class="stripe hover"
+                style="color:#0066b3;"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">
+                            ID
+                        </th>
+                        <th class="th-sm">
+                            Manager's Name
+                        </th>
+                        <th class="th-sm">
+                            Manager's Email
+                        </th>
+                        <th class="th-sm">
+                            Can create delivery man?
+                        </th>
+                        <th class="th-sm">
+                            Can create delivery?
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="card b">
+            <div class="container" style="background:#ffffff;border-radius:10px;border-color:#0066b3">
+                <img src="static/img/loadingApprove/1.png">
+                <img src="static/img/loadingApprove/2.gif">
+                <h3 style="text-align:center;color:#0066b3">Approving...</h3>
+            </div>
+            <script>
 			$('.container').hide();
-		</script>
-		<div class="card-body table-responsive b blur">
-		
-		<table id="dtBasicExampleAp" class="stripe hover" style="color:#0066b3;" cellspacing="0" width="100%">
-		<thead>
-		<tr>
-		  <th class="th-sm">ID
-
-		  </th>
-		  <th class="th-sm">Manager's Name
-
-		  </th>
-		  
-		  <th class="th-sm">Manager's Email
-
-		  </th>
-		  <th class="th-sm">Can create delivery man?
-
-		  </th>
-		  <th class="th-sm">Can create delivery?
-
-		  </th>
-		  <th class="th-sm">Approve?
-
-		  </th>
-		</tr>
-	  </thead>
-	  <tfoot>
-	</table>
-	
-</div>
-</div>
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-				<h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Approve this manager?</h4>
-			</div>
-			<div class="modal-body" style="text-align:center">
-							
-				<div class="circle-loader" style="text-align:center">
-				  <div class="checkmark draw" id="tick"></div>
-				</div>
-				<h4 id="sure" style="color:#0066b3"></h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel" data-dismiss="modal">Cancel</button>
-				<button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-ok" id="modalApprove">Approve</button>
-			</div>
-		</div>
-	</div>
-</div>
-<div id="myModal2" class="modal fade" data-backdrop="static">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			
-			<div class="modal-body text-center">
-				<h4 style="color:#0066b3">Ooops!</h4>	
-				<p style="color:#0066b3">Something went wrong. Please try again!</p>
-				<button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
-			</div>
-		</div>
-	</div>
-</div>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
-
-<script src="static/js/.js"></script>
-
-<script>
+            </script>
+            <div class="card-body table-responsive b blur">
+                <table
+                    id="dtBasicExampleAp"
+                    class="stripe hover"
+                    style="color:#0066b3;"
+                    cellspacing="0"
+                    width="100%"
+                >
+                    <thead>
+                        <tr>
+                            <th class="th-sm">
+                                ID
+                            </th>
+                            <th class="th-sm">
+                                Manager's Name
+                            </th>
+                            <th class="th-sm">
+                                Manager's Email
+                            </th>
+                            <th class="th-sm">
+                                Can create delivery man?
+                            </th>
+                            <th class="th-sm">
+                                Can create delivery?
+                            </th>
+                            <th class="th-sm">
+                                Approve?
+                            </th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div
+            class="modal fade"
+            id="myModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+            data-backdrop="static"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-hidden="true"
+                        ></button>
+                        <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Approve this manager?</h4>
+                    </div>
+                    <div class="modal-body" style="text-align:center">
+                        <div class="circle-loader" style="text-align:center">
+                            <div class="checkmark draw" id="tick"></div>
+                        </div>
+                        <h4 id="sure" style="color:#0066b3"></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            style="color:#0066b3"
+                            class="btn btn-outline btn-default"
+                            id="modalCancel"
+                            data-dismiss="modal"
+                        >Cancel</button>
+                        <button
+                            type="button"
+                            style="color:#0066b3"
+                            class="btn btn-outline btn-danger btn-ok"
+                            id="modalApprove"
+                        >Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModal2" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h4 style="color:#0066b3">Ooops!</h4>
+                        <p style="color:#0066b3">Something went wrong. Please try again!</p>
+                        <button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
+    <script>
 function one1(){
 	setTimeout(function() { $('#loaderMama3').fadeOut(); }, 2100);
 }
@@ -244,8 +277,8 @@ function three3(){
 		$('.a').show();
 	}, 3600);
 }
-</script>
-<script>
+    </script>
+    <script>
 $(document).ready(function() {
 	$('#loaderMama3').show();
 	//$("#hideKoro").hide();
@@ -263,8 +296,8 @@ $(document).ready(function() {
 		}
 	});
 });
-</script>
-<script>
+    </script>
+    <script>
 	var registeredMan = () => 
 	{
 		document.getElementById('oneb').disabled = true;
@@ -557,4 +590,4 @@ $(document).ready(function() {
 			}
 		});
 	});
-</script>
+    </script>

@@ -1,7 +1,7 @@
 (() => {
     window.addEventListener('storage', function (event) {
         if (event.key == 'login-event') {
-            window.location.href = "indexPanel.html";
+            window.location.href = "panel.html";
         }
     });
     let count = 0, imgCount = 0;

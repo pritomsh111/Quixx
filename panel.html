@@ -28,23 +28,23 @@
         <script src="static/js/importantVar.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Didact Gothic" rel="stylesheet">
         <style>
-            body {
-                font-family: "Didact Gothic";
-                font-size: 20px;
-            }
-            .field-icon {
-                float: right;
-                margin-right: 1px;
-                margin-top: -22px;
-                position: relative;
-                z-index: 2;
-                cursor: pointer;
-            }
-            .fa-lg {
-                font-size: 0.93333333em;
-                line-height: 0.75em;
-                vertical-align: -15%;
-            }
+      body {
+        font-family: "Didact Gothic";
+        font-size: 20px;
+      }
+      .field-icon {
+        float: right;
+        margin-right: 1px;
+        margin-top: -22px;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+      }
+      .fa-lg {
+        font-size: 0.93333333em;
+        line-height: 0.75em;
+        vertical-align: -15%;
+      }
         </style>
     </head>
     <body id="body">
@@ -274,37 +274,34 @@
                 <div class="content">
                     <div class="container-fluid">
                         <script>
-                            function getOut(){
-                                $("#myModalForE2Setup").modal("show");
-                                    setTimeout(function () {
-                                        localStorage.setItem(
-                                        "logout-event",
-                                        "logout" + Math.random()
-                                        );
-                                        let y = localStorage.getItem("wh-user");
-                                        localStorage.clear();                     
-                                        if (y === "main") {
-                                            localStorage.setItem("wh-user", "/#login");
-                                            window.location.href = "/#home";
-                                        } else {
-                                            localStorage.setItem("wh-user", y);
-                                            window.location.href = "" + y;
-                                        }
-                                    }, 2500);
-                                }
-                                $.ajaxSetup({
-                                    statusCode: {
-                                        401: function () {
-                                            getOut();
-                                        },
-                                        0: function () {
-                                            getOut();
-                                        },
-                                        400: function () {
-                                            getOut();
-                                        },
-                                    },
-                                });
+              function getOut() {
+                $("#myModalForE2Setup").modal("show");
+                setTimeout(function () {
+                  localStorage.setItem(
+                    "logout-event",
+                    "logout" + Math.random()
+                  );
+                  let y = localStorage.getItem("wh-user");
+                  localStorage.clear();
+                  if (y === "main") {
+                    localStorage.setItem("wh-user", "/#login");
+                    window.location.href = "/#home";
+                  } else {
+                    localStorage.setItem("wh-user", y);
+                    window.location.href = "" + y;
+                  }
+                }, 2500);
+              }
+              $.ajaxSetup({
+                statusCode: {
+                  401: function () {
+                    getOut();
+                  },
+                  0: function () {
+                    getOut();
+                  },
+                },
+              });
                         </script>
                         <div id="contentMain"></div>
                         <script src="static/js/indexScripts.js"></script>
