@@ -1341,7 +1341,7 @@ ul {
 /* Section: 8 -> Pricing */
 
 .Quixx__Pricing {
-    padding: 5rem 3rem;
+    padding: 5rem 1rem;
     background-color: #f2f1f7;
 }
 
@@ -1367,7 +1367,7 @@ ul {
 
 .pricing-card {
     flex: 50%;
-    max-width: 340px;
+    max-width: 360px;
     margin: 20px 10px;
     text-align: center;
     overflow: hidden;
@@ -1442,7 +1442,7 @@ ul {
     transition: color 250ms ease-in, box-shadow 250ms ease-in;
 }
 
-.Quixx__Pricing .pricing-card:nth-child(2) .order-btn {
+.Quixx__Pricing .pricing-card:nth-child(3) .order-btn {
     background: rgba(0, 0, 0, 0.7);
     color: #fff;
 }
@@ -1472,7 +1472,7 @@ ul {
     color: #fff;
 }
 
-.Quixx__Pricing .pricing-card:nth-child(2) .order-btn::before {
+.Quixx__Pricing .pricing-card:nth-child(3) .order-btn::before {
     background: #fff;
 }
 

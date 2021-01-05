@@ -15,7 +15,7 @@
 
     let ob = document.querySelectorAll('.order-btn');
 
-    let mousePrice = document.querySelector(".Quixx__Pricing .pricing-card:nth-child(2) .order-btn");
+    let mousePrice = document.querySelector(".Quixx__Pricing .pricing-card:nth-child(3) .order-btn");
 
     mousePrice.addEventListener("mouseover", function () {
         this.style.color = "#000";
