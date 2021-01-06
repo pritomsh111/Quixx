@@ -1,682 +1,712 @@
 <!DOCTYPE html>
 <style>
-    /* Delivery Agent Slider */
+  /* Delivery Agent Slider */
 
-    .swiper-container {
-        width: 90%;
-        padding: 50px 4.6rem 100px;
-        position: relative;
-        margin:0 auto;
-    }
+  .swiper-container {
+    width: 90%;
+    padding: 50px 4.6rem 100px;
+    position: relative;
+    margin: 0 auto;
+  }
 
-    .swipper_phone{
-        position: absolute;
-        width: 250px;
-        top: 36px;
-        left: calc(50% - 125px);
-        z-index: 20;
-    }
+  .swipper_phone {
+    position: absolute;
+    width: 250px;
+    top: 36px;
+    left: calc(50% - 125px);
+    z-index: 20;
+  }
 
-    .swiper-slide {
-        background-position: center;
-        background-size: contain;
-        width: 245px;
-        background-color: #fff;
-        overflow: hidden;
-        border-radius: 8px;
-    }
+  .swiper-slide {
+    background-position: center;
+    background-size: contain;
+    width: 245px;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 8px;
+  }
 
-    .swiper-button-prev, .swiper-button-next {
-        outline: none;
-        color: #1d2b42;
-        transition: 200ms;
-    }
+  .swiper-button-prev,
+  .swiper-button-next {
+    outline: none;
+    color: #1d2b42;
+    transition: 200ms;
+  }
 
-    .swiper-button-prev:hover, .swiper-button-next:hover {
-        opacity: 0.8;
-        transform: scale(1.01);
-    }
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    opacity: 0.8;
+    transform: scale(1.01);
+  }
 
-    .picture {  
-        overflow: hidden;
-    }
+  .picture {
+    overflow: hidden;
+  }
 
-    .picture img {
-        display: block;
-        width: 92%;
-        left: 0.6rem;
-        top: 0.5px;
-        object-fit: contain;
-        position: relative;
-        z-index: 10;
-    }
+  .picture img {
+    display: block;
+    width: 92%;
+    left: 0.6rem;
+    top: 0.5px;
+    object-fit: contain;
+    position: relative;
+    z-index: 10;
+  }
 
-    .detail {
-        padding: 25px 20px;
-        font-weight: 600;
-        text-align: center;
-    }
+  .detail {
+    padding: 25px 20px;
+    font-weight: 600;
+    text-align: center;
+  }
 
-    .detail h3 {
-        margin: 0;
-        font-size: 20px;
-    }
+  .detail h3 {
+    margin: 0;
+    font-size: 20px;
+  }
 
-    .detail span {
-        display: block;
-        margin-top: 1rem;
-        font-size: 16px;
-        color: #1d423c;
-    }
+  .detail span {
+    display: block;
+    margin-top: 1rem;
+    font-size: 16px;
+    color: #1d423c;
+  }
 
-    /* Quixx Panel Slider */
+  /* Quixx Panel Slider */
+  .Quixx__Panel__R .swiper-container {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1400px) {
     .Quixx__Panel__R .swiper-container {
-        width: 100%;
-        position: relative;
-        margin:0 auto;
+      height: 104vh;
+    }
+  }
+  @media (max-width: 1200px) {
+    .Quixx__Panel__R .swiper-container {
+      height: 100vh;
     }
 
-    @media (max-width:1400px) {
-        .Quixx__Panel__R .swiper-container {
-            height: 104vh;
-        }
+    .Quixx__Panel__R {
+      margin-left: 10rem;
     }
-    @media (max-width:1200px) {
-        .Quixx__Panel__R .swiper-container {
-            height: 100vh;
-        }
-        
-        .Quixx__Panel__R {
-            margin-left: 10rem;
-        }
-        .Quixx__Panel__R .swiper-container{
-            width: 100%;
-            padding: 50px 4.6rem 0px;
-        }
+    .Quixx__Panel__R .swiper-container {
+      width: 100%;
+      padding: 50px 4.6rem 0px;
     }
-    
-    .Quixx__Panel__R .swiper-slide .picture img {
-        width: 1000px;
-        z-index: 10;
-    }
+  }
 
-    .Quixx__Panel__R .swiper-slide.swiper-slide-active{
-        height: 588px;
-        width: 100%;
-    }
+  .Quixx__Panel__R .swiper-slide .picture img {
+    width: 1000px;
+    z-index: 10;
+  }
 
-    /* Customer Review Slider */
+  .Quixx__Panel__R .swiper-slide.swiper-slide-active {
+    height: 588px;
+    width: 100%;
+  }
 
-    .Customer__R .swiper-slide{
-        padding: 2rem;
-        height: 350px;
-        box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
-        border-right: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-    }
+  /* Customer Review Slider */
 
-    .Customer__R .swiper-slide .pic{
-        height: 80px;
-        width: 80px;
-        border-radius: 50%;
-        margin-bottom: 3rem;
-    }
-    .Customer__R .swiper-slide:nth-child(1) .pic{
-        background: url("static-landing/img/Icon.png") center/contain no-repeat;
-    }
-    .Customer__R .swiper-slide:nth-child(2) .pic{
-        background: url("static-landing/img/Icon.png") center/contain no-repeat;
-    }
-    .Customer__R .swiper-slide:nth-child(3) .pic{
-        background: url("static-landing/img/Icon.png") center/contain no-repeat;    
-    }
+  .Customer__R .swiper-slide {
+    padding: 2rem;
+    height: 350px;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
 
-    .Customer__R .swiper-slide .r-wr{
-        min-height: 100px;
-    }
+  .Customer__R .swiper-slide .pic {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin-bottom: 3rem;
+  }
+  .Customer__R .swiper-slide:nth-child(1) .pic {
+    background: url("static-landing/img/Icon.png") center/contain no-repeat;
+  }
+  .Customer__R .swiper-slide:nth-child(2) .pic {
+    background: url("static-landing/img/Icon.png") center/contain no-repeat;
+  }
+  .Customer__R .swiper-slide:nth-child(3) .pic {
+    background: url("static-landing/img/Icon.png") center/contain no-repeat;
+  }
 
-    @media (max-width:850px){
-        .swiper-container {
-            width: 100%;
-            padding: 50px 0px 100px;
-        }
+  .Customer__R .swiper-slide .r-wr {
+    min-height: 100px;
+  }
+
+  @media (max-width: 850px) {
+    .swiper-container {
+      width: 100%;
+      padding: 50px 0px 100px;
     }
+  }
 </style>
 <div class="Quixx__Side__Prod">
-    <a href="https://www.facebook.com/quixxdigital.xyz/" target="_blank">
-        <div></div>
-    </a>
-    <!-- <a href="https://www.facebook.com/nilkhetian/" target="_blank">
+  <a href="https://www.facebook.com/quixxdigital.xyz/" target="_blank">
+    <div></div>
+  </a>
+  <!-- <a href="https://www.facebook.com/nilkhetian/" target="_blank">
         <div></div>
     </a> -->
-    <a href="https://quixxprojects.xyz" target="_blank">
-        <div></div>
-    </a>
+  <a href="https://quixxprojects.xyz" target="_blank">
+    <div></div>
+  </a>
 </div>
 <div class="Quixx__Mobile" id="Quixx__Mobile">
-    <div class="Quixx__Mobile">
-        <h4>User Friendly</h4>
-        <h1>Delivery Agent's Application</h1>
+  <div class="Quixx__Mobile">
+    <h4>User Friendly</h4>
+    <h1>Delivery Agent's Application</h1>
+  </div>
+  <div class="Quixx__Mobile__Applications">
+    <div class="Mobile__Left">
+      <img
+        src="static-landing/img/phoneFrame.svg"
+        class="Main__Phone"
+        alt="Delivery Agent Application"
+      />
+      <img
+        src="static-landing/img/phone_myT.jpg"
+        class="Main__Phone__Over"
+        id="overlay1"
+        alt="Delivery Agent Application"
+      />
+      <img
+        src="static-landing/img/phone_myTest2.jpg"
+        class="Main__Phone__Over"
+        id="overlay2"
+        alt="Delivery Details"
+      />
+      <img
+        src="static-landing/img/phone_myTest3.jpg"
+        class="Main__Phone__Over"
+        id="overlay3"
+        alt="Receiver's Location on Map"
+      />
+      <img
+        src="static-landing/img/phone_myTest4.jpg"
+        class="Main__Phone__Over"
+        id="overlay4"
+        alt="Assigned Delivery List"
+      />
     </div>
-    <div class="Quixx__Mobile__Applications">
-        <div class="Mobile__Left">
-            <img src="static-landing/img/phoneFrame.svg" class="Main__Phone" alt="Delivery Agent Application">
-            <img
-                src="static-landing/img/phone_myT.jpg"
-                class="Main__Phone__Over"
-                id="overlay1"
-                alt="Delivery Agent Application"
-            >
-            <img
-                src="static-landing/img/phone_myTest2.jpg"
-                class="Main__Phone__Over"
-                id="overlay2"
-                alt="Delivery Details"
-            >
-            <img
-                src="static-landing/img/phone_myTest3.jpg"
-                class="Main__Phone__Over"
-                id="overlay3"
-                alt="Receiver's Location on Map"
-            >
-            <img
-                src="static-landing/img/phone_myTest4.jpg"
-                class="Main__Phone__Over"
-                id="overlay4"
-                alt="Assigned Delivery List"
-            >
-        </div>
-        <div class="Mobile__Right">
-            <div class="Top__Select">
-                <img src="static-landing/img/icon/delivery-details.svg" alt="Delivery Details">
-                <p>Delivery Details</p>
-            </div>
-            <div class="Middle__Select">
-                <img src="static-landing/img/icon/address-location.svg" alt="Receiver's Location">
-                <p>Receiver's Location and Delivery Status</p>
-            </div>
-            <div class="Bottom__Select">
-                <img src="static-landing/img/icon/parcel-delivery.svg" alt="Assigned Deliveries">
-                <p>Assigned Deliveries</p>
-            </div>
-        </div>
+    <div class="Mobile__Right">
+      <div class="Top__Select">
+        <img
+          src="static-landing/img/icon/delivery-details.svg"
+          alt="Delivery Details"
+        />
+        <p>Delivery Details</p>
+      </div>
+      <div class="Middle__Select">
+        <img
+          src="static-landing/img/icon/address-location.svg"
+          alt="Receiver's Location"
+        />
+        <p>Receiver's Location and Delivery Status</p>
+      </div>
+      <div class="Bottom__Select">
+        <img
+          src="static-landing/img/icon/parcel-delivery.svg"
+          alt="Assigned Deliveries"
+        />
+        <p>Assigned Deliveries</p>
+      </div>
     </div>
+  </div>
 </div>
 <div class="Paper__Flyer__Animation">
-    <div class="Real__Time__Tracking">
-        <div class="RTT__DES">
-            <h2>Real Time Tracking</h2>
-            <p>
-                Track your delivery agents at any time, from anywhere.
-            </p>
-        </div>
-        <div class="RTT__IMG"></div>
+  <div class="Real__Time__Tracking">
+    <div class="RTT__DES">
+      <h2>Real Time Tracking</h2>
+      <p>Track your delivery agents at any time, from anywhere.</p>
     </div>
-    <!-- <img src="static-landing/img/paper.png" alt="Paper Flyer" class="Paper__Flyer"> -->
+    <div class="RTT__IMG"></div>
+  </div>
+  <!-- <img src="static-landing/img/paper.png" alt="Paper Flyer" class="Paper__Flyer"> -->
 </div>
 <div class="Route__Optimization">
-    <div class="RO__IMG"></div>
-    <div class="RO__DES">
-        <h2>
-            Route Optimization with Google Map
-        </h2>
-        <p>
-            Your delivery agents can complete deliveries at a minimum time with our built-in route optimization using google map.
-        </p>
-    </div>
+  <div class="RO__IMG"></div>
+  <div class="RO__DES">
+    <h2>Route Optimization with <strong>Our Very Own Quixx Maps</strong></h2>
+    <p>
+      Your delivery agents can complete deliveries at a minimum time with our
+      built-in route optimization using google map.
+    </p>
+  </div>
 </div>
 <div class="Real__SMS">
-    <div class="Real__DES">
-        <h2>
-            Real Time SMS Update
-        </h2>
-        <p>
-            Your customers will be notified of the delivery status updates through SMS.
-        </p>
-    </div>
-    <div class="Real__IMG"></div>
+  <div class="Real__DES">
+    <h2>Real Time SMS Update</h2>
+    <p>
+      Your customers will be notified of the delivery status updates through
+      SMS.
+    </p>
+  </div>
+  <div class="Real__IMG"></div>
 </div>
 <div class="Auto__Delivery">
-    <div class="Auto__IMG"></div>
-    <div class="Auto__DES">
-        <h2>
-            Automatic Delivery Assign
-        </h2>
-        <p>
-            Just create your deliveries and this platform will automatically assign those deliveries based on delivery agents given area.
-        </p>
-    </div>
+  <div class="Auto__IMG"></div>
+  <div class="Auto__DES">
+    <h2>Automatic Delivery Assign</h2>
+    <p>
+      Just create your deliveries and this platform will automatically assign
+      those deliveries based on delivery agents given area.
+    </p>
+  </div>
 </div>
 <div class="Bulk__Delivery">
-    <div class="Bulk__DES">
-        <h2>
-            Create Bulk Deliveries in One Click
-        </h2>
-        <p>
-            Upload an excel or csv file with your deliveries and the rest will be taken care of.
-        </p>
-    </div>
-    <div class="Bulk__IMG"></div>
+  <div class="Bulk__DES">
+    <h2>Create Bulk Deliveries in One Click</h2>
+    <p>
+      Upload an excel or csv file with your deliveries and the rest will be
+      taken care of.
+    </p>
+  </div>
+  <div class="Bulk__IMG"></div>
 </div>
 <div class="Company__Analysis">
-    <div class="Company__IMG"></div>
-    <div class="Company__DES">
-        <h2>
-            Company Growth Analysis
-        </h2>
-        <p>
-            You will be shown an interactive graphical representation of your daily data for growth analysis.
-        </p>
-    </div>
+  <div class="Company__IMG"></div>
+  <div class="Company__DES">
+    <h2>Company Growth Analysis</h2>
+    <p>
+      You will be shown an interactive graphical representation of your daily
+      data for growth analysis.
+    </p>
+  </div>
 </div>
 <div class="Quixx__Mobile__Merchant" id="Quixx__Mobile__Merchant">
-    <h1>Dedicated Merchant Panel Application</h1>
-    <div class="swiper-container merchant-app">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="picture">
-                    <img src="static-landing/img/mer_2.jpg" alt="">
-                </div>
-                <div class="detail">
-                    <span>Dashboard</span>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="picture">
-                    <img src="static-landing/img/mer_3.jpg" alt="">
-                </div>
-                <div class="detail">
-                    <span>Delivery Statistics</span>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="picture">
-                    <img src="static-landing/img/mer_4.jpg" alt="">
-                </div>
-                <div class="detail">
-                    <span>Delivery Creation</span>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="picture">
-                    <img src="static-landing/img/mer_5.jpg" alt="">
-                </div>
-                <div class="detail">
-                    <span>Search Options</span>
-                </div>
-            </div>
+  <h1>Dedicated Merchant Panel Application</h1>
+  <div class="swiper-container merchant-app">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="picture">
+          <img src="static-landing/img/mer_2.jpg" alt="" />
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <img class="swipper_phone" src="static-landing/img/phone8.png" alt="">
+        <div class="detail">
+          <span>Dashboard</span>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="picture">
+          <img src="static-landing/img/mer_3.jpg" alt="" />
+        </div>
+        <div class="detail">
+          <span>Delivery Statistics</span>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="picture">
+          <img src="static-landing/img/mer_4.jpg" alt="" />
+        </div>
+        <div class="detail">
+          <span>Delivery Creation</span>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="picture">
+          <img src="static-landing/img/mer_5.jpg" alt="" />
+        </div>
+        <div class="detail">
+          <span>Search Options</span>
+        </div>
+      </div>
     </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <img class="swipper_phone" src="static-landing/img/phone8.png" alt="" />
+  </div>
 </div>
 <div class="Quixx__Application__Links">
-    <h4>Elevate Your Business With Us</h4>
-    <h1>Separated Apps For Your Convenience</h1>
-    <div class="Q__A__L">
-        <div class="Delivery__Agent__App">
-            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.teamd.quixx&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-                <div>
-                    <img alt="Get it on Google Play" src="static-landing/img/play_store.png">
-                </div>
-            </a>
-            <h3>
-                <!-- <i class="fa fa-users-cog"></i> -->
-                Delivery Agent
-            </h3>
+  <h4>Elevate Your Business With Us</h4>
+  <h1>Separated Apps For Your Convenience</h1>
+  <div class="Q__A__L">
+    <div class="Delivery__Agent__App">
+      <a
+        target="_blank"
+        href="https://play.google.com/store/apps/details?id=com.teamd.quixx&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+      >
+        <div>
+          <img
+            alt="Get it on Google Play"
+            src="static-landing/img/play_store.png"
+          />
         </div>
-        <div></div>
-        <div class="Merchant__App">
-            <a target="_blank" href="https://play.google.com/store/apps/details?id=quixx.example.quixxmerchant&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-                <div>
-                    <img alt="Get it on Google Play" src="static-landing/img/play_store.png">
-                </div>
-            </a>
-            <h3>
-                <!-- <i class="fa fa-users"></i> -->
-                Merchant
-            </h3>
-        </div>
+      </a>
+      <h3>
+        <!-- <i class="fa fa-users-cog"></i> -->
+        Delivery Agent
+      </h3>
     </div>
+    <div></div>
+    <div class="Merchant__App">
+      <a
+        target="_blank"
+        href="https://play.google.com/store/apps/details?id=quixx.example.quixxmerchant&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+      >
+        <div>
+          <img
+            alt="Get it on Google Play"
+            src="static-landing/img/play_store.png"
+          />
+        </div>
+      </a>
+      <h3>
+        <!-- <i class="fa fa-users"></i> -->
+        Merchant
+      </h3>
+    </div>
+  </div>
 </div>
 <div class="Quixx__Panels">
-    <div class="Quixx__Panel__L">
-        <h4>One-Stop Panel</h4>
-        <h1>
-            For
-            <span class="org_span slide_active">Organizations</span>
-            And
-            <span class="mer_span">Merchants</span>
-        </h1>
-    </div>
-    <div class="Quixx__Panel__R">
-        <div class="swiper-container quixx-laptop">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="picture">
-                        <img src="static-landing/img/Org_Dash.png" alt="">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="picture">
-                        <img src="static-landing/img/Mer_Dash.png" alt="">
-                    </div>
-                </div>
-            </div>
+  <div class="Quixx__Panel__L">
+    <h4>One-Stop Panel</h4>
+    <h1>
+      For
+      <span class="org_span slide_active">Organizations</span>
+      And
+      <span class="mer_span">Merchants</span>
+    </h1>
+  </div>
+  <div class="Quixx__Panel__R">
+    <div class="swiper-container quixx-laptop">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="picture">
+            <img src="static-landing/img/Org_Dash.png" alt="" />
+          </div>
         </div>
+        <div class="swiper-slide">
+          <div class="picture">
+            <img src="static-landing/img/Mer_Dash.png" alt="" />
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="Quixx__Pricing">
-    <h4>Pricing</h4>
-    <h1>Choose What Suits Your Business The Best</h1>
-    <div class="pricing-table">
-        <div class="pricing-card">
-            <h3 class="pricing-card-header">Forever Free</h3>
-            <div class="price">
-                Free
-                <span>/Month</span>
-            </div>
-            <!-- <div class="price2">
+  <h4>Pricing</h4>
+  <h1>Choose What Suits Your Business The Best</h1>
+  <div class="pricing-table">
+    <div class="pricing-card">
+      <h3 class="pricing-card-header">Forever Free</h3>
+      <div class="price">
+        Free
+        <span>/Month</span>
+      </div>
+      <!-- <div class="price2">
                 <strong>No</strong>
                 Additional Charge
             </div> -->
-            <ul>
-                <li class="del-c">
-                    Upto
-                    <strong>300</strong>
-                    Deliveries
-                    <sub>/Month</sub>
-                </li>
-                <li class="del-c">
-                    Extra
-                    <strong>
-                        <sup>&#2547;</sup>
-                        1.10
-                    </strong>
-                    <sub>/Delivery</sub>
-                    for additional deliveries
-                </li>
-                <li class="del-c">
-                    <strong>SMS</strong>
-                    charge is not included
-                </li>
-                <li class="del-c">
-                    Registration fee:
-                    <strong>
-                        <sup>&#2547;</sup>
-                        3,000
-                    </strong>
-                </li>
-                <li class="del-c">
-                    + Additional Charge:
-                    <strong>
-                        <sup>&#2547;</sup>
-                        2,000
-                    </strong>
-                    <br>
-                    (If you want your own merchant application, if not, this charge won't be included)
-                </li>
-            </ul>
-            <a class="order-btn" data-val="300">Get It Now</a>
-        </div>
-        <div class="pricing-card">
-            <h3 class="pricing-card-header">Basic</h3>
-            <div class="price">
-                <sup>&#2547;</sup>
-                3,499
-                <span>/Month</span>
-            </div>
-            <!-- <div class="price2">
-                    <strong>No</strong>
-                    Additional Charge
-                </div> -->
-            <ul>
-                <li class="del-c">
-                    Upto
-                    <strong>2,500</strong>
-                    Deliveries
-                    <sub>/Month</sub>
-                </li>
-                <li class="del-c">
-                    Extra
-                    <strong>
-                        <sup>&#2547;</sup>
-                        0.95
-                    </strong>
-                    <sub>/Delivery</sub>
-                    for additional deliveries (If delivery limit exceeds)
-                </li>
-                <li class="del-c">
-                    <strong>3,000 SMS</strong>
-                    included
-                    <br>
-                    ( + Additional
-                    <strong>
-                        <sup>&#2547;</sup>
-                        0.20
-                    </strong>
-                    per
-                    <strong>SMS</strong>
-                    ,
-                    <br>
-                    If
-                    <strong>SMS</strong>
-                    limit exceeds
-                    )
-                </li>
-                <li class="del-c">
-                    Registration fee:
-                    <strong>
-                        <sup>&#2547;</sup>
-                        <span class="line-th">45,000</span>
-                    </strong>
-                </li>
-                <li class="del-c">
-                    Promotional offer
-                    <strong>
-                        <sup>&#2547;</sup>
-                        25,000
-                    </strong>
-                    <br>
-                    (
-                    <strong>Quixx Maps</strong>
-                    ,
-                    <strong>Parrot</strong>
-                    ,
-                    <br>
-                    <strong>AI</strong>
-                    included)
-                </li>
-            </ul>
-            <a class="order-btn" data-val="2500">Get It Now</a>
-        </div>
-        <div class="pricing-card">
-            <h3 class="pricing-card-header">Premium</h3>
-            <div class="price">
-                <sup>&#2547;</sup>
-                7,999
-                <span>/Month</span>
-            </div>
-            <!-- <div class="price2">
-                    <strong>No</strong>
-                    Additional Charge
-                </div> -->
-            <ul>
-                <li class="del-c">
-                    Upto
-                    <strong>5,500</strong>
-                    Deliveries
-                    <sub>/Month</sub>
-                </li>
-                <li class="del-c">
-                    Extra
-                    <strong>
-                        <sup>&#2547;</sup>
-                        0.90
-                    </strong>
-                    <sub>/Delivery</sub>
-                    for additional deliveries (If delivery limit exceeds)
-                </li>
-                <li class="del-c">
-                    <strong>7,000 SMS</strong>
-                    included
-                    <br>
-                    ( + Additional
-                    <strong>
-                        <sup>&#2547;</sup>
-                        0.20
-                    </strong>
-                    per
-                    <strong>SMS</strong>
-                    ,
-                    <br>
-                    If
-                    <strong>SMS</strong>
-                    limit exceeds
-                    )
-                </li>
-                <li class="del-c">
-                    Registration fee:
-                    <strong>
-                        <sup>&#2547;</sup>
-                        <span class="line-th">45,000</span>
-                    </strong>
-                </li>
-                <li class="del-c">
-                    Promotional offer
-                    <strong>
-                        <sup>&#2547;</sup>
-                        25,000
-                    </strong>
-                    <br>
-                    (
-                    <strong>Quixx Maps</strong>
-                    ,
-                    <strong>Parrot</strong>
-                    ,
-                    <br>
-                    <strong>AI</strong>
-                    included)
-                </li>
-            </ul>
-            <a class="order-btn" data-val="5500">Choose Pricing</a>
-        </div>
-        <div class="pricing-card">
-            <h3 class="pricing-card-header">Blast</h3>
-            <div class="price">
-                <sup>&#2547;</sup>
-                14,499
-                <span>/Month</span>
-            </div>
-            <!-- <div class="price2">
-                    <strong>No</strong>
-                    Additional Charge
-                </div> -->
-            <ul>
-                <li class="del-c">
-                    Upto
-                    <strong>10000</strong>
-                    Deliveries
-                    <sub>/Month</sub>
-                </li>
-                <li class="del-c">
-                    Extra
-                    <strong>
-                        <sup>&#2547;</sup>
-                        0.85
-                    </strong>
-                    <sub>/Delivery</sub>
-                    for additional deliveries (If delivery limit exceeds)
-                </li>
-                <li class="del-c">
-                    <strong>15000 SMS</strong>
-                    included
-                    <br>
-                    ( + Additional
-                    <strong>
-                        <sup>&#2547;</sup>
-                        0.20
-                    </strong>
-                    per
-                    <strong>SMS</strong>
-                    ,
-                    <br>
-                    If
-                    <strong>SMS</strong>
-                    limit exceeds
-                    )
-                </li>
-                <li class="del-c">
-                    Registration fee:
-                    <strong>
-                        <sup>&#2547;</sup>
-                        <span class="line-th">45000</span>
-                    </strong>
-                </li>
-                <li class="del-c">
-                    Promotional offer
-                    <strong>
-                        <sup>&#2547;</sup>
-                        25000
-                    </strong>
-                    <br>
-                    (
-                    <strong>Quixx Maps</strong>
-                    ,
-                    <strong>Parrot</strong>
-                    ,
-                    <br>
-                    <strong>AI</strong>
-                    included)
-                </li>
-            </ul>
-            <a class="order-btn" data-val="10000">Get It Now</a>
-        </div>
+      <ul>
+        <li class="del-c">
+          Upto
+          <strong>300</strong>
+          Deliveries
+          <sub>/Month</sub>
+        </li>
+        <li class="del-c">
+          Extra
+          <strong>
+            <sup>&#2547;</sup>
+            1.10
+          </strong>
+          <sub>/Delivery</sub>
+          for additional deliveries
+        </li>
+        <li class="del-c">
+          <strong>SMS</strong>
+          charge is not included
+        </li>
+        <li class="del-c">
+          Registration fee:
+          <strong>
+            <sup>&#2547;</sup>
+            3,000
+          </strong>
+        </li>
+        <li class="del-c">
+          + Additional Charge:
+          <strong>
+            <sup>&#2547;</sup>
+            2,000
+          </strong>
+          <br />
+          (If you want your own merchant application, if not, this charge won't
+          be included)
+        </li>
+      </ul>
+      <a class="order-btn" data-val="300">Get It Now</a>
     </div>
+    <div class="pricing-card">
+      <h3 class="pricing-card-header">Basic</h3>
+      <div class="price">
+        <sup>&#2547;</sup>
+        3,499
+        <span>/Month</span>
+      </div>
+      <!-- <div class="price2">
+                    <strong>No</strong>
+                    Additional Charge
+                </div> -->
+      <ul>
+        <li class="del-c">
+          Upto
+          <strong>2,500</strong>
+          Deliveries
+          <sub>/Month</sub>
+        </li>
+        <li class="del-c">
+          Extra
+          <strong>
+            <sup>&#2547;</sup>
+            0.95
+          </strong>
+          <sub>/Delivery</sub>
+          for additional deliveries (If delivery limit exceeds)
+        </li>
+        <li class="del-c">
+          <strong>3,000 SMS</strong>
+          included
+          <br />
+          ( + Additional
+          <strong>
+            <sup>&#2547;</sup>
+            0.20
+          </strong>
+          per
+          <strong>SMS</strong>
+          ,
+          <br />
+          If
+          <strong>SMS</strong>
+          limit exceeds )
+        </li>
+        <li class="del-c">
+          Registration fee:
+          <strong>
+            <sup>&#2547;</sup>
+            <span class="line-th">45,000</span>
+          </strong>
+        </li>
+        <li class="del-c">
+          Promotional offer
+          <strong>
+            <sup>&#2547;</sup>
+            25,000
+          </strong>
+          <br />
+          (
+          <strong>Quixx Maps</strong>
+          ,
+          <strong>Parrot</strong>
+          ,
+          <br />
+          <strong>AI</strong>
+          included)
+        </li>
+      </ul>
+      <a class="order-btn" data-val="2500">Get It Now</a>
+    </div>
+    <div class="pricing-card">
+      <h3 class="pricing-card-header">Premium</h3>
+      <div class="price">
+        <sup>&#2547;</sup>
+        7,999
+        <span>/Month</span>
+      </div>
+      <!-- <div class="price2">
+                    <strong>No</strong>
+                    Additional Charge
+                </div> -->
+      <ul>
+        <li class="del-c">
+          Upto
+          <strong>5,500</strong>
+          Deliveries
+          <sub>/Month</sub>
+        </li>
+        <li class="del-c">
+          Extra
+          <strong>
+            <sup>&#2547;</sup>
+            0.90
+          </strong>
+          <sub>/Delivery</sub>
+          for additional deliveries (If delivery limit exceeds)
+        </li>
+        <li class="del-c">
+          <strong>7,000 SMS</strong>
+          included
+          <br />
+          ( + Additional
+          <strong>
+            <sup>&#2547;</sup>
+            0.20
+          </strong>
+          per
+          <strong>SMS</strong>
+          ,
+          <br />
+          If
+          <strong>SMS</strong>
+          limit exceeds )
+        </li>
+        <li class="del-c">
+          Registration fee:
+          <strong>
+            <sup>&#2547;</sup>
+            <span class="line-th">45,000</span>
+          </strong>
+        </li>
+        <li class="del-c">
+          Promotional offer
+          <strong>
+            <sup>&#2547;</sup>
+            25,000
+          </strong>
+          <br />
+          (
+          <strong>Quixx Maps</strong>
+          ,
+          <strong>Parrot</strong>
+          ,
+          <br />
+          <strong>AI</strong>
+          included)
+        </li>
+      </ul>
+      <a class="order-btn" data-val="5500">Choose Pricing</a>
+    </div>
+    <div class="pricing-card">
+      <h3 class="pricing-card-header">Blast</h3>
+      <div class="price">
+        <sup>&#2547;</sup>
+        14,499
+        <span>/Month</span>
+      </div>
+      <!-- <div class="price2">
+                    <strong>No</strong>
+                    Additional Charge
+                </div> -->
+      <ul>
+        <li class="del-c">
+          Upto
+          <strong>10000</strong>
+          Deliveries
+          <sub>/Month</sub>
+        </li>
+        <li class="del-c">
+          Extra
+          <strong>
+            <sup>&#2547;</sup>
+            0.85
+          </strong>
+          <sub>/Delivery</sub>
+          for additional deliveries (If delivery limit exceeds)
+        </li>
+        <li class="del-c">
+          <strong>15000 SMS</strong>
+          included
+          <br />
+          ( + Additional
+          <strong>
+            <sup>&#2547;</sup>
+            0.20
+          </strong>
+          per
+          <strong>SMS</strong>
+          ,
+          <br />
+          If
+          <strong>SMS</strong>
+          limit exceeds )
+        </li>
+        <li class="del-c">
+          Registration fee:
+          <strong>
+            <sup>&#2547;</sup>
+            <span class="line-th">45000</span>
+          </strong>
+        </li>
+        <li class="del-c">
+          Promotional offer
+          <strong>
+            <sup>&#2547;</sup>
+            25000
+          </strong>
+          <br />
+          (
+          <strong>Quixx Maps</strong>
+          ,
+          <strong>Parrot</strong>
+          ,
+          <br />
+          <strong>AI</strong>
+          included)
+        </li>
+      </ul>
+      <a class="order-btn" data-val="10000">Get It Now</a>
+    </div>
+  </div>
 </div>
 <div class="Quixx__Video">
-    <h4>Intro Video</h4>
-    <h1>About Quixx</h1>
-    <div class="video"></div>
-    <div class="play_button">
-        <i onclick="play()" class="fa fa-play"></i>
-    </div>
+  <h4>Intro Video</h4>
+  <h1>About Quixx</h1>
+  <div class="video"></div>
+  <div class="play_button">
+    <i onclick="play()" class="fa fa-play"></i>
+  </div>
 </div>
 <div class="Quixx__Customer">
-    <div class="Customer__L">
-        <h4>Happy Customers</h4>
-        <h1>Providing Our Best To Make You Happy</h1>
-    </div>
-    <div class="Customer__R">
-        <div class="swiper-container customer-review">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="Review">
-                        <div class="pic"></div>
-                        <div class="r-wr">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo dolorem quibusdam id inventore dicta neque esse sint suscipit error?</div>
-                        <div class="r-wh">Name</div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="Review">
-                        <div class="pic"></div>
-                        <div class="r-wr">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo dolorem quibusdam id inventore dicta neque esse sint suscipit error?</div>
-                        <div class="r-wh">Name</div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="Review">
-                        <div class="pic"></div>
-                        <div class="r-wr">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo dolorem quibusdam id inventore dicta neque esse sint suscipit error?</div>
-                        <div class="r-wh">Name</div>
-                    </div>
-                </div>
+  <div class="Customer__L">
+    <h4>Happy Customers</h4>
+    <h1>Providing Our Best To Make You Happy</h1>
+  </div>
+  <div class="Customer__R">
+    <div class="swiper-container customer-review">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="Review">
+            <div class="pic"></div>
+            <div class="r-wr">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo
+              dolorem quibusdam id inventore dicta neque esse sint suscipit
+              error?
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="r-wh">Name</div>
+          </div>
         </div>
+        <div class="swiper-slide">
+          <div class="Review">
+            <div class="pic"></div>
+            <div class="r-wr">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo
+              dolorem quibusdam id inventore dicta neque esse sint suscipit
+              error?
+            </div>
+            <div class="r-wh">Name</div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="Review">
+            <div class="pic"></div>
+            <div class="r-wr">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo
+              dolorem quibusdam id inventore dicta neque esse sint suscipit
+              error?
+            </div>
+            <div class="r-wh">Name</div>
+          </div>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
     </div>
+  </div>
 </div>
 <script src="static-landing/js/home.js"></script>

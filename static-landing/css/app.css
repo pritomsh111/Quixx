@@ -1964,6 +1964,8 @@ ul {
 .Q__Us {
     visibility: hidden;
     opacity: 0;
+    font-size: 2.2rem;
+    font-weight: 100;
     transform: translateX(5px);
     transform-origin: top;
     margin-top: 1rem;

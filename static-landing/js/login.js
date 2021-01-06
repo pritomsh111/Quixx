@@ -22,7 +22,9 @@
             typeWritter();
         }, 150);
     }
-    typeWritter();
+    setTimeout(() => {
+        typeWritter();
+    }, 1000);
     // DOM manipulation
 
     let quixxMain = document.querySelector("#Quixx__Main");
@@ -107,7 +109,8 @@
         modal.classList.remove("show");
     });
     modalNextButton.addEventListener("click", function () {
-        phone = document.querySelector("#phone_number");
+        phone = document.querySelector("#phone_number").value;
+        console.log(phone);
         $.ajax
             ({
                 type: "POST",
@@ -159,13 +162,15 @@
         forgotPass.style.display = "none";
         modalError.style.display = "none";
         modalErr.innerHTML = "";
+        modalFooter.style.marginTop = "0rem";
         loader.classList.remove("load-complete");
         checkmark.style.display = "none";
         loader.style.display = "inline-block";
+        let code = document.querySelector("#fp-restore").value;
         $.ajax
             ({
                 type: "GET",
-                url: api + "forget/password/submit/vCode/" + phoneNumber + "/" + code,
+                url: api + "forget/password/submit/vCode/" + phone + "/" + code,
                 success: function (data) {
                     setTimeout(function () {
                         loader.classList.remove("load-complete");
@@ -176,7 +181,7 @@
                             modalErr.innerHTML = "You will receive an SMS!";
                             modalErr.style.color = "#0066b3";
                             modalCloseButton.disabled = false;
-                        }, 1000);
+                        }, 3000);
                     }, 3000);
                 },
                 error: function (data) {
@@ -191,8 +196,6 @@
                     modalErrorFunc();
                 }
             });
-        backdrop.classList.remove("show");
-        modal.classList.remove("show");
     });
 
     let modalErrorFunc = () => {
