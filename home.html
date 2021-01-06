@@ -118,15 +118,18 @@
   }
 
   .Customer__R .swiper-slide .pic {
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
   }
+
   .Customer__R .swiper-slide:nth-child(1) .pic {
-    background: url("static-landing/img/Icon.png") center/contain no-repeat;
+    border: 1px solid rgb(227, 204, 129);
+    background: url("static-landing/img/Appwinex.png") center/contain no-repeat;
   }
   .Customer__R .swiper-slide:nth-child(2) .pic {
-    background: url("static-landing/img/Icon.png") center/contain no-repeat;
+    border: 1px solid rgb(253, 26, 15);
+    background: url("static-landing/img/BULLETEX.png") center/contain no-repeat;
   }
 
   .Review{
@@ -135,11 +138,32 @@
       flex-direction: column;
       justify-content: space-between;
   }
+  .r-wr{
+      font-size: 0.9rem;
+  }
 
+  @media (max-width: 1250px) {
+
+    .Customer__R .swiper-slide {
+        padding: 2rem;
+        height: 450px;
+    }
+  }
+  @media (max-width: 1050px) {
+
+    .Customer__R .swiper-slide {
+        padding: 2rem;
+        height: 550px;
+    }
+  }
   @media (max-width: 850px) {
     .swiper-container {
       width: 100%;
       padding: 50px 0px 100px;
+    }
+    .Customer__R .swiper-slide {
+        padding: 2rem;
+        height: 350px;
     }
   }
 </style>
@@ -642,22 +666,9 @@
                     <div class="Review">
                         <div class="pic"></div>
                         <div class="r-wr">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo
-              dolorem quibusdam id inventore dicta neque esse sint suscipit
-              error?
+                            খুবই চমৎকার ও সময়োপযোগী সার্ভিস। একটি ডেলিভারি প্রতিষ্ঠান পরিচালনার জন্য Quixx এর জবাব নেই।
                         </div>
-                        <div class="r-wh">Name</div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="Review">
-                        <div class="pic"></div>
-                        <div class="r-wr">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo
-              dolorem quibusdam id inventore dicta neque esse sint suscipit
-              error?
-                        </div>
-                        <div class="r-wh">Name</div>
+                        <div class="r-wh">Owner, Bullet Express</div>
                     </div>
                 </div>
             </div>
