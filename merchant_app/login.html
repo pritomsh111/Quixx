@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Didact Gothic" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <link rel="stylesheet" href="style.css">
+        <script src="../static-landing/js/api.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </head>
     <body id="Quixx__Main">
@@ -31,6 +32,51 @@
                 <p class="error"></p>
                 <p class="forgot_pass">Forgot Password</p>
                 <button type="submit" id="login">Login</button>
+            </div>
+        </div>
+        <div class="Modal__Quixx">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+                <div class="forgot-pass">
+                    <div class="FP-step-1 FP show">
+                        <h2>Phone Number:</h2>
+                        <input type="text" id="phone_number">
+                        <h2>
+                            A
+                            <strong>4-digit code</strong>
+                            will be sent to your
+                            <strong>phone number!</strong>
+                        </h2>
+                    </div>
+                    <div class="FP-step-2 FP hide">
+                        <h2>4-digit code:</h2>
+                        <input type="text" id="fp-restore">
+                        <h2>
+                            The
+                            <strong>Password</strong>
+                            will be sent to your
+                            <strong>phone number!</strong>
+                        </h2>
+                    </div>
+                </div>
+                <div class="Signup__Loader">
+                    <div class="circle-loader">
+                        <div class="checkmark draw"></div>
+                    </div>
+                    <h2></h2>
+                </div>
+                <div class="modal-error">
+                    <h2></h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="Button__Quixx Modal__Button close-button">Close</button>
+                <button class="Button__Quixx Modal__Button next-button" disabled>
+                    Next
+                </button>
+                <button class="Button__Quixx Modal__Button done-button" disabled>
+                    Done
+                </button>
             </div>
         </div>
         <script src="login.js"></script>
