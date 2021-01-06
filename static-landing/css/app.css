@@ -1631,6 +1631,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     place-items: center;
+    position: relative;
 }
 
 .Quixx__Customer h1, .Quixx__Customer h4 {
@@ -1655,6 +1656,35 @@ ul {
 .Customer__R {
     width: 100%;
     overflow: hidden;
+}
+
+.Quixx__Clients {
+    position: absolute;
+}
+
+.Quixx__Clients div {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.Quixx__Clients div:nth-child(1) {
+    top: 0rem;
+    right: 2rem;
+    background: url("../img/clients/amaderDeals.jpg") center/contain no-repeat;
+}
+
+.Quixx__Clients div:nth-child(2) {
+    top: -14rem;
+    left: 2rem;
+    background: url("../img/clients/speedEX.png") center/contain no-repeat;
+}
+
+.Quixx__Clients div:nth-child(3) {
+    top: -20rem;
+    left: 19rem;
+    background: url("../img/clients/tabex.png") center/contain no-repeat;
 }
 
 @media (max-width: 1000px) {
