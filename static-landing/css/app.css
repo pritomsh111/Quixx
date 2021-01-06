@@ -209,14 +209,16 @@ ul {
     justify-content: center;
     background: transparent;
     z-index: 50;
-    transform: scale(0);
+    transform: scaleX(0);
+    opacity: 0;
     transform-origin: top;
-    transition: transform 250ms ease-in-out;
+    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
     background-color: #f2f1f7;
 }
 
 .Quixx__Login__Signup li:last-child:hover ul {
-    transform: scale(1);
+    transform: scaleX(1);
+    opacity: 1;
 }
 
 .Quixx__Login__Signup li:last-child li a {
