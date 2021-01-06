@@ -1832,7 +1832,7 @@ ul {
     position: absolute;
     content: "";
     opacity: 0.2;
-    background: url("/static-landing/img/bg3-mf.png") center/contain no-repeat;
+    background: url("/static-landing/img/bg3-mf.png") right/contain no-repeat;
     left: 0;
     right: 0;
     top: 0;
