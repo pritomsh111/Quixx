@@ -1817,6 +1817,10 @@ ul {
     display: inline-block;
 }
 
+.Footer__R ul:last-child li a {
+    cursor: default;
+}
+
 .Footer__R ul:last-child li:first-child {
     display: block;
 }
@@ -1950,9 +1954,9 @@ ul {
 }
 
 .Quixx__Form__Main .Buttons button {
-    padding: .5rem;
-    width: 100px;
-    border-radius: 5px 10px / 20px;
+    padding: .6rem;
+    width: 90px;
+    border-radius: 10px;
     box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.1);
     border: none;
     cursor: pointer;

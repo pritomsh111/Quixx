@@ -13,8 +13,6 @@
     let orgSlide = document.querySelector(".org_span");
     let merSlide = document.querySelector(".mer_span");
 
-    let ob = document.querySelectorAll('.order-btn');
-
     let mousePrice = document.querySelector(".Quixx__Pricing .pricing-card:nth-child(3) .order-btn");
 
     mousePrice.addEventListener("mouseover", function () {
@@ -23,6 +21,15 @@
     mousePrice.addEventListener("mouseleave", function () {
         this.style.color = "#fff";
     });
+
+    let hoverProduct = document.querySelector(".Quixx__Login__Signup li:last-child");
+    let hoverProductUL = document.querySelector(".Quixx__Login__Signup li:last-child ul");
+
+    hoverProduct.addEventListener("mouseover", function () {
+        hoverProductUL.style.backgroundColor = "#f2f1f7";
+    });
+
+    let ob = document.querySelectorAll('.order-btn');
 
     ob.forEach(item => item.addEventListener("click", function (event) {
         localStorage.setItem("price", event.target.dataset.val);
