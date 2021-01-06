@@ -104,7 +104,7 @@ body {
     font-family: inherit;
     cursor: pointer;
     margin: auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
     transition: opacity 250ms ease-in;
 }
 
@@ -152,7 +152,8 @@ body {
 }
 
 .Quixx__Login p.forgot_pass {
-    text-align: right;
+    position: absolute;
+    right: 33px;
     cursor: pointer;
     transition: opacity 250ms ease-in, color 250ms ease-in;
 }

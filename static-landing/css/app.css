@@ -1937,9 +1937,14 @@ ul {
 }
 
 .Quixx__Login p.forgot_pass {
-    text-align: right;
+    position: absolute;
+    right: 0;
     cursor: pointer;
     transition: opacity 250ms ease-in, color 250ms ease-in;
+}
+
+.Quixx__Form__Main .Quixx__Login.Container button {
+    margin-top: 4rem;
 }
 
 .Quixx__Login p:last-of-type:hover {
