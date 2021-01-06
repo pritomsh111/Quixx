@@ -1556,6 +1556,17 @@ ul {
     animation: youtube-circle 2s infinite;
 }
 
+.Quixx__Video .play_button::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e22b2b;
+    border-radius: 50%;
+    background: #fff;
+    z-index: -4;
+}
+
 /* 
 @keyframes youtube-circle {
     0% {
