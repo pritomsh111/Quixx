@@ -115,13 +115,13 @@
     });
     modalNextButton.addEventListener("click", function () {
         phone = document.querySelector("#phone_number").value;
-        console.log(phone);
+        ////console.log(phone);
         $.ajax
             ({
                 type: "POST",
                 url: api + "forget/password/get/vCode/" + phone,
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     fp_restore.value = "";
                     fp_step2.classList.add("show");
                     fp_step2.classList.remove("hide");
@@ -180,7 +180,7 @@
                 type: "GET",
                 url: api + "forget/password/submit/vCode/" + phone + "/" + code,
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     if (data.data === true) {
                         setTimeout(function () {
                             loader.classList.remove("load-complete");
@@ -419,7 +419,7 @@
                 return 1;
             }
         }
-        //console.log(org, email, business, trade, contact, deliveries);
+        ////console.log(org, email, business, trade, contact, deliveries);
         if (v6() && v5() && v4() && v3() && v2() && v1()) {
             clearError();
             quixxMain.style.pointerEvents = "none";

@@ -39,14 +39,14 @@ $(document).ready(function () {
 			]
 		}
 	};
-	console.log(data);
+	// console.log(data);
 	const productType = () => {
 		$.ajax
 			({
 				type: "GET",
 				url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/product/type/",
 				success: function (data) {
-					console.log(data);
+					// console.log(data);
 					let div, child, elem, label;
 					div = document.createElement("div");
 					div.setAttribute("class", "prod_type");
@@ -78,7 +78,7 @@ $(document).ready(function () {
 				type: "GET",
 				url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/weight/",
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					let div, child, elem, label;
 					div = document.createElement("div");
 					div.setAttribute("class", "prod_type");
@@ -110,7 +110,7 @@ $(document).ready(function () {
 				type: "GET",
 				url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/distance/",
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					let div, child, elem, label;
 					div = document.createElement("div");
 					div.setAttribute("class", "prod_type");
@@ -142,7 +142,7 @@ $(document).ready(function () {
 				type: "GET",
 				url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/delivery/type/",
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					let div, child, elem, label;
 					div = document.createElement("div");
 					div.setAttribute("class", "prod_type");
@@ -606,10 +606,10 @@ document.getElementById("updateMerchantMetric").addEventListener("click", functi
 	}
 
 	if (v11() == 2 && v12() == 3 && v13() == 2 & v14() == 3) {
-		console.log(JSON.stringify(moneyProducts));
-		console.log(JSON.stringify(moneyByWeights));
-		console.log(JSON.stringify(moneyByDistance));
-		console.log(JSON.stringify(moneyDeliveryTypes));
+		// console.log(JSON.stringify(moneyProducts));
+		// console.log(JSON.stringify(moneyByWeights));
+		// console.log(JSON.stringify(moneyByDistance));
+		// console.log(JSON.stringify(moneyDeliveryTypes));
 
 		moneyProducts = JSON.stringify(moneyProducts);
 		moneyByWeights = JSON.stringify(moneyByWeights);
@@ -629,7 +629,7 @@ document.getElementById("updateMerchantMetric").addEventListener("click", functi
 				"moneyProducts": moneyProducts
 			}
 		}
-		console.log(data);
+		// console.log(data);
 		// $.ajax
 		// 	({
 		// 		type: "PUT",

@@ -194,7 +194,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 	var cri = document.getElementById("criterion").value;
 	if (cri == "Assign Date" || cri == "Delivery Created Date" || cri == "Delivery Complete Date") {
 		var valx = document.getElementById("ccDate").value;
-		console.log(valx);
+		//console.log(valx);
 	}
 	else if (cri == "Delivery Man") {
 		var valx = document.getElementById("deliveryManList").value;
@@ -279,7 +279,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 				},
 				"dataSrc": "data",
 				"error": function (data) {
-					console.log(data);
+					//console.log(data);
 					$(".aaa").hide();
 					document.getElementById('wrongThisMerSetE').innerHTML = data.responseJSON.errorMessage;
 					$('#myModalWrongMerSetE').modal('show');

@@ -521,10 +521,10 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 	}
 
 	if (v11() == 2 && v12() == 3 && v13() == 2 & v14() == 3 && v1() == 1 && v2() == 1 && v3() == 1) {
-		console.log(JSON.stringify(moneyProducts));
-		console.log(JSON.stringify(moneyByWeights));
-		console.log(JSON.stringify(moneyByDistance));
-		console.log(JSON.stringify(moneyDeliveryTypes));
+		// console.log(JSON.stringify(moneyProducts));
+		// console.log(JSON.stringify(moneyByWeights));
+		// console.log(JSON.stringify(moneyByDistance));
+		// console.log(JSON.stringify(moneyDeliveryTypes));
 
 		moneyProducts = JSON.stringify(moneyProducts);
 		moneyByWeights = JSON.stringify(moneyByWeights);

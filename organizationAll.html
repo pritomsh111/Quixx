@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <style>
-div.hideKoro{
-	display:none;
-}
+  div.hideKoro {
+    display: none;
+  }
 
-table#dtBasicExample.dataTable tbody tr:hover {
-	background-color: #FFFFEA;
-    border-color: #0066b3; 
-}
+  table#dtBasicExample.dataTable tbody tr:hover {
+    background-color: #ffffea;
+    border-color: #0066b3;
+  }
 
-table#dtBasicExample.dataTable tbody tr:hover > .sorting_1 {
-	background-color: #FFFFEA;
+  table#dtBasicExample.dataTable tbody tr:hover > .sorting_1 {
+    background-color: #ffffea;
     border-color: #0066b3;
-}
-table#dtBasicExampleAp.dataTable tbody tr:hover {
-	background-color: #FFFFEA;
+  }
+  table#dtBasicExampleAp.dataTable tbody tr:hover {
+    background-color: #ffffea;
     border-color: #0066b3;
-}
+  }
 
-table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
-	background-color: #FFFFEA;
+  table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
+    background-color: #ffffea;
     border-color: #0066b3;
-}
-.naV{
- background:#ffcf5c;
-}
-.row {
-  display: flex;
-}
-.col-md-4 {
-  flex-grow: 1;
-  text-align: center;
-}
-.cool-link {
+  }
+  .naV {
+    background: #ffcf5c;
+  }
+  .row {
+    display: flex;
+  }
+  .col-md-4 {
+    flex-grow: 1;
+    text-align: center;
+  }
+  .cool-link {
     display: inline-block;
     color: #000;
     text-decoration: none;
-}
+  }
 </style>
-<div id="loaderMama" style="margin-top:8%;">
-    <div class="multi-spinner-container" style="color:#fff">
+<div id="loaderMama" style="margin-top: 8%">
+    <div class="multi-spinner-container" style="color: #fff">
         <div class="multi-spinner">
             <div class="multi-spinner">
                 <div class="multi-spinner">
@@ -52,7 +52,14 @@ table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
             </div>
         </div>
     </div>
-    <h3 style=" font-family: 'Didact Gothic';font-size: 24px;text-align:center;color:#0066b3">Please Wait...</h3>
+    <h3 style="
+      font-family: 'Didact Gothic';
+      font-size: 24px;
+      text-align: center;
+      color: #0066b3;
+    ">
+        Please Wait...
+    </h3>
 </div>
 <div class="card naV hideKoro" id="hideKoro">
     <div class="card-body table-responsive">
@@ -61,41 +68,51 @@ table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="one"
-                    style="width:100%;font-size: 13px"
+                    style="width: 100%; font-size: 13px"
                     onclick="registeredOrg()"
-                >Registered Organizations</button>
+                >
+                    Registered Organizations
+                </button>
             </div>
             <div class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="two"
-                    style="width:100%;font-size: 13px"
+                    style="width: 100%; font-size: 13px"
                     onclick="approvedOrg()"
-                >Approved Organizations</button>
+                >
+                    Approved Organizations
+                </button>
             </div>
             <div class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="three"
-                    style="width:100%;font-size: 13px"
+                    style="width: 100%; font-size: 13px"
                     onclick="unApprovedOrg()"
-                >Unapproved Organizations</button>
+                >
+                    Unapproved Organizations
+                </button>
             </div>
             <div class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="four"
-                    style="width:100%;font-size: 13px"
+                    style="width: 100%; font-size: 13px"
                     onclick="activated()"
-                >Activated Organizations</button>
+                >
+                    Activated Organizations
+                </button>
             </div>
             <div class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="five"
-                    style="width:100%;font-size: 13px"
+                    style="width: 100%; font-size: 13px"
                     onclick="disabledd()"
-                >Disabled Organizations</button>
+                >
+                    Disabled Organizations
+                </button>
             </div>
         </div>
     </div>
@@ -104,1431 +121,1548 @@ table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
             <table
                 id="dtBasicExample"
                 class="stripe hover"
-                style="color:#0066b3;"
+                style="color: #0066b3"
                 cellspacing="0"
                 width="100%"
             >
                 <thead>
                     <tr>
-                        <th class="th-sm">
-                            Approved ID
-                        </th>
-                        <th class="th-sm">
-                            Organization Name
-                        </th>
-                        <th class="th-sm">
-                            Trade License
-                        </th>
-                        <th class="th-sm">
-                            Business Field
-                        </th>
-                        <th class="th-sm">
-                            Contact Number
-                        </th>
-                        <th class="th-sm">
-                            Email ID
-                        </th>
-                        <th class="th-sm">
-                            Delivery Range
-                        </th>
-                        <th class="th-sm">
-                            SMS Count
-                        </th>
-                        <th class="th-sm">
-                            Package
-                        </th>
-                        <th class="th-sm">
-                            Organization FaceBook Link
-                        </th>
-                        <th class="th-sm">
-                            Organization Website
-                        </th>
-                        <th class="th-sm">
-                            Update Package
-                        </th>
-                        <th class="th-sm">
-                            Update Message Count
-                        </th>
+                        <th class="th-sm">Approved ID</th>
+                        <th class="th-sm">Organization Name</th>
+                        <th class="th-sm">Trade License</th>
+                        <th class="th-sm">Business Field</th>
+                        <th class="th-sm">Contact Number</th>
+                        <th class="th-sm">Email ID</th>
+                        <th class="th-sm">Delivery Range</th>
+                        <th class="th-sm">SMS Count</th>
+                        <th class="th-sm">Package</th>
+                        <th class="th-sm">Organization FaceBook Link</th>
+                        <th class="th-sm">Organization Website</th>
+                        <th class="th-sm">Update Package</th>
+                        <th class="th-sm">Update Message Count</th>
                     </tr>
                 </thead>
-                <tfoot>
-                </table>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card b">
+        <div class="card-body table-responsive b blur">
+            <table
+                id="dtBasicExampleAp"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">Organization Name</th>
+                        <th class="th-sm">Trade License</th>
+                        <th class="th-sm">Business Field</th>
+                        <th class="th-sm">Contact Number</th>
+                        <th class="th-sm">Email ID</th>
+                        <th class="th-sm">Delivery Range</th>
+                        <th class="th-sm">Organization FaceBook Link</th>
+                        <th class="th-sm">Organization Website</th>
+                        <th class="th-sm">Approve?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card c">
+        <div class="card-body table-responsive c">
+            <table
+                id="dtBasicExampleActivate"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">Approved ID</th>
+                        <th class="th-sm">Organization Name</th>
+                        <th class="th-sm">Trade License</th>
+                        <th class="th-sm">Business Field</th>
+                        <th class="th-sm">Contact Number</th>
+                        <th class="th-sm">Email ID</th>
+                        <th class="th-sm">Delivery Range</th>
+                        <th class="th-sm">Organization FaceBook Link</th>
+                        <th class="th-sm">Organization Website</th>
+                        <th class="th-sm">Disable?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card d">
+        <div class="card-body table-responsive d">
+            <table
+                id="dtBasicExampleDisable"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">Approved ID</th>
+                        <th class="th-sm">Organization Name</th>
+                        <th class="th-sm">Trade License</th>
+                        <th class="th-sm">Business Field</th>
+                        <th class="th-sm">Contact Number</th>
+                        <th class="th-sm">Email ID</th>
+                        <th class="th-sm">Delivery Range</th>
+                        <th class="th-sm">Organization FaceBook Link</th>
+                        <th class="th-sm">Organization Website</th>
+                        <th class="th-sm">Activate?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" id="myModalLabel" style="color: #0066b3">
+                    Approve this organization?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tick"></div>
+                </div>
+                <h4 id="sure" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancel"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-ok"
+                    id="modalApprove"
+                >
+                    Approve
+                </button>
             </div>
         </div>
-        <div class="card b">
-            <div class="card-body table-responsive b blur">
-                <table
-                    id="dtBasicExampleAp"
-                    class="stripe hover"
-                    style="color:#0066b3;"
-                    cellspacing="0"
-                    width="100%"
-                >
-                    <thead>
-                        <tr>
-                            <th class="th-sm">
-                                Organization Name
-                            </th>
-                            <th class="th-sm">
-                                Trade License
-                            </th>
-                            <th class="th-sm">
-                                Business Field
-                            </th>
-                            <th class="th-sm">
-                                Contact Number
-                            </th>
-                            <th class="th-sm">
-                                Email ID
-                            </th>
-                            <th class="th-sm">
-                                Delivery Range
-                            </th>
-                            <th class="th-sm">
-                                Organization FaceBook Link
-                            </th>
-                            <th class="th-sm">
-                                Organization Website
-                            </th>
-                            <th class="th-sm">
-                                Approve?
-                            </th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                    </table>
-                </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalDeliveryCostUpdate"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Update SMS Count?
+                </h4>
             </div>
-            <div class="card c">
-                <div class="card-body table-responsive c">
-                    <table
-                        id="dtBasicExampleActivate"
-                        class="stripe hover"
-                        style="color:#0066b3;"
-                        cellspacing="0"
-                        width="100%"
+            <div class="modal-body" style="text-align: center; overflow-y: scroll">
+                <form class="p-1" style="color: #0066b3" id="formUpdateDC">
+                    <h5 style="margin-top: 9px">Message Count:</h5>
+                    <h5 id="agerSMS"></h5>
+                    <h5>+</h5>
+                    <input
+                        type="text"
+                        style="
+              color: #0066b3;
+              text-align: center;
+              width: 50%;
+              margin: 0 auto;
+            "
+                        id="delivery_cost_update"
+                        class="form-control"
+                        placeholder=""
                     >
-                        <thead>
-                            <tr>
-                                <th class="th-sm">
-                                    Approved ID
-                                </th>
-                                <th class="th-sm">
-                                    Organization Name
-                                </th>
-                                <th class="th-sm">
-                                    Trade License
-                                </th>
-                                <th class="th-sm">
-                                    Business Field
-                                </th>
-                                <th class="th-sm">
-                                    Contact Number
-                                </th>
-                                <th class="th-sm">
-                                    Email ID
-                                </th>
-                                <th class="th-sm">
-                                    Delivery Range
-                                </th>
-                                <th class="th-sm">
-                                    Organization FaceBook Link
-                                </th>
-                                <th class="th-sm">
-                                    Organization Website
-                                </th>
-                                <th class="th-sm">
-                                    Disable?
-                                </th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                        </table>
-                    </div>
+                </form>
+                <div class="circle-loader" style="text-align: center" id="circleLoad3DC">
+                    <div class="checkmark draw" id="tick3DC"></div>
                 </div>
-                <div class="card d">
-                    <div class="card-body table-responsive d">
-                        <table
-                            id="dtBasicExampleDisable"
-                            class="stripe hover"
-                            style="color:#0066b3;"
-                            cellspacing="0"
-                            width="100%"
-                        >
-                            <thead>
-                                <tr>
-                                    <th class="th-sm">
-                                        Approved ID
-                                    </th>
-                                    <th class="th-sm">
-                                        Organization Name
-                                    </th>
-                                    <th class="th-sm">
-                                        Trade License
-                                    </th>
-                                    <th class="th-sm">
-                                        Business Field
-                                    </th>
-                                    <th class="th-sm">
-                                        Contact Number
-                                    </th>
-                                    <th class="th-sm">
-                                        Email ID
-                                    </th>
-                                    <th class="th-sm">
-                                        Delivery Range
-                                    </th>
-                                    <th class="th-sm">
-                                        Organization FaceBook Link
-                                    </th>
-                                    <th class="th-sm">
-                                        Organization Website
-                                    </th>
-                                    <th class="th-sm">
-                                        Activate?
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="modal fade"
-                    id="myModal"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="myModalLabel"
-                    aria-hidden="true"
-                    data-backdrop="static"
+                <h4 id="sure3DC" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default cancelModDC"
+                    id="modalCancelDC"
+                    data-dismiss="modal"
                 >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button
-                                    type="button"
-                                    class="close"
-                                    data-dismiss="modal"
-                                    aria-hidden="true"
-                                ></button>
-                                <h4 class="modal-title" id="myModalLabel" style="color:#0066b3">Approve this organization?</h4>
-                            </div>
-                            <div class="modal-body" style="text-align:center">
-                                <div class="circle-loader" style="text-align:center">
-                                    <div class="checkmark draw" id="tick"></div>
-                                </div>
-                                <h4 id="sure" style="color:#0066b3"></h4>
-                            </div>
-                            <div class="modal-footer">
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-default"
-                                    id="modalCancel"
-                                    data-dismiss="modal"
-                                >Cancel</button>
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-danger btn-ok"
-                                    id="modalApprove"
-                                >Approve</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="modal fade"
-                    id="myModalDeliveryCostUpdate"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="myModalLabel"
-                    aria-hidden="true"
-                    data-backdrop="static"
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-info btn-ok-updateDC"
+                    id="modalApproveDC"
                 >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button
-                                    type="button"
-                                    class="close"
-                                    data-dismiss="modal"
-                                    aria-hidden="true"
-                                ></button>
-                                <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Update SMS Count?</h4>
-                            </div>
-                            <div class="modal-body" style="text-align:center;overflow-y:scroll;">
-                                <form class="p-1" style="color:#0066b3" id="formUpdateDC">
-                                    <h5 style="margin-top:9px;">Message Count:</h5>
-                                    <h5 id="agerSMS"></h5>
-                                    <h5>+</h5>
-                                    <input
-                                        type="text"
-                                        style="color:#0066b3;text-align:center;width:50%;margin:0 auto;"
-                                        id="delivery_cost_update"
-                                        class="form-control"
-                                        placeholder=""
-                                    >
-                                </form>
-                                <div class="circle-loader" style="text-align:center" id="circleLoad3DC">
-                                    <div class="checkmark draw" id="tick3DC"></div>
-                                </div>
-                                <h4 id="sure3DC" style="color:#0066b3"></h4>
-                            </div>
-                            <div class="modal-footer">
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-default cancelModDC"
-                                    id="modalCancelDC"
-                                    data-dismiss="modal"
-                                >Cancel</button>
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-info btn-ok-updateDC"
-                                    id="modalApproveDC"
-                                >Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="modal fade"
-                    id="myModalPackageUpdate"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="myModalLabel"
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalPackageUpdate"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
                     aria-hidden="true"
-                    data-backdrop="static"
-                >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button
-                                    type="button"
-                                    class="close"
-                                    data-dismiss="modal"
-                                    aria-hidden="true"
-                                ></button>
-                                <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Update Package?</h4>
-                            </div>
-                            <div class="modal-body" style="text-align:center;overflow-y:scroll;">
-                                <form class="p-1" style="color:#0066b3" id="formUpdateDCX">
-                                    <select class="custom-select col-lg-12 btn" id="managersU" style="color:#0066b3;text-align-last:center;text-align:center;width:50%;margin:0 auto;"></select>
-                                </form>
-                                <div class="circle-loader" style="text-align:center" id="circleLoad3DCX">
-                                    <div class="checkmark draw" id="tick3DCX"></div>
-                                </div>
-                                <h4 id="sure3DCX" style="color:#0066b3"></h4>
-                            </div>
-                            <div class="modal-footer">
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-default cancelModDCX"
-                                    id="modalCancelDCX"
-                                    data-dismiss="modal"
-                                >Cancel</button>
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-info btn-ok-updateDCX"
-                                    id="modalApproveDCX"
-                                >Update</button>
-                            </div>
-                        </div>
-                    </div>
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Update Package?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center; overflow-y: scroll">
+                <form class="p-1" style="color: #0066b3" id="formUpdateDCX">
+                    <select class="custom-select col-lg-12 btn" id="managersU" style="
+              color: #0066b3;
+              text-align-last: center;
+              text-align: center;
+              width: 50%;
+              margin: 0 auto;
+            "></select>
+                </form>
+                <div class="circle-loader" style="text-align: center" id="circleLoad3DCX">
+                    <div class="checkmark draw" id="tick3DCX"></div>
                 </div>
-                <div
-                    class="modal fade"
-                    id="myModalMerActivate"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="myModalLabel"
+                <h4 id="sure3DCX" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default cancelModDCX"
+                    id="modalCancelDCX"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-info btn-ok-updateDCX"
+                    id="modalApproveDCX"
+                >
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalMerActivate"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
                     aria-hidden="true"
-                    data-backdrop="static"
-                >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button
-                                    type="button"
-                                    class="close"
-                                    data-dismiss="modal"
-                                    aria-hidden="true"
-                                ></button>
-                                <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Disable Organization?</h4>
-                            </div>
-                            <div class="modal-body" style="text-align:center">
-                                <div class="circle-loader" style="text-align:center">
-                                    <div class="checkmark draw" id="tickActivate"></div>
-                                </div>
-                                <h4 id="sureActivate" style="color:#0066b3"></h4>
-                            </div>
-                            <div class="modal-footer">
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-default"
-                                    id="modalCancel1Activate"
-                                    data-dismiss="modal"
-                                >Cancel</button>
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-danger btn-okActivate"
-                                    id="modalApprove1Activate"
-                                >Disable</button>
-                            </div>
-                        </div>
-                    </div>
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Disable Organization?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tickActivate"></div>
                 </div>
-                <div
-                    class="modal fade"
-                    id="myModalMerDisable"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="myModalLabel"
+                <h4 id="sureActivate" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancel1Activate"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-okActivate"
+                    id="modalApprove1Activate"
+                >
+                    Disable
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalMerDisable"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
                     aria-hidden="true"
-                    data-backdrop="static"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Activate Organization?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tickDisable"></div>
+                </div>
+                <h4 id="sureDisable" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancel1Disable"
+                    data-dismiss="modal"
                 >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button
-                                    type="button"
-                                    class="close"
-                                    data-dismiss="modal"
-                                    aria-hidden="true"
-                                ></button>
-                                <h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Activate Organization?</h4>
-                            </div>
-                            <div class="modal-body" style="text-align:center">
-                                <div class="circle-loader" style="text-align:center">
-                                    <div class="checkmark draw" id="tickDisable"></div>
-                                </div>
-                                <h4 id="sureDisable" style="color:#0066b3"></h4>
-                            </div>
-                            <div class="modal-footer">
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-default"
-                                    id="modalCancel1Disable"
-                                    data-dismiss="modal"
-                                >Cancel</button>
-                                <button
-                                    type="button"
-                                    style="color:#0066b3"
-                                    class="btn btn-outline btn-danger btn-okDisable"
-                                    id="modalApprove1Disable"
-                                >Activate</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="myModal2" class="modal fade" data-backdrop="static">
-                    <div class="modal-dialog modal-confirm">
-                        <div class="modal-content">
-                            <div class="modal-body text-center">
-                                <h4 style="color:#0066b3">Ooops!</h4>
-                                <p style="color:#0066b3"> Something went wrong. Please try again!</p>
-                                <button class="btn btn-outline btn-primary" style="color:#0066b3" data-dismiss="modal">Try Again</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="myModalWrongDeliveryCreate" class="modal fade">
-                    <div class="modal-dialog modal-confirm">
-                        <div class="modal-content">
-                            <div class="modal-body text-center">
-                                <p id="wrongThisDeliveryCreate"></p>
-                                <button class="btn btn-success" data-dismiss="modal">Correct it!</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script>
-function one1(){
-setTimeout(function() { $('#loaderMama').fadeOut(); }, 2100);
-	
-}
-function two2(){
-setTimeout(function() { $('div#hideKoro').removeClass("hidden");$('#hideKoro').fadeIn(); }, 2700);
-	
-}
-function three3(){
-setTimeout(function() {
-		document.getElementById('one').disabled = true;
-		document.getElementById('two').disabled = false;
-		document.getElementById('three').disabled = false;
-		document.getElementById('one').style.fontSize = '14.5px';
-		document.getElementById('two').style.fontSize = '13px';
-		document.getElementById('three').style.fontSize = '13px';
-		document.getElementById('two').innerHTML = 'Approved Organization';
-		document.getElementById('three').innerHTML = 'Unapproved Organization';
-					
-		document.getElementById('five').style.fontSize = '13px';
-		document.getElementById('five').innerHTML = 'Disabled Organization';
-		document.getElementById('five').disabled = false;
-		
-		document.getElementById('four').style.fontSize = '13px';
-		document.getElementById('four').innerHTML = 'Activated Organization';
-		document.getElementById('four').disabled = false;
-		$('#dtBasicExampleAp').hide();
-		$('.b').hide();
-		
-		$('#dtBasicExampleActivate').hide();
-		$('#dtBasicExampleDisable').hide();
-		$('.c').hide();
-		$('.d').hide();
-		var table = $('#dtBasicExample').DataTable( {
-			"processing": true,
-			"destroy": true,
-			"oSearch": { "bSmart": false, "bRegex": true }
-			} );
-			table.clear().draw();
-		$.ajax
-			({
-				async: true,
-				type: "GET",
-				url: urlForAll + "initUser/all",
-				headers: 
-				{
-				  'Accept': 'application/json',
-				  'Content-Type': 'application/json',
-				  "Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function(data) 
-				{
-					document.getElementById('one').innerHTML = 'Registered Organizations: ' + data.data.length;
-					var trHTML = '';
-					$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-					+'---'+'</td><td>'
-					+data.data[i].organizationName+'</td><td>'
-					+data.data[i].tradeLicence+'</td><td>'+data.data[i].businessField+'</td><td>'
-					+data.data[i].contactNumber+'</td><td>'+data.data[i].emailId+'</td><td>'
-					+data.data[i].deliveryRange+'</td><td>'
-					+'---'+'</td><td>'
-					+'---'+'</td><td>'
-					+'<a style="color:#0066b3;text-decoration:underline;" href="https://' + data.data[i].organizationWebsite + '" target="_blank">' + data.data[i].organizationWebsite + '</a>'+'</td><td>'
-					+'<a style="color:#0066b3;text-decoration:underline;" href="https://' + data.data[i].organizationalFaceBookLink + '" target="_blank">' + data.data[i].organizationalFaceBookLink + '</a>' + '</td><td>'
-					+'<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Package</button>'+ '</td><td>'
-					+'<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Message Count</button>'
-					
-					+'</td></tr>';
-					table.rows.add($(table_rows)).draw();
-					});
-				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert("Please wait, we are working!");
-				}
-			})
-		$('.dataTables_filter input[type="search"]').
-		attr('placeholder','Search anything!').
-		css({'width':'300px','display':'inline-block','background':'white'});
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-okDisable"
+                    id="modalApprove1Disable"
+                >
+                    Activate
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal2" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 style="color: #0066b3">Ooops!</h4>
+                <p style="color: #0066b3">Something went wrong. Please try again!</p>
+                <button class="btn btn-outline btn-primary" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalWrongDeliveryCreate" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p id="wrongThisDeliveryCreate"></p>
+                <button class="btn btn-success" data-dismiss="modal">
+                    Correct it!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  function one1() {
+    setTimeout(function () {
+      $("#loaderMama").fadeOut();
+    }, 2100);
+  }
+  function two2() {
+    setTimeout(function () {
+      $("div#hideKoro").removeClass("hidden");
+      $("#hideKoro").fadeIn();
+    }, 2700);
+  }
+  function three3() {
+    setTimeout(function () {
+      document.getElementById("one").disabled = true;
+      document.getElementById("two").disabled = false;
+      document.getElementById("three").disabled = false;
+      document.getElementById("one").style.fontSize = "14.5px";
+      document.getElementById("two").style.fontSize = "13px";
+      document.getElementById("three").style.fontSize = "13px";
+      document.getElementById("two").innerHTML = "Approved Organization";
+      document.getElementById("three").innerHTML = "Unapproved Organization";
 
-		$('.dataTables_filter input[type="search"]').
-		attr('class','btn btn-round').
-		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+      document.getElementById("five").style.fontSize = "13px";
+      document.getElementById("five").innerHTML = "Disabled Organization";
+      document.getElementById("five").disabled = false;
 
-		$('.dataTables_length select').
-		attr('class','btn btn-round').
-		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+      document.getElementById("four").style.fontSize = "13px";
+      document.getElementById("four").innerHTML = "Activated Organization";
+      document.getElementById("four").disabled = false;
+      $("#dtBasicExampleAp").hide();
+      $(".b").hide();
 
-		$('#dtBasicExample').show();
-		$('.a').show();
-	}, 3600);
-}
-                </script>
-                <script>
+      $("#dtBasicExampleActivate").hide();
+      $("#dtBasicExampleDisable").hide();
+      $(".c").hide();
+      $(".d").hide();
+      var table = $("#dtBasicExample").DataTable({
+        processing: true,
+        destroy: true,
+        oSearch: { bSmart: false, bRegex: true },
+      });
+      table.clear().draw();
+      $.ajax({
+        async: true,
+        type: "GET",
+        url: urlForAll + "initUser/all",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        success: function (data) {
+          document.getElementById("one").innerHTML =
+            "Registered Organizations: " + data.data.length;
+          var trHTML = "";
+          $.each(data.data, function (i, item) {
+            var table_rows =
+              "<tr><td>" +
+              "---" +
+              "</td><td>" +
+              data.data[i].organizationName +
+              "</td><td>" +
+              data.data[i].tradeLicence +
+              "</td><td>" +
+              data.data[i].businessField +
+              "</td><td>" +
+              data.data[i].contactNumber +
+              "</td><td>" +
+              data.data[i].emailId +
+              "</td><td>" +
+              data.data[i].deliveryRange +
+              "</td><td>" +
+              "---" +
+              "</td><td>" +
+              "---" +
+              "</td><td>" +
+              '<a style="color:#0066b3;text-decoration:underline;" href="https://' +
+              data.data[i].organizationWebsite +
+              '" target="_blank">' +
+              data.data[i].organizationWebsite +
+              "</a>" +
+              "</td><td>" +
+              '<a style="color:#0066b3;text-decoration:underline;" href="https://' +
+              data.data[i].organizationalFaceBookLink +
+              '" target="_blank">' +
+              data.data[i].organizationalFaceBookLink +
+              "</a>" +
+              "</td><td>" +
+              '<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Package</button>' +
+              "</td><td>" +
+              '<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Message Count</button>' +
+              "</td></tr>";
+            table.rows.add($(table_rows)).draw();
+          });
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          alert("Please wait, we are working!");
+        },
+      });
+      $('.dataTables_filter input[type="search"]')
+        .attr("placeholder", "Search anything!")
+        .css({ width: "300px", display: "inline-block", background: "white" });
 
-$(document).ready(function() {
-	$('#loaderMama').show();
-	//$("#hideKoro").hide();
-	one1();
-	two2();
-	$(".container").hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('.b').hide();
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
-	three3();
-	window.addEventListener('storage', function(event){
-		if (event.key == 'logout-event') { 
-			window.location.href="#login";
-		}
-	});
-} );
-                </script>
-                <script>
-	var registeredOrg = () =>
-	{
-		document.getElementById('one').disabled = true;
-		document.getElementById('two').disabled = false;
-		document.getElementById('three').disabled = false;
-		document.getElementById('one').style.fontSize = '14.5px';
-		document.getElementById('two').style.fontSize = '13px';
-		document.getElementById('three').style.fontSize = '13px';
-		document.getElementById('two').innerHTML = 'Approved Organization';
-		document.getElementById('three').innerHTML = 'Unapproved Organization';
-					
-		document.getElementById('five').style.fontSize = '13px';
-		document.getElementById('five').innerHTML = 'Disabled Organization';
-		document.getElementById('five').disabled = false;
-		
-		document.getElementById('four').style.fontSize = '13px';
-		document.getElementById('four').innerHTML = 'Activated Organization';
-		document.getElementById('four').disabled = false;
-		
-		$('#dtBasicExampleAp').hide();
-		$('.b').hide();
-		$('#dtBasicExampleActivate').hide();
-		$('#dtBasicExampleDisable').hide();
-		$('.c').hide();
-		$('.d').hide();
-		
-		var table = $('#dtBasicExample').DataTable( {
-			"processing": true,
-			"destroy": true,
-			"oSearch": { "bSmart": false, "bRegex": true }
-			} );
-			table.clear().draw();
-		$.ajax
-			({
-				async: true,
-				type: "GET",
-				url: urlForAll + "initUser/all",
-				headers: 
-				{
-				  'Accept': 'application/json',
-				  'Content-Type': 'application/json',
-				  "Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function(data) 
-				{
-					document.getElementById('one').innerHTML = 'Registered Organizations: ' + data.data.length;
-					var trHTML = '';
-					$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-					+'---'+'</td><td>'
-					+data.data[i].organizationName+'</td><td>'
-					+data.data[i].tradeLicence+'</td><td>'+data.data[i].businessField+'</td><td>'
-					+data.data[i].contactNumber+'</td><td>'+data.data[i].emailId+'</td><td>'
-					+data.data[i].deliveryRange+'</td><td>'
-					+'---'+'</td><td>'
-					+'---'+'</td><td>'
-					+'<a style="color:#0066b3;text-decoration:underline;" href="https://' + data.data[i].organizationWebsite + '" target="_blank">' + data.data[i].organizationWebsite + '</a>'+'</td><td>'
-					+'<a style="color:#0066b3;text-decoration:underline;" href="https://' + data.data[i].organizationalFaceBookLink + '" target="_blank">' + data.data[i].organizationalFaceBookLink + '</a>' + '</td><td>'
-					+'<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Package</button></td><td>'
-					+'<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Message Count</button>'
-					+'</td></tr>';
-					table.rows.add($(table_rows)).draw();
-					});
-				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert("Please wait, we are working!");
-				}
-			})
-		$('.dataTables_filter input[type="search"]').
-		attr('placeholder','Search anything!').
-		css({'width':'300px','display':'inline-block','background':'white'});
+      $('.dataTables_filter input[type="search"]')
+        .attr("class", "btn btn-round")
+        .css({
+          width: "300px",
+          display: "inline-block",
+          color: "#000000",
+          background: "#FFFFFA",
+        });
 
-		$('.dataTables_filter input[type="search"]').
-		attr('class','btn btn-round').
-		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+      $(".dataTables_length select")
+        .attr("class", "btn btn-round")
+        .css({
+          width: "80px",
+          "background-color": "white",
+          color: "#000000",
+          background: "#FFFFFA",
+        });
 
-		$('.dataTables_length select').
-		attr('class','btn btn-round').
-		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+      $("#dtBasicExample").show();
+      $(".a").show();
+    }, 3600);
+  }
+</script>
+<script>
+  $(document).ready(function () {
+    $("#loaderMama").show();
+    //$("#hideKoro").hide();
+    one1();
+    two2();
+    $(".container").hide();
+    $("#dtBasicExample").hide();
+    $(".a").hide();
+    $("#dtBasicExampleAp").hide();
+    $(".b").hide();
+    $("#dtBasicExampleActivate").hide();
+    $("#dtBasicExampleDisable").hide();
+    $(".c").hide();
+    $(".d").hide();
+    $.fn.dataTable.ext.classes.sPageButton = "btn btn-outline btn-round"; // Change Pagination Button Class
+    three3();
+    window.addEventListener("storage", function (event) {
+      if (event.key == "logout-event") {
+        window.location.href = "#login";
+      }
+    });
+  });
+</script>
+<script>
+  var registeredOrg = () => {
+    document.getElementById("one").disabled = true;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = false;
+    document.getElementById("one").style.fontSize = "14.5px";
+    document.getElementById("two").style.fontSize = "13px";
+    document.getElementById("three").style.fontSize = "13px";
+    document.getElementById("two").innerHTML = "Approved Organization";
+    document.getElementById("three").innerHTML = "Unapproved Organization";
 
-		$('#dtBasicExample').show();
-		$('.a').show();
-	};
-	var approvedOrg = () =>
-	{
-		document.getElementById('one').innerHTML = 'Registered Organization';
-		document.getElementById('three').innerHTML = 'Unapproved Organization';
+    document.getElementById("five").style.fontSize = "13px";
+    document.getElementById("five").innerHTML = "Disabled Organization";
+    document.getElementById("five").disabled = false;
 
-		document.getElementById('one').disabled = false;
-		document.getElementById('two').disabled = true;
-		document.getElementById('three').disabled = false;
-		document.getElementById('one').style.fontSize = '13px';
-		document.getElementById('two').style.fontSize = '14.5px';
-		document.getElementById('three').style.fontSize = '13px';
-		
-		document.getElementById('five').style.fontSize = '13px';
-		document.getElementById('five').innerHTML = 'Disabled Organization';
-		document.getElementById('five').disabled = false;
-		
-		document.getElementById('four').style.fontSize = '13px';
-		document.getElementById('four').innerHTML = 'Activated Organization';
-		document.getElementById('four').disabled = false;
-		
-		$('#dtBasicExampleAp').hide();
-		$('.b').hide();
-		$('#dtBasicExampleActivate').hide();
-		$('#dtBasicExampleDisable').hide();
-		$('.c').hide();
-		$('.d').hide();
-		var table = $('#dtBasicExample').DataTable( {
-			"processing": true,
-			"destroy": true,
-			"oSearch": { "bSmart": false, "bRegex": true }
-			} );
-			table.clear().draw();
-		$.ajax
-			({
-				async: true,
-				type: "GET",
-				url: urlForAll + "initUser/approved",
-				headers: 
-				{
-				  'Accept': 'application/json',
-				  'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function(data) 
-				{
-					document.getElementById('two').innerHTML = 'Approved Organizations: ' + data.data.length;
-					var trHTML = '';
-					$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-					+data.data[i].approved_id+'</td><td>'
-					+data.data[i].organizationName+'</td><td>'
-					+data.data[i].tradeLicence+'</td><td>'+data.data[i].businessField+'</td><td>'
-					+data.data[i].contactNumber+'</td><td>'+data.data[i].emailId+'</td><td>'
-					+data.data[i].deliveryRange+'</td><td>'
-					+data.data[i].sms_count+'</td><td>'
-					+data.data[i].package_name+'</td><td>'
-					+'<a style="color:#0066b3;text-decoration:underline;" href="https://' + data.data[i].organizationWebsite + '" target="_blank">' + data.data[i].organizationWebsite + '</a>'+'</td><td>'
-					+'<a style="color:#0066b3;text-decoration:underline;" href="https://' + data.data[i].organizationalFaceBookLink + '" target="_blank">' + data.data[i].organizationalFaceBookLink + '</a>' + '</td><td>'
-					+'<button id="' + data.data[i].approved_id + '$$' + data.data[i].package_name + '" class="btn-round btn-outline btn updateChX" style="font-size:14.5px">Update Package</button>' + '</td><td>'
-					+'<button id="' + data.data[i].approved_id + '$$' + data.data[i].sms_count + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Message Count</button>'
-					+'</td></tr>';
-					table.rows.add($(table_rows)).draw();
-					});
-				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert("Please wait, we are working!");
-				}
-			})
-		$('.dataTables_filter input[type="search"]').
-		attr('placeholder','Search anything!').
-		css({'width':'300px','display':'inline-block','background':'white'});
+    document.getElementById("four").style.fontSize = "13px";
+    document.getElementById("four").innerHTML = "Activated Organization";
+    document.getElementById("four").disabled = false;
 
-		$('.dataTables_filter input[type="search"]').
-		attr('class','btn btn-round').
-		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+    $("#dtBasicExampleAp").hide();
+    $(".b").hide();
+    $("#dtBasicExampleActivate").hide();
+    $("#dtBasicExampleDisable").hide();
+    $(".c").hide();
+    $(".d").hide();
 
-		$('.dataTables_length select').
-		attr('class','btn btn-round').
-		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+    var table = $("#dtBasicExample").DataTable({
+      processing: true,
+      destroy: true,
+      oSearch: { bSmart: false, bRegex: true },
+    });
+    table.clear().draw();
+    $.ajax({
+      async: true,
+      type: "GET",
+      url: urlForAll + "initUser/all",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        document.getElementById("one").innerHTML =
+          "Registered Organizations: " + data.data.length;
+        var trHTML = "";
+        $.each(data.data, function (i, item) {
+          var table_rows =
+            "<tr><td>" +
+            "---" +
+            "</td><td>" +
+            data.data[i].organizationName +
+            "</td><td>" +
+            data.data[i].tradeLicence +
+            "</td><td>" +
+            data.data[i].businessField +
+            "</td><td>" +
+            data.data[i].contactNumber +
+            "</td><td>" +
+            data.data[i].emailId +
+            "</td><td>" +
+            data.data[i].deliveryRange +
+            "</td><td>" +
+            "---" +
+            "</td><td>" +
+            "---" +
+            "</td><td>" +
+            '<a style="color:#0066b3;text-decoration:underline;" href="https://' +
+            data.data[i].organizationWebsite +
+            '" target="_blank">' +
+            data.data[i].organizationWebsite +
+            "</a>" +
+            "</td><td>" +
+            '<a style="color:#0066b3;text-decoration:underline;" href="https://' +
+            data.data[i].organizationalFaceBookLink +
+            '" target="_blank">' +
+            data.data[i].organizationalFaceBookLink +
+            "</a>" +
+            "</td><td>" +
+            '<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Package</button></td><td>' +
+            '<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Message Count</button>' +
+            "</td></tr>";
+          table.rows.add($(table_rows)).draw();
+        });
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert("Please wait, we are working!");
+      },
+    });
+    $('.dataTables_filter input[type="search"]')
+      .attr("placeholder", "Search anything!")
+      .css({ width: "300px", display: "inline-block", background: "white" });
 
-		$('#dtBasicExample').show();
-		$('.a').show();
-	}
-	
-	var unApprovedOrg = () => 
-	{ 
-		document.getElementById('one').innerHTML = 'Registered Organization';
-		document.getElementById('two').innerHTML = 'Approved Organization';
-		
-		document.getElementById('one').disabled = false;
-		document.getElementById('two').disabled = false;
-		document.getElementById('three').disabled = true;
-		document.getElementById('one').style.fontSize = '13px';
-		document.getElementById('two').style.fontSize = '13px';
-		document.getElementById('three').style.fontSize = '14.5px';
-		
-		document.getElementById('five').style.fontSize = '13px';
-		document.getElementById('five').innerHTML = 'Disabled Organization';
-		document.getElementById('five').disabled = false;
-		
-		document.getElementById('four').style.fontSize = '13px';
-		document.getElementById('four').innerHTML = 'Activated Organization';
-		document.getElementById('four').disabled = false;
-		$('#dtBasicExample').hide();
-		$('.a').hide();
-		$('#dtBasicExampleAp').hide();
-		$('.b').hide();
-		
-		$('#dtBasicExampleActivate').hide();
-		$('#dtBasicExampleDisable').hide();
-		$('.c').hide();
-		$('.d').hide();
-		var table = $('#dtBasicExampleAp').DataTable( {
-			"processing": true,
-			"destroy": true,
-			"oSearch": { "bSmart": false, "bRegex": true }
-			} );
-			table.clear().draw();
-		$.ajax
-			({
-				async: true,
-				type: "GET",
-				url: urlForAll + "initUser/unapproved",
-				headers: 
-				{
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					"Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function(data) 
-				{
-					document.getElementById('three').innerHTML = 'Unapproved Organizations: ' + data.data.length;
-					
-					var trHTML = '';
-					$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-					+data.data[i].organizationName+'</td><td>'
-					+data.data[i].tradeLicence+'</td><td>'+data.data[i].businessField+'</td><td>'
-					+data.data[i].contactNumber+'</td><td>'+data.data[i].emailId+'</td><td>'
-					+data.data[i].deliveryRange+'</td><td>'
-					+'<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' + data.data[i].organizationWebsite + '" target="_blank">' + data.data[i].organizationWebsite + '</a>'+'</td><td>'
-					+'<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' + data.data[i].organizationalFaceBookLink + '" target="_blank">' + data.data[i].organizationalFaceBookLink + '</a>'+'</td><td>'
-					+'<button id="' + data.data[i].id + '" class="deleteIt btn-round btn-outline btn">Approve</button>'
-					+'</td></tr>';
-					table.rows.add($(table_rows)).draw();
-					});
-				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert("Please wait, we are working!");
-				}
-			})
-		$('.dataTables_filter input[type="search"]').
-		attr('placeholder','Search anything!').
-		css({'width':'300px','display':'inline-block','background':'white'});
+    $('.dataTables_filter input[type="search"]')
+      .attr("class", "btn btn-round")
+      .css({
+        width: "300px",
+        display: "inline-block",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
 
-		$('.dataTables_filter input[type="search"]').
-		attr('class','btn btn-round').
-		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+    $(".dataTables_length select")
+      .attr("class", "btn btn-round")
+      .css({
+        width: "80px",
+        "background-color": "white",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
 
-		$('.dataTables_length select').
-		attr('class','btn btn-round').
-		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+    $("#dtBasicExample").show();
+    $(".a").show();
+  };
+  var approvedOrg = () => {
+    document.getElementById("one").innerHTML = "Registered Organization";
+    document.getElementById("three").innerHTML = "Unapproved Organization";
 
-		$('#dtBasicExampleAp').show();
-		$('.b').show();
-	};
-	var activated = () => 
-	{ 
-		document.getElementById('one').innerHTML = 'Registered Organization';
-		document.getElementById('two').innerHTML = 'Approved Organization';
-		document.getElementById('three').innerHTML = 'Unapproved Organization';
-		
-		document.getElementById('one').disabled = false;
-		document.getElementById('two').disabled = false;
-		document.getElementById('three').disabled = false;
-		document.getElementById('one').style.fontSize = '13px';
-		document.getElementById('two').style.fontSize = '13px';
-		document.getElementById('three').style.fontSize = '13px';
-		
-		document.getElementById('five').style.fontSize = '13px';
-		document.getElementById('five').innerHTML = 'Disabled Organization';
-		document.getElementById('five').disabled = false;
-		
-		document.getElementById('four').style.fontSize = '14.5px';
-		document.getElementById('four').innerHTML = 'Activated Organization';
-		document.getElementById('four').disabled = true;
-		$('#dtBasicExample').hide();
-		$('.a').hide();
-		$('#dtBasicExampleAp').hide();
-		$('.b').hide();
-		
-		$('#dtBasicExampleActivate').hide();
-		$('#dtBasicExampleDisable').hide();
-		$('.c').hide();
-		$('.d').hide();
-		var table = $('#dtBasicExampleActivate').DataTable( {
-			"processing": true,
-			"destroy": true,
-			"oSearch": { "bSmart": false, "bRegex": true }
-			} );
-			table.clear().draw();
-		$.ajax
-			({
-				async: true,
-				type: "GET",
-				url: urlForAll + "approved/all/enable/org",
-				headers: 
-				{
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					"Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function(data) 
-				{
-					document.getElementById('four').innerHTML = 'Activated Organizations: ' + data.data.length;
-					
-					var trHTML = '';
-					$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-					+data.data[i].approved_id+'</td><td>'
-					+data.data[i].organizationName+'</td><td>'
-					+data.data[i].tradeLicence+'</td><td>'+data.data[i].businessField+'</td><td>'
-					+data.data[i].contactNumber+'</td><td>'+data.data[i].emailId+'</td><td>'
-					+data.data[i].deliveryRange+'</td><td>'
-					+'<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' + data.data[i].organizationWebsite + '" target="_blank">' + data.data[i].organizationWebsite + '</a>'+'</td><td>'
-					+'<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' + data.data[i].organizationalFaceBookLink + '" target="_blank">' + data.data[i].organizationalFaceBookLink + '</a>'+'</td><td>'
-					+'<button id="' + data.data[i].approved_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>'
-					+'</td></tr>';
-					table.rows.add($(table_rows)).draw();
-					});
-				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert("Please wait, we are working!");
-				}
-			})
-		$('.dataTables_filter input[type="search"]').
-		attr('placeholder','Search anything!').
-		css({'width':'300px','display':'inline-block','background':'white'});
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = true;
+    document.getElementById("three").disabled = false;
+    document.getElementById("one").style.fontSize = "13px";
+    document.getElementById("two").style.fontSize = "14.5px";
+    document.getElementById("three").style.fontSize = "13px";
 
-		$('.dataTables_filter input[type="search"]').
-		attr('class','btn btn-round').
-		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+    document.getElementById("five").style.fontSize = "13px";
+    document.getElementById("five").innerHTML = "Disabled Organization";
+    document.getElementById("five").disabled = false;
 
-		$('.dataTables_length select').
-		attr('class','btn btn-round').
-		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+    document.getElementById("four").style.fontSize = "13px";
+    document.getElementById("four").innerHTML = "Activated Organization";
+    document.getElementById("four").disabled = false;
 
-		$('#dtBasicExampleActivate').show();
-		$('.c').show();
-	};
-	var disabledd = () => 
-	{ 
-		document.getElementById('one').innerHTML = 'Registered Organization';
-		document.getElementById('two').innerHTML = 'Approved Organization';
-		document.getElementById('three').innerHTML = 'Unapproved Organization';
-		
-		document.getElementById('one').disabled = false;
-		document.getElementById('two').disabled = false;
-		document.getElementById('three').disabled = false;
-		document.getElementById('one').style.fontSize = '13px';
-		document.getElementById('two').style.fontSize = '13px';
-		document.getElementById('three').style.fontSize = '13px';
-		
-		document.getElementById('five').style.fontSize = '14.5px';
-		document.getElementById('five').disabled = true;
-		
-		document.getElementById('four').style.fontSize = '13px';
-		document.getElementById('four').innerHTML = 'Activated Organization';
-		document.getElementById('four').disabled = false;
-		$('#dtBasicExample').hide();
-		$('.a').hide();
-		$('#dtBasicExampleAp').hide();
-		$('.b').hide();
-		
-		$('#dtBasicExampleActivate').hide();
-		$('#dtBasicExampleDisable').hide();
-		$('.c').hide();
-		$('.d').hide();
-		var table = $('#dtBasicExampleDisable').DataTable( {
-			"processing": true,
-			"destroy": true,
-			"oSearch": { "bSmart": false, "bRegex": true }
-			} );
-			table.clear().draw();
-		$.ajax
-			({
-				async: true,
-				type: "GET",
-				url: urlForAll + "approved/all/disable/org",
-				headers: 
-				{
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					"Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function(data) 
-				{
-					document.getElementById('five').innerHTML = 'Disabled Organization: ' + data.data.length;
-					
-					var trHTML = '';
-					$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-					+data.data[i].approved_id+'</td><td>'
-					+data.data[i].organizationName+'</td><td>'
-					+data.data[i].tradeLicence+'</td><td>'+data.data[i].businessField+'</td><td>'
-					+data.data[i].contactNumber+'</td><td>'+data.data[i].emailId+'</td><td>'
-					+data.data[i].deliveryRange+'</td><td>'
-					+'<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' + data.data[i].organizationWebsite + '" target="_blank">' + data.data[i].organizationWebsite + '</a>'+'</td><td>'
-					+'<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' + data.data[i].organizationalFaceBookLink + '" target="_blank">' + data.data[i].organizationalFaceBookLink + '</a>'+'</td><td>'
-					+'<button id="' + data.data[i].approved_id + '" class="btn-round btn-outline btn btn-Activate">Activate</button>'
-					+'</td></tr>';
-					table.rows.add($(table_rows)).draw();
-					});
-				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert("Please wait, we are working!");
-				}
-			})
-		$('.dataTables_filter input[type="search"]').
-		attr('placeholder','Search anything!').
-		css({'width':'300px','display':'inline-block','background':'white'});
+    $("#dtBasicExampleAp").hide();
+    $(".b").hide();
+    $("#dtBasicExampleActivate").hide();
+    $("#dtBasicExampleDisable").hide();
+    $(".c").hide();
+    $(".d").hide();
+    var table = $("#dtBasicExample").DataTable({
+      processing: true,
+      destroy: true,
+      oSearch: { bSmart: false, bRegex: true },
+    });
+    table.clear().draw();
+    $.ajax({
+      async: true,
+      type: "GET",
+      url: urlForAll + "initUser/approved",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        document.getElementById("two").innerHTML =
+          "Approved Organizations: " + data.data.length;
+        var trHTML = "";
+        $.each(data.data, function (i, item) {
+          var table_rows =
+            "<tr><td>" +
+            data.data[i].approved_id +
+            "</td><td>" +
+            data.data[i].organizationName +
+            "</td><td>" +
+            data.data[i].tradeLicence +
+            "</td><td>" +
+            data.data[i].businessField +
+            "</td><td>" +
+            data.data[i].contactNumber +
+            "</td><td>" +
+            data.data[i].emailId +
+            "</td><td>" +
+            data.data[i].deliveryRange +
+            "</td><td>" +
+            data.data[i].sms_count +
+            "</td><td>" +
+            data.data[i].package_name +
+            "</td><td>" +
+            '<a style="color:#0066b3;text-decoration:underline;" href="https://' +
+            data.data[i].organizationWebsite +
+            '" target="_blank">' +
+            data.data[i].organizationWebsite +
+            "</a>" +
+            "</td><td>" +
+            '<a style="color:#0066b3;text-decoration:underline;" href="https://' +
+            data.data[i].organizationalFaceBookLink +
+            '" target="_blank">' +
+            data.data[i].organizationalFaceBookLink +
+            "</a>" +
+            "</td><td>" +
+            '<button id="' +
+            data.data[i].approved_id +
+            "$$" +
+            data.data[i].package_name +
+            '" class="btn-round btn-outline btn updateChX" style="font-size:14.5px">Update Package</button>' +
+            "</td><td>" +
+            '<button id="' +
+            data.data[i].approved_id +
+            "$$" +
+            data.data[i].sms_count +
+            '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Message Count</button>' +
+            "</td></tr>";
+          table.rows.add($(table_rows)).draw();
+        });
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert("Please wait, we are working!");
+      },
+    });
+    $('.dataTables_filter input[type="search"]')
+      .attr("placeholder", "Search anything!")
+      .css({ width: "300px", display: "inline-block", background: "white" });
 
-		$('.dataTables_filter input[type="search"]').
-		attr('class','btn btn-round').
-		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+    $('.dataTables_filter input[type="search"]')
+      .attr("class", "btn btn-round")
+      .css({
+        width: "300px",
+        display: "inline-block",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
 
-		$('.dataTables_length select').
-		attr('class','btn btn-round').
-		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+    $(".dataTables_length select")
+      .attr("class", "btn btn-round")
+      .css({
+        width: "80px",
+        "background-color": "white",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
 
-		$('#dtBasicExampleDisable').show();
-		$('.d').show();
-	};
-	
-	var id;
-	var $t;
-	$('#dtBasicExampleAp').on('click', '.deleteIt', function () 
-	{	
-		id = $(this).attr('id');
-		$t = $(this);
-		$('#tick').hide();
-		$(".circle-loader").removeClass("load-complete");
-	
-		$("#sure").html("Are you sure?");
-		$("#myModal").modal();
-	});
-	$('.btn-ok').click(function(){
-	$("#sure").html("Please wait!");
+    $("#dtBasicExample").show();
+    $(".a").show();
+  };
 
-	document.getElementById('modalCancel').disabled = true;
-	document.getElementById('modalApprove').disabled = true;
-	$.ajax
-		({
-			async: true,
-			type: "GET",
-			
-			url: urlForAll + "approved/org/" + id,
-			
-			headers: 
-			{
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json',
-			  "Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function(data) 
-			{
-				setTimeout(function(){ 
-					$(".circle-loader").addClass("load-complete");
-					
-					$('#tick').show(); 
-				
-					$("#sure").html("Organization approved!");
-				}, 900);
-				
-				setTimeout(function(){ 
-					$("#myModal").modal('hide');
-					var table = $('#dtBasicExampleAp').DataTable();
-					
-					table
-					.row($t.parents('tr'))
-					.remove()
-					.draw();
-					document.getElementById('three').innerHTML = 'Unapproved Organization: ' + table
-																								.column( 0 )
-																								.data()
-																								.length;
-					
-					
-					document.getElementById('modalCancel').disabled = false;
-					document.getElementById('modalApprove').disabled = false;
-					}, 2000);
+  var unApprovedOrg = () => {
+    document.getElementById("one").innerHTML = "Registered Organization";
+    document.getElementById("two").innerHTML = "Approved Organization";
 
-			},
-			error: function(XMLHttpRequest, textStatus, errorThrown) {
-				
-				document.getElementById('modalCancel').disabled = false;
-				document.getElementById('modalApprove').disabled = false;
-				$('#myModal').modal('hide');
-				$('#myModal2').modal();
-			}
-		});
-	});
-	
-	var arr;
-	var id_delivery_update, del_id, creator_ID;
-	$('#dtBasicExample').on('click', '.updateCh', function () 
-	{	
-		id_delivery_update = $(this).attr('id');
-		
-		arr = id_delivery_update.split('$$');
-		
-		org_ID = arr[0];
-		document.getElementById('agerSMS').innerHTML = arr[1];
-		
-		$t = $(this);
-			
-		$("#formUpdateDC").show();
-		$('#tick3DC').hide();
-		//$(".circle-loader").removeClass("load-complete");
-		$("#circleLoad3DC").hide();
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = true;
+    document.getElementById("one").style.fontSize = "13px";
+    document.getElementById("two").style.fontSize = "13px";
+    document.getElementById("three").style.fontSize = "14.5px";
 
-		$("#sure3DC").hide();
-		//$("#sure3").html("Are you sure?");
-		$("#myModalDeliveryCostUpdate").modal('show');
-		//$(".container").show();
-		//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-	});
-	$('.btn-ok-updateDC').click(function(){
-		
-		var delivery_cost_update = document.getElementById('delivery_cost_update').value;
-		
-		var v1 = () =>
-		{
-			if(parseInt(delivery_cost_update)<=0 || delivery_cost_update.charAt(0)==0)
-			{
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than 0!";
-				$('#myModalWrongDeliveryCreate').modal('show');
-				return 0;
-			}
-			else if(isNaN(delivery_cost_update)==true || delivery_cost_update=="" || !/\D/.test(delivery_cost_update)==false)
-			{
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be a number!";
-				$('#myModalWrongDeliveryCreate').modal('show');
-				return 0;
-			}
-			else if(!/\D/.test(delivery_cost_update)==true)
-			{
-				return 1;
-			}
-		}
-		var datap;
-		
-		if(v1()==1)
-		{
-			document.getElementById('modalApproveDC').disabled = true;
-			document.getElementById('modalCancelDC').disabled = true;
-			$('.btn-ok-updateDC').attr('disabled', true);
-			$('.cancelModDC').prop('disabled', true);
-			$("#formUpdateDC").hide();		
-			$(".circle-loader").removeClass("load-complete");
-			$(".circle-loader").show();
-			$("#sure3DC").html("Please wait!");
-			$("#sure3DC").show();
-			$.ajax
-			({
-				async: true,
-				type: "PUT",
-				url: urlForAll + "approved/update/sms/" + org_ID + "/" + delivery_cost_update,
-				headers: 
-				{
-				  'Accept': 'application/json',
-				  'Content-Type': 'application/json',
-				  "Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function(data) 
-				{
-					var newArr;
-					newArr = [
-					data.data.approved_id,
-					data.data.organizationName,
-					data.data.tradeLicence,
-					data.data.businessField,
-					data.data.contactNumber,
-					data.data.emailId,
-					data.data.deliveryRange,
-					data.data.sms_count,
-					data.data.package_name,
-					'<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="https://' + data.data.organizationWebsite + '" target="_blank">' + data.data.organizationWebsite + '</a>',
-					'<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="https://' + data.data.organizationalFaceBookLink + '" target="_blank">' + data.data.organizationalFaceBookLink + '</a>',
-					'<button id="' + data.data.approved_id + '$$' + data.data.package_name + '" class="btn-round btn-outline btn updateChX" style="font-size:14.5px">Update Package</button>',
-					'<button id="' + data.data.approved_id + '$$' + data.data.sms_count + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Message Count</button>'
-					
-					];
-					setTimeout(function(){ 
-						$(".circle-loader").addClass("load-complete");
-						
-						$('#tick3DC').show(); 
-					
-						$("#sure3DC").html("SMS Count Updated!");
-					}, 900);
-					
-					setTimeout(function(){ 
-						$("#myModalDeliveryCostUpdate").modal('hide');
-						document.getElementById('delivery_cost_update').value = "";
-						var table = $('#dtBasicExample').DataTable();
-										table
-										.row($t.parents('tr'))
-										.data(newArr)
-										.draw();
-										//console.log(table.row($t.parents('tr')).data());
-											
-						$('.btn-ok-updateDC').attr('disabled', false);
-						$('.cancelModDC').prop('disabled', false);
-						}, 1600);
-				},
-				error: function(data) {
-					setTimeout(function(){ 
-						
-					$('.btn-ok-updateDC').attr('disabled', false);
-					$('.cancelModDC').prop('disabled', false);
-					}, 900);
-					$('#myModalDeliveryCostUpdate').modal('hide');
-					$('#myModal2').modal('show');
-				}
-			});
-		}
-	});
-	
-//Org Disable/Activate
-$('#dtBasicExampleActivate').on('click', '.btn-Disable', function () 
-{	
-	orgx_id = $(this).attr('id');
-	$t = $(this);
-		
-	$('#tickActivate').hide();
-	$(".circle-loader").removeClass("load-complete");
+    document.getElementById("five").style.fontSize = "13px";
+    document.getElementById("five").innerHTML = "Disabled Organization";
+    document.getElementById("five").disabled = false;
 
-	$("#sureActivate").html("Are you sure?");
-	$("#myModalMerActivate").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-});
-$('.btn-okActivate').click(function(){
-					
-	$("#sureActivate").html("Please wait!");
-	document.getElementById('modalCancel1Activate').disabled = true;
-	document.getElementById('modalApprove1Activate').disabled = true;
-	$.ajax
-	({
-		async: true,
-		type: "PUT",
-		url: urlForAll + "approved/disable/org/" + orgx_id,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			$("#sureActivate").html("Please wait!");
-			setTimeout(function(){ 
-				$(".circle-loader").addClass("load-complete");
-				
-				$('#tickActivate').show(); 
-			
-				$("#sureActivate").html("Organization Disabled!");
-			}, 900);
-			
-			setTimeout(function(){ 
-				$("#myModalMerActivate").modal('hide');
-				var table = $('#dtBasicExampleActivate').DataTable();
-				table
-				.row($t.parents('tr'))
-				.remove()
-				.draw();
-				document.getElementById('four').innerHTML = 'Activated Organizations: ' + table
-																						.column( 0 )
-																						.data()
-																						.length;
-			
-				document.getElementById('modalCancel1Activate').disabled = false;
-				document.getElementById('modalApprove1Activate').disabled = false;
-				}, 2000);
-		},
-		error: function(data) {
-			
-			document.getElementById('modalCancel1Activate').disabled = false;
-			document.getElementById('modalApprove1Activate').disabled = false;
-			$('#myModalMerActivate').modal('hide');
-			$('#myModal2').modal('show');
-		}
-	});
-});
+    document.getElementById("four").style.fontSize = "13px";
+    document.getElementById("four").innerHTML = "Activated Organization";
+    document.getElementById("four").disabled = false;
+    $("#dtBasicExample").hide();
+    $(".a").hide();
+    $("#dtBasicExampleAp").hide();
+    $(".b").hide();
 
-$('#dtBasicExampleDisable').on('click', '.btn-Activate', function () 
-{	
-	orgx_id = $(this).attr('id');
-	$t = $(this);
-	
-	$('#tickDisable').hide();
-	$(".circle-loader").removeClass("load-complete");
+    $("#dtBasicExampleActivate").hide();
+    $("#dtBasicExampleDisable").hide();
+    $(".c").hide();
+    $(".d").hide();
+    var table = $("#dtBasicExampleAp").DataTable({
+      processing: true,
+      destroy: true,
+      oSearch: { bSmart: false, bRegex: true },
+    });
+    table.clear().draw();
+    $.ajax({
+      async: true,
+      type: "GET",
+      url: urlForAll + "initUser/unapproved",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        document.getElementById("three").innerHTML =
+          "Unapproved Organizations: " + data.data.length;
 
-	$("#sureDisable").html("Are you sure?");
-	$("#myModalMerDisable").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-});
-$('.btn-okDisable').click(function(){
-					
-	$("#sureDisable").html("Please wait!");
-	document.getElementById('modalCancel1Disable').disabled = true;
-	document.getElementById('modalApprove1Disable').disabled = true;
-	$.ajax
-	({
-		async: true,
-		type: "PUT",
-		url: urlForAll + "approved/enable/org/" + orgx_id,	
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			$("#sureDisable").html("Please wait!");
-			setTimeout(function(){ 
-				$(".circle-loader").addClass("load-complete");
-				
-				$('#tickDisable').show(); 
-			
-				$("#sureDisable").html("Organization Activated!");
-			}, 900);
-			
-			setTimeout(function(){ 
-				$("#myModalMerDisable").modal('hide');
-				var table = $('#dtBasicExampleDisable').DataTable();
-				table
-				.row($t.parents('tr'))
-				.remove()
-				.draw();
-				document.getElementById('five').innerHTML = 'Disabled Organizations: ' + table
-																						.column( 0 )
-																						.data()
-																						.length;
-			
-				document.getElementById('modalCancel1Disable').disabled = false;
-				document.getElementById('modalApprove1Disable').disabled = false;
-				}, 2000);
-		},
-		error: function(data) {
-			
-			document.getElementById('modalCancel1Disable').disabled = false;
-			document.getElementById('modalApprove1Disable').disabled = false;
-			$('#myModalMerDisable').modal('hide');
-			$('#myModal2').modal('show');
-		}
-	});
-});
+        var trHTML = "";
+        $.each(data.data, function (i, item) {
+          var table_rows =
+            "<tr><td>" +
+            data.data[i].organizationName +
+            "</td><td>" +
+            data.data[i].tradeLicence +
+            "</td><td>" +
+            data.data[i].businessField +
+            "</td><td>" +
+            data.data[i].contactNumber +
+            "</td><td>" +
+            data.data[i].emailId +
+            "</td><td>" +
+            data.data[i].deliveryRange +
+            "</td><td>" +
+            '<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' +
+            data.data[i].organizationWebsite +
+            '" target="_blank">' +
+            data.data[i].organizationWebsite +
+            "</a>" +
+            "</td><td>" +
+            '<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' +
+            data.data[i].organizationalFaceBookLink +
+            '" target="_blank">' +
+            data.data[i].organizationalFaceBookLink +
+            "</a>" +
+            "</td><td>" +
+            '<button id="' +
+            data.data[i].id +
+            '" class="deleteIt btn-round btn-outline btn">Approve</button>' +
+            "</td></tr>";
+          table.rows.add($(table_rows)).draw();
+        });
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert("Please wait, we are working!");
+      },
+    });
+    $('.dataTables_filter input[type="search"]')
+      .attr("placeholder", "Search anything!")
+      .css({ width: "300px", display: "inline-block", background: "white" });
 
-//Update Package
+    $('.dataTables_filter input[type="search"]')
+      .attr("class", "btn btn-round")
+      .css({
+        width: "300px",
+        display: "inline-block",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
 
-var thikKoro = (packageX) => 
-{
-	$('#managersU')
-		.empty();
-	$.ajax
-	({
-		url: urlForAll+ "package/all",
-		type: "GET",
-		
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		
-		success: function(data)
-		{
-			var j;
-			for(var i = 0; i < data.data.length ; i++)
-			{
-				var option = new Option(data.data[i], data.data[i]);
-				$(option).html(data.data[i]);
-				if(packageX==data.data[i]){
-					j=i;
-				}
-				$("#managersU").append(option);
-			}
-			document.getElementById('managersU').selectedIndex = j; //Package
-		}
-	} );
-}
-$('#dtBasicExample').on('click', '.updateChX', function () 
-{	
-	id_delivery_update = $(this).attr('id');
-	
-	arr = id_delivery_update.split('$$');
-	
-	org_ID = arr[0];
-	//document.getElementById('agerPackage').innerHTML = arr[1];
-	
-	$t = $(this);
-	
-	thikKoro(arr[1]); // Eikhane ager package value boshbe!
-	$("#formUpdateDCX").show();
-	$('#tick3DCX').hide();
-	//$(".circle-loader").removeClass("load-complete");
-	$("#circleLoad3DCX").hide();
+    $(".dataTables_length select")
+      .attr("class", "btn btn-round")
+      .css({
+        width: "80px",
+        "background-color": "white",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
 
-	$("#sure3DCX").hide();
-	//$("#sure3").html("Are you sure?");
-	$("#myModalPackageUpdate").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-});
-$('.btn-ok-updateDCX').click(function(){
-	
-	var packageUpdate = document.getElementById('managersU').value;
-	
-	var datap;
-	
-	document.getElementById('modalApproveDCX').disabled = true;
-	document.getElementById('modalCancelDCX').disabled = true;
-	$('.btn-ok-updateDCX').attr('disabled', true);
-	$('.cancelModDCX').prop('disabled', true);
-	$("#formUpdateDCX").hide();		
-	$(".circle-loader").removeClass("load-complete");
-	$(".circle-loader").show();
-	$("#sure3DCX").html("Please wait!");
-	$("#sure3DCX").show();
-	$.ajax
-	({
-		async: true,
-		type: "PUT",
-		url: urlForAll + "package/" + org_ID + "/" + packageUpdate,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			console.log(data);
-			var table = $('#dtBasicExample').DataTable();
-				
-			table.cell({row:table.row($t.closest('tr')).index(), column:8}).data(data.data);
-			
-			document.getElementById(`${id_delivery_update}`).id = org_ID+ '$$' + data.data;
-			setTimeout(function(){ 
-				$(".circle-loader").addClass("load-complete");
-				
-				$('#tick3DCX').show(); 
-			
-				$("#sure3DCX").html("Package Updated!");
-			}, 900);
-			
-			setTimeout(function(){ 
-				$("#myModalPackageUpdate").modal('hide');
-									
-				$('.btn-ok-updateDCX').attr('disabled', false);
-				$('.cancelModDCX').prop('disabled', false);
-				}, 1600);
-		},
-		error: function(data) {
-			setTimeout(function(){ 
-				
-			$('.btn-ok-updateDCX').attr('disabled', false);
-			$('.cancelModDCX').prop('disabled', false);
-			}, 900);
-			$('#myModalPackageUpdate').modal('hide');
-			$('#myModal2').modal('show');
-		}
-	});
-});
-                </script>
+    $("#dtBasicExampleAp").show();
+    $(".b").show();
+  };
+  var activated = () => {
+    document.getElementById("one").innerHTML = "Registered Organization";
+    document.getElementById("two").innerHTML = "Approved Organization";
+    document.getElementById("three").innerHTML = "Unapproved Organization";
+
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = false;
+    document.getElementById("one").style.fontSize = "13px";
+    document.getElementById("two").style.fontSize = "13px";
+    document.getElementById("three").style.fontSize = "13px";
+
+    document.getElementById("five").style.fontSize = "13px";
+    document.getElementById("five").innerHTML = "Disabled Organization";
+    document.getElementById("five").disabled = false;
+
+    document.getElementById("four").style.fontSize = "14.5px";
+    document.getElementById("four").innerHTML = "Activated Organization";
+    document.getElementById("four").disabled = true;
+    $("#dtBasicExample").hide();
+    $(".a").hide();
+    $("#dtBasicExampleAp").hide();
+    $(".b").hide();
+
+    $("#dtBasicExampleActivate").hide();
+    $("#dtBasicExampleDisable").hide();
+    $(".c").hide();
+    $(".d").hide();
+    var table = $("#dtBasicExampleActivate").DataTable({
+      processing: true,
+      destroy: true,
+      oSearch: { bSmart: false, bRegex: true },
+    });
+    table.clear().draw();
+    $.ajax({
+      async: true,
+      type: "GET",
+      url: urlForAll + "approved/all/enable/org",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        document.getElementById("four").innerHTML =
+          "Activated Organizations: " + data.data.length;
+
+        var trHTML = "";
+        $.each(data.data, function (i, item) {
+          var table_rows =
+            "<tr><td>" +
+            data.data[i].approved_id +
+            "</td><td>" +
+            data.data[i].organizationName +
+            "</td><td>" +
+            data.data[i].tradeLicence +
+            "</td><td>" +
+            data.data[i].businessField +
+            "</td><td>" +
+            data.data[i].contactNumber +
+            "</td><td>" +
+            data.data[i].emailId +
+            "</td><td>" +
+            data.data[i].deliveryRange +
+            "</td><td>" +
+            '<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' +
+            data.data[i].organizationWebsite +
+            '" target="_blank">' +
+            data.data[i].organizationWebsite +
+            "</a>" +
+            "</td><td>" +
+            '<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' +
+            data.data[i].organizationalFaceBookLink +
+            '" target="_blank">' +
+            data.data[i].organizationalFaceBookLink +
+            "</a>" +
+            "</td><td>" +
+            '<button id="' +
+            data.data[i].approved_id +
+            '" class="btn-round btn-outline btn btn-Disable">Disable</button>' +
+            "</td></tr>";
+          table.rows.add($(table_rows)).draw();
+        });
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert("Please wait, we are working!");
+      },
+    });
+    $('.dataTables_filter input[type="search"]')
+      .attr("placeholder", "Search anything!")
+      .css({ width: "300px", display: "inline-block", background: "white" });
+
+    $('.dataTables_filter input[type="search"]')
+      .attr("class", "btn btn-round")
+      .css({
+        width: "300px",
+        display: "inline-block",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
+
+    $(".dataTables_length select")
+      .attr("class", "btn btn-round")
+      .css({
+        width: "80px",
+        "background-color": "white",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
+
+    $("#dtBasicExampleActivate").show();
+    $(".c").show();
+  };
+  var disabledd = () => {
+    document.getElementById("one").innerHTML = "Registered Organization";
+    document.getElementById("two").innerHTML = "Approved Organization";
+    document.getElementById("three").innerHTML = "Unapproved Organization";
+
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = false;
+    document.getElementById("one").style.fontSize = "13px";
+    document.getElementById("two").style.fontSize = "13px";
+    document.getElementById("three").style.fontSize = "13px";
+
+    document.getElementById("five").style.fontSize = "14.5px";
+    document.getElementById("five").disabled = true;
+
+    document.getElementById("four").style.fontSize = "13px";
+    document.getElementById("four").innerHTML = "Activated Organization";
+    document.getElementById("four").disabled = false;
+    $("#dtBasicExample").hide();
+    $(".a").hide();
+    $("#dtBasicExampleAp").hide();
+    $(".b").hide();
+
+    $("#dtBasicExampleActivate").hide();
+    $("#dtBasicExampleDisable").hide();
+    $(".c").hide();
+    $(".d").hide();
+    var table = $("#dtBasicExampleDisable").DataTable({
+      processing: true,
+      destroy: true,
+      oSearch: { bSmart: false, bRegex: true },
+    });
+    table.clear().draw();
+    $.ajax({
+      async: true,
+      type: "GET",
+      url: urlForAll + "approved/all/disable/org",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        document.getElementById("five").innerHTML =
+          "Disabled Organization: " + data.data.length;
+
+        var trHTML = "";
+        $.each(data.data, function (i, item) {
+          var table_rows =
+            "<tr><td>" +
+            data.data[i].approved_id +
+            "</td><td>" +
+            data.data[i].organizationName +
+            "</td><td>" +
+            data.data[i].tradeLicence +
+            "</td><td>" +
+            data.data[i].businessField +
+            "</td><td>" +
+            data.data[i].contactNumber +
+            "</td><td>" +
+            data.data[i].emailId +
+            "</td><td>" +
+            data.data[i].deliveryRange +
+            "</td><td>" +
+            '<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' +
+            data.data[i].organizationWebsite +
+            '" target="_blank">' +
+            data.data[i].organizationWebsite +
+            "</a>" +
+            "</td><td>" +
+            '<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="http://' +
+            data.data[i].organizationalFaceBookLink +
+            '" target="_blank">' +
+            data.data[i].organizationalFaceBookLink +
+            "</a>" +
+            "</td><td>" +
+            '<button id="' +
+            data.data[i].approved_id +
+            '" class="btn-round btn-outline btn btn-Activate">Activate</button>' +
+            "</td></tr>";
+          table.rows.add($(table_rows)).draw();
+        });
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert("Please wait, we are working!");
+      },
+    });
+    $('.dataTables_filter input[type="search"]')
+      .attr("placeholder", "Search anything!")
+      .css({ width: "300px", display: "inline-block", background: "white" });
+
+    $('.dataTables_filter input[type="search"]')
+      .attr("class", "btn btn-round")
+      .css({
+        width: "300px",
+        display: "inline-block",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
+
+    $(".dataTables_length select")
+      .attr("class", "btn btn-round")
+      .css({
+        width: "80px",
+        "background-color": "white",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
+
+    $("#dtBasicExampleDisable").show();
+    $(".d").show();
+  };
+
+  var id;
+  var $t;
+  $("#dtBasicExampleAp").on("click", ".deleteIt", function () {
+    id = $(this).attr("id");
+    $t = $(this);
+    $("#tick").hide();
+    $(".circle-loader").removeClass("load-complete");
+
+    $("#sure").html("Are you sure?");
+    $("#myModal").modal();
+  });
+  $(".btn-ok").click(function () {
+    $("#sure").html("Please wait!");
+
+    document.getElementById("modalCancel").disabled = true;
+    document.getElementById("modalApprove").disabled = true;
+    $.ajax({
+      async: true,
+      type: "GET",
+
+      url: urlForAll + "approved/org/" + id,
+
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        setTimeout(function () {
+          $(".circle-loader").addClass("load-complete");
+
+          $("#tick").show();
+
+          $("#sure").html("Organization approved!");
+        }, 900);
+
+        setTimeout(function () {
+          $("#myModal").modal("hide");
+          var table = $("#dtBasicExampleAp").DataTable();
+
+          table.row($t.parents("tr")).remove().draw();
+          document.getElementById("three").innerHTML =
+            "Unapproved Organization: " + table.column(0).data().length;
+
+          document.getElementById("modalCancel").disabled = false;
+          document.getElementById("modalApprove").disabled = false;
+        }, 2000);
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        document.getElementById("modalCancel").disabled = false;
+        document.getElementById("modalApprove").disabled = false;
+        $("#myModal").modal("hide");
+        $("#myModal2").modal();
+      },
+    });
+  });
+
+  var arr;
+  var id_delivery_update, del_id, creator_ID;
+  $("#dtBasicExample").on("click", ".updateCh", function () {
+    id_delivery_update = $(this).attr("id");
+
+    arr = id_delivery_update.split("$$");
+
+    org_ID = arr[0];
+    document.getElementById("agerSMS").innerHTML = arr[1];
+
+    $t = $(this);
+
+    $("#formUpdateDC").show();
+    $("#tick3DC").hide();
+    //$(".circle-loader").removeClass("load-complete");
+    $("#circleLoad3DC").hide();
+
+    $("#sure3DC").hide();
+    //$("#sure3").html("Are you sure?");
+    $("#myModalDeliveryCostUpdate").modal("show");
+    //$(".container").show();
+    //document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+  });
+  $(".btn-ok-updateDC").click(function () {
+    var delivery_cost_update = document.getElementById("delivery_cost_update")
+      .value;
+
+    var v1 = () => {
+      if (
+        parseInt(delivery_cost_update) <= 0 ||
+        delivery_cost_update.charAt(0) == 0
+      ) {
+        document.getElementById("wrongThisDeliveryCreate").innerHTML =
+          "Delivery Charge must be greater than 0!";
+        $("#myModalWrongDeliveryCreate").modal("show");
+        return 0;
+      } else if (
+        isNaN(delivery_cost_update) == true ||
+        delivery_cost_update == "" ||
+        !/\D/.test(delivery_cost_update) == false
+      ) {
+        document.getElementById("wrongThisDeliveryCreate").innerHTML =
+          "Delivery Charge must be a number!";
+        $("#myModalWrongDeliveryCreate").modal("show");
+        return 0;
+      } else if (!/\D/.test(delivery_cost_update) == true) {
+        return 1;
+      }
+    };
+    var datap;
+
+    if (v1() == 1) {
+      document.getElementById("modalApproveDC").disabled = true;
+      document.getElementById("modalCancelDC").disabled = true;
+      $(".btn-ok-updateDC").attr("disabled", true);
+      $(".cancelModDC").prop("disabled", true);
+      $("#formUpdateDC").hide();
+      $(".circle-loader").removeClass("load-complete");
+      $(".circle-loader").show();
+      $("#sure3DC").html("Please wait!");
+      $("#sure3DC").show();
+      $.ajax({
+        async: true,
+        type: "PUT",
+        url:
+          urlForAll +
+          "approved/update/sms/" +
+          org_ID +
+          "/" +
+          delivery_cost_update,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        success: function (data) {
+          var newArr;
+          newArr = [
+            data.data.approved_id,
+            data.data.organizationName,
+            data.data.tradeLicence,
+            data.data.businessField,
+            data.data.contactNumber,
+            data.data.emailId,
+            data.data.deliveryRange,
+            data.data.sms_count,
+            data.data.package_name,
+            '<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="https://' +
+              data.data.organizationWebsite +
+              '" target="_blank">' +
+              data.data.organizationWebsite +
+              "</a>",
+            '<a class="cool-link" style="color:#0066b3;text-decoration:underline;" href="https://' +
+              data.data.organizationalFaceBookLink +
+              '" target="_blank">' +
+              data.data.organizationalFaceBookLink +
+              "</a>",
+            '<button id="' +
+              data.data.approved_id +
+              "$$" +
+              data.data.package_name +
+              '" class="btn-round btn-outline btn updateChX" style="font-size:14.5px">Update Package</button>',
+            '<button id="' +
+              data.data.approved_id +
+              "$$" +
+              data.data.sms_count +
+              '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Message Count</button>',
+          ];
+          setTimeout(function () {
+            $(".circle-loader").addClass("load-complete");
+
+            $("#tick3DC").show();
+
+            $("#sure3DC").html("SMS Count Updated!");
+          }, 900);
+
+          setTimeout(function () {
+            $("#myModalDeliveryCostUpdate").modal("hide");
+            document.getElementById("delivery_cost_update").value = "";
+            var table = $("#dtBasicExample").DataTable();
+            table.row($t.parents("tr")).data(newArr).draw();
+            //console.log(table.row($t.parents('tr')).data());
+
+            $(".btn-ok-updateDC").attr("disabled", false);
+            $(".cancelModDC").prop("disabled", false);
+          }, 1600);
+        },
+        error: function (data) {
+          setTimeout(function () {
+            $(".btn-ok-updateDC").attr("disabled", false);
+            $(".cancelModDC").prop("disabled", false);
+          }, 900);
+          $("#myModalDeliveryCostUpdate").modal("hide");
+          $("#myModal2").modal("show");
+        },
+      });
+    }
+  });
+
+  //Org Disable/Activate
+  $("#dtBasicExampleActivate").on("click", ".btn-Disable", function () {
+    orgx_id = $(this).attr("id");
+    $t = $(this);
+
+    $("#tickActivate").hide();
+    $(".circle-loader").removeClass("load-complete");
+
+    $("#sureActivate").html("Are you sure?");
+    $("#myModalMerActivate").modal("show");
+    //$(".container").show();
+    //document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+  });
+  $(".btn-okActivate").click(function () {
+    $("#sureActivate").html("Please wait!");
+    document.getElementById("modalCancel1Activate").disabled = true;
+    document.getElementById("modalApprove1Activate").disabled = true;
+    $.ajax({
+      async: true,
+      type: "PUT",
+      url: urlForAll + "approved/disable/org/" + orgx_id,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        $("#sureActivate").html("Please wait!");
+        setTimeout(function () {
+          $(".circle-loader").addClass("load-complete");
+
+          $("#tickActivate").show();
+
+          $("#sureActivate").html("Organization Disabled!");
+        }, 900);
+
+        setTimeout(function () {
+          $("#myModalMerActivate").modal("hide");
+          var table = $("#dtBasicExampleActivate").DataTable();
+          table.row($t.parents("tr")).remove().draw();
+          document.getElementById("four").innerHTML =
+            "Activated Organizations: " + table.column(0).data().length;
+
+          document.getElementById("modalCancel1Activate").disabled = false;
+          document.getElementById("modalApprove1Activate").disabled = false;
+        }, 2000);
+      },
+      error: function (data) {
+        document.getElementById("modalCancel1Activate").disabled = false;
+        document.getElementById("modalApprove1Activate").disabled = false;
+        $("#myModalMerActivate").modal("hide");
+        $("#myModal2").modal("show");
+      },
+    });
+  });
+
+  $("#dtBasicExampleDisable").on("click", ".btn-Activate", function () {
+    orgx_id = $(this).attr("id");
+    $t = $(this);
+
+    $("#tickDisable").hide();
+    $(".circle-loader").removeClass("load-complete");
+
+    $("#sureDisable").html("Are you sure?");
+    $("#myModalMerDisable").modal("show");
+    //$(".container").show();
+    //document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+  });
+  $(".btn-okDisable").click(function () {
+    $("#sureDisable").html("Please wait!");
+    document.getElementById("modalCancel1Disable").disabled = true;
+    document.getElementById("modalApprove1Disable").disabled = true;
+    $.ajax({
+      async: true,
+      type: "PUT",
+      url: urlForAll + "approved/enable/org/" + orgx_id,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        $("#sureDisable").html("Please wait!");
+        setTimeout(function () {
+          $(".circle-loader").addClass("load-complete");
+
+          $("#tickDisable").show();
+
+          $("#sureDisable").html("Organization Activated!");
+        }, 900);
+
+        setTimeout(function () {
+          $("#myModalMerDisable").modal("hide");
+          var table = $("#dtBasicExampleDisable").DataTable();
+          table.row($t.parents("tr")).remove().draw();
+          document.getElementById("five").innerHTML =
+            "Disabled Organizations: " + table.column(0).data().length;
+
+          document.getElementById("modalCancel1Disable").disabled = false;
+          document.getElementById("modalApprove1Disable").disabled = false;
+        }, 2000);
+      },
+      error: function (data) {
+        document.getElementById("modalCancel1Disable").disabled = false;
+        document.getElementById("modalApprove1Disable").disabled = false;
+        $("#myModalMerDisable").modal("hide");
+        $("#myModal2").modal("show");
+      },
+    });
+  });
+
+  //Update Package
+
+  var thikKoro = (packageX) => {
+    $("#managersU").empty();
+    $.ajax({
+      url: urlForAll + "package/all",
+      type: "GET",
+
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+
+      success: function (data) {
+        var j;
+        for (var i = 0; i < data.data.length; i++) {
+          var option = new Option(data.data[i], data.data[i]);
+          $(option).html(data.data[i]);
+          if (packageX == data.data[i]) {
+            j = i;
+          }
+          $("#managersU").append(option);
+        }
+        document.getElementById("managersU").selectedIndex = j; //Package
+      },
+    });
+  };
+  $("#dtBasicExample").on("click", ".updateChX", function () {
+    id_delivery_update = $(this).attr("id");
+
+    arr = id_delivery_update.split("$$");
+
+    org_ID = arr[0];
+    //document.getElementById('agerPackage').innerHTML = arr[1];
+
+    $t = $(this);
+
+    thikKoro(arr[1]); // Eikhane ager package value boshbe!
+    $("#formUpdateDCX").show();
+    $("#tick3DCX").hide();
+    //$(".circle-loader").removeClass("load-complete");
+    $("#circleLoad3DCX").hide();
+
+    $("#sure3DCX").hide();
+    //$("#sure3").html("Are you sure?");
+    $("#myModalPackageUpdate").modal("show");
+    //$(".container").show();
+    //document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+  });
+  $(".btn-ok-updateDCX").click(function () {
+    var packageUpdate = document.getElementById("managersU").value;
+
+    var datap;
+
+    document.getElementById("modalApproveDCX").disabled = true;
+    document.getElementById("modalCancelDCX").disabled = true;
+    $(".btn-ok-updateDCX").attr("disabled", true);
+    $(".cancelModDCX").prop("disabled", true);
+    $("#formUpdateDCX").hide();
+    $(".circle-loader").removeClass("load-complete");
+    $(".circle-loader").show();
+    $("#sure3DCX").html("Please wait!");
+    $("#sure3DCX").show();
+    $.ajax({
+      async: true,
+      type: "PUT",
+      url: urlForAll + "package/" + org_ID + "/" + packageUpdate,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        //console.log(data);
+        var table = $("#dtBasicExample").DataTable();
+
+        table
+          .cell({ row: table.row($t.closest("tr")).index(), column: 8 })
+          .data(data.data);
+
+        document.getElementById(`${id_delivery_update}`).id =
+          org_ID + "$$" + data.data;
+        setTimeout(function () {
+          $(".circle-loader").addClass("load-complete");
+
+          $("#tick3DCX").show();
+
+          $("#sure3DCX").html("Package Updated!");
+        }, 900);
+
+        setTimeout(function () {
+          $("#myModalPackageUpdate").modal("hide");
+
+          $(".btn-ok-updateDCX").attr("disabled", false);
+          $(".cancelModDCX").prop("disabled", false);
+        }, 1600);
+      },
+      error: function (data) {
+        setTimeout(function () {
+          $(".btn-ok-updateDCX").attr("disabled", false);
+          $(".cancelModDCX").prop("disabled", false);
+        }, 900);
+        $("#myModalPackageUpdate").modal("hide");
+        $("#myModal2").modal("show");
+      },
+    });
+  });
+</script>
