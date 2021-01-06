@@ -1369,6 +1369,7 @@ ul {
     flex: 50%;
     max-width: 360px;
     margin: 20px 10px;
+    padding: 0 0.5rem;
     text-align: center;
     overflow: hidden;
     border-radius: 20px/20px;
@@ -1393,11 +1394,10 @@ ul {
 .price {
     font-size: 3rem;
     color: #000;
-    margin: 3rem 0;
+    margin: 2rem 0;
 }
 
 .price span {
-    display: block;
     font-size: 1rem;
     font-weight: 600;
     color: #959595;
@@ -1407,6 +1407,11 @@ ul {
     font-size: 1.3rem;
     font-weight: 600;
     color: #000;
+}
+
+.pricing-card sub {
+    font-weight: 600;
+    color: #959595;
 }
 
 .pricing-card strong {
