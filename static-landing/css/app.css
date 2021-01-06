@@ -1808,7 +1808,7 @@ ul {
     position: absolute;
     content: "";
     opacity: 0.4;
-    background: url("/static-landing/img/bg3-mf.png") left/contain no-repeat, url("/static-landing/img/main.png") center/contain no-repeat;
+    background: url("/static-landing/img/bg3-mf.png") left/contain no-repeat, url("/static-landing/img/main.png") left/cover no-repeat;
     left: 0;
     right: 0;
     top: 0;
@@ -1993,7 +1993,7 @@ p.error {
     }
     .Quixx__Form::after {
         opacity: 0.3;
-        background: url("/static-landing/img/bg3-mf.png") left/cover no-repeat, url("/static-landing/img/main.png") center/cover no-repeat;
+        background: url("/static-landing/img/bg3-mf.png") left/contain no-repeat, url("/static-landing/img/main.png") center/contain no-repeat;
     }
     .Quixx__Form__Main {
         box-shadow: none;
