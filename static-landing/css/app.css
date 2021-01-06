@@ -1352,7 +1352,7 @@ ul {
 /* Section: 8 -> Pricing */
 
 .Quixx__Pricing {
-    padding: 5rem 1rem;
+    padding: 5rem 0.2rem;
     background-color: #f2f1f7;
 }
 
@@ -1379,13 +1379,20 @@ ul {
 .pricing-card {
     flex: 50%;
     max-width: 360px;
-    margin: 20px 10px;
+    margin: 20px 2px;
     padding: 0 0.5rem;
     text-align: center;
     overflow: hidden;
     border-radius: 20px/20px;
     box-shadow: -5px 1px 5px 1px rgba(0, 0, 0, 0.1);
     background: #fff;
+}
+
+@media (min-width: 1300px) and (max-width: 1400px) {
+    .pricing-card {
+        max-width: 320px;
+        margin: 20px 5px;
+    }
 }
 
 .pricing-card-header {
