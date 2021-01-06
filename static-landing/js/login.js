@@ -180,7 +180,8 @@
                 type: "GET",
                 url: api + "forget/password/submit/vCode/" + phone + "/" + code,
                 success: function (data) {
-                    if (data.data === 'true') {
+                    console.log(data);
+                    if (data.data === true) {
                         setTimeout(function () {
                             loader.classList.remove("load-complete");
                             setTimeout(function () {
@@ -190,8 +191,8 @@
                                 modalErr.innerHTML = "You will receive an SMS!";
                                 modalErr.style.color = "#0066b3";
                                 modalCloseButton.disabled = false;
-                            }, 1000);
-                        }, 2000);
+                            }, 1500);
+                        }, 2500);
                     }
                     else {
                         loader.style.display = "none";

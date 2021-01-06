@@ -2103,9 +2103,8 @@ p.error {
         grid-template-columns: 1fr;
         padding: 4rem 2rem;
     }
-    .Quixx__Form::after {
-        opacity: 0.3;
-        background: url("/static-landing/img/bg3-mf.png") left/contain no-repeat, url("/static-landing/img/main.png") center/contain no-repeat;
+    .Quixx__Form::after, .Quixx__Form::before {
+        background: none;
     }
     .Quixx__Form__Main {
         box-shadow: none;
