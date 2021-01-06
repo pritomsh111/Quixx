@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Didact Gothic';
+    height: 100vh;
+    width: 100vw;
+}
+
+.backdrop {
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    bottom: -9999px;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    transition: 300ms ease-in;
+}
+
+.backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.preloader {
+    position: fixed;
+    visibility: visible;
+    top: -999px;
+    bottom: -999px;
+    left: 0;
+    opacity: 1;
+    right: 0;
+    z-index: 99999999;
+    background: #fff;
+    transition: visibility 500ms ease-in-out, opacity 500ms ease-in-out;
+}
