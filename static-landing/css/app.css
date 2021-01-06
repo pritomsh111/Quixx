@@ -1150,7 +1150,7 @@ ul {
     order: 1;
     height: 550px;
     width: 550px;
-    background: url("../img/GRAPH-01.svg") center/contain no-repeat;
+    background: url("../img/growth1.svg") center/contain no-repeat;
 }
 
 .Company__DES {
@@ -1536,7 +1536,7 @@ ul {
     height: 480px;
     width: 100%;
     margin: 0 auto;
-    background: url('../img/quixx_video_overlay.png') no-repeat center/cover;
+    background: url("/static-landing/img/bg3-mf.png") center/contain no-repeat;
     overflow: hidden;
     border-radius: 10px;
 }
@@ -1819,13 +1819,25 @@ ul {
 .Quixx__Form::after {
     position: absolute;
     content: "";
-    opacity: 0.4;
-    background: url("/static-landing/img/bg3-mf.png") left/contain no-repeat, url("/static-landing/img/main.png") left/cover no-repeat;
+    opacity: 0.1;
+    background: url("/static-landing/img/loginbg2.svg") left/contain no-repeat;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     z-index: -2;
+}
+
+.Quixx__Form::before {
+    position: absolute;
+    content: "";
+    opacity: 0.2;
+    background: url("/static-landing/img/bg3-mf.png") center/contain no-repeat;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -3;
 }
 
 .Quixx__Form__Main {

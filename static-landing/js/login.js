@@ -24,7 +24,7 @@
     }
     setTimeout(() => {
         typeWritter();
-    }, 1000);
+    }, 500);
     // DOM manipulation
 
     let quixxMain = document.querySelector("#Quixx__Main");
