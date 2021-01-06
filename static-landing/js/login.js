@@ -182,8 +182,10 @@
                             modalErr.innerHTML = "You will receive an SMS!";
                             modalErr.style.color = "#0066b3";
                             modalCloseButton.disabled = false;
-                        }, 3000);
-                    }, 3000);
+                            backdrop.classList.remove("show");
+                            modal.classList.remove("show");
+                        }, 2000);
+                    }, 2000);
                 },
                 error: function (data) {
                     let ob = Object.keys(data);
