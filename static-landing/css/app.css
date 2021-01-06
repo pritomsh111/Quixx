@@ -1552,49 +1552,43 @@ ul {
     position: absolute;
     display: grid;
     place-items: center;
-    /* border: 1px solid #FF0000; */
-    /* border: 1px solid #fdb814; */
-    /* height: 50px;
-    width: 50px; */
     border-radius: 50%;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: youtube-circle 2s infinite;
 }
 
 .Quixx__Video .play_button::after {
     position: absolute;
     content: "";
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border: 1px solid #e22b2b;
     border-radius: 50%;
+    box-shadow: -2px -1px 4px 1px rgb(226, 43, 43, 0.2), 3px -3px 2px -1px rgb(226, 43, 43, 0.2);
     background: #fff;
     z-index: -4;
+    animation: youtube-circle 2s infinite;
 }
 
-/* 
 @keyframes youtube-circle {
     0% {
         height: 60px;
         width: 60px;
     }
-    20% {}
     40% {
         height: 70px;
         width: 70px;
     }
-    60% {}
     80% {
-        height: 80px;
-        width: 80px;
+        height: 75px;
+        width: 75px;
     }
     100% {
         height: 60px;
         width: 60px;
     }
-} */
+}
 
 .fa-play {
     color: #FF0000;
@@ -1607,7 +1601,7 @@ ul {
 
 .fa-play:hover {
     opacity: 0.7;
-    transform: scale(1.2);
+    transform: scale(1.25);
 }
 
 .Quixx__Video iframe {
