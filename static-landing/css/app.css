@@ -221,6 +221,11 @@ ul {
     opacity: 1;
 }
 
+.Quixx__Login__Signup li:last-child li {
+    padding: 0.1rem;
+    margin-bottom: 0.1rem;
+}
+
 .Quixx__Login__Signup li:last-child li a {
     cursor: pointer;
 }
@@ -293,12 +298,16 @@ ul {
         transform: translate(200%);
         transition: transform 350ms ease-in;
     }
+    .Quixx__Login__Signup li:last-child li a div {
+        width: 80px;
+        height: 65px;
+    }
     .Quixx__Login__Signup li:last-child ul {
         top: 2.8rem;
         width: unset;
-        left: -5rem;
-        right: -5rem;
-        height: 280px;
+        left: -2rem;
+        right: -2rem;
+        height: 200px;
         flex-direction: row;
         background-color: rgb(235, 234, 238);
     }
@@ -1804,6 +1813,7 @@ ul {
     padding: 4rem 5rem;
     place-items: center;
     position: relative;
+    overflow: hidden;
 }
 
 .Quixx__Form::after {
