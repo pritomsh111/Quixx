@@ -1414,6 +1414,10 @@ ul {
     color: #959595;
 }
 
+.line-th {
+    text-decoration: line-through;
+}
+
 .pricing-card strong {
     font-size: 1.2rem;
 }
