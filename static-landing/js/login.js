@@ -5,6 +5,7 @@
             window.location.href = "panel.html";
         }
     });
+    let phone;
 
     // Typewritter Effect
     let type = "Grow Your Business"
@@ -106,14 +107,34 @@
         modal.classList.remove("show");
     });
     modalNextButton.addEventListener("click", function () {
-        fp_restore.value = "";
-        fp_step2.classList.add("show");
-        fp_step2.classList.remove("hide");
-        fp_step1.classList.add("hide");
-        fp_step1.classList.remove("show");
-        modalCloseButton.style.display = "none";
-        modalNextButton.style.display = "none";
-        modalDoneButton.style.display = "inline";
+        phone = document.querySelector("#phone_number");
+        $.ajax
+            ({
+                type: "POST",
+                url: api + "forget/password/get/vCode/" + phone,
+                success: function (data) {
+                    console.log(data);
+                    fp_restore.value = "";
+                    fp_step2.classList.add("show");
+                    fp_step2.classList.remove("hide");
+                    fp_step1.classList.add("hide");
+                    fp_step1.classList.remove("show");
+                    modalCloseButton.style.display = "none";
+                    modalNextButton.style.display = "none";
+                    modalDoneButton.style.display = "inline";
+                },
+                error: function (data) {
+                    let ob = Object.keys(data);
+                    let modalErr = document.querySelector('.modal-error>h2');
+                    if (ob[17] === "responseJSON") {
+                        modalErr.innerHTML = data.responseJSON.errorMessage;
+                    }
+                    else {
+                        modalErr.innerHTML = "Please Wait! We are working!";
+                    }
+                    modalErrorFunc();
+                }
+            });
     });
 
     // For Forget Pass
@@ -134,6 +155,42 @@
         }
     });
     modalDoneButton.addEventListener("click", function () {
+        loaderDiv.style.display = "block";
+        forgotPass.style.display = "none";
+        modalError.style.display = "none";
+        modalErr.innerHTML = "";
+        loader.classList.remove("load-complete");
+        checkmark.style.display = "none";
+        loader.style.display = "inline-block";
+        $.ajax
+            ({
+                type: "GET",
+                url: api + "forget/password/submit/vCode/" + phoneNumber + "/" + code,
+                success: function (data) {
+                    setTimeout(function () {
+                        loader.classList.remove("load-complete");
+                        setTimeout(function () {
+                            quixxMain.style.pointerEvents = "auto";
+                            loader.classList.add("load-complete");
+                            checkmark.style.display = "block";
+                            modalErr.innerHTML = "You will receive an SMS!";
+                            modalErr.style.color = "#0066b3";
+                            modalCloseButton.disabled = false;
+                        }, 1000);
+                    }, 3000);
+                },
+                error: function (data) {
+                    let ob = Object.keys(data);
+                    let modalErr = document.querySelector('.modal-error>h2');
+                    if (ob[17] == "responseJSON") {
+                        modalErr.innerHTML = data.responseJSON.errorMessage;
+                    }
+                    else {
+                        modalErr.innerHTML = "Please Wait! We are working!";
+                    }
+                    modalErrorFunc();
+                }
+            });
         backdrop.classList.remove("show");
         modal.classList.remove("show");
     });
