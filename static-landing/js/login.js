@@ -167,25 +167,35 @@
         loader.classList.remove("load-complete");
         checkmark.style.display = "none";
         loader.style.display = "inline-block";
+        modalDoneButton.style.display = "none";
+        modalCloseButton.style.display = "inline";
+        modalCloseButton.disabled = true;
         let code = document.querySelector("#fp-restore").value;
         $.ajax
             ({
                 type: "GET",
                 url: api + "forget/password/submit/vCode/" + phone + "/" + code,
                 success: function (data) {
-                    setTimeout(function () {
-                        loader.classList.remove("load-complete");
+                    if (data.data === 'true') {
                         setTimeout(function () {
-                            quixxMain.style.pointerEvents = "auto";
-                            loader.classList.add("load-complete");
-                            checkmark.style.display = "block";
-                            modalErr.innerHTML = "You will receive an SMS!";
-                            modalErr.style.color = "#0066b3";
-                            modalCloseButton.disabled = false;
-                            backdrop.classList.remove("show");
-                            modal.classList.remove("show");
+                            loader.classList.remove("load-complete");
+                            setTimeout(function () {
+                                quixxMain.style.pointerEvents = "auto";
+                                loader.classList.add("load-complete");
+                                checkmark.style.display = "block";
+                                modalErr.innerHTML = "You will receive an SMS!";
+                                modalErr.style.color = "#0066b3";
+                                modalCloseButton.disabled = false;
+                            }, 1000);
                         }, 2000);
-                    }, 2000);
+                    }
+                    else {
+                        loader.style.display = "none";
+                        modalCloseButton.disabled = false;
+                        let modalErr = document.querySelector('.modal-error>h2');
+                        modalErr.innerHTML = "Wrong Code!";
+                        modalErrorFunc();
+                    }
                 },
                 error: function (data) {
                     let ob = Object.keys(data);
