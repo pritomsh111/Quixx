@@ -1,3 +1,562 @@
-<!DOCTYPE html><style>div.hideKoro{ display:none;} #myModalCreateD1 hr{ width:50%;} #myModalAuto hr{ width:50%;}
-</style><link rel="stylesheet" href="static/css/deliveryMerchant.css"><link rel="stylesheet" href="static/css/deliveryMer.css"><script src="static/js/deliveryMerchant_00.js"></script><div id="loaderMama" style="margin-top:8%"><div class="multi-spinner-container" style="color:#fff"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"></div></div></div></div></div></div></div><h3 style=" font-family:'Didact Gothic'; font-size:24px; text-align:center; color:#0066b3; ">Please Wait... </h3></div><div class="card naV hideKoro" id="hideKoro"><script>$("#loaderMama").show(); one1(); two2(); three3(); </script><div class="card-body table-responsive"><div class="row"><div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="three" style="width:100%; font-size:13px" onclick="createDelivery()" >Create Delivery </button></div><div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="one" style="width:100%; font-size:13px" onclick="onGoingDeliveries()" >Ongoing Deliveries </button></div><div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="six" style="width:100%; font-size:13px" onclick="onHoldDeliveries()" >History of On Hold Deliveries </button></div><div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="two" style="width:100%; font-size:13px" onclick="completeDeliveries()" >Completed Deliveries </button></div></div><div id="deliveryCreate"><div class="row"><div class="col-lg-12"><div class="card"><div class="card-body table-responsive blur"><form class="p-5" style="color:#0066b3; text-align:left" id="formD"><div style="font-size:18.5px; color:#0d324d; text-align:center">Create Single Delivery Using The Fields Below </div><br><div class="form-row mb-4"><div class="col">Pickup Time: <input type="text" style="color:#0066b3" id="timepicker-12-hr" class="form-control" placeholder="09:00 AM" ></div></div><input type="text" style="display:none; color:#0066b3" id="s_name" class="form-control" placeholder="" disabled ><br><input type="text" style="display:none; color:#0066b3" id="s_number" class="form-control mb-4" placeholder="" disabled >Receiver's Name: <input type="text" style="color:#0066b3" id="r_name" class="form-control" placeholder="" ><br>Receiver's Phone Number: <input type="text" style="color:#0066b3" id="r_number" class="form-control" placeholder="01711000000" ><br>Product Name: <input type="text" style="color:#0066b3" id="product_name" class="form-control" placeholder="" ><br>Product Quantity [Pieces]: <input type="text" style="color:#0066b3" id="product_qty" class="form-control" placeholder="50" ><br>Payment Method: <select class="custom-select col-lg-12 btn" id="managers2" style=" color:#0066b3; background:#fbfcfd; text-align-last:left; "></select><br><br>Per Product Cost [BDT]: <input type="text" style="color:#0066b3" id="product_cost" class="form-control" placeholder="1000" ><br>Delivery Charge: <input type="text" style="color:#0066b3" id="delivery_charge" class="form-control" placeholder="" disabled ><br>Delivery Note: <input type="text" style="color:#0066b3" id="DELIVERY_NOTE" class="form-control" placeholder="" ><br><h5 style="text-align:center; color:#0066b3">Delivery Type: </h5><select class="custom-select col-lg-12 btn" id="deliveryType" style="color:#0066b3; text-align-last:center"><option>CUSTOMER</option></select><br><br><input id="pac-input" class="controls form-control" type="text" placeholder="" style=" display:none; text-align:center; color:#0066b3; background:#ffffff; border:2px solid #ffcf5c; font-size:15px; " disabled ><div style="display:none; height:13%; margin-top:0px" id="map"></div><input type="hidden" id="lat" name="lat"><input type="hidden" id="longi" name="longi"><input type="hidden" id="des_lat" name="des_lat"><input type="hidden" id="des_longi" name="des_longi"><h5 style="text-align:center; color:#0066b3; margin-top:20px">Receiver's Area:Make Sure You Give The Correct Area Otherwise Your Delivery Will Not Count </h5><select class="custom-select col-lg-12 btn" id="managers" style="color:#0066b3; text-align-last:center"></select><br><br><h5 style="text-align:center; color:#0066b3">Receivers's Address: </h5><input type="text" style="color:#0066b3; text-align:center" id="rec_address" class="form-control" placeholder="" ><br><h5 style="text-align:center; color:#0066b3">Give Exact Location On Map: </h5><input id="pac-input2" class="controls form-control" type="text" placeholder="Search according to Receiver's Area and drag the market to exact location" style=" text-align:center; color:#0066b3; background:#ffffff; border:2px solid #ffcf5c; font-size:15px; " ><div style="margin-top:0px" id="map2"></div></form><br><br><br><br><br><br><br><br><br><center><button class="btn btn-outline btn-round" style="background:#ffffd4; margin-top:20px" type="button" id="createDelivery" ><center>Create Delivery</center></button></center></div></div></div></div><div class="row"><div class="col-lg-12"><div class="card"><div class="card-body table-responsive blur"><form class="p-5"><div style="font-size:18.5px; margin-top:-15px; color:#0d324d">Create Multiple Deliveries Using Excel File [Use Template Excel]: </div><br><h5 style="text-align:center; color:#0066b3">Your Information For Excel: </h5><div style="text-align:center; margin-top:15px"><h4 id="senLatLong"></h4><br><a href="DeliveryTemplate.xlsx" class="fa fa-download btn btn-outline" style="font-size:13px; color:#0066b3" download ><file src="DeliveryTemplate.xlsx" alt="Template"></file></a>&nbsp;&nbsp;Download Template Excel <br><label class="btn btn-outline btn-sm center-block btn-file" style="margin-top:15px; font-size:13px"><i class="fa fa-upload fa-x" aria-hidden="true"></i><input type="file" id="upload" name="files[]" style="display:none; color:#0066b3" >&nbsp;&nbsp;Upload Excel <h4 id="fileName" style="margin-top:8px"></h4></label><label class="btn btn-outline btn-sm center-block btn-file" style="margin-top:15px; font-size:13px"><i class="fa fa-times fa-x" aria-hidden="true"></i><button id="cancelUpload" style="display:none; color:#0066b3"></button>&nbsp;&nbsp;Cancel Excel <h4 id="fileNamex" style="margin-top:8px"></h4></label><center><button class="btn btn-outline btn-round" onclick="mapxx()" style="background:#fff; margin-top:10px" type="button" ><i class="fa fa-map-marker fa-x" aria-hidden="true"></i><center>Receiver's Location Finder</center></button></center><br><center><button class="btn btn-outline btn-round" style="background:#fbfcfd; margin-top:10px" type="button" id="createDeliverywithExcel" ><center>Create Delivery</center></button></center><br></div></form></div></div></div></div></div><div class="card d"><div class="card-body table-responsive d"><h5 class="text-center" id="onh" style="margin-top:50px; margin-bottom:50px"></h5><table id="dtBasicExampled" class="stripe hover" style="color:#0066b3" cellspacing="0" width="100%" ><thead><tr><th class="th-sm">Delivery ID</th><th class="th-sm">Delivery Creation Date/Time</th><th class="th-sm">Delivery Status</th><th class="th-sm">Pickup Time</th><th class="th-sm">Sender's Name</th><th class="th-sm">Sender's Phone Number</th><th class="th-sm">Sender's Address</th><th class="th-sm">Receiver's Name</th><th class="th-sm">Receiver's Phone Number</th><th class="th-sm">Receiver's Address</th><th class="th-sm">Product Name</th><th class="th-sm">Product Quantity</th><th class="th-sm">Per Product Cost</th><th class="th-sm">Delivery Charge</th><th class="th-sm">Payment Mathod</th><th class="th-sm">Delivery Type</th><th class="th-sm">Delivery Note</th></tr></thead><tfoot></tfoot></table></div></div><div class="card e"><div class="card-body table-responsive e"><table id="dtBasicExampleNew" class="stripe hover" style="color:#0066b3" cellspacing="0" width="100%" ><thead><tr><th class="th-sm">Delivery ID</th><th class="th-sm">Delivery Creation Date & Time</th><th class="th-sm">Delivery Status</th><th class="th-sm">Delivery Completion Date/Time</th><th class="th-sm">Sender's Name</th><th class="th-sm">Sender's Phone Number</th><th class="th-sm">Sender's Address</th><th class="th-sm">Receiver's Name</th><th class="th-sm">Receiver's Phone Number</th><th class="th-sm">Receiver's Address</th><th class="th-sm">Product Name</th><th class="th-sm">Product Quantity</th><th class="th-sm">Per Product Cost</th><th class="th-sm">Delivery Charge</th><th class="th-sm">Payment Mathod</th><th class="th-sm">Delivery Type</th><th class="th-sm">Delivery Note</th></tr></thead><tfoot></tfoot></table></div></div></div></div><div class="modal fade" id="myModalCreateD1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-><div class="modal-dialog"><div class="modal-content"><div class="modal-body" style="text-align:center"><div class="circle-loader" style="text-align:center"><div class="checkmark draw" id="tickD2"></div></div><h5 id="sureD2" style="color:#0066b3"></h5><h4 id="sureD2ZZ" style="color:#0066b3; margin-top:15px"></h4><h5 id="sureD22" style="color:#0066b3"></h5><hr><h4 id="sureD2Z" style="color:#0066b3; margin-top:15px"></h4><h4 id="sureD2X" style="color:#0066b3; margin-top:10px"></h4><h4 id="sureD2Y" style="color:#0066b3"></h4><button class="btn btn-outline btn-success" style="color:#0066b3" data-dismiss="modal" id="CLOSEIT" >Close </button></div></div></div></div><div id="myModalWrongSMS" class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><p id="wrongSMS"></p><button class="btn btn-success" data-dismiss="modal">Pay For Message! </button></div></div></div></div><div id="myModalCreateD2" class="modal fade" data-backdrop="static"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><h4 style="color:#0066b3">Ooops!</h4><p style="color:#0066b3">Please fill up properly!</p><button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again </button></div></div></div></div><div id="myModal2" class="modal fade" data-backdrop="static"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><p style="color:#0066b3">Something went wrong. Please try again!</p><button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again </button></div></div></div></div><div id="myModalWrongDeliveryCreate" class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><p id="wrongThisDeliveryCreate"></p><button class="btn btn-success" data-dismiss="modal">Correct it! </button></div></div></div></div><div id="myModalWrongUpload" class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><p id="wrongThisUpload"></p><button class="btn btn-danger" data-dismiss="modal">Upload Excel File </button></div></div></div></div><div id="myModalWrongUpload2" class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><p id="wrongThisUpload2"></p><button class="btn btn-danger" data-dismiss="modal">Upload Excel File </button></div></div></div></div><script src="static/js/deliveryMerchant_1.js"></script><script src="static/js/deliveryMerchant_2.js"></script><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&libraries=places&callback=initAutocomplete" async defer></script>
+<!DOCTYPE html>
+<style>
+  div.hideKoro {
+    display: none;
+  }
+  #myModalCreateD1 hr {
+    width: 50%;
+  }
+  #myModalAuto hr {
+    width: 50%;
+  }
+</style>
+<link rel="stylesheet" href="static/css/deliveryMerchant.css">
+<link rel="stylesheet" href="static/css/deliveryMer.css">
+<script src="static/js/deliveryMerchant_00.js"></script>
+<div id="loaderMama" style="margin-top: 8%">
+    <div class="multi-spinner-container" style="color: #fff">
+        <div class="multi-spinner">
+            <div class="multi-spinner">
+                <div class="multi-spinner">
+                    <div class="multi-spinner">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 style="
+      font-family: 'Didact Gothic';
+      font-size: 24px;
+      text-align: center;
+      color: #0066b3;
+    ">
+        Please Wait...
+    </h3>
+</div>
+<div class="card naV hideKoro" id="hideKoro">
+    <script>
+    $("#loaderMama").show();
+    one1();
+    two2();
+    three3();
+    </script>
+    <div class="card-body table-responsive">
+        <div class="row">
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="three"
+                    style="width: 100%; font-size: 13px"
+                    onclick="createDelivery()"
+                >
+                    Create Delivery
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="one"
+                    style="width: 100%; font-size: 13px"
+                    onclick="onGoingDeliveries()"
+                >
+                    Ongoing Deliveries
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="six"
+                    style="width: 100%; font-size: 13px"
+                    onclick="onHoldDeliveries()"
+                >
+                    History of On Hold Deliveries
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="two"
+                    style="width: 100%; font-size: 13px"
+                    onclick="completeDeliveries()"
+                >
+                    Completed Deliveries
+                </button>
+            </div>
+        </div>
+        <div id="deliveryCreate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body table-responsive blur">
+                            <form class="p-5" style="color: #0066b3; text-align: left" id="formD">
+                                <div style="font-size: 18.5px; color: #0d324d; text-align: center">
+                                    Create Single Delivery Using The Fields Below
+                                </div>
+                                <br>
+                                <div class="form-row mb-4">
+                                    <div class="col">
+                                        Pickup Time:
+                                        <input
+                                            type="text"
+                                            style="color: #0066b3"
+                                            id="timepicker-12-hr"
+                                            class="form-control"
+                                            placeholder="09:00 AM"
+                                        >
+                                    </div>
+                                </div>
+                                <!-- Sender's Name: -->
+                                <input
+                                    type="text"
+                                    style="display: none; color: #0066b3"
+                                    id="s_name"
+                                    class="form-control"
+                                    placeholder=""
+                                    disabled
+                                >
+                                <br>
+                                <!-- Sender's Phone Number: -->
+                                <input
+                                    type="text"
+                                    style="display: none; color: #0066b3"
+                                    id="s_number"
+                                    class="form-control mb-4"
+                                    placeholder=""
+                                    disabled
+                                >
+                                Receiver's Name:
+                                <input
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="r_name"
+                                    class="form-control"
+                                    placeholder=""
+                                >
+                                <br>
+                                Receiver's Phone Number:
+                                <input
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="r_number"
+                                    class="form-control"
+                                    placeholder="01711000000"
+                                >
+                                <br>
+                                Product Name:
+                                <input
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="product_name"
+                                    class="form-control"
+                                    placeholder=""
+                                >
+                                <br>
+                                Product Quantity [Pieces]:
+                                <input
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="product_qty"
+                                    class="form-control"
+                                    placeholder="50"
+                                >
+                                <br>
+                                Payment Method:
+                                <select class="custom-select col-lg-12 btn" id="managers2" style="
+                    color: #0066b3;
+                    background: #fbfcfd;
+                    text-align-last: left;
+                  "></select>
+                                <br>
+                                <br>
+                                Per Product Cost [BDT]:
+                                <input
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="product_cost"
+                                    class="form-control"
+                                    placeholder="1000"
+                                >
+                                <br>
+                                Delivery Charge:
+                                <input
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="delivery_charge"
+                                    class="form-control"
+                                    placeholder=""
+                                    disabled
+                                >
+                                <br>
+                                Delivery Note:
+                                <input
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="DELIVERY_NOTE"
+                                    class="form-control"
+                                    placeholder=""
+                                >
+                                <br>
+                                <h5 style="text-align: center; color: #0066b3">
+                                    Delivery Type:
+                                </h5>
+                                <select class="custom-select col-lg-12 btn" id="deliveryType" style="color: #0066b3; text-align-last: center">
+                                    <!--<option>WAREHOUSE</option>-->
+                                    <option>CUSTOMER</option>
+                                </select>
+                                <br>
+                                <br>
+                                <!-- <h5 style="text-align:center;color:#0066b3">Sender's Address:</h5> -->
+                                <input
+                                    id="pac-input"
+                                    class="controls form-control"
+                                    type="text"
+                                    placeholder=""
+                                    style="
+                    display: none;
+                    text-align: center;
+                    color: #0066b3;
+                    background: #ffffff;
+                    border: 2px solid #ffcf5c;
+                    font-size: 15px;
+                  "
+                                    disabled
+                                >
+                                <div style="display: none; height: 13%; margin-top: 0px" id="map"></div>
+                                <input type="hidden" id="lat" name="lat">
+                                <input type="hidden" id="longi" name="longi">
+                                <input type="hidden" id="des_lat" name="des_lat">
+                                <input type="hidden" id="des_longi" name="des_longi">
+                                <!-- <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br> -->
+                                <h5 style="text-align: center; color: #0066b3; margin-top: 20px">
+                                    Receiver's Area: Make Sure You Give The Correct Area Otherwise
+                  Your Delivery Will Not Count
+                                </h5>
+                                <select class="custom-select col-lg-12 btn" id="managers" style="color: #0066b3; text-align-last: center"></select>
+                                <br>
+                                <br>
+                                <h5 style="text-align: center; color: #0066b3">
+                                    Receivers's Address:
+                                </h5>
+                                <input
+                                    type="text"
+                                    style="color: #0066b3; text-align: center"
+                                    id="rec_address"
+                                    class="form-control"
+                                    placeholder=""
+                                >
+                                <br>
+                                <h5 style="text-align: center; color: #0066b3">
+                                    Give Exact Location On Map:
+                                </h5>
+                                <input
+                                    id="pac-input2"
+                                    class="controls form-control"
+                                    type="text"
+                                    placeholder="Search according to Receiver's Area and drag the market to exact location"
+                                    style="
+                    text-align: center;
+                    color: #0066b3;
+                    background: #ffffff;
+                    border: 2px solid #ffcf5c;
+                    font-size: 15px;
+                  "
+                                >
+                                <div style="margin-top: 0px" id="map2"></div>
+                            </form>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <!-- <br>
+                            <br>
+                            <br> -->
+                            <center>
+                                <button
+                                    class="btn btn-outline btn-round"
+                                    style="background: #ffffd4; margin-top: 20px"
+                                    type="button"
+                                    id="createDelivery"
+                                >
+                                    <center>Create Delivery</center>
+                                </button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body table-responsive blur">
+                            <form class="p-5">
+                                <div style="font-size: 18.5px; margin-top: -15px; color: #0d324d">
+                                    Create Multiple Deliveries Using Excel File [Use Template
+                  Excel]:
+                                </div>
+                                <br>
+                                <h5 style="text-align: center; color: #0066b3">
+                                    Your Information For Excel:
+                                </h5>
+                                <div style="text-align: center; margin-top: 15px">
+                                    <h4 id="senLatLong"></h4>
+                                    <br>
+                                    <a
+                                        href="DeliveryTemplate.xlsx"
+                                        class="fa fa-download btn btn-outline"
+                                        style="font-size: 13px; color: #0066b3"
+                                        download
+                                    >
+                                        <file src="DeliveryTemplate.xlsx" alt="Template"></file>
+                                    </a>
+                                    &nbsp;&nbsp;Download Template Excel
+                                    <br>
+                                    <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top: 15px; font-size: 13px">
+                                        <i class="fa fa-upload fa-x" aria-hidden="true"></i>
+                                        <input
+                                            type="file"
+                                            id="upload"
+                                            name="files[]"
+                                            style="display: none; color: #0066b3"
+                                        >
+                                        &nbsp;&nbsp;Upload Excel
+                                        <h4 id="fileName" style="margin-top: 8px"></h4>
+                                    </label>
+                                    <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top: 15px; font-size: 13px">
+                                        <i class="fa fa-times fa-x" aria-hidden="true"></i>
+                                        <button id="cancelUpload" style="display: none; color: #0066b3"></button>
+                                        &nbsp;&nbsp;Cancel Excel
+                                        <h4 id="fileNamex" style="margin-top: 8px"></h4>
+                                    </label>
+                                    <center>
+                                        <button
+                                            class="btn btn-outline btn-round"
+                                            onclick="mapxx()"
+                                            style="background: #fff; margin-top: 10px"
+                                            type="button"
+                                        >
+                                            <i class="fa fa-map-marker fa-x" aria-hidden="true"></i>
+                                            <center>Receiver's Location Finder</center>
+                                        </button>
+                                    </center>
+                                    <br>
+                                    <center>
+                                        <button
+                                            class="btn btn-outline btn-round"
+                                            style="background: #fbfcfd; margin-top: 10px"
+                                            type="button"
+                                            id="createDeliverywithExcel"
+                                        >
+                                            <center>Create Delivery</center>
+                                        </button>
+                                    </center>
+                                    <br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card d">
+            <div class="card-body table-responsive d">
+                <h5 class="text-center" id="onh" style="margin-top: 50px; margin-bottom: 50px"></h5>
+                <table
+                    id="dtBasicExampled"
+                    class="stripe hover"
+                    style="color: #0066b3"
+                    cellspacing="0"
+                    width="100%"
+                >
+                    <thead>
+                        <tr>
+                            <th class="th-sm">Delivery ID</th>
+                            <th class="th-sm">Delivery Creation Date/Time</th>
+                            <th class="th-sm">Delivery Status</th>
+                            <th class="th-sm">Pickup Time</th>
+                            <th class="th-sm">Sender's Name</th>
+                            <th class="th-sm">Sender's Phone Number</th>
+                            <th class="th-sm">Sender's Address</th>
+                            <th class="th-sm">Receiver's Name</th>
+                            <th class="th-sm">Receiver's Phone Number</th>
+                            <th class="th-sm">Receiver's Address</th>
+                            <th class="th-sm">Product Name</th>
+                            <th class="th-sm">Product Quantity</th>
+                            <th class="th-sm">Per Product Cost</th>
+                            <th class="th-sm">Delivery Charge</th>
+                            <th class="th-sm">Payment Mathod</th>
+                            <th class="th-sm">Delivery Type</th>
+                            <th class="th-sm">Delivery Note</th>
+                        </tr>
+                    </thead>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="card e">
+            <div class="card-body table-responsive e">
+                <table
+                    id="dtBasicExampleNew"
+                    class="stripe hover"
+                    style="color: #0066b3"
+                    cellspacing="0"
+                    width="100%"
+                >
+                    <thead>
+                        <tr>
+                            <th class="th-sm">Delivery ID</th>
+                            <th class="th-sm">Delivery Creation Date & Time</th>
+                            <th class="th-sm">Delivery Status</th>
+                            <th class="th-sm">Delivery Completion Date/Time</th>
+                            <th class="th-sm">Sender's Name</th>
+                            <th class="th-sm">Sender's Phone Number</th>
+                            <th class="th-sm">Sender's Address</th>
+                            <th class="th-sm">Receiver's Name</th>
+                            <th class="th-sm">Receiver's Phone Number</th>
+                            <th class="th-sm">Receiver's Address</th>
+                            <th class="th-sm">Product Name</th>
+                            <th class="th-sm">Product Quantity</th>
+                            <th class="th-sm">Per Product Cost</th>
+                            <th class="th-sm">Delivery Charge</th>
+                            <th class="th-sm">Payment Mathod</th>
+                            <th class="th-sm">Delivery Type</th>
+                            <th class="th-sm">Delivery Note</th>
+                        </tr>
+                    </thead>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalCreateD1"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tickD2"></div>
+                </div>
+                <h5 id="sureD2" style="color: #0066b3"></h5>
+                <h4 id="sureD2ZZ" style="color: #0066b3; margin-top: 15px"></h4>
+                <h5 id="sureD22" style="color: #0066b3"></h5>
+                <hr>
+                <h4 id="sureD2Z" style="color: #0066b3; margin-top: 15px"></h4>
+                <h4 id="sureD2X" style="color: #0066b3; margin-top: 10px"></h4>
+                <h4 id="sureD2Y" style="color: #0066b3"></h4>
+                <button
+                    class="btn btn-outline btn-success"
+                    style="color: #0066b3"
+                    data-dismiss="modal"
+                    id="CLOSEIT"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalWrongSMS" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>-->
+            <div class="modal-body text-center">
+                <p id="wrongSMS"></p>
+                <button class="btn btn-success" data-dismiss="modal">
+                    Pay For Message!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalCreateD2" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 style="color: #0066b3">Ooops!</h4>
+                <p style="color: #0066b3">Please fill up properly!</p>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal2" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p style="color: #0066b3">Something went wrong. Please try again!</p>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalWrongDeliveryCreate" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p id="wrongThisDeliveryCreate"></p>
+                <button class="btn btn-success" data-dismiss="modal">
+                    Correct it!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalWrongUpload" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p id="wrongThisUpload"></p>
+                <button class="btn btn-danger" data-dismiss="modal">
+                    Upload Excel File
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalWrongUpload2" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p id="wrongThisUpload2"></p>
+                <button class="btn btn-danger" data-dismiss="modal">
+                    Upload Excel File
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/js/deliveryMerchant_1.js"></script>
+<script src="static/js/deliveryMerchant_2.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&libraries=places&callback=initAutocomplete" async defer></script>

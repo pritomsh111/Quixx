@@ -1,2 +1,136 @@
-<!DOCTYPE html><style>div.hideKoro4{ display:none;}
-</style><link rel="stylesheet" href="static/css/seeDeliveryORG.css"><script src="static/js/seeDeliveryORG_00.js"></script><div id="loaderMama4" style="margin-top:8%"><div class="multi-spinner-container" style="color:#fff"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"></div></div></div></div></div></div></div><h3 style=" font-family:'Didact Gothic'; font-size:24px; text-align:center; color:#0066b3; ">Please Wait... </h3></div><div class="hideKoro4" id="hideKoro4"><script>$("#loaderMama4").show(); one1(); two2(); three3(); </script><div class="card naV"><div class="card-body table-responsive"><div class="row"><div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="twoc" style="width:100%; font-size:13px" onclick="deliveryManOnMap()" >Delivery Man on Map </button></div><div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="onec" style="width:100%; font-size:13px" onclick="deliveryManWithProduct()" >Details of Deliveries and Delivery Man </button></div><div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="threec" style="width:100%; font-size:13px" onclick="seeDateWise()" >Delivery Information [Date-wise] </button></div></div></div><div class="card a"><div class="card-body table-responsive a"><table id="dtBasicExample" class="stripe hover" style="color:#0066b3" cellspacing="0" width="100%" ><thead><tr><th class="th-sm">ID</th><th class="th-sm">Delivery Man's Name</th><th class="th-sm">Delivery Man's Email</th><th class="th-sm">Phone Number</th><th class="th-sm">More Details</th></tr></thead><tfoot></tfoot></table></div></div><div class="card b"><div class="card-body table-responsive b"><table id="dtBasicExample2" class="stripe hover" style="color:#0066b3" cellspacing="0" width="100%" ><thead><tr><th class="th-sm">Delivery Man's Name</th><th class="th-sm">Phone Number</th><th class="th-sm">Delivery Area</th><th class="th-sm">Start Date</th><th class="th-sm">End Date</th><th class="th-sm">Date Range Details</th></tr></thead><tfoot></tfoot></table></div></div></div><div id="map" style="border:2px solid #ffcf5c"></div></div><div id="myModalWrongDeliveryCreate" class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><p id="wrongThisDeliveryCreate"></p><button class="btn btn-success" data-dismiss="modal">Correct it! </button></div></div></div></div><script src="static/js/seeDeliveryORG_1.js"></script><script src="static/js/seeDeliveryORG_2.js"></script><script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&callback=initMap"></script>
+<!DOCTYPE html>
+<style>
+  div.hideKoro4 {
+    display: none;
+  }
+</style>
+<link rel="stylesheet" href="static/css/seeDeliveryORG.css">
+<script src="static/js/seeDeliveryORG_00.js"></script>
+<div id="loaderMama4" style="margin-top: 8%">
+    <div class="multi-spinner-container" style="color: #fff">
+        <div class="multi-spinner">
+            <div class="multi-spinner">
+                <div class="multi-spinner">
+                    <div class="multi-spinner">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 style="
+      font-family: 'Didact Gothic';
+      font-size: 24px;
+      text-align: center;
+      color: #0066b3;
+    ">
+        Please Wait...
+    </h3>
+</div>
+<div class="hideKoro4" id="hideKoro4">
+    <script>
+    $("#loaderMama4").show();
+    one1();
+    two2();
+    three3();
+    </script>
+    <div class="card naV">
+        <div class="card-body table-responsive">
+            <div class="row">
+                <div class="col-md-4">
+                    <button
+                        class="btn-outline btn-round btn-default btn btn-info"
+                        id="twoc"
+                        style="width: 100%; font-size: 13px"
+                        onclick="deliveryManOnMap()"
+                    >
+                        Delivery Man on Map
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button
+                        class="btn-outline btn-round btn-default btn btn-info"
+                        id="onec"
+                        style="width: 100%; font-size: 13px"
+                        onclick="deliveryManWithProduct()"
+                    >
+                        Details of Deliveries and Delivery Man
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button
+                        class="btn-outline btn-round btn-default btn btn-info"
+                        id="threec"
+                        style="width: 100%; font-size: 13px"
+                        onclick="seeDateWise()"
+                    >
+                        Delivery Information [Date-wise]
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card a">
+            <div class="card-body table-responsive a">
+                <table
+                    id="dtBasicExample"
+                    class="stripe hover"
+                    style="color: #0066b3"
+                    cellspacing="0"
+                    width="100%"
+                >
+                    <thead>
+                        <tr>
+                            <th class="th-sm">ID</th>
+                            <th class="th-sm">Delivery Man's Name</th>
+                            <th class="th-sm">Delivery Man's Email</th>
+                            <th class="th-sm">Phone Number</th>
+                            <th class="th-sm">More Details</th>
+                        </tr>
+                    </thead>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="card b">
+            <div class="card-body table-responsive b">
+                <table
+                    id="dtBasicExample2"
+                    class="stripe hover"
+                    style="color: #0066b3"
+                    cellspacing="0"
+                    width="100%"
+                >
+                    <thead>
+                        <tr>
+                            <th class="th-sm">Delivery Man's Name</th>
+                            <th class="th-sm">Phone Number</th>
+                            <th class="th-sm">Delivery Area</th>
+                            <th class="th-sm">Start Date</th>
+                            <th class="th-sm">End Date</th>
+                            <th class="th-sm">Date Range Details</th>
+                        </tr>
+                    </thead>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="map" style="border: 2px solid #ffcf5c"></div>
+</div>
+<div id="myModalWrongDeliveryCreate" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p id="wrongThisDeliveryCreate"></p>
+                <button class="btn btn-success" data-dismiss="modal">
+                    Correct it!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/js/seeDeliveryORG_1.js"></script>
+<script src="static/js/seeDeliveryORG_2.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&callback=initMap"></script>

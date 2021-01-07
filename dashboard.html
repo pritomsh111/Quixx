@@ -1,1 +1,106 @@
-<!DOCTYPE html><div class="row"><div class="col-xl-4 col-lg-6 col-md-6 col-sm-6"><div class="card card-stats"><div class="card-header card-header-primary card-header-icon"><div class="card-icon"><i class="material-icons">domain</i></div><h4 class="card-title">Total Organizations</h4><h4 class="card-title">102</h4></div><div class="card-footer"><div class="stats"><i class="material-icons">access_time</i><p id="date1"></p></div></div></div></div><div class="col-xl-4 col-lg-6 col-md-6 col-sm-6"><div class="card card-stats"><div class="card-header card-header-warning card-header-icon"><div class="card-icon"><i class="material-icons">how_to_reg</i></div><h4 class="card-title">Total Managers</h4><h4 class="card-title">90</h4></div><div class="card-footer"><div class="stats"><i class="material-icons">access_time</i><p id="date2"></p></div></div></div></div><div class="col-xl-4 col-lg-6 col-md-6 col-sm-6"><div class="card card-stats"><div class="card-header card-header-info card-header-icon"><div class="card-icon"><i class="material-icons">how_to_reg</i></div><h4 class="card-title">Total Delivery Men</h4><h4 class="card-title">1212</h4></div><div class="card-footer"><div class="stats"><i class="material-icons">access_time</i><p id="date3"></p></div></div></div></div><div class="col-xl-4 col-lg-6 col-md-6 col-sm-6"><div class="card card-stats"><div class="card-header card-header-success card-header-icon"><div class="card-icon"><i class="material-icons">check_circle</i></div><h4 class="card-title">Total Completed Deliveries</h4><h4 class="card-title">23</h4></div><div class="card-footer"><div class="stats"><i class="material-icons">access_time</i><p id="date4"></p></div></div></div></div><div class="col-xl-4 col-lg-6 col-md-6 col-sm-6"><div class="card card-stats"><div class="card-header card-header-danger card-header-icon"><div class="card-icon"><i class="material-icons">announcement</i></div><h4 class="card-title">Total Incomplete Deliveries</h4><h4 class="card-title">266</h4></div><div class="card-footer"><div class="stats"><i class="material-icons">access_time</i><p id="date5"></p></div></div></div></div></div><script>window.addEventListener("storage", function (event){ if (event.key=="logout-event"){ window.location.href="/#login";}}); var today=new Date(); var dd=String(today.getDate()).padStart(2, "0"); var mm=String(today.getMonth() + 1).padStart(2, "0"); var yyyy=today.getFullYear(); today=dd + "/" + mm + "/" + yyyy; document.getElementById("date1").innerHTML=today; document.getElementById("date2").innerHTML=today; document.getElementById("date3").innerHTML=today; document.getElementById("date4").innerHTML=today; document.getElementById("date5").innerHTML=today;</script>
+<!DOCTYPE html>
+<div class="row">
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-primary card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">domain</i>
+                </div>
+                <h4 class="card-title">Total Organizations</h4>
+                <h4 class="card-title">102</h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date1"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">how_to_reg</i>
+                </div>
+                <h4 class="card-title">Total Managers</h4>
+                <h4 class="card-title">90</h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">how_to_reg</i>
+                </div>
+                <h4 class="card-title">Total Delivery Men</h4>
+                <h4 class="card-title">1212</h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date3"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">check_circle</i>
+                </div>
+                <h4 class="card-title">Total Completed Deliveries</h4>
+                <h4 class="card-title">23</h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date4"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">announcement</i>
+                </div>
+                <h4 class="card-title">Total Incomplete Deliveries</h4>
+                <h4 class="card-title">266</h4>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <p id="date5"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  window.addEventListener("storage", function (event) {
+    if (event.key == "logout-event") {
+      window.location.href = "/#login";
+    }
+  });
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, "0");
+  var mm = String(today.getMonth() + 1).padStart(2, "0");
+  var yyyy = today.getFullYear();
+
+  today = dd + "/" + mm + "/" + yyyy;
+  document.getElementById("date1").innerHTML = today;
+  document.getElementById("date2").innerHTML = today;
+  document.getElementById("date3").innerHTML = today;
+  document.getElementById("date4").innerHTML = today;
+  document.getElementById("date5").innerHTML = today;
+</script>

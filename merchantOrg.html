@@ -1,8 +1,741 @@
-<!DOCTYPE html><style>div.hideKoro{ display:none;}
-</style><script src="static/js/merchantORG_00.js"></script><link rel="stylesheet" href="static/css/merchantORG.css"><div id="loaderMama" style="margin-top:8%"><div class="multi-spinner-container" style="color:#fff"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"><div class="multi-spinner"></div></div></div></div></div></div></div><h3 style=" font-family:'Didact Gothic'; font-size:24px; text-align:center; color:#0066b3; ">Please Wait... </h3></div><div class="card naV hideKoro" id="hideKoro"><script>$("#loaderMama").show(); one1(); two2(); three3(); </script><div class="card-body table-responsive"><div class="row"><div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="one" style="width:100%; font-size:13px" onclick="createMer()" >Create Merchant </button></div><div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="two" style="width:100%; font-size:13px" onclick="approvedMer()" >Approved Merchant </button></div><div class="col-md-4"><button class="btn-outline btn-round btn-default btn btn-info" id="three" style="width:100%; font-size:13px" onclick="unApprovedMer()" >Unapproved Merchant </button></div><div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="four" style="width:100%; font-size:13px" onclick="activated()" >Activated Merchant </button></div><div class="col-md-6"><button class="btn-outline btn-round btn-default btn btn-info" id="five" style="width:100%; font-size:13px" onclick="disabledd()" >Disabled Merchant </button></div></div></div><div class="row" id="merchantCreate"><div class="col-lg-12"><div class="card"><div class="card-body table-responsive blur"><form class="p-5" style="color:#0066b3; text-align:left"><div class="form-row mb-4"><div class="col">Company Name: <input type="text" style="color:#0066b3" id="org_name" class="form-control" placeholder="" ></div></div>Owner Name: <input type="text" style="color:#0066b3" id="person_name" class="form-control" placeholder="" ><br>E-mail Address: <input type="email" style="color:#0066b3" id="email" class="form-control mb-4" placeholder="quixx@gmail.com" >Phone No: <input type="text" style="color:#0066b3" id="phone_number" class="form-control" placeholder="01711000000" ><br>Business Field: <input type="text" style="color:#0066b3" id="business_filed" class="form-control" placeholder="" ><br>Per Delivery Cost: <input type="text" style="color:#0066b3" id="per_delivery_cost" class="form-control" placeholder="" ></form><center><button class="btn btn-outline btn-round" style="background:#ffffd4; margin-top:-20px" type="submit" id="MERCHANT_CREATION" onclick="addMerchant()" ><center>Create Merchant</center></button></center></div></div></div></div><div class="card a"><div class="card-body table-responsive a"><table id="dtBasicExample" class="stripe hover" style="color:#0066b3" cellspacing="0" width="100%" ><thead><tr><th class="th-sm">Merchant ID</th><th class="th-sm">Company Name</th><th class="th-sm">Owner Name</th><th class="th-sm">Email</th><th class="th-sm">Phone Number</th><th class="th-sm">Business Field</th><th class="th-sm">Per Delivery Cost</th><th class="th-sm">COD Percentage</th><th class="th-sm">Update</th><th class="th-sm">Invoice</th><th class="th-sm">Payment</th></tr></thead><tfoot></tfoot></table></div></div><div class="card b"><div class="card-body table-responsive b"><table id="dtBasicExample2" class="stripe hover" style="color:#0066b3" cellspacing="0" width="100%" ><thead><tr><th class="th-sm">Merchant ID</th><th class="th-sm">Company Name</th><th class="th-sm">Owner Name</th><th class="th-sm">Email</th><th class="th-sm">Phone Number</th><th class="th-sm">Business Field</th><th class="th-sm">Per Delivery Cost</th><th class="th-sm">Approve?</th></tr></thead><tfoot></tfoot></table></div></div><div class="card c"><div class="card-body table-responsive c"><table id="dtBasicExampleActivate" class="stripe hover" style="color:#0066b3" cellspacing="0" width="100%" ><thead><tr><th class="th-sm">Merchant ID</th><th class="th-sm">Company Name</th><th class="th-sm">Owner Name</th><th class="th-sm">Email</th><th class="th-sm">Phone Number</th><th class="th-sm">Business Field</th><th class="th-sm">Per Delivery Cost</th><th class="th-sm">Disable?</th></tr></thead><tfoot></tfoot></table></div></div><div class="card d"><div class="card-body table-responsive d"><table id="dtBasicExampleDisable" class="stripe hover" style="color:#0066b3" cellspacing="0" width="100%" ><thead><tr><th class="th-sm">Merchant ID</th><th class="th-sm">Company Name</th><th class="th-sm">Owner Name</th><th class="th-sm">Email</th><th class="th-sm">Phone Number</th><th class="th-sm">Business Field</th><th class="th-sm">Per Delivery Cost</th><th class="th-sm">Activate?</th></tr></thead><tfoot></tfoot></table></div></div></div><div class="modal fade" id="myModalMer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true" ></button><h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Approve Merchant? </h4></div><div class="modal-body" style="text-align:center"><div class="circle-loader" style="text-align:center"><div class="checkmark draw" id="tick"></div></div><h4 id="sure" style="color:#0066b3"></h4></div><div class="modal-footer"><button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel1" data-dismiss="modal" >Cancel </button><button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-ok" id="modalApprove1" >Approve </button></div></div></div></div><div class="modal fade" id="myModalMerActivate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true" ></button><h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Disable Merchant? </h4></div><div class="modal-body" style="text-align:center"><div class="circle-loader" style="text-align:center"><div class="checkmark draw" id="tickActivate"></div></div><h4 id="sureActivate" style="color:#0066b3"></h4></div><div class="modal-footer"><button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel1Activate" data-dismiss="modal" >Cancel </button><button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-okActivate" id="modalApprove1Activate" >Disable </button></div></div></div></div><div class="modal fade" id="myModalMerDisable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true" ></button><h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Activate Merchant? </h4></div><div class="modal-body" style="text-align:center"><div class="circle-loader" style="text-align:center"><div class="checkmark draw" id="tickDisable"></div></div><h4 id="sureDisable" style="color:#0066b3"></h4></div><div class="modal-footer"><button type="button" style="color:#0066b3" class="btn btn-outline btn-default" id="modalCancel1Disable" data-dismiss="modal" >Cancel </button><button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-okDisable" id="modalApprove1Disable" >Activate </button></div></div></div></div><div class="modal fade" id="myModalMerUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true" ></button><h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Update Merchant? </h4></div><div class="modal-body" style="text-align:center; overflow-y:scroll"><form class="p-1" style="color:#0066b3" id="formUpdate"><div id="hideUpdate"><h5>Company Name:</h5><input type="text" style=" color:#0066b3; text-align:center; width:50%; margin:0 auto; margin-top:-22px; " id="org_name2" class="form-control" placeholder="" ><h5 style="margin-top:9px">Owner Name:</h5><input type="text" style=" color:#0066b3; text-align:center; margin-top:-22px; width:50%; margin:0 auto; margin-top:-22px; " id="person_name2" class="form-control" placeholder="" ><h5 style="margin-top:9px">E-mail Address:</h5><input type="email" style=" color:#0066b3; text-align:center; margin-top:-22px; width:50%; margin:0 auto; margin-top:-22px; " id="email2" class="form-control mb-4" placeholder="" disabled ><div style="margin-top:-18px"><h5>Phone No:</h5><input type="text" style=" color:#0066b3; text-align:center; margin-top:-22px; width:50%; margin:0 auto; margin-top:-22px; " id="phone_number2" class="form-control" placeholder="" ><h5 style="margin-top:9px">Business Field:</h5><input type="text" style=" color:#0066b3; text-align:center; margin-top:-22px; width:50%; margin:0 auto; margin-top:-22px; " id="business_filed2" class="form-control" placeholder="" ></div></div><h5 style="margin-top:9px">Per Delivery Cost:</h5><input type="text" style=" color:#0066b3; text-align:center; margin-top:-12px; width:50%; margin:0 auto; " id="per_cost" class="form-control" placeholder="" ><h5 style="margin-top:20px">COD Percentage:</h5><input type="text" style=" color:#0066b3; text-align:center; margin-top:-12px; width:50%; margin:0 auto; " id="cod_per" class="form-control" placeholder="" ></form><div class="circle-loader" style="text-align:center" id="circleLoad3"><div class="checkmark draw" id="tick3"></div></div><h4 id="sure3" style="color:#0066b3"></h4></div><div class="modal-footer"><button type="button" style="color:#0066b3" class="btn btn-outline btn-default cancelMod" id="modalCancel" data-dismiss="modal" >Cancel </button><button type="button" style="color:#0066b3" class="btn btn-outline btn-danger btn-ok-update" id="modalApprove" >Update </button></div></div></div></div><div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-><div class="modal-dialog"><div class="modal-content"><div class="modal-body" style="text-align:center"><div class="circle-loader" style="text-align:center"><div class="checkmark draw" id="tick2"></div></div><h4 id="sure2" style="color:#0066b3"></h4></div></div></div></div><div class="modal fade" id="myModaltaka" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static"
-><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true" ></button><h4 class="modal-title" style="color:#0066b3" id="myModalLabel">Complete Payment? </h4></div><div class="modal-body" style="text-align:center"><div class="circle-loader" style="text-align:center"><div class="checkmark draw" id="tick2taka"></div></div><h4 id="sure2taka" style="color:#0066b3"></h4></div><div class="modal-footer"><button type="button" style="color:#0066b3" class="btn btn-outline btn-default canceltaka" id="modalCanceltaka" data-dismiss="modal" >Cancel </button><button type="button" style="color:#0066b3" class="btn btn-outline btn-info btn-ok-taka" id="modalApprovetaka" >Complete Payment </button></div></div></div></div><div id="myModa" class="modal fade" data-backdrop="static"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><h3 style="color:#0066b3" id="wrong"></h3><button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again </button></div></div></div></div><div id="myModataka" class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><h3 style="color:#0066b3" id="wrongTaka"></h3><button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Sorry! </button></div></div></div></div><div id="myModal2" class="modal fade" data-backdrop="static"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><h4 style="color:#0066b3">Ooops!</h4><p style="color:#0066b3">Something went wrong. Please try again!</p><button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again </button></div></div></div></div><div id="myModal2XYZ" class="modal fade" data-backdrop="static"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><h4 style="color:#0066b3">Ooops!</h4><p style="color:#0066b3" id="errorFix"></p><button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again </button></div></div></div></div><div id="myModal23" class="modal fade" data-backdrop="static"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><h4 style="color:#0066b3">Ooops!</h4><p style="color:#0066b3">Please fill up properly!</p><button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again </button></div></div></div></div><div id="myModalWrongMerCreate" class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><p id="wrongThisMerCreate"></p><button class="btn btn-success" data-dismiss="modal">Correct it! </button></div></div></div></div><div id="myModalWrongMerUpdate" class="modal fade"><div class="modal-dialog modal-confirm"><div class="modal-content"><div class="modal-body text-center"><p id="wrongThisMerUpdate"></p><button class="btn btn-success" data-dismiss="modal">Correct it! </button></div></div></div></div><script src="static/js/merchantORG_1.js"></script><script src="static/js/merchantORG_2.js"></script><script></script>
+<!DOCTYPE html>
+<style>
+  div.hideKoro {
+    display: none;
+  }
+</style>
+<script src="static/js/merchantORG_00.js"></script>
+<link rel="stylesheet" href="static/css/merchantORG.css">
+<div id="loaderMama" style="margin-top: 8%">
+    <div class="multi-spinner-container" style="color: #fff">
+        <div class="multi-spinner">
+            <div class="multi-spinner">
+                <div class="multi-spinner">
+                    <div class="multi-spinner">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 style="
+      font-family: 'Didact Gothic';
+      font-size: 24px;
+      text-align: center;
+      color: #0066b3;
+    ">
+        Please Wait...
+    </h3>
+</div>
+<div class="card naV hideKoro" id="hideKoro">
+    <script>
+    $("#loaderMama").show();
+    one1();
+    two2();
+    three3();
+    </script>
+    <div class="card-body table-responsive">
+        <div class="row">
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="one"
+                    style="width: 100%; font-size: 13px"
+                    onclick="createMer()"
+                >
+                    Create Merchant
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="two"
+                    style="width: 100%; font-size: 13px"
+                    onclick="approvedMer()"
+                >
+                    Approved Merchant
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="three"
+                    style="width: 100%; font-size: 13px"
+                    onclick="unApprovedMer()"
+                >
+                    Unapproved Merchant
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="four"
+                    style="width: 100%; font-size: 13px"
+                    onclick="activated()"
+                >
+                    Activated Merchant
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="five"
+                    style="width: 100%; font-size: 13px"
+                    onclick="disabledd()"
+                >
+                    Disabled Merchant
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="merchantCreate">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body table-responsive blur">
+                    <form class="p-5" style="color: #0066b3; text-align: left">
+                        <div class="form-row mb-4">
+                            <div class="col">
+                                Company Name:
+                                <input
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="org_name"
+                                    class="form-control"
+                                    placeholder=""
+                                >
+                            </div>
+                        </div>
+                        Owner Name:
+                        <input
+                            type="text"
+                            style="color: #0066b3"
+                            id="person_name"
+                            class="form-control"
+                            placeholder=""
+                        >
+                        <br>
+                        E-mail Address:
+                        <input
+                            type="email"
+                            style="color: #0066b3"
+                            id="email"
+                            class="form-control mb-4"
+                            placeholder="quixx@gmail.com"
+                        >
+                        Phone No:
+                        <input
+                            type="text"
+                            style="color: #0066b3"
+                            id="phone_number"
+                            class="form-control"
+                            placeholder="01711000000"
+                        >
+                        <br>
+                        Business Field:
+                        <input
+                            type="text"
+                            style="color: #0066b3"
+                            id="business_filed"
+                            class="form-control"
+                            placeholder=""
+                        >
+                        <br>
+                        Per Delivery Cost:
+                        <input
+                            type="text"
+                            style="color: #0066b3"
+                            id="per_delivery_cost"
+                            class="form-control"
+                            placeholder=""
+                        >
+                    </form>
+                    <center>
+                        <button
+                            class="btn btn-outline btn-round"
+                            style="background: #ffffd4; margin-top: -20px"
+                            type="submit"
+                            id="MERCHANT_CREATION"
+                            onclick="addMerchant()"
+                        >
+                            <center>Create Merchant</center>
+                        </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card a">
+        <div class="card-body table-responsive a">
+            <table
+                id="dtBasicExample"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">Merchant ID</th>
+                        <th class="th-sm">Company Name</th>
+                        <th class="th-sm">Owner Name</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">Business Field</th>
+                        <th class="th-sm">Per Delivery Cost</th>
+                        <th class="th-sm">COD Percentage</th>
+                        <th class="th-sm">Update</th>
+                        <th class="th-sm">Invoice</th>
+                        <th class="th-sm">Payment</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card b">
+        <div class="card-body table-responsive b">
+            <table
+                id="dtBasicExample2"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">Merchant ID</th>
+                        <th class="th-sm">Company Name</th>
+                        <th class="th-sm">Owner Name</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">Business Field</th>
+                        <th class="th-sm">Per Delivery Cost</th>
+                        <th class="th-sm">Approve?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card c">
+        <div class="card-body table-responsive c">
+            <table
+                id="dtBasicExampleActivate"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">Merchant ID</th>
+                        <th class="th-sm">Company Name</th>
+                        <th class="th-sm">Owner Name</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">Business Field</th>
+                        <th class="th-sm">Per Delivery Cost</th>
+                        <th class="th-sm">Disable?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card d">
+        <div class="card-body table-responsive d">
+            <table
+                id="dtBasicExampleDisable"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">Merchant ID</th>
+                        <th class="th-sm">Company Name</th>
+                        <th class="th-sm">Owner Name</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">Business Field</th>
+                        <th class="th-sm">Per Delivery Cost</th>
+                        <th class="th-sm">Activate?</th>
+                    </tr>
+                </thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalMer"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Approve Merchant?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tick"></div>
+                </div>
+                <h4 id="sure" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancel1"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-ok"
+                    id="modalApprove1"
+                >
+                    Approve
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalMerActivate"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Disable Merchant?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tickActivate"></div>
+                </div>
+                <h4 id="sureActivate" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancel1Activate"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-okActivate"
+                    id="modalApprove1Activate"
+                >
+                    Disable
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalMerDisable"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Activate Merchant?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tickDisable"></div>
+                </div>
+                <h4 id="sureDisable" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default"
+                    id="modalCancel1Disable"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-okDisable"
+                    id="modalApprove1Disable"
+                >
+                    Activate
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalMerUpdate"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Update Merchant?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center; overflow-y: scroll">
+                <form class="p-1" style="color: #0066b3" id="formUpdate">
+                    <div id="hideUpdate">
+                        <h5>Company Name:</h5>
+                        <input
+                            type="text"
+                            style="
+                color: #0066b3;
+                text-align: center;
+                width: 50%;
+                margin: 0 auto;
+                margin-top: -22px;
+              "
+                            id="org_name2"
+                            class="form-control"
+                            placeholder=""
+                        >
+                        <h5 style="margin-top: 9px">Owner Name:</h5>
+                        <input
+                            type="text"
+                            style="
+                color: #0066b3;
+                text-align: center;
+                margin-top: -22px;
+                width: 50%;
+                margin: 0 auto;
+                margin-top: -22px;
+              "
+                            id="person_name2"
+                            class="form-control"
+                            placeholder=""
+                        >
+                        <h5 style="margin-top: 9px">E-mail Address:</h5>
+                        <input
+                            type="email"
+                            style="
+                color: #0066b3;
+                text-align: center;
+                margin-top: -22px;
+                width: 50%;
+                margin: 0 auto;
+                margin-top: -22px;
+              "
+                            id="email2"
+                            class="form-control mb-4"
+                            placeholder=""
+                            disabled
+                        >
+                        <div style="margin-top: -18px">
+                            <h5>Phone No:</h5>
+                            <input
+                                type="text"
+                                style="
+                  color: #0066b3;
+                  text-align: center;
+                  margin-top: -22px;
+                  width: 50%;
+                  margin: 0 auto;
+                  margin-top: -22px;
+                "
+                                id="phone_number2"
+                                class="form-control"
+                                placeholder=""
+                            >
+                            <h5 style="margin-top: 9px">Business Field:</h5>
+                            <input
+                                type="text"
+                                style="
+                  color: #0066b3;
+                  text-align: center;
+                  margin-top: -22px;
+                  width: 50%;
+                  margin: 0 auto;
+                  margin-top: -22px;
+                "
+                                id="business_filed2"
+                                class="form-control"
+                                placeholder=""
+                            >
+                        </div>
+                    </div>
+                    <h5 style="margin-top: 9px">Per Delivery Cost:</h5>
+                    <input
+                        type="text"
+                        style="
+              color: #0066b3;
+              text-align: center;
+              margin-top: -12px;
+              width: 50%;
+              margin: 0 auto;
+            "
+                        id="per_cost"
+                        class="form-control"
+                        placeholder=""
+                    >
+                    <h5 style="margin-top: 20px">COD Percentage:</h5>
+                    <input
+                        type="text"
+                        style="
+              color: #0066b3;
+              text-align: center;
+              margin-top: -12px;
+              width: 50%;
+              margin: 0 auto;
+            "
+                        id="cod_per"
+                        class="form-control"
+                        placeholder=""
+                    >
+                </form>
+                <div class="circle-loader" style="text-align: center" id="circleLoad3">
+                    <div class="checkmark draw" id="tick3"></div>
+                </div>
+                <h4 id="sure3" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default cancelMod"
+                    id="modalCancel"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-ok-update"
+                    id="modalApprove"
+                >
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tick2"></div>
+                </div>
+                <h4 id="sure2" style="color: #0066b3"></h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModaltaka"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
+                    Complete Payment?
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <div class="circle-loader" style="text-align: center">
+                    <div class="checkmark draw" id="tick2taka"></div>
+                </div>
+                <h4 id="sure2taka" style="color: #0066b3"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default canceltaka"
+                    id="modalCanceltaka"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-info btn-ok-taka"
+                    id="modalApprovetaka"
+                >
+                    Complete Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModa" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h3 style="color: #0066b3" id="wrong"></h3>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModataka" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h3 style="color: #0066b3" id="wrongTaka"></h3>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Sorry!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal2" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 style="color: #0066b3">Ooops!</h4>
+                <p style="color: #0066b3">Something went wrong. Please try again!</p>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal2XYZ" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 style="color: #0066b3">Ooops!</h4>
+                <p style="color: #0066b3" id="errorFix"></p>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal23" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 style="color: #0066b3">Ooops!</h4>
+                <p style="color: #0066b3">Please fill up properly!</p>
+                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalWrongMerCreate" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p id="wrongThisMerCreate"></p>
+                <button class="btn btn-success" data-dismiss="modal">
+                    Correct it!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalWrongMerUpdate" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p id="wrongThisMerUpdate"></p>
+                <button class="btn btn-success" data-dismiss="modal">
+                    Correct it!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/js/merchantORG_1.js"></script>
+<script src="static/js/merchantORG_2.js"></script>
+<script></script>
