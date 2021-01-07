@@ -2174,8 +2174,8 @@ p.error {
 @media (max-width: 700px) {
     .Modal__Quixx {
         padding: 1rem;
-        left: calc(50% - 225px);
-        width: 450px;
+        left: calc(50% - 200px);
+        width: 400px;
     }
 }
 
