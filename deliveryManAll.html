@@ -337,22 +337,7 @@
 </script>
 <script>
   var a;
-  /*$.ajax
-	({
-		async: true,
-		type: "GET",
-		url: urlForAll+ "approved/all/organization/id",
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			a =  data.data;
-		}
-	});*/
+
   var registeredDeliveryMan = () => {
     document.getElementById("onec").disabled = true;
     document.getElementById("twoc").disabled = false;
@@ -604,28 +589,6 @@
     $("#dtBasicExampleAp").show();
     $(".b").show();
   };
-  //return '<button id="' + id + '" name="' + userID + '" class="dodo" onclick=approveByID(this)>Approve?</button>'
-
-  /*var approveByID = (id) => 
-	{
-		$.ajax
-		({
-			type: "GET",
-			
-			url: urlForAll+ "approved/deliveryMan/" + id.id,
-			
-			headers: 
-			{
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json',
-			  "Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function(data) 
-			{
-				console.log(data);
-			}
-		});
-	};*/
   var id;
   var $t;
   $("#dtBasicExampleAp").on("click", ".deleteIt", function () {
