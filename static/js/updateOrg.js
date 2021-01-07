@@ -1,1 +1,686 @@
-var myMarker,myMarker2,infowindow,infowindow2,contentString,contentString2;$(document).ready((function(){$("#settings").hide(),data={moneyByDeliveryType:{moneyDeliveryTypes:[{deliveryType:"Urgent",price:5e4},{deliveryType:"Same Day",price:6e3}]},moneyByDistance:{moneyDistances:[{distance:"2-3",price:200}]},moneyByWeight:{moneyByWeights:[{weight:2,price:2e3}]},moneyProduct:{moneyProducts:[{price:9500,productName:"Glass"}]}};const e=()=>{$.ajax({type:"GET",url:"http://206.189.128.203:8181/api/quixx/v1/delivery/metric/weight/",success:function(e){let n,o,r,a;n=document.createElement("div"),n.setAttribute("class","prod_type"),e.data.forEach((e,t)=>{o=document.createElement("div"),a=document.createElement("h5"),r=document.createElement("input"),a.innerHTML=e+":",a.setAttribute("style","text-align: center; color:#000;"),r.setAttribute("type","text"),r.setAttribute("id",e),r.setAttribute("class","form-control mb-4"),r.setAttribute("style","color:#0066b3;text-align:center;"),o.append(a),o.append(r),n.append(o)}),document.querySelector(".product__weight").append(n),t()},error:function(e){}})},t=()=>{$.ajax({type:"GET",url:"http://206.189.128.203:8181/api/quixx/v1/delivery/metric/distance/",success:function(e){let t,o,r,a;t=document.createElement("div"),t.setAttribute("class","prod_type"),e.data.forEach((e,n)=>{o=document.createElement("div"),a=document.createElement("h5"),r=document.createElement("input"),a.innerHTML=e+":",a.setAttribute("style","text-align: center; color:#000;"),r.setAttribute("type","text"),r.setAttribute("id",e),r.setAttribute("class","form-control mb-4"),r.setAttribute("style","color:#0066b3;text-align:center;"),o.append(a),o.append(r),t.append(o)}),document.querySelector(".get__distance").append(t),n()},error:function(e){}})},n=()=>{$.ajax({type:"GET",url:"http://206.189.128.203:8181/api/quixx/v1/delivery/metric/delivery/type/",success:function(e){let t,n,r,a;t=document.createElement("div"),t.setAttribute("class","prod_type"),e.data.forEach((e,o)=>{n=document.createElement("div"),a=document.createElement("h5"),r=document.createElement("input"),a.innerHTML=e+":",a.setAttribute("style","text-align: center; color:#000;"),r.setAttribute("type","text"),r.setAttribute("id",e),r.setAttribute("class","form-control mb-4"),r.setAttribute("style","color:#0066b3;text-align:center;"),n.append(a),n.append(r),t.append(n)}),document.querySelector(".delivery_type").append(t),o()},error:function(e){}})},o=()=>{for(let e in data)if("moneyDeliveryTypes"==Object.keys(data[e]))for(let t of data[e].moneyDeliveryTypes)document.getElementById(t.deliveryType).value=t.price;else if("moneyDistances"==Object.keys(data[e]))for(let t of data[e].moneyDistances)document.getElementById(t.distance).value=t.price;else if("moneyByWeights"==Object.keys(data[e]))for(let t of data[e].moneyByWeights)document.getElementById(t.weight).value=t.price;else if("moneyProducts"==Object.keys(data[e]))for(let t of data[e].moneyProducts)document.getElementById(t.productName).value=t.price};$.ajax({type:"GET",url:"http://206.189.128.203:8181/api/quixx/v1/delivery/metric/product/type/",success:function(t){let n,o,r,a;n=document.createElement("div"),n.setAttribute("class","prod_type"),t.data.forEach((e,t)=>{o=document.createElement("div"),a=document.createElement("h5"),r=document.createElement("input"),a.innerHTML=e+":",a.setAttribute("style","text-align: center; color:#000;"),r.setAttribute("type","text"),r.setAttribute("id",e),r.setAttribute("class","form-control mb-4"),r.setAttribute("style","color:#0066b3;text-align:center;"),o.append(a),o.append(r),n.append(o)}),document.querySelector(".product__type").append(n),e()},error:function(e){}}),window.addEventListener("storage",(function(e){"logout-event"==e.key&&(window.location.href=""+localStorage.getItem("wh-user"))}))}));var markers=[],markers2=[];function initAutocomplete(){$.ajax({async:!0,type:"GET",url:urlForAll+"profile/get/profile/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(e){e,document.getElementById("sender_address").value=e.data.sender_address,document.getElementById("pac-input").value=e.data.sender_address,document.getElementById("lat").value=e.data.sender_lat,document.getElementById("longi").value=e.data.sender_longi;for(var t=new google.maps.Map(document.getElementById("map"),{center:{lat:23.8103,lng:90.4125},zoom:13,mapTypeId:"roadmap",mapTypeControl:!1,fullscreenControl:!1}),n=[{position:{lat:parseFloat(e.data.sender_lat),lng:parseFloat(e.data.sender_longi)},type:"info"}],o=0;o<n.length;o++)new google.maps.Marker({position:n[o].position,icon:{url:"static/img/p5.png"},map:t});navigator.geolocation&&navigator.geolocation.getCurrentPosition((function(e){var n={lat:e.coords.latitude,lng:e.coords.longitude};(new google.maps.Geocoder).geocode({location:n},(function(e,o){if("OK"===o)if(e[0])new google.maps.Marker({position:n,map:t,icon:{url:"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"},title:"Your current location is : "+e[0].formatted_address});else window.alert("No results found");else window.alert("Geocoder failed due to: "+o)})),t.setCenter(n)}),(function(){}));var r=document.getElementById("pac-input"),a=new google.maps.places.SearchBox(r);t.controls[google.maps.ControlPosition.TOP_LEFT].push(r),t.addListener("bounds_changed",(function(){a.setBounds(t.getBounds())})),a.addListener("places_changed",(function(){var e=a.getPlaces();if(0!=e.length){var n=new google.maps.LatLngBounds;e.forEach((function(e){if(e.geometry){removeMarkers(),myMarker=new google.maps.Marker({position:e.geometry.location,draggable:!0}),markers.push(myMarker),contentString="<p>Drag marker...</p>",infowindow=new google.maps.InfoWindow({content:contentString});var o=new google.maps.Geocoder,a=new google.maps.LatLng(myMarker.position.lat(),myMarker.position.lng());o.geocode({latLng:a},(function(e,t){if(t==google.maps.GeocoderStatus.OK){var n=e[0].formatted_address;infowindow.setContent(n),document.getElementById("lat").value=myMarker.position.lat(),document.getElementById("longi").value=myMarker.position.lng()}})),google.maps.event.addListener(myMarker,"dragend",(function(e){contentString="<p>Current Lat: "+r+" Current Lng: "+e.latLng.lng().toFixed(3)+"</p>",document.getElementById("lat").value=e.latLng.lat(),document.getElementById("longi").value=e.latLng.lng();var t=new google.maps.Geocoder,n=new google.maps.LatLng(e.latLng.lat(),e.latLng.lng());t.geocode({latLng:n},(function(e,t){if(t==google.maps.GeocoderStatus.OK){var n=e[0].formatted_address;infowindow.setContent(n),document.getElementById("pac-input").value=n}}))})),google.maps.event.addListener(myMarker,"dragstart",(function(e){})),myMarker.addListener("click",(function(){infowindow.open(t,myMarker)})),t.setCenter(myMarker.position),myMarker.setMap(t),e.geometry.viewport?n.union(e.geometry.viewport):n.extend(e.geometry.location)}})),t.fitBounds(n)}}))},error:function(e,t,n){$("#myModal2").modal("show")}})}function removeMarkers(){for(var e=0;e<markers.length;e++)markers[e].setMap(null)}function handleLocationError(e,t,n){t.setPosition(n),t.setContent(e?"Error: The Geolocation service failed.":"Error: Your browser doesn't support geolocation."),t.open(map)}document.getElementById("updateMerchant").addEventListener("click",(function(e){e.preventDefault();var t=document.getElementById("sender_address").value,n=document.getElementById("pac-input").value,o=String(document.getElementById("lat").value),r=String(document.getElementById("longi").value);1==(""==t||null==t?(document.getElementById("wrongThisMerSet").innerHTML="Address cannot be empty!",$("#myModalWrongMerSet").modal("show"),0):1)&&1==(""==n||null==n?(document.getElementById("wrongThisMerSet").innerHTML="Please search your location on map!",$("#myModalWrongMerSet").modal("show"),0):1)&&1==(""==o||null==o?(document.getElementById("wrongThisMerSet").innerHTML="Please search your location on map!",$("#myModalWrongMerSet").modal("show"),0):1)&&$.ajax({type:"PUT",url:urlForAll+"profile/update/settings",data:JSON.stringify({user_id:localStorage.getItem("userID"),sender_address:t,sender_lat:o,sender_longi:r}),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(e){$("#tickDD2").hide(),$(".circle-loader").removeClass("load-complete"),$("#sureDD2").html(""),$("#myModalCreateDD1").modal("show"),$("#sureDD2").html("Please wait!"),"OK"==e.status&&(setTimeout((function(){$(".circle-loader").addClass("load-complete"),$("#tickDD2").show(),$("#sureDD2").html("Organization Settings Updated!")}),3e3),setTimeout((function(){$("#myModalCreateDD1").modal("hide")}),4e3),$("#cod").hide())},error:function(e,t,n){$("#myModalCreateDD1").modal("hide"),$("#myModal2").modal("show")}})})),document.getElementById("updateMerchantMetric").addEventListener("click",(function(e){e.preventDefault();let t=[],n=[],o=[],r=[];const a=(e,t,n,o)=>((e,t,n,o)=>{var r=e.trim();return 0==!/\D/.test(r)?(document.getElementById("wrongThisMerSet").innerHTML="Please give valid number for "+t,$("#myModalWrongMerSet").modal("show"),document.getElementById(t).focus(),0):1==!/\D/.test(r)?(r=r||0,o.push({[n]:t,price:r}),1):void 0})(e,t,n,o);if(2==(()=>{let e=document.querySelectorAll(".product__type div"),n=0;return e.forEach((o,r)=>{0!==r&&(n+=a(e[r].lastChild.value,e[r].lastChild.id,"productName",t))}),n})()&&3==(()=>{let e=document.querySelectorAll(".product__weight div"),t=0;return e.forEach((o,r)=>{0!==r&&(t+=a(e[r].lastChild.value,e[r].lastChild.id,"weight",n))}),t})()&&2==(()=>{let e=document.querySelectorAll(".get__distance div"),t=0;return e.forEach((n,r)=>{0!==r&&(t+=a(e[r].lastChild.value,e[r].lastChild.id,"distance",o))}),t})()&3==(()=>{let e=document.querySelectorAll(".delivery_type div"),t=0;return e.forEach((n,o)=>{0!==o&&(t+=a(e[o].lastChild.value,e[o].lastChild.id,"deliveryType",r))}),t})()){t=JSON.stringify(t),n=JSON.stringify(n),o=JSON.stringify(o),r=JSON.stringify(r)}}));
+$(document).ready(function () {
+	$("#settings").hide();
+
+	// data = {
+	// 	moneyByDeliveryType: {
+	// 		moneyDeliveryTypes: [
+	// 			{
+	// 				deliveryType: "Urgent",
+	// 				price: 50000
+	// 			},
+	// 			{
+	// 				deliveryType: "Same Day",
+	// 				price: 6000
+	// 			}
+	// 		]
+	// 	},
+	// 	moneyByDistance: {
+	// 		moneyDistances: [
+	// 			{
+	// 				distance: "2-3",
+	// 				price: 200
+	// 			}
+	// 		]
+	// 	},
+	// 	moneyByWeight: {
+	// 		moneyByWeights: [
+	// 			{
+	// 				weight: 2,
+	// 				price: 2000
+	// 			}
+	// 		]
+	// 	},
+	// 	moneyProduct: {
+	// 		moneyProducts: [
+	// 			{
+	// 				price: 9500,
+	// 				productName: "Glass"
+	// 			}
+	// 		]
+	// 	}
+	// };
+	// console.log(data);
+	// const productType = () => {
+	// 	$.ajax
+	// 		({
+	// 			type: "GET",
+	// 			url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/product/type/",
+	// 			success: function (data) {
+	// 				// console.log(data);
+	// 				let div, child, elem, label;
+	// 				div = document.createElement("div");
+	// 				div.setAttribute("class", "prod_type");
+	// 				data.data.forEach((elemx, index) => {
+	// 					child = document.createElement("div");
+	// 					label = document.createElement("h5");
+	// 					elem = document.createElement("input");
+	// 					label.innerHTML = elemx + ":";
+	// 					label.setAttribute("style", "text-align: center; color:#000;");
+	// 					elem.setAttribute("type", "text");
+	// 					elem.setAttribute("id", elemx);
+	// 					elem.setAttribute("class", "form-control mb-4");
+	// 					elem.setAttribute("style", "color:#0066b3;text-align:center;");
+	// 					child.append(label);
+	// 					child.append(elem);
+	// 					div.append(child);
+	// 				});
+	// 				document.querySelector(".product__type").append(div);
+	// 				productWeight();
+	// 			},
+	// 			error: function (data) {
+	// 				// console.log(data);
+	// 			}
+	// 		});
+	// }
+	// const productWeight = () => {
+	// 	$.ajax
+	// 		({
+	// 			type: "GET",
+	// 			url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/weight/",
+	// 			success: function (data) {
+	// 				//console.log(data);
+	// 				let div, child, elem, label;
+	// 				div = document.createElement("div");
+	// 				div.setAttribute("class", "prod_type");
+	// 				data.data.forEach((elemx, index) => {
+	// 					child = document.createElement("div");
+	// 					label = document.createElement("h5");
+	// 					elem = document.createElement("input");
+	// 					label.innerHTML = elemx + ":";
+	// 					label.setAttribute("style", "text-align: center; color:#000;");
+	// 					elem.setAttribute("type", "text");
+	// 					elem.setAttribute("id", elemx);
+	// 					elem.setAttribute("class", "form-control mb-4");
+	// 					elem.setAttribute("style", "color:#0066b3;text-align:center;");
+	// 					child.append(label);
+	// 					child.append(elem);
+	// 					div.append(child);
+	// 				});
+	// 				document.querySelector(".product__weight").append(div);
+	// 				getDistance();
+	// 			},
+	// 			error: function (data) {
+	// 				// console.log(data);
+	// 			}
+	// 		});
+	// }
+	// const getDistance = () => {
+	// 	$.ajax
+	// 		({
+	// 			type: "GET",
+	// 			url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/distance/",
+	// 			success: function (data) {
+	// 				//console.log(data);
+	// 				let div, child, elem, label;
+	// 				div = document.createElement("div");
+	// 				div.setAttribute("class", "prod_type");
+	// 				data.data.forEach((elemx, index) => {
+	// 					child = document.createElement("div");
+	// 					label = document.createElement("h5");
+	// 					elem = document.createElement("input");
+	// 					label.innerHTML = elemx + ":";
+	// 					label.setAttribute("style", "text-align: center; color:#000;");
+	// 					elem.setAttribute("type", "text");
+	// 					elem.setAttribute("id", elemx);
+	// 					elem.setAttribute("class", "form-control mb-4");
+	// 					elem.setAttribute("style", "color:#0066b3;text-align:center;");
+	// 					child.append(label);
+	// 					child.append(elem);
+	// 					div.append(child);
+	// 				});
+	// 				document.querySelector(".get__distance").append(div);
+	// 				deliveryType();
+	// 			},
+	// 			error: function (data) {
+	// 				// console.log(data);
+	// 			}
+	// 		});
+	// }
+	// const deliveryType = () => {
+	// 	$.ajax
+	// 		({
+	// 			type: "GET",
+	// 			url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/delivery/type/",
+	// 			success: function (data) {
+	// 				//console.log(data);
+	// 				let div, child, elem, label;
+	// 				div = document.createElement("div");
+	// 				div.setAttribute("class", "prod_type");
+	// 				data.data.forEach((elemx, index) => {
+	// 					child = document.createElement("div");
+	// 					label = document.createElement("h5");
+	// 					elem = document.createElement("input");
+	// 					label.innerHTML = elemx + ":";
+	// 					label.setAttribute("style", "text-align: center; color:#000;");
+	// 					elem.setAttribute("type", "text");
+	// 					elem.setAttribute("id", elemx);
+	// 					elem.setAttribute("class", "form-control mb-4");
+	// 					elem.setAttribute("style", "color:#0066b3;text-align:center;");
+	// 					child.append(label);
+	// 					child.append(elem);
+	// 					div.append(child);
+	// 				});
+	// 				document.querySelector(".delivery_type").append(div);
+	// 				getMetricValue();
+	// 			},
+	// 			error: function (data) {
+	// 				// console.log(data);
+	// 			}
+	// 		});
+	// }
+	// const getMetricValue = () => {
+	// 	for (let elem in data) {
+	// 		// console.log((data[elem]));
+	// 		// console.log(Object.keys(data[elem]));
+	// 		if (Object.keys(data[elem]) == "moneyDeliveryTypes") {
+	// 			for (let elm of data[elem].moneyDeliveryTypes) {
+	// 				document.getElementById(elm.deliveryType).value = elm.price;
+	// 			}
+	// 		}
+	// 		else if (Object.keys(data[elem]) == "moneyDistances") {
+	// 			for (let elm of data[elem].moneyDistances) {
+	// 				document.getElementById(elm.distance).value = elm.price;
+	// 			}
+	// 		}
+	// 		else if (Object.keys(data[elem]) == "moneyByWeights") {
+	// 			for (let elm of data[elem].moneyByWeights) {
+	// 				document.getElementById(elm.weight).value = elm.price;
+	// 			}
+	// 		}
+	// 		else if (Object.keys(data[elem]) == "moneyProducts") {
+	// 			for (let elm of data[elem].moneyProducts) {
+	// 				document.getElementById(elm.productName).value = elm.price;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// productType();
+	window.addEventListener('storage', function (event) {
+		if (event.key == 'logout-event') {
+			window.location.href = "" + localStorage.getItem("wh-user");
+		}
+	});
+});
+
+var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
+var markers = [];
+var markers2 = [];
+
+
+function initAutocomplete() {
+	var datap;
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			url: urlForAll + "profile/get/profile/" + localStorage.getItem('userID'),
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				datap = data;
+				/*myMarker = new google.maps.Marker({
+				position: {lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi)},
+				map: map});*/
+
+				document.getElementById('sender_address').value = data.data.sender_address;
+				document.getElementById('pac-input').value = data.data.sender_address;
+				document.getElementById('lat').value = data.data.sender_lat;
+				document.getElementById('longi').value = data.data.sender_longi;
+				var map = new google.maps.Map(document.getElementById('map'), {
+					center: { lat: 23.8103, lng: 90.4125 },
+					zoom: 13,
+					mapTypeId: 'roadmap',
+					mapTypeControl: false,
+					fullscreenControl: false
+				});
+				var iconBase =
+					'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+
+				var icons = {
+					info: {
+						icon: iconBase + 'info-i_maps.png'
+					}
+				};
+
+				var features = [
+					{
+						position: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
+						type: 'info'
+					}
+				];
+
+				// Create markers.
+				for (var i = 0; i < features.length; i++) {
+					var marker = new google.maps.Marker({
+						position: features[i].position,
+						icon: {
+							url: "static/img/p5.png"
+						},
+						map: map
+					});
+				};
+
+				// Try HTML5 geolocation.
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function (position) {
+						var pos = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+						};
+
+						var geocoder = new google.maps.Geocoder;
+						geocoder.geocode({
+							'location': pos
+						}, function (results, status) {
+							if (status === 'OK') {
+								if (results[0]) {
+
+									//This is yout formatted address
+									var marker = new google.maps.Marker({
+										position: pos,
+										map: map,
+										icon: {
+											url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+										},
+										title: 'Your current location is : ' + results[0].formatted_address
+									});
+
+								} else {
+									window.alert('No results found');
+								}
+							} else {
+								window.alert('Geocoder failed due to: ' + status);
+							}
+						});
+
+
+						map.setCenter(pos);
+						//setMarkers(map);
+					}, function () {
+						//handleLocationError(true, infoWindow, map.getCenter());
+						//handleLocationError2(true, infoWindow2, map2.getCenter());
+					});
+				} else {
+					// Browser doesn't support Geolocation
+					//handleLocationError(false, infoWindow, map.getCenter());
+					//handleLocationError2(false, infoWindow2, map2.getCenter());
+				}
+
+				// Create the search box and link it to the UI element.
+
+				var input = document.getElementById('pac-input');
+
+				var searchBox = new google.maps.places.SearchBox(input);
+
+				map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+				// Bias the SearchBox results towards current map's viewport.
+				map.addListener('bounds_changed', function () {
+					searchBox.setBounds(map.getBounds());
+				});
+
+				// Listen for the event fired when the user selects a prediction and retrieve
+				// more details for that place.
+
+
+				searchBox.addListener('places_changed', function () {
+					var places = searchBox.getPlaces();
+
+					if (places.length == 0) {
+						return;
+					}
+
+					// Clear out the old markers.
+
+					// For each place, get the icon, name and location.
+					var bounds = new google.maps.LatLngBounds();
+					places.forEach(function (place) {
+						if (!place.geometry) {
+							//console.log("Returned place contains no geometry");
+							return;
+						}
+						// Create a marker for each place.
+						removeMarkers();
+						//document.getElementById('PICKUP_ADDRESS').value=input.value;
+						myMarker = new google.maps.Marker({
+							position: place.geometry.location,
+							draggable: true
+						});
+
+						markers.push(myMarker);
+						contentString = '<p>Drag marker...</p>';
+						infowindow = new google.maps.InfoWindow({
+							content: contentString
+						});
+
+
+						var geocoder = new google.maps.Geocoder();
+						var location = new google.maps.LatLng(myMarker.position.lat(), myMarker.position.lng());
+						geocoder.geocode({ 'latLng': location }, function (results, status) {
+							if (status == google.maps.GeocoderStatus.OK) {
+								var add = results[0].formatted_address;
+								//var a = evt.latLng.lat() + evt.latLng.lng();
+								infowindow.setContent(add);
+
+								document.getElementById('lat').value = myMarker.position.lat();
+								document.getElementById('longi').value = myMarker.position.lng();
+							}
+
+						});
+
+
+						google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+							//document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+							contentString = '<p>Current Lat: ' + input + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+
+							document.getElementById('lat').value = evt.latLng.lat();
+							document.getElementById('longi').value = evt.latLng.lng();
+
+							var geocoder = new google.maps.Geocoder();
+							var location = new google.maps.LatLng(evt.latLng.lat(), evt.latLng.lng());
+							geocoder.geocode({ 'latLng': location }, function (results, status) {
+								if (status == google.maps.GeocoderStatus.OK) {
+									var add = results[0].formatted_address;
+									//var a = evt.latLng.lat() + evt.latLng.lng();
+									infowindow.setContent(add);
+
+									//document.getElementById('PICKUP_ADDRESS').value=add;
+									document.getElementById('pac-input').value = add;
+								}
+
+							});
+
+							//infowindow.setContent(contentString);
+						});
+
+
+
+						google.maps.event.addListener(myMarker, 'dragstart', function (evt) {
+							//document.getElementById('current').innerHTML = '<p>Currently dragging marker...</p>';
+						});
+
+						myMarker.addListener('click', function () {
+							infowindow.open(map, myMarker);
+						});
+
+
+						map.setCenter(myMarker.position);
+						myMarker.setMap(map);
+						if (place.geometry.viewport) {
+							// Only geocodes have viewport.
+							bounds.union(place.geometry.viewport);
+						} else {
+							bounds.extend(place.geometry.location);
+						}
+					});
+					map.fitBounds(bounds);
+				});
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+				$('#myModal2').modal('show');
+			}
+		})
+
+
+}
+
+function removeMarkers() {
+	for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(null);
+	}
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	infoWindow.setPosition(pos);
+	infoWindow.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+	infoWindow.open(map);
+
+}
+
+
+document.getElementById("updateMerchant").addEventListener("click", function (event) {
+	event.preventDefault();
+	var s_address = document.getElementById('sender_address').value;
+	var g_address = document.getElementById('pac-input').value;
+	var s_lat = String(document.getElementById('lat').value);
+	var s_longi = String(document.getElementById('longi').value);
+	var v1 = () => {
+		if (s_address == "" || s_address == null) {
+			document.getElementById('wrongThisMerSet').innerHTML = "Address cannot be empty!";
+			$('#myModalWrongMerSet').modal('show');
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var v2 = () => {
+		if (g_address == "" || g_address == null) {
+			document.getElementById('wrongThisMerSet').innerHTML = "Please search your location on map!";
+			$('#myModalWrongMerSet').modal('show');
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+
+	var v3 = () => {
+		if (s_lat == "" || s_lat == null) {
+			document.getElementById('wrongThisMerSet').innerHTML = "Please search your location on map!";
+			$('#myModalWrongMerSet').modal('show');
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+
+	if (v1() == 1 && v2() == 1 && v3() == 1) {
+		$.ajax
+			({
+				type: "PUT",
+				url: urlForAll + "profile/update/settings",
+				data: JSON.stringify
+					({
+						"user_id": localStorage.getItem('userID'),
+						"sender_address": s_address,
+						"sender_lat": s_lat,
+						"sender_longi": s_longi
+					}),
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					$('#tickDD2').hide();
+					$(".circle-loader").removeClass("load-complete");
+					$("#sureDD2").html("");
+					$("#myModalCreateDD1").modal('show');
+					$("#sureDD2").html("Please wait!");
+					if (data.status == 'OK') {
+						setTimeout(function () {
+							$(".circle-loader").addClass("load-complete");
+
+							$('#tickDD2').show();
+
+							$("#sureDD2").html("Organization Settings Updated!");
+						}, 3000);
+						setTimeout(function () {
+
+							$("#myModalCreateDD1").modal('hide');
+						}, 4000);
+						$("#cod").hide();
+
+					}
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+					$("#myModalCreateDD1").modal('hide');
+					$('#myModal2').modal('show');
+				}
+			})
+	}
+});
+// document.getElementById("updateMerchantMetric").addEventListener("click", function (event) {
+// 	event.preventDefault();
+// 	let moneyProducts = [], moneyByWeights = [], moneyByDistance = [], moneyDeliveryTypes = [];
+
+// 	var v44 = (val, id, type, array) => {
+// 		var value = val.trim();
+// 		if (!/\D/.test(value) == false) {
+// 			document.getElementById('wrongThisMerSet').innerHTML = "Please give valid number for " + id;
+// 			$('#myModalWrongMerSet').modal('show');
+// 			document.getElementById(id).focus();
+// 			return 0;
+// 		}
+// 		else if (!/\D/.test(value) == true) {
+// 			value = value ? value : 0;
+// 			array.push({ [type]: id, price: value });
+// 			return 1;
+// 		}
+// 	}
+
+// 	const checkProdType = (val, id, type, array) => {
+// 		return v44(val, id, type, array);
+// 	}
+
+// 	// console.log(document.querySelectorAll(".product__type div"));
+
+// 	const v11 = () => {
+// 		let all = document.querySelectorAll(".product__type div");
+// 		let count = 0;
+// 		all.forEach((element, index) => {
+// 			if (index !== 0) {
+// 				// console.log("VALUE" + all[index].lastChild.value);
+// 				// console.log("ID:" + all[index].lastChild.id);
+// 				count += checkProdType(all[index].lastChild.value, all[index].lastChild.id, "productName", moneyProducts);
+// 			}
+// 		});
+// 		return count;
+// 	}
+
+// 	const v12 = () => {
+// 		let all = document.querySelectorAll(".product__weight div");
+// 		let count = 0;
+// 		all.forEach((element, index) => {
+// 			if (index !== 0) {
+// 				// console.log("VALUE" + all[index].lastChild.value);
+// 				// console.log("ID:" + all[index].lastChild.id);
+// 				count += checkProdType(all[index].lastChild.value, all[index].lastChild.id, "weight", moneyByWeights);
+// 			}
+// 		});
+// 		return count;
+// 	}
+// 	const v13 = () => {
+// 		let all = document.querySelectorAll(".get__distance div");
+// 		let count = 0;
+// 		all.forEach((element, index) => {
+// 			if (index !== 0) {
+// 				// console.log("VALUE" + all[index].lastChild.value);
+// 				// console.log("ID:" + all[index].lastChild.id);
+// 				count += checkProdType(all[index].lastChild.value, all[index].lastChild.id, "distance", moneyByDistance);
+// 			}
+// 		});
+// 		return count;
+// 	}
+// 	const v14 = () => {
+// 		let all = document.querySelectorAll(".delivery_type div");
+// 		let count = 0;
+// 		all.forEach((element, index) => {
+// 			if (index !== 0) {
+// 				// console.log("VALUE" + all[index].lastChild.value);
+// 				// console.log("ID:" + all[index].lastChild.id);
+// 				count += checkProdType(all[index].lastChild.value, all[index].lastChild.id, "deliveryType", moneyDeliveryTypes);
+// 			}
+// 		});
+// 		return count;
+// 	}
+
+// 	if (v11() == 2 && v12() == 3 && v13() == 2 & v14() == 3) {
+// 		// console.log(JSON.stringify(moneyProducts));
+// 		// console.log(JSON.stringify(moneyByWeights));
+// 		// console.log(JSON.stringify(moneyByDistance));
+// 		// console.log(JSON.stringify(moneyDeliveryTypes));
+
+// 		moneyProducts = JSON.stringify(moneyProducts);
+// 		moneyByWeights = JSON.stringify(moneyByWeights);
+// 		moneyByDistance = JSON.stringify(moneyByDistance);
+// 		moneyDeliveryTypes = JSON.stringify(moneyDeliveryTypes);
+// 		let data = {
+// 			"moneyByDeliveryType": {
+// 				"moneyDeliveryTypes": moneyDeliveryTypes
+// 			},
+// 			"moneyByDistance": {
+// 				"moneyDistances": moneyByDistance
+// 			},
+// 			"moneyByWeight": {
+// 				"moneyByWeights": moneyByWeights
+// 			},
+// 			"moneyProduct": {
+// 				"moneyProducts": moneyProducts
+// 			}
+// 		}
+// 		// console.log(data);
+// 		// $.ajax
+// 		// 	({
+// 		// 		type: "PUT",
+// 		// 		url: "http://206.189.128.203:8181/api/quixx/v1/delivery/metric/add/delivery/metric/1",
+// 		// 		data: {
+// 		// 			"moneyByDeliveryType": {
+// 		// 				"moneyDeliveryTypes": moneyDeliveryTypes
+// 		// 			},
+// 		// 			"moneyByDistance": {
+// 		// 				"moneyDistances": moneyByDistance
+// 		// 			},
+// 		// 			"moneyByWeight": {
+// 		// 				"moneyByWeights": moneyByWeights
+// 		// 			},
+// 		// 			"moneyProduct": {
+// 		// 				"moneyProducts": moneyProducts
+// 		// 			}
+// 		// 		},
+// 		// 		headers:
+// 		// 		{
+// 		// 			'Accept': 'application/json',
+// 		// 			'Content-Type': 'application/json',
+// 		// 			// "Authorization": 'Bearer ' + localStorage.getItem('token')
+// 		// 		},
+// 		// 		success: function (data) {
+// 		// 			$('#tickDD2').hide();
+// 		// 			$(".circle-loader").removeClass("load-complete");
+// 		// 			$("#sureDD2").html("");
+// 		// 			$("#myModalCreateDD1").modal('show');
+// 		// 			$("#sureDD2").html("Please wait!");
+// 		// 			if (data.status == 'OK') {
+// 		// 				setTimeout(function () {
+// 		// 					$(".circle-loader").addClass("load-complete");
+
+// 		// 					$('#tickDD2').show();
+
+// 		// 					$("#sureDD2").html("Organization Settings Updated!");
+// 		// 				}, 3000);
+// 		// 				setTimeout(function () {
+
+// 		// 					$("#myModalCreateDD1").modal('hide');
+// 		// 				}, 4000);
+// 		// 				$("#cod").hide();
+
+// 		// 			}
+// 		// 		},
+// 		// 		error: function (data) {
+// 		// 			$("#myModalCreateDD1").modal('hide');
+// 		// 			$('#myModal2').modal('show');
+// 		// 		}
+// 		// 	})
+// 	}
+// });

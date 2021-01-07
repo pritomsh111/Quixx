@@ -38,11 +38,63 @@
     if (user == 'SUPER_ADMIN') {
       location.hash = '#dashboard';
     } else if (user == 'ORGANIZATIONAL_ADMIN') {
-      location.hash = '#settingsOrg';
+      $.ajax
+        ({
+          type: "GET",
+          url: urlForAll + "approved/isSetting/done/" + localStorage.getItem('userID'),
+          headers:
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": 'Bearer ' + localStorage.getItem('token')
+          },
+          success: function (data) {
+            if (data.data == true) {
+              a = '#dashboardOrg';
+              $('#settings').hide();
+              $('#alreadySet').show();
+            }
+            else {
+              $('#alreadySet').hide();
+              $('#settings').show();
+              a = '#settingsOrg';
+              //productType();
+            }
+            location.hash = a;
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+          }
+        });
     } else if (user == 'MANAGER') {
       location.hash = '#dashboardMan';
     } else if (user == 'MERCHANT') {
-      location.hash = '#settingsMer';
+      $.ajax
+        ({
+          async: true,
+          type: "GET",
+          url: urlForAll + "approved/isSetting/done/" + localStorage.getItem('userID'),
+          headers:
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": 'Bearer ' + localStorage.getItem('token')
+          },
+          success: function (data) {
+            if (data.data == true) {
+              a = '#dashboardMer';
+              $('#settingsMer').hide();
+              $('#alreadySetMer').show();
+            }
+            else {
+              $('#alreadySetMer').hide();
+              $('#settingsMer').show();
+              a = '#settingsMer';
+            }
+            location.hash = a;
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+          }
+        });
     }
   }
 
