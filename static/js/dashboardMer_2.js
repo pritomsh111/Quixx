@@ -1,1 +1,586 @@
-var dataP,thirteen=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"profile/get/profile/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(e){document.title=e.data.sender_name,document.getElementById("dashName").innerHTML=e.data.sender_name+"'s Panel"}})},one=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/anyPaymen/available/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("merTaka").innerHTML="<div class=loader5></div>"},success:function(e){1==e.data?(document.getElementById("merTaka").innerHTML="Yes",$("#invoice").show(),$("#confirm").show()):(document.getElementById("merTaka").innerHTML="No",$("#invoice").hide(),$("#confirm").hide()),two()},error:function(e,t,n){}})},two=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/should/get/from/orgHead/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("mer1").innerHTML="<div class=loader5></div>"},success:function(e){dataP=e.data,e.data.total_product_cost>0?document.getElementById("mer1").innerHTML=e.data.total_product_cost+'<span style="color:#0066b3;font-size:14px;">&#2547;</span>':document.getElementById("mer1").innerHTML='0<span style="color:#0066b3;font-size:14px;">&#2547;</span>',three()},error:function(e,t,n){}})},three=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/got/from/orgHead/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("mer2").innerHTML="<div class=loader5></div>"},success:function(e){e.data.total_product_cost>0?document.getElementById("mer2").innerHTML=e.data.total_product_cost+'<span style="color:#0066b3;font-size:14px;">&#2547;</span>':document.getElementById("mer2").innerHTML='0<span style="color:#0066b3;font-size:14px;">&#2547;</span>',four()},error:function(e,t,n){}})},four=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/due/payment/from/orgHead/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("mer3").innerHTML="<div class=loader5></div>"},success:function(e){e.data.total_product_cost>0?document.getElementById("mer3").innerHTML=e.data.total_product_cost+'<span style="color:#0066b3;font-size:14px;">&#2547;</span>':document.getElementById("mer3").innerHTML='0<span style="color:#0066b3;font-size:14px;">&#2547;</span>',five()},error:function(e,t,n){}})},five=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/completed/delivery/count/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("complete").innerHTML="<div class=loader5></div>"},success:function(e){e.data>0?document.getElementById("complete").innerHTML=e.data:document.getElementById("complete").innerHTML="0",six()},error:function(e,t,n){}})},six=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"delivery/total/incomplete/delivery/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("incomplete").innerHTML="<div class=loader5></div>"},success:function(e){e.data>0?document.getElementById("incomplete").innerHTML=e.data:document.getElementById("incomplete").innerHTML="0",seven()},error:function(e,t,n){}})},seven=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/unassign/delivery/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("unassigned").innerHTML="<div class=loader5></div>"},success:function(e){e.data>0?document.getElementById("unassigned").innerHTML=e.data:document.getElementById("unassigned").innerHTML="0",eight()},error:function(e,t,n){}})},eight=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"delivery/delivery/status/count/"+localStorage.getItem("userID")+"/RETURNED",headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(e){document.getElementById("totalReturnedDeliveries").innerHTML="<div class=loader5></div>"},success:function(e){e.data>0?document.getElementById("totalReturnedDeliveries").innerHTML=e.data:document.getElementById("totalReturnedDeliveries").innerHTML="0",nine()},error:function(e,t,n){}})},nine=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"delivery/delivery/status/count/"+localStorage.getItem("userID")+"/CANCELLED",headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(e){document.getElementById("totalCancelledDeliveries").innerHTML="<div class=loader5></div>"},success:function(e){e.data>0?document.getElementById("totalCancelledDeliveries").innerHTML=e.data:document.getElementById("totalCancelledDeliveries").innerHTML="0",ten()},error:function(e,t,n){}})},ten=()=>{$.ajax({async:!0,type:"GET",url:urlForAll+"delivery/delivery/status/count/"+localStorage.getItem("userID")+"/ON_HOLD",headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(e){document.getElementById("totalOnHoldDeliveries").innerHTML="<div class=loader5></div>"},success:function(e){e.data>0?document.getElementById("totalOnHoldDeliveries").innerHTML=e.data:document.getElementById("totalOnHoldDeliveries").innerHTML="0",eleven()},error:function(e,t,n){}})},eleven=()=>{thirteen()};function updateAfterSuccess(){$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/should/get/from/orgHead/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("mer1").innerHTML="<div class=loader5></div>"},success:function(e){dataP=e.data,e.data.total_product_cost>0?document.getElementById("mer1").innerHTML=e.data.total_product_cost+'<span style="color:#0066b3;font-size:14px;">&#2547;</span>':document.getElementById("mer1").innerHTML='0<span style="color:#0066b3;font-size:14px;">&#2547;</span>'},error:function(e,t,n){}}),$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/got/from/orgHead/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("mer2").innerHTML="<div class=loader5></div>"},success:function(e){e.data.total_product_cost>0?document.getElementById("mer2").innerHTML=e.data.total_product_cost+'<span style="color:#0066b3;font-size:14px;">&#2547;</span>':document.getElementById("mer2").innerHTML='0<span style="color:#0066b3;font-size:14px;">&#2547;</span>'},error:function(e,t,n){}})}function updateAfterSuccess2(){$.ajax({async:!0,type:"GET",url:urlForAll+"merchant/anyPaymen/available/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},beforeSend:function(){document.getElementById("merTaka").innerHTML="<div class=loader5></div>"},success:function(e){1==e.data?(document.getElementById("merTaka").innerHTML="Yes",$("#invoice").show(),$("#confirm").show()):(document.getElementById("merTaka").innerHTML="No",$("#invoice").hide(),$("#confirm").hide()),updateAfterSuccess()},error:function(e,t,n){}})}function updateTaka(){$("#tick22").hide(),$(".circle-loader").removeClass("load-complete"),$("#sure22").html("Are you sure?"),$("#myModalMer2").modal("show")}function confirmTaka(){$("#tick22").hide(),$(".circle-loader").removeClass("load-complete"),$("#sure22").html("Are you sure?"),$("#myModalMer2").modal("show")}$(".btn-ok").click((function(){$("#sure22").html("Please wait!"),document.getElementById("modalCancel").disabled=!0,document.getElementById("modalApprove").disabled=!0,$.ajax({async:!0,type:"PUT",url:urlForAll+"merchant/updatePaymen/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(e){updateAfterSuccess2(),$("#sure22").html("Please wait!"),setTimeout((function(){$(".circle-loader").addClass("load-complete"),$("#tick22").show(),$("#sure22").html("Payment Confirmed!")}),900),setTimeout((function(){$("#myModalMer2").modal("hide")}),2e3),document.getElementById("modalCancel").disabled=!1,document.getElementById("modalApprove").disabled=!1},error:function(e){document.getElementById("modalCancel").disabled=!1,document.getElementById("modalApprove").disabled=!1,$("#myModalMer2").modal("hide"),"responseJSON"==Object.keys(e)[17]&&$("#problem").html(e.responseJSON.errorMessage),$("#myModalE2").modal("show")}})}));var invoiceTaka=()=>{window.open(urlForAll+"reports/paymentFormerchant/report/"+localStorage.getItem("userID"))};one();var today=new Date,dd=String(today.getDate()).padStart(2,"0"),mm=String(today.getMonth()+1).padStart(2,"0"),yyyy=today.getFullYear();today=dd+"/"+mm+"/"+yyyy,document.getElementById("date4").innerHTML=today,document.getElementById("date5").innerHTML=today,document.getElementById("date6").innerHTML=today,document.getElementById("date64").innerHTML=today,document.getElementById("date65").innerHTML=today,document.getElementById("date66").innerHTML=today,document.getElementById("date9").innerHTML=today,document.getElementById("date10").innerHTML=today,document.getElementById("date11").innerHTML=today,document.getElementById("date12").innerHTML=today;
+var dataP;
+
+var thirteen = () => {
+	$.ajax
+	({
+		async: true,	
+		type: "GET",
+		url: urlForAll + "profile/get/profile/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function(data) 
+		{
+			document.title = data.data.sender_name;
+			document.getElementById("dashName").innerHTML = data.data.sender_name + "'s Panel";
+		}
+	})
+}
+
+var one = () => {	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/anyPaymen/available/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("merTaka").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data==true)
+			{
+				document.getElementById("merTaka").innerHTML = "Yes";
+				$('#invoice').show();
+				$('#confirm').show();
+			}
+			else
+			{
+				document.getElementById("merTaka").innerHTML = "No";
+				$('#invoice').hide();
+				$('#confirm').hide();
+			}
+			two();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+}
+
+var two = () => {
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/should/get/from/orgHead/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("mer1").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			dataP = data.data;
+			if(data.data.total_product_cost>0)
+			{
+				document.getElementById("mer1").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+			}
+			else
+			{
+				document.getElementById("mer1").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+			}
+			three();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+}
+
+var three = () => {
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/got/from/orgHead/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("mer2").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data.total_product_cost>0)
+			{
+				document.getElementById("mer2").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+			}
+			else
+			{
+				document.getElementById("mer2").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+			}
+			four();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+}
+var four = () => {
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/due/payment/from/orgHead/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("mer3").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data.total_product_cost>0)
+			{
+				document.getElementById("mer3").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+			}
+			else
+			{
+				document.getElementById("mer3").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+			}
+			five();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+}
+var five = () => {
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/completed/delivery/count/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("complete").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data>0)
+			{
+				document.getElementById("complete").innerHTML = data.data;
+			}
+			else
+			{
+				document.getElementById("complete").innerHTML = "0";
+			}
+			six();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+
+}
+var six = () => {
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "delivery/total/incomplete/delivery/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("incomplete").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data>0)
+			{
+				document.getElementById("incomplete").innerHTML = data.data;
+			}
+			else
+			{
+				document.getElementById("incomplete").innerHTML = "0";
+			}
+			seven();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+
+}
+var seven = () => {
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/unassign/delivery/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("unassigned").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data>0)
+			{
+				document.getElementById("unassigned").innerHTML = data.data;
+			}
+			else
+			{
+				document.getElementById("unassigned").innerHTML = "0";
+			}
+			eight();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+
+}
+var eight = () => {
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/RETURNED",
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function(xhr)
+		{
+			document.getElementById("totalReturnedDeliveries").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data>0)
+			{
+				document.getElementById("totalReturnedDeliveries").innerHTML = data.data;
+			}
+			else
+			{
+				document.getElementById("totalReturnedDeliveries").innerHTML = "0";
+			}
+			nine();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+}
+var nine = () => {
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/CANCELLED",
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function(xhr)
+		{
+			document.getElementById("totalCancelledDeliveries").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data>0)
+			{
+				document.getElementById("totalCancelledDeliveries").innerHTML = data.data;
+			}
+			else
+			{
+				document.getElementById("totalCancelledDeliveries").innerHTML = "0";
+			}
+			ten();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+
+}
+var ten = () => {
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/ON_HOLD",
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function(xhr)
+		{
+			document.getElementById("totalOnHoldDeliveries").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+		{
+			if(data.data>0)
+			{
+				document.getElementById("totalOnHoldDeliveries").innerHTML = data.data;
+			}
+			else
+			{
+				document.getElementById("totalOnHoldDeliveries").innerHTML = "0";
+			}
+			eleven();
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			
+			//alert("Please wait, we are working!");
+		}
+	});
+
+}
+
+var eleven = () => {
+	
+	thirteen();
+}
+
+function updateAfterSuccess(){
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/should/get/from/orgHead/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("mer1").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+			{
+				dataP = data.data;
+				if(data.data.total_product_cost>0)
+				{
+					document.getElementById("mer1").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+				}
+				else
+				{
+					document.getElementById("mer1").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+				}
+				
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				
+				//alert("Please wait, we are working!");
+			}
+	});
+
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/got/from/orgHead/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("mer2").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+			{
+				if(data.data.total_product_cost>0)
+				{
+					document.getElementById("mer2").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+				}
+				else
+				{
+					document.getElementById("mer2").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+				}
+				
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				
+				//alert("Please wait, we are working!");
+			}
+	});
+}
+
+
+function updateAfterSuccess2(){
+	
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll+ "merchant/anyPaymen/available/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		beforeSend: function()
+		{
+			document.getElementById("merTaka").innerHTML = "<div class=loader5></div>";	
+		},
+		success: function(data) 
+			{
+				if(data.data==true)
+				{
+					document.getElementById("merTaka").innerHTML = "Yes";
+					$('#invoice').show();
+					$('#confirm').show();
+				}
+				else
+				{
+					document.getElementById("merTaka").innerHTML = "No";
+					$('#invoice').hide();
+					$('#confirm').hide();
+				}
+				updateAfterSuccess();
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				
+				//alert("Please wait, we are working!");
+			}
+	});
+}
+
+function updateTaka(){
+	
+	$('#tick22').hide();
+	$(".circle-loader").removeClass("load-complete");
+
+	$("#sure22").html("Are you sure?");
+	$("#myModalMer2").modal('show');
+}
+
+function confirmTaka(){
+	
+	$('#tick22').hide();
+	$(".circle-loader").removeClass("load-complete");
+
+	$("#sure22").html("Are you sure?");
+	$("#myModalMer2").modal('show');
+}
+
+
+$('.btn-ok').click(function(){
+					
+	$("#sure22").html("Please wait!");
+	document.getElementById('modalCancel').disabled = true;
+	document.getElementById('modalApprove').disabled = true;
+	$.ajax
+	({
+		async: true,
+		type: "PUT",
+		url: urlForAll + "merchant/updatePaymen/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function(data) 
+		{
+			updateAfterSuccess2();
+			$("#sure22").html("Please wait!");
+			setTimeout(function(){ 
+				$(".circle-loader").addClass("load-complete");
+				
+				$('#tick22').show(); 
+			
+				$("#sure22").html("Payment Confirmed!");
+			}, 900);
+			
+			setTimeout(function(){ 
+				$("#myModalMer2").modal('hide');
+			
+				}, 2000);
+			document.getElementById('modalCancel').disabled = false;
+			document.getElementById('modalApprove').disabled = false;
+		},
+		error: function(data) {
+			
+			document.getElementById('modalCancel').disabled = false;
+			document.getElementById('modalApprove').disabled = false;
+			$('#myModalMer2').modal('hide');
+			var ob = Object.keys(data);
+			if(ob[17]=="responseJSON"){
+				$('#problem').html(data.responseJSON.errorMessage);
+			}
+			$('#myModalE2').modal('show');
+		}
+	});
+});
+var invoiceTaka = () =>
+{
+	window.open(urlForAll + "reports/paymentFormerchant/report/" + localStorage.getItem('userID'));
+};
+one();
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = dd + '/' + mm + '/' + yyyy;
+document.getElementById("date4").innerHTML = today;
+document.getElementById("date5").innerHTML = today;
+document.getElementById("date6").innerHTML = today;
+document.getElementById("date64").innerHTML = today;
+document.getElementById("date65").innerHTML = today;
+document.getElementById("date66").innerHTML = today;
+document.getElementById("date9").innerHTML = today;
+document.getElementById("date10").innerHTML = today;
+document.getElementById("date11").innerHTML = today;
+document.getElementById("date12").innerHTML = today;

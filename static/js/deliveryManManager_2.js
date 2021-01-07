@@ -1,1 +1,237 @@
-var managerID=localStorage.getItem("userID"),createDeliveryMan=()=>{$("#dtBasicExample").hide(),$(".a").hide(),$("#deliveryManCreate").show()},registeredDeliveryMan=()=>{$("#deliveryManCreate").hide();var e=$("#dtBasicExample").DataTable({processing:!0,destroy:!0});e.clear().draw(),$.ajax({async:!0,type:"GET",cors:!0,contentType:"application/json",secure:!0,crossDomain:!0,url:urlForAll+"deliveryMan/getDeliveryManByUserId/"+managerID,headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(a){document.getElementById("one").innerHTML="Registered Delivery Man: "+a.data.length;$.each(a.data,(function(t,n){var r="<tr><td>"+a.data[t].delivery_man_id+"</td><td>"+a.data[t].name+"</td><td>"+a.data[t].email+"</td><td>"+a.data[t].phone_number+"</td><td>"+a.data[t].delivery_area+"</td><td>"+a.data[t].reporting_boss_email+"</td></tr>";e.rows.add($(r)).draw()}))}}),$('.dataTables_filter input[type="search"]').attr("placeholder","Search anything!").css({width:"300px",display:"inline-block",background:"white"}),$('.dataTables_filter input[type="search"]').attr("class","btn btn-round").css({width:"300px",display:"inline-block",color:"#000000",background:"#FFFFFA"}),$(".dataTables_length select").attr("class","btn btn-round").css({width:"80px","background-color":"white",color:"#000000",background:"#FFFFFA"}),$("#dtBasicExample").show(),$(".a").show()},approvedDeliveryMan=()=>{$("#deliveryManCreate").hide();var e=$("#dtBasicExample").DataTable({processing:!0,destroy:!0});e.clear().draw(),$.ajax({async:!0,type:"GET",cors:!0,contentType:"application/json",secure:!0,crossDomain:!0,url:urlForAll+"deliveryMan/approved/"+managerID,headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(a){document.getElementById("two").innerHTML="Approved Delivery Man: "+a.data.length;$.each(a.data,(function(t,n){var r="<tr><td>"+a.data[t].delivery_man_id+"</td><td>"+a.data[t].name+"</td><td>"+a.data[t].email+"</td><td>"+a.data[t].phone_number+"</td><td>"+a.data[t].delivery_area+"</td><td>"+a.data[t].reporting_boss_email+"</td></tr>";e.rows.add($(r)).draw()}))}}),$('.dataTables_filter input[type="search"]').attr("placeholder","Search anything!").css({width:"300px",display:"inline-block",background:"white"}),$('.dataTables_filter input[type="search"]').attr("class","btn btn-round").css({width:"300px",display:"inline-block",color:"#000000",background:"#FFFFFA"}),$(".dataTables_length select").attr("class","btn btn-round").css({width:"80px","background-color":"white",color:"#000000",background:"#FFFFFA"}),$("#dtBasicExample").show(),$(".a").show()},unApprovedDeliveryMan=()=>{$("#deliveryManCreate").hide();var e=$("#dtBasicExample").DataTable({processing:!0,destroy:!0});e.clear().draw(),$.ajax({async:!0,type:"GET",cors:!0,contentType:"application/json",secure:!0,crossDomain:!0,url:urlForAll+"deliveryMan/unApproved/"+managerID,headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(a){document.getElementById("three").innerHTML="Unapproved Delivery Man: "+a.data.length;$.each(a.data,(function(t,n){var r="<tr><td>"+a.data[t].delivery_man_id+"</td><td>"+a.data[t].name+"</td><td>"+a.data[t].email+"</td><td>"+a.data[t].phone_number+"</td><td>"+a.data[t].delivery_area+"</td><td>"+a.data[t].reporting_boss_email+"</td></tr>";e.rows.add($(r)).draw()}))}}),$('.dataTables_filter input[type="search"]').attr("placeholder","Search anything!").css({width:"300px",display:"inline-block",background:"white"}),$('.dataTables_filter input[type="search"]').attr("class","btn btn-round").css({width:"300px",display:"inline-block",color:"#000000",background:"#FFFFFA"}),$(".dataTables_length select").attr("class","btn btn-round").css({width:"80px","background-color":"white",color:"#000000",background:"#FFFFFA"}),$("#dtBasicExample").show(),$(".a").show()},addDeliveryMan=()=>{var e=document.getElementById("deliveryManName").value,a=document.getElementById("deliveryManEmail").value,t=document.getElementById("deliveryManPhone").value,n=document.getElementById("managers").value,r=document.querySelectorAll("input[name=mycheckboxes]:checked"),d="",l=r.length,o=0;for(var i of r)d+=String(i.value),++o<l&&(d+=",");""==e||""==a||""==t?$("#myModal23").modal():$.ajax({type:"POST",url:urlForAll+"deliveryMan/create/"+managerID,data:JSON.stringify({name:e,phone_number:t,email:a,delivery_area:d,reporting_boss_email:n}),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(e){$("#tick").hide(),$(".circle-loader").removeClass("load-complete"),$("#sure").html(""),$("#myModal").modal("show"),$("#sure").html("Please wait"),"OK"==e.status&&(setTimeout((function(){$(".circle-loader").addClass("load-complete"),$("#tick").show(),$("#sure").html("Delivery man added!")}),2e3),$("input[type=checkbox]").prop("checked",!1),document.getElementById("deliveryManName").value="",document.getElementById("deliveryManEmail").value="",document.getElementById("deliveryManPhone").value="",setTimeout((function(){$("#myModal").modal("hide")}),4e3))},error:function(e,a,t){$("#myModal2").modal("show")}})};
+var managerID = localStorage.getItem('userID');
+var createDeliveryMan = () => 
+{
+	$('#dtBasicExample').hide();
+	$('.a').hide();
+	$('#deliveryManCreate').show();
+};
+var registeredDeliveryMan = () => 
+{
+	$('#deliveryManCreate').hide();
+	
+	var table = $('#dtBasicExample').DataTable( {
+		"processing": true,
+		"destroy": true
+		} );
+		table.clear().draw();
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		cors: true,
+		contentType:'application/json',
+		secure: true,
+		crossDomain: true,
+		url: urlForAll + "deliveryMan/getDeliveryManByUserId/" + managerID,
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function(data) 
+		{
+			document.getElementById('one').innerHTML = 'Registered Delivery Man: ' + data.data.length;
+			var trHTML = '';
+			$.each(data.data, function (i, item) {
+			var table_rows = '<tr><td>'+data.data[i].delivery_man_id+'</td><td>'+data.data[i].name+'</td><td>'+data.data[i].email+'</td><td>'+data.data[i].phone_number+'</td><td>'+data.data[i].delivery_area+'</td><td>'+data.data[i].reporting_boss_email+'</td></tr>';
+
+			table.rows.add($(table_rows)).draw();
+			});
+			
+		}
+	});
+	
+	$('.dataTables_filter input[type="search"]').
+	attr('placeholder','Search anything!').
+	css({'width':'300px','display':'inline-block','background':'white'});
+
+	$('.dataTables_filter input[type="search"]').
+	attr('class','btn btn-round').
+	css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+	$('.dataTables_length select').
+	attr('class','btn btn-round').
+	css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+	$('#dtBasicExample').show();
+	$('.a').show();
+};
+var approvedDeliveryMan = () =>
+{
+	$('#deliveryManCreate').hide();
+	
+	var table = $('#dtBasicExample').DataTable( {
+		"processing": true,
+		"destroy": true
+		} );
+		table.clear().draw();
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		cors: true,
+		contentType:'application/json',
+		secure: true,
+		crossDomain: true,
+		url: urlForAll + "deliveryMan/approved/" + managerID,
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function(data) 
+		{
+			document.getElementById('two').innerHTML = 'Approved Delivery Man: ' + data.data.length;
+			var trHTML = '';
+			$.each(data.data, function (i, item) {
+			var table_rows = '<tr><td>'+data.data[i].delivery_man_id+'</td><td>'+data.data[i].name+'</td><td>'+data.data[i].email+'</td><td>'+data.data[i].phone_number+'</td><td>'+data.data[i].delivery_area+'</td><td>'+data.data[i].reporting_boss_email+'</td></tr>';
+
+			table.rows.add($(table_rows)).draw();
+			});
+		}
+	});
+	
+	$('.dataTables_filter input[type="search"]').
+	attr('placeholder','Search anything!').
+	css({'width':'300px','display':'inline-block','background':'white'});
+
+	$('.dataTables_filter input[type="search"]').
+	attr('class','btn btn-round').
+	css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+	$('.dataTables_length select').
+	attr('class','btn btn-round').
+	css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+	$('#dtBasicExample').show();
+	$('.a').show();
+}
+
+var unApprovedDeliveryMan = () => 
+{
+	$('#deliveryManCreate').hide();
+	
+	var table = $('#dtBasicExample').DataTable( {
+		"processing": true,
+		"destroy": true
+		} );
+		table.clear().draw();
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		cors: true,
+		contentType:'application/json',
+		secure: true,
+		crossDomain: true,
+		url: urlForAll + "deliveryMan/unApproved/" + managerID,
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function(data) 
+		{
+			document.getElementById('three').innerHTML = 'Unapproved Delivery Man: ' + data.data.length;
+			var trHTML = '';
+			$.each(data.data, function (i, item) {
+			var table_rows = '<tr><td>'+data.data[i].delivery_man_id+'</td><td>'+data.data[i].name+'</td><td>'+data.data[i].email+'</td><td>'+data.data[i].phone_number+'</td><td>'+data.data[i].delivery_area+'</td><td>'+data.data[i].reporting_boss_email+'</td></tr>';
+
+			table.rows.add($(table_rows)).draw();
+			});
+		}
+	});
+	
+	$('.dataTables_filter input[type="search"]').
+	attr('placeholder','Search anything!').
+	css({'width':'300px','display':'inline-block','background':'white'});
+
+	$('.dataTables_filter input[type="search"]').
+	attr('class','btn btn-round').
+	css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+	$('.dataTables_length select').
+	attr('class','btn btn-round').
+	css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+	$('#dtBasicExample').show();
+	$('.a').show();
+};
+var addDeliveryMan = () => 
+{
+	var deliveryManName = document.getElementById('deliveryManName').value;
+	var deliveryManEmail = document.getElementById('deliveryManEmail').value;
+	var deliveryManPhone = document.getElementById('deliveryManPhone').value;
+	var reportingBossEmail = document.getElementById('managers').value;
+	var checkedBoxes = document.querySelectorAll('input[name=mycheckboxes]:checked');
+	var s = "";
+	var l = checkedBoxes.length, dummy = 0;
+	for(var i of checkedBoxes)
+	{
+		s+=String(i.value);
+		dummy++;
+		if(dummy<l)
+		{
+			s+=",";
+		}
+		//console.log(String(i.value));
+	}
+	if(deliveryManName=="" || deliveryManEmail=="" || deliveryManPhone=="")
+	{
+		$('#myModal23').modal();
+	}
+	else
+	{
+		//document.getElementsByClassName('blur')[0].style.filter = "blur(4px)";
+		//$(".container").show();
+		$.ajax
+		({
+			type: "POST",
+			url: urlForAll + "deliveryMan/create/" + managerID, //loginUserID,
+			data: JSON.stringify
+			({
+				"name": deliveryManName,
+				"phone_number": deliveryManPhone,
+				"email": deliveryManEmail,
+				"delivery_area": s,
+				"reporting_boss_email": reportingBossEmail
+			}),
+			headers: 
+			{
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  "Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function(data) 
+			{
+				$('#tick').hide();
+				$(".circle-loader").removeClass("load-complete");
+				$("#sure").html("");
+				$("#myModal").modal('show');
+				$("#sure").html("Please wait");
+				if (data.status == 'OK')
+				{
+					setTimeout(function(){ 
+						$(".circle-loader").addClass("load-complete");
+						
+						$('#tick').show(); 
+					
+						$("#sure").html("Delivery man added!");
+					}, 2000);
+					$('input[type=checkbox]').prop('checked', false);
+					document.getElementById('deliveryManName').value = "";
+					document.getElementById('deliveryManEmail').value = "";
+					document.getElementById('deliveryManPhone').value = "";
+					setTimeout(function(){ 
+						
+					$("#myModal").modal('hide');
+					}, 4000);
+				}
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				
+				$('#myModal2').modal('show');
+			}
+		})
+	}
+};

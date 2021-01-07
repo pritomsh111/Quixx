@@ -1,1 +1,484 @@
-(()=>{let e;window.addEventListener("storage",(function(e){"login-event"==e.key&&(window.location.href="panel.html")}));let t="Grow Your Business",s=0,o=document.querySelector(".Quixx__Q>h1");const n=()=>{s!==t.length?(o.innerHTML+=t[s],setTimeout(()=>{s+=1,n()},150)):document.querySelector(".Q__Us").classList.add("show")};setTimeout(()=>{n()},500);let l=document.querySelector(".Quixx__Login__Signup li:last-child"),r=document.querySelector(".Quixx__Login__Signup li:last-child ul");l.addEventListener("mouseover",(function(){r.style.backgroundColor="#fff"}));let a=document.querySelector("#Quixx__Main"),i=document.querySelector(".Signup__Loader"),c=document.querySelector(".Signup__Loader>h2"),d=document.querySelector(".circle-loader"),u=document.querySelector(".checkmark"),y=document.querySelector(".close-button"),m=document.querySelector(".next-button"),p=document.querySelector(".done-button"),g=document.querySelector(".forgot_pass"),S=document.querySelector(".modal-header"),L=document.querySelector(".forgot-pass"),v=document.querySelector(".modal-error"),h=document.querySelector(".Modal__Quixx .modal-footer"),b=document.querySelector("#phone_number"),f=document.querySelector("#fp-restore"),q=document.querySelector(".FP-step-1"),w=document.querySelector(".FP-step-2"),T=document.querySelector(".Quixx__Form__Main"),k=document.querySelector(".signInButton"),_=document.querySelector(".signUpButton"),M=document.querySelector(".Quixx__Login"),x=document.querySelector(".Quixx__Signup");k.addEventListener("click",(function(){this.classList.add("active-btn"),_.classList.remove("active-btn"),M.classList.add("Show"),M.classList.remove("HideOut"),x.classList.add("HideOut"),x.classList.remove("Show"),T.classList.add("height_login"),T.classList.remove("height_signup")})),_.addEventListener("click",(function(){this.classList.add("active-btn"),k.classList.remove("active-btn"),x.classList.add("Show"),x.classList.remove("HideOut"),M.classList.add("HideOut"),M.classList.remove("Show"),T.classList.add("height_signup"),T.classList.remove("height_login")})),localStorage.getItem("home_cta")&&(localStorage.removeItem("home_cta"),_.click()),localStorage.getItem("price")&&(document.querySelector("#deliveries").value=localStorage.getItem("price"),localStorage.removeItem("price"),_.click(),document.querySelector(".active-btn").focus()),g.addEventListener("click",(function(){i.style.display="none",v.style.display="none",L.style.display="block",h.style.marginTop="10rem",S.innerHTML="<h2>Forgot Password?</h2>",backdrop.classList.add("show"),modal.classList.add("show"),y.style.display="inline",m.style.display="inline",m.disabled=!0,p.style.display="none",q.classList.add("show"),q.classList.remove("hide"),w.classList.add("hide"),w.classList.remove("show"),b.value=""})),y.addEventListener("click",(function(){backdrop.classList.remove("show"),modal.classList.remove("show")})),m.addEventListener("click",(function(){e=document.querySelector("#phone_number").value,$.ajax({type:"POST",url:api+"forget/password/get/vCode/"+e,success:function(e){f.value="",w.classList.add("show"),w.classList.remove("hide"),q.classList.add("hide"),q.classList.remove("show"),y.style.display="none",m.style.display="none",p.style.display="inline"},error:function(e){let t=Object.keys(e),s=document.querySelector(".modal-error>h2");"responseJSON"===t[17]?s.innerHTML=e.responseJSON.errorMessage:s.innerHTML="Please Wait! We are working!",E()}})})),b.addEventListener("keyup",(function(e){11===e.target.value.match(/\d/g).length?m.disabled=!1:m.disabled=!0})),f.addEventListener("keyup",(function(e){4===e.target.value.match(/\d/g).length?p.disabled=!1:p.disabled=!0})),p.addEventListener("click",(function(){i.style.display="block",L.style.display="none",v.style.display="none",c.innerHTML="",h.style.marginTop="0rem",d.classList.remove("load-complete"),u.style.display="none",d.style.display="inline-block",p.style.display="none",y.style.display="inline",y.disabled=!0;let t=document.querySelector("#fp-restore").value;$.ajax({type:"GET",url:api+"forget/password/submit/vCode/"+e+"/"+t,success:function(e){if(!0===e.data)setTimeout((function(){d.classList.remove("load-complete"),setTimeout((function(){a.style.pointerEvents="auto",d.classList.add("load-complete"),u.style.display="block",c.innerHTML="You will receive an SMS!",c.style.color="#0066b3",y.disabled=!1}),1e3)}),2e3);else{d.style.display="none",y.disabled=!1,document.querySelector(".modal-error>h2").innerHTML="Wrong Code!",E()}},error:function(e){let t=Object.keys(e),s=document.querySelector(".modal-error>h2");"responseJSON"==t[17]?s.innerHTML=e.responseJSON.errorMessage:s.innerHTML="Please Wait! We are working!",E()}})}));let E=()=>{i.style.display="none",L.style.display="none",v.style.display="block",h.style.marginTop="0rem",y.style.display="inline",m.style.display="none",p.style.display="none",S.innerHTML="",backdrop.classList.add("show"),modal.classList.add("show")},O=document.querySelector(".password i"),H=document.querySelector("#password");function N(){document.querySelectorAll("p.error").forEach(e=>e.innerHTML="")}function P(e,t){if(N(),"password"===t)return document.querySelector(`.${t}+p`).innerHTML=e,void document.querySelector("#"+t).focus();document.querySelector(`.${t}>p`).innerHTML=e,document.querySelector("#"+t).focus()}O.addEventListener("click",(function(){O.classList.contains("fa-eye-slash")?(O.setAttribute("class","fa fa fa-eye"),H.setAttribute("type","text")):(O.setAttribute("class","fa fa fa-eye-slash"),H.setAttribute("type","password"))})),document.querySelector("#login").addEventListener("click",(function(){let e=document.querySelector("#username").value,t=document.querySelector("#password").value;""===e&&(P("Username cannot be empty!","username"),1)||""===t&&(P("Password cannot be empty!","password"),1)||(N(),localStorage.setItem("user",e),localStorage.setItem("pass",t),localStorage.setItem("wh-user","main"),$.ajax({async:!0,type:"POST",url:api+"login",headers:{Accept:"application/json","Content-Type":"application/json"},data:JSON.stringify({username:e,password:t}),success:function(e){localStorage.setItem("login-event","login"+Math.random()),localStorage.setItem("main-token",e.data),window.location.href="panel.html"},error:function(e){let t=Object.keys(e),s=document.querySelector(".modal-error>h2");"responseJSON"==t[17]?s.innerHTML=e.responseJSON.errorMessage:s.innerHTML="Please Wait! We are working!",E()}}))})),document.querySelector("#signup").addEventListener("click",(function(){let e=document.querySelector("#org").value,t=document.querySelector("#email").value,s=document.querySelector("#contact").value,o=document.querySelector("#business").value,n=document.querySelector("#deliveries").value,l=document.querySelector("#trade").value,r=document.querySelector("#fb").value,g=document.querySelector("#web").value;(""!==e||(P("Organization Name cannot be empty!","org"),0))&&(""===t||null===t?(P("Email cannot be empty!","email"),0):""!==t||null!==t?/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(t)||(P("Please give a valid email!","email"),0):void 0)&&(""===s?(P("Phone Number cannot be empty!","contact"),0):(s.length<11||s.length>11)&&1==!/\D/.test(s)?(P("Phone Number must be of 11 digits!","contact"),0):11===s.match(/\d/g).length&&1==!/\D/.test(s)||(P("Phone Number not valid!","contact"),0))&&(""!==o||(P("Business Field cannot be empty!","business"),0))&&(parseInt(n)<=0||0==n.charAt(0)?(P("Delivery Range must be greater than 0!","deliveries"),0):!0===isNaN(n)||""===n||0==!/\D/.test(n)?(P("Delivery Range must be a number!","deliveries"),0):1==!/\D/.test(n)||void 0)&&(""!==l||(P("Trade License cannot be empty!","trade"),0))&&(N(),a.style.pointerEvents="none",i.style.display="block",L.style.display="none",v.style.display="none",c.innerHTML="",d.classList.remove("load-complete"),u.style.display="none",d.style.display="inline-block",h.style.marginTop="0rem",y.style.display="inline",y.disabled=!0,m.style.display="none",p.style.display="none",S.innerHTML="",backdrop.classList.add("show"),modal.classList.add("show"),$.ajax({type:"POST",url:api+"initUser/create",data:JSON.stringify({organizationName:e,tradeLicence:l,businessField:o,contactNumber:s,emailId:t,deliveryRange:n,organizationalFaceBookLink:r,organizationWebsite:g}),headers:{Accept:"application/json","Content-Type":"application/json"},success:function(e){setTimeout((function(){d.classList.remove("load-complete"),setTimeout((function(){a.style.pointerEvents="auto",d.classList.add("load-complete"),u.style.display="block",c.innerHTML="Congratulations! You Have Registered!",c.style.color="#0066b3",y.disabled=!1}),1e3)}),3e3)},error:function(e){a.style.pointerEvents="auto",d.style.display="none",y.disabled=!1,c.innerHTML=e.responseJSON.errorMessage+"s",c.style.color="#e22b2b",e.responseJSON.errorMessage.includes("Contact")?P("Contact Number Exists!","contact"):e.responseJSON.errorMessage.includes("Email")?P("Email Exists!","email"):e.responseJSON.errorMessage.includes("Organization")?(P("Organisation Exists!","org"),c.innerHTML="Organisation Exists!"):e.responseJSON.errorMessage.includes("Trade")&&(P("Trade License Exists!","trade"),c.innerHTML="Trade License Exists!")}}))}))})();
+(() => {
+    // Storage Event
+    window.addEventListener('storage', function (event) {
+        if (event.key == 'login-event') {
+            window.location.href = "panel.html";
+        }
+    });
+    let phone;
+
+    // Typewritter Effect
+    let type = "Grow Your Business"
+    let ctn = 0;
+    let parag = document.querySelector(".Quixx__Q>h1");
+    const typeWritter = () => {
+        if (ctn === type.length) {
+            document.querySelector(".Q__Us").classList.add("show");
+            return;
+        }
+        parag.innerHTML += type[ctn];
+        setTimeout(() => {
+            ctn = ctn + 1;
+            typeWritter();
+        }, 150);
+    }
+    setTimeout(() => {
+        typeWritter();
+    }, 500);
+    // DOM manipulation
+
+    let hoverProduct = document.querySelector(".Quixx__Login__Signup li:last-child");
+    let hoverProductUL = document.querySelector(".Quixx__Login__Signup li:last-child ul");
+
+    hoverProduct.addEventListener("mouseover", function () {
+        hoverProductUL.style.backgroundColor = "#fff";
+    });
+    let quixxMain = document.querySelector("#Quixx__Main");
+
+    let loaderDiv = document.querySelector(".Signup__Loader");
+    let modalErr = document.querySelector(".Signup__Loader>h2");
+    let loader = document.querySelector(".circle-loader");
+    let checkmark = document.querySelector(".checkmark");
+
+    let modalCloseButton = document.querySelector(".close-button");
+    let modalNextButton = document.querySelector(".next-button");
+    let modalDoneButton = document.querySelector(".done-button");
+    let forgotPassword = document.querySelector(".forgot_pass");
+    let modal_header = document.querySelector(".modal-header");
+    let forgotPass = document.querySelector(".forgot-pass");
+    let modalError = document.querySelector(".modal-error");
+    let modalFooter = document.querySelector(".Modal__Quixx .modal-footer");
+
+    let phone_number = document.querySelector("#phone_number");
+    let fp_restore = document.querySelector("#fp-restore");
+    let fp_step1 = document.querySelector(".FP-step-1");
+    let fp_step2 = document.querySelector(".FP-step-2");
+
+    let quixxFormMain = document.querySelector(".Quixx__Form__Main");
+    let signInButtonTop = document.querySelector(".signInButton");
+    let signUpButtonTop = document.querySelector(".signUpButton");
+    let signInDiv = document.querySelector(".Quixx__Login");
+    let signUpDiv = document.querySelector(".Quixx__Signup");
+    signInButtonTop.addEventListener("click", function () {
+        this.classList.add("active-btn");
+        signUpButtonTop.classList.remove("active-btn");
+        signInDiv.classList.add("Show");
+        signInDiv.classList.remove("HideOut");
+        signUpDiv.classList.add("HideOut");
+        signUpDiv.classList.remove("Show");
+        quixxFormMain.classList.add("height_login");
+        quixxFormMain.classList.remove("height_signup");
+    });
+    signUpButtonTop.addEventListener("click", function () {
+        this.classList.add("active-btn");
+        signInButtonTop.classList.remove("active-btn");
+        signUpDiv.classList.add("Show");
+        signUpDiv.classList.remove("HideOut");
+        signInDiv.classList.add("HideOut");
+        signInDiv.classList.remove("Show");
+        quixxFormMain.classList.add("height_signup");
+        quixxFormMain.classList.remove("height_login");
+    });
+
+    if (localStorage.getItem("home_cta")) {
+        localStorage.removeItem("home_cta");
+        signUpButtonTop.click();
+    }
+    if (localStorage.getItem("price")) {
+        document.querySelector("#deliveries").value = localStorage.getItem("price");
+        localStorage.removeItem("price");
+        signUpButtonTop.click();
+        document.querySelector(".active-btn").focus();
+    }
+
+    forgotPassword.addEventListener("click", function () {
+        loaderDiv.style.display = "none";
+        modalError.style.display = "none";
+        forgotPass.style.display = "block";
+        modalFooter.style.marginTop = "10rem";
+        modal_header.innerHTML = "<h2>Forgot Password?</h2>";
+        backdrop.classList.add("show");
+        modal.classList.add("show");
+        modalCloseButton.style.display = "inline";
+        modalNextButton.style.display = "inline";
+        modalNextButton.disabled = true;
+        modalDoneButton.style.display = "none";
+        fp_step1.classList.add("show");
+        fp_step1.classList.remove("hide");
+        fp_step2.classList.add("hide");
+        fp_step2.classList.remove("show");
+        phone_number.value = "";
+    });
+    modalCloseButton.addEventListener("click", function () {
+        backdrop.classList.remove("show");
+        modal.classList.remove("show");
+    });
+    modalNextButton.addEventListener("click", function () {
+        phone = document.querySelector("#phone_number").value;
+        ////console.log(phone);
+        $.ajax
+            ({
+                type: "POST",
+                url: api + "forget/password/get/vCode/" + phone,
+                success: function (data) {
+                    //console.log(data);
+                    fp_restore.value = "";
+                    fp_step2.classList.add("show");
+                    fp_step2.classList.remove("hide");
+                    fp_step1.classList.add("hide");
+                    fp_step1.classList.remove("show");
+                    modalCloseButton.style.display = "none";
+                    modalNextButton.style.display = "none";
+                    modalDoneButton.style.display = "inline";
+                },
+                error: function (data) {
+                    let ob = Object.keys(data);
+                    let modalErr = document.querySelector('.modal-error>h2');
+                    if (ob[17] === "responseJSON") {
+                        modalErr.innerHTML = data.responseJSON.errorMessage;
+                    }
+                    else {
+                        modalErr.innerHTML = "Please Wait! We are working!";
+                    }
+                    modalErrorFunc();
+                }
+            });
+    });
+
+    // For Forget Pass
+    phone_number.addEventListener("keyup", function (event) {
+        if (event.target.value.match(/\d/g).length === 11) {
+            modalNextButton.disabled = false;
+        }
+        else {
+            modalNextButton.disabled = true;
+        }
+    });
+    fp_restore.addEventListener("keyup", function (event) {
+        if (event.target.value.match(/\d/g).length === 4) {
+            modalDoneButton.disabled = false;
+        }
+        else {
+            modalDoneButton.disabled = true;
+        }
+    });
+    modalDoneButton.addEventListener("click", function () {
+        loaderDiv.style.display = "block";
+        forgotPass.style.display = "none";
+        modalError.style.display = "none";
+        modalErr.innerHTML = "";
+        modalFooter.style.marginTop = "0rem";
+        loader.classList.remove("load-complete");
+        checkmark.style.display = "none";
+        loader.style.display = "inline-block";
+        modalDoneButton.style.display = "none";
+        modalCloseButton.style.display = "inline";
+        modalCloseButton.disabled = true;
+        let code = document.querySelector("#fp-restore").value;
+        $.ajax
+            ({
+                type: "GET",
+                url: api + "forget/password/submit/vCode/" + phone + "/" + code,
+                success: function (data) {
+                    //console.log(data);
+                    if (data.data === true) {
+                        setTimeout(function () {
+                            loader.classList.remove("load-complete");
+                            setTimeout(function () {
+                                quixxMain.style.pointerEvents = "auto";
+                                loader.classList.add("load-complete");
+                                checkmark.style.display = "block";
+                                modalErr.innerHTML = "You will receive an SMS!";
+                                modalErr.style.color = "#0066b3";
+                                modalCloseButton.disabled = false;
+                            }, 1000);
+                        }, 2000);
+                    }
+                    else {
+                        loader.style.display = "none";
+                        modalCloseButton.disabled = false;
+                        let modalErr = document.querySelector('.modal-error>h2');
+                        modalErr.innerHTML = "Wrong Code!";
+                        modalErrorFunc();
+                    }
+                },
+                error: function (data) {
+                    let ob = Object.keys(data);
+                    let modalErr = document.querySelector('.modal-error>h2');
+                    if (ob[17] == "responseJSON") {
+                        modalErr.innerHTML = data.responseJSON.errorMessage;
+                    }
+                    else {
+                        modalErr.innerHTML = "Please Wait! We are working!";
+                    }
+                    modalErrorFunc();
+                }
+            });
+    });
+
+    let modalErrorFunc = () => {
+        loaderDiv.style.display = "none";
+        forgotPass.style.display = "none";
+        modalError.style.display = "block";
+        modalFooter.style.marginTop = "0rem";
+        modalCloseButton.style.display = "inline";
+        modalNextButton.style.display = "none";
+        modalDoneButton.style.display = "none";
+        modal_header.innerHTML = "";
+        backdrop.classList.add("show");
+        modal.classList.add("show");
+    }
+
+    let modalSignupFunc = () => {
+        loaderDiv.style.display = "block";
+        forgotPass.style.display = "none";
+        modalError.style.display = "none";
+        modalErr.innerHTML = "";
+        loader.classList.remove("load-complete");
+        checkmark.style.display = "none";
+        loader.style.display = "inline-block";
+        modalFooter.style.marginTop = "0rem";
+        modalCloseButton.style.display = "inline";
+        modalCloseButton.disabled = true;
+        modalNextButton.style.display = "none";
+        modalDoneButton.style.display = "none";
+        modal_header.innerHTML = "";
+        backdrop.classList.add("show");
+        modal.classList.add("show");
+    }
+
+    let passIcon = document.querySelector(".password i");
+    let password = document.querySelector("#password");
+    passIcon.addEventListener("click", function () {
+        if (passIcon.classList.contains("fa-eye-slash")) {
+            passIcon.setAttribute("class", "fa fa fa-eye");
+            password.setAttribute("type", "text");
+        }
+        else {
+            passIcon.setAttribute("class", "fa fa fa-eye-slash");
+            password.setAttribute("type", "password");
+        }
+    });
+
+    function clearError() {
+        document.querySelectorAll("p.error").forEach(item => item.innerHTML = "");
+    }
+    function createError(errorMessage, fragmentID) {
+        clearError();
+        if (fragmentID === "password") {
+            document.querySelector(`.${fragmentID}+p`).innerHTML = errorMessage;
+            document.querySelector(`#${fragmentID}`).focus();
+            return;
+        }
+        document.querySelector(`.${fragmentID}>p`).innerHTML = errorMessage;
+        document.querySelector(`#${fragmentID}`).focus();
+    }
+
+    document.querySelector("#login").addEventListener("click", function () {
+        let username = document.querySelector("#username").value;
+        let password = document.querySelector("#password").value;
+        let v1 = () => {
+            if (username === "") {
+                createError("Username cannot be empty!", "username");
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+        let v2 = () => {
+            if (password === "") {
+                createError("Password cannot be empty!", "password");
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+        if (v1() && v2()) {
+            clearError();
+            localStorage.setItem('user', username);
+            localStorage.setItem('pass', password);
+            localStorage.setItem('wh-user', "main");
+            $.ajax
+                ({
+                    async: true,
+                    type: "POST",
+                    url: api + "login",
+                    headers:
+                    {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify
+                        ({
+                            "username": username,
+                            "password": password
+                        }),
+                    success: function (data) {
+                        localStorage.setItem('login-event', 'login' + Math.random());
+                        localStorage.setItem('main-token', data.data);
+                        window.location.href = "panel.html";
+                    },
+                    error: function (data) {
+                        let ob = Object.keys(data);
+                        let modalErr = document.querySelector('.modal-error>h2');
+                        if (ob[17] == "responseJSON") {
+                            modalErr.innerHTML = data.responseJSON.errorMessage;
+                        }
+                        else {
+                            modalErr.innerHTML = "Please Wait! We are working!";
+                        }
+                        modalErrorFunc();
+                    }
+                });
+        }
+    });
+
+    document.querySelector("#signup").addEventListener("click", function () {
+        let org = document.querySelector("#org").value;
+        let email = document.querySelector("#email").value;
+        let contact = document.querySelector("#contact").value;
+        let business = document.querySelector("#business").value;
+        let deliveries = document.querySelector("#deliveries").value;
+        let trade = document.querySelector("#trade").value;
+        let fb = document.querySelector("#fb").value;
+        let web = document.querySelector("#web").value;
+        let v1 = () => {
+            if (trade === "") {
+                createError("Trade License cannot be empty!", "trade");
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+        let v2 = () => {
+            if (parseInt(deliveries) <= 0 || deliveries.charAt(0) == 0) {
+                createError("Delivery Range must be greater than 0!", "deliveries");
+                return 0;
+            }
+            else if (isNaN(deliveries) === true || deliveries === "" || !/\D/.test(deliveries) === false) {
+                createError("Delivery Range must be a number!", "deliveries");
+                return 0;
+            }
+            else if (!/\D/.test(deliveries) === true) {
+                return 1;
+            }
+        }
+        let v3 = () => {
+            if (business === "") {
+                createError("Business Field cannot be empty!", "business");
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+        let v4 = () => {
+            if (contact === "") {
+                createError("Phone Number cannot be empty!", "contact");
+                return 0;
+            }
+            else if ((contact.length < 11 || contact.length > 11) && !/\D/.test(contact) == true) {
+                createError("Phone Number must be of 11 digits!", "contact");
+                return 0;
+            }
+            else if (contact.match(/\d/g).length === 11 && !/\D/.test(contact) === true) {
+                return 1;
+            }
+            else {
+                createError("Phone Number not valid!", "contact");
+                return 0;
+            }
+        }
+        let v5 = () => {
+            if (email === "" || email === null) {
+                createError("Email cannot be empty!", "email");
+                return 0;
+            }
+            else if (email !== "" || email !== null) {
+                if (/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(
+                    email
+                )) {
+                    return 1;
+                }
+                else {
+                    createError("Please give a valid email!", "email");
+                    return 0;
+                }
+            }
+
+        }
+        let v6 = () => {
+            if (org === "") {
+                createError("Organization Name cannot be empty!", "org");
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+        ////console.log(org, email, business, trade, contact, deliveries);
+        if (v6() && v5() && v4() && v3() && v2() && v1()) {
+            clearError();
+            quixxMain.style.pointerEvents = "none";
+            modalSignupFunc();
+            $.ajax
+                ({
+                    type: "POST",
+                    url: api + "initUser/create",
+                    data: JSON.stringify
+                        ({
+                            "organizationName": org,
+                            "tradeLicence": trade,
+                            "businessField": business,
+                            "contactNumber": contact,
+                            "emailId": email,
+                            "deliveryRange": deliveries,
+                            "organizationalFaceBookLink": fb,
+                            "organizationWebsite": web
+                        }),
+                    headers:
+                    {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    success: function (data) {
+                        setTimeout(function () {
+                            loader.classList.remove("load-complete");
+                            setTimeout(function () {
+                                quixxMain.style.pointerEvents = "auto";
+                                loader.classList.add("load-complete");
+                                checkmark.style.display = "block";
+                                modalErr.innerHTML = "Congratulations! You Have Registered!";
+                                modalErr.style.color = "#0066b3";
+                                modalCloseButton.disabled = false;
+                            }, 1000);
+                        }, 3000);
+                    },
+                    error: function (data) {
+                        quixxMain.style.pointerEvents = "auto";
+                        loader.style.display = "none";
+                        modalCloseButton.disabled = false;
+                        modalErr.innerHTML = data.responseJSON.errorMessage + 's';
+                        modalErr.style.color = "#e22b2b";
+                        if (data.responseJSON.errorMessage.includes("Contact")) {
+                            createError("Contact Number Exists!", "contact");
+                        }
+                        else if (data.responseJSON.errorMessage.includes("Email")) {
+                            createError("Email Exists!", "email");
+                        }
+                        else if (data.responseJSON.errorMessage.includes("Organization")) {
+                            createError("Organisation Exists!", "org");
+                            modalErr.innerHTML = "Organisation Exists!";
+                        }
+                        else if (data.responseJSON.errorMessage.includes("Trade")) {
+                            createError("Trade License Exists!", "trade");
+                            modalErr.innerHTML = "Trade License Exists!";
+                        }
+                    }
+                })
+        }
+    });
+})();

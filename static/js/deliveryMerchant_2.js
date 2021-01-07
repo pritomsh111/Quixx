@@ -1,1 +1,1417 @@
-var dataInfo,excelData,merchant_ID=localStorage.getItem("userID"),flag=!1,createDelivery=()=>{document.getElementById("three").disabled=!0,document.getElementById("two").disabled=!1,document.getElementById("one").disabled=!1,document.getElementById("three").style.fontSize="14.5px",document.getElementById("two").style.fontSize="13px",document.getElementById("one").style.fontSize="13px",document.getElementById("one").innerHTML="Ongoing Deliveries",document.getElementById("two").innerHTML="Completed Deliveries",document.getElementById("six").innerHTML="History of On Hold Deliveries",document.getElementById("six").style.fontSize="13px",document.getElementById("six").disabled=!1,$("#dtBasicExample").hide(),$(".a").hide(),$("#dtBasicExampleAp").hide(),$("#dtBasicExampleNew").hide(),$(".b").hide(),$(".c").show(),$(".d").hide(),$(".e").hide(),$("#dtBasicExampled").hide(),$("#deliveryCreate").show()},goToDelivery=()=>{window.open("addDeliverToDeliveryMan.html","_blank")},mapxx=()=>{window.open("locationFinder.html","_blank")},ExcelToJSON=function(){this.parseExcel=function(e){var t=new FileReader;t.onload=function(e){var t=e.target.result,n=XLSX.read(t,{type:"binary"});n.SheetNames.forEach((function(e){var t=XLSX.utils.sheet_to_row_object_array(n.Sheets[e]),d=JSON.stringify(t),a=JSON.parse(d);flag=!0,excelData=a}))},t.onerror=function(e){},t.readAsBinaryString(e)}};function handleFileSelect(e){if(e.preventDefault(),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"==e.target.files[0].type){document.getElementById("fileName").innerHTML=e.target.files[0].name;var t=e.target.files;(new ExcelToJSON).parseExcel(t[0])}else document.getElementById("wrongThisUpload").innerHTML="Invalid File",$("#myModalWrongUpload").modal("show")}document.getElementById("upload").addEventListener("change",handleFileSelect,!1),document.getElementById("cancelUpload").addEventListener("click",(function(e){e.preventDefault(),document.getElementById("fileName").innerHTML="",document.getElementById("upload").value="",flag=!1}));var onGoingDeliveries=()=>{$("#onh").html(""),document.getElementById("body").style.pointerEvents="none",document.getElementById("one").disabled=!0,document.getElementById("two").disabled=!1,document.getElementById("three").disabled=!1,document.getElementById("one").style.fontSize="14.5px",document.getElementById("two").style.fontSize="13px",document.getElementById("three").style.fontSize="13px",document.getElementById("six").style.fontSize="13px",document.getElementById("six").disabled=!1,document.getElementById("two").innerHTML="Completed Deliveries",document.getElementById("six").innerHTML="History of On Hold Deliveries",$("#dtBasicExample").hide(),$(".a").hide(),$("#dtBasicExampleAp").hide(),$("#dtBasicExampleNew").hide(),$(".b").hide(),$(".c").hide(),$(".d").hide(),$(".e").hide(),$("#dtBasicExampled").hide(),$("#deliveryCreate").hide();var e=$("#dtBasicExampled").DataTable({processing:!0,language:{loadingRecords:"&nbsp;",processing:"<span class='loader5'></span><h4 style='color:#0066b3'>Loading...</h4>"},paging:!0,pageLength:100,searching:!1,ordering:!1,deferRender:!0,pagingType:"full_numbers",lengthMenu:[[100,200,300,400],[100,200,300,400]],serverSide:!0,destroy:!0,ajax:{url:urlForAll+"merchant/incompleted/delivery/details/"+merchant_ID,type:"GET",headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},dataSrc:"data"},columns:[{targets:0,data:"delivery_Id"},{targets:1,data:"delivery_created_date"},{targets:2,data:"delivery_status"},{targets:5,data:"pickup_time"},{targets:7,data:"sender_name"},{targets:8,data:"sender_phone_number"},{targets:9,data:"sender_address"},{targets:10,data:"receiver_name"},{targets:11,data:"receiver_phone_number"},{targets:13,data:"receiver_address"},{targets:15,data:"product_name"},{targets:16,data:"product_qty"},{targets:17,data:"product_cost"},{targets:18,data:"delivery_charge"},{targets:19,data:"payment_method"},{targets:14,data:"delivery_type"},{targets:20,data:"delivery_note"}]});e.on("xhr",(function(){var t=e.ajax.json();document.getElementById("one").innerHTML="Ongoing Deliveries: "+t.recordsTotal,document.getElementById("two").innerHTML="Completed Deliveries",document.getElementById("six").innerHTML="History of On Hold Deliveries",document.getElementById("body").style.pointerEvents="auto"})),e.clear().draw(),$('.dataTables_filter input[type="search"]').attr("placeholder","Search anything!").css({width:"300px",display:"inline-block",background:"white"}),$('.dataTables_filter input[type="search"]').attr("class","btn btn-round").css({width:"300px",display:"inline-block",color:"#000000",background:"#FFFFFA"}),$(".dataTables_length select").attr("class","btn btn-round").css({width:"80px","background-color":"white",color:"#000000",background:"#FFFFFA"}),$(".d").show(),$("#dtBasicExampled").show()},completeDeliveries=()=>{document.getElementById("body").style.pointerEvents="none",document.getElementById("two").disabled=!0,document.getElementById("one").disabled=!1,document.getElementById("three").disabled=!1,document.getElementById("two").style.fontSize="14.5px",document.getElementById("one").style.fontSize="13px",document.getElementById("three").style.fontSize="13px",document.getElementById("six").style.fontSize="13px",document.getElementById("six").disabled=!1,document.getElementById("one").innerHTML="Ongoing Deliveries",document.getElementById("six").innerHTML="History of On Hold Deliveries",$("#dtBasicExample").hide(),$(".a").hide(),$("#dtBasicExampleAp").hide(),$("#dtBasicExampleNew").hide(),$(".b").hide(),$(".c").hide(),$(".d").hide(),$(".e").hide(),$("#dtBasicExampled").hide(),$("#deliveryCreate").hide();var e=$("#dtBasicExampleNew").DataTable({processing:!0,language:{loadingRecords:"&nbsp;",processing:"<span class='loader5'></span><h4 style='color:#0066b3'>Loading...</h4>"},paging:!0,pageLength:100,searching:!1,ordering:!1,deferRender:!0,pagingType:"full_numbers",lengthMenu:[[100,200,300,400],[100,200,300,400]],serverSide:!0,destroy:!0,ajax:{url:urlForAll+"merchant/completed/delivery/details/"+merchant_ID,type:"GET",headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},dataSrc:"data"},columns:[{targets:0,data:"delivery_Id"},{targets:1,data:"delivery_created_date"},{targets:2,data:"delivery_status"},{targets:5,data:"delivery_complete_date"},{targets:7,data:"sender_name"},{targets:8,data:"sender_phone_number"},{targets:9,data:"sender_address"},{targets:10,data:"receiver_name"},{targets:11,data:"receiver_phone_number"},{targets:13,data:"receiver_address"},{targets:15,data:"product_name"},{targets:16,data:"product_qty"},{targets:17,data:"product_cost"},{targets:18,data:"delivery_charge"},{targets:19,data:"payment_method"},{targets:14,data:"delivery_type"},{targets:20,data:"delivery_note"}]});e.on("xhr",(function(){var t=e.ajax.json();document.getElementById("two").innerHTML="Completed Deliveries: "+t.recordsTotal,document.getElementById("six").innerHTML="History of On Hold Deliveries",document.getElementById("one").innerHTML="Ongoing Deliveries",document.getElementById("body").style.pointerEvents="auto"})),e.clear().draw(),$('.dataTables_filter input[type="search"]').attr("placeholder","Search anything!").css({width:"300px",display:"inline-block",background:"white"}),$('.dataTables_filter input[type="search"]').attr("class","btn btn-round").css({width:"300px",display:"inline-block",color:"#000000",background:"#FFFFFA"}),$(".dataTables_length select").attr("class","btn btn-round").css({width:"80px","background-color":"white",color:"#000000",background:"#FFFFFA"}),$("#dtBasicExampleNew").show(),$(".e").show()},onHoldDeliveries=()=>{$("#onh").html("This table will let you know which of your deliveries were On-Hold!"),document.getElementById("body").style.pointerEvents="none",document.getElementById("one").disabled=!1,document.getElementById("two").disabled=!1,document.getElementById("three").disabled=!1,document.getElementById("one").style.fontSize="13px",document.getElementById("two").style.fontSize="13px",document.getElementById("three").style.fontSize="13px",document.getElementById("six").style.fontSize="14.5px",document.getElementById("six").disabled=!0,document.getElementById("one").innerHTML="Ongoing Deliveries",document.getElementById("two").innerHTML="Completed Deliveries",$("#dtBasicExample").hide(),$(".a").hide(),$("#dtBasicExampleAp").hide(),$("#dtBasicExampleNew").hide(),$(".b").hide(),$(".c").hide(),$(".d").hide(),$(".e").hide(),$("#dtBasicExampled").hide(),$("#deliveryCreate").hide();var e=$("#dtBasicExampled").DataTable({processing:!0,language:{loadingRecords:"&nbsp;",processing:"<span class='loader5'></span><h4 style='color:#0066b3'>Loading...</h4>"},paging:!0,pageLength:100,searching:!1,ordering:!1,deferRender:!0,pagingType:"full_numbers",lengthMenu:[[100,200,300,400],[100,200,300,400]],serverSide:!0,destroy:!0,ajax:{url:urlForAll+"delivery/onHold/"+merchant_ID,type:"GET",headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},dataSrc:"data"},columns:[{targets:0,data:"delivery_Id"},{targets:1,data:"delivery_created_date"},{targets:2,data:"delivery_status"},{targets:5,data:"pickup_time"},{targets:7,data:"sender_name"},{targets:8,data:"sender_phone_number"},{targets:9,data:"sender_address"},{targets:10,data:"receiver_name"},{targets:11,data:"receiver_phone_number"},{targets:13,data:"receiver_address"},{targets:15,data:"product_name"},{targets:16,data:"product_qty"},{targets:17,data:"product_cost"},{targets:18,data:"delivery_charge"},{targets:19,data:"payment_method"},{targets:14,data:"delivery_type"},{targets:20,data:"delivery_note"}]});e.on("xhr",(function(){var t=e.ajax.json();document.getElementById("six").innerHTML="History of On Hold Deliveries: "+t.recordsTotal,document.getElementById("two").innerHTML="Completed Deliveries",document.getElementById("one").innerHTML="Ongoing Deliveries",document.getElementById("body").style.pointerEvents="auto"})),e.clear().draw(),$('.dataTables_filter input[type="search"]').attr("placeholder","Search anything!").css({width:"300px",display:"inline-block",background:"white"}),$('.dataTables_filter input[type="search"]').attr("class","btn btn-round").css({width:"300px",display:"inline-block",color:"#000000",background:"#FFFFFA"}),$(".dataTables_length select").attr("class","btn btn-round").css({width:"80px","background-color":"white",color:"#000000",background:"#FFFFFA"}),$(".d").show(),$("#dtBasicExampled").show()},save=e=>{localStorage.setItem("'Accept': 'application/json'",e.id),localStorage.setItem("'Accept': 'application/jsonN'",e.name),window.open("addDeliverToDeliveryMan.html","_blank")};function recall(){document.getElementById("r_name").value="",document.getElementById("r_number").value="",document.getElementById("pac-input2").value="",document.getElementById("rec_address").value="",document.getElementById("DELIVERY_NOTE").value="",document.getElementById("product_cost").value="",document.getElementById("des_lat").value="",document.getElementById("des_longi").value="",document.getElementById("product_name").value="",document.getElementById("product_qty").value="",$.ajax({async:!0,type:"GET",url:urlForAll+"profile/get/profile/"+localStorage.getItem("userID"),headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(e){document.getElementById("pac-input").value=e.data.sender_address,document.getElementById("s_name").value=e.data.sender_name,document.getElementById("s_number").value=e.data.sender_phone_number,document.getElementById("lat").value=e.data.sender_lat,document.getElementById("longi").value=e.data.sender_longi}})}$("#managers2").change((function(){"Cash on Delivery"==$(this).val()?$("#cod").show():$("#cod").hide()})),document.getElementById("createDelivery").addEventListener("click",(function(e){var t,n=document.getElementById("timepicker-12-hr").value,d=document.getElementById("s_name").value,a=document.getElementById("s_number").value,l=document.getElementById("pac-input").value,r=document.getElementById("r_name").value,o=document.getElementById("r_number").value,i=document.getElementById("pac-input2").value,m=document.getElementById("rec_address").value,s=document.getElementById("managers2").value,c=document.getElementById("DELIVERY_NOTE").value,u=document.getElementById("deliveryType").value,y=String(document.getElementById("managers").value),g=String(document.getElementById("lat").value),h=String(document.getElementById("longi").value),v=String(document.getElementById("des_lat").value),p=String(document.getElementById("des_longi").value),E=String(document.getElementById("product_name").value),D=String(document.getElementById("product_qty").value),I=document.getElementById("product_cost").value;1==(""==n||null==n?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Please give a Pickup Time!",$("#myModalWrongDeliveryCreate").modal("show"),0):1)&&1==(""==d||null==d?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Sender Name cannot be empty!",$("#myModalWrongDeliveryCreate").modal("show"),0):1)&&1==(""==a||null==a?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Sender's Phone Number cannot be empty!",$("#myModalWrongDeliveryCreate").modal("show"),0):(a.length<11||a.length>11)&&1==!/\D/.test(a)?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Sender's Phone Number must be of 11 digits!",$("#myModalWrongDeliveryCreate").modal("show"),0):11===a.match(/\d/g).length&&1==!/\D/.test(a)?1:(document.getElementById("wrongThisDeliveryCreate").innerHTML="Sender's Phone Number not valid!",$("#myModalWrongDeliveryCreate").modal("show"),0))&&1==(""==r||null==r?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Receiver's Name cannot be empty!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("r_name").focus(),0):1)&&1==(""==o||null==o?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Receiver's Phone Number cannot be empty!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("r_number").focus(),0):(o.length<11||o.length>11)&&1==!/\D/.test(o)?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Receiver's Phone Number must be of 11 digits!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("r_number").focus(),0):11===o.match(/\d/g).length&&1==!/\D/.test(o)?1:(document.getElementById("wrongThisDeliveryCreate").innerHTML="Receiver's Phone Number not valid!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("r_number").focus(),0))&&1==(""==E||null==E?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Product Name cannot be empty!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("product_name").focus(),0):1)&&1==(parseInt(D)<=0||0==D.charAt(0)?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Product Quantity must be greater than 0!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("product_qty").focus(),0):1==isNaN(D)||""==D||0==!/\D/.test(D)?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Product Quantity must be a number!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("product_qty").focus(),0):1==!/\D/.test(D)?1:void 0)&&1==(parseInt(I)<=0||0==I.charAt(0)?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Product Cost must be greater than 0!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("product_cost").focus(),0):1==isNaN(I)||""==I||0==!/\D/.test(I)?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Product Cost must be a number!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("product_cost").focus(),0):1==!/\D/.test(I)?1:void 0)&&1==(""==l||null==l?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Sender's Address cannot be empty!!",$("#myModalWrongDeliveryCreate").modal("show"),0):1)&&1==(""==m||null==m?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Please give Receiver's Address!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("rec_address").focus(),0):1)&&1==(""==i||null==i?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Receiver's Address cannot be empty on map!!",$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("pac-input2").focus(),0):1)&&1==(""==v||""==p?(document.getElementById("wrongThisDeliveryCreate").innerHTML="Please select Receiver's Address on map!",$("#myModalWrongDeliveryCreate").modal("show"),0):1)&&(document.getElementById("createDelivery").disabled=!0,$(".circle-loader").show(),t=JSON.stringify({delivery_status:"",delivery_type:u,sender_address:l,receiver_address:m,sender_phone_number:a,receiver_phone_number:o,sender_name:d,receiver_name:r,payment_method:s,product_cost:I,sender_lat:g,sender_longi:h,receiver_lat:v,receiver_longi:p,product_name:E,product_qty:D,pickup_time:n,delivery_note:c,delivery_area:y}),$.ajax({type:"POST",url:urlForAll+"delivery/create/"+merchant_ID+"/no",data:t,headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(e){$("#tickD2").hide(),$(".circle-loader").removeClass("load-complete"),$("#sureD2").html(""),$("#myModalCreateD1").modal("show"),$("#sureD2").html("Please wait!"),"OK"==e.status&&(setTimeout((function(){$(".circle-loader").addClass("load-complete"),$("#tickD2").show(),$("#sureD2").html(`Delivery ID: ${e.data.delivery_Id} added! A message will be sent to your phone!`)}),1e3),setTimeout((function(){document.getElementById("createDelivery").disabled=!1,$("#myModalCreateD1").modal("hide")}),4500),document.getElementById("timepicker-12-hr").value=n,recall())},error:function(e){document.getElementById("createDelivery").disabled=!1;var t=Object.keys(e);return $("#myModalCreateD1").modal("show"),"responseJSON"==t[17]?($(".circle-loader").hide(),$("#sureD2").html(""),$("#sureD2ZZ").html(""),void(divElement.innerHTML+="Oops! Looks like you are not able to create delivery!<br>Please Contact Your Organization!<br>")):($(".circle-loader").hide(),$("#sureD2").html(""),$("#sureD2ZZ").html(""),void(divElement.innerHTML+="Something went wrong!<br>Please Wait A Bit?<br>"))}}))}));var hello=()=>{document.getElementById("body").style.pointerEvents="auto"},divElement=document.getElementById("sureD2Z"),keysx=[],extrax1=[],extrax2=[],deliveryList=[],assignedDeliveryMan=[],assignedDeliveryManPhone=[];function doIt(e,t){setTimeout((function(){var n,d=excelData[e].Pickup_Time,a=excelData[e].Delivery_Type,l=excelData[e].Sender_Name,r=excelData[e].Sender_Phone_Number,o=excelData[e].Sender_Address,i=excelData[e].Sender_Lattitude,m=excelData[e].Sender_Longitude,s=excelData[e].Receiver_Name,c=excelData[e].Receiver_Phone_Number,u=excelData[e].Receiver_Area,y=excelData[e].Receiver_Address,g=excelData[e].Receiver_Lattitude,h=excelData[e].Receiver_Longitude,v=excelData[e].Payment_Method,p=excelData[e].Product_Name,E=excelData[e].Product_Quantity_Pieces,D=excelData[e].Product_Cost,I=excelData[e].Delivery_Charge,B=excelData[e].Delivery_Note;1==(""==d||null==d||null==d?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Please give a Pickup Time!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&1==(""==l||null==l||null==l?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Sender Name cannot be empty!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&1==(""==r||null==r||null==r?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Sender's Phone Number cannot be empty!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):(r.length<11||r.length>11)&&1==!/\D/.test(r)?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Sender's Phone Number must be of 11 digits!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):11===r.match(/\d/g).length&&1==!/\D/.test(r)?1:(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Sender's Phone Number not valid!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0))&&1==(""==s||null==s||null==s?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Receiver's Name cannot be empty!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&1==(""==c||null==c||null==c?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Receiver's Phone Number cannot be empty!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):(c.length<11||c.length>11)&&1==!/\D/.test(c)?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Receiver's Phone Number must be of 11 digits!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):11===c.match(/\d/g).length&&1==!/\D/.test(c)?1:(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Receiver's Phone Number not valid!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0))&&1==(""==p||null==p||null==p?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Product Name cannot be empty!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&1==(parseInt(E)<=0||0==String(E).charAt(0)?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Product Quantity must be greater than 0!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1==isNaN(E)||""==E||null==E||0==!/\D/.test(E)?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Product Quantity must be a number!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1==!/\D/.test(E)?1:void 0)&&1==(parseInt(D)<=0||0==String(D).charAt(0)?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Product Cost must be greater than 0!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1==isNaN(D)||""==D||null==D||0==!/\D/.test(D)?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Product Cost must be a number!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1==!/\D/.test(D)?1:void 0)&&1==(parseInt(I)<=0||0==String(I).charAt(0)?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Delivery Charge must be greater than 0!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1==isNaN(I)||""==I||null==I||0==!/\D/.test(I)?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Delivery Charge must be a number!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1==!/\D/.test(I)?1:void 0)&&1==(""==o||null==o||null==o?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Sender's Address cannot be empty!!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&1==(""==u||null==u||null==u?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Receiver's Area cannot be empty!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&1==(""==y||null==y||null==y?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Please give Receiver's Address!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&1==(""==i||""==m||null==i||null==m?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Please give Sender's Lattitude/Longitude!!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&1==(""==g||""==h||null==h||null==g?(document.getElementById("wrongThisDeliveryCreate").innerHTML=`Deliver No: ${e+1} - Please give Receiver's Lattitude/Longitude!!`,$("#myModalWrongDeliveryCreate").modal("show"),document.getElementById("CLOSEIT").disabled=!1,hello(),setTimeout((function(){$("#myModalCreateD1").modal("hide")}),2500),0):1)&&(null==B&&(B=""),n=JSON.stringify({delivery_status:"",delivery_type:a,sender_address:o,receiver_address:y,sender_phone_number:r,receiver_phone_number:c,sender_name:l,receiver_name:s,payment_method:v,delivery_charge:I,product_cost:D,sender_lat:i,sender_longi:m,receiver_lat:g,receiver_longi:h,product_name:p,product_qty:E,pickup_time:d,delivery_note:B,delivery_area:u}),$.ajax({async:!0,type:"POST",url:urlForAll+"delivery/create/"+merchant_ID+"/no",data:n,headers:{Accept:"application/json","Content-Type":"application/json",Authorization:"Bearer "+localStorage.getItem("token")},success:function(n){document.getElementById("sureD2ZZ").innerHTML=0==e?`<br>${e+1} Delivery Created!<br>`:`<br>${e+1} Deliveries Created!<br>`,keysx[e]=Object.keys(n.data),extrax1[e]=n.data,deliveryList[e]=n.data.delivery_Id;var d="";d+=`Delivery ID: ${deliveryList[e]} Created<br>`,divElement.innerHTML+=d,"OK"==n.status&&(e==t-1?(setTimeout((function(){$("#sureD2").html(e+1+" Deliveries Created!"),$(".circle-loader").addClass("load-complete"),$("#tickD2").show(),document.getElementById("sureD2ZZ").innerHTML=""}),1e3),setTimeout((function(){document.getElementById("createDeliverywithExcel").disabled=!1}),3e3),document.getElementById("CLOSEIT").disabled=!1,document.getElementById("body").style.pointerEvents="auto",hello()):doIt(++e,t))},error:function(e){return document.getElementById("body").style.pointerEvents="auto",document.getElementById("createDeliverywithExcel").disabled=!1,document.getElementById("CLOSEIT").disabled=!1,"responseJSON"==Object.keys(e)[17]?($(".circle-loader").hide(),$("#sureD2").html(""),$("#sureD2ZZ").html(""),void(divElement.innerHTML+="Oops! Looks like you are not able to create delivery!<br>Please Contact Your Organization!<br>")):($(".circle-loader").hide(),$("#sureD2").html(""),$("#sureD2ZZ").html(""),void(divElement.innerHTML+="Something went wrong!<br>Please Wait A Bit?<br>"))}}))}),100)}document.getElementById("createDeliverywithExcel").addEventListener("click",(function(e){if(1==flag){$("#tickD2").hide(),$(".circle-loader").show(),$(".circle-loader").removeClass("load-complete"),$("#sureD2").html(""),$("#myModalCreateD1").modal("show"),$("#sureD2").html("Please wait!"),$("#sureD2Z").html(""),document.getElementById("CLOSEIT").disabled=!0;var t=excelData.length;setTimeout((function(){doIt(0,t)}),1e3)}else document.getElementById("wrongThisUpload2").innerHTML="Please Upload An Excel File!",$("#myModalWrongUpload2").modal("show")}));
+var merchant_ID = localStorage.getItem('userID');
+var dataInfo, excelData, flag = false;
+var createDelivery = () =>
+{
+	document.getElementById('three').disabled = true;
+	document.getElementById('two').disabled = false;
+	document.getElementById('one').disabled = false;
+	document.getElementById('three').style.fontSize = '14.5px';
+	document.getElementById('two').style.fontSize = '13px';
+	document.getElementById('one').style.fontSize = '13px';
+	
+	document.getElementById('one').innerHTML = 'Ongoing Deliveries';
+	document.getElementById('two').innerHTML = 'Completed Deliveries';
+	
+	document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+	document.getElementById('six').style.fontSize = '13px';
+	document.getElementById('six').disabled = false;
+	
+	$('#dtBasicExample').hide();
+	$('.a').hide();
+	$('#dtBasicExampleAp').hide();
+	$('#dtBasicExampleNew').hide();
+	$('.b').hide();
+	$('.c').show();
+	$('.d').hide();
+	$('.e').hide();
+	$('#dtBasicExampled').hide();
+	$("#deliveryCreate").show();
+}
+var goToDelivery = () =>
+{
+	window.open('addDeliverToDeliveryMan.html', '_blank');
+}
+var mapxx = () =>
+{
+	window.open("locationFinder.html", "_blank");
+};
+var ExcelToJSON = function() {
+
+      this.parseExcel = function(file) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          var data = e.target.result;
+          var workbook = XLSX.read(data, {
+            type: 'binary'
+          });
+          workbook.SheetNames.forEach(function(sheetName) {
+            // Here is your object
+            var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+            var json_object = JSON.stringify(XL_row_object);
+            var excelAsJson = JSON.parse(json_object);
+			flag = true;
+			excelData = excelAsJson;
+            //console.log(excelAsJson[0].Sender_Name);
+            //jQuery( '#xlx_json' ).val( json_object );
+          })
+        };
+
+        reader.onerror = function(ex) {
+          //console.log(ex);
+        };
+
+        reader.readAsBinaryString(file);
+      };
+  };
+
+  function handleFileSelect(evt) {
+	  //preventDefault***************************
+	  //preventDefault***************************
+	  //preventDefault***************************
+	  //preventDefault***************************
+	  //preventDefault***************************
+	  //preventDefault***************************
+	evt.preventDefault();
+    if(evt.target.files[0].type=="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    {
+		document.getElementById("fileName").innerHTML = evt.target.files[0].name;
+		var files = evt.target.files; // FileList object
+		var xl2json = new ExcelToJSON();
+		xl2json.parseExcel(files[0]);
+	}
+	else{
+		
+		document.getElementById('wrongThisUpload').innerHTML = "Invalid File";
+		$('#myModalWrongUpload').modal('show');
+	}
+  }
+document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+document.getElementById('cancelUpload').addEventListener('click', function(e){
+
+	e.preventDefault();
+	document.getElementById("fileName").innerHTML = "";
+	document.getElementById("upload").value = "";
+	flag = false;
+	
+});
+var onGoingDeliveries = () =>
+{
+	$('#onh').html("");
+	document.getElementById('body').style.pointerEvents = "none";
+	document.getElementById('one').disabled = true;
+	document.getElementById('two').disabled = false;
+	document.getElementById('three').disabled = false;
+	document.getElementById('one').style.fontSize = '14.5px';
+	document.getElementById('two').style.fontSize = '13px';
+	document.getElementById('three').style.fontSize = '13px';
+	
+	document.getElementById('six').style.fontSize = '13px';
+	document.getElementById('six').disabled = false;
+	
+	document.getElementById('two').innerHTML = 'Completed Deliveries';
+	document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+	$('#dtBasicExample').hide();
+	$('.a').hide();
+	$('#dtBasicExampleAp').hide();
+	$('#dtBasicExampleNew').hide();
+	$('.b').hide();
+	$('.c').hide();
+	$('.d').hide();
+	$('.e').hide();
+	$('#dtBasicExampled').hide();
+	$("#deliveryCreate").hide();
+	
+	
+		var table = $('#dtBasicExampled').DataTable( {
+		"processing": true,
+		'language': {
+			'loadingRecords': '&nbsp;',
+			'processing': "<span class='loader5'></span><h4 style='color:#0066b3'>Loading...</h4>"
+		},
+		"paging": true,
+		"pageLength": 100,
+		"searching": false,
+		"ordering": false,
+		"deferRender": true,
+		"pagingType": "full_numbers",
+		"lengthMenu": [[100, 200, 300, 400], [100, 200, 300, 400]],
+		"serverSide": true,
+		"destroy": true,
+		"ajax":
+		{
+			"url" : urlForAll + "merchant/incompleted/delivery/details/" + merchant_ID,
+			"type": "GET",
+			"headers":
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			"dataSrc": "data"
+		},
+		"columns": [
+				{ "targets": 0, "data": "delivery_Id" },
+				{ "targets": 1, "data": "delivery_created_date" },
+				{ "targets": 2, "data": "delivery_status" },
+				{ "targets": 5, "data": "pickup_time" },
+				{ "targets": 7, "data": "sender_name" },
+				{ "targets": 8, "data": "sender_phone_number" },
+				{ "targets": 9, "data": "sender_address" },
+				{ "targets": 10, "data": "receiver_name" },
+				{ "targets": 11, "data": "receiver_phone_number" },
+				{ "targets": 13, "data": "receiver_address" },
+				{ "targets": 15, "data": "product_name" },
+				{ "targets": 16, "data": "product_qty" },
+				{ "targets": 17, "data": "product_cost" },
+				{ "targets": 18, "data": "delivery_charge" },
+				{ "targets": 19, "data": "payment_method" },
+				{ "targets": 14, "data": "delivery_type" },
+				{ "targets": 20, "data": "delivery_note" }
+			]
+		});
+		table.on( 'xhr', function () {
+			var json = table.ajax.json();
+			document.getElementById('one').innerHTML = 'Ongoing Deliveries: ' + json.recordsTotal;
+			document.getElementById('two').innerHTML = 'Completed Deliveries';
+			document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+			document.getElementById('body').style.pointerEvents = "auto";
+		} );
+		table.clear().draw();
+		/*$.ajax
+		({
+			async: true,
+			type: "GET",
+			cors: true,
+			contentType:'application/json',
+			secure: true,
+			crossDomain: true,
+			url: urlForAll + "merchant/incompleted/delivery/details/" + merchant_ID,
+			headers: 
+			{
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  "Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function()
+			{
+				document.getElementById("dtBasicExampled_processing").style.display = "block";	
+			},
+			success: function(data) 
+			{
+				document.getElementById('one').innerHTML = 'Ongoing Deliveries: ' + data.data.length;
+				
+				var trHTML = '';
+				$.each(data.data, function (i, item) {
+				var table_rows = 
+				'<tr><td>'+data.data[i].delivery_Id+'</td><td>'
+				+data.data[i].delivery_created_date+'</td><td>'
+				+data.data[i].delivery_status+'</td><td>'
+				//+data.data[i].assigned_delivery_man_name+'</td><td>'
+				+data.data[i].pickup_time+'</td><td>'
+				+data.data[i].sender_name+'</td><td>'
+				+data.data[i].sender_phone_number+'</td><td>'
+				+data.data[i].sender_address+'</td><td>'
+				+data.data[i].receiver_name+'</td><td>'
+				+data.data[i].receiver_phone_number+'</td><td>'
+				+data.data[i].receiver_address+'</td><td>'
+				+data.data[i].product_name+'</td><td>'
+				+data.data[i].product_qty+'</td><td>'
+				+data.data[i].product_cost+'</td><td>'
+				+data.data[i].delivery_charge+'</td><td>'
+				+data.data[i].payment_method+'</td><td>'
+				+data.data[i].delivery_type+'</td><td>'
+				+data.data[i].delivery_note+'</td></tr>';
+				table.rows.add($(table_rows)).draw();
+				});
+			},
+			complete:function(data){
+				document.getElementById("dtBasicExampled_processing").style.display = "none";	
+			}
+		});*/
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+	$('.d').show();
+	$('#dtBasicExampled').show();
+	
+}
+//New
+var completeDeliveries = () =>
+{
+	document.getElementById('body').style.pointerEvents = "none";
+	document.getElementById('two').disabled = true;
+	document.getElementById('one').disabled = false;
+	document.getElementById('three').disabled = false;
+	document.getElementById('two').style.fontSize = '14.5px';
+	document.getElementById('one').style.fontSize = '13px';
+	document.getElementById('three').style.fontSize = '13px';
+	
+	document.getElementById('six').style.fontSize = '13px';
+	document.getElementById('six').disabled = false;
+	document.getElementById('one').innerHTML = 'Ongoing Deliveries';
+	document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+	$('#dtBasicExample').hide();
+	$('.a').hide();
+	$('#dtBasicExampleAp').hide();
+	$('#dtBasicExampleNew').hide();
+	$('.b').hide();
+	$('.c').hide();
+	$('.d').hide();
+	$('.e').hide();
+	$('#dtBasicExampled').hide();
+	$("#deliveryCreate").hide();
+	
+		var table = $('#dtBasicExampleNew').DataTable( {
+		"processing": true,
+		'language': {
+			'loadingRecords': '&nbsp;',
+			'processing': "<span class='loader5'></span><h4 style='color:#0066b3'>Loading...</h4>"
+		},
+		"paging": true,
+		"pageLength": 100,
+		"searching": false,
+		"ordering": false,
+		"deferRender": true,
+		"pagingType": "full_numbers",
+		"lengthMenu": [[100, 200, 300, 400], [100, 200, 300, 400]],
+		"serverSide": true,
+		"destroy": true,
+		"ajax":
+		{
+			"url" : urlForAll + "merchant/completed/delivery/details/" + merchant_ID,
+			"type": "GET",
+			"headers":
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			"dataSrc": "data"
+		},
+		"columns": [
+				{ "targets": 0, "data": "delivery_Id" },
+				{ "targets": 1, "data": "delivery_created_date" },
+				{ "targets": 2, "data": "delivery_status" },
+				{ "targets": 5, "data": "delivery_complete_date" },
+				{ "targets": 7, "data": "sender_name" },
+				{ "targets": 8, "data": "sender_phone_number" },
+				{ "targets": 9, "data": "sender_address" },
+				{ "targets": 10, "data": "receiver_name" },
+				{ "targets": 11, "data": "receiver_phone_number" },
+				{ "targets": 13, "data": "receiver_address" },
+				{ "targets": 15, "data": "product_name" },
+				{ "targets": 16, "data": "product_qty" },
+				{ "targets": 17, "data": "product_cost" },
+				{ "targets": 18, "data": "delivery_charge" },
+				{ "targets": 19, "data": "payment_method" },
+				{ "targets": 14, "data": "delivery_type" },
+				{ "targets": 20, "data": "delivery_note" }
+			]
+		});
+		table.on( 'xhr', function () {
+			var json = table.ajax.json();
+			document.getElementById('two').innerHTML = 'Completed Deliveries: ' + json.recordsTotal;
+			document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+			document.getElementById('one').innerHTML = 'Ongoing Deliveries';
+			document.getElementById('body').style.pointerEvents = "auto";
+		} );
+		table.clear().draw();
+		/*$.ajax
+		({
+			async: true,
+			type: "GET",
+			cors: true,
+			contentType:'application/json',
+			secure: true,
+			crossDomain: true,
+			url: urlForAll + "merchant/completed/delivery/details/" + merchant_ID,
+			headers: 
+			{
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  "Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function()
+			{
+				document.getElementById("dtBasicExampleNew_processing").style.display = "block";	
+			},
+			success: function(data) 
+			{
+				document.getElementById('two').innerHTML = 'Completed Deliveries: ' + data.data.length;
+				var trHTML = '';
+				$.each(data.data, function (i, item) {
+				var table_rows = 
+				
+				'<tr><td>'+data.data[i].delivery_Id+'</td><td>'
+				+data.data[i].delivery_created_date+'</td><td>'
+				+data.data[i].delivery_status+'</td><td>'
+				//+data.data[i].assigned_delivery_man_name+'</td><td>'
+				+data.data[i].delivery_complete_date+'</td><td>'
+				+data.data[i].sender_name+'</td><td>'
+				+data.data[i].sender_phone_number+'</td><td>'
+				+data.data[i].sender_address+'</td><td>'
+				+data.data[i].receiver_name+'</td><td>'
+				+data.data[i].receiver_phone_number+'</td><td>'
+				+data.data[i].receiver_address+'</td><td>'
+				+data.data[i].product_name+'</td><td>'
+				+data.data[i].product_qty+'</td><td>'
+				+data.data[i].product_cost+'</td><td>'
+				+data.data[i].delivery_charge+'</td><td>'
+				+data.data[i].payment_method+'</td><td>'
+				+data.data[i].delivery_type+'</td><td>'
+				+data.data[i].delivery_note+'</td></tr>';
+
+				table.rows.add($(table_rows)).draw();
+				});
+				
+				//document.getElementById("modifyButton").disabled = document.getElementById("modifyButton").value;
+			},
+			complete:function(data){
+				document.getElementById("dtBasicExampleNew_processing").style.display = "none";	
+			}
+		});*/
+			
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+		
+	$('#dtBasicExampleNew').show();
+	$('.e').show();
+}
+
+var onHoldDeliveries = () =>
+{
+	$('#onh').html("This table will let you know which of your deliveries were On-Hold!");
+	document.getElementById('body').style.pointerEvents = "none";
+	document.getElementById('one').disabled = false;
+	document.getElementById('two').disabled = false;
+	document.getElementById('three').disabled = false;
+	document.getElementById('one').style.fontSize = '13px';
+	document.getElementById('two').style.fontSize = '13px';
+	document.getElementById('three').style.fontSize = '13px';
+	
+	document.getElementById('six').style.fontSize = '14.5px';
+	document.getElementById('six').disabled = true;
+	document.getElementById('one').innerHTML = 'Ongoing Deliveries';
+	document.getElementById('two').innerHTML = 'Completed Deliveries';
+	$('#dtBasicExample').hide();
+	$('.a').hide();
+	$('#dtBasicExampleAp').hide();
+	$('#dtBasicExampleNew').hide();
+	$('.b').hide();
+	$('.c').hide();
+	$('.d').hide();
+	$('.e').hide();
+	$('#dtBasicExampled').hide();
+	$("#deliveryCreate").hide();
+	
+	
+		var table2 = $('#dtBasicExampled').DataTable( {
+		"processing": true,
+		'language': {
+			'loadingRecords': '&nbsp;',
+			'processing': "<span class='loader5'></span><h4 style='color:#0066b3'>Loading...</h4>"
+		},
+		"paging": true,
+		"pageLength": 100,
+		"searching": false,
+		"ordering": false,
+		"deferRender": true,
+		"pagingType": "full_numbers",
+		"lengthMenu": [[100, 200, 300, 400], [100, 200, 300, 400]],
+		"serverSide": true,
+		"destroy": true,
+		"ajax":
+		{
+			"url" : urlForAll + "delivery/onHold/" + merchant_ID,
+			"type": "GET",
+			"headers":
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			"dataSrc": "data"
+		},
+		"columns": [
+				{ "targets": 0, "data": "delivery_Id" },
+				{ "targets": 1, "data": "delivery_created_date" },
+				{ "targets": 2, "data": "delivery_status" },
+				{ "targets": 5, "data": "pickup_time" },
+				{ "targets": 7, "data": "sender_name" },
+				{ "targets": 8, "data": "sender_phone_number" },
+				{ "targets": 9, "data": "sender_address" },
+				{ "targets": 10, "data": "receiver_name" },
+				{ "targets": 11, "data": "receiver_phone_number" },
+				{ "targets": 13, "data": "receiver_address" },
+				{ "targets": 15, "data": "product_name" },
+				{ "targets": 16, "data": "product_qty" },
+				{ "targets": 17, "data": "product_cost" },
+				{ "targets": 18, "data": "delivery_charge" },
+				{ "targets": 19, "data": "payment_method" },
+				{ "targets": 14, "data": "delivery_type" },
+				{ "targets": 20, "data": "delivery_note" }
+			]
+		});
+		table2.on( 'xhr', function () {
+			var json = table2.ajax.json();
+			document.getElementById('six').innerHTML = 'History of On Hold Deliveries: ' + json.recordsTotal;
+			document.getElementById('two').innerHTML = 'Completed Deliveries';
+			document.getElementById('one').innerHTML = 'Ongoing Deliveries';
+			document.getElementById('body').style.pointerEvents = "auto";
+		} );
+		table2.clear().draw();
+		/*$.ajax
+		({
+			async: true,
+			type: "GET",
+			cors: true,
+			contentType:'application/json',
+			secure: true,
+			crossDomain: true,
+			url: urlForAll + "delivery/onHold/" + merchant_ID,
+			headers: 
+			{
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  "Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function()
+			{
+				document.getElementById("dtBasicExampled_processing").style.display = "block";	
+			},
+			success: function(data) 
+			{
+				document.getElementById('six').innerHTML = 'On Hold Deliveries: ' + data.data.length;
+				var trHTML = '';
+				$.each(data.data, function (i, item) {
+				var table_rows = 
+				'<tr><td>'+data.data[i].delivery_Id+'</td><td>'
+				+data.data[i].delivery_created_date+'</td><td>'
+				+data.data[i].delivery_status+'</td><td>'
+				//+data.data[i].assigned_delivery_man_name+'</td><td>'
+				+data.data[i].pickup_time+'</td><td>'
+				+data.data[i].sender_name+'</td><td>'
+				+data.data[i].sender_phone_number+'</td><td>'
+				+data.data[i].sender_address+'</td><td>'
+				+data.data[i].receiver_name+'</td><td>'
+				+data.data[i].receiver_phone_number+'</td><td>'
+				+data.data[i].receiver_address+'</td><td>'
+				+data.data[i].product_name+'</td><td>'
+				+data.data[i].product_qty+'</td><td>'
+				+data.data[i].product_cost+'</td><td>'
+				+data.data[i].delivery_charge+'</td><td>'
+				+data.data[i].payment_method+'</td><td>'
+				+data.data[i].delivery_type+'</td><td>'
+				+data.data[i].delivery_note+'</td></tr>';
+				table.rows.add($(table_rows)).draw();
+				});
+			},
+			complete:function(data){
+				document.getElementById("dtBasicExampled_processing").style.display = "none";	
+			}
+		});*/
+		$('.dataTables_filter input[type="search"]').
+		attr('placeholder','Search anything!').
+		css({'width':'300px','display':'inline-block','background':'white'});
+
+		$('.dataTables_filter input[type="search"]').
+		attr('class','btn btn-round').
+		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+
+		$('.dataTables_length select').
+		attr('class','btn btn-round').
+		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+	$('.d').show();
+	$('#dtBasicExampled').show();
+}
+
+var save = (id) => 
+{
+	localStorage.setItem("'Accept': 'application/json'", id.id);
+	localStorage.setItem("'Accept': 'application/jsonN'", id.name);
+	window.open('addDeliverToDeliveryMan.html', '_blank');
+};
+
+$("#managers2").change(function () {
+    var value = $(this).val();
+	if(value == 'Cash on Delivery'){
+		$("#cod").show();
+	}
+	else{
+		$("#cod").hide();
+	}
+});
+
+function recall(){
+	document.getElementById('r_name').value = "";
+	document.getElementById('r_number').value = "";
+	document.getElementById('pac-input2').value = "";
+	document.getElementById('rec_address').value = "";
+	document.getElementById('DELIVERY_NOTE').value = "";
+	document.getElementById('product_cost').value = "";
+	document.getElementById('des_lat').value = "";
+	document.getElementById('des_longi').value = "";
+	document.getElementById('product_name').value = "";
+	document.getElementById('product_qty').value = "";
+	$.ajax
+	({
+		async: true,
+		type: "GET",
+		url: urlForAll + "profile/get/profile/" + localStorage.getItem('userID'),
+		headers: 
+		{
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		  "Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function(data) 
+		{
+			document.getElementById('pac-input').value = data.data.sender_address;
+			document.getElementById('s_name').value = data.data.sender_name;
+			document.getElementById('s_number').value = data.data.sender_phone_number;
+			document.getElementById('lat').value = data.data.sender_lat;
+			document.getElementById('longi').value = data.data.sender_longi;
+		}
+	})
+}
+
+document.getElementById("createDelivery").addEventListener("click", function(event)
+{
+	var pickup_time = document.getElementById('timepicker-12-hr').value;
+	var s_name = document.getElementById('s_name').value;
+	var s_number = document.getElementById('s_number').value;
+	var s_address = document.getElementById('pac-input').value;
+	var r_name = document.getElementById('r_name').value;
+	var r_number = document.getElementById('r_number').value;
+	var r_address = document.getElementById('pac-input2').value;
+	var rec_address = document.getElementById('rec_address').value;
+	var payment_method = document.getElementById('managers2').value;
+	var delivery_note = document.getElementById('DELIVERY_NOTE').value;
+	var delivery_type = document.getElementById('deliveryType').value;
+	var area = String(document.getElementById('managers').value);
+	var pickup_lat =  String(document.getElementById('lat').value);
+	var pickup_longi = String(document.getElementById('longi').value);
+	var delivery_lat =  String(document.getElementById('des_lat').value);
+	var delivery_longi = String(document.getElementById('des_longi').value);
+	var product_name =  String(document.getElementById('product_name').value);
+	var product_qty = String(document.getElementById('product_qty').value);
+	var product_cost = document.getElementById('product_cost').value;
+	var v1 = () =>
+	{
+		if(pickup_time=="" || pickup_time==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give a Pickup Time!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v2= () =>
+	{
+		if(s_name=="" || s_name==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender Name cannot be empty!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v3 = () =>
+	{
+		if(s_number=="" || s_number==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number cannot be empty!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else if((s_number.length<11||s_number.length>11) && !/\D/.test(s_number)==true)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number must be of 11 digits!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else if(s_number.match(/\d/g).length===11 && !/\D/.test(s_number)==true)
+		{
+			return 1;
+		}
+		else
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number not valid!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+	}
+	var v4 = () =>
+	{
+		if(s_address=="" || s_address==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Address cannot be empty!!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v5= () =>
+	{
+		if(r_name=="" || r_name==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Name cannot be empty!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("r_name").focus();
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v6 = () =>
+	{
+		if(r_number=="" || r_number==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Phone Number cannot be empty!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("r_number").focus();
+			return 0;
+		}
+		else if((r_number.length<11||r_number.length>11)  && !/\D/.test(r_number)==true)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Phone Number must be of 11 digits!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("r_number").focus();
+			return 0;
+		}
+		else if(r_number.match(/\d/g).length===11 && !/\D/.test(r_number)==true)
+		{
+			return 1;
+		}
+		else
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Phone Number not valid!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("r_number").focus();
+			return 0;
+		}
+	}
+	var v7 = () =>
+	{
+		if(r_address=="" || r_address==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Address cannot be empty on map!!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("pac-input2").focus();
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v9 = () =>
+	{
+		if(product_name=="" || product_name==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Name cannot be empty!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("product_name").focus();
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v10 = () =>
+	{
+		if(parseInt(product_qty)<=0 || product_qty.charAt(0)==0)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be greater than 0!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+		    document.getElementById("product_qty").focus();
+
+			return 0;
+		}
+		else if(isNaN(product_qty)==true || product_qty=="" || !/\D/.test(product_qty)==false)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be a number!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+		    document.getElementById("product_qty").focus();
+			return 0;
+		}
+		else if(!/\D/.test(product_qty)==true)
+		{
+			return 1;
+		}
+	}
+	var v11 = () =>
+	{
+		if(parseInt(product_cost)<=0 || product_cost.charAt(0)==0)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than 0!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+		    document.getElementById("product_cost").focus();
+			return 0;
+		}
+		else if(isNaN(product_cost)==true || product_cost=="" || !/\D/.test(product_cost)==false)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be a number!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+		    document.getElementById("product_cost").focus();
+			return 0;
+		}
+		else if(!/\D/.test(product_cost)==true)
+		{
+			return 1;
+		}
+	}
+	var v13 = () =>
+	{
+		if(delivery_lat=="" || delivery_longi=="")
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please select Receiver's Address on map!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v12 = () =>
+	{
+		if(rec_address=="" || rec_address==null)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give Receiver's Address!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+		    document.getElementById("rec_address").focus();
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var datap;
+	
+	if(v1()==1 && v2()==1 && v3()==1 && v5()==1 && v6()==1 && v9()==1 && v10()==1 && v11()==1 && v4()==1 && v12()==1 && v7()==1 && v13()==1)
+	{
+		document.getElementById('createDelivery').disabled = true;
+		$(".circle-loader").show();
+		datap = JSON.stringify
+		({
+			"delivery_status": "",
+			"delivery_type": delivery_type,
+			"sender_address": s_address,
+			"receiver_address": rec_address,
+			"sender_phone_number": s_number,
+			"receiver_phone_number": r_number,
+			"sender_name": s_name,
+			"receiver_name": r_name,
+			"payment_method": payment_method,
+			"product_cost": product_cost,
+			"sender_lat": pickup_lat,
+			"sender_longi": pickup_longi,
+			"receiver_lat": delivery_lat,
+			"receiver_longi": delivery_longi,
+			"product_name": product_name,
+			"product_qty": product_qty,
+			"pickup_time": pickup_time,
+			"delivery_note": delivery_note,
+			"delivery_area": area
+		});
+		$.ajax
+		({
+			type: "POST",
+			url: urlForAll + "delivery/create/" + merchant_ID + "/no",
+			data: datap,
+			headers: 
+			{
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  "Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function(data) 
+			{
+				$('#tickD2').hide();
+				$(".circle-loader").removeClass("load-complete");
+				$("#sureD2").html("");
+				$("#myModalCreateD1").modal('show');
+				$("#sureD2").html("Please wait!");
+				if (data.status == 'OK')
+				{
+						setTimeout(function(){ 
+						$(".circle-loader").addClass("load-complete");
+						
+						$('#tickD2').show(); 
+					
+						$("#sureD2").html(`Delivery ID: ${data.data.delivery_Id} added! A message will be sent to your phone!`);
+					}, 1000);
+					setTimeout(function(){ 
+						
+					document.getElementById('createDelivery').disabled = false;
+					$("#myModalCreateD1").modal('hide');
+					}, 4500);
+					
+					document.getElementById('timepicker-12-hr').value = pickup_time;
+					recall();
+				}
+			},
+			error: function(data) {
+				document.getElementById('createDelivery').disabled = false;
+				//console.log(data.responseJSON.errorMessage);
+				//console.log(data);
+				var ob = Object.keys(data);
+				$("#myModalCreateD1").modal('show');
+				if(ob[17]=="responseJSON")
+				{	
+					$(".circle-loader").hide();
+					$("#sureD2").html("");
+					$("#sureD2ZZ").html("");
+					divElement.innerHTML += `Oops! Looks like you are not able to create delivery!<br>Please Contact Your Organization!<br>`;
+					//$('#wrongSMS').html(data.responseJSON.errorMessage);
+					//$('#myModalWrongSMS').modal();
+					return;
+				}
+				else{
+					$(".circle-loader").hide();
+					$("#sureD2").html("");
+					$("#sureD2ZZ").html("");
+					divElement.innerHTML += `Something went wrong!<br>Please Wait A Bit?<br>`;
+					return;
+				}
+			}
+		})
+	}
+});
+
+var hello = () => {
+	document.getElementById('body').style.pointerEvents = "auto";
+}
+var divElement = document.getElementById('sureD2Z');
+var keysx = [];
+var extrax1 = [];
+var extrax2 = [];
+var deliveryList = [];
+var assignedDeliveryMan = [];
+var assignedDeliveryManPhone = [];
+function doIt(i, lengx){
+	setTimeout(function(){
+	
+	var pickup_time = excelData[i].Pickup_Time;
+	var delivery_type = excelData[i].Delivery_Type;
+	var s_name = excelData[i].Sender_Name;
+	var s_number = excelData[i].Sender_Phone_Number;
+	var s_address = excelData[i].Sender_Address;
+	var pickup_lat = excelData[i].Sender_Lattitude;
+	var pickup_longi = excelData[i].Sender_Longitude;
+	var r_name = excelData[i].Receiver_Name;
+	var r_number = excelData[i].Receiver_Phone_Number;
+	var area = excelData[i].Receiver_Area;
+	var rec_address = excelData[i].Receiver_Address;
+	var delivery_lat =  excelData[i].Receiver_Lattitude;
+	var delivery_longi = excelData[i].Receiver_Longitude;
+	
+	var payment_method = excelData[i].Payment_Method;
+	var product_name =  excelData[i].Product_Name;
+	var product_qty = excelData[i].Product_Quantity_Pieces;
+	var product_cost = excelData[i].Product_Cost;
+	var delivery_charge = excelData[i].Delivery_Charge;
+	var delivery_note = excelData[i].Delivery_Note;
+	var v1 = () =>
+	{
+		if(pickup_time=="" || pickup_time==null || pickup_time==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Please give a Pickup Time!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v2= () =>
+	{
+		if(s_name=="" || s_name==null || s_name==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Sender Name cannot be empty!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v3 = () =>
+	{
+		if(s_number=="" || s_number==null || s_number==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Sender's Phone Number cannot be empty!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if((s_number.length<11||s_number.length>11) && !/\D/.test(s_number)==true)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Sender's Phone Number must be of 11 digits!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if(s_number.match(/\d/g).length===11 && !/\D/.test(s_number)==true)
+		{
+			return 1;
+		}
+		else
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Sender's Phone Number not valid!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+	}
+	var v4 = () =>
+	{
+		if(s_address=="" || s_address==null || s_address==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Sender's Address cannot be empty!!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v5= () =>
+	{
+		if(r_name=="" || r_name==null || r_name==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Receiver's Name cannot be empty!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v6 = () =>
+	{
+		if(r_number=="" || r_number==null || r_number==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Receiver's Phone Number cannot be empty!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if((r_number.length<11||r_number.length>11)  && !/\D/.test(r_number)==true)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Receiver's Phone Number must be of 11 digits!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if(r_number.match(/\d/g).length===11 && !/\D/.test(r_number)==true)
+		{
+			return 1;
+		}
+		else
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Receiver's Phone Number not valid!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+	}
+	var v8 = () =>
+	{
+		if(parseInt(delivery_charge)<=0 || String(delivery_charge).charAt(0)==0)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Delivery Charge must be greater than 0!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if(isNaN(delivery_charge)==true || delivery_charge=="" || delivery_charge==undefined || !/\D/.test(delivery_charge)==false)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Delivery Charge must be a number!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if(!/\D/.test(delivery_charge)==true)
+		{
+			return 1;
+		}
+	}
+	var v9 = () =>
+	{
+		if(product_name=="" || product_name==null || product_name==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Product Name cannot be empty!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v10 = () =>
+	{
+		if(parseInt(product_qty)<=0 || String(product_qty).charAt(0)==0)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Product Quantity must be greater than 0!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if(isNaN(product_qty)==true || product_qty=="" || product_qty==undefined || !/\D/.test(product_qty)==false)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Product Quantity must be a number!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if(!/\D/.test(product_qty)==true)
+		{
+			return 1;
+		}
+	}
+	var v11 = () =>
+	{
+		if(parseInt(product_cost)<=0 || String(product_cost).charAt(0)==0)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Product Cost must be greater than 0!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if(isNaN(product_cost)==true || product_cost=="" || product_cost==undefined || !/\D/.test(product_cost)==false)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Product Cost must be a number!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else if(!/\D/.test(product_cost)==true)
+		{
+			return 1;
+		}
+	}
+	var v12 = () =>
+	{
+		if(rec_address=="" || rec_address==null || rec_address==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Please give Receiver's Address!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v22= () =>
+	{
+		if(area=="" || area==null || area==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Receiver's Area cannot be empty!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v17 = () =>
+	{
+		if(delivery_lat=="" || delivery_longi=="" || delivery_longi==undefined || delivery_lat==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Please give Receiver's Lattitude/Longitude!!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var v16 = () =>
+	{
+		if(pickup_lat=="" || pickup_longi=="" || pickup_lat==undefined || pickup_longi==undefined)
+		{
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i+1} - Please give Sender's Lattitude/Longitude!!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function(){
+				$('#myModalCreateD1').modal('hide');
+			},2500);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	var datap;
+	
+	if(v1()==1 && v2()==1 && v3()==1 && v5()==1 && v6()==1 && v9()==1 && v10()==1 && v11()==1 && v8()==1 && v4()==1 && v22()==1 && v12()==1 && v16()==1 && v17()==1)
+	{
+		if(delivery_note==undefined){
+			delivery_note = "";
+		}
+		datap = JSON.stringify
+		({
+			"delivery_status": "",
+			"delivery_type": delivery_type,
+			"sender_address": s_address,
+			"receiver_address": rec_address,
+			"sender_phone_number": s_number,
+			"receiver_phone_number": r_number,
+			"sender_name": s_name,
+			"receiver_name": r_name,
+			"payment_method": payment_method,
+			"delivery_charge": delivery_charge,
+			"product_cost": product_cost,
+			"sender_lat": pickup_lat,
+			"sender_longi": pickup_longi,
+			"receiver_lat": delivery_lat,
+			"receiver_longi": delivery_longi,
+			"product_name": product_name,
+			"product_qty": product_qty,
+			"pickup_time": pickup_time,
+			"delivery_note": delivery_note,
+			"delivery_area": area
+		});
+		//console.log(datap);
+		$.ajax
+			({
+				async: true,
+				type: "POST",
+				url: urlForAll + "delivery/create/" + merchant_ID + '/no',
+				data: datap,
+				headers: 
+				{
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json',
+				  "Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					if(i==0){
+						document.getElementById("sureD2ZZ").innerHTML=`<br>${i+1} Delivery Created!<br>`;
+					}
+					else{
+						document.getElementById("sureD2ZZ").innerHTML=`<br>${i+1} Deliveries Created!<br>`;
+					}
+					keysx[i] = Object.keys(data.data);
+					extrax1[i] = data.data;
+					deliveryList[i] = data.data.delivery_Id;
+					
+					var stringx="";
+					stringx+=`Delivery ID: ${deliveryList[i]} Created<br>`;
+					divElement.innerHTML += stringx;
+					
+					if (data.status == 'OK')
+					{
+						if(i==lengx-1){
+							setTimeout(function(){
+								$("#sureD2").html(`${i+1} Deliveries Created!`);
+								
+								$(".circle-loader").addClass("load-complete");
+								
+								$('#tickD2').show(); 
+								
+								document.getElementById("sureD2ZZ").innerHTML="";
+							}, 1000);
+							setTimeout(function(){ 
+								
+							document.getElementById('createDeliverywithExcel').disabled = false;
+							//$("#myModalCreateD1").modal('hide');
+							}, 3000);
+							document.getElementById('CLOSEIT').disabled = false;
+							document.getElementById('body').style.pointerEvents = "auto";
+							hello();
+						}
+						else{
+							doIt(++i, lengx);
+						}
+					}
+				},
+				error: function(data) {
+					
+					document.getElementById('body').style.pointerEvents = "auto";
+					document.getElementById('createDeliverywithExcel').disabled = false;
+					document.getElementById('CLOSEIT').disabled = false;
+					//console.log(data.responseJSON.errorMessage);
+					//console.log(data);
+					var ob = Object.keys(data);
+					if(ob[17]=="responseJSON"){
+						
+						$(".circle-loader").hide();
+						$("#sureD2").html("");
+						$("#sureD2ZZ").html("");
+						divElement.innerHTML += `Oops! Looks like you are not able to create delivery!<br>Please Contact Your Organization!<br>`;
+						//$('#wrongSMS').html(data.responseJSON.errorMessage);
+						//$('#myModalWrongSMS').modal();
+						return;
+					}
+					else{
+						$(".circle-loader").hide();
+						$("#sureD2").html("");
+						$("#sureD2ZZ").html("");
+						divElement.innerHTML += `Something went wrong!<br>Please Wait A Bit?<br>`;
+						return;
+					}
+				}
+			})
+		}
+	},100);
+	
+}
+document.getElementById("createDeliverywithExcel").addEventListener("click", function(event)
+{
+	if(flag==true)
+	{
+		$('#tickD2').hide();
+		$(".circle-loader").show();
+		$(".circle-loader").removeClass("load-complete");
+		$("#sureD2").html("");
+		$("#myModalCreateD1").modal('show');
+		$("#sureD2").html("Please wait!");
+		$("#sureD2Z").html("");
+		document.getElementById("CLOSEIT").disabled = true;
+		//document.getElementById('body').style.pointerEvents = "none";
+		
+		var lengx = excelData.length;
+		setTimeout(function()
+		{
+			doIt(0, lengx);
+		}, 1000);
+	}
+	else{
+		document.getElementById('wrongThisUpload2').innerHTML = "Please Upload An Excel File!";
+		$('#myModalWrongUpload2').modal('show');
+	}
+	
+});

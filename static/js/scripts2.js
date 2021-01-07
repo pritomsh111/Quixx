@@ -1,1 +1,7 @@
-jQuery((function(e){"use strict";e((function(){e("#status").delay(5200).fadeOut("slow"),e("#preloader").delay(5200).fadeOut("slow")}))}));
+jQuery(function ($) {
+    'use strict';
+    $(function () {
+        $('#status').delay(5200).fadeOut('slow');
+        $('#preloader').delay(5200).fadeOut('slow');
+    });
+});
