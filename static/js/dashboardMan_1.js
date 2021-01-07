@@ -1,7 +1,1 @@
-$(document).ready(function () {
-	window.addEventListener('storage', function (event) {
-		if (event.key == 'logout-event') {
-			window.location.href = "/#login";
-		}
-	});
-});
+$(document).ready((function(){window.addEventListener("storage",(function(n){"logout-event"==n.key&&(window.location.href="/#login")}))}));
