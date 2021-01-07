@@ -191,8 +191,8 @@
                                 modalErr.innerHTML = "You will receive an SMS!";
                                 modalErr.style.color = "#0066b3";
                                 modalCloseButton.disabled = false;
-                            }, 1500);
-                        }, 2500);
+                            }, 1000);
+                        }, 2000);
                     }
                     else {
                         loader.style.display = "none";

@@ -3,6 +3,8 @@ let preloader = document.querySelector(".preloader");
 let modal = document.querySelector(".Modal__Quixx");
 let backdrop = document.querySelector(".backdrop");
 
+let loaderDiv = document.querySelector(".Signup__Loader");
+let modalErr = document.querySelector(".Signup__Loader>h2");
 let loader = document.querySelector(".circle-loader");
 let checkmark = document.querySelector(".checkmark");
 
@@ -23,7 +25,7 @@ let fp_step2 = document.querySelector(".FP-step-2");
 setTimeout(() => {
     preloader.style.opacity = 0;
     preloader.style.visibility = "hidden";
-}, 2500);
+}, 1000);
 
 backdrop.addEventListener("click", function () {
     this.classList.remove("show");
@@ -123,14 +125,13 @@ modalDoneButton.addEventListener("click", function () {
                     setTimeout(function () {
                         loader.classList.remove("load-complete");
                         setTimeout(function () {
-                            quixxMain.style.pointerEvents = "auto";
                             loader.classList.add("load-complete");
                             checkmark.style.display = "block";
                             modalErr.innerHTML = "You will receive an SMS!";
                             modalErr.style.color = "#0066b3";
                             modalCloseButton.disabled = false;
-                        }, 1500);
-                    }, 2500);
+                        }, 1000);
+                    }, 2000);
                 }
                 else {
                     loader.style.display = "none";
@@ -256,7 +257,7 @@ document.querySelector("#login").addEventListener("click", function () {
                 success: function (data) {
                     localStorage.setItem('login-event', 'login' + Math.random());
                     localStorage.setItem('main-token', data.data);
-                    window.location.href = "panel.html";
+                    window.location.href = "../panel.html";
                 },
                 error: function (data) {
                     let ob = Object.keys(data);
