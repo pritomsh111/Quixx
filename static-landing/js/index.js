@@ -9,7 +9,6 @@ let quixx_navigation_toggler = document.querySelector(".Quixx__Navigation__Toggl
 let quixx_logo = document.querySelector(".Quixx__Logo");
 let home_cta = document.querySelector(".Home__CTA");
 let modal = document.querySelector(".Modal__Quixx");
-
 // Preloader
 let preloader = document.querySelector(".preloader");
 setTimeout(() => {
@@ -75,7 +74,8 @@ const initNav = () => {
 }
 
 let topScroll = document.querySelector(".Top__Scroll");
-window.addEventListener("scroll", function (event) {
+window.addEventListener("scroll", function (e) {
+
     if (this.scrollY > 850) {
         topScroll.classList.add("topScroll_visible");
     }

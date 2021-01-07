@@ -2174,16 +2174,16 @@ p.error {
 @media (max-width: 700px) {
     .Modal__Quixx {
         padding: 1rem;
-        left: calc(50% - 200px);
-        width: 400px;
+        left: calc(50% - 225px);
+        width: 450px;
     }
 }
 
 @media (max-width: 600px) {
     .Modal__Quixx {
         padding: 1rem;
-        left: calc(50% - 200px);
-        width: 400px;
+        left: calc(50% - 170px);
+        width: 340px;
     }
 }
 

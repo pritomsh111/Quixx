@@ -4,7 +4,6 @@
             window.location.href = "panel.html";
         }
     });
-
     let backdrop = document.querySelector(".backdrop");
     let count = 0, imgCount = 0;
     const imgClassArray = ["animation_IMG_1", "animation_IMG_2", "animation_IMG_3", "animation_IMG_4"];
