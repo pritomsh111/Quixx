@@ -1,6 +1,6 @@
 //Navigation
 let activeNav = document.querySelectorAll(".Quixx__Login__Signup li a");
-
+let smt;
 //Selectors
 let home_container_quixx = document.querySelector(".Home__Quixx__Container");
 let backdrop = document.querySelector(".backdrop");
@@ -80,7 +80,12 @@ window.addEventListener("scroll", function (e) {
         topScroll.classList.add("topScroll_visible");
     }
     else {
-        let smt = 0 + (this.scrollY / 7);
+        if(window.innerWidth>1250){
+            smt = 0 + (this.scrollY / 16);
+        }
+        else{
+            smt = 0 + (this.scrollY / 7);
+        }
         home_container_quixx.style.top = smt + "px";
         topScroll.classList.remove("topScroll_visible");
     }
