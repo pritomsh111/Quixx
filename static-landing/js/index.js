@@ -80,10 +80,10 @@ window.addEventListener("scroll", function (e) {
         topScroll.classList.add("topScroll_visible");
     }
     else {
-        if(window.innerWidth>1250){
+        if (window.innerWidth < 1450) {
             smt = 0 + (this.scrollY / 16);
         }
-        else{
+        else {
             smt = 0 + (this.scrollY / 7);
         }
         home_container_quixx.style.top = smt + "px";
