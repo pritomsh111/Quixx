@@ -1663,11 +1663,13 @@ ul {
     position: absolute;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.1);
+    animation: upDownBox 5000ms linear infinite;
+    animation-delay: calc(-1500ms * var(--i));
 }
 
 .Customer__R .customer__back:nth-child(1) {
     top: -1rem;
-    left: -1rem;
+    left: 1rem;
     height: 100px;
     width: 100px;
 }
@@ -1690,13 +1692,22 @@ ul {
     height: 100px;
     width: 100px;
     right: 1rem;
-    bottom: -1rem;
+    bottom: 0rem;
 }
 
 .Customer__R .customer__back:nth-child(5) {
     height: 100px;
     width: 100px;
     left: 20rem;
+}
+
+@keyframes upDownBox {
+    0%, 100% {
+        transform: translateY(40px);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
 }
 
 .Quixx__Clients {
@@ -1936,6 +1947,64 @@ ul {
     place-items: center;
     position: relative;
     overflow: hidden;
+}
+
+.Quixx__Form .customer__back {
+    position: absolute;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    animation: upDownBox2 5000ms linear infinite;
+    animation-delay: calc(-1000ms * var(--i));
+}
+
+.Quixx__Form .customer__back:nth-child(1) {
+    top: 19rem;
+    right: 9rem;
+    height: 100px;
+    width: 100px;
+}
+
+.Quixx__Form .customer__back:nth-child(2) {
+    right: 10rem;
+    top: 3rem;
+    height: 100px;
+    width: 100px;
+}
+
+.Quixx__Form .customer__back:nth-child(3) {
+    height: 100px;
+    width: 100px;
+    right: 28rem;
+    top: 3rem;
+}
+
+.Quixx__Form .customer__back:nth-child(4) {
+    height: 100px;
+    width: 100px;
+    right: 38rem;
+    bottom: 1rem;
+}
+
+.Quixx__Form .customer__back:nth-child(5) {
+    height: 100px;
+    width: 100px;
+    right: 35rem;
+    top: 6rem;
+}
+
+@keyframes upDownBox2 {
+    0%, 100% {
+        transform: translate(100px);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+}
+
+@media (max-width: 700px) {
+    .customer__back {
+        display: none;
+    }
 }
 
 .Quixx__Form::after {
@@ -2335,5 +2404,69 @@ p.error {
         height: 3.5rem;
         width: 1.75rem;
         opacity: 1;
+    }
+}
+
+.Quixx__New__Features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-flow: dense;
+    padding: 5rem 5rem;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    background: rgba(0, 0, 0, .7)
+}
+
+.Quixx__New__Features .Parrot {
+    height: 250px;
+    background: url("../img/Items\ web-01\(1\).png") center/contain no-repeat;
+}
+
+.Quixx__New__Features .Maps {
+    height: 250px;
+    background: url("../img/Items\ web-02\(1\).png") center/contain no-repeat;
+}
+
+.Quixx__New__Features .Vehical {
+    width: 80%;
+    margin: 0 auto;
+    grid-column: 2/-1;
+    grid-row: span 2;
+    background: url("../img/Items\ web-03\(1\).png") center/contain no-repeat;
+}
+
+@media (max-width: 791px) {
+    .Quixx__New__Features {
+        grid-template-columns: 1fr;
+        padding: 5rem 2rem;
+        row-gap: 0.2rem;
+    }
+    .Quixx__New__Features .Parrot {
+        order: 1;
+    }
+    .Quixx__New__Features .Maps {
+        order: 2;
+    }
+    .Quixx__New__Features .Vehical {
+        order: 2;
+        height: 250px;
+        width: 100%;
+        grid-column: unset;
+        grid-row: unset;
+    }
+}
+
+@media (min-width: 1500px) {
+    .Quixx__New__Features .Parrot {
+        grid-column: span 2;
+    }
+    .Quixx__New__Features .Maps {
+        grid-column: span 2;
+        order: 2;
+    }
+    .Quixx__New__Features .Vehical {
+        grid-column: span 2;
+        grid-row: span 2;
+        width: 80%;
     }
 }
