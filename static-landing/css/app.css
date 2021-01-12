@@ -1661,7 +1661,7 @@ ul {
 
 .Customer__R .customer__back {
     position: absolute;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
     background: rgba(255, 255, 255, 0.1);
     animation: upDownBox 5000ms linear infinite;
     animation-delay: calc(-1500ms * var(--i));
@@ -1703,7 +1703,7 @@ ul {
 
 @keyframes upDownBox {
     0%, 100% {
-        transform: translateY(40px);
+        transform: translateY(70px);
     }
     50% {
         transform: translateY(-40px);
@@ -1951,7 +1951,7 @@ ul {
 
 .Quixx__Form .customer__back {
     position: absolute;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
     background: rgba(255, 255, 255, 0.1);
     animation: upDownBox2 5000ms linear infinite;
     animation-delay: calc(-1000ms * var(--i));
@@ -1974,22 +1974,22 @@ ul {
 .Quixx__Form .customer__back:nth-child(3) {
     height: 100px;
     width: 100px;
-    right: 28rem;
+    right: 29rem;
     top: 3rem;
 }
 
 .Quixx__Form .customer__back:nth-child(4) {
     height: 100px;
     width: 100px;
-    right: 38rem;
+    right: 39rem;
     bottom: 1rem;
 }
 
 .Quixx__Form .customer__back:nth-child(5) {
     height: 100px;
     width: 100px;
-    right: 35rem;
-    top: 6rem;
+    right: 42rem;
+    top: 7rem;
 }
 
 @keyframes upDownBox2 {
@@ -1997,7 +1997,7 @@ ul {
         transform: translate(100px);
     }
     50% {
-        transform: translateY(-50px);
+        transform: translateY(-80px);
     }
 }
 
@@ -2040,7 +2040,7 @@ ul {
     position: relative;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 1px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: -2px -3px 3px rgba(0, 0, 0, 0.1), 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
     transition: height 500ms ease-in-out;
 }
 
