@@ -238,6 +238,7 @@ document.querySelector("#login").addEventListener("click", function () {
         clearError();
         localStorage.clear();
         localStorage.setItem('user', username);
+        localStorage.setItem('username', username);
         localStorage.setItem('pass', password);
         localStorage.setItem('wh-user', document.location.pathname);
         $.ajax
@@ -258,7 +259,7 @@ document.querySelector("#login").addEventListener("click", function () {
                 success: function (data) {
                     localStorage.setItem('login-event', 'login' + Math.random());
                     localStorage.setItem('main-token', data.data);
-                    localStorage.setItem('time', new Date(Date.now() + 86400000));
+                    localStorage.setItem('time', new Date(Date.now() + 120000));
                     window.location.href = "../panel.html";
                 },
                 error: function (data) {

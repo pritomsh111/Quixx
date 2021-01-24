@@ -276,7 +276,6 @@
                         <script>
                             if(localStorage.getItem("wh-user")==="/merchant_app/login.html"){
                                 if(new Date() > new Date(localStorage.getItem("time"))){
-                                    console.log("dsdss");
                                     $.ajax
                                         ({
                                             async: false,
@@ -289,7 +288,7 @@
                                             },
                                             data: JSON.stringify
                                                 ({
-                                                    "username": localStorage.getItem("user"),
+                                                    "username": localStorage.getItem("username"),
                                                     "password": localStorage.getItem("pass")
                                                 }),
                                             success: function (data) {
@@ -298,9 +297,9 @@
                                                 localStorage.setItem('time', new Date(Date.now() + 86400000));
                                             },
                                             error: function (data) {
-                                                //localStorage.clear();
+                                                localStorage.clear();
                                                 console.log(data);
-                                                //window.location.href = "/merchant_app/login.html";
+                                                window.location.href = "/merchant_app/login.html";
                                             }
                                         });
                                 }

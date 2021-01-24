@@ -297,6 +297,7 @@
         }
         if (v1() && v2()) {
             clearError();
+            localStorage.clear();
             localStorage.setItem('user', username);
             localStorage.setItem('pass', password);
             localStorage.setItem('wh-user', "main");

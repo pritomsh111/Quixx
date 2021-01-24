@@ -12,7 +12,7 @@ localStorage.setItem('userID', decoded.id);
 localStorage.setItem('userEmail', decoded.email);
 localStorage.setItem('user', decoded.role[0].roleName);
 user = decoded.role[0].roleName;
-if (!localStorage.getItem("wh-user") === "/merchant_app/login.html") {
+if (localStorage.getItem("wh-user") !== "/merchant_app/login.html") {
 	localStorage.removeItem('pass');
 }
 
