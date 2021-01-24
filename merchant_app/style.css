@@ -74,6 +74,12 @@ body {
     visibility: visible;
 }
 
+p.error {
+    color: #e22b2b;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
 .preloader {
     position: fixed;
     visibility: visible;

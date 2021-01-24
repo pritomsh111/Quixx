@@ -275,7 +275,35 @@
                     <div class="container-fluid">
                         <script>
                             if(localStorage.getItem("wh-user")==="/merchant_app/login.html"){
-                                console.log("dss");
+                                if(new Date() > new Date(localStorage.getItem("time"))){
+                                    console.log("dsdss");
+                                    $.ajax
+                                        ({
+                                            async: false,
+                                            type: "POST",
+                                            url: urlForAll + "login",
+                                            headers:
+                                            {
+                                                'Accept': 'application/json',
+                                                'Content-Type': 'application/json'
+                                            },
+                                            data: JSON.stringify
+                                                ({
+                                                    "username": localStorage.getItem("user"),
+                                                    "password": localStorage.getItem("pass")
+                                                }),
+                                            success: function (data) {
+                                                localStorage.setItem('login-event', 'login' + Math.random());
+                                                localStorage.setItem('main-token', data.data);
+                                                localStorage.setItem('time', new Date(Date.now() + 86400000));
+                                            },
+                                            error: function (data) {
+                                                //localStorage.clear();
+                                                console.log(data);
+                                                //window.location.href = "/merchant_app/login.html";
+                                            }
+                                        });
+                                }
                             }
                             function getOut() {
                                 $("#myModalForE2Setup").modal("show");

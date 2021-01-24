@@ -12,7 +12,9 @@ localStorage.setItem('userID', decoded.id);
 localStorage.setItem('userEmail', decoded.email);
 localStorage.setItem('user', decoded.role[0].roleName);
 user = decoded.role[0].roleName;
-localStorage.removeItem('pass');
+if (!localStorage.getItem("wh-user") === "/merchant_app/login.html") {
+	localStorage.removeItem('pass');
+}
 
 if (user == 'SUPER_ADMIN') {
 	$('#logooo').hide();
