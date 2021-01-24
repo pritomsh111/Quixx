@@ -274,6 +274,9 @@
                 <div class="content">
                     <div class="container-fluid">
                         <script>
+                            if(localStorage.getItem("wh-user")==="/merchant_app/login.html"){
+                                console.log("dss");
+                            }
                             function getOut() {
                                 $("#myModalForE2Setup").modal("show");
                                 setTimeout(function () {
