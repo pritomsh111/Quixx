@@ -279,6 +279,6 @@ else if (user === 'MERCHANT') {
 	myNode.remove();*/
 }
 else {
-	localStorage.removeItem('user');
-	window.location.href = "/";
+	console.log("cleast");
+	clear();
 }
