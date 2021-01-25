@@ -1,1 +1,1 @@
-var urlForAll = "https://prod.quixx.xyz/api/quixx/v1/";
+var urlForAll = "https://api-new.quixx.xyz/api/quixx/v1/";

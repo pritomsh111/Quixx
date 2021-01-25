@@ -4,14 +4,14 @@
     localStorage.clear();
     if (y==="main")
     {
+        localStorage.setItem("wh-user", "/#login");
         localStorage.setItem("logout-event", "logout" + Math.random());
         window.location.href="/#login";
     }
     else{
-        if(!y){
-            y = "/";
-            localStorage.setItem("wh-user", y);
-        }
+        y = "/";
+        localStorage.setItem("wh-user", y);
+        localStorage.setItem("logout-event", "logout" + Math.random());
         window.location.href="" + y;
     }
 </script>
