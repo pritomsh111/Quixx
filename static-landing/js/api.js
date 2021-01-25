@@ -1,13 +1,16 @@
 const api = "https://api-new.quixx.xyz/api/quixx/v1/";
 
-class a {
-    hello = "ds";
+function Hell() {
+    this.hello = "ds";
 
-    b = () => {
-        console.log(this.hello);
-    }
+    // this.b = () => {
+    //     console.log(this.hello);
+    // }
+    // this.f = function b() {
+    //     console.log(this.hello);
+    // }
 }
 
-const aa = new a();
+const aa = new Hell();
 
-aa.b();
+aa.f();
