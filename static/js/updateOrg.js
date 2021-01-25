@@ -195,11 +195,6 @@ $(document).ready(function () {
 	// 	}
 	// }
 	// productType();
-	window.addEventListener('storage', function (event) {
-		if (event.key == 'logout-event') {
-			window.location.href = "" + localStorage.getItem("wh-user");
-		}
-	});
 });
 
 var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;

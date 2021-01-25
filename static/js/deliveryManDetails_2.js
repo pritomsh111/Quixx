@@ -17,10 +17,5 @@ $(document).ready(function () {
 		daynight.style.marginRight = "15%";
 		// window width is less than 500px
 	}
-	window.addEventListener('storage', function (event) {
-		if (event.key == 'logout-event') {
-			window.location.href = "" + localStorage.getItem("wh-user");
-		}
-	});
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round';
 });

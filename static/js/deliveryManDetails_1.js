@@ -1,18 +1,14 @@
 var urlAjax;
 
-if(localStorage.getItem('user') == 'SUPER_ADMIN')
-{
+if (localStorage.getItem('user') == 'SUPER_ADMIN') {
 	urlAjax = urlForAll + "deliveryMan/all/";
 }
-else if(localStorage.getItem('user') == 'ORGANIZATIONAL_ADMIN')
-{
+else if (localStorage.getItem('user') == 'ORGANIZATIONAL_ADMIN') {
 	urlAjax = urlForAll + "deliveryMan/getDeliveryManByUserId/" + localStorage.getItem('userID');
 }
-else if(localStorage.getItem('user') == 'MANAGER')
-{
+else if (localStorage.getItem('user') == 'MANAGER') {
 	urlAjax = urlForAll + "deliveryMan/getDeliveryManByUserId/" + localStorage.getItem('userID');
 }
-else
-{
-	window.location = ("https://quixx.xyz");
+else {
+	clear();
 }

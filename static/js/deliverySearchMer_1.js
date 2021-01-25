@@ -8,11 +8,6 @@ $(document).ready(function () {
 	$("#deliveryStatus").hide();
 	$("#paymentMethod").hide();
 	$("#deliveryArea").hide();
-	window.addEventListener('storage', function (event) {
-		if (event.key == 'logout-event') {
-			window.location.href = "" + localStorage.getItem("wh-user");
-		}
-	});
 	$.ajax
 		({
 			url: urlForAll + "search/delivery/search/criteria/merchant",

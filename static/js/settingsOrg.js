@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	$("#alreadySet").hide();
-	
+
 	// const productType = () => {
 	// 	$.ajax
 	// 		({
@@ -129,11 +129,6 @@ $(document).ready(function () {
 	// 			}
 	// 		});
 	// }
-	window.addEventListener('storage', function (event) {
-		if (event.key == 'logout-event') {
-			window.location.href = "" + localStorage.getItem("wh-user");
-		}
-	});
 });
 
 
@@ -435,8 +430,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 	// 	return count;
 	// }
 
-	if (v1() == 1 && v2() == 1 && v3() == 1)
-	{
+	if (v1() == 1 && v2() == 1 && v3() == 1) {
 		$.ajax
 			({
 				type: "POST",

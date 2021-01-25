@@ -1,8 +1,3 @@
-window.addEventListener('storage', function (event) {
-	if (event.key == 'logout-event') {
-		window.location = "" + localStorage.getItem("wh-user");
-	}
-});
 var comp, incomp;
 var myMap = [];
 var myMap2 = [];
