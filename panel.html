@@ -297,8 +297,6 @@
                                                 localStorage.setItem('time', new Date(Date.now() + 86400000));
                                             },
                                             error: function (data) {
-                                                localStorage.clear();
-                                                console.log(data);
                                                 window.location.href = "/merchant_app/login.html";
                                             }
                                         });
