@@ -60,7 +60,7 @@
               a = '#settingsOrg';
               //productType();
             }
-            location.hash = '#settingsOrg';
+            location.hash = a;
           },
           error: function (XMLHttpRequest, textStatus, errorThrown) {
           }
