@@ -61,6 +61,7 @@
             var token = localStorage.getItem('main-token');
             if (token) {
                 try{
+                    console.log("yolo");
                     var decoded = jwt_decode(token);
                 }catch(e){
                     //clear();
