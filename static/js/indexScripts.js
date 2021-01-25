@@ -1,23 +1,3 @@
-var myNode;
-var user = localStorage.getItem('user');
-var pass = localStorage.getItem('pass');
-var fileTag = document.getElementById("filetag");
-var fileTag2 = document.getElementById("filetag2");
-var preview = document.getElementById("preview");
-
-var token = localStorage.getItem('main-token');
-if (token) {
-	var decoded = jwt_decode(token);
-	localStorage.setItem('token', token);
-	localStorage.setItem('userID', decoded.id);
-	localStorage.setItem('userEmail', decoded.email);
-	localStorage.setItem('user', decoded.role[0].roleName);
-	user = decoded.role[0].roleName;
-}
-if (localStorage.getItem("wh-user") !== "/merchant_app/login.html") {
-	localStorage.removeItem('pass');
-}
-
 if (user === 'SUPER_ADMIN') {
 	$('#logooo').hide();
 	document.title = "Super Admin";
@@ -294,7 +274,6 @@ else if (user === 'MERCHANT') {
 	myNode.remove();*/
 }
 else {
-	console.log("dsdssds");
 	localStorage.removeItem('user');
 	window.location.href = "/";
 }
