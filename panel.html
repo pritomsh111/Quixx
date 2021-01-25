@@ -340,24 +340,12 @@
                             function getOut() {
                                 $("#myModalForE2Setup").modal("show");
                                 setTimeout(function () {
-                                localStorage.setItem(
-                                    "logout-event",
-                                    "logout" + Math.random()
-                                );
-                                let y = localStorage.getItem("wh-user");
-                                localStorage.clear();
-                                if (y === "main") {
-                                    localStorage.setItem("wh-user", "/#login");
-                                    window.location.href = "/#home";
-                                } else {
-                                    localStorage.setItem("wh-user", y);
-                                    window.location.href = "" + y;
-                                }
+                                    window.location.hash = "#logout";
                                 }, 2500);
                             }
                             $.ajaxSetup({
                                 statusCode: {
-                                    401: function () {
+                                    400: function () {
                                         getOut();
                                     },
                                     0: function () {
