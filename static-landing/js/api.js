@@ -21,24 +21,44 @@ const api = "https://api-new.quixx.xyz/api/quixx/v1/";
 
 // aa.f();
 
+// function Hell() {
+//     this.hello = "ds";
 
-class Hell {
-    hello = "ds";
+//     // this.b = () => {
+//     //     console.log(this.hello);
+//     // }
+//     this.f = () => {
+//         this.y = () => {
+//             this.z = () => {
+//                 console.log(this);
+//             }
+//             this.z();
+//         }
+//         this.y();
+//     }
+// }
 
-    // this.b = () => {
-    //     console.log(this.hello);
-    // }
-    f = function () {
-        y = function () {
-            z = function () {
-                console.log(this);
-            }
-            z();
-        }
-        this.y();
-    }
-}
+// const aa = new Hell();
 
-const aa = new Hell();
+// aa.f();
 
-aa.f();
+
+// class Hell {
+//     constructor(a) {
+//         console.log(a);
+//     }
+//     hello = "ds";
+
+//     f = () => {
+//         console.log(this);
+//     }
+// }
+
+// const aa = new Hell("hello");
+
+// aa.f();
+
+
+// const aaa = new Hell("hello", "8");
+
+// aa.print();
