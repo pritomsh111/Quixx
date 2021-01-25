@@ -1,3 +1,8 @@
+var myNode;
+var fileTag = document.getElementById("filetag");
+var fileTag2 = document.getElementById("filetag2");
+var preview = document.getElementById("preview");
+
 if (user === 'SUPER_ADMIN') {
 	$('#logooo').hide();
 	document.title = "Super Admin";
@@ -275,5 +280,5 @@ else if (user === 'MERCHANT') {
 }
 else {
 	localStorage.removeItem('user');
-	// window.location.href = "/";
+	window.location.href = "/";
 }
