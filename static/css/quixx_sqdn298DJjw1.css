@@ -86,7 +86,7 @@ body {
   font-family: 'Didact Gothic';
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.5em;
   color: #212529;
   text-align: left;
   background-color: #fafafa;
@@ -3928,10 +3928,6 @@ fieldset[disabled][disabled] .btn.btn-raised, .btn.btn-raised.disabled, .btn.btn
 
 form {
   margin-bottom: 1.125rem;
-}
-
-.card form {
-  margin: 0;
 }
 
 .navbar form {
