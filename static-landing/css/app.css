@@ -1388,6 +1388,11 @@ ul {
     background: #fff;
 }
 
+.pricing-card:nth-child(3) {
+    outline: 1px solid #000;
+    border-radius: 0;
+}
+
 @media (min-width: 1300px) and (max-width: 1400px) {
     .pricing-card {
         max-width: 320px;
