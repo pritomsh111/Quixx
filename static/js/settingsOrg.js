@@ -479,10 +479,10 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 
 					}
 				},
-				error: function (XMLHttpRequest, textStatus, errorThrown) {
-
+				error: function (data) {
 					$("#myModalCreateDD1").modal('hide');
-					$('#myModal2').modal('show');
+					document.getElementById('wrongThisMerSet').innerHTML = data.responseJSON.errorMessage;
+					$('#myModalWrongMerSet').modal('show');
 				}
 			})
 	}

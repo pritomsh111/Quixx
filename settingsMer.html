@@ -32,93 +32,93 @@
                                 type="text"
                                 placeholder="Search Your Address and Then Drag The Marker to The Exact Location"
                                 style="text-align:center;color:#0066b3;background:#ffffff;border:2px solid #ffcf5c;"
-                            ></input>
-                        <div style="margin-top:-8px;height: 40%;position: absolute;" id="map"></div>
-                        <input type="hidden" id="lat" name="lat">
-                        <input type="hidden" id="longi" name="longi">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <div style="text-align: center;">
-                            <button
-                                class="btn btn-outline btn-round"
-                                style="background:#ffffd4;"
-                                type="button"
-                                id="updateMerchant"
                             >
-                                <center>Set Merchant</center>
-                            </button>
+                            <div style="margin-top:-8px;height: 40%;position: absolute;" id="map"></div>
+                            <input type="hidden" id="lat" name="lat">
+                            <input type="hidden" id="longi" name="longi">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div style="text-align: center;">
+                                <button
+                                    class="btn btn-outline btn-round"
+                                    style="background:#ffffd4;"
+                                    type="button"
+                                    id="updateMerchant"
+                                >
+                                    Set Merchant
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div
-    class="modal fade"
-    id="myModalCreateDD1"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="myModalLabel"
-    aria-hidden="true"
-    data-backdrop="static"
->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body" style="text-align:center">
-                <div class="circle-loader" style="text-align:center">
-                    <div class="checkmark draw" id="tickDD2"></div>
+    <div
+        class="modal fade"
+        id="myModalCreateDD1"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+        data-backdrop="static"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" style="text-align:center">
+                    <div class="circle-loader" style="text-align:center">
+                        <div class="checkmark draw" id="tickDD2"></div>
+                    </div>
+                    <h4 id="sureDD2" style="color:#0066b3"></h4>
                 </div>
-                <h4 id="sureDD2" style="color:#0066b3"></h4>
             </div>
         </div>
     </div>
-</div>
-<div id="myModalCreateDD2" class="modal fade" data-backdrop="static">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h4 style="color:#0066b3">Ooops!</h4>
-                <p style="color:#0066b3">Please fill up properly!</p>
-                <button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
+    <div id="myModalCreateDD2" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 style="color:#0066b3">Ooops!</h4>
+                    <p style="color:#0066b3">Please fill up properly!</p>
+                    <button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div id="myModal2" class="modal fade" data-backdrop="static">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <p style="color:#0066b3">Something went wrong. Please try again!</p>
-                <button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
+    <div id="myModal2" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <p style="color:#0066b3">Something went wrong. Please try again!</p>
+                    <button class="btn btn-outline btn-danger btn-error" style="color:#0066b3" data-dismiss="modal">Try Again</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div id="myModalWrongMerSet" class="modal fade">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <!--<div class="modal-header">
+    <div id="myModalWrongMerSet" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <!--<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>-->
-            <div class="modal-body text-center">
-                <h3 id="wrongThisMerSet"></h3>
-                <button class="btn btn-success" data-dismiss="modal">Correct it!</button>
+                <div class="modal-body text-center">
+                    <h3 id="wrongThisMerSet"></h3>
+                    <button class="btn btn-danger" data-dismiss="modal">Correct it!</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script src="static/js/settingsMer.js"></script>
-<script>
+    <script src="static/js/settingsMer.js"></script>
+    <script>
 
 mq = window.matchMedia( "(min-width: 730px)" );
 
@@ -136,5 +136,5 @@ if (mq.matches) {
 	daynight2.style.marginTop="50px";
   // window width is less than 500px
 }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&libraries=places&callback=initAutocomplete" async defer></script>
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&libraries=places&callback=initAutocomplete" async defer></script>
