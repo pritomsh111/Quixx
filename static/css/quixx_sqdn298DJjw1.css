@@ -2210,6 +2210,9 @@ button.close {
     max-width: 500px;
     margin: 1.75rem auto;
   }
+  .modal-dialog.m-d {
+    max-width: 620px;
+  }
   .modal-dialog2 {
     max-width: 1100px;
     margin: 1.75rem auto;
