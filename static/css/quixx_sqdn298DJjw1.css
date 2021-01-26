@@ -1124,6 +1124,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg>select.form-
   display: inline-block;
   font-weight: 400;
   text-align: center;
+  font-family: inherit;
   white-space: nowrap;
   vertical-align: middle;
   text-transform: none !important;
