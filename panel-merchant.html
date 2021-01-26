@@ -7,25 +7,25 @@
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="../static/css/datatable.css">
-        <link rel="stylesheet" type="text/css" href="../static/css/buttons.bootstrap4.min.css">
-        <link href="../static/css/quixx_sqdn298DJjw1.css" rel="stylesheet">
-        <link href="../static/css/demo.css" rel="stylesheet">
-        <link rel="stylesheet" href="../static/css/panelLoader.css">
-        <link rel="stylesheet" href="../static/css/panelLoader2.css">
-        <link rel="stylesheet" href="../static/css/pleaseWait.css">
-        <link href="../static/css/template2.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="static/css/datatable.css">
+        <link rel="stylesheet" type="text/css" href="static/css/buttons.bootstrap4.min.css">
+        <link href="static/css/quixx_sqdn298DJjw1.css" rel="stylesheet">
+        <link href="static/css/demo.css" rel="stylesheet">
+        <link rel="stylesheet" href="static/css/panelLoader.css">
+        <link rel="stylesheet" href="static/css/panelLoader2.css">
+        <link rel="stylesheet" href="static/css/pleaseWait.css">
+        <link href="static/css/template2.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="../static/js/jquery-datatable.js"></script>
-        <script src="../static/js/loader-file.js"></script>
-        <script src="../static/js/responsive.js"></script>
-        <script src="../static/js/jszip.js"></script>
-        <script src="../static/js/xlsx.js"></script>
-        <script src="../static/js/scripts2.js"></script>
-        <script src="../static/js/core/popper.min.js"></script>
-        <script src="../static/js/core/bootstrap-design.min.js"></script>
-        <script src="../static/js/quixx-dashboard.js"></script>
-        <script src="../static/js/importantVar.js"></script>
+        <script src="static/js/jquery-datatable.js"></script>
+        <script src="static/js/loader-file.js"></script>
+        <script src="static/js/responsive.js"></script>
+        <script src="static/js/jszip.js"></script>
+        <script src="static/js/xlsx.js"></script>
+        <script src="static/js/scripts2.js"></script>
+        <script src="static/js/core/popper.min.js"></script>
+        <script src="static/js/core/bootstrap-design.min.js"></script>
+        <script src="static/js/quixx-dashboard.js"></script>
+        <script src="static/js/importantVar.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Didact Gothic" rel="stylesheet">
         <style>
             body {
@@ -54,7 +54,7 @@
             }
             var user = localStorage.getItem('user');
             var pass = localStorage.getItem('pass');
-
+            localStorage.setItem("wh-user", "/merchant_app/login.html");
             var token = localStorage.getItem('main-token');
             if (token) {
                 try{
@@ -121,6 +121,104 @@
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
+                        <div id="superAdmin">
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#dashboard">
+                                    <i class="material-icons">dashboard</i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#organizationAll">
+                                    <i class="material-icons">domain</i>
+                                    <p>Organizations</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#merchantAll">
+                                    <i class="material-icons">person</i>
+                                    <p>Merchants</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#deliveryManAll">
+                                    <i class="material-icons">directions_bike</i>
+                                    <p>Delivery Men</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#seeDeliverySuperAdmin">
+                                    <i class="material-icons">local_shipping</i>
+                                    <p>Watch Deliveries</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#messageSuperAdmin">
+                                    <i class="material-icons">message</i>
+                                    <p>Messages</p>
+                                </a>
+                            </li>
+                            <li class="nav-item superAdmin">
+                                <a class="nav-link" href="#managerAll">
+                                    <i class="material-icons">people</i>
+                                    <p>Managers</p>
+                                </a>
+                            </li>
+                        </div>
+                        <div id="organizationHead">
+                            <div id="alreadySet">
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="../#dashboardOrg">
+                                        <i class="material-icons">dashboard</i>
+                                        <p>Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#merchantOrg">
+                                        <i class="material-icons">people</i>
+                                        <p>Merchant</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#deliveryManAllOrg">
+                                        <i class="material-icons">directions_bike</i>
+                                        <p>Delivery Man</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#deliveryOrg">
+                                        <i class="material-icons">receipt_long</i>
+                                        <p>Delivery</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#deliverySearchOrg">
+                                        <i class="material-icons">search</i>
+                                        <p>Search Deliveries</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#seeDeliveryOrg">
+                                        <i class="material-icons">local_shipping</i>
+                                        <p>Watch Deliveries</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item organizationHead">
+                                    <a class="nav-link" href="#setUpdateOrg">
+                                        <i class="material-icons">settings_applications</i>
+                                        <p>Update Settings</p>
+                                    </a>
+                                </li>
+                            </div>
+                            <div id="settings">
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#settingsOrg">
+                                        <i class="material-icons">settings</i>
+                                        <p>Settings</p>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
                         <div id="merchant">
                             <div id="alreadySetMer">
                                 <li class="nav-item manager">
@@ -232,7 +330,7 @@
                             }
                             window.addEventListener('storage', function (event) {
                                 if (event.key == 'logout-event') {
-                                    window.location.href = "" + localStorage.getItem("wh-user");
+                                    window.location.href = "/merchant_app/login.html";
                                 }
                             });
                             function getOut() {
@@ -254,8 +352,8 @@
                             });
                         </script>
                         <div id="contentMain"></div>
-                        <script src="../static/js/indexScripts.js"></script>
-                        <script src="../static/js/navigation.js"></script>
+                        <script src="static/js/indexScripts.js"></script>
+                        <script src="static/js/navigation.js"></script>
                     </div>
                 </div>
                 <footer class="footer">
@@ -432,6 +530,6 @@
                 </div>
             </div>
         </div>
-        <script src="../static/js/indexPanel.js"></script>
+        <script src="static/js/indexPanel.js"></script>
     </body>
 </html>
