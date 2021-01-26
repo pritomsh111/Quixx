@@ -260,7 +260,7 @@ document.querySelector("#login").addEventListener("click", function () {
                     localStorage.setItem('login-event', 'login' + Math.random());
                     localStorage.setItem('main-token', data.data);
                     localStorage.setItem('time', new Date(Date.now() + 120000));
-                    window.location.href = "/panel-merchant.html";
+                    window.location.href = "../panel-merchant.html";
                 },
                 error: function (data) {
                     let ob = Object.keys(data);
