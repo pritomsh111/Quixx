@@ -3,6 +3,7 @@ var myMap = [];
 var myMap2 = [];
 
 $(document).ready(function () {
+	$('#settings').hide();
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 	beforeOne();
 	var today = new Date();
@@ -24,24 +25,6 @@ $(document).ready(function () {
 	document.getElementById("date7Package").innerHTML = today;
 });
 
-var zero = () => {
-	$.ajax
-		({
-			async: true,
-			type: "GET",
-			url: urlForAll + "profile/get/profile/" + localStorage.getItem('userID'),
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function (data) {
-				document.title = data.data.sender_name;
-				document.getElementById("dashName").innerHTML = data.data.sender_name + "'s Panel";
-			}
-		})
-}
 var beforeOne = () => {
 	$.ajax
 		({
@@ -442,7 +425,6 @@ var eleven = () => {
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
 		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-	zero();
 }
 
 var show = (id) => {
