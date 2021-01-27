@@ -23,6 +23,9 @@
     let favicon = document.querySelector("link[rel='shortcut icon']");
     favicon.href = "static-landing/img/clients/" + clientWho[1] + ".png";
 
+    let companyName = document.querySelector(".Company>h1");
+    companyName.innerHTML = "Quixx";
+
     let body = document.body;
     let modal = document.querySelector(".Modal__Quixx");
     let backdrop = document.querySelector(".backdrop");
