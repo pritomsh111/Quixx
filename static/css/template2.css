@@ -103,14 +103,14 @@ input.rounded:focus {
 .loader-position {
     position: absolute;
     top: 50%;
-    left: -50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
 }
 
 .loader {
     --path: #2f3545;
-    --dot: #5628ee;
+    --dot: #0066b3;
     --duration: 3s;
     width: 44px;
     height: 44px;
