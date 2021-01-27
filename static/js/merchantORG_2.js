@@ -1,6 +1,5 @@
 var org_ID = localStorage.getItem('userID');
-var createMer = () => 
-{
+var createMer = () => {
 	document.getElementById('one').disabled = true;
 	document.getElementById('two').disabled = false;
 	document.getElementById('three').disabled = false;
@@ -9,15 +8,15 @@ var createMer = () =>
 	document.getElementById('three').style.fontSize = '13px';
 	document.getElementById('three').innerHTML = 'Unapproved Merchant';
 	document.getElementById('two').innerHTML = 'Approved Merchant';
-	
+
 	document.getElementById('four').style.fontSize = '13px';
 	document.getElementById('four').innerHTML = 'Activated Merchant';
 	document.getElementById('four').disabled = false;
-	
+
 	document.getElementById('five').style.fontSize = '13px';
 	document.getElementById('five').innerHTML = 'Disabled Merchant';
 	document.getElementById('five').disabled = false;
-	
+
 	$('#dtBasicExample').hide();
 	$('#dtBasicExample2').hide();
 	$('#dtBasicExampleActivate').hide();
@@ -28,35 +27,32 @@ var createMer = () =>
 	$('.d').hide();
 	$('#merchantCreate').show();
 };
-var invoice = (id) =>
-{
+var invoice = (id) => {
 	$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		"url": urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			window.open(urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name);
-		},
-		error: function(data) {
-			document.getElementById('wrongThisMerCreate').innerHTML = data.responseJSON.errorMessage;
-			$('#myModalWrongMerCreate').modal('show');
-		}
-	});
+		({
+			async: true,
+			type: "GET",
+			cors: true,
+			contentType: 'application/json',
+			secure: true,
+			crossDomain: true,
+			"url": urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				window.open(urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name);
+			},
+			error: function (data) {
+				document.getElementById('wrongThisMerCreate').innerHTML = data.responseJSON.errorMessage;
+				$('#myModalWrongMerCreate').modal('show');
+			}
+		});
 };
-var approvedMer = () =>
-{
+var approvedMer = () => {
 	document.getElementById('two').disabled = true;
 	document.getElementById('one').disabled = false;
 	document.getElementById('three').disabled = false;
@@ -68,11 +64,11 @@ var approvedMer = () =>
 	document.getElementById('four').style.fontSize = '13px';
 	document.getElementById('four').innerHTML = 'Activated Merchant';
 	document.getElementById('four').disabled = false;
-	
+
 	document.getElementById('five').style.fontSize = '13px';
 	document.getElementById('five').innerHTML = 'Disabled Merchant';
 	document.getElementById('five').disabled = false;
-	
+
 	$('#merchantCreate').hide();
 	$('#dtBasicExample2').hide();
 	$('#dtBasicExampleActivate').hide();
@@ -82,7 +78,7 @@ var approvedMer = () =>
 	$('.d').hide();
 	$('#dtBasicExample').hide();
 	$('.a').hide();
-	var table = $('#dtBasicExample').DataTable( {
+	var table = $('#dtBasicExample').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -90,70 +86,67 @@ var approvedMer = () =>
 		},
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true }
-		} );
-		table.clear().draw();
-	$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		"url": urlForAll+ "orgHead/merchant/approved/details/" + org_ID,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		beforeSend: function()
-		{
-			document.getElementById("dtBasicExample_processing").style.display = "block";	
-		},
-		success: function(data) 
-		{
-			document.getElementById('two').innerHTML = 'Approved Merchant: ' + data.data.length;
-			
-			var trHTML = '';
-			$.each(data.data, function (i, item) {
-			var table_rows = '<tr><td>'
-			+data.data[i].merchant_id+'</td><td>'
-			+data.data[i].org_name+'</td><td>'
-			+data.data[i].person_name+'</td><td>'
-			+data.data[i].email+'</td><td>'
-			+data.data[i].phone_number+'</td><td>'
-			+data.data[i].business_filed+'</td><td>'
-			+data.data[i].per_delivery_cost+'</td><td>'
-			+data.data[i].cod_percentage+'</td><td>'
-			+'<button id="' + data.data[i].merchant_id + '$$' + data.data[i].org_name + '$$' + data.data[i].person_name + '$$' + data.data[i].email + '$$' + data.data[i].phone_number + '$$' + data.data[i].business_filed + '$$' + data.data[i].per_delivery_cost + '$$' + data.data[i].cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button></td><td>'
-			+'<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>'+'</td><td>'
-			+'<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>'+'</td></tr>';
-			table.rows.add($(table_rows)).draw();
-			});
-		},
-		complete:function(data){
-			document.getElementById("dtBasicExample_processing").style.display = "none";	
-		}
 	});
+	table.clear().draw();
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			cors: true,
+			contentType: 'application/json',
+			secure: true,
+			crossDomain: true,
+			"url": urlForAll + "orgHead/merchant/approved/details/" + org_ID,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function () {
+				document.getElementById("dtBasicExample_processing").style.display = "block";
+			},
+			success: function (data) {
+				document.getElementById('two').innerHTML = 'Approved Merchant: ' + data.data.length;
+
+				var trHTML = '';
+				$.each(data.data, function (i, item) {
+					var table_rows = '<tr><td>'
+						+ data.data[i].merchant_id + '</td><td>'
+						+ data.data[i].org_name + '</td><td>'
+						+ data.data[i].person_name + '</td><td>'
+						+ data.data[i].email + '</td><td>'
+						+ data.data[i].phone_number + '</td><td>'
+						+ data.data[i].business_filed + '</td><td>'
+						+ data.data[i].per_delivery_cost + '</td><td>'
+						+ data.data[i].cod_percentage + '</td><td>'
+						+ '<button id="' + data.data[i].merchant_id + '$$' + data.data[i].org_name + '$$' + data.data[i].person_name + '$$' + data.data[i].email + '$$' + data.data[i].phone_number + '$$' + data.data[i].business_filed + '$$' + data.data[i].per_delivery_cost + '$$' + data.data[i].cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button></td><td>'
+						+ '<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>' + '</td><td>'
+						+ '<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>' + '</td></tr>';
+					table.rows.add($(table_rows)).draw();
+				});
+			},
+			complete: function (data) {
+				document.getElementById("dtBasicExample_processing").style.display = "none";
+			}
+		});
 	$('.dataTables_filter input[type="search"]').
-	attr('placeholder','Search anything!').
-	css({'width':'300px','display':'inline-block','background':'white'});
+		attr('placeholder', 'Search anything!').
+		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
-	attr('class','btn btn-round').
-	css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+		attr('class', 'btn btn-round').
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
-	attr('class','btn btn-round').
-	css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+		attr('class', 'btn btn-round').
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('#dtBasicExample').show();
 	$('.a').show();
 }
 
-var unApprovedMer = () => 
-{
+var unApprovedMer = () => {
 	document.getElementById('three').disabled = true;
 	document.getElementById('two').disabled = false;
 	document.getElementById('one').disabled = false;
@@ -165,7 +158,7 @@ var unApprovedMer = () =>
 	document.getElementById('four').style.fontSize = '13px';
 	document.getElementById('four').innerHTML = 'Activated Merchant';
 	document.getElementById('four').disabled = false;
-	
+
 	document.getElementById('five').style.fontSize = '13px';
 	document.getElementById('five').innerHTML = 'Disabled Merchant';
 	document.getElementById('five').disabled = false;
@@ -178,7 +171,7 @@ var unApprovedMer = () =>
 	$('.d').hide();
 	$('#dtBasicExample2').hide();
 	$('.b').hide();
-	var table = $('#dtBasicExample2').DataTable( {
+	var table = $('#dtBasicExample2').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -186,68 +179,65 @@ var unApprovedMer = () =>
 		},
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true }
-		} );
-		table.clear().draw();
-	$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		"url": urlForAll+ "orgHead/merchant/unapproved/details/" + org_ID,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		beforeSend: function()
-		{
-			document.getElementById("dtBasicExample2_processing").style.display = "block";	
-		},
-		success: function(data) 
-		{
-			document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + data.data.length;
-			var trHTML = '';
-			
-			$.each(data.data, function (i, item) {
-			var table_rows = '<tr><td>'
-			+data.data[i].merchant_id+'</td><td>'
-			+data.data[i].org_name+'</td><td>'
-			+data.data[i].person_name+'</td><td>'
-			+data.data[i].email+'</td><td>'
-			+data.data[i].phone_number+'</td><td>'
-			+data.data[i].business_filed+'</td><td>'
-			+data.data[i].per_delivery_cost+'</td><td>'
-			+'<button id="' + data.data[i].merchant_id + '" name="' + data.data[i].user_id + '" class="btn-round btn-outline btn approveIT">Approve</button></td></tr>';;
-
-			table.rows.add($(table_rows)).draw();
-			});
-		},
-		complete:function(data){
-			document.getElementById("dtBasicExample2_processing").style.display = "none";	
-		}
 	});
+	table.clear().draw();
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			cors: true,
+			contentType: 'application/json',
+			secure: true,
+			crossDomain: true,
+			"url": urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function () {
+				document.getElementById("dtBasicExample2_processing").style.display = "block";
+			},
+			success: function (data) {
+				document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + data.data.length;
+				var trHTML = '';
+
+				$.each(data.data, function (i, item) {
+					var table_rows = '<tr><td>'
+						+ data.data[i].merchant_id + '</td><td>'
+						+ data.data[i].org_name + '</td><td>'
+						+ data.data[i].person_name + '</td><td>'
+						+ data.data[i].email + '</td><td>'
+						+ data.data[i].phone_number + '</td><td>'
+						+ data.data[i].business_filed + '</td><td>'
+						+ data.data[i].per_delivery_cost + '</td><td>'
+						+ '<button id="' + data.data[i].merchant_id + '" name="' + data.data[i].user_id + '" class="btn-round btn-outline btn approveIT">Approve</button></td></tr>';;
+
+					table.rows.add($(table_rows)).draw();
+				});
+			},
+			complete: function (data) {
+				document.getElementById("dtBasicExample2_processing").style.display = "none";
+			}
+		});
 	$('.dataTables_filter input[type="search"]').
-	attr('placeholder','Search anything!').
-	css({'width':'300px','display':'inline-block','background':'white'});
+		attr('placeholder', 'Search anything!').
+		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
-	attr('class','btn btn-round').
-	css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+		attr('class', 'btn btn-round').
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
-	attr('class','btn btn-round').
-	css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+		attr('class', 'btn btn-round').
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('#dtBasicExample2').show();
 	$('.b').show();
 };
 
-var activated = () =>
-{
+var activated = () => {
 	document.getElementById('three').disabled = false;
 	document.getElementById('two').disabled = false;
 	document.getElementById('one').disabled = false;
@@ -260,7 +250,7 @@ var activated = () =>
 	document.getElementById('four').style.fontSize = '14.5px';
 	document.getElementById('four').innerHTML = 'Activated Merchant';
 	document.getElementById('four').disabled = true;
-	
+
 	document.getElementById('five').style.fontSize = '13px';
 	document.getElementById('five').innerHTML = 'Disabled Merchant';
 	document.getElementById('five').disabled = false;
@@ -273,7 +263,7 @@ var activated = () =>
 	$('.d').hide();
 	$('#dtBasicExample2').hide();
 	$('.b').hide();
-	var table = $('#dtBasicExampleActivate').DataTable( {
+	var table = $('#dtBasicExampleActivate').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -281,68 +271,65 @@ var activated = () =>
 		},
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true }
-		} );
-		table.clear().draw();
-	$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		"url": urlForAll+ "orgHead/enable/merchant/" + org_ID,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		beforeSend: function()
-		{
-			document.getElementById("dtBasicExampleActivate_processing").style.display = "block";	
-		},
-		success: function(data) 
-		{
-			document.getElementById('four').innerHTML = 'Activated Merchant: ' + data.data.length;
-			var trHTML = '';
-			
-			$.each(data.data, function (i, item) {
-			var table_rows = '<tr><td>'
-			+data.data[i].merchant_id+'</td><td>'
-			+data.data[i].org_name+'</td><td>'
-			+data.data[i].person_name+'</td><td>'
-			+data.data[i].email+'</td><td>'
-			+data.data[i].phone_number+'</td><td>'
-			+data.data[i].business_filed+'</td><td>'
-			+data.data[i].per_delivery_cost+'</td><td>'
-			+'<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>'+'</td></tr>';
-
-			table.rows.add($(table_rows)).draw();
-			});
-		},
-		complete:function(data){
-			document.getElementById("dtBasicExampleActivate_processing").style.display = "none";	
-		}
 	});
+	table.clear().draw();
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			cors: true,
+			contentType: 'application/json',
+			secure: true,
+			crossDomain: true,
+			"url": urlForAll + "orgHead/enable/merchant/" + org_ID,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function () {
+				document.getElementById("dtBasicExampleActivate_processing").style.display = "block";
+			},
+			success: function (data) {
+				document.getElementById('four').innerHTML = 'Activated Merchant: ' + data.data.length;
+				var trHTML = '';
+
+				$.each(data.data, function (i, item) {
+					var table_rows = '<tr><td>'
+						+ data.data[i].merchant_id + '</td><td>'
+						+ data.data[i].org_name + '</td><td>'
+						+ data.data[i].person_name + '</td><td>'
+						+ data.data[i].email + '</td><td>'
+						+ data.data[i].phone_number + '</td><td>'
+						+ data.data[i].business_filed + '</td><td>'
+						+ data.data[i].per_delivery_cost + '</td><td>'
+						+ '<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
+
+					table.rows.add($(table_rows)).draw();
+				});
+			},
+			complete: function (data) {
+				document.getElementById("dtBasicExampleActivate_processing").style.display = "none";
+			}
+		});
 	$('.dataTables_filter input[type="search"]').
-	attr('placeholder','Search anything!').
-	css({'width':'300px','display':'inline-block','background':'white'});
+		attr('placeholder', 'Search anything!').
+		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
-	attr('class','btn btn-round').
-	css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+		attr('class', 'btn btn-round').
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
-	attr('class','btn btn-round').
-	css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+		attr('class', 'btn btn-round').
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('#dtBasicExampleActivate').show();
 	$('.c').show();
 };
 
-var disabledd = () =>
-{
+var disabledd = () => {
 	document.getElementById('three').disabled = false;
 	document.getElementById('two').disabled = false;
 	document.getElementById('one').disabled = false;
@@ -355,7 +342,7 @@ var disabledd = () =>
 	document.getElementById('five').style.fontSize = '14.5px';
 	document.getElementById('five').innerHTML = 'Disabled Merchant';
 	document.getElementById('five').disabled = true;
-	
+
 	document.getElementById('four').style.fontSize = '13px';
 	document.getElementById('four').innerHTML = 'Activated Merchant';
 	document.getElementById('four').disabled = false;
@@ -368,7 +355,7 @@ var disabledd = () =>
 	$('.d').hide();
 	$('#dtBasicExample2').hide();
 	$('.b').hide();
-	var table = $('#dtBasicExampleDisable').DataTable( {
+	var table = $('#dtBasicExampleDisable').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -376,68 +363,65 @@ var disabledd = () =>
 		},
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true }
-		} );
-		table.clear().draw();
-	$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		"url": urlForAll+ "orgHead/disable/merchant/" + org_ID,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		beforeSend: function()
-		{
-			document.getElementById("dtBasicExampleDisable_processing").style.display = "block";	
-		},
-		success: function(data) 
-		{
-			document.getElementById('five').innerHTML = 'Disabled Merchant: ' + data.data.length;
-			var trHTML = '';
-			
-			$.each(data.data, function (i, item) {
-			var table_rows = '<tr><td>'
-			+data.data[i].merchant_id+'</td><td>'
-			+data.data[i].org_name+'</td><td>'
-			+data.data[i].person_name+'</td><td>'
-			+data.data[i].email+'</td><td>'
-			+data.data[i].phone_number+'</td><td>'
-			+data.data[i].business_filed+'</td><td>'
-			+data.data[i].per_delivery_cost+'</td><td>'
-			+'<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Activate">Activate</button>'+'</td></tr>';
-
-			table.rows.add($(table_rows)).draw();
-			});
-		},
-		complete:function(data){
-			document.getElementById("dtBasicExampleDisable_processing").style.display = "none";	
-		}
 	});
+	table.clear().draw();
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			cors: true,
+			contentType: 'application/json',
+			secure: true,
+			crossDomain: true,
+			"url": urlForAll + "orgHead/disable/merchant/" + org_ID,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function () {
+				document.getElementById("dtBasicExampleDisable_processing").style.display = "block";
+			},
+			success: function (data) {
+				document.getElementById('five').innerHTML = 'Disabled Merchant: ' + data.data.length;
+				var trHTML = '';
+
+				$.each(data.data, function (i, item) {
+					var table_rows = '<tr><td>'
+						+ data.data[i].merchant_id + '</td><td>'
+						+ data.data[i].org_name + '</td><td>'
+						+ data.data[i].person_name + '</td><td>'
+						+ data.data[i].email + '</td><td>'
+						+ data.data[i].phone_number + '</td><td>'
+						+ data.data[i].business_filed + '</td><td>'
+						+ data.data[i].per_delivery_cost + '</td><td>'
+						+ '<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Activate">Activate</button>' + '</td></tr>';
+
+					table.rows.add($(table_rows)).draw();
+				});
+			},
+			complete: function (data) {
+				document.getElementById("dtBasicExampleDisable_processing").style.display = "none";
+			}
+		});
 	$('.dataTables_filter input[type="search"]').
-	attr('placeholder','Search anything!').
-	css({'width':'300px','display':'inline-block','background':'white'});
+		attr('placeholder', 'Search anything!').
+		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
-	attr('class','btn btn-round').
-	css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
+		attr('class', 'btn btn-round').
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
-	attr('class','btn btn-round').
-	css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
+		attr('class', 'btn btn-round').
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('#dtBasicExampleDisable').show();
 	$('.d').show();
 };
 
-var addMerchant = () => 
-{
+var addMerchant = () => {
 	var canMan, canDeliver;
 	var name = document.getElementById('person_name').value;
 	var company = document.getElementById('org_name').value;
@@ -445,196 +429,169 @@ var addMerchant = () =>
 	var phone = document.getElementById('phone_number').value;
 	var business = document.getElementById('business_filed').value;
 	var per_delivery_cost = document.getElementById('per_delivery_cost').value;
-	var v1 = () =>
-	{
-		if(name=="" || name==null)
-		{
+	var v1 = () => {
+		if (name == "" || name == null) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Name cannot be empty!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("person_name").focus();
+			document.getElementById("person_name").focus();
 			return 0;
 		}
-		else
-		{
+		else {
 			return 1;
 		}
 	}
-	var v2 = () =>
-	{
-		if(company=="" || company==null)
-		{
+	var v2 = () => {
+		if (company == "" || company == null) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Company Name cannot be empty!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("org_name").focus();
+			document.getElementById("org_name").focus();
 			return 0;
 		}
-		else
-		{
+		else {
 			return 1;
 		}
 	}
-	var v3 = () =>
-	{
-		if(email=="" || email==null)
-		{
+	var v3 = () => {
+		if (email == "" || email == null) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Email cannot be empty!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("email").focus();
+			document.getElementById("email").focus();
 			return 0;
 		}
-		else if(email!="" || email!=null)
-		{
-			var em = email.split("@").length-1;
-			var atposition = email.indexOf("@");  
-			var dotposition = email.lastIndexOf(".");  
-			if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length || em>1)
-			{  
+		else if (email != "" || email != null) {
+			var em = email.split("@").length - 1;
+			var atposition = email.indexOf("@");
+			var dotposition = email.lastIndexOf(".");
+			if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length || em > 1) {
 				document.getElementById('wrongThisMerCreate').innerHTML = "Please enter a valid e-mail address!";
 				$('#myModalWrongMerCreate').modal('show');
 				document.getElementById("email").focus();
 				return 0;
 			}
-			else
-			{				
+			else {
 				return 1;
 			}
 		}
-		
+
 	}
-	var v4 = () =>
-	{
-		if(phone=="" || phone==null)
-		{
+	var v4 = () => {
+		if (phone == "" || phone == null) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Merchant's Phone Number cannot be empty!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("phone_number").focus();
+			document.getElementById("phone_number").focus();
 			return 0;
 		}
-		else if((phone.length<11||phone.length>11)  && !/\D/.test(phone)==true)
-		{
+		else if ((phone.length < 11 || phone.length > 11) && !/\D/.test(phone) == true) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Merchant's Phone Number must be of 11 digits!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("phone_number").focus();
+			document.getElementById("phone_number").focus();
 			return 0;
 		}
-		else if(phone.match(/\d/g).length===11 && !/\D/.test(phone)==true)
-		{
+		else if (phone.match(/\d/g).length === 11 && !/\D/.test(phone) == true) {
 			return 1;
 		}
-		else
-		{
+		else {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Merchant's Phone Number not valid!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("phone_number").focus();
+			document.getElementById("phone_number").focus();
 			return 0;
 		}
 	}
-	var v5 = () =>
-	{
-		if(business=="" || business==null)
-		{
+	var v5 = () => {
+		if (business == "" || business == null) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Business Field cannot be empty!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("business_filed").focus();
+			document.getElementById("business_filed").focus();
 			return 0;
 		}
-		else
-		{
+		else {
 			return 1;
 		}
 	}
-	
-	var v6 = () =>
-	{
-		if(parseInt(per_delivery_cost)<=0 || per_delivery_cost.charAt(0)==0)
-		{
+
+	var v6 = () => {
+		if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Per Delivery Cost must be greater than 0!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("per_delivery_cost").focus();
+			document.getElementById("per_delivery_cost").focus();
 			return 0;
 		}
-		else if(isNaN(per_delivery_cost)==true || per_delivery_cost=="" || !/\D/.test(per_delivery_cost)==false)
-		{
+		else if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Per Delivery Cost must be a number!";
 			$('#myModalWrongMerCreate').modal('show');
-		    document.getElementById("per_delivery_cost").focus();
+			document.getElementById("per_delivery_cost").focus();
 			return 0;
 		}
-		else if(!/\D/.test(per_delivery_cost)==true)
-		{
+		else if (!/\D/.test(per_delivery_cost) == true) {
 			return 1;
 		}
 	}
-	if(v2()==1 && v1()==1 && v3()==1 && v4()==1 && v5()==1 && v6()==1)
-	{
+	if (v2() == 1 && v1() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1) {
 		document.getElementById('MERCHANT_CREATION').disabled = true;
 		//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 		//$(".container").show();
 		$.ajax
-		({
-			type: "POST",
-			url: urlForAll+ "merchant/create",
-			data: JSON.stringify
 			({
-				"user_id" : org_ID,
-				"org_name": company,
-				"person_name": name,
-				"phone_number": phone,
-				"email": email,
-				"business_filed": business,
-				"per_delivery_cost": per_delivery_cost
-			}),
-			headers: 
-			{
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json',
-			  "Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function(data) 
-			{
-				$('#tick2').hide();
-				$(".circle-loader").removeClass("load-complete");
-				$("#sure2").html("");
-				$("#myModal").modal('show');
-				$("#sure2").html("Please wait!");
-				if (data.status == 'OK')
+				type: "POST",
+				url: urlForAll + "merchant/create",
+				data: JSON.stringify
+					({
+						"user_id": org_ID,
+						"org_name": company,
+						"person_name": name,
+						"phone_number": phone,
+						"email": email,
+						"business_filed": business,
+						"per_delivery_cost": per_delivery_cost
+					}),
+				headers:
 				{
-					setTimeout(function(){ 
-						$(".circle-loader").addClass("load-complete");
-						
-						$('#tick2').show(); 
-					
-						$("#sure2").html("Merchant added!");
-					}, 2000);
-					document.getElementById('org_name').value ="";
-					document.getElementById('person_name').value ="";			
-					document.getElementById('phone_number').value ="";			
-					document.getElementById('email').value ="";			
-					document.getElementById('business_filed').value ="";			
-					document.getElementById('per_delivery_cost').value ="";			
-					//alert('Merchant added, Wait For Approval!');
-					setTimeout(function(){ 
-						
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					$('#tick2').hide();
+					$(".circle-loader").removeClass("load-complete");
+					$("#sure2").html("");
+					$("#myModal").modal('show');
+					$("#sure2").html("Please wait!");
+					if (data.status == 'OK') {
+						setTimeout(function () {
+							$(".circle-loader").addClass("load-complete");
+
+							$('#tick2').show();
+
+							$("#sure2").html("Merchant added!");
+						}, 2000);
+						document.getElementById('org_name').value = "";
+						document.getElementById('person_name').value = "";
+						document.getElementById('phone_number').value = "";
+						document.getElementById('email').value = "";
+						document.getElementById('business_filed').value = "";
+						document.getElementById('per_delivery_cost').value = "";
+						//alert('Merchant added, Wait For Approval!');
+						setTimeout(function () {
+
+							document.getElementById('MERCHANT_CREATION').disabled = false;
+							$("#myModal").modal('hide');
+						}, 4000);
+					}
+				},
+				error: function (data) {
 					document.getElementById('MERCHANT_CREATION').disabled = false;
-					$("#myModal").modal('hide');
-					}, 4000);
+					document.getElementById('wrong').innerHTML = data.responseJSON.errorMessage + 's';
+					$('#myModa').modal('show');
 				}
-			},
-			error: function(data){
-				document.getElementById('MERCHANT_CREATION').disabled = false;
-				document.getElementById('wrong').innerHTML = data.responseJSON.errorMessage + 's';
-				$('#myModa').modal('show');
-			}
-		})
+			})
 	}
 };
 
-$('#dtBasicExampleActivate').on('click', '.btn-Disable', function () 
-{	
+$('#dtBasicExampleActivate').on('click', '.btn-Disable', function () {
 	merId = $(this).attr('id');
 	orgId = $(this).attr('name');
 	$t = $(this);
-		
+
 	$('#tickActivate').hide();
 	$(".circle-loader").removeClass("load-complete");
 
@@ -643,66 +600,64 @@ $('#dtBasicExampleActivate').on('click', '.btn-Disable', function ()
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okActivate').click(function(){
-					
+$('.btn-okActivate').click(function () {
+
 	$("#sureActivate").html("Please wait!");
 	document.getElementById('modalCancel1Activate').disabled = true;
 	document.getElementById('modalApprove1Activate').disabled = true;
 	$.ajax
-	({
-		async: true,
-		type: "PUT",
-		url: urlForAll + "orgHead/disable/merchant/" + merId + "/" + orgId,
-		
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			$("#sureActivate").html("Please wait!");
-			setTimeout(function(){ 
-				$(".circle-loader").addClass("load-complete");
-				
-				$('#tickActivate').show(); 
-			
-				$("#sureActivate").html("Merchant Disabled!");
-			}, 900);
-			
-			setTimeout(function(){ 
-				$("#myModalMerActivate").modal('hide');
-				var table = $('#dtBasicExampleActivate').DataTable();
-				table
-				.row($t.parents('tr'))
-				.remove()
-				.draw();
-				document.getElementById('four').innerHTML = 'Activated Merchant: ' + table
-																						.column( 0 )
-																						.data()
-																						.length;
-			
+		({
+			async: true,
+			type: "PUT",
+			url: urlForAll + "orgHead/disable/merchant/" + merId + "/" + orgId,
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				$("#sureActivate").html("Please wait!");
+				setTimeout(function () {
+					$(".circle-loader").addClass("load-complete");
+
+					$('#tickActivate').show();
+
+					$("#sureActivate").html("Merchant Disabled!");
+				}, 900);
+
+				setTimeout(function () {
+					$("#myModalMerActivate").modal('hide');
+					var table = $('#dtBasicExampleActivate').DataTable();
+					table
+						.row($t.parents('tr'))
+						.remove()
+						.draw();
+					document.getElementById('four').innerHTML = 'Activated Merchant: ' + table
+						.column(0)
+						.data()
+						.length;
+
+					document.getElementById('modalCancel1Activate').disabled = false;
+					document.getElementById('modalApprove1Activate').disabled = false;
+				}, 2000);
+			},
+			error: function (data) {
+
 				document.getElementById('modalCancel1Activate').disabled = false;
 				document.getElementById('modalApprove1Activate').disabled = false;
-				}, 2000);
-		},
-		error: function(data) {
-			
-			document.getElementById('modalCancel1Activate').disabled = false;
-			document.getElementById('modalApprove1Activate').disabled = false;
-			$('#myModalMerActivate').modal('hide');
-			$('#myModal2').modal('show');
-		}
-	});
+				$('#myModalMerActivate').modal('hide');
+				$('#myModal2').modal('show');
+			}
+		});
 });
 
-$('#dtBasicExampleDisable').on('click', '.btn-Activate', function () 
-{	
+$('#dtBasicExampleDisable').on('click', '.btn-Activate', function () {
 	merId = $(this).attr('id');
 	orgId = $(this).attr('name');
 	$t = $(this);
-		
+
 	$('#tickDisable').hide();
 	$(".circle-loader").removeClass("load-complete");
 
@@ -711,67 +666,65 @@ $('#dtBasicExampleDisable').on('click', '.btn-Activate', function ()
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okDisable').click(function(){
-					
+$('.btn-okDisable').click(function () {
+
 	$("#sureDisable").html("Please wait!");
 	document.getElementById('modalCancel1Disable').disabled = true;
 	document.getElementById('modalApprove1Disable').disabled = true;
 	$.ajax
-	({
-		async: true,
-		type: "PUT",
-		url: urlForAll + "orgHead/activate/merchant/" + merId + "/" + orgId,
-		
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			$("#sureDisable").html("Please wait!");
-			setTimeout(function(){ 
-				$(".circle-loader").addClass("load-complete");
-				
-				$('#tickDisable').show(); 
-			
-				$("#sureDisable").html("Merchant Activated!");
-			}, 900);
-			
-			setTimeout(function(){ 
-				$("#myModalMerDisable").modal('hide');
-				var table = $('#dtBasicExampleDisable').DataTable();
-				table
-				.row($t.parents('tr'))
-				.remove()
-				.draw();
-				document.getElementById('five').innerHTML = 'Disabled Merchant: ' + table
-																						.column( 0 )
-																						.data()
-																						.length;
-			
+		({
+			async: true,
+			type: "PUT",
+			url: urlForAll + "orgHead/activate/merchant/" + merId + "/" + orgId,
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				$("#sureDisable").html("Please wait!");
+				setTimeout(function () {
+					$(".circle-loader").addClass("load-complete");
+
+					$('#tickDisable').show();
+
+					$("#sureDisable").html("Merchant Activated!");
+				}, 900);
+
+				setTimeout(function () {
+					$("#myModalMerDisable").modal('hide');
+					var table = $('#dtBasicExampleDisable').DataTable();
+					table
+						.row($t.parents('tr'))
+						.remove()
+						.draw();
+					document.getElementById('five').innerHTML = 'Disabled Merchant: ' + table
+						.column(0)
+						.data()
+						.length;
+
+					document.getElementById('modalCancel1Disable').disabled = false;
+					document.getElementById('modalApprove1Disable').disabled = false;
+				}, 2000);
+			},
+			error: function (data) {
+
 				document.getElementById('modalCancel1Disable').disabled = false;
 				document.getElementById('modalApprove1Disable').disabled = false;
-				}, 2000);
-		},
-		error: function(data) {
-			
-			document.getElementById('modalCancel1Disable').disabled = false;
-			document.getElementById('modalApprove1Disable').disabled = false;
-			$('#myModalMerDisable').modal('hide');
-			$('#myModal2').modal('show');
-		}
-	});
+				$('#myModalMerDisable').modal('hide');
+				$('#myModal2').modal('show');
+			}
+		});
 });
 
 
-$('#dtBasicExample2').on('click', '.approveIT', function () 
-{	
+$('#dtBasicExample2').on('click', '.approveIT', function () {
 	merId = $(this).attr('id');
 	orgId = $(this).attr('name');
 	$t = $(this);
-		
+
 	$('#tick').hide();
 	$(".circle-loader").removeClass("load-complete");
 
@@ -780,83 +733,81 @@ $('#dtBasicExample2').on('click', '.approveIT', function ()
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-ok').click(function(){
-					
+$('.btn-ok').click(function () {
+
 	$("#sure").html("Please wait!");
 	document.getElementById('modalCancel1').disabled = true;
 	document.getElementById('modalApprove1').disabled = true;
 	$.ajax
-	({
-		async: true,
-		type: "GET",
-		url: urlForAll + "orgHead/merchant/" + merId + "/" + orgId,
-		
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			$("#sure").html("Please wait!");
-			setTimeout(function(){ 
-				$(".circle-loader").addClass("load-complete");
-				
-				$('#tick').show(); 
-			
-				$("#sure").html("Merchant Approved!");
-			}, 900);
-			
-			setTimeout(function(){ 
-				$("#myModalMer").modal('hide');
-				var table = $('#dtBasicExample2').DataTable();
-				table
-				.row($t.parents('tr'))
-				.remove()
-				.draw();
-				document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + table
-																						.column( 0 )
-																						.data()
-																						.length;
-			
+		({
+			async: true,
+			type: "GET",
+			url: urlForAll + "orgHead/merchant/" + merId + "/" + orgId,
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				$("#sure").html("Please wait!");
+				setTimeout(function () {
+					$(".circle-loader").addClass("load-complete");
+
+					$('#tick').show();
+
+					$("#sure").html("Merchant Approved!");
+				}, 900);
+
+				setTimeout(function () {
+					$("#myModalMer").modal('hide');
+					var table = $('#dtBasicExample2').DataTable();
+					table
+						.row($t.parents('tr'))
+						.remove()
+						.draw();
+					document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + table
+						.column(0)
+						.data()
+						.length;
+
+					document.getElementById('modalCancel1').disabled = false;
+					document.getElementById('modalApprove1').disabled = false;
+				}, 2000);
+			},
+			error: function (data) {
+
 				document.getElementById('modalCancel1').disabled = false;
 				document.getElementById('modalApprove1').disabled = false;
-				}, 2000);
-		},
-		error: function(data) {
-			
-			document.getElementById('modalCancel1').disabled = false;
-			document.getElementById('modalApprove1').disabled = false;
-			$('#myModalMer').modal('hide');
-			var ob = Object.keys(data);
-			if(ob[17]=="responseJSON"){
-				$("#errorFix").html(data.responseJSON.errorMessage);
+				$('#myModalMer').modal('hide');
+				var ob = Object.keys(data);
+				if (ob[17] == "responseJSON") {
+					$("#errorFix").html(data.responseJSON.errorMessage);
+				}
+				else {
+					$("#errorFix").html("Something Went Wrong!");
+				}
+				$('#myModal2XYZ').modal('show');
 			}
-			else{
-				$("#errorFix").html("Something Went Wrong!");
-			}
-			$('#myModal2XYZ').modal('show');
-		}
-	});
+		});
 });
 var arr;
-$('#dtBasicExample').on('click', '.updateIT', function () 
-{	
+$('#dtBasicExample').on('click', '.updateIT', function () {
 	merId = $(this).attr('id');
-	
+
 	arr = merId.split('$$');
-	
+
 	document.getElementById('org_name2').value = arr[1];
-	document.getElementById('person_name2').value =arr[2];			
-	document.getElementById('email2').value = arr[3];			
-	document.getElementById('phone_number2').value = arr[4];			
+	document.getElementById('person_name2').value = arr[2];
+	document.getElementById('email2').value = arr[3];
+	document.getElementById('phone_number2').value = arr[4];
 	document.getElementById('business_filed2').value = arr[5];
 	document.getElementById('per_cost').value = arr[6];
 	document.getElementById('cod_per').value = arr[7];
-	
+
 	$t = $(this);
-		
+
 	$("#formUpdate").show();
 	$('#tick3').hide();
 	//$(".circle-loader").removeClass("load-complete");
@@ -868,8 +819,8 @@ $('#dtBasicExample').on('click', '.updateIT', function ()
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-ok-update').click(function(){
-	
+$('.btn-ok-update').click(function () {
+
 	var org_name = document.getElementById('org_name2').value;
 	var person_name = document.getElementById('person_name2').value;
 	var phone_number = document.getElementById('phone_number2').value;
@@ -877,149 +828,122 @@ $('.btn-ok-update').click(function(){
 	var business_filed = document.getElementById('business_filed2').value;
 	var per_delivery_cost = document.getElementById('per_cost').value;
 	var cod_per = document.getElementById('cod_per').value;
-	
-	var v1 = () =>
-	{
-		if(org_name=="" || org_name==null)
-		{
+
+	var v1 = () => {
+		if (org_name == "" || org_name == null) {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Company Name cannot be empty!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("org_name2").focus();
+			document.getElementById("org_name2").focus();
 			return 0;
 		}
-		else
-		{
+		else {
 			return 1;
 		}
 	}
-	var v2= () =>
-	{
-		if(person_name=="" || person_name==null)
-		{
+	var v2 = () => {
+		if (person_name == "" || person_name == null) {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Owner Name cannot be empty!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("person_name2").focus();
+			document.getElementById("person_name2").focus();
 			return 0;
 		}
-		else
-		{
+		else {
 			return 1;
 		}
 	}
-	var v3 = () =>
-	{
-		if(phone_number=="" || phone_number==null)
-		{
+	var v3 = () => {
+		if (phone_number == "" || phone_number == null) {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Phone Number cannot be empty!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("phone_number2").focus();
+			document.getElementById("phone_number2").focus();
 			return 0;
 		}
-		else if((phone_number.length<11||phone_number.length>11) && !/\D/.test(phone_number)==true)
-		{
+		else if ((phone_number.length < 11 || phone_number.length > 11) && !/\D/.test(phone_number) == true) {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Phone Number must be of 11 digits!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("phone_number2").focus();
+			document.getElementById("phone_number2").focus();
 			return 0;
 		}
-		else if(phone_number.match(/\d/g).length===11 && !/\D/.test(phone_number)==true)
-		{
+		else if (phone_number.match(/\d/g).length === 11 && !/\D/.test(phone_number) == true) {
 			return 1;
 		}
-		else
-		{
+		else {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Phone Number not valid!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("phone_number2").focus();
+			document.getElementById("phone_number2").focus();
 			return 0;
 		}
 	}
-	var v4 = () =>
-	{
-		if(email=="" || email==null)
-		{
+	var v4 = () => {
+		if (email == "" || email == null) {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Email cannot be empty!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("email2").focus();
+			document.getElementById("email2").focus();
 			return 0;
 		}
-		else if(email!="" || email!=null)
-		{
-			var em = email.split("@").length-1;
-			var atposition = email.indexOf("@");  
-			var dotposition = email.lastIndexOf(".");  
-			if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length || em>1)
-			{  
+		else if (email != "" || email != null) {
+			var em = email.split("@").length - 1;
+			var atposition = email.indexOf("@");
+			var dotposition = email.lastIndexOf(".");
+			if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length || em > 1) {
 				document.getElementById('wrongThisMerUpdate').innerHTML = "Please enter a valid e-mail address!";
 				$('#myModalWrongMerUpdate').modal('show');
 				document.getElementById("email2").focus();
 				return 0;
 			}
-			else
-			{				
+			else {
 				return 1;
 			}
 		}
-		
+
 	}
-	var v5= () =>
-	{
-		if(business_filed=="" || business_filed==null)
-		{
+	var v5 = () => {
+		if (business_filed == "" || business_filed == null) {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Business Field cannot be empty!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("business_filed2").focus();
+			document.getElementById("business_filed2").focus();
 			return 0;
 		}
-		else
-		{
+		else {
 			return 1;
 		}
 	}
-	var v6 = () =>
-	{
-		if(parseInt(per_delivery_cost)<=0 || per_delivery_cost.charAt(0)==0)
-		{
+	var v6 = () => {
+		if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Per Delivery Cost must be greater than 0!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("per_cost").focus();
+			document.getElementById("per_cost").focus();
 			return 0;
 		}
-		else if(isNaN(per_delivery_cost)==true || per_delivery_cost=="" || !/\D/.test(per_delivery_cost)==false)
-		{
+		else if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "Per Delivery Cost must be a number!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("per_cost").focus();
+			document.getElementById("per_cost").focus();
 			return 0;
 		}
-		else if(!/\D/.test(per_delivery_cost)==true)
-		{
+		else if (!/\D/.test(per_delivery_cost) == true) {
 			return 1;
 		}
 	}
-	var v7 = () =>
-	{
-		if(isNaN(cod_per)==true || cod_per=="")
-		{
+	var v7 = () => {
+		if (isNaN(cod_per) == true || cod_per == "") {
 			document.getElementById('wrongThisMerUpdate').innerHTML = "COD Percentage must be a number!";
 			$('#myModalWrongMerUpdate').modal('show');
-		    document.getElementById("cod_per").focus();
+			document.getElementById("cod_per").focus();
 			return 0;
 		}
-		else
-		{
+		else {
 			return 1;
 		}
 	}
 	var datap;
-	
-	if(v1()==1 && v2()==1 && v3()==1 && v4()==1 && v5()==1 && v6()==1 && v7()==1)
-	{
+
+	if (v1() == 1 && v2() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1 && v7() == 1) {
 		document.getElementById('modalApprove').disabled = true;
 		document.getElementById('modalCancel').disabled = true;
 		$('.btn-ok-update').attr('disabled', true);
 		$('.cancelMod').prop('disabled', true);
-		$("#formUpdate").hide();		
+		$("#formUpdate").hide();
 		$(".circle-loader").removeClass("load-complete");
 		$(".circle-loader").show();
 		$("#sure3").html("Please wait!");
@@ -1027,85 +951,83 @@ $('.btn-ok-update').click(function(){
 		var trimmer = cod_per.trim();
 		trimmer = parseInt(trimmer);
 		$.ajax
-		({
-			async: true,
-			type: "PUT",
-			url: urlForAll + "orgHead/merchant",
-			data: JSON.stringify
 			({
-				"merchant_id": arr[0],
-				"user_id" : org_ID,
-				"org_name": org_name,
-				"person_name": person_name,
-				"phone_number": phone_number,
-				"email": email,
-				"business_filed": business_filed,
-				"per_delivery_cost": per_delivery_cost,
-				"cod_percentage" : trimmer
-			}),
-			headers: 
-			{
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json',
-			  "Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function(data) 
-			{
-				var newArr;
-				newArr = [
-					data.data.merchant_id,
-					data.data.org_name,
-					data.data.person_name,
-					data.data.email,
-					data.data.phone_number,
-					data.data.business_filed,
-					data.data.per_delivery_cost,
-					data.data.cod_percentage,
-					'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>',
-					'<button id="' + org_ID + '" name="' + data.data.approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>',
-					'<button id="' + org_ID + '" name="' + data.data.approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>'
-				];
-				//$("#sure").html("Please wait!");
-				setTimeout(function(){ 
-					$(".circle-loader").addClass("load-complete");
-					
-					$('#tick3').show(); 
-				
-					$("#sure3").html("Merchant Updated!");
-				}, 1500);
-				
-				setTimeout(function(){ 
-					$("#myModalMerUpdate").modal('hide');
-					var table = $('#dtBasicExample').DataTable();
-									table
-									.row($t.parents('tr'))
-									.data(newArr)
-									.draw();
-									//console.log(table.row($t.parents('tr')).data());
-										
-					$('.btn-ok-update').attr('disabled', false);
-					$('.cancelMod').prop('disabled', false);
+				async: true,
+				type: "PUT",
+				url: urlForAll + "orgHead/merchant",
+				data: JSON.stringify
+					({
+						"merchant_id": arr[0],
+						"user_id": org_ID,
+						"org_name": org_name,
+						"person_name": person_name,
+						"phone_number": phone_number,
+						"email": email,
+						"business_filed": business_filed,
+						"per_delivery_cost": per_delivery_cost,
+						"cod_percentage": trimmer
+					}),
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					var newArr;
+					newArr = [
+						data.data.merchant_id,
+						data.data.org_name,
+						data.data.person_name,
+						data.data.email,
+						data.data.phone_number,
+						data.data.business_filed,
+						data.data.per_delivery_cost,
+						data.data.cod_percentage,
+						'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>',
+						'<button id="' + org_ID + '" name="' + data.data.approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>',
+						'<button id="' + org_ID + '" name="' + data.data.approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>'
+					];
+					//$("#sure").html("Please wait!");
+					setTimeout(function () {
+						$(".circle-loader").addClass("load-complete");
+
+						$('#tick3').show();
+
+						$("#sure3").html("Merchant Updated!");
+					}, 1500);
+
+					setTimeout(function () {
+						$("#myModalMerUpdate").modal('hide');
+						var table = $('#dtBasicExample').DataTable();
+						table
+							.row($t.parents('tr'))
+							.data(newArr)
+							.draw();
+						//console.log(table.row($t.parents('tr')).data());
+
+						$('.btn-ok-update').attr('disabled', false);
+						$('.cancelMod').prop('disabled', false);
 					}, 3000);
-			},
-			error: function(XMLHttpRequest, textStatus, errorThrown) {
-				setTimeout(function(){ 
-					
-				$('.btn-ok-update').attr('disabled', false);
-				$('.cancelMod').prop('disabled', false);
-				}, 900);
-				$('#myModalMerUpdate').modal('hide');
-				$('#myModal2').modal('show');
-			}
-		});
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown) {
+					setTimeout(function () {
+
+						$('.btn-ok-update').attr('disabled', false);
+						$('.cancelMod').prop('disabled', false);
+					}, 900);
+					$('#myModalMerUpdate').modal('hide');
+					$('#myModal2').modal('show');
+				}
+			});
 	}
 });
 var orgx, merx;
-$('#dtBasicExample').on('click', '.btn-taka', function () 
-{	
+$('#dtBasicExample').on('click', '.btn-taka', function () {
 	orgx = $(this).attr('id');
 	merx = $(this).attr('name');
 	$t = $(this);
-		
+
 	$('#tick2taka').hide();
 	$(".circle-loader").removeClass("load-complete");
 
@@ -1114,46 +1036,45 @@ $('#dtBasicExample').on('click', '.btn-taka', function ()
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-ok-taka').click(function(){
-					
+$('.btn-ok-taka').click(function () {
+
 	$("#sure2taka").html("Please wait!");
 	document.getElementById('modalCanceltaka').disabled = true;
 	document.getElementById('modalApprovetaka').disabled = true;
 	$.ajax
-	({
-		async: true,
-		type: "PUT",
-		url: urlForAll + "orgHead/payment/comlete/" + orgx + "/" + merx,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		success: function(data) 
-		{
-			$("#sure2taka").html("Please wait!");
-			setTimeout(function(){ 
-				$(".circle-loader").addClass("load-complete");
-				
-				$('#tick2taka').show(); 
-			
-				$("#sure2taka").html("Payment Complete!");
-			}, 900);
-			
-			setTimeout(function(){ 
-				$("#myModaltaka").modal('hide');
+		({
+			async: true,
+			type: "PUT",
+			url: urlForAll + "orgHead/payment/comlete/" + orgx + "/" + merx,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				$("#sure2taka").html("Please wait!");
+				setTimeout(function () {
+					$(".circle-loader").addClass("load-complete");
+
+					$('#tick2taka').show();
+
+					$("#sure2taka").html("Payment Complete!");
+				}, 900);
+
+				setTimeout(function () {
+					$("#myModaltaka").modal('hide');
 					document.getElementById('modalCanceltaka').disabled = false;
 					document.getElementById('modalApprovetaka').disabled = false;
 				}, 2000);
-		},
-		error: function(data) {
-			
-			document.getElementById('modalCanceltaka').disabled = false;
-			document.getElementById('modalApprovetaka').disabled = false;
-			$('#myModaltaka').modal('hide');
-			document.getElementById('wrongTaka').innerHTML = data.responseJSON.errorMessage;
-			$('#myModataka').modal('show');
-		}
-	});
+			},
+			error: function (data) {
+
+				document.getElementById('modalCanceltaka').disabled = false;
+				document.getElementById('modalApprovetaka').disabled = false;
+				$('#myModaltaka').modal('hide');
+				document.getElementById('wrongTaka').innerHTML = data.responseJSON.errorMessage;
+				$('#myModataka').modal('show');
+			}
+		});
 });

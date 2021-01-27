@@ -22,6 +22,14 @@ function three3() {
 		document.getElementById('five').style.fontSize = '13px';
 		document.getElementById('five').innerHTML = 'Disabled Merchant';
 		document.getElementById('five').disabled = false;
+		$('#dtBasicExample').hide();
+		$('#dtBasicExample2').hide();
+		$('#dtBasicExampleActivate').hide();
+		$('#dtBasicExampleDisable').hide();
+		$('.a').hide();
+		$('.b').hide();
+		$('.c').hide();
+		$('.d').hide();
 		$('#merchantCreate').show();
 	}, 3700);
 }
