@@ -12,14 +12,14 @@
     let orgSlide = document.querySelector(".org_span");
     let merSlide = document.querySelector(".mer_span");
 
-    let mousePrice = document.querySelector(".Quixx__Pricing .pricing-card:nth-child(3) .order-btn");
+    // let mousePrice = document.querySelector(".Quixx__Pricing .pricing-card:nth-child(3) .order-btn");
 
-    mousePrice.addEventListener("mouseover", function () {
-        this.style.color = "#000";
-    });
-    mousePrice.addEventListener("mouseleave", function () {
-        this.style.color = "#fff";
-    });
+    // mousePrice.addEventListener("mouseover", function () {
+    //     this.style.color = "#000";
+    // });
+    // mousePrice.addEventListener("mouseleave", function () {
+    //     this.style.color = "#fff";
+    // });
 
     let hoverProduct = document.querySelector(".Quixx__Login__Signup li:last-child");
     let hoverProductUL = document.querySelector(".Quixx__Login__Signup li:last-child ul");

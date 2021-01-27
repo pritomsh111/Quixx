@@ -1389,8 +1389,7 @@ ul {
 }
 
 .pricing-card:nth-child(3) {
-    outline: 1px solid #000;
-    border-radius: 0;
+    border: 2px solid rgb(0, 101, 179);
 }
 
 @media (min-width: 1300px) and (max-width: 1400px) {
@@ -1474,10 +1473,10 @@ ul {
     transition: color 250ms ease-in, box-shadow 250ms ease-in;
 }
 
-.Quixx__Pricing .pricing-card:nth-child(3) .order-btn {
+/* .Quixx__Pricing .pricing-card:nth-child(3) .order-btn {
     background: rgba(0, 0, 0, 0.7);
     color: #fff;
-}
+} */
 
 .order-btn::before {
     position: absolute;
@@ -1504,9 +1503,10 @@ ul {
     color: #fff;
 }
 
+/* 
 .Quixx__Pricing .pricing-card:nth-child(3) .order-btn::before {
     background: #fff;
-}
+} */
 
 @media (max-width: 600px) {
     .Quixx__Pricing {
@@ -1577,7 +1577,7 @@ ul {
 }
 
 @keyframes youtube-circle {
-    0% {
+    0%, 100% {
         height: 60px;
         width: 60px;
     }
@@ -1588,10 +1588,6 @@ ul {
     80% {
         height: 75px;
         width: 75px;
-    }
-    100% {
-        height: 60px;
-        width: 60px;
     }
 }
 
