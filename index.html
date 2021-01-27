@@ -24,8 +24,9 @@
             gtag("config", "UA-171039910-1");
         </script>
         <script>
-            if(document.location.pathname.includes("portal")){
-                
+            console.log(document.location.host);
+            if(document.location.host("portal")){
+                window.location.href = "login-panel.html";
             }
         </script>
         <link rel="shortcut icon" href="static-landing/img/icon/faviconQ.ico">
