@@ -51,15 +51,6 @@
                 localStorage.clear();
                 window.location.href = "/";
             }
-            if(document.location.host.includes("portal")){
-                let clientWho = document.location.host.split(".");
-
-                let logo = document.querySelector(".Company>div");
-                logo.style.backgroundImage = "url(static-landing/img/clients/" + clientWho[1] + ".png)";
-            
-                let favicon = document.querySelector("link[rel='shortcut icon']");
-                favicon.href = "static-landing/img/clients/" + clientWho[1] + ".png";            
-            }
             var user = localStorage.getItem('user');
             var pass = localStorage.getItem('pass');
 

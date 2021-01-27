@@ -12,9 +12,9 @@
     setTimeout(() => {
         preloader.style.opacity = 0;
         preloader.style.visibility = "hidden";
-    }, 500);
+    }, 1000);
 
-    // These two will be changed dynamically
+    // These will be changed dynamically based on company name!
     let clientWho = document.location.host.split(".");
 
     let logo = document.querySelector(".Company>div");
@@ -24,7 +24,9 @@
     favicon.href = "static-landing/img/clients/" + clientWho[1] + ".png";
 
     let companyName = document.querySelector(".Company>h1");
-    companyName.innerHTML = "Quixx";
+    companyName.innerHTML = "Company Name";
+
+    document.title = "Company Name";
 
     let body = document.body;
     let modal = document.querySelector(".Modal__Quixx");
