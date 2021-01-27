@@ -15,14 +15,13 @@
     }, 500);
 
     // These two will be changed dynamically
-
     let clientWho = document.location.host.split(".");
 
     let logo = document.querySelector(".Company>div");
     logo.style.backgroundImage = "url(static-landing/img/clients/" + clientWho[1] + ".png)";
 
     let favicon = document.querySelector("link[rel='shortcut icon']");
-    favicon.href = "static-landing/img/clients/" + + clientWho[1] + ".png";
+    favicon.href = "static-landing/img/clients/" + clientWho[1] + ".png";
 
     let body = document.body;
     let modal = document.querySelector(".Modal__Quixx");
