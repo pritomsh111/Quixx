@@ -1,5 +1,5 @@
 jQuery(function ($) {
     $(function () {
-        // $('.preloader').delay(4000).fadeOut('slow');
+        // $('.preloader').delay(5000).fadeOut('slow');
     });
 });
