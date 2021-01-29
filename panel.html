@@ -48,10 +48,14 @@
             }
         </style>
         <script>
+            //console.log(Date.now(), new Date(localStorage.getItem("time")).getTime(), new Date(localStorage.getItem("time")).getTime() - Date.now());                   
+            if(new Date() > new Date(localStorage.getItem("time"))){    
+                window.location.href = "/";
+            }
             var clear = () => {
                 localStorage.clear();
                 window.location.href = "/";
-            }
+            };
             var user = localStorage.getItem('user');
             var pass = localStorage.getItem('pass');
 
@@ -71,6 +75,27 @@
             else{
                 clear();
             }
+            window.addEventListener('storage', function (event) {
+                if (event.key == 'logout-event') {
+                    window.location.href = "" + localStorage.getItem("wh-user");
+                }
+            });
+            function getOut() {
+                $("#myModalForE2Setup").modal("show");
+                setTimeout(function () {
+                    window.location.hash = "#logout";
+                }, 2500);
+            }
+            $.ajaxSetup({
+                statusCode: {
+                    401: function () {
+                        getOut();
+                    },
+                    0: function () {
+                        getOut();
+                    },
+                },
+            });
         </script>
     </head>
     <body id="body">
@@ -296,32 +321,6 @@
                 </nav>
                 <div class="content">
                     <div class="container-fluid">
-                        <script>
-                            if(new Date() > new Date(localStorage.getItem("time"))){    
-                                window.location.href = "/";
-                            }
-                            window.addEventListener('storage', function (event) {
-                                if (event.key == 'logout-event') {
-                                    window.location.href = "" + localStorage.getItem("wh-user");
-                                }
-                            });
-                            function getOut() {
-                                $("#myModalForE2Setup").modal("show");
-                                setTimeout(function () {
-                                    window.location.hash = "#logout";
-                                }, 2500);
-                            }
-                            $.ajaxSetup({
-                                statusCode: {
-                                    401: function () {
-                                        getOut();
-                                    },
-                                    0: function () {
-                                        getOut();
-                                    },
-                                },
-                            });
-                        </script>
                         <div id="contentMain"></div>
                         <script src="static/js/indexScripts.js"></script>
                         <script src="static/js/navigation.js"></script>
