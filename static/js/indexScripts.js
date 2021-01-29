@@ -44,6 +44,8 @@ else if (user === 'ORGANIZATIONAL_ADMIN') {
 				}
 				else if (data.data.image_str != "") {
 
+					let favicon = document.querySelector("link[rel='shortcut icon']");
+					favicon.href = data.data.image_str;
 					preview.setAttribute('src', data.data.image_str);
 					$('#one1').hide();
 				}
