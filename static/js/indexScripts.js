@@ -229,7 +229,7 @@ else if (user === 'MERCHANT') {
 			},
 			success: function (data) {
 				changeFavicon(data.data.image_str);
-				favicon.href = data.data.image_str;
+				preview.setAttribute('src', data.data.image_str);
 			}
 		});
 	$.ajax
@@ -286,6 +286,5 @@ else if (user === 'MERCHANT') {
 	myNode.remove();*/
 }
 else {
-	console.log("cleast");
 	clear();
 }
