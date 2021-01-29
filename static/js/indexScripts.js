@@ -2,6 +2,11 @@ var myNode;
 var fileTag = document.getElementById("filetag");
 var fileTag2 = document.getElementById("filetag2");
 var preview = document.getElementById("preview");
+let favicon = document.querySelector("link[rel='shortcut icon']");
+
+function changeFavicon(img){
+	favicon.href = img;
+}
 
 if (user === 'SUPER_ADMIN') {
 	$('#logooo').hide();
@@ -39,13 +44,10 @@ else if (user === 'ORGANIZATIONAL_ADMIN') {
 			},
 			success: function (data) {
 				if (data.data.image_str == "") {
-
 					$('#two2').hide();
 				}
 				else if (data.data.image_str != "") {
-
-					let favicon = document.querySelector("link[rel='shortcut icon']");
-					favicon.href = data.data.image_str;
+					changeFavicon(data.data.image_str);
 					preview.setAttribute('src', data.data.image_str);
 					$('#one1').hide();
 				}
@@ -82,6 +84,7 @@ else if (user === 'ORGANIZATIONAL_ADMIN') {
 						success: function (data) {
 							$('#one1').hide();
 							$('#two2').show();
+							changeFavicon(e.target.result);
 							preview.setAttribute('src', e.target.result);
 						}
 					});
@@ -124,6 +127,7 @@ else if (user === 'ORGANIZATIONAL_ADMIN') {
 						success: function (data) {
 							$('#one1').hide();
 							$('#two2').show();
+							changeFavicon(e.target.result);
 							preview.setAttribute('src', e.target.result);
 						}
 					});
@@ -224,8 +228,7 @@ else if (user === 'MERCHANT') {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				preview.setAttribute('src', data.data.image_str);
-				let favicon = document.querySelector("link[rel='shortcut icon']");
+				changeFavicon(data.data.image_str);
 				favicon.href = data.data.image_str;
 			}
 		});
