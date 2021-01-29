@@ -225,6 +225,8 @@ else if (user === 'MERCHANT') {
 			},
 			success: function (data) {
 				preview.setAttribute('src', data.data.image_str);
+				let favicon = document.querySelector("link[rel='shortcut icon']");
+				favicon.href = data.data.image_str;
 			}
 		});
 	$.ajax
