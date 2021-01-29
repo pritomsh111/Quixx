@@ -48,14 +48,17 @@
             }
         </style>
         <script>
-            //console.log(Date.now(), new Date(localStorage.getItem("time")).getTime(), new Date(localStorage.getItem("time")).getTime() - Date.now());                   
-            if(new Date() > new Date(localStorage.getItem("time"))){    
-                window.location.href = "/";
-            }
             var clear = () => {
                 localStorage.clear();
                 window.location.href = "/";
             };
+            setTimeout(()=>{
+                $("#myModalForE2Setup").modal("show");
+                setTimeout(()=>{
+                    clear();
+                }, 1500);
+            }, new Date(localStorage.getItem("time")).getTime() - Date.now());
+            
             var user = localStorage.getItem('user');
             var pass = localStorage.getItem('pass');
 

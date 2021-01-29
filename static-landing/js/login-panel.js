@@ -314,7 +314,7 @@
                     success: function (data) {
                         localStorage.setItem('login-event', 'login' + Math.random());
                         localStorage.setItem('main-token', data.data);
-                        localStorage.setItem('time', new Date(Date.now() + 120000));
+                        localStorage.setItem('time', new Date(Date.now() + 86400000));
                         window.location.href = "panel.html";
                     },
                     error: function (data) {
