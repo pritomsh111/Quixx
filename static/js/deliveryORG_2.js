@@ -2386,6 +2386,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"delivery_note": delivery_note,
 				"delivery_area": area
 			});
+			console.log(datap);
 		$('#tickD2').hide();
 		$(".circle-loader").show();
 		$(".circle-loader").removeClass("load-complete");
