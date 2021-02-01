@@ -23,6 +23,7 @@ $(document).ready(function () {
 	document.getElementById("date66").innerHTML = today;
 	document.getElementById("date67").innerHTML = today;
 	document.getElementById("date68").innerHTML = today;
+	document.getElementById("date69").innerHTML = today;
 	document.getElementById("date7").innerHTML = today;
 	document.getElementById("date7Package").innerHTML = today;
 });
