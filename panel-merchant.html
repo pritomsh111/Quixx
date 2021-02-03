@@ -48,13 +48,16 @@
             }
         </style>
         <script> 
+            localStorage.setItem("wh-user", "/merchant_app/login.html");
             var clear = () => {
                 localStorage.clear();
                 window.location.href = "/merchant_app/login.html";
             }
             var user = localStorage.getItem('user');
             var pass = localStorage.getItem('pass');
-            localStorage.setItem("wh-user", "/merchant_app/login.html");
+            if(!user || !pass){
+                clear();
+            }
             var token = localStorage.getItem('main-token');
             if (token) {
                 try{
@@ -204,33 +207,31 @@
                 <div class="content">
                     <div class="container-fluid">
                         <script>
-                            if(localStorage.getItem("wh-user")==="/merchant_app/login.html"){
-                                if(new Date() > new Date(localStorage.getItem("time"))){
-                                    $.ajax
-                                        ({
-                                            async: false,
-                                            type: "POST",
-                                            url: urlForAll + "login",
-                                            headers:
-                                            {
-                                                'Accept': 'application/json',
-                                                'Content-Type': 'application/json'
-                                            },
-                                            data: JSON.stringify
-                                                ({
-                                                    "username": localStorage.getItem("username"),
-                                                    "password": localStorage.getItem("pass")
-                                                }),
-                                            success: function (data) {
-                                                localStorage.setItem('login-event', 'login' + Math.random());
-                                                localStorage.setItem('main-token', data.data);
-                                                localStorage.setItem('time', new Date(Date.now() + 86400000));
-                                            },
-                                            error: function (data) {
-                                                clear();
-                                            }
-                                        });
-                                }
+                            if(new Date() > new Date(localStorage.getItem("time"))){
+                                $.ajax
+                                    ({
+                                        async: false,
+                                        type: "POST",
+                                        url: urlForAll + "login",
+                                        headers:
+                                        {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json'
+                                        },
+                                        data: JSON.stringify
+                                            ({
+                                                "username": localStorage.getItem("username"),
+                                                "password": localStorage.getItem("pass")
+                                            }),
+                                        success: function (data) {
+                                            localStorage.setItem('login-event', 'login' + Math.random());
+                                            localStorage.setItem('main-token', data.data);
+                                            localStorage.setItem('time', new Date(Date.now() + 86400000));
+                                        },
+                                        error: function (data) {
+                                            clear();
+                                        }
+                                    });
                             }
                             window.addEventListener('storage', function (event) {
                                 if (event.key == 'logout-event') {

@@ -28,6 +28,14 @@ $(document).ready(function () {
 	document.getElementById("date7Package").innerHTML = today;
 });
 
+document.querySelector("#datewiseIncome").addEventListener("change", function(){
+	console.log("change hoise");
+});
+
+document.querySelector("#monthwiseIncome").addEventListener("change", function(){
+	console.log("change hoise");
+});
+
 var beforeOne = () => {
 	$.ajax
 		({
