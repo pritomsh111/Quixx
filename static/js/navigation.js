@@ -22,7 +22,6 @@
 
   function navigate() {
     let fragmentId = location.hash.substr(1);
-    console.log(fragmentId, count);
     if (fragmentId === count) {
       return;
     }
