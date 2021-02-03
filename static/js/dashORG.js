@@ -62,7 +62,7 @@ document.querySelector("#datewiseIncome").addEventListener("change", function(){
 });
 
 document.querySelector("#monthwiseIncome").addEventListener("change", function(){
-	console.log("change hoise");
+	console.log(this.value);
 });
 
 var beforeOne = () => {
