@@ -29,7 +29,36 @@ $(document).ready(function () {
 });
 
 document.querySelector("#datewiseIncome").addEventListener("change", function(){
-	console.log("change hoise");
+	console.log(this.value);
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			url: urlForAll + "orgHead/total/income/daily/" + localStorage.getItem('userID') + "?" + "date=" + this.value,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function (xhr) {
+				document.getElementById("perDayIncome").innerHTML = "<div class=loader5></div>";
+			},
+			success: function (data) {
+				console.log(data);
+				if (data.data) {
+					document.getElementById("perDayIncome").innerHTML = data.data;
+				}
+				else {
+					document.getElementById("perDayIncome").innerHTML = "0";
+				}
+				// one();
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+				//alert("Please wait, we are working!");
+			}
+		})
 });
 
 document.querySelector("#monthwiseIncome").addEventListener("change", function(){
