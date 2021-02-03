@@ -227,7 +227,8 @@
                                         success: function (data) {
                                             localStorage.setItem('login-event', 'login' + Math.random());
                                             localStorage.setItem('main-token', data.data);
-                                            localStorage.setItem('time', new Date(Date.now() + 86400000));
+                                            //localStorage.setItem('time', new Date(Date.now() + 86400000));
+                                            localStorage.setItem('time', new Date(Date.now() + 1200));
                                             let decoded = jwt_decode(data.data);
                                             localStorage.setItem('token', data.data);
                                             localStorage.setItem('userID', decoded.id);
