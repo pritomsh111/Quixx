@@ -61,6 +61,7 @@
             var token = localStorage.getItem('main-token');
             if (token) {
                 try{
+                    console.log("Helloooo");
                     var decoded = jwt_decode(token);
                     localStorage.setItem('token', token);
                     localStorage.setItem('userID', decoded.id);
@@ -227,6 +228,12 @@
                                             localStorage.setItem('login-event', 'login' + Math.random());
                                             localStorage.setItem('main-token', data.data);
                                             localStorage.setItem('time', new Date(Date.now() + 86400000));
+                                            let decoded = jwt_decode(data.data);
+                                            localStorage.setItem('token', data.data);
+                                            localStorage.setItem('userID', decoded.id);
+                                            localStorage.setItem('userEmail', decoded.email);
+                                            localStorage.setItem('user', decoded.role[0].roleName);
+                                            user = decoded.role[0].roleName;
                                         },
                                         error: function (data) {
                                             clear();

@@ -259,7 +259,7 @@ document.querySelector("#login").addEventListener("click", function () {
                 success: function (data) {
                     localStorage.setItem('login-event', 'login' + Math.random());
                     localStorage.setItem('main-token', data.data);
-                    localStorage.setItem('time', new Date(Date.now() + 86400000));
+                    localStorage.setItem('time', new Date(Date.now() + 12000));
                     window.location.href = "../panel-merchant.html";
                 },
                 error: function (data) {
