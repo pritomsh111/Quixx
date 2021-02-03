@@ -46,10 +46,24 @@
                 <h4 class="card-title" style="color:#0066b3" id="deliveryTotalIncome"></h4>
             </div>
             <div class="card-footer">
-                <div class="stats">
+                <div class="stats" style="margin-top:1rem;">
                     <i class="material-icons">access_time</i>
                     <p id="date67"></p>
                 </div>
+                <button
+                    class="btn btn-round btn-outline"
+                    style="
+                        margin-left: auto;
+                        background: #0d324d;
+                        width: 50px;
+                        color:#fff;
+                        border-radius: 0px;
+                        padding:0.3rem;
+                        border-radius: 5px;
+                    "
+                    type="submit"
+                    onclick="invoiceForTotalIncome()"
+                >Details</button>
             </div>
         </div>
     </div>
@@ -60,14 +74,34 @@
                     <i class="material-icons">price_check</i>
                 </div>
                 <h4 class="card-title">Datewise Income From Deliveries</h4>
-                <input type="date" id="datewiseIncome" min="2021-01-01" max="2030-12-31">
+                <input
+                    type="date"
+                    id="datewiseIncome"
+                    min="2021-01-01"
+                    max="2030-12-31"
+                    style="margin-top:1rem;"
+                >
                 <h4 class="card-title" style="color:#0066b3" id="perDayIncome"></h4>
             </div>
             <div class="card-footer">
-                <div class="stats">
+                <div class="stats" style="margin-top:1rem;">
                     <i class="material-icons">access_time</i>
                     <p id="date68"></p>
                 </div>
+                <button
+                    class="btn btn-round btn-outline"
+                    style="
+                        margin-left: auto;
+                        background: #0d324d;
+                        width: 50px;
+                        color:#fff;
+                        border-radius: 0px;
+                        padding:0.3rem;
+                        border-radius: 5px;
+                    "
+                    type="submit"
+                    onclick="invoiceForDailyIncome()"
+                >Details</button>
             </div>
         </div>
     </div>
@@ -78,14 +112,34 @@
                     <i class="material-icons">request_quote</i>
                 </div>
                 <h4 class="card-title">Monthwise Income From Deliveries</h4>
-                <input type="month" id="monthwiseIncome" min="2021-01" max="2030-12">
+                <input
+                    type="month"
+                    id="monthwiseIncome"
+                    min="2021-01"
+                    max="2030-12"
+                    style="margin-top:1rem;"
+                >
                 <h4 class="card-title" style="color:#0066b3" id="perMonthIncome"></h4>
             </div>
             <div class="card-footer">
-                <div class="stats">
+                <div class="stats" style="margin-top:1rem;">
                     <i class="material-icons">access_time</i>
                     <p id="date69"></p>
                 </div>
+                <button
+                    class="btn btn-round btn-outline"
+                    style="
+                        margin-left: auto;
+                        background: #0d324d;
+                        width: 50px;
+                        color:#fff;
+                        border-radius: 0px;
+                        padding:0.3rem;
+                        border-radius: 5px;
+                    "
+                    type="submit"
+                    onclick="invoiceForMonthlyIncome()"
+                >Details</button>
             </div>
         </div>
     </div>

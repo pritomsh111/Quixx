@@ -45,7 +45,6 @@ document.querySelector("#datewiseIncome").addEventListener("change", function(){
 				document.getElementById("perDayIncome").innerHTML = "<div class=loader5></div>";
 			},
 			success: function (data) {
-				console.log(data);
 				if (data.data) {
 					document.getElementById("perDayIncome").innerHTML = data.data;
 				}
