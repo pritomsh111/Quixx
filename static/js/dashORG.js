@@ -26,6 +26,9 @@ $(document).ready(function () {
 	document.getElementById("date69").innerHTML = today;
 	document.getElementById("date7").innerHTML = today;
 	document.getElementById("date7Package").innerHTML = today;
+
+	document.querySelector("#datewiseIncome").valueAsDate = new Date();
+	document.querySelector("#monthwiseIncome").valueAsMonth = new Date();
 });
 
 document.querySelector("#datewiseIncome").addEventListener("change", function () {
@@ -206,11 +209,12 @@ var totalIncome = () => {
 				three();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-				//alert("Please wait, we are working!");
 			}
 		})
+}
 
+var invoiceForTotalIncome = () => {
+	window.open(urlForAll + "reports/org/income/" + localStorage.getItem('userID') + "/all/?typeValue=anyvalue", "_blank");
 }
 var three = () => {
 	$.ajax
