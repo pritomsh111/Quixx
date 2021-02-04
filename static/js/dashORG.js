@@ -1,15 +1,15 @@
 var comp, incomp;
 var myMap = [];
 var myMap2 = [];
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
 
 $(document).ready(function () {
 	$('#settings').hide();
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 	beforeOne();
-	var today = new Date();
-	var dd = String(today.getDate()).padStart(2, '0');
-	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-	var yyyy = today.getFullYear();
 
 	today = dd + '/' + mm + '/' + yyyy;
 	document.getElementById("date1").innerHTML = today;
@@ -26,71 +26,14 @@ $(document).ready(function () {
 	document.getElementById("date69").innerHTML = today;
 	document.getElementById("date7").innerHTML = today;
 	document.getElementById("date7Package").innerHTML = today;
-
-	document.querySelector("#datewiseIncome").valueAsDate = new Date();
-	document.querySelector("#monthwiseIncome").valueAsMonth = new Date();
 });
 
 document.querySelector("#datewiseIncome").addEventListener("change", function () {
-	$.ajax
-		({
-			async: true,
-			type: "GET",
-			url: urlForAll + "orgHead/total/income/daily/" + localStorage.getItem('userID') + "?" + "date=" + this.value,
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			beforeSend: function (xhr) {
-				document.getElementById("perDayIncome").innerHTML = "<div class=loader5></div>";
-			},
-			success: function (data) {
-				if (data.data) {
-					document.getElementById("perDayIncome").innerHTML = data.data;
-				}
-				else {
-					document.getElementById("perDayIncome").innerHTML = "0";
-				}
-				// one();
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-				//alert("Please wait, we are working!");
-			}
-		})
+	dailyIncome(this.value);
 });
 
 document.querySelector("#monthwiseIncome").addEventListener("change", function () {
-	$.ajax
-		({
-			async: true,
-			type: "GET",
-			url: urlForAll + "orgHead/total/income/monthly/" + localStorage.getItem('userID') + "?" + "year_month=" + this.value,
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			beforeSend: function (xhr) {
-				document.getElementById("perMonthIncome").innerHTML = "<div class=loader5></div>";
-			},
-			success: function (data) {
-				if (data.data) {
-					document.getElementById("perMonthIncome").innerHTML = data.data;
-				}
-				else {
-					document.getElementById("perMonthIncome").innerHTML = "0";
-				}
-				// one();
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-				//alert("Please wait, we are working!");
-			}
-		})
+	monthlyIncome(this.value);
 });
 
 var beforeOne = () => {
@@ -206,6 +149,10 @@ var totalIncome = () => {
 				else {
 					document.getElementById("deliveryTotalIncome").innerHTML = "0";
 				}
+				document.querySelector("#datewiseIncome").value = yyyy + "-" + mm + "-" + dd;
+				dailyIncome(yyyy + "-" + mm + "-" + dd);
+				document.querySelector("#monthwiseIncome").value = yyyy + "-" + mm;
+				monthlyIncome(yyyy + "-" + mm);
 				three();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -216,6 +163,75 @@ var totalIncome = () => {
 var invoiceForTotalIncome = () => {
 	window.open(urlForAll + "reports/org/income/" + localStorage.getItem('userID') + "/all/?typeValue=anyvalue", "_blank");
 }
+
+var invoiceForDailyIncome = () => {
+	window.open(urlForAll + "reports/org/income/" + localStorage.getItem('userID') + "/daily/?typeValue=" + document.querySelector("#datewiseIncome").value, "_blank");
+}
+
+var invoiceForMonthlyIncome = () => {
+	window.open(urlForAll + "reports/org/income/" + localStorage.getItem('userID') + "/monthly/?typeValue=" + document.querySelector("#monthwiseIncome").value, "_blank");
+}
+
+var dailyIncome = (date) => {
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			url: urlForAll + "orgHead/total/income/daily/" + localStorage.getItem('userID') + "?" + "date=" + date,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function (xhr) {
+				document.getElementById("perDayIncome").innerHTML = "<div class=loader5></div>";
+			},
+			success: function (data) {
+				if (data.data) {
+					document.getElementById("perDayIncome").innerHTML = data.data;
+				}
+				else {
+					document.getElementById("perDayIncome").innerHTML = "0";
+				}
+				// one();
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+				//alert("Please wait, we are working!");
+			}
+		})
+}
+
+var monthlyIncome = (date) => {
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			url: urlForAll + "orgHead/total/income/monthly/" + localStorage.getItem('userID') + "?" + "year_month=" + date,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function (xhr) {
+				document.getElementById("perMonthIncome").innerHTML = "<div class=loader5></div>";
+			},
+			success: function (data) {
+				if (data.data) {
+					document.getElementById("perMonthIncome").innerHTML = data.data;
+				}
+				else {
+					document.getElementById("perMonthIncome").innerHTML = "0";
+				}
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+			}
+		})
+
+}
+
 var three = () => {
 	$.ajax
 		({
@@ -232,6 +248,7 @@ var three = () => {
 				document.getElementById("approvedMer").innerHTML = "<div class=loader5></div>";
 			},
 			success: function (data) {
+				bool = false;
 				if (data.data > 0) {
 					document.getElementById("approvedMer").innerHTML = data.data;
 				}
