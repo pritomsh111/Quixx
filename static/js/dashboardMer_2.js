@@ -484,7 +484,7 @@ $('.btn-ok').click(function () {
 		});
 });
 var invoiceTaka = () => {
-	window.open(urlForAll + "reports/paymentFormerchant/report/" + localStorage.getItem('userID'));
+	window.open(urlForAll + "reports/paymentFormerchant/report/" + localStorage.getItem('userID'), "_blank");
 };
 one();
 var today = new Date();
