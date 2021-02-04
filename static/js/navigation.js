@@ -10,7 +10,6 @@
       var link = $(linkElement);
       var pageName = link.attr('href').substr(1);
       console.log(link.attr('href'));
-      console.log(link, linkElement, $(linkElement), pageName);
       if (pageName === fragmentId) {
         var $parent = link.parent();
         $parent.addClass('active');
