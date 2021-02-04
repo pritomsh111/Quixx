@@ -28,8 +28,7 @@ $(document).ready(function () {
 	document.getElementById("date7Package").innerHTML = today;
 });
 
-document.querySelector("#datewiseIncome").addEventListener("change", function(){
-	console.log(this.value);
+document.querySelector("#datewiseIncome").addEventListener("change", function () {
 	$.ajax
 		({
 			async: true,
@@ -60,8 +59,35 @@ document.querySelector("#datewiseIncome").addEventListener("change", function(){
 		})
 });
 
-document.querySelector("#monthwiseIncome").addEventListener("change", function(){
-	console.log(this.value);
+document.querySelector("#monthwiseIncome").addEventListener("change", function () {
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			url: urlForAll + "orgHead/total/income/monthly/" + localStorage.getItem('userID') + "?" + "year_month=" + this.value,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function (xhr) {
+				document.getElementById("perMonthIncome").innerHTML = "<div class=loader5></div>";
+			},
+			success: function (data) {
+				if (data.data) {
+					document.getElementById("perMonthIncome").innerHTML = data.data;
+				}
+				else {
+					document.getElementById("perMonthIncome").innerHTML = "0";
+				}
+				// one();
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+				//alert("Please wait, we are working!");
+			}
+		})
 });
 
 var beforeOne = () => {
@@ -146,13 +172,45 @@ var two = () => {
 				else {
 					document.getElementById("totalDeliveryMan").innerHTML = "0";
 				}
-				three();
+				totalIncome();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
 				//alert("Please wait, we are working!");
 			}
 		});
+}
+
+var totalIncome = () => {
+	$.ajax
+		({
+			async: true,
+			type: "GET",
+			url: urlForAll + "orgHead/total/income/" + localStorage.getItem('userID'),
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			beforeSend: function (xhr) {
+				document.getElementById("deliveryTotalIncome").innerHTML = "<div class=loader5></div>";
+			},
+			success: function (data) {
+				if (data.data) {
+					document.getElementById("deliveryTotalIncome").innerHTML = data.data;
+				}
+				else {
+					document.getElementById("deliveryTotalIncome").innerHTML = "0";
+				}
+				three();
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+				//alert("Please wait, we are working!");
+			}
+		})
+
 }
 var three = () => {
 	$.ajax
