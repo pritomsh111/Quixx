@@ -15,6 +15,11 @@
   font-size: 1.2rem;
 }
 
+sup {
+  color: #0066b3;
+  font-size: 12px;
+}
+
 .card-stats .card-header.card-header-icon .card-title:last-child {
   color: #0066b3;
   margin-top: 1.2rem;

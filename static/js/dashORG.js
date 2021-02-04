@@ -144,10 +144,10 @@ var totalIncome = () => {
 			},
 			success: function (data) {
 				if (data.data) {
-					document.getElementById("deliveryTotalIncome").innerHTML = data.data;
+					document.getElementById("deliveryTotalIncome").innerHTML = data.data + '<sup>&#2547;</sup>';
 				}
 				else {
-					document.getElementById("deliveryTotalIncome").innerHTML = "0";
+					document.getElementById("deliveryTotalIncome").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
 				document.querySelector("#datewiseIncome").value = yyyy + "-" + mm + "-" + dd;
 				dailyIncome(yyyy + "-" + mm + "-" + dd);
@@ -189,10 +189,10 @@ var dailyIncome = (date) => {
 			},
 			success: function (data) {
 				if (data.data) {
-					document.getElementById("perDayIncome").innerHTML = data.data;
+					document.getElementById("perDayIncome").innerHTML = data.data + '<sup>&#2547;</sup>';
 				}
 				else {
-					document.getElementById("perDayIncome").innerHTML = "0";
+					document.getElementById("perDayIncome").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
 				// one();
 			},
@@ -220,10 +220,10 @@ var monthlyIncome = (date) => {
 			},
 			success: function (data) {
 				if (data.data) {
-					document.getElementById("perMonthIncome").innerHTML = data.data;
+					document.getElementById("perMonthIncome").innerHTML = data.data + '<sup>&#2547;</sup>';
 				}
 				else {
-					document.getElementById("perMonthIncome").innerHTML = "0";
+					document.getElementById("perMonthIncome").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {

@@ -53,10 +53,10 @@ var two = () => {
 			success: function (data) {
 				dataP = data.data;
 				if (data.data.total_product_cost > 0) {
-					document.getElementById("mer1").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+					document.getElementById("mer1").innerHTML = data.data.total_product_cost + '<sup>&#2547;</sup>';
 				}
 				else {
-					document.getElementById("mer1").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+					document.getElementById("mer1").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
 				three();
 			},
@@ -85,10 +85,10 @@ var three = () => {
 			},
 			success: function (data) {
 				if (data.data.total_product_cost > 0) {
-					document.getElementById("mer2").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+					document.getElementById("mer2").innerHTML = data.data.total_product_cost + '<sup>&#2547;</sup>';
 				}
 				else {
-					document.getElementById("mer2").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+					document.getElementById("mer2").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
 				four();
 			},
@@ -116,10 +116,10 @@ var four = () => {
 			},
 			success: function (data) {
 				if (data.data.total_product_cost > 0) {
-					document.getElementById("mer3").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+					document.getElementById("mer3").innerHTML = data.data.total_product_cost + '<sup>&#2547;</sup>';
 				}
 				else {
-					document.getElementById("mer3").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+					document.getElementById("mer3").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
 				five();
 			},
