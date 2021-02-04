@@ -484,7 +484,9 @@ $('.btn-ok').click(function () {
 		});
 });
 var invoiceTaka = () => {
-	window.open(urlForAll + "reports/paymentFormerchant/report/" + localStorage.getItem('userID'), "_blank");
+
+	window.open("invoice.html", "_blank");
+	// window.open(urlForAll + "reports/paymentFormerchant/report/" + localStorage.getItem('userID'), "_blank");
 };
 one();
 var today = new Date();
@@ -503,5 +505,3 @@ document.getElementById("date9").innerHTML = today;
 document.getElementById("date10").innerHTML = today;
 document.getElementById("date11").innerHTML = today;
 document.getElementById("date12").innerHTML = today;
-
-document.querySelector("#invoice").href = "https://www.google.com";
