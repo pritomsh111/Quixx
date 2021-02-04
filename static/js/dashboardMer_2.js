@@ -503,3 +503,5 @@ document.getElementById("date9").innerHTML = today;
 document.getElementById("date10").innerHTML = today;
 document.getElementById("date11").innerHTML = today;
 document.getElementById("date12").innerHTML = today;
+
+document.querySelector("#invoice").href = "https://www.google.com";
