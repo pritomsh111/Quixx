@@ -454,7 +454,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 			$('#myModalWrongMerSet').modal('show');
 			return 0;
 		}
-		else if ((operations_manager_number.length < 11 || operations_manager_number.length > 11) && !/\D/.test(operations_manager_number) == true) {
+		else if ((operations_manager_number.length < 11 || operations_manager_number.length > 11)) {
 			document.getElementById('wrongThisMerSet').innerHTML = "Phone Number must be of 11 digits!";
 			$('#myModalWrongMerSet').modal('show');
 			return 0;
