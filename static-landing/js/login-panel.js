@@ -15,6 +15,7 @@
     }, 1000);
 
     // These will be changed dynamically based on company name!
+
     // ClientWho
     let cw = document.location.host.split(".");
 
@@ -28,14 +29,18 @@
 
     // CompanyName
     let cn = document.querySelector(".Company>h1");
-    cn.innerHTML = "Company Name";
 
-    document.title = "Company Name";
+    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : "";
 
+    let encKey =
+        cw[1] === "easyparcel" ? "someKey" :
+            cw[1] === "quixx" ? "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq" :
+                cw[1] === "quixxprojects" ? "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy" :
+                    "";
 
+    cn.innerHTML = vl;
 
-
-
+    document.title = vl;
 
     let body = document.body;
     let modal = document.querySelector(".Modal__Quixx");
@@ -375,7 +380,7 @@
                 createError("Phone Number cannot be empty!", "contact");
                 return 0;
             }
-            else if ((contact.length < 11 || contact.length > 11) && !/\D/.test(contact) == true) {
+            else if ((contact.length < 11 || contact.length > 11)) {
                 createError("Phone Number must be of 11 digits!", "contact");
                 return 0;
             }
@@ -423,7 +428,6 @@
                 return 1;
             }
         }
-        ////console.log(org, email, business, trade, contact, deliveries);
         if (v6() && v5() && v4() && v3() && v2() && v1()) {
             clearError();
             body.style.pointerEvents = "none";
@@ -434,7 +438,7 @@
                     url: api + "dhaka/bd/merchant/create",
                     data: JSON.stringify
                         ({
-                            "encrypted_user_id": "$2a$10$db1pn4Hy90XAJtq7cpNzcuLn7zApTgLZxeY6NC9IzVp/1ZsdaYrwe",
+                            "encrypted_user_id": encKey,
                             "org_name": org,
                             "person_name": owner,
                             "phone_number": contact,

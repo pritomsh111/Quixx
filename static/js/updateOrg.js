@@ -460,7 +460,6 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 			return 0;
 		}
 		else if (operations_manager_number.match(/\d/g).length === 11 && !/\D/.test(operations_manager_number) === true) {
-			console.log(operations_manager_number.match(/\d/g).length, !/\D/.test(operations_manager_number));
 			return 1;
 		}
 		else {
