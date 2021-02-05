@@ -89,13 +89,19 @@
                     window.location.hash = "#logout";
                 }, 2500);
             }
+            function getOut2() {
+                $("#myModalForE2Setup2").modal("show");
+                setTimeout(function () {
+                    window.location.hash = "#logout";
+                }, 2500);
+            }
             $.ajaxSetup({
                 statusCode: {
                     401: function () {
                         getOut();
                     },
                     0: function () {
-                        getOut();
+                        getOut2();
                     },
                 },
             });
@@ -489,6 +495,15 @@
                 <div class="modal-content">
                     <div class="modal-body text-center">
                         <p style="color: #0066b3">Logging Out For Security Purpose!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModalForE2Setup2" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <p style="color: #0066b3">Internet Connection Unavailable! Logging Out For Security Purpose!</p>
                     </div>
                 </div>
             </div>
