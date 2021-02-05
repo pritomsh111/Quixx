@@ -225,6 +225,7 @@ function initAutocomplete() {
 				document.getElementById('pac-input').value = data.data.sender_address;
 				document.getElementById('lat').value = data.data.sender_lat;
 				document.getElementById('longi').value = data.data.sender_longi;
+				document.getElementById('operations_manager_number').value = data.data.operations_manager_number ? data.data.operations_manager_number : "";
 				var map = new google.maps.Map(document.getElementById('map'), {
 					center: { lat: 23.8103, lng: 90.4125 },
 					zoom: 13,
@@ -448,7 +449,6 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 	var s_lat = String(document.getElementById('lat').value);
 	var s_longi = String(document.getElementById('longi').value);
 	var v0 = () => {
-
 		if (operations_manager_number === "") {
 			document.getElementById('wrongThisMerSet').innerHTML = "Phone Number cannot be empty!";
 			$('#myModalWrongMerSet').modal('show');
@@ -460,6 +460,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 			return 0;
 		}
 		else if (operations_manager_number.match(/\d/g).length === 11 && !/\D/.test(operations_manager_number) === true) {
+			console.log(operations_manager_number.match(/\d/g).length, !/\D/.test(operations_manager_number));
 			return 1;
 		}
 		else {
