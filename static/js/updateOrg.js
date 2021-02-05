@@ -449,17 +449,17 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 	var s_longi = String(document.getElementById('longi').value);
 	var v0 = () => {
 
-		if (contact === "") {
+		if (operations_manager_number === "") {
 			document.getElementById('wrongThisMerSet').innerHTML = "Phone Number cannot be empty!";
 			$('#myModalWrongMerSet').modal('show');
 			return 0;
 		}
-		else if ((contact.length < 11 || contact.length > 11) && !/\D/.test(contact) == true) {
+		else if ((operations_manager_number.length < 11 || operations_manager_number.length > 11) && !/\D/.test(operations_manager_number) == true) {
 			document.getElementById('wrongThisMerSet').innerHTML = "Phone Number must be of 11 digits!";
 			$('#myModalWrongMerSet').modal('show');
 			return 0;
 		}
-		else if (contact.match(/\d/g).length === 11 && !/\D/.test(contact) === true) {
+		else if (operations_manager_number.match(/\d/g).length === 11 && !/\D/.test(operations_manager_number) === true) {
 			return 1;
 		}
 		else {
@@ -500,7 +500,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 		}
 	}
 
-	if (v1() == 1 && v2() == 1 && v3() == 1) {
+	if (v0() == 1 && v1() == 1 && v2() == 1 && v3() == 1) {
 		$.ajax
 			({
 				type: "PUT",
@@ -508,6 +508,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 				data: JSON.stringify
 					({
 						"user_id": localStorage.getItem('userID'),
+						"operations_manager_number": operations_manager_number,
 						"sender_address": s_address,
 						"sender_lat": s_lat,
 						"sender_longi": s_longi
