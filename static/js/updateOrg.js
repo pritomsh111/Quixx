@@ -447,6 +447,27 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 	var g_address = document.getElementById('pac-input').value;
 	var s_lat = String(document.getElementById('lat').value);
 	var s_longi = String(document.getElementById('longi').value);
+	var v0 = () => {
+
+		if (contact === "") {
+			document.getElementById('wrongThisMerSet').innerHTML = "Phone Number cannot be empty!";
+			$('#myModalWrongMerSet').modal('show');
+			return 0;
+		}
+		else if ((contact.length < 11 || contact.length > 11) && !/\D/.test(contact) == true) {
+			document.getElementById('wrongThisMerSet').innerHTML = "Phone Number must be of 11 digits!";
+			$('#myModalWrongMerSet').modal('show');
+			return 0;
+		}
+		else if (contact.match(/\d/g).length === 11 && !/\D/.test(contact) === true) {
+			return 1;
+		}
+		else {
+			document.getElementById('wrongThisMerSet').innerHTML = "Phone Number Not Valid";
+			$('#myModalWrongMerSet').modal('show');
+			return 0;
+		}
+	}
 	var v1 = () => {
 		if (s_address == "" || s_address == null) {
 			document.getElementById('wrongThisMerSet').innerHTML = "Address cannot be empty!";
