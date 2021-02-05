@@ -361,8 +361,6 @@
                 return 1;
             }
         }
-
-
         let v3 = () => {
             if (contact === "") {
                 createError("Phone Number cannot be empty!", "contact");
