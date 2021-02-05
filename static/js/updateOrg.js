@@ -442,6 +442,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 document.getElementById("updateMerchant").addEventListener("click", function (event) {
 	event.preventDefault();
+	var operations_manager_number = document.querySelector("#operations_manager_number").value;
 	var s_address = document.getElementById('sender_address').value;
 	var g_address = document.getElementById('pac-input').value;
 	var s_lat = String(document.getElementById('lat').value);
