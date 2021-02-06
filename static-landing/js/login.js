@@ -382,7 +382,7 @@
                 createError("Phone Number cannot be empty!", "contact");
                 return 0;
             }
-            else if ((contact.length < 11 || contact.length > 11) && !/\D/.test(contact) == true) {
+            else if ((contact.length < 11 || contact.length > 11)) {
                 createError("Phone Number must be of 11 digits!", "contact");
                 return 0;
             }
