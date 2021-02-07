@@ -61,6 +61,7 @@ $(document).ready(function () {
 		$("#managers").append(optionTest);
 	}
 	document.getElementById('managers').selectedIndex = dhakaIndex; //area = "Dhaka";
+
 	for (var i = 0; i < districts1.length; i++) {
 		var option = new Option(districts1[i], districts1[i]);
 		$(option).html(districts1[i]);
