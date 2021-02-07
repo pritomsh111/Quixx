@@ -47,16 +47,20 @@ $(document).ready(function () {
 	// 			}
 	// 		}
 	// 	});
-	var district = ["Barguna", "Barishal", "Bhola"];
+	var district = ["Barguna", "Barishal", "Bhola", "Cumilla", "Dinajpur"];
 	var districts1 = ["ab", "b", "c"];
 	var districts2 = ["ab2", "b2", "c2"];
 	var districts3 = ["ab", "b", "c"];
+	var dhakaIndex;
 	for (var i = 0; i < district.length; i++) {
+		if (district[i] === "Barishal") {
+			dhakaIndex = i;
+		}
 		var optionTest = new Option(district[i], district[i]);
 		$(optionTest).html(district[i]);
 		$("#managers").append(optionTest);
 	}
-	document.querySelector("#managers").value = "Dhaka";
+	document.getElementById('managers').selectedIndex = dhakaIndex; //area = "Dhaka";
 	for (var i = 0; i < districts1.length; i++) {
 		var option = new Option(districts1[i], districts1[i]);
 		$(option).html(districts1[i]);
