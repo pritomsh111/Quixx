@@ -47,6 +47,32 @@ $(document).ready(function () {
 	// 			}
 	// 		}
 	// 	});
+	var district = ["Barguna", "Barishal", "Bhola"];
+	var districts1 = ["ab", "b", "c"];
+	var districts2 = ["ab2", "b2", "c2"];
+	var districts3 = ["ab", "b", "c"];
+	for (var i = 0; i < district.length; i++) {
+		var optionTest = new Option(district[i], district[i]);
+		$(optionTest).html(district[i]);
+		$("#managers").append(optionTest);
+	}
+	document.querySelector("#managers").value = "Dhaka";
+	for (var i = 0; i < districts1.length; i++) {
+		var option = new Option(districts1[i], districts1[i]);
+		$(option).html(districts1[i]);
+		$("#managers_2").append(option);
+	}
+	document.querySelector("#managers").addEventListener("change", function () {
+		var vari = this.value == "Barguna" ? districts1 : this.value == "Barishal" ? districts2 : null;
+
+		$('#managers_2')
+			.empty();
+		for (var i = 0; i < vari.length; i++) {
+			var option = new Option(vari[i], vari[i]);
+			$(option).html(vari[i]);
+			$("#managers_2").append(option);
+		}
+	});
 	$('#managers2')
 		.empty();
 	$.ajax
