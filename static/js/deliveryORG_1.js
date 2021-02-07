@@ -27,26 +27,26 @@ $(document).ready(function () {
 
 	$('#managers')
 		.empty();
-	$.ajax
-		({
-			url: urlForAll + "approved/delivery/area",
-			type: "GET",
+	// $.ajax
+	// 	({
+	// 		url: urlForAll + "approved/delivery/area",
+	// 		type: "GET",
 
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
+	// 		headers:
+	// 		{
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json',
+	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
+	// 		},
 
-			success: function (data) {
-				for (var i = 0; i < data.data.length; i++) {
-					var option = new Option(data.data[i], data.data[i]);
-					$(option).html(data.data[i]);
-					$("#managers").append(option);
-				}
-			}
-		});
+	// 		success: function (data) {
+	// 			for (var i = 0; i < data.data.length; i++) {
+	// 				var option = new Option(data.data[i], data.data[i]);
+	// 				$(option).html(data.data[i]);
+	// 				$("#managers").append(option);
+	// 			}
+	// 		}
+	// 	});
 	$('#managers2')
 		.empty();
 	$.ajax
