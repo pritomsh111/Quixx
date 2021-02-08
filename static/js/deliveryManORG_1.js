@@ -21,30 +21,30 @@ $(document).ready(function () {
 		.empty()
 		.append('<option selected="selected" value=' + org_Email + '>' + org_Email + '</option>')
 		;
-	$.ajax
-		({
-			url: urlForAll + "manager/approved/" + org_ID,
-			type: "GET",
+	// $.ajax
+	// 	({
+	// 		url: urlForAll + "manager/approved/" + org_ID,
+	// 		type: "GET",
 
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function (data) {
-				for (var i = 0; i < data.data.length; i++) {
-					var option = new Option(data.data[i].manager_email, data.data[i].manager_email);
-					$(option).html(data.data[i].manager_email);
-					$("#managers").append(option);
-				}
-			}
-		});
-
+	// 		headers:
+	// 		{
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json',
+	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
+	// 		},
+	// 		success: function (data) {
+	// 			for (var i = 0; i < data.data.length; i++) {
+	// 				var option = new Option(data.data[i].manager_email, data.data[i].manager_email);
+	// 				$(option).html(data.data[i].manager_email);
+	// 				$("#managers").append(option);
+	// 			}
+	// 		}
+	// 	});
+	let deliverArea = document.querySelector(".deliveryArea");
 	var district = ["Barguna", "Barishal", "Bhola", "Cumilla", "Dinajpur"];
 	var districts1 = ["ab", "b", "c"];
 	var districts2 = ["ab2", "b2", "c2"];
-	var districts3 = ["ab", "b", "c"];
+	var districts3 = ["ab3", "b3", "c3"];
 	var dhakaIndex;
 	$('#district')
 		.empty();
@@ -57,26 +57,23 @@ $(document).ready(function () {
 		$("#district").append(optionTest);
 	}
 	document.getElementById('district').selectedIndex = dhakaIndex; //area = "Dhaka";
-
-	// for (var i = 0; i < districts1.length; i++) {
-	// 	var option = new Option(districts1[i], districts1[i]);
-	// 	$(option).html(districts1[i]);
-	// 	$("#managers_2").append(option);
-	// }
-	document.querySelector("#district").addEventListener("change", function () {
-		var vari = this.value == "Barguna" ? districts1 : this.value == "Barishal" ? districts2 : null;
-
-		let deliverArea = document.querySelector(".deliveryArea");
+	changeDeliveryArea(districts2);
+	function changeDeliveryArea(data) {
 		deliverArea.innerHTML = "";
 		let checkbox = "", textOfCheckBox = "";
-		for (let i of vari) {
+		for (let i of data) {
 			checkbox = document.createElement("input");
 			checkbox.type = "checkbox";
 			checkbox.value = i;
 			checkbox.name = "mycheckboxes";
 
-			textOfCheckBox = document.createTextNode(i);
+			textOfCheckBox = document.createElement("label");
+			textOfCheckBox.append(document.createTextNode(i));
 			deliverArea.append(checkbox, textOfCheckBox);
 		}
+	}
+	document.querySelector("#district").addEventListener("change", function () {
+		var vari = this.value == "Barguna" ? districts1 : this.value == "Barishal" ? districts2 : this.value == "Cumilla" ? districts3 : null;
+		changeDeliveryArea(vari);
 	});
 });
