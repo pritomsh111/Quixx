@@ -61,22 +61,20 @@ $(document).ready(function () {
 		$("#managers").append(optionTest);
 	}
 	document.getElementById('managers').selectedIndex = dhakaIndex; //area = "Dhaka";
-
-	for (var i = 0; i < districts1.length; i++) {
-		var option = new Option(districts1[i], districts1[i]);
-		$(option).html(districts1[i]);
-		$("#managers_2").append(option);
-	}
-	document.querySelector("#managers").addEventListener("change", function () {
-		var vari = this.value == "Barguna" ? districts1 : this.value == "Barishal" ? districts2 : null;
+	changedArea(districts2);
+	function changedArea(data) {
 
 		$('#managers_2')
 			.empty();
-		for (var i = 0; i < vari.length; i++) {
-			var option = new Option(vari[i], vari[i]);
-			$(option).html(vari[i]);
+		for (var i = 0; i < data.length; i++) {
+			var option = new Option(data[i], data[i]);
+			$(option).html(data[i]);
 			$("#managers_2").append(option);
 		}
+	}
+	document.querySelector("#managers").addEventListener("change", function () {
+		var vari = this.value == "Barguna" ? districts1 : this.value == "Barishal" ? districts2 : null;
+		changedArea(vari);
 	});
 	$('#managers2')
 		.empty();
