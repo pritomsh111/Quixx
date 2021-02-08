@@ -58,6 +58,7 @@ $(document).ready(function () {
 	}
 	document.getElementById('district').selectedIndex = dhakaIndex; //area = "Dhaka";
 	changeDeliveryArea(districts2);
+
 	function changeDeliveryArea(data) {
 		deliverArea.innerHTML = "";
 		let checkbox = "", textOfCheckBox = "";
