@@ -1,4 +1,6 @@
 $(document).ready(function () {
+	var dhakaIndex, dhaka = "";
+
 	document.getElementById("fileName").innerHTML = "";
 	$('#settings').hide();
 	$("#deliveryCreate").hide();
@@ -40,9 +42,8 @@ $(document).ready(function () {
 			},
 
 			success: function (data) {
-				var dhakaIndex;
 				for (var i = 0; i < data.data.length; i++) {
-					if (data.data[i] === "Barishal") {
+					if (data.data[i] === "Dhaka") {
 						dhakaIndex = i;
 					}
 					var option = new Option(data.data[i], data.data[i]);
