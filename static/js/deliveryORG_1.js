@@ -27,51 +27,56 @@ $(document).ready(function () {
 
 	$('#managers')
 		.empty();
-	// $.ajax
-	// 	({
-	// 		url: urlForAll + "approved/delivery/area",
-	// 		type: "GET",
+	$.ajax
+		({
+			url: urlForAll + "approved/delivery/district",
+			type: "GET",
 
-	// 		headers:
-	// 		{
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-	// 		},
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
 
-	// 		success: function (data) {
-	// 			for (var i = 0; i < data.data.length; i++) {
-	// 				var option = new Option(data.data[i], data.data[i]);
-	// 				$(option).html(data.data[i]);
-	// 				$("#managers").append(option);
-	// 			}
-	// 		}
-	// 	});
-	var district = ["Barguna", "Barishal", "Bhola", "Cumilla", "Dinajpur"];
-	var districts1 = ["ab", "b", "c"];
-	var districts2 = ["ab2", "b2", "c2"];
-	var districts3 = ["ab", "b", "c"];
-	var dhakaIndex;
-	for (var i = 0; i < district.length; i++) {
-		if (district[i] === "Barishal") {
-			dhakaIndex = i;
-		}
-		var optionTest = new Option(district[i], district[i]);
-		$(optionTest).html(district[i]);
-		$("#managers").append(optionTest);
-	}
-	document.getElementById('managers').selectedIndex = dhakaIndex; //area = "Dhaka";
-	changedArea(districts2);
-	function changedArea(data) {
+			success: function (data) {
+				var dhakaIndex;
+				for (var i = 0; i < data.data.length; i++) {
+					if (data.data[i] === "Barishal") {
+						dhakaIndex = i;
+					}
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					$("#managers").append(option);
+				}
+				document.getElementById('managers').selectedIndex = dhakaIndex;
 
-		$('#managers_2')
-			.empty();
-		for (var i = 0; i < data.length; i++) {
-			var option = new Option(data[i], data[i]);
-			$(option).html(data[i]);
-			$("#managers_2").append(option);
-		}
-	}
+			}
+		});
+	// var district = ["Barguna", "Barishal", "Bhola", "Cumilla", "Dinajpur"];
+	// var districts1 = ["ab", "b", "c"];
+	// var districts2 = ["ab2", "b2", "c2"];
+	// var districts3 = ["ab", "b", "c"];
+	// for (var i = 0; i < district.length; i++) {
+	// 	if (district[i] === "Barishal") {
+	// 		dhakaIndex = i;
+	// 	}
+	// 	var optionTest = new Option(district[i], district[i]);
+	// 	$(optionTest).html(district[i]);
+	// 	$("#managers").append(optionTest);
+	// }
+	// document.getElementById('managers').selectedIndex = dhakaIndex; //area = "Dhaka";
+	// changedArea(districts2);
+	// function changedArea(data) {
+
+	// 	$('#managers_2')
+	// 		.empty();
+	// 	for (var i = 0; i < data.length; i++) {
+	// 		var option = new Option(data[i], data[i]);
+	// 		$(option).html(data[i]);
+	// 		$("#managers_2").append(option);
+	// 	}
+	// }
 	document.querySelector("#managers").addEventListener("change", function () {
 		var vari = this.value == "Barguna" ? districts1 : this.value == "Barishal" ? districts2 : null;
 		changedArea(vari);
