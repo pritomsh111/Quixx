@@ -1,6 +1,5 @@
 $(document).ready(function () {
-	var dhakaIndex, dhaka = "";
-
+	var dhakaIndex, url;
 	document.getElementById("fileName").innerHTML = "";
 	$('#settings').hide();
 	$("#deliveryCreate").hide();
@@ -45,41 +44,51 @@ $(document).ready(function () {
 				for (var i = 0; i < data.data.length; i++) {
 					if (data.data[i] === "Dhaka") {
 						dhakaIndex = i;
+						dhaka = 1;
 					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#managers").append(option);
 				}
 				document.getElementById('managers').selectedIndex = dhakaIndex;
-
 			}
 		});
-	// var district = ["Barguna", "Barishal", "Bhola", "Cumilla", "Dinajpur"];
-	// var districts1 = ["ab", "b", "c"];
-	// var districts2 = ["ab2", "b2", "c2"];
-	// var districts3 = ["ab", "b", "c"];
-	// for (var i = 0; i < district.length; i++) {
-	// 	if (district[i] === "Barishal") {
-	// 		dhakaIndex = i;
-	// 	}
-	// 	var optionTest = new Option(district[i], district[i]);
-	// 	$(optionTest).html(district[i]);
-	// 	$("#managers").append(optionTest);
-	// }
-	// document.getElementById('managers').selectedIndex = dhakaIndex; //area = "Dhaka";
-	// changedArea(districts2);
-	// function changedArea(data) {
 
-	// 	$('#managers_2')
-	// 		.empty();
-	// 	for (var i = 0; i < data.length; i++) {
-	// 		var option = new Option(data[i], data[i]);
-	// 		$(option).html(data[i]);
-	// 		$("#managers_2").append(option);
-	// 	}
-	// }
+	changedArea("Dhaka");
+	function changedArea(where) {
+
+		$('#managers_2')
+			.empty();
+		url = urlForAll + "approved/delivery/upazila/" + where;
+		if (where === "Dhaka") {
+			url = urlForAll + "approved/delivery/thana/Dhaka";
+		}
+		if (where === "Cox's Bazar") {
+			url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
+		}
+		$.ajax
+			({
+				url: url,
+				type: "GET",
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					for (var i = 0; i < data.data.length; i++) {
+						if (data.data[i]) {
+							var option = new Option(data.data[i], data.data[i]);
+							$(option).html(data.data[i]);
+							$("#managers_2").append(option);
+						}
+					}
+				}
+			});
+	}
 	document.querySelector("#managers").addEventListener("change", function () {
-		var vari = this.value == "Barguna" ? districts1 : this.value == "Barishal" ? districts2 : null;
+		var vari = this.value == "Dhaka" ? "Dhaka" : this.value;
 		changedArea(vari);
 	});
 	$('#managers2')

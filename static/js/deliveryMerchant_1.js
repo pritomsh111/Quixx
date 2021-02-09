@@ -20,7 +20,7 @@ $('#managers')
 	.empty();
 $.ajax
 	({
-		url: urlForAll + "approved/delivery/area",
+		url: urlForAll + "approved/delivery/district",
 		type: "GET",
 
 		headers:
@@ -32,12 +32,55 @@ $.ajax
 
 		success: function (data) {
 			for (var i = 0; i < data.data.length; i++) {
+				if (data.data[i] === "Dhaka") {
+					dhakaIndex = i;
+					dhaka = 1;
+				}
 				var option = new Option(data.data[i], data.data[i]);
 				$(option).html(data.data[i]);
 				$("#managers").append(option);
 			}
+			document.getElementById('managers').selectedIndex = dhakaIndex;
 		}
 	});
+
+changedArea("Dhaka");
+function changedArea(where) {
+
+	$('#managers_2')
+		.empty();
+	url = urlForAll + "approved/delivery/upazila/" + where;
+	if (where === "Dhaka") {
+		url = urlForAll + "approved/delivery/thana/Dhaka";
+	}
+	if (where === "Cox's Bazar") {
+		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
+	}
+	$.ajax
+		({
+			url: url,
+			type: "GET",
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				for (var i = 0; i < data.data.length; i++) {
+					if (data.data[i]) {
+						var option = new Option(data.data[i], data.data[i]);
+						$(option).html(data.data[i]);
+						$("#managers_2").append(option);
+					}
+				}
+			}
+		});
+}
+document.querySelector("#managers").addEventListener("change", function () {
+	var vari = this.value == "Dhaka" ? "Dhaka" : this.value;
+	changedArea(vari);
+});
 $('#managers2')
 	.empty();
 $.ajax

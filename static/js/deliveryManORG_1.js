@@ -77,4 +77,70 @@ $(document).ready(function () {
 		var vari = this.value == "Barguna" ? districts1 : this.value == "Barishal" ? districts2 : this.value == "Cumilla" ? districts3 : null;
 		changeDeliveryArea(vari);
 	});
+
+	$('#district')
+		.empty();
+	$.ajax
+		({
+			url: urlForAll + "approved/delivery/district",
+			type: "GET",
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				for (var i = 0; i < data.data.length; i++) {
+					if (data.data[i] === "Dhaka") {
+						dhakaIndex = i;
+						dhaka = 1;
+					}
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					$("#district").append(option);
+				}
+				document.getElementById('district').selectedIndex = dhakaIndex;
+			}
+		});
+
+	changedArea("Dhaka");
+	function changedArea(where) {
+
+		$('#managers_2')
+			.empty();
+		url = urlForAll + "approved/delivery/upazila/" + where;
+		if (where === "Dhaka") {
+			url = urlForAll + "approved/delivery/thana/Dhaka";
+		}
+		if (where === "Cox's Bazar") {
+			url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
+		}
+		$.ajax
+			({
+				url: url,
+				type: "GET",
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					for (var i = 0; i < data.data.length; i++) {
+						if (data.data[i]) {
+							var option = new Option(data.data[i], data.data[i]);
+							$(option).html(data.data[i]);
+							$("#managers_2").append(option);
+						}
+					}
+				}
+			});
+	}
+	document.querySelector("#managers").addEventListener("change", function () {
+		var vari = this.value == "Dhaka" ? "Dhaka" : this.value;
+		changedArea(vari);
+	});
 });
