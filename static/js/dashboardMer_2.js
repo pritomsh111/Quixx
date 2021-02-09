@@ -1,6 +1,9 @@
 var dataP;
-
+$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round';
 var shouldGet = "", got = "", willGet = "";
+
+var myModalLabelzz = document.getElementById("myModalLabelzz");
+
 var one = () => {
 	$.ajax
 		({
@@ -493,12 +496,22 @@ var invoiceTaka = () => {
 };
 one();
 
-function showModal() {
+function showModal(type) {
+	let dataForModal;
 
-	document.getElementById("myModalLabelz").innerHTML = "Total Payable [Ongoing Deliveries]";
-	document.getElementById("myModalLabelz").style.color = "#BF033B";
-	document.getElementById("myModalLabelzz").innerHTML = "CASH ON DELIVERY";
-	var table = $('#dtBasicExampled12').DataTable({
+	if (type === 1) {
+		dataForModal = shouldGet;
+		myModalLabelzz.innerHTML = "Due From Completed Deliveries: " + dataForModal.total_product_cost + '<sup>&#2547;</sup>';
+	}
+	else if (type === 2) {
+		dataForModal = got;
+		myModalLabelzz.innerHTML = "Transaction Completed: " + dataForModal.total_product_cost + '<sup>&#2547;</sup>';
+	}
+	else {
+		dataForModal = willGet;
+		myModalLabelzz.innerHTML = "Due From Incomplete Deliveries: " + dataForModal.total_product_cost + '<sup>&#2547;</sup>';
+	}
+	table = $('#dtBasicExampled12').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -510,17 +523,11 @@ function showModal() {
 	});
 	table.clear().draw();
 
-	var trHTML = '';
-
-	var trHTML = '';
-
-	$.each(myMap[index].deliveries_ids, function (i, item) {
+	$.each(dataForModal.deliveries_ids, function (i, item) {
 		var table_rows =
 			'<tr><td>'
-			+ myMap[index].deliveries_ids[i] + '</td><td>'
-			+ myMap[index].product_costs[i] + '</td><td>'
-			+ myMap[index].cod_charges[i] + '</td></tr>';
-		//+data.data[i].track_id+'</td><td>'
+			+ dataForModal.deliveries_ids[i] + '</td><td>'
+			+ dataForModal.product_costs[i] + '<sup>&#2547;</sup>' + '</td></tr>';
 
 		table.rows.add($(table_rows)).draw();
 	});

@@ -571,8 +571,8 @@ var show = (id) => {
 		var table_rows =
 			'<tr><td>'
 			+ myMap[index].deliveries_ids[i] + '</td><td>'
-			+ myMap[index].product_costs[i] + '</td><td>'
-			+ myMap[index].cod_charges[i] + '</td></tr>';
+			+ myMap[index].product_costs[i] + '<sup>&#2547;</sup>' + '</td><td>'
+			+ myMap[index].cod_charges[i] + '<sup>&#2547;</sup>' + '</td></tr>';
 		//+data.data[i].track_id+'</td><td>'
 
 		table.rows.add($(table_rows)).draw();
@@ -616,8 +616,8 @@ var show2 = (id) => {
 		var table_rows =
 			'<tr><td>'
 			+ myMap2[index].deliveries_ids[i] + '</td><td>'
-			+ myMap2[index].product_costs[i] + '</td><td>'
-			+ myMap2[index].cod_charges[i] + '</td></tr>';
+			+ myMap2[index].product_costs[i] + '<sup>&#2547;</sup>' + '</td><td>'
+			+ myMap2[index].cod_charges[i] + '<sup>&#2547;</sup>' + '</td></tr>';
 
 		table.rows.add($(table_rows)).draw();
 	});
