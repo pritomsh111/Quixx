@@ -1,4 +1,6 @@
 var dataP;
+
+var shouldGet = "", got = "", willGet = "";
 var one = () => {
 	$.ajax
 		({
@@ -52,6 +54,7 @@ var two = () => {
 			},
 			success: function (data) {
 				dataP = data.data;
+				shouldGet = data.data;
 				if (data.data.total_product_cost > 0) {
 					document.getElementById("mer1").innerHTML = data.data.total_product_cost + '<sup>&#2547;</sup>';
 				}
@@ -84,6 +87,7 @@ var three = () => {
 				document.getElementById("mer2").innerHTML = "<div class=loader5></div>";
 			},
 			success: function (data) {
+				got = data.data;
 				if (data.data.total_product_cost > 0) {
 					document.getElementById("mer2").innerHTML = data.data.total_product_cost + '<sup>&#2547;</sup>';
 				}
@@ -115,6 +119,7 @@ var four = () => {
 				document.getElementById("mer3").innerHTML = "<div class=loader5></div>";
 			},
 			success: function (data) {
+				willGet = data.data;
 				if (data.data.total_product_cost > 0) {
 					document.getElementById("mer3").innerHTML = data.data.total_product_cost + '<sup>&#2547;</sup>';
 				}
@@ -487,6 +492,53 @@ var invoiceTaka = () => {
 	window.open(urlForAll + "reports/paymentFormerchant/report/" + localStorage.getItem('userID'), "_blank");
 };
 one();
+
+function showModal() {
+
+	document.getElementById("myModalLabelz").innerHTML = "Total Payable [Ongoing Deliveries]";
+	document.getElementById("myModalLabelz").style.color = "#BF033B";
+	document.getElementById("myModalLabelzz").innerHTML = "CASH ON DELIVERY";
+	var table = $('#dtBasicExampled12').DataTable({
+		"processing": true,
+		'language': {
+			'loadingRecords': '&nbsp;',
+			'processing': "<h4 style='color:#0066b3'>Loading...</h4>"
+		},
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"deferRender": true,
+		"destroy": true
+	});
+	table.clear().draw();
+
+	var trHTML = '';
+
+	var trHTML = '';
+
+	$.each(myMap[index].deliveries_ids, function (i, item) {
+		var table_rows =
+			'<tr><td>'
+			+ myMap[index].deliveries_ids[i] + '</td><td>'
+			+ myMap[index].product_costs[i] + '</td><td>'
+			+ myMap[index].cod_charges[i] + '</td></tr>';
+		//+data.data[i].track_id+'</td><td>'
+
+		table.rows.add($(table_rows)).draw();
+	});
+
+	$('.dataTables_filter input[type="search"]').
+		attr('placeholder', 'Search anything!').
+		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+
+	$('.dataTables_filter input[type="search"]').
+		attr('class', 'btn btn-round').
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+
+	$('.dataTables_length select').
+		attr('class', 'btn btn-round').
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+
+	$("#myModalz").modal('show');
+}
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

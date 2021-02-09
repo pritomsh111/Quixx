@@ -72,6 +72,20 @@
                     <i class="material-icons">access_time</i>
                     <p id="date9"></p>
                 </div>
+                <button
+                    class="btn btn-round btn-outline"
+                    style="
+                        margin-left: auto;
+                        background: #0d324d;
+                        width: 60px;
+                        color:#fff;
+                        border-radius: 0px;
+                        padding:0.3rem;
+                        border-radius: 5px;
+                    "
+                    type="submit"
+                    onclick="showModal(1)"
+                >Details</button>
             </div>
         </div>
     </div>
@@ -90,6 +104,20 @@
                     <i class="material-icons">access_time</i>
                     <p id="date10"></p>
                 </div>
+                <button
+                    class="btn btn-round btn-outline"
+                    style="
+                    margin-left: auto;
+                    background: #0d324d;
+                    width: 60px;
+                    color:#fff;
+                    border-radius: 0px;
+                    padding:0.3rem;
+                    border-radius: 5px;
+                "
+                    type="submit"
+                    onclick="showModal(2)"
+                >Details</button>
             </div>
         </div>
     </div>
@@ -108,6 +136,20 @@
                     <i class="material-icons">access_time</i>
                     <p id="date11"></p>
                 </div>
+                <button
+                    class="btn btn-round btn-outline"
+                    style="
+                        margin-left: auto;
+                        background: #0d324d;
+                        width: 60px;
+                        color:#fff;
+                        border-radius: 0px;
+                        padding:0.3rem;
+                        border-radius: 5px;
+                    "
+                    type="submit"
+                    onclick="showModal(3)"
+                >Details</button>
             </div>
         </div>
     </div>
@@ -341,6 +383,63 @@
                 <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
                     Try Again
                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal"
+    id="myModalz"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog m-d">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    style="color:#000;"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <p class="modal-title" id="myModalLabelz"></p>
+                <h4 class="modal-title" style="color:#000" id="myModalLabelzz"></h4>
+                <div class="modal-body" style="text-align:center">
+                    <div class="card c">
+                        <div class="card-body table-responsive c">
+                            <table
+                                id="dtBasicExampled12"
+                                class="stripe hover"
+                                style="color:#0066b3;"
+                                cellspacing="0"
+                                width="100%"
+                            >
+                                <thead>
+                                    <tr>
+                                        <th class="th-sm">
+                                            Delivery ID
+                                        </th>
+                                        <th class="th-sm">
+                                            Product Cost
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        style="color:#0066b3"
+                        class="btn btn-outline btn-danger"
+                        id="closeModal"
+                        data-dismiss="modal"
+                    >Close</button>
+                </div>
             </div>
         </div>
     </div>
