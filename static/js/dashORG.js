@@ -470,7 +470,7 @@ var ten = () => {
 		},
 		"columns": [
 			{ "targets": 0, "data": "merchant_name" },
-			{ "targets": 1, "data": "total_product_cost", render: $.fn.dataTable.render.number(',', '.', 0, '<span style="color:#0066b3;font-size:11px;">&#2547;</span>') },
+			{ "targets": 1, "data": "total_product_cost", render: $.fn.dataTable.render.number(',', '.', 0, '<sup>&#2547;</sup>') },
 			{
 				"targets": 2, "data": "null", render: function (data, type, row) {
 					myMap[row.merchant_id] = row;
@@ -521,7 +521,7 @@ var eleven = () => {
 		},
 		"columns": [
 			{ "targets": 0, "data": "merchant_name" },
-			{ "targets": 1, "data": "total_product_cost", render: $.fn.dataTable.render.number(',', '.', 0, '<span style="color:#0066b3;font-size:11px;">&#2547;</span>') },
+			{ "targets": 1, "data": "total_product_cost", render: $.fn.dataTable.render.number(',', '.', 0, '<sup>&#2547;</sup>') },
 			{
 				"targets": 2, "data": "null", render: function (data, type, row) {
 					myMap2[row.merchant_id] = row;
