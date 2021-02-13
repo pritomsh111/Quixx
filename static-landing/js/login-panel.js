@@ -473,7 +473,7 @@
                                 modalErr.style.color = "#0066b3";
                                 modalCloseButton.disabled = false;
                             }, 1000);
-                        }, 3000);
+                        }, 2000);
                     },
                     error: function (data) {
                         body.style.pointerEvents = "auto";
