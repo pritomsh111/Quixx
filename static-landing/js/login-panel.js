@@ -432,9 +432,20 @@
             clearError();
             body.style.pointerEvents = "none";
             modalSignupFunc();
+            let data = JSON.stringify
+                ({
+                    "encrypted_user_id": encKey,
+                    "org_name": org,
+                    "person_name": owner,
+                    "phone_number": contact,
+                    "email": email,
+                    "business_filed": business,
+                    "per_delivery_cost": deliveries
+                });
+            console.log(data);
             $.ajax
                 ({
-                    type: "POST",
+                    type: "PUT",
                     url: api + "dhaka/bd/merchant/create",
                     data: JSON.stringify
                         ({
