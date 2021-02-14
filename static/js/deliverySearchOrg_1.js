@@ -402,4 +402,3 @@ $('#criterionSubmit').on('click', function (eventx) {
 		$("#myModalCreateDD22").modal('show');
 	}
 });
-
