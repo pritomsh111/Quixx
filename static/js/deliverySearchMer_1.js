@@ -114,6 +114,7 @@ $("#criterion").change(function () {
 		$("#deliveryStatus").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryDistrict").hide();
+		$("#deliveryArea").hide();
 	}
 	else if (value == "Delivery Status") {
 		$("#deliveryStatus").show();
@@ -122,6 +123,7 @@ $("#criterion").change(function () {
 		$("#ccString").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryDistrict").hide();
+		$("#deliveryArea").hide();
 	}
 	else if (value == "Payment Method") {
 		$("#paymentMethod").show();
@@ -130,14 +132,16 @@ $("#criterion").change(function () {
 		$("#ccDate").hide();
 		$("#ccString").hide();
 		$("#deliveryDistrict").hide();
+		$("#deliveryArea").hide();
 	}
-	else if (value == "Receiver Area") {
+	else if (value == "District") {
 		$("#deliveryStatus").hide();
 		$("#deliveryManList").hide();
 		$("#ccDate").hide();
 		$("#ccString").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryDistrict").show();
+		$("#deliveryArea").show();
 	}
 	else {
 		$("#ccString").show();
@@ -146,6 +150,7 @@ $("#criterion").change(function () {
 		$("#ccDate").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryDistrict").hide();
+		$("#deliveryArea").hide();
 	}
 });
 

@@ -2147,7 +2147,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var delivery_note = document.getElementById('DELIVERY_NOTE').value;
 	var delivery_type = document.getElementById('deliveryType').value;
 	var delivery_charge = document.getElementById('delivery_charge').value;
-	var area = String(document.getElementById('managers').value);
+	var area = String(document.getElementById('managers_2').value);
 	var pickup_lat = String(document.getElementById('lat').value);
 	var pickup_longi = String(document.getElementById('longi').value);
 	var delivery_lat = String(document.getElementById('des_lat').value);

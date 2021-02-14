@@ -8,6 +8,7 @@ $(document).ready(function () {
 	$("#deliveryManList").hide();
 	$("#deliveryStatus").hide();
 	$("#paymentMethod").hide();
+	$("#deliveryDistrict").hide();
 	$("#deliveryArea").hide();
 	$.ajax
 		({
@@ -139,6 +140,7 @@ $("#criterion").change(function () {
 		$("#deliveryStatus").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Delivery Man") {
 		$("#deliveryManList").show();
@@ -147,6 +149,7 @@ $("#criterion").change(function () {
 		$("#ccString").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Delivery Status") {
 		$("#deliveryStatus").show();
@@ -155,6 +158,7 @@ $("#criterion").change(function () {
 		$("#ccString").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Payment Method") {
 		$("#paymentMethod").show();
@@ -163,14 +167,16 @@ $("#criterion").change(function () {
 		$("#ccDate").hide();
 		$("#ccString").hide();
 		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
-	else if (value == "Receiver Area") {
+	else if (value == "District") {
 		$("#deliveryStatus").hide();
 		$("#deliveryManList").hide();
 		$("#ccDate").hide();
 		$("#ccString").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryArea").show();
+		$("#deliveryDistrict").show();
 	}
 	else {
 		$("#ccString").show();
@@ -179,6 +185,7 @@ $("#criterion").change(function () {
 		$("#ccDate").hide();
 		$("#paymentMethod").hide();
 		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
 });
 
@@ -197,7 +204,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 	else if (cri == "Delivery Status") {
 		var valx = document.getElementById("deliveryStatus").value;
 	}
-	else if (cri == "Receiver Area") {
+	else if (cri == "District") {
 		var valx = document.getElementById("deliveryArea").value;
 	}
 	else if (cri == "Payment Method") {
