@@ -83,7 +83,7 @@ $(document).ready(function () {
 		});
 	$.ajax
 		({
-			url: urlForAll + "approved/delivery/area",
+			url: urlForAll + "approved/delivery/district",
 			type: "GET",
 
 			headers:

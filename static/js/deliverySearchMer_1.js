@@ -7,7 +7,7 @@ $(document).ready(function () {
 	$("#settingsMer").hide();
 	$("#deliveryStatus").hide();
 	$("#paymentMethod").hide();
-	$("#deliveryArea").hide();
+	$("#deliveryDistrict").hide();
 	$.ajax
 		({
 			url: urlForAll + "search/delivery/search/criteria/merchant",
@@ -58,7 +58,7 @@ $(document).ready(function () {
 		});
 	$.ajax
 		({
-			url: urlForAll + "approved/delivery/area",
+			url: urlForAll + "approved/delivery/district",
 			type: "GET",
 
 			headers:
@@ -69,14 +69,14 @@ $(document).ready(function () {
 			},
 
 			success: function (data) {
-				$('#deliveryArea')
+				$('#deliveryDistrict')
 					.empty()
 					.append('<option selected="selected" value="">Select One</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
-					$("#deliveryArea").append(option);
+					$("#deliveryDistrict").append(option);
 				}
 			}
 		});
@@ -113,7 +113,7 @@ $("#criterion").change(function () {
 		$("#deliveryManList").hide();
 		$("#deliveryStatus").hide();
 		$("#paymentMethod").hide();
-		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Delivery Status") {
 		$("#deliveryStatus").show();
@@ -121,7 +121,7 @@ $("#criterion").change(function () {
 		$("#ccDate").hide();
 		$("#ccString").hide();
 		$("#paymentMethod").hide();
-		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Payment Method") {
 		$("#paymentMethod").show();
@@ -129,7 +129,7 @@ $("#criterion").change(function () {
 		$("#deliveryManList").hide();
 		$("#ccDate").hide();
 		$("#ccString").hide();
-		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Receiver Area") {
 		$("#deliveryStatus").hide();
@@ -137,7 +137,7 @@ $("#criterion").change(function () {
 		$("#ccDate").hide();
 		$("#ccString").hide();
 		$("#paymentMethod").hide();
-		$("#deliveryArea").show();
+		$("#deliveryDistrict").show();
 	}
 	else {
 		$("#ccString").show();
@@ -145,7 +145,7 @@ $("#criterion").change(function () {
 		$("#deliveryStatus").hide();
 		$("#ccDate").hide();
 		$("#paymentMethod").hide();
-		$("#deliveryArea").hide();
+		$("#deliveryDistrict").hide();
 	}
 });
 
@@ -161,8 +161,8 @@ $('#criterionSubmit').on('click', function (eventx) {
 	else if (cri == "Delivery Status") {
 		var valx = document.getElementById("deliveryStatus").value;
 	}
-	else if (cri == "Receiver Area") {
-		var valx = document.getElementById("deliveryArea").value;
+	else if (cri == "District") {
+		var valx = document.getElementById("deliveryDistrict").value;
 	}
 	else if (cri == "Payment Method") {
 		var valx = document.getElementById("paymentMethod").value;
