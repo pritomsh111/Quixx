@@ -95,17 +95,65 @@ $(document).ready(function () {
 			},
 
 			success: function (data) {
-				$('#deliveryArea')
+				$('#deliveryDistrict')
 					.empty()
 					.append('<option selected="selected" value="">Select One</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
-					$("#deliveryArea").append(option);
+					$("#deliveryDistrict").append(option);
 				}
 			}
 		});
+	changedArea("None");
+	function changedArea(where) {
+
+		$('#managers_2')
+			.empty();
+		url = urlForAll + "approved/delivery/upazila/" + where;
+		if (where === "Dhaka") {
+			url = urlForAll + "approved/delivery/thana/Dhaka";
+		}
+		if (where === "Cox's Bazar") {
+			url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
+		}
+		if (where === "None") {
+			$('#deliveryArea')
+				.empty()
+				.append('<option selected="selected" value="">No District Selected</option>')
+				;
+			return;
+		}
+		$.ajax
+			({
+				url: url,
+				type: "GET",
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					$('#deliveryArea')
+						.empty()
+						.append('<option selected="selected" value="">Select One</option>')
+						;
+					for (var i = 0; i < data.data.length; i++) {
+						if (data.data[i]) {
+							var option = new Option(data.data[i], data.data[i]);
+							$(option).html(data.data[i]);
+							$("#deliveryArea").append(option);
+						}
+					}
+				}
+			});
+	}
+	document.querySelector("#deliveryDistrict").addEventListener("change", function () {
+		var vari = this.value == "Dhaka" ? "Dhaka" : this.value;
+		changedArea(vari);
+	});
 	$.ajax
 		({
 			url: urlForAll + "delivery/payment/method/" + localStorage.getItem('token'),
@@ -205,6 +253,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 		var valx = document.getElementById("deliveryStatus").value;
 	}
 	else if (cri == "District") {
+		cri = "Receiver Area";
 		var valx = document.getElementById("deliveryArea").value;
 	}
 	else if (cri == "Payment Method") {
