@@ -3253,7 +3253,7 @@ var thikKoro = (method, areaa) => {
 		.empty();
 	$.ajax
 		({
-			url: urlForAll + "approved/delivery/area",
+			url: urlForAll + "approved/delivery/thana/Dhaka",
 			type: "GET",
 
 			headers:
