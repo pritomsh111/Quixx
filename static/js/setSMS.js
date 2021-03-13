@@ -139,11 +139,11 @@ $.ajax
 
 document.getElementById("setSMSBtnJC").addEventListener("click", function (event) {
     event.preventDefault();
-
+    console.log(`${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : null}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`);
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Org_JC.value}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : null}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -162,8 +162,8 @@ document.getElementById("setSMSBtnJC").addEventListener("click", function (event
 function two() {
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Mer_JC.value}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : ""}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -181,8 +181,8 @@ function two() {
 function three() {
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Receiver_JC.value}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : ""}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -221,8 +221,8 @@ document.getElementById("setSMSBtnETP").addEventListener("click", function (even
 
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_ETP.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? "" : ""}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -230,7 +230,7 @@ document.getElementById("setSMSBtnETP").addEventListener("click", function (even
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                two();
+                four();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 $('#myModal2').modal('show');
@@ -241,8 +241,8 @@ document.getElementById("setSMSBtnETP").addEventListener("click", function (even
 function four() {
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_ETP.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? "" : ""}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -250,7 +250,7 @@ function four() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                three();
+                five();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 $('#myModal2').modal('show');
@@ -260,8 +260,8 @@ function four() {
 function five() {
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETP.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? "" : ""}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -295,13 +295,13 @@ function five() {
 }
 
 
-document.getElementById("setSMSBtnETP").addEventListener("click", function (event) {
+document.getElementById("setSMSBtnPU").addEventListener("click", function (event) {
     event.preventDefault();
 
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Org_PU.value}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_PU.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Org_PU.value ? "" : ""}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -320,8 +320,8 @@ document.getElementById("setSMSBtnETP").addEventListener("click", function (even
 function six() {
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Mer_PU.value}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_PU.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Mer_PU.value ? "" : ""}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -339,8 +339,166 @@ function six() {
 function seven() {
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Receiver_PU.value}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_PU.checked}`,
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Receiver_PU.value ? "" : ""}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_PUC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                $('#tickDDD2').hide();
+                $(".circle-loader").removeClass("load-compvare");
+                $("#sureDDD2").html("");
+                $("#myModalCreateDDD1").modal('show');
+                $("#sureDDD2").html("Please wait!");
+                if (data.status == 'OK') {
+                    setTimeout(function () {
+                        $(".circle-loader").addClass("load-compvare");
+
+                        $('#tickDDD2').show();
+
+                        $("#sureDDD2").html("Organization Settings Updated!");
+                    }, 3000);
+                    setTimeout(function () {
+
+                        $("#myModalCreateDDD1").modal('hide');
+                    }, 4000);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+
+
+document.getElementById("setSMSBtnETD").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    $.ajax
+        ({
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_DELIVERY&smsContent=${Org_ETD.value ? "" : ""}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_ETDC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                eight();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+});
+
+function eight() {
+    $.ajax
+        ({
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_DELIVERY&smsContent=${Mer_ETD.value ? "" : ""}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                nine();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+function nine() {
+    $.ajax
+        ({
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_DELIVERY&smsContent=${Receiver_ETD.value ? "" : ""}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                $('#tickDDD2').hide();
+                $(".circle-loader").removeClass("load-compvare");
+                $("#sureDDD2").html("");
+                $("#myModalCreateDDD1").modal('show');
+                $("#sureDDD2").html("Please wait!");
+                if (data.status == 'OK') {
+                    setTimeout(function () {
+                        $(".circle-loader").addClass("load-compvare");
+
+                        $('#tickDDD2').show();
+
+                        $("#sureDDD2").html("Organization Settings Updated!");
+                    }, 3000);
+                    setTimeout(function () {
+
+                        $("#myModalCreateDDD1").modal('hide');
+                    }, 4000);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+
+
+document.getElementById("setSMSBtnD").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    $.ajax
+        ({
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=DELIVERED&smsContent=${Org_D.value ? "" : ""}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_DC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                ten();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+});
+
+function ten() {
+    $.ajax
+        ({
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=DELIVERED&smsContent=${Mer_D.value ? "" : ""}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_DC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                eleven();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+function eleven() {
+    $.ajax
+        ({
+            type: "POST",
+            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=DELIVERED&smsContent=${Receiver_D.value ? "" : ""}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
