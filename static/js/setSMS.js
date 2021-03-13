@@ -137,21 +137,13 @@ $.ajax
     })
 
 
-document.getElementById("setSMSBtnD").addEventListener("click", function (event) {
+document.getElementById("setSMSBtnJC").addEventListener("click", function (event) {
     event.preventDefault();
 
     $.ajax
         ({
             type: "PUT",
-            url: urlForAll + "profile/update/settings",
-            data: JSON.stringify
-                ({
-                    "user_id": localStorage.getItem('userID'),
-                    "operations_manager_number": operations_manager_number,
-                    "sender_address": s_address,
-                    "sender_lat": s_lat,
-                    "sender_longi": s_longi
-                }),
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Org_JC.value}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -159,29 +151,224 @@ document.getElementById("setSMSBtnD").addEventListener("click", function (event)
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                $('#tickDD2').hide();
-                $(".circle-loader").removeClass("load-compvare");
-                $("#sureDD2").html("");
-                $("#myModalCreateDD1").modal('show');
-                $("#sureDD2").html("Please wait!");
-                if (data.status == 'OK') {
-                    setTimeout(function () {
-                        $(".circle-loader").addClass("load-compvare");
-
-                        $('#tickDD2').show();
-
-                        $("#sureDD2").html("Organization Settings Updated!");
-                    }, 3000);
-                    setTimeout(function () {
-
-                        $("#myModalCreateDD1").modal('hide');
-                    }, 4000);
-                }
+                two();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                // $("#myModalCreateDD1").modal('hide');
                 $('#myModal2').modal('show');
             }
         })
 });
+
+function two() {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Mer_JC.value}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                three();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+function three() {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Receiver_JC.value}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                $('#tickDDD2').hide();
+                $(".circle-loader").removeClass("load-compvare");
+                $("#sureDDD2").html("");
+                $("#myModalCreateDDD1").modal('show');
+                $("#sureDDD2").html("Please wait!");
+                if (data.status == 'OK') {
+                    setTimeout(function () {
+                        $(".circle-loader").addClass("load-compvare");
+
+                        $('#tickDDD2').show();
+
+                        $("#sureDDD2").html("Organization Settings Updated!");
+                    }, 3000);
+                    setTimeout(function () {
+
+                        $("#myModalCreateDDD1").modal('hide');
+                    }, 4000);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+
+
+document.getElementById("setSMSBtnETP").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_ETP.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                two();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+});
+
+function four() {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_ETP.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                three();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+function five() {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETP.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                $('#tickDDD2').hide();
+                $(".circle-loader").removeClass("load-compvare");
+                $("#sureDDD2").html("");
+                $("#myModalCreateDDD1").modal('show');
+                $("#sureDDD2").html("Please wait!");
+                if (data.status == 'OK') {
+                    setTimeout(function () {
+                        $(".circle-loader").addClass("load-compvare");
+
+                        $('#tickDDD2').show();
+
+                        $("#sureDDD2").html("Organization Settings Updated!");
+                    }, 3000);
+                    setTimeout(function () {
+
+                        $("#myModalCreateDDD1").modal('hide');
+                    }, 4000);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+
+
+document.getElementById("setSMSBtnETP").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Org_PU.value}&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_PU.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                six();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+});
+
+function six() {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Mer_PU.value}&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_PU.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                seven();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
+function seven() {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}"custom/sms/create/"${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Receiver_PU.value}&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_PU.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                $('#tickDDD2').hide();
+                $(".circle-loader").removeClass("load-compvare");
+                $("#sureDDD2").html("");
+                $("#myModalCreateDDD1").modal('show');
+                $("#sureDDD2").html("Please wait!");
+                if (data.status == 'OK') {
+                    setTimeout(function () {
+                        $(".circle-loader").addClass("load-compvare");
+
+                        $('#tickDDD2').show();
+
+                        $("#sureDDD2").html("Organization Settings Updated!");
+                    }, 3000);
+                    setTimeout(function () {
+
+                        $("#myModalCreateDDD1").modal('hide');
+                    }, 4000);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#myModal2').modal('show');
+            }
+        })
+}
