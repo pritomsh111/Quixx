@@ -116,7 +116,7 @@
                                     <textarea
                                         type="text"
                                         style="color: #0066b3"
-                                        id="Receiver_JS"
+                                        id="Receiver_JC"
                                         class="mb-4"
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
@@ -187,6 +187,16 @@
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                 </div>
+                                <div style="text-align: center; margin-top: 1rem">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtn"
+                                    >
+                                        Update SMS
+                                    </button>
+                                </div>
                             </div>
                             <h3 class="center-tx">Enroute To Delivery</h3>
                             <div class="flex-all">
@@ -219,6 +229,16 @@
                                         class="mb-4"
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
+                                </div>
+                                <div style="text-align: center; margin-top: 1rem">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtn"
+                                    >
+                                        Update SMS
+                                    </button>
                                 </div>
                             </div>
                             <h3 class="center-tx">Delivered</h3>
@@ -253,16 +273,16 @@
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                 </div>
-                            </div>
-                            <div style="text-align: center; margin-top: 1rem">
-                                <button
-                                    class="btn btn-outline btn-round"
-                                    style="background: #ffffd4;text-align:center;"
-                                    type="button"
-                                    id="setSMS"
-                                >
-                                    Update SMS
-                                </button>
+                                <div style="text-align: center; margin-top: 1rem">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtn"
+                                    >
+                                        Update SMS
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -290,19 +310,6 @@
             </div>
         </div>
     </div>
-    <div id="myModalCreateDD2" class="modal fade" data-backdrop="static">
-        <div class="modal-dialog modal-confirm">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <h4 style="color: #0066b3">Ooops!</h4>
-                    <p style="color: #0066b3">Please fill up properly!</p>
-                    <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
-                        Try Again
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
     <div id="myModal2" class="modal fade" data-backdrop="static">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -310,18 +317,6 @@
                     <p style="color: #0066b3">Something went wrong. Please try again!</p>
                     <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
                         Try Again
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="myModalWrongMerSet" class="modal fade">
-        <div class="modal-dialog modal-confirm">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <p id="wrongThisMerSet"></p>
-                    <button class="btn btn-success" data-dismiss="modal">
-                        Correct it!
                     </button>
                 </div>
             </div>
