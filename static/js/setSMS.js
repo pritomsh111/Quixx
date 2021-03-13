@@ -2,45 +2,45 @@ $(document).ready(function () {
     $("#settings").hide();
 });
 
-let Org_JC = document.getElementById("Org_JC");
-let Mer_JC = document.getElementById("Mer_JC");
-let Receiver_JC = document.getElementById("Receiver_JC");
+var Org_JC = document.getElementById("Org_JC");
+var Mer_JC = document.getElementById("Mer_JC");
+var Receiver_JC = document.getElementById("Receiver_JC");
 
-let Org_JCC = document.getElementById("Org_JCC");
-let Mer_JCC = document.getElementById("Mer_JCC");
-let Receiver_JCC = document.getElementById("Receiver_JCC");
+var Org_JCC = document.getElementById("Org_JCC");
+var Mer_JCC = document.getElementById("Mer_JCC");
+var Receiver_JCC = document.getElementById("Receiver_JCC");
 
-let Org_ETP = document.getElementById("Org_ETP");
-let Mer_ETP = document.getElementById("Mer_ETP");
-let Receiver_ETP = document.getElementById("Receiver_ETP");
+var Org_ETP = document.getElementById("Org_ETP");
+var Mer_ETP = document.getElementById("Mer_ETP");
+var Receiver_ETP = document.getElementById("Receiver_ETP");
 
-let Org_ETPC = document.getElementById("Org_ETPC");
-let Mer_ETPC = document.getElementById("Mer_ETPC");
-let Receiver_ETPC = document.getElementById("Receiver_ETPC");
+var Org_ETPC = document.getElementById("Org_ETPC");
+var Mer_ETPC = document.getElementById("Mer_ETPC");
+var Receiver_ETPC = document.getElementById("Receiver_ETPC");
 
-let Org_PU = document.getElementById("Org_PU");
-let Mer_PU = document.getElementById("Mer_PU");
-let Receiver_PU = document.getElementById("Receiver_PU");
+var Org_PU = document.getElementById("Org_PU");
+var Mer_PU = document.getElementById("Mer_PU");
+var Receiver_PU = document.getElementById("Receiver_PU");
 
-let Org_PUC = document.getElementById("Org_PUC");
-let Mer_PUC = document.getElementById("Mer_PUC");
-let Receiver_PUC = document.getElementById("Receiver_PUC");
+var Org_PUC = document.getElementById("Org_PUC");
+var Mer_PUC = document.getElementById("Mer_PUC");
+var Receiver_PUC = document.getElementById("Receiver_PUC");
 
-let Org_ETD = document.getElementById("Org_ETD");
-let Mer_ETD = document.getElementById("Mer_ETD");
-let Receiver_ETD = document.getElementById("Receiver_ETD");
+var Org_ETD = document.getElementById("Org_ETD");
+var Mer_ETD = document.getElementById("Mer_ETD");
+var Receiver_ETD = document.getElementById("Receiver_ETD");
 
-let Org_ETDC = document.getElementById("Org_ETDC");
-let Mer_ETDC = document.getElementById("Mer_ETDC");
-let Receiver_ETDC = document.getElementById("Receiver_ETDC");
+var Org_ETDC = document.getElementById("Org_ETDC");
+var Mer_ETDC = document.getElementById("Mer_ETDC");
+var Receiver_ETDC = document.getElementById("Receiver_ETDC");
 
-let Org_D = document.getElementById("Org_D");
-let Mer_D = document.getElementById("Mer_D");
-let Receiver_D = document.getElementById("Receiver_D");
+var Org_D = document.getElementById("Org_D");
+var Mer_D = document.getElementById("Mer_D");
+var Receiver_D = document.getElementById("Receiver_D");
 
-let Org_DC = document.getElementById("Org_DC");
-let Mer_DC = document.getElementById("Mer_DC");
-let Receiver_DC = document.getElementById("Receiver_DC");
+var Org_DC = document.getElementById("Org_DC");
+var Mer_DC = document.getElementById("Mer_DC");
+var Receiver_DC = document.getElementById("Receiver_DC");
 
 $.ajax
     ({
@@ -58,73 +58,73 @@ $.ajax
 
                 if (item.state === "ASSIGN") {
                     if (item.forSender) {
-                        Mer_JC.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Mer_JCC.checked = item.forSender;
+                        Mer_JC.value = item.customSms ? item.customSms : "";
+                        Mer_JCC.checked = item.noSMS;
                     }
                     if (item.forReceiver) {
-                        Receiver_JC.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Receiver_JCC.checked = item.forReceiver;
+                        Receiver_JC.value = item.customSms ? item.customSms : "";
+                        Receiver_JCC.checked = item.noSMS;
                     }
                     if (item.forOrg) {
-                        Org_JC.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Org_JCC.checked = item.forOrg;
+                        Org_JC.value = item.customSms ? item.customSms : "";
+                        Org_JCC.checked = item.noSMS;
                     }
                 }
                 if (item.state === "ENROUTE_TO_PICKUP") {
                     if (item.forSender) {
-                        Mer_ETP.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Mer_ETPC.checked = item.forSender;
+                        Mer_ETP.value = item.customSms ? item.customSms : "";
+                        Mer_ETPC.checked = item.noSMS;
                     }
                     if (item.forReceiver) {
-                        Receiver_ETP.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Receiver_ETPC.checked = item.forReceiver;
+                        Receiver_ETP.value = item.customSms ? item.customSms : "";
+                        Receiver_ETPC.checked = item.noSMS;
                     }
                     if (item.forOrg) {
-                        Org_ETP.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Org_ETPC.checked = item.forOrg;
+                        Org_ETP.value = item.customSms ? item.customSms : "";
+                        Org_ETPC.checked = item.noSMS;
                     }
                 }
                 if (item.state === "PICKED_UP") {
                     if (item.forSender) {
-                        Mer_PU.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Mer_PUC.checked = item.forSender;
+                        Mer_PU.value = item.customSms ? item.customSms : "";
+                        Mer_PUC.checked = item.noSMS;
                     }
                     if (item.forReceiver) {
-                        Receiver_PU.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Receiver_PUC.checked = item.forReceiver;
+                        Receiver_PU.value = item.customSms ? item.customSms : "";
+                        Receiver_PUC.checked = item.noSMS;
                     }
                     if (item.forOrg) {
-                        Org_PU.value = item.customSmsSuperAdmin;
-                        Org_PUC.checked = item.forOrg;
+                        Org_PU.value = item.customSms;
+                        Org_PUC.checked = item.noSMS;
                     }
                 }
                 if (item.state === "ENROUTE_TO_DELIVERY") {
 
                     if (item.forSender) {
-                        Mer_ETD.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Mer_ETDC.checked = item.forSender;
+                        Mer_ETD.value = item.customSms ? item.customSms : "";
+                        Mer_ETDC.checked = item.noSMS;
                     }
                     if (item.forReceiver) {
-                        Receiver_ETD.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Receiver_ETDC.checked = item.forReceiver;
+                        Receiver_ETD.value = item.customSms ? item.customSms : "";
+                        Receiver_ETDC.checked = item.noSMS;
                     }
                     if (item.forOrg) {
-                        Org_ETD.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Org_ETDC.checked = item.forOrg;
+                        Org_ETD.value = item.customSms ? item.customSms : "";
+                        Org_ETDC.checked = item.noSMS;
                     }
                 }
                 if (item.state === "DELIVERED") {
                     if (item.forSender) {
-                        Mer_D.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Mer_DC.checked = item.forSender;
+                        Mer_D.value = item.customSms ? item.customSms : "";
+                        Mer_DC.checked = item.noSMS;
                     }
                     if (item.forReceiver) {
-                        Receiver_D.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Receiver_DC.checked = item.forReceiver;
+                        Receiver_D.value = item.customSms ? item.customSms : "";
+                        Receiver_DC.checked = item.noSMS;
                     }
                     if (item.forOrg) {
-                        Org_D.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
-                        Org_DC.checked = item.forOrg;
+                        Org_D.value = item.customSms ? item.customSms : "";
+                        Org_DC.checked = item.noSMS;
                     }
                 }
             }
@@ -160,13 +160,13 @@ document.getElementById("setSMSBtnD").addEventListener("click", function (event)
             },
             success: function (data) {
                 $('#tickDD2').hide();
-                $(".circle-loader").removeClass("load-complete");
+                $(".circle-loader").removeClass("load-compvare");
                 $("#sureDD2").html("");
                 $("#myModalCreateDD1").modal('show');
                 $("#sureDD2").html("Please wait!");
                 if (data.status == 'OK') {
                     setTimeout(function () {
-                        $(".circle-loader").addClass("load-complete");
+                        $(".circle-loader").addClass("load-compvare");
 
                         $('#tickDD2').show();
 
