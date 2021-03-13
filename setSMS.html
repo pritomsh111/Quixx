@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<style>
+  div.hideKoro6 {
+    display: none;
+  }
+
+  @media (max-width: 500px) {
+    .p-5 {
+      padding: 2rem !important;
+    }
+  }
+
+  .flex-all{
+      display: flex;
+      justify-content: space-between;
+  }
+</style>
+<link rel="stylesheet" href="static/css/deliveryMerchant.css">
+<script src="static/js/setSMS_00.js"></script>
+<div id="loaderMama6" style="margin-top: 8%">
+    <div class="multi-spinner-container" style="color: #fff">
+        <div class="multi-spinner">
+            <div class="multi-spinner">
+                <div class="multi-spinner">
+                    <div class="multi-spinner">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 style="
+      font-family: 'Didact Gothic';
+      font-size: 24px;
+      text-align: center;
+      color: #0066b3;
+    ">
+        Please Wait...
+    </h3>
+</div>
+<div class="card naV hideKoro6" id="hideKoro6">
+    <script>
+    $("#loaderMama6").show();
+    one1();
+    two2();
+    </script>
+    <div class="card-body table-responsive">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn-outline btn-round btn-default btn btn-info" style="width: 100%; font-size: 14.5px" disabled>
+                    Custom SMS Set/Update
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body table-responsive blur">
+                        <form class="p-5" style="color: #0066b3; text-align: left" id="formDD">
+                            <div class="flex-all">
+                                <label for="just_created">just_created</label>
+                                <textarea
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="just_created"
+                                    class="mb-4"
+                                    placeholder=""
+                                ></textarea>
+                                <label for="just_created">sender_address</label>
+                                <textarea
+                                    type="text"
+                                    style="color: #0066b3"
+                                    id="sender_address"
+                                    class="mb-4"
+                                    placeholder=""
+                                ></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        class="modal fade"
+        id="myModalCreateDD1"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+        data-backdrop="static"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center">
+                    <div class="circle-loader" style="text-align: center">
+                        <div class="checkmark draw" id="tickDD2"></div>
+                    </div>
+                    <h4 id="sureDD2" style="color: #0066b3"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModalCreateDD2" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 style="color: #0066b3">Ooops!</h4>
+                    <p style="color: #0066b3">Please fill up properly!</p>
+                    <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal2" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <p style="color: #0066b3">Something went wrong. Please try again!</p>
+                    <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModalWrongMerSet" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <p id="wrongThisMerSet"></p>
+                    <button class="btn btn-success" data-dismiss="modal">
+                        Correct it!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/js/setSMS.js"></script>
