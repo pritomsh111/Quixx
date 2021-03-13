@@ -139,11 +139,10 @@ $.ajax
 
 document.getElementById("setSMSBtnJC").addEventListener("click", function (event) {
     event.preventDefault();
-    console.log(`${urlForAll}custom/sms/update/${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`);
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}custom/sms/update/${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            type: Org_JC && Org_JCC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Org_JC && Org_JCC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -162,8 +161,8 @@ document.getElementById("setSMSBtnJC").addEventListener("click", function (event
 function two() {
     $.ajax
         ({
-            type: "PUT",
-            url: `${urlForAll}custom/sms/update/${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
+            type: Mer_JC && Mer_JCC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Mer_JC && Mer_JCC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -181,8 +180,8 @@ function two() {
 function three() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            type: Receiver_JC && Receiver_JCC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Receiver_JC && Receiver_JCC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -221,8 +220,8 @@ document.getElementById("setSMSBtnETP").addEventListener("click", function (even
 
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
+            type: Org_ETP && Org_ETPC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Org_ETP && Org_ETPC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -241,8 +240,8 @@ document.getElementById("setSMSBtnETP").addEventListener("click", function (even
 function four() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? Mer_ETP.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
+            type: Mer_ETP && Mer_ETPC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Mer_ETP && Mer_ETPC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? Mer_ETP.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -260,8 +259,8 @@ function four() {
 function five() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? Receiver_ETP.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
+            type: Receiver_ETP && Receiver_ETPC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Receiver_ETP && Receiver_ETPC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? Receiver_ETP.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -300,8 +299,8 @@ document.getElementById("setSMSBtnPU").addEventListener("click", function (event
 
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Org_PU.value ? Org_PU.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_PUC.checked}`,
+            type: Org_PU && Org_PUC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Org_PU && Org_PUC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Org_PU.value ? Org_PU.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -320,8 +319,8 @@ document.getElementById("setSMSBtnPU").addEventListener("click", function (event
 function six() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Mer_PU.value ? Mer_PU.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_PUC.checked}`,
+            type: Mer_PU && Mer_PUC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Mer_PU && Mer_PUC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Mer_PU.value ? Mer_PU.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -339,8 +338,8 @@ function six() {
 function seven() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=PICKED_UP&smsContent=${Receiver_PU.value ? Receiver_PU.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_PUC.checked}`,
+            type: Receiver_PU && Receiver_PUC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Receiver_PU && Receiver_PUC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Receiver_PU.value ? Receiver_PU.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -379,8 +378,8 @@ document.getElementById("setSMSBtnETD").addEventListener("click", function (even
 
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_DELIVERY&smsContent=${Org_ETD.value ? Org_ETD.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDC.checked}`,
+            type: Org_ETD && Org_ETDC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Org_ETD && Org_ETDC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Org_ETD.value ? Org_ETD.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -399,8 +398,8 @@ document.getElementById("setSMSBtnETD").addEventListener("click", function (even
 function eight() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_DELIVERY&smsContent=${Mer_ETD.value ? Mer_ETD.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDC.checked}`,
+            type: Mer_ETD && Mer_ETDC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Mer_ETD && Mer_ETDC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Mer_ETD.value ? Mer_ETD.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -418,8 +417,8 @@ function eight() {
 function nine() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=ENROUTE_TO_DELIVERY&smsContent=${Receiver_ETD.value ? Receiver_ETD.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDC.checked}`,
+            type: Receiver_ETD && Receiver_ETDC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Receiver_ETD && Receiver_ETDC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Receiver_ETD.value ? Receiver_ETD.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -458,8 +457,8 @@ document.getElementById("setSMSBtnD").addEventListener("click", function (event)
 
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=DELIVERED&smsContent=${Org_D.value ? Org_D.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_DC.checked}`,
+            type: Org_D && Org_DC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Org_D && Org_DC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Org_D.value ? Org_D.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -478,8 +477,8 @@ document.getElementById("setSMSBtnD").addEventListener("click", function (event)
 function ten() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=DELIVERED&smsContent=${Mer_D.value ? Mer_D.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_DC.checked}`,
+            type: Mer_D && Mer_DC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Mer_D && Mer_DC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Mer_D.value ? Mer_D.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -497,8 +496,8 @@ function ten() {
 function eleven() {
     $.ajax
         ({
-            type: "POST",
-            url: `${urlForAll}custom/sms/create/${localStorage.getItem('userID')}?smsStates=DELIVERED&smsContent=${Receiver_D.value ? Receiver_D.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_DC.checked}`,
+            type: Receiver_DC && Receiver_DCC ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${Receiver_DC && Receiver_DCC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Receiver_D.value ? Receiver_D.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
