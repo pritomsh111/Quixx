@@ -26,7 +26,7 @@ $.ajax
     ({
         async: true,
         type: "GET",
-        url: urlForAll + "profile/get/profile/" + localStorage.getItem('userID'),
+        url: urlForAll + "custom/sms/get/" + localStorage.getItem('userID'),
         headers:
         {
             'Accept': 'application/json',
@@ -34,7 +34,7 @@ $.ajax
             "Authorization": 'Bearer ' + localStorage.getItem('token')
         },
         success: function (data) {
-
+            console.log(data);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
 
