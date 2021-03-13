@@ -43,7 +43,7 @@ $.ajax
     })
 
 
-document.getElementById("setSMSBtn").addEventListener("click", function (event) {
+document.getElementById("setSMSBtnD").addEventListener("click", function (event) {
     event.preventDefault();
 
     $.ajax
@@ -82,13 +82,11 @@ document.getElementById("setSMSBtn").addEventListener("click", function (event) 
 
                         $("#myModalCreateDD1").modal('hide');
                     }, 4000);
-                    $("#cod").hide();
-
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-                $("#myModalCreateDD1").modal('hide');
+                // $("#myModalCreateDD1").modal('hide');
                 $('#myModal2').modal('show');
             }
         })
