@@ -13,6 +13,20 @@
   .flex-all{
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+  }
+
+  .flex-all>div{
+      display:grid;
+  }
+  .flex-all>div textarea{
+      width: 220px;
+      height: 75px;
+  }
+
+  ::placeholder{
+      opacity: 0.7;
   }
 </style>
 <link rel="stylesheet" href="static/css/deliveryMerchant.css">
@@ -60,30 +74,164 @@
                     <div class="card-body table-responsive blur">
                         <form class="p-5" style="color: #0066b3; text-align: left" id="formDD">
                             <div class="flex-all">
-                                <label for="just_created">Organiztion</label>
-                                <textarea
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="Org_JC"
-                                    class="mb-4"
-                                    placeholder=""
-                                ></textarea>
-                                <label for="just_created">Merchant</label>
-                                <textarea
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="Mer_JC"
-                                    class="mb-4"
-                                    placeholder=""
-                                ></textarea>
-                                <label for="just_created">Receiver</label>
-                                <textarea
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="Receiver_JS"
-                                    class="mb-4"
-                                    placeholder=""
-                                ></textarea>
+                                <div>
+                                    <label for="just_created">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_JC"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="just_created">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_JC"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="just_created">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_JS"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="enroute_to_pickup">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_ETP"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="enroute_to_pickup">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_ETP"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="enroute_to_pickup">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_ETP"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="picked_up">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_PU"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="picked_up">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_PU"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="picked_up">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_PU"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="enroute_to_delivery">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_ETD"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="enroute_to_delivery">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_ETD"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="enroute_to_delivery">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_ETD"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="delivered">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_D"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="delivered">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_D"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label for="delivered">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_D"
+                                        class="mb-4"
+                                        placeholder="If Not Needed, Then Leave It BLANK!"
+                                    ></textarea>
+                                </div>
                             </div>
                         </form>
                     </div>
