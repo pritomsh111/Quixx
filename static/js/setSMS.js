@@ -790,6 +790,7 @@ $.ajax
 
 document.getElementById("setSMSBtnJC").addEventListener("click", function (event) {
     event.preventDefault();
+    console.log(stateJC);
     console.log(stateJC[0] && stateJC[0] ? "PUT" : "POST");
     console.log(stateJC[0] && stateJC[0] ? "update" : "create");
 
