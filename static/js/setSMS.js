@@ -3,6 +3,14 @@ $(document).ready(function () {
 });
 
 var errorMessage = document.querySelector("#myModal200 p");
+var stateJC = [];
+var stateETP = [];
+var statePU = [];
+var stateETD = [];
+var stateD = [];
+var stateOH = [];
+var stateR = [];
+var stateC = [];
 
 var Org_JC = document.getElementById("Org_JC");
 var Mer_JC = document.getElementById("Mer_JC");
@@ -234,7 +242,6 @@ Receiver_ETDC.addEventListener("click", function (e) {
         Receiver_ETD.disabled = true;
     }
 });
-
 
 var Org_D = document.getElementById("Org_D");
 var Mer_D = document.getElementById("Mer_D");
@@ -481,6 +488,7 @@ $.ajax
                 console.log(item);
                 if (item.state === "ASSIGN") {
                     if (item.forOrg) {
+                        stateJC[1] = 1;
                         Org_JC.value = item.customSms ? item.customSms : "";
                         Org_JCC.checked = item.noSMS;
                         if (Org_JC.value) {
@@ -491,6 +499,7 @@ $.ajax
                         }
                     }
                     if (item.forSender) {
+                        stateJC[2] = 1;
                         Mer_JC.value = item.customSms ? item.customSms : "";
                         Mer_JCC.checked = item.noSMS;
                         if (Mer_JC.value) {
@@ -501,6 +510,7 @@ $.ajax
                         }
                     }
                     if (item.forReceiver) {
+                        stateJC[3] = 1;
                         Receiver_JC.value = item.customSms ? item.customSms : "";
                         Receiver_JCC.checked = item.noSMS;
 
@@ -514,6 +524,7 @@ $.ajax
                 }
                 if (item.state === "ENROUTE_TO_PICKUP") {
                     if (item.forOrg) {
+                        stateETP[1] = 1;
                         Org_ETP.value = item.customSms ? item.customSms : "";
                         Org_ETPC.checked = item.noSMS;
 
@@ -525,6 +536,7 @@ $.ajax
                         }
                     }
                     if (item.forSender) {
+                        stateETP[2] = 1;
                         Mer_ETP.value = item.customSms ? item.customSms : "";
                         Mer_ETPC.checked = item.noSMS;
                         if (Mer_ETP.value) {
@@ -535,6 +547,7 @@ $.ajax
                         }
                     }
                     if (item.forReceiver) {
+                        stateETP[3] = 1;
                         Receiver_ETP.value = item.customSms ? item.customSms : "";
                         Receiver_ETPC.checked = item.noSMS;
                         if (Receiver_ETP.value) {
@@ -547,6 +560,7 @@ $.ajax
                 }
                 if (item.state === "PICKED_UP") {
                     if (item.forOrg) {
+                        statePU[1] = 1;
                         Org_PU.value = item.customSms;
                         Org_PUC.checked = item.noSMS;
                         if (Org_PU.value) {
@@ -557,6 +571,7 @@ $.ajax
                         }
                     }
                     if (item.forSender) {
+                        statePU[2] = 1;
                         Mer_PU.value = item.customSms ? item.customSms : "";
                         Mer_PUC.checked = item.noSMS;
                         if (Mer_PU.value) {
@@ -567,6 +582,7 @@ $.ajax
                         }
                     }
                     if (item.forReceiver) {
+                        statePU[3] = 1;
                         Receiver_PU.value = item.customSms ? item.customSms : "";
                         Receiver_PUC.checked = item.noSMS;
                         if (Receiver_PU.value) {
@@ -578,8 +594,8 @@ $.ajax
                     }
                 }
                 if (item.state === "ENROUTE_TO_DELIVERY") {
-
                     if (item.forOrg) {
+                        stateETD[1] = 1;
                         Org_ETD.value = item.customSms ? item.customSms : "";
                         Org_ETDC.checked = item.noSMS;
                         if (Org_ETD.value) {
@@ -591,6 +607,7 @@ $.ajax
 
                     }
                     if (item.forSender) {
+                        stateETD[2] = 1;
                         Mer_ETD.value = item.customSms ? item.customSms : "";
                         Mer_ETDC.checked = item.noSMS;
                         if (Mer_ETD.value) {
@@ -601,6 +618,7 @@ $.ajax
                         }
                     }
                     if (item.forReceiver) {
+                        stateETD[3] = 1;
                         Receiver_ETD.value = item.customSms ? item.customSms : "";
                         Receiver_ETDC.checked = item.noSMS;
                         if (Receiver_ETD.value) {
@@ -613,6 +631,7 @@ $.ajax
                 }
                 if (item.state === "DELIVERED") {
                     if (item.forOrg) {
+                        stateD[1] = 1;
                         Org_D.value = item.customSms ? item.customSms : "";
                         Org_DC.checked = item.noSMS;
                         if (Org_D.value) {
@@ -624,6 +643,7 @@ $.ajax
 
                     }
                     if (item.forSender) {
+                        stateD[2] = 1;
                         Mer_D.value = item.customSms ? item.customSms : "";
                         Mer_DC.checked = item.noSMS;
                         if (Mer_D.value) {
@@ -634,6 +654,7 @@ $.ajax
                         }
                     }
                     if (item.forReceiver) {
+                        stateD[3] = 1;
                         Receiver_D.value = item.customSms ? item.customSms : "";
                         Receiver_DC.checked = item.noSMS;
                         if (Receiver_D.value) {
@@ -646,6 +667,7 @@ $.ajax
                 }
                 if (item.state === "ON_HOLD") {
                     if (item.forOrg) {
+                        stateOH[1] = 1;
                         Org_OH.value = item.customSms ? item.customSms : "";
                         Org_OHC.checked = item.noSMS;
                         if (Org_OH.value) {
@@ -657,6 +679,7 @@ $.ajax
 
                     }
                     if (item.forSender) {
+                        stateOH[2] = 1;
                         Mer_OH.value = item.customSms ? item.customSms : "";
                         Mer_OHC.checked = item.noSMS;
                         if (Mer_OH.value) {
@@ -667,6 +690,7 @@ $.ajax
                         }
                     }
                     if (item.forReceiver) {
+                        stateOH[3] = 1;
                         Receiver_OH.value = item.customSms ? item.customSms : "";
                         Receiver_OHC.checked = item.noSMS;
                         if (Receiver_OH.value) {
@@ -679,6 +703,7 @@ $.ajax
                 }
                 if (item.state === "RETURNED") {
                     if (item.forOrg) {
+                        stateR[1] = 1;
                         Org_R.value = item.customSms ? item.customSms : "";
                         Org_RC.checked = item.noSMS;
                         if (Org_R.value) {
@@ -689,6 +714,7 @@ $.ajax
                         }
                     }
                     if (item.forSender) {
+                        stateR[2] = 1;
                         Mer_R.value = item.customSms ? item.customSms : "";
                         Mer_RC.checked = item.noSMS;
                         if (Mer_R.value) {
@@ -699,6 +725,7 @@ $.ajax
                         }
                     }
                     if (item.forReceiver) {
+                        stateR[3] = 1;
                         Receiver_R.value = item.customSms ? item.customSms : "";
                         Receiver_RC.checked = item.noSMS;
                         if (Receiver_R.value) {
@@ -711,6 +738,7 @@ $.ajax
                 }
                 if (item.state === "CANCELLED") {
                     if (item.forOrg) {
+                        stateC[1] = 1;
                         Org_C.value = item.customSms ? item.customSms : "";
                         Org_CC.checked = item.noSMS;
                         if (Org_C.value) {
@@ -721,6 +749,7 @@ $.ajax
                         }
                     }
                     if (item.forSender) {
+                        stateC[2] = 1;
                         Mer_C.value = item.customSms ? item.customSms : "";
                         Mer_CC.checked = item.noSMS;
 
@@ -732,6 +761,7 @@ $.ajax
                         }
                     }
                     if (item.forReceiver) {
+                        stateC[3] = 1;
                         Receiver_C.value = item.customSms ? item.customSms : "";
                         Receiver_CC.checked = item.noSMS;
                         if (Receiver_C.value) {
@@ -760,41 +790,45 @@ $.ajax
 
 document.getElementById("setSMSBtnJC").addEventListener("click", function (event) {
     event.preventDefault();
-    console.log(Org_JC && Org_JCC ? "PUT" : "POST");
-    console.log(Org_JC && Org_JCC ? "update" : "create");
-    $.ajax
-        ({
-            type: Org_JC && Org_JCC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Org_JC && Org_JCC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
-            headers:
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            },
-            success: function (data) {
-                two();
-            },
-            error: function (data) {
-                var ob = Object.keys(data);
-                if (ob[17] == "responseJSON") {
-                    errorMessage.textContent = data.responseJSON.errorMessage;
-                }
-                else {
-                    errorMessage.textContent = "Something Went Wrong!";
-                }
-                $('#myModal200').modal('show');
-            }
-        })
+    console.log(stateJC[0] && stateJC[0] ? "PUT" : "POST");
+    console.log(stateJC[0] && stateJC[0] ? "update" : "create");
+
+    console.log(stateJC[1] && stateJC[1] ? "PUT" : "POST");
+    console.log(stateJC[1] && stateJC[1] ? "update" : "create");
+
+    console.log(stateJC[2] && stateJC[2] ? "PUT" : "POST");
+    console.log(stateJC[2] && stateJC[2] ? "update" : "create");
+    // $.ajax
+    //     ({
+    //         type: stateJC[0] ? "PUT" : "POST",
+    //         url: `${urlForAll}custom/sms/${stateJC[0] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+    //         headers:
+    //         {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
+    //         },
+    //         success: function (data) {
+    //             two();
+    //         },
+    //         error: function (data) {
+    //             var ob = Object.keys(data);
+    //             if (ob[17] == "responseJSON") {
+    //                 errorMessage.textContent = data.responseJSON.errorMessage;
+    //             }
+    //             else {
+    //                 errorMessage.textContent = "Something Went Wrong!";
+    //             }
+    //             $('#myModal200').modal('show');
+    //         }
+    //     })
 });
 
 function two() {
-    console.log(Mer_JC && Mer_JCC ? "PUT" : "POST");
-    console.log(Mer_JC && Mer_JCC ? "update" : "create");
     $.ajax
         ({
-            type: Mer_JC && Mer_JCC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Mer_JC && Mer_JCC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
+            type: stateJC[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -817,12 +851,10 @@ function two() {
         })
 }
 function three() {
-    console.log(Receiver_JC && Receiver_JCC ? "PUT" : "POST");
-    console.log(Receiver_JC && Receiver_JCC ? "update" : "create");
     $.ajax
         ({
-            type: Receiver_JC && Receiver_JCC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Receiver_JC !== undefined && Receiver_JCC !== undefined ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            type: stateJC[2] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateJC[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -865,38 +897,37 @@ function three() {
 
 document.getElementById("setSMSBtnETP").addEventListener("click", function (event) {
     event.preventDefault();
-    console.log(Org_ETP.value + " " + Org_ETPC.checked);
-    // $.ajax
-    //     ({
-    //         type: Org_ETP.value && Org_ETPC.checked ? "PUT" : "POST",
-    //         url: `${urlForAll}custom/sms/${Org_ETP && Org_ETPC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
-    //         headers:
-    //         {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
-    //         },
-    //         success: function (data) {
-    //             four();
-    //         },
-    //         error: function (data) {
-    //             var ob = Object.keys(data);
-    //             if (ob[17] == "responseJSON") {
-    //                 errorMessage.textContent = data.responseJSON.errorMessage;
-    //             }
-    //             else {
-    //                 errorMessage.textContent = "Something Went Wrong!";
-    //             }
-    //             $('#myModal200').modal('show');
-    //         }
-    //     })
+    $.ajax
+        ({
+            type: stateETP[0] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateETP[0] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                four();
+            },
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
+                $('#myModal200').modal('show');
+            }
+        })
 });
 
 function four() {
     $.ajax
         ({
-            type: Mer_ETP && Mer_ETPC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Mer_ETP && Mer_ETPC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? Mer_ETP.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
+            type: stateETP[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateETP[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? Mer_ETP.value : null}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -921,8 +952,8 @@ function four() {
 function five() {
     $.ajax
         ({
-            type: Receiver_ETP && Receiver_ETPC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Receiver_ETP && Receiver_ETPC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? Receiver_ETP.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
+            type: stateETP[2] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateETP[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? Receiver_ETP.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
