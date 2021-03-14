@@ -17,14 +17,15 @@
       align-items: center;
   }
 
-  .flex-all>div{
+  .flex-all>div:not(:last-child){
       display:grid;
   }
 
   .flex-all>div textarea{
       width: 260px;
-      height: 75px;
+      height: 80px;
   }
+
   .flex-all>div label{
       width: 80px;
       margin: 0.2rem auto;
@@ -44,14 +45,15 @@
 
   .center-tx{
       text-align: center;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.6rem;
   }
 
-  button{
-
-  }
   .card .form-check{
       margin: 0.2rem auto 1rem;
+  }
+
+  .all-button{
+    margin: 1rem 0 4.4rem;
   }
 
   ::placeholder{
@@ -110,7 +112,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Org_JC"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -132,7 +134,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Mer_JC"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -154,7 +156,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Receiver_JC"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -170,7 +172,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div style="text-align: center; margin: 1rem 0 1.4rem;">
+                                <div class="all-button">
                                     <button
                                         class="btn btn-outline btn-round"
                                         style="background: #ffffd4;text-align:center;"
@@ -189,7 +191,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Org_ETP"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -211,7 +213,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Mer_ETP"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -233,7 +235,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Receiver_ETP"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -249,7 +251,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div style="text-align: center; margin: 1rem 0 1.4rem;">
+                                <div class="all-button">
                                     <button
                                         class="btn btn-outline btn-round"
                                         style="background: #ffffd4;text-align:center;"
@@ -268,7 +270,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Org_PU"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -290,7 +292,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Mer_PU"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -312,7 +314,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Receiver_PU"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -328,7 +330,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div style="text-align: center; margin: 1rem 0 1.4rem">
+                                <div class="all-button">
                                     <button
                                         class="btn btn-outline btn-round"
                                         style="background: #ffffd4;text-align:center;"
@@ -347,7 +349,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Org_ETD"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -369,7 +371,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Mer_ETD"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -391,7 +393,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Receiver_ETD"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -407,7 +409,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div style="text-align: center; margin: 1rem 0 1.4rem">
+                                <div class="all-button">
                                     <button
                                         class="btn btn-outline btn-round"
                                         style="background: #ffffd4;text-align:center;"
@@ -426,7 +428,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Org_D"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -448,7 +450,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Mer_D"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -470,7 +472,7 @@
                                         type="text"
                                         style="color: #0066b3"
                                         id="Receiver_D"
-                                        class="mb-4"
+                                        class=""
                                         placeholder="If Not Needed, Then Leave It BLANK!"
                                     ></textarea>
                                     <div class="form-check">
@@ -486,7 +488,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div style="text-align: center; margin: 1rem 0">
+                                <div class="all-button">
                                     <button
                                         class="btn btn-outline btn-round"
                                         style="background: #ffffd4;text-align:center;"
