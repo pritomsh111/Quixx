@@ -31,6 +31,34 @@ Receiver_JC.addEventListener("keyup", function (e) {
     }
 });
 
+Org_JCC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Org_JC.disabled = false;
+    }
+    else {
+        Org_JC.disabled = true;
+    }
+});
+
+Mer_JCC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Mer_JC.disabled = false;
+    }
+    else {
+        Mer_JC.disabled = true;
+    }
+});
+
+Receiver_JCC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Receiver_JC.disabled = false;
+    }
+    else {
+        Receiver_JC.disabled = true;
+    }
+});
+
+
 var Org_ETP = document.getElementById("Org_ETP");
 var Mer_ETP = document.getElementById("Mer_ETP");
 var Receiver_ETP = document.getElementById("Receiver_ETP");
@@ -104,7 +132,7 @@ $.ajax
                         Mer_JC.value = item.customSms ? item.customSms : "";
                         Mer_JCC.checked = item.noSMS;
 
-                        if (Mer_JC) {
+                        if (Mer_JC.value) {
                             Mer_JCC.disabled = true;
                         }
                         else {
@@ -115,7 +143,7 @@ $.ajax
                         Receiver_JC.value = item.customSms ? item.customSms : "";
                         Receiver_JCC.checked = item.noSMS;
 
-                        if (Receiver_JC) {
+                        if (Receiver_JC.value) {
                             Receiver_JCC.disabled = true;
                         }
                         else {
@@ -126,7 +154,7 @@ $.ajax
                         Org_JC.value = item.customSms ? item.customSms : "";
                         Org_JCC.checked = item.noSMS;
 
-                        if (Org_JC) {
+                        if (Org_JC.value) {
                             Org_JCC.disabled = true;
                         }
                         else {
