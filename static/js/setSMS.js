@@ -1218,7 +1218,6 @@ function thirteen(button) {
         })
 }
 
-
 btnR.addEventListener("click", function (event) {
     showInitialModal(event, btnR);
     $.ajax
@@ -1233,7 +1232,7 @@ btnR.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateR[1] = 1;
-                twelve(btnR);
+                fourteen(btnR);
             },
             error: function (data) {
                 errorShow(data, btnR);
@@ -1241,7 +1240,7 @@ btnR.addEventListener("click", function (event) {
         })
 });
 
-function twelve(button) {
+function fourteen(button) {
     $.ajax
         ({
             type: stateR[2] ? "PUT" : "POST",
@@ -1254,7 +1253,7 @@ function twelve(button) {
             },
             success: function (data) {
                 stateR[2] = 1;
-                thirteen(button);
+                fifteen(button);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -1262,7 +1261,7 @@ function twelve(button) {
         })
 }
 
-function thirteen(button) {
+function fifteen(button) {
     $.ajax
         ({
             type: stateR[3] ? "PUT" : "POST",
@@ -1275,6 +1274,70 @@ function thirteen(button) {
             },
             success: function (data) {
                 stateR[3] = 1;
+                showTickSuccessModal(data, button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+btnC.addEventListener("click", function (event) {
+    showInitialModal(event, btnC);
+    $.ajax
+        ({
+            type: stateC[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateC[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=CANCELLED&smsContent=${Org_C.value ? Org_C.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_CC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateC[1] = 1;
+                sixteen(btnC);
+            },
+            error: function (data) {
+                errorShow(data, btnC);
+            }
+        })
+});
+
+function sixteen(button) {
+    $.ajax
+        ({
+            type: stateC[2] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateC[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=CANCELLED&smsContent=${Mer_C.value ? Mer_C.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_CC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateC[2] = 1;
+                seventeen(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function seventeen(button) {
+    $.ajax
+        ({
+            type: stateC[3] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateC[3] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=CANCELLED&smsContent=${Receiver_C.value ? Receiver_C.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_CC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateC[3] = 1;
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
