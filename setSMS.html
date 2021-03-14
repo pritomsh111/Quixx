@@ -6,15 +6,14 @@
 
   @media (max-width: 500px) {
     .p-5 {
-      padding: 2rem !important;
+      padding: 1rem !important;
     }
   }
 
   .flex-all{
-      display: flex;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
-      align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
   }
 
   .flex-all>div:not(:last-child){
@@ -31,15 +30,20 @@
       margin: 0.2rem auto;
       
   }
-  @media (max-width: 1285px){
+  @media (max-width: 1475px){
     .flex-all{
-        justify-content: space-between;
+        grid-template-columns: repeat(2, 1fr);
     }
   }
   
-  @media (max-width: 675px){
+  @media (max-width: 750px){
     .flex-all{
-        justify-content: center;
+        grid-template-columns: 1fr
+    }
+    
+    .flex-all>div textarea{
+        width: 220px;
+        height: 70px;
     }
   }
 
@@ -53,7 +57,7 @@
   }
 
   .all-button{
-    margin: 1rem 0 4.4rem;
+    margin: 1rem 0 3.1rem;
   }
 
   ::placeholder{
