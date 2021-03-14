@@ -813,7 +813,7 @@ function showTickSuccessModal(data, button) {
 
             $('#tickDDD2').show();
 
-            $("#sureDDD2").html("Organization Settings Updated!");
+            $("#sureDDD2").html("Please Wait For Approval!<br><br>You Will Be Notified Through An Email!");
         }, 1500);
         setTimeout(function () {
 
