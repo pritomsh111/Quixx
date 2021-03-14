@@ -89,6 +89,35 @@ Receiver_ETP.addEventListener("keyup", function (e) {
     }
 });
 
+
+Org_ETPC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Org_ETP.disabled = false;
+    }
+    else {
+        Org_ETP.disabled = true;
+    }
+});
+
+Mer_ETPC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Mer_ETP.disabled = false;
+    }
+    else {
+        Mer_ETP.disabled = true;
+    }
+});
+
+Receiver_ETPC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Receiver_ETP.disabled = false;
+    }
+    else {
+        Receiver_ETP.disabled = true;
+    }
+});
+
+
 var Org_PU = document.getElementById("Org_PU");
 var Mer_PU = document.getElementById("Mer_PU");
 var Receiver_PU = document.getElementById("Receiver_PU");
