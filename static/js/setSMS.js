@@ -10,6 +10,27 @@ var Org_JCC = document.getElementById("Org_JCC");
 var Mer_JCC = document.getElementById("Mer_JCC");
 var Receiver_JCC = document.getElementById("Receiver_JCC");
 
+Org_JC.addEventListener("keyup", function (e) {
+    Org_JCC.disabled = true;
+    if (!Org_JC.value.length) {
+        Org_JCC.disabled = false;
+    }
+});
+
+Mer_JC.addEventListener("keyup", function (e) {
+    Mer_JCC.disabled = true;
+    if (!Mer_JC.value.length) {
+        Mer_JCC.disabled = false;
+    }
+});
+
+Receiver_JC.addEventListener("keyup", function (e) {
+    Receiver_JCC.disabled = true;
+    if (!Receiver_JC.value.length) {
+        Receiver_JCC.disabled = false;
+    }
+});
+
 var Org_ETP = document.getElementById("Org_ETP");
 var Mer_ETP = document.getElementById("Mer_ETP");
 var Receiver_ETP = document.getElementById("Receiver_ETP");
@@ -17,6 +38,28 @@ var Receiver_ETP = document.getElementById("Receiver_ETP");
 var Org_ETPC = document.getElementById("Org_ETPC");
 var Mer_ETPC = document.getElementById("Mer_ETPC");
 var Receiver_ETPC = document.getElementById("Receiver_ETPC");
+
+
+Org_ETP.addEventListener("keyup", function (e) {
+    Org_ETPC.disabled = true;
+    if (!Org_ETP.value.length) {
+        Org_ETPC.disabled = false;
+    }
+});
+
+Mer_ETP.addEventListener("keyup", function (e) {
+    Mer_ETPC.disabled = true;
+    if (!Mer_ETP.value.length) {
+        Mer_ETPC.disabled = false;
+    }
+});
+
+Receiver_ETP.addEventListener("keyup", function (e) {
+    Receiver_ETPC.disabled = true;
+    if (!Receiver_ETP.value.length) {
+        Receiver_ETPC.disabled = false;
+    }
+});
 
 var Org_PU = document.getElementById("Org_PU");
 var Mer_PU = document.getElementById("Mer_PU");
@@ -55,19 +98,40 @@ $.ajax
         },
         success: function (data) {
             data.data.map(item => {
-
+                console.log(item);
                 if (item.state === "ASSIGN") {
                     if (item.forSender) {
                         Mer_JC.value = item.customSms ? item.customSms : "";
                         Mer_JCC.checked = item.noSMS;
+
+                        if (Mer_JC) {
+                            Mer_JCC.disabled = true;
+                        }
+                        else {
+                            Mer_JC.disabled = true;
+                        }
                     }
                     if (item.forReceiver) {
                         Receiver_JC.value = item.customSms ? item.customSms : "";
                         Receiver_JCC.checked = item.noSMS;
+
+                        if (Receiver_JC) {
+                            Receiver_JCC.disabled = true;
+                        }
+                        else {
+                            Receiver_JC.disabled = true;
+                        }
                     }
                     if (item.forOrg) {
                         Org_JC.value = item.customSms ? item.customSms : "";
                         Org_JCC.checked = item.noSMS;
+
+                        if (Org_JC) {
+                            Org_JCC.disabled = true;
+                        }
+                        else {
+                            Org_JC.disabled = true;
+                        }
                     }
                 }
                 if (item.state === "ENROUTE_TO_PICKUP") {
@@ -139,6 +203,8 @@ $.ajax
 
 document.getElementById("setSMSBtnJC").addEventListener("click", function (event) {
     event.preventDefault();
+    console.log(Org_JC && Org_JCC ? "PUT" : "POST");
+    console.log(Org_JC && Org_JCC ? "update" : "create");
     $.ajax
         ({
             type: Org_JC && Org_JCC ? "PUT" : "POST",
@@ -159,6 +225,8 @@ document.getElementById("setSMSBtnJC").addEventListener("click", function (event
 });
 
 function two() {
+    console.log(Mer_JC && Mer_JCC ? "PUT" : "POST");
+    console.log(Mer_JC && Mer_JCC ? "update" : "create");
     $.ajax
         ({
             type: Mer_JC && Mer_JCC ? "PUT" : "POST",
@@ -178,10 +246,12 @@ function two() {
         })
 }
 function three() {
+    console.log(Receiver_JC && Receiver_JCC ? "PUT" : "POST");
+    console.log(Receiver_JC && Receiver_JCC ? "update" : "create");
     $.ajax
         ({
             type: Receiver_JC && Receiver_JCC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Receiver_JC && Receiver_JCC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            url: `${urlForAll}custom/sms/${Receiver_JC !== undefined && Receiver_JCC !== undefined ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : null}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
