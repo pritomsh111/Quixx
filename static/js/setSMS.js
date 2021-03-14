@@ -326,6 +326,15 @@ var stateOH = [0, 0, 0, 0];
 var stateR = [0, 0, 0, 0];
 var stateC = [0, 0, 0, 0];
 
+var btnJC = document.getElementById("setSMSBtnJC");
+var btnETP = document.getElementById("setSMSBtnETP");
+var btnPU = document.getElementById("setSMSBtnPU");
+var btnETD = document.getElementById("setSMSBtnETD");
+var btnD = document.getElementById("setSMSBtnD");
+var btnOH = document.getElementById("setSMSBtnOH");
+var btnR = document.getElementById("setSMSBtnR");
+var btnC = document.getElementById("setSMSBtnC");
+
 var Org_JC = document.getElementById("Org_JC");
 var Mer_JC = document.getElementById("Mer_JC");
 var Receiver_JC = document.getElementById("Receiver_JC");
@@ -828,7 +837,7 @@ function errorShow(data, button) {
     $('#myModal200').modal('show');
 }
 
-document.getElementById("setSMSBtnJC").addEventListener("click", function (event) {
+btnJC.addEventListener("click", function (event) {
     showInitialModal(event, this);
     $.ajax
         ({
@@ -892,7 +901,7 @@ function three(button) {
 }
 
 
-document.getElementById("setSMSBtnETP").addEventListener("click", function (event) {
+btnETP.addEventListener("click", function (event) {
     showInitialModal(event);
     $.ajax
         ({
@@ -953,7 +962,7 @@ function five() {
 }
 
 
-document.getElementById("setSMSBtnPU").addEventListener("click", function (event) {
+btnPU.addEventListener("click", function (event) {
     event.preventDefault();
 
     $.ajax
@@ -1032,7 +1041,7 @@ function seven() {
 }
 
 
-document.getElementById("setSMSBtnETD").addEventListener("click", function (event) {
+btnETD.addEventListener("click", function (event) {
     event.preventDefault();
 
     $.ajax
@@ -1111,7 +1120,7 @@ function nine() {
 }
 
 
-document.getElementById("setSMSBtnD").addEventListener("click", function (event) {
+btnD.addEventListener("click", function (event) {
     event.preventDefault();
     $('#tickDDD2').hide();
     $(".circle-loader").removeClass("load-complete");
