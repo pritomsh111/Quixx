@@ -797,7 +797,6 @@ Receiver_CC.addEventListener("click", function (e) {
 
 function showInitialModal(event, button) {
     event.preventDefault();
-    console.log(button);
     button.disabled = true;
     $('#tickDDD2').hide();
     $(".circle-loader").removeClass("load-complete");
@@ -807,7 +806,6 @@ function showInitialModal(event, button) {
 }
 
 function showTickSuccessModal(data, button) {
-    console.log(data, button);
     button.disabled = false;
     if (data.status == 'OK') {
         setTimeout(function () {
@@ -838,7 +836,7 @@ function errorShow(data, button) {
 }
 
 btnJC.addEventListener("click", function (event) {
-    showInitialModal(event, this);
+    showInitialModal(event, btnJC);
     $.ajax
         ({
             type: stateJC[1] ? "PUT" : "POST",
@@ -850,11 +848,10 @@ btnJC.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                two(this);
-                console.log(this);
+                two(btnJC);
             },
             error: function (data) {
-                errorShow(data, this);
+                errorShow(data, btnJC);
             }
         })
 });
@@ -872,7 +869,6 @@ function two(button) {
             },
             success: function (data) {
                 three(button);
-                console.log(button);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -891,7 +887,6 @@ function three(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                console.log(button);
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
@@ -902,11 +897,11 @@ function three(button) {
 
 
 btnETP.addEventListener("click", function (event) {
-    showInitialModal(event);
+    showInitialModal(event, btnETP);
     $.ajax
         ({
-            type: stateETP[0] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETP[0] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
+            type: stateETP[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateETP[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -914,38 +909,19 @@ btnETP.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                four();
+                four(btnETP);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, btnETP);
             }
         })
 });
 
-function four() {
-    $.ajax
-        ({
-            type: stateETP[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETP[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? Mer_ETP.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
-            headers:
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            },
-            success: function (data) {
-                five();
-            },
-            error: function (data) {
-                errorShow(data);
-            }
-        })
-}
-function five() {
+function four(button) {
     $.ajax
         ({
             type: stateETP[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETP[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? Receiver_ETP.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
+            url: `${urlForAll}custom/sms/${stateETP[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? Mer_ETP.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -953,22 +929,40 @@ function five() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                showTickSuccessModal(data);
+                five(button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
+            }
+        })
+}
+function five(button) {
+    $.ajax
+        ({
+            type: stateETP[3] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateETP[3] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? Receiver_ETP.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                showTickSuccessModal(data, button);
+            },
+            error: function (data) {
+                errorShow(data, button);
             }
         })
 }
 
 
 btnPU.addEventListener("click", function (event) {
-    event.preventDefault();
-
+    showInitialModal(event, btnPU);
     $.ajax
         ({
-            type: Org_PU && Org_PUC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Org_PU && Org_PUC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Org_PU.value ? Org_PU.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_PUC.checked}`,
+            type: statePU[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${statePU[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Org_PU.value ? Org_PU.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -976,19 +970,19 @@ btnPU.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                six();
+                six(btnPU);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, btnPU);
             }
         })
 });
 
-function six() {
+function six(button) {
     $.ajax
         ({
-            type: Mer_PU && Mer_PUC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Mer_PU && Mer_PUC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Mer_PU.value ? Mer_PU.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_PUC.checked}`,
+            type: statePU[2] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${statePU[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Mer_PU.value ? Mer_PU.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -996,18 +990,18 @@ function six() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                seven();
+                seven(button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
             }
         })
 }
-function seven() {
+function seven(button) {
     $.ajax
         ({
-            type: Receiver_PU && Receiver_PUC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Receiver_PU && Receiver_PUC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Receiver_PU.value ? Receiver_PU.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_PUC.checked}`,
+            type: statePU[3] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${statePU[3] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=PICKED_UP&smsContent=${Receiver_PU.value ? Receiver_PU.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1015,39 +1009,21 @@ function seven() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                $('#tickDDD2').hide();
-                $(".circle-loader").removeClass("load-complete");
-                $("#sureDDD2").html("");
-                $("#myModalCreateDDD1").modal('show');
-                $("#sureDDD2").html("Please wait!");
-                if (data.status == 'OK') {
-                    setTimeout(function () {
-                        $(".circle-loader").addClass("load-complete");
-
-                        $('#tickDDD2').show();
-
-                        $("#sureDDD2").html("Organization Settings Updated!");
-                    }, 1500);
-                    setTimeout(function () {
-
-                        $("#myModalCreateDDD1").modal('hide');
-                    }, 2500);
-                }
+                showTickSuccessModal(data, button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
             }
         })
 }
 
 
 btnETD.addEventListener("click", function (event) {
-    event.preventDefault();
-
+    showInitialModal(event, btnETD);
     $.ajax
         ({
-            type: Org_ETD && Org_ETDC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Org_ETD && Org_ETDC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Org_ETD.value ? Org_ETD.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDC.checked}`,
+            type: stateETD[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateETD[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Org_ETD.value ? Org_ETD.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1055,19 +1031,19 @@ btnETD.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                eight();
+                eight(btnETD);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, btnETD);
             }
         })
 });
 
-function eight() {
+function eight(button) {
     $.ajax
         ({
-            type: Mer_ETD && Mer_ETDC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Mer_ETD && Mer_ETDC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Mer_ETD.value ? Mer_ETD.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDC.checked}`,
+            type: stateETD[2] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateETD[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Mer_ETD.value ? Mer_ETD.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1075,18 +1051,18 @@ function eight() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                nine();
+                nine(button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
             }
         })
 }
-function nine() {
+function nine(button) {
     $.ajax
         ({
-            type: Receiver_ETD && Receiver_ETDC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Receiver_ETD && Receiver_ETDC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Receiver_ETD.value ? Receiver_ETD.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDC.checked}`,
+            type: stateETD[3] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateETD[3] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Receiver_ETD.value ? Receiver_ETD.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1094,43 +1070,21 @@ function nine() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                $('#tickDDD2').hide();
-                $(".circle-loader").removeClass("load-complete");
-                $("#sureDDD2").html("");
-                $("#myModalCreateDDD1").modal('show');
-                $("#sureDDD2").html("Please wait!");
-                if (data.status == 'OK') {
-                    setTimeout(function () {
-                        $(".circle-loader").addClass("load-complete");
-
-                        $('#tickDDD2').show();
-
-                        $("#sureDDD2").html("Organization Settings Updated!");
-                    }, 1500);
-                    setTimeout(function () {
-
-                        $("#myModalCreateDDD1").modal('hide');
-                    }, 2500);
-                }
+                showTickSuccessModal(data, button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
             }
         })
 }
 
 
 btnD.addEventListener("click", function (event) {
-    event.preventDefault();
-    $('#tickDDD2').hide();
-    $(".circle-loader").removeClass("load-complete");
-    $("#sureDDD2").html("");
-    $("#myModalCreateDDD1").modal('show');
-    $("#sureDDD2").html("Please wait!");
+    showInitialModal(event, btnD);
     $.ajax
         ({
-            type: Org_D && Org_DC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Org_D && Org_DC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Org_D.value ? Org_D.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_DC.checked}`,
+            type: stateD[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateD[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Org_D.value ? Org_D.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1138,19 +1092,19 @@ btnD.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                ten();
+                ten(btnD);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, btnD);
             }
         })
 });
 
-function ten() {
+function ten(button) {
     $.ajax
         ({
-            type: Mer_D && Mer_DC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Mer_D && Mer_DC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Mer_D.value ? Mer_D.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_DC.checked}`,
+            type: stateD[2] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateD[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Mer_D.value ? Mer_D.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1158,18 +1112,18 @@ function ten() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                eleven();
+                eleven(button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
             }
         })
 }
-function eleven() {
+function eleven(button) {
     $.ajax
         ({
-            type: Receiver_DC && Receiver_DCC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Receiver_DC && Receiver_DCC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Receiver_D.value ? Receiver_D.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_DC.checked}`,
+            type: stateD[3] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateD[3] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=DELIVERED&smsContent=${Receiver_D.value ? Receiver_D.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1177,22 +1131,10 @@ function eleven() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                if (data.status == 'OK') {
-                    setTimeout(function () {
-                        $(".circle-loader").addClass("load-complete");
-
-                        $('#tickDDD2').show();
-
-                        $("#sureDDD2").html("Organization Settings Updated!");
-                    }, 1500);
-                    setTimeout(function () {
-
-                        $("#myModalCreateDDD1").modal('hide');
-                    }, 2500);
-                }
+                showTickSuccessModal(data, button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
             }
         })
 }
