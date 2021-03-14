@@ -848,6 +848,7 @@ btnJC.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateJC[1] = 1;
                 two(btnJC);
             },
             error: function (data) {
@@ -868,6 +869,7 @@ function two(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateJC[2] = 1;
                 three(button);
             },
             error: function (data) {
@@ -887,6 +889,7 @@ function three(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateJC[3] = 1;
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
@@ -909,6 +912,7 @@ btnETP.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateETP[1] = 1;
                 four(btnETP);
             },
             error: function (data) {
@@ -929,6 +933,7 @@ function four(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateETP[2] = 1;
                 five(button);
             },
             error: function (data) {
@@ -948,6 +953,7 @@ function five(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateETP[3] = 1;
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
@@ -970,6 +976,7 @@ btnPU.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                statePU[1] = 1;
                 six(btnPU);
             },
             error: function (data) {
@@ -990,6 +997,7 @@ function six(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                statePU[2] = 1;
                 seven(button);
             },
             error: function (data) {
@@ -1009,6 +1017,7 @@ function seven(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                statePU[3] = 1;
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
@@ -1031,6 +1040,7 @@ btnETD.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateETD[1] = 1;
                 eight(btnETD);
             },
             error: function (data) {
@@ -1051,6 +1061,7 @@ function eight(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateETD[2] = 1;
                 nine(button);
             },
             error: function (data) {
@@ -1070,6 +1081,7 @@ function nine(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateETD[3] = 1;
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
@@ -1092,6 +1104,7 @@ btnD.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateD[1] = 1;
                 ten(btnD);
             },
             error: function (data) {
@@ -1112,6 +1125,7 @@ function ten(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateD[2] = 1;
                 eleven(button);
             },
             error: function (data) {
@@ -1131,6 +1145,136 @@ function eleven(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                stateD[3] = 1;
+                showTickSuccessModal(data, button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+btnOH.addEventListener("click", function (event) {
+    showInitialModal(event, btnOH);
+    $.ajax
+        ({
+            type: stateOH[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateOH[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ON_HOLD&smsContent=${Org_OH.value ? Org_OH.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_OHC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateOH[1] = 1;
+                twelve(btnOH);
+            },
+            error: function (data) {
+                errorShow(data, btnOH);
+            }
+        })
+});
+
+function twelve(button) {
+    $.ajax
+        ({
+            type: stateOH[2] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateOH[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ON_HOLD&smsContent=${Mer_OH.value ? Mer_OH.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_OHC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateOH[2] = 1;
+                thirteen(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function thirteen(button) {
+    $.ajax
+        ({
+            type: stateOH[3] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateOH[3] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ON_HOLD&smsContent=${Receiver_OH.value ? Receiver_OH.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_OHC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateOH[3] = 1;
+                showTickSuccessModal(data, button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+
+btnR.addEventListener("click", function (event) {
+    showInitialModal(event, btnR);
+    $.ajax
+        ({
+            type: stateR[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateR[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=RETURNED&smsContent=${Org_R.value ? Org_R.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_RC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateR[1] = 1;
+                twelve(btnR);
+            },
+            error: function (data) {
+                errorShow(data, btnR);
+            }
+        })
+});
+
+function twelve(button) {
+    $.ajax
+        ({
+            type: stateR[2] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateR[2] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=RETURNED&smsContent=${Mer_R.value ? Mer_R.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_RC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateR[2] = 1;
+                thirteen(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function thirteen(button) {
+    $.ajax
+        ({
+            type: stateR[3] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateR[3] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=RETURNED&smsContent=${Receiver_R.value ? Receiver_R.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_RC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateR[3] = 1;
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
