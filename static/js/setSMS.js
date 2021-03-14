@@ -753,7 +753,7 @@ $.ajax
             else {
                 errorMessage.textContent = "Something Went Wrong!";
             }
-            $('#myModal2').modal('show');
+            $('#myModal200').modal('show');
         }
     })
 
@@ -783,7 +783,7 @@ document.getElementById("setSMSBtnJC").addEventListener("click", function (event
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 });
@@ -812,7 +812,7 @@ function two() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -857,7 +857,7 @@ function three() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -865,31 +865,31 @@ function three() {
 
 document.getElementById("setSMSBtnETP").addEventListener("click", function (event) {
     event.preventDefault();
-
-    $.ajax
-        ({
-            type: Org_ETP && Org_ETPC ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${Org_ETP && Org_ETPC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
-            headers:
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            },
-            success: function (data) {
-                four();
-            },
-            error: function (data) {
-                var ob = Object.keys(data);
-                if (ob[17] == "responseJSON") {
-                    errorMessage.textContent = data.responseJSON.errorMessage;
-                }
-                else {
-                    errorMessage.textContent = "Something Went Wrong!";
-                }
-                $('#myModal2').modal('show');
-            }
-        })
+    console.log(Org_ETP.value + " " + Org_ETPC.checked);
+    // $.ajax
+    //     ({
+    //         type: Org_ETP.value && Org_ETPC.checked ? "PUT" : "POST",
+    //         url: `${urlForAll}custom/sms/${Org_ETP && Org_ETPC ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : null}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
+    //         headers:
+    //         {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
+    //         },
+    //         success: function (data) {
+    //             four();
+    //         },
+    //         error: function (data) {
+    //             var ob = Object.keys(data);
+    //             if (ob[17] == "responseJSON") {
+    //                 errorMessage.textContent = data.responseJSON.errorMessage;
+    //             }
+    //             else {
+    //                 errorMessage.textContent = "Something Went Wrong!";
+    //             }
+    //             $('#myModal200').modal('show');
+    //         }
+    //     })
 });
 
 function four() {
@@ -914,7 +914,7 @@ function four() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -957,7 +957,7 @@ function five() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -987,7 +987,7 @@ document.getElementById("setSMSBtnPU").addEventListener("click", function (event
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 });
@@ -1014,7 +1014,7 @@ function six() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -1057,7 +1057,7 @@ function seven() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -1087,7 +1087,7 @@ document.getElementById("setSMSBtnETD").addEventListener("click", function (even
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 });
@@ -1114,7 +1114,7 @@ function eight() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -1157,7 +1157,7 @@ function nine() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -1187,7 +1187,7 @@ document.getElementById("setSMSBtnD").addEventListener("click", function (event)
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 });
@@ -1214,7 +1214,7 @@ function ten() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
@@ -1257,7 +1257,7 @@ function eleven() {
                 else {
                     errorMessage.textContent = "Something Went Wrong!";
                 }
-                $('#myModal2').modal('show');
+                $('#myModal200').modal('show');
             }
         })
 }
