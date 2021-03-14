@@ -2,6 +2,8 @@ $(document).ready(function () {
     $("#settings").hide();
 });
 
+var errorMessage = document.querySelector("#myModal200 p");
+
 var Org_JC = document.getElementById("Org_JC");
 var Mer_JC = document.getElementById("Mer_JC");
 var Receiver_JC = document.getElementById("Receiver_JC");
@@ -679,35 +681,78 @@ $.ajax
                     if (item.forOrg) {
                         Org_R.value = item.customSms ? item.customSms : "";
                         Org_RC.checked = item.noSMS;
+                        if (Org_R.value) {
+                            Org_RC.disabled = true;
+                        }
+                        if (Org_RC.checked) {
+                            Org_R.disabled = true;
+                        }
                     }
                     if (item.forSender) {
                         Mer_R.value = item.customSms ? item.customSms : "";
                         Mer_RC.checked = item.noSMS;
+                        if (Mer_R.value) {
+                            Mer_RC.disabled = true;
+                        }
+                        if (Mer_RC.checked) {
+                            Mer_R.disabled = true;
+                        }
                     }
                     if (item.forReceiver) {
                         Receiver_R.value = item.customSms ? item.customSms : "";
                         Receiver_RC.checked = item.noSMS;
+                        if (Receiver_R.value) {
+                            Receiver_RC.disabled = true;
+                        }
+                        if (Receiver_RC.checked) {
+                            Receiver_R.disabled = true;
+                        }
                     }
                 }
                 if (item.state === "CANCELLED") {
                     if (item.forOrg) {
                         Org_C.value = item.customSms ? item.customSms : "";
                         Org_CC.checked = item.noSMS;
+                        if (Org_C.value) {
+                            Org_CC.disabled = true;
+                        }
+                        if (Org_CC.checked) {
+                            Org_C.disabled = true;
+                        }
                     }
                     if (item.forSender) {
                         Mer_C.value = item.customSms ? item.customSms : "";
                         Mer_CC.checked = item.noSMS;
+
+                        if (Mer_C.value) {
+                            Mer_CC.disabled = true;
+                        }
+                        if (Mer_CC.checked) {
+                            Mer_C.disabled = true;
+                        }
                     }
                     if (item.forReceiver) {
                         Receiver_C.value = item.customSms ? item.customSms : "";
                         Receiver_CC.checked = item.noSMS;
+                        if (Receiver_C.value) {
+                            Receiver_CC.disabled = true;
+                        }
+                        if (Receiver_CC.checked) {
+                            Receiver_C.disabled = true;
+                        }
                     }
                 }
             }
             );
         },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-
+        error: function (data) {
+            var ob = Object.keys(data);
+            if (ob[17] == "responseJSON") {
+                errorMessage.textContent = data.responseJSON.errorMessage;
+            }
+            else {
+                errorMessage.textContent = "Something Went Wrong!";
+            }
             $('#myModal2').modal('show');
         }
     })
@@ -730,7 +775,14 @@ document.getElementById("setSMSBtnJC").addEventListener("click", function (event
             success: function (data) {
                 two();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -752,7 +804,14 @@ function two() {
             success: function (data) {
                 three();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -790,7 +849,14 @@ function three() {
                     }, 4000);
                 }
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -813,7 +879,14 @@ document.getElementById("setSMSBtnETP").addEventListener("click", function (even
             success: function (data) {
                 four();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -833,7 +906,14 @@ function four() {
             success: function (data) {
                 five();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -869,7 +949,14 @@ function five() {
                     }, 4000);
                 }
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -892,7 +979,14 @@ document.getElementById("setSMSBtnPU").addEventListener("click", function (event
             success: function (data) {
                 six();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -912,7 +1006,14 @@ function six() {
             success: function (data) {
                 seven();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -948,7 +1049,14 @@ function seven() {
                     }, 4000);
                 }
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -971,7 +1079,14 @@ document.getElementById("setSMSBtnETD").addEventListener("click", function (even
             success: function (data) {
                 eight();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -991,7 +1106,14 @@ function eight() {
             success: function (data) {
                 nine();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -1027,7 +1149,14 @@ function nine() {
                     }, 4000);
                 }
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -1050,7 +1179,14 @@ document.getElementById("setSMSBtnD").addEventListener("click", function (event)
             success: function (data) {
                 ten();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -1070,7 +1206,14 @@ function ten() {
             success: function (data) {
                 eleven();
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
@@ -1106,7 +1249,14 @@ function eleven() {
                     }, 4000);
                 }
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (data) {
+                var ob = Object.keys(data);
+                if (ob[17] == "responseJSON") {
+                    errorMessage.textContent = data.responseJSON.errorMessage;
+                }
+                else {
+                    errorMessage.textContent = "Something Went Wrong!";
+                }
                 $('#myModal2').modal('show');
             }
         })
