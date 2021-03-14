@@ -786,22 +786,37 @@ Receiver_CC.addEventListener("click", function (e) {
     }
 });
 
-function showTickModal(data) {
-    setTimeout(function () {
-        $(".circle-loader").addClass("load-complete");
-
-        $('#tickDDD2').show();
-
-        $("#sureDDD2").html("Organization Settings Updated!");
-    }, 1500);
-    setTimeout(function () {
-
-        $("#myModalCreateDDD1").modal('hide');
-    }, 2500);
-
+function showInitialModal(event, button) {
+    event.preventDefault();
+    console.log(button);
+    button.disabled = true;
+    $('#tickDDD2').hide();
+    $(".circle-loader").removeClass("load-complete");
+    $("#sureDDD2").html("");
+    $("#myModalCreateDDD1").modal('show');
+    $("#sureDDD2").html("Please wait!");
 }
 
-function errorShow(data) {
+function showTickSuccessModal(data, button) {
+    console.log(data, button);
+    button.disabled = false;
+    if (data.status == 'OK') {
+        setTimeout(function () {
+            $(".circle-loader").addClass("load-complete");
+
+            $('#tickDDD2').show();
+
+            $("#sureDDD2").html("Organization Settings Updated!");
+        }, 1500);
+        setTimeout(function () {
+
+            $("#myModalCreateDDD1").modal('hide');
+        }, 2500);
+    }
+}
+
+function errorShow(data, button) {
+    button.disabled = false;
     var ob = Object.keys(data);
     if (ob[17] == "responseJSON") {
         errorMessage.textContent = data.responseJSON.errorMessage;
@@ -814,8 +829,7 @@ function errorShow(data) {
 }
 
 document.getElementById("setSMSBtnJC").addEventListener("click", function (event) {
-    event.preventDefault();
-
+    showInitialModal(event, this);
     $.ajax
         ({
             type: stateJC[1] ? "PUT" : "POST",
@@ -827,15 +841,16 @@ document.getElementById("setSMSBtnJC").addEventListener("click", function (event
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                two();
+                two(this);
+                console.log(this);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, this);
             }
         })
 });
 
-function two() {
+function two(button) {
     $.ajax
         ({
             type: stateJC[2] ? "PUT" : "POST",
@@ -847,14 +862,15 @@ function two() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                three();
+                three(button);
+                console.log(button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
             }
         })
 }
-function three() {
+function three(button) {
     $.ajax
         ({
             type: stateJC[3] ? "PUT" : "POST",
@@ -866,17 +882,18 @@ function three() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-
+                console.log(button);
+                showTickSuccessModal(data, button);
             },
             error: function (data) {
-                errorShow(data);
+                errorShow(data, button);
             }
         })
 }
 
 
 document.getElementById("setSMSBtnETP").addEventListener("click", function (event) {
-    event.preventDefault();
+    showInitialModal(event);
     $.ajax
         ({
             type: stateETP[0] ? "PUT" : "POST",
@@ -927,24 +944,7 @@ function five() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                $('#tickDDD2').hide();
-                $(".circle-loader").removeClass("load-complete");
-                $("#sureDDD2").html("");
-                $("#myModalCreateDDD1").modal('show');
-                $("#sureDDD2").html("Please wait!");
-                if (data.status == 'OK') {
-                    setTimeout(function () {
-                        $(".circle-loader").addClass("load-complete");
-
-                        $('#tickDDD2').show();
-
-                        $("#sureDDD2").html("Organization Settings Updated!");
-                    }, 1500);
-                    setTimeout(function () {
-
-                        $("#myModalCreateDDD1").modal('hide');
-                    }, 2500);
-                }
+                showTickSuccessModal(data);
             },
             error: function (data) {
                 errorShow(data);
