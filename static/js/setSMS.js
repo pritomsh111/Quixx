@@ -89,7 +89,6 @@ Receiver_ETP.addEventListener("keyup", function (e) {
     }
 });
 
-
 Org_ETPC.addEventListener("click", function (e) {
     if (this.checked === false) {
         Org_ETP.disabled = false;
@@ -126,6 +125,56 @@ var Org_PUC = document.getElementById("Org_PUC");
 var Mer_PUC = document.getElementById("Mer_PUC");
 var Receiver_PUC = document.getElementById("Receiver_PUC");
 
+
+Org_PU.addEventListener("keyup", function (e) {
+    Org_PUC.disabled = true;
+    if (!Org_PU.value.length) {
+        Org_PUC.disabled = false;
+    }
+});
+
+Mer_PU.addEventListener("keyup", function (e) {
+    Mer_PUC.disabled = true;
+    if (!Mer_PU.value.length) {
+        Mer_PUC.disabled = false;
+    }
+});
+
+Receiver_PU.addEventListener("keyup", function (e) {
+    Receiver_PUC.disabled = true;
+    if (!Receiver_PU.value.length) {
+        Receiver_PUC.disabled = false;
+    }
+});
+
+
+Org_PUC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Org_PU.disabled = false;
+    }
+    else {
+        Org_PU.disabled = true;
+    }
+});
+
+Mer_PUC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Mer_PU.disabled = false;
+    }
+    else {
+        Mer_PU.disabled = true;
+    }
+});
+
+Receiver_PUC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Receiver_PU.disabled = false;
+    }
+    else {
+        Receiver_PU.disabled = true;
+    }
+});
+
 var Org_ETD = document.getElementById("Org_ETD");
 var Mer_ETD = document.getElementById("Mer_ETD");
 var Receiver_ETD = document.getElementById("Receiver_ETD");
@@ -134,6 +183,57 @@ var Org_ETDC = document.getElementById("Org_ETDC");
 var Mer_ETDC = document.getElementById("Mer_ETDC");
 var Receiver_ETDC = document.getElementById("Receiver_ETDC");
 
+
+Org_ETD.addEventListener("keyup", function (e) {
+    Org_ETDC.disabled = true;
+    if (!Org_ETD.value.length) {
+        Org_ETDC.disabled = false;
+    }
+});
+
+Mer_ETD.addEventListener("keyup", function (e) {
+    Mer_ETDC.disabled = true;
+    if (!Mer_ETD.value.length) {
+        Mer_ETDC.disabled = false;
+    }
+});
+
+Receiver_ETD.addEventListener("keyup", function (e) {
+    Receiver_ETDC.disabled = true;
+    if (!Receiver_ETD.value.length) {
+        Receiver_ETDC.disabled = false;
+    }
+});
+
+
+Org_ETDC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Org_ETD.disabled = false;
+    }
+    else {
+        Org_ETD.disabled = true;
+    }
+});
+
+Mer_ETDC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Mer_ETD.disabled = false;
+    }
+    else {
+        Mer_ETD.disabled = true;
+    }
+});
+
+Receiver_ETDC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Receiver_ETD.disabled = false;
+    }
+    else {
+        Receiver_ETD.disabled = true;
+    }
+});
+
+
 var Org_D = document.getElementById("Org_D");
 var Mer_D = document.getElementById("Mer_D");
 var Receiver_D = document.getElementById("Receiver_D");
@@ -141,6 +241,227 @@ var Receiver_D = document.getElementById("Receiver_D");
 var Org_DC = document.getElementById("Org_DC");
 var Mer_DC = document.getElementById("Mer_DC");
 var Receiver_DC = document.getElementById("Receiver_DC");
+
+
+Org_D.addEventListener("keyup", function (e) {
+    Org_DC.disabled = true;
+    if (!Org_D.value.length) {
+        Org_DC.disabled = false;
+    }
+});
+
+Mer_D.addEventListener("keyup", function (e) {
+    Mer_DC.disabled = true;
+    if (!Mer_D.value.length) {
+        Mer_DC.disabled = false;
+    }
+});
+
+Receiver_D.addEventListener("keyup", function (e) {
+    Receiver_DC.disabled = true;
+    if (!Receiver_D.value.length) {
+        Receiver_DC.disabled = false;
+    }
+});
+
+
+Org_DC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Org_D.disabled = false;
+    }
+    else {
+        Org_D.disabled = true;
+    }
+});
+
+Mer_DC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Mer_D.disabled = false;
+    }
+    else {
+        Mer_D.disabled = true;
+    }
+});
+
+Receiver_DC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Receiver_D.disabled = false;
+    }
+    else {
+        Receiver_D.disabled = true;
+    }
+});
+
+var Org_OH = document.getElementById("Org_OH");
+var Mer_OH = document.getElementById("Mer_OH");
+var Receiver_OH = document.getElementById("Receiver_OH");
+
+var Org_OHC = document.getElementById("Org_OHC");
+var Mer_OHC = document.getElementById("Mer_OHC");
+var Receiver_OHC = document.getElementById("Receiver_OHC");
+
+Org_OH.addEventListener("keyup", function (e) {
+    Org_OHC.disabled = true;
+    if (!Org_OH.value.length) {
+        Org_OHC.disabled = false;
+    }
+});
+
+Mer_OH.addEventListener("keyup", function (e) {
+    Mer_OHC.disabled = true;
+    if (!Mer_OH.value.length) {
+        Mer_OHC.disabled = false;
+    }
+});
+
+Receiver_OH.addEventListener("keyup", function (e) {
+    Receiver_OHC.disabled = true;
+    if (!Receiver_OH.value.length) {
+        Receiver_OHC.disabled = false;
+    }
+});
+
+
+Org_OHC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Org_OH.disabled = false;
+    }
+    else {
+        Org_OH.disabled = true;
+    }
+});
+
+Mer_OHC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Mer_OH.disabled = false;
+    }
+    else {
+        Mer_OH.disabled = true;
+    }
+});
+
+Receiver_OHC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Receiver_OH.disabled = false;
+    }
+    else {
+        Receiver_OH.disabled = true;
+    }
+});
+
+var Org_R = document.getElementById("Org_R");
+var Mer_R = document.getElementById("Mer_R");
+var Receiver_R = document.getElementById("Receiver_R");
+
+var Org_RC = document.getElementById("Org_RC");
+var Mer_RC = document.getElementById("Mer_RC");
+var Receiver_RC = document.getElementById("Receiver_RC");
+
+Org_R.addEventListener("keyup", function (e) {
+    Org_RC.disabled = true;
+    if (!Org_R.value.length) {
+        Org_RC.disabled = false;
+    }
+});
+
+Mer_R.addEventListener("keyup", function (e) {
+    Mer_RC.disabled = true;
+    if (!Mer_R.value.length) {
+        Mer_RC.disabled = false;
+    }
+});
+
+Receiver_R.addEventListener("keyup", function (e) {
+    Receiver_RC.disabled = true;
+    if (!Receiver_R.value.length) {
+        Receiver_RC.disabled = false;
+    }
+});
+
+Org_RC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Org_R.disabled = false;
+    }
+    else {
+        Org_R.disabled = true;
+    }
+});
+
+Mer_RC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Mer_R.disabled = false;
+    }
+    else {
+        Mer_R.disabled = true;
+    }
+});
+
+Receiver_RC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Receiver_R.disabled = false;
+    }
+    else {
+        Receiver_R.disabled = true;
+    }
+});
+
+var Org_C = document.getElementById("Org_C");
+var Mer_C = document.getElementById("Mer_C");
+var Receiver_C = document.getElementById("Receiver_C");
+
+var Org_CC = document.getElementById("Org_CC");
+var Mer_CC = document.getElementById("Mer_CC");
+var Receiver_CC = document.getElementById("Receiver_CC");
+
+
+Org_C.addEventListener("keyup", function (e) {
+    Org_CC.disabled = true;
+    if (!Org_C.value.length) {
+        Org_CC.disabled = false;
+    }
+});
+
+Mer_C.addEventListener("keyup", function (e) {
+    Mer_CC.disabled = true;
+    if (!Mer_C.value.length) {
+        Mer_CC.disabled = false;
+    }
+});
+
+Receiver_C.addEventListener("keyup", function (e) {
+    Receiver_CC.disabled = true;
+    if (!Receiver_C.value.length) {
+        Receiver_CC.disabled = false;
+    }
+});
+
+
+Org_CC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Org_C.disabled = false;
+    }
+    else {
+        Org_C.disabled = true;
+    }
+});
+
+Mer_CC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Mer_C.disabled = false;
+    }
+    else {
+        Mer_C.disabled = true;
+    }
+});
+
+Receiver_CC.addEventListener("click", function (e) {
+    if (this.checked === false) {
+        Receiver_C.disabled = false;
+    }
+    else {
+        Receiver_C.disabled = true;
+    }
+});
 
 $.ajax
     ({
@@ -157,14 +478,23 @@ $.ajax
             data.data.map(item => {
                 console.log(item);
                 if (item.state === "ASSIGN") {
+                    if (item.forOrg) {
+                        Org_JC.value = item.customSms ? item.customSms : "";
+                        Org_JCC.checked = item.noSMS;
+                        if (Org_JC.value) {
+                            Org_JCC.disabled = true;
+                        }
+                        if (Org_JCC.checked) {
+                            Org_JC.disabled = true;
+                        }
+                    }
                     if (item.forSender) {
                         Mer_JC.value = item.customSms ? item.customSms : "";
                         Mer_JCC.checked = item.noSMS;
-
                         if (Mer_JC.value) {
                             Mer_JCC.disabled = true;
                         }
-                        else {
+                        if (Mer_JCC.checked) {
                             Mer_JC.disabled = true;
                         }
                     }
@@ -175,77 +505,202 @@ $.ajax
                         if (Receiver_JC.value) {
                             Receiver_JCC.disabled = true;
                         }
-                        else {
+                        if (Receiver_JCC.checked) {
                             Receiver_JC.disabled = true;
-                        }
-                    }
-                    if (item.forOrg) {
-                        Org_JC.value = item.customSms ? item.customSms : "";
-                        Org_JCC.checked = item.noSMS;
-
-                        if (Org_JC.value) {
-                            Org_JCC.disabled = true;
-                        }
-                        else {
-                            Org_JC.disabled = true;
                         }
                     }
                 }
                 if (item.state === "ENROUTE_TO_PICKUP") {
+                    if (item.forOrg) {
+                        Org_ETP.value = item.customSms ? item.customSms : "";
+                        Org_ETPC.checked = item.noSMS;
+
+                        if (Org_ETP.value) {
+                            Org_ETPC.disabled = true;
+                        }
+                        if (Org_ETPC.checked) {
+                            Org_ETP.disabled = true;
+                        }
+                    }
                     if (item.forSender) {
                         Mer_ETP.value = item.customSms ? item.customSms : "";
                         Mer_ETPC.checked = item.noSMS;
+                        if (Mer_ETP.value) {
+                            Mer_ETPC.disabled = true;
+                        }
+                        if (Mer_ETPC.checked) {
+                            Mer_ETP.disabled = true;
+                        }
                     }
                     if (item.forReceiver) {
                         Receiver_ETP.value = item.customSms ? item.customSms : "";
                         Receiver_ETPC.checked = item.noSMS;
-                    }
-                    if (item.forOrg) {
-                        Org_ETP.value = item.customSms ? item.customSms : "";
-                        Org_ETPC.checked = item.noSMS;
+                        if (Receiver_ETP.value) {
+                            Receiver_ETPC.disabled = true;
+                        }
+                        if (Receiver_ETPC.checked) {
+                            Receiver_ETP.disabled = true;
+                        }
                     }
                 }
                 if (item.state === "PICKED_UP") {
+                    if (item.forOrg) {
+                        Org_PU.value = item.customSms;
+                        Org_PUC.checked = item.noSMS;
+                        if (Org_PU.value) {
+                            Org_PUC.disabled = true;
+                        }
+                        if (Org_PUC.checked) {
+                            Org_PU.disabled = true;
+                        }
+                    }
                     if (item.forSender) {
                         Mer_PU.value = item.customSms ? item.customSms : "";
                         Mer_PUC.checked = item.noSMS;
+                        if (Mer_PU.value) {
+                            Mer_PUC.disabled = true;
+                        }
+                        if (Mer_PUC.checked) {
+                            Mer_PU.disabled = true;
+                        }
                     }
                     if (item.forReceiver) {
                         Receiver_PU.value = item.customSms ? item.customSms : "";
                         Receiver_PUC.checked = item.noSMS;
-                    }
-                    if (item.forOrg) {
-                        Org_PU.value = item.customSms;
-                        Org_PUC.checked = item.noSMS;
+                        if (Receiver_PU.value) {
+                            Receiver_PUC.disabled = true;
+                        }
+                        if (Receiver_PUC.checked) {
+                            Receiver_PU.disabled = true;
+                        }
                     }
                 }
                 if (item.state === "ENROUTE_TO_DELIVERY") {
 
+                    if (item.forOrg) {
+                        Org_ETD.value = item.customSms ? item.customSms : "";
+                        Org_ETDC.checked = item.noSMS;
+                        if (Org_ETD.value) {
+                            Org_ETDC.disabled = true;
+                        }
+                        if (Org_ETDC.checked) {
+                            Org_ETD.disabled = true;
+                        }
+
+                    }
                     if (item.forSender) {
                         Mer_ETD.value = item.customSms ? item.customSms : "";
                         Mer_ETDC.checked = item.noSMS;
+                        if (Mer_ETD.value) {
+                            Mer_ETDC.disabled = true;
+                        }
+                        if (Mer_ETDC.checked) {
+                            Mer_ETD.disabled = true;
+                        }
                     }
                     if (item.forReceiver) {
                         Receiver_ETD.value = item.customSms ? item.customSms : "";
                         Receiver_ETDC.checked = item.noSMS;
-                    }
-                    if (item.forOrg) {
-                        Org_ETD.value = item.customSms ? item.customSms : "";
-                        Org_ETDC.checked = item.noSMS;
+                        if (Receiver_ETD.value) {
+                            Receiver_ETDC.disabled = true;
+                        }
+                        if (Receiver_ETDC.checked) {
+                            Receiver_ETD.disabled = true;
+                        }
                     }
                 }
                 if (item.state === "DELIVERED") {
+                    if (item.forOrg) {
+                        Org_D.value = item.customSms ? item.customSms : "";
+                        Org_DC.checked = item.noSMS;
+                        if (Org_D.value) {
+                            Org_DC.disabled = true;
+                        }
+                        if (Org_DC.checked) {
+                            Org_D.disabled = true;
+                        }
+
+                    }
                     if (item.forSender) {
                         Mer_D.value = item.customSms ? item.customSms : "";
                         Mer_DC.checked = item.noSMS;
+                        if (Mer_D.value) {
+                            Mer_DC.disabled = true;
+                        }
+                        if (Mer_DC.checked) {
+                            Mer_D.disabled = true;
+                        }
                     }
                     if (item.forReceiver) {
                         Receiver_D.value = item.customSms ? item.customSms : "";
                         Receiver_DC.checked = item.noSMS;
+                        if (Receiver_D.value) {
+                            Receiver_DC.disabled = true;
+                        }
+                        if (Receiver_DC.checked) {
+                            Receiver_D.disabled = true;
+                        }
                     }
+                }
+                if (item.state === "ON_HOLD") {
                     if (item.forOrg) {
-                        Org_D.value = item.customSms ? item.customSms : "";
-                        Org_DC.checked = item.noSMS;
+                        Org_OH.value = item.customSms ? item.customSms : "";
+                        Org_OHC.checked = item.noSMS;
+                        if (Org_OH.value) {
+                            Org_OHC.disabled = true;
+                        }
+                        if (Org_OHC.checked) {
+                            Org_OH.disabled = true;
+                        }
+
+                    }
+                    if (item.forSender) {
+                        Mer_OH.value = item.customSms ? item.customSms : "";
+                        Mer_OHC.checked = item.noSMS;
+                        if (Mer_OH.value) {
+                            Mer_OHC.disabled = true;
+                        }
+                        if (Mer_OHC.checked) {
+                            Mer_OH.disabled = true;
+                        }
+                    }
+                    if (item.forReceiver) {
+                        Receiver_OH.value = item.customSms ? item.customSms : "";
+                        Receiver_OHC.checked = item.noSMS;
+                        if (Receiver_OH.value) {
+                            Receiver_OHC.disabled = true;
+                        }
+                        if (Receiver_OHC.checked) {
+                            Receiver_OH.disabled = true;
+                        }
+                    }
+                }
+                if (item.state === "RETURNED") {
+                    if (item.forOrg) {
+                        Org_R.value = item.customSms ? item.customSms : "";
+                        Org_RC.checked = item.noSMS;
+                    }
+                    if (item.forSender) {
+                        Mer_R.value = item.customSms ? item.customSms : "";
+                        Mer_RC.checked = item.noSMS;
+                    }
+                    if (item.forReceiver) {
+                        Receiver_R.value = item.customSms ? item.customSms : "";
+                        Receiver_RC.checked = item.noSMS;
+                    }
+                }
+                if (item.state === "CANCELLED") {
+                    if (item.forOrg) {
+                        Org_C.value = item.customSms ? item.customSms : "";
+                        Org_CC.checked = item.noSMS;
+                    }
+                    if (item.forSender) {
+                        Mer_C.value = item.customSms ? item.customSms : "";
+                        Mer_CC.checked = item.noSMS;
+                    }
+                    if (item.forReceiver) {
+                        Receiver_C.value = item.customSms ? item.customSms : "";
+                        Receiver_CC.checked = item.noSMS;
                     }
                 }
             }
