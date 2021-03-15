@@ -837,7 +837,21 @@ function errorShow(data, button) {
     $('#myModal200').modal('show');
 }
 
+function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
+    var counter = 0;
+    org.value || orgc.checked ? ++counter : --counter;
+    mer.value || merc.checked ? ++counter : --counter;
+    rec.value || recc.checked ? ++counter : --counter;
+    return counter === 3;
+}
+
 btnJC.addEventListener("click", function (event) {
+    if (!emptyCheckForJC(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC)) {
+
+        $('#myModal200').modal('show');
+        errorMessage.textContent = data.responseJSON.errorMessage;
+        return;
+    }
     showInitialModal(event, btnJC);
     $.ajax
         ({
