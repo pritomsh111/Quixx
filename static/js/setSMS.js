@@ -497,22 +497,22 @@ function errorShow(data, button) {
 function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
     var counter = 0;
     var text = "";
-    org.value || orgc.checked ? ++counter : text = "Organization - Either give us some text OR select 'No SMS'";
+    org.value || orgc.checked ? ++counter : text = "Organization - Either give some text OR check 'No SMS'";
     if (text) {
         return { counter, text };
     }
-    mer.value || merc.checked ? ++counter : text = "Merchant - Either give us some text OR select 'No SMS'";
+    mer.value || merc.checked ? ++counter : text = "Merchant - Either give some text OR check 'No SMS'";
     if (text) {
         return { counter, text };
     }
-    rec.value || recc.checked ? ++counter : text = "Receiver - Either give us some text OR select 'No SMS'";
+    rec.value || recc.checked ? ++counter : text = "Receiver - Either give some text OR check 'No SMS'";
     return { counter, text };
 }
 
-function check(org, orgc, mer, merc, rec, recc) {
+function check(org, orgc, mer, merc, rec, recc, msg) {
     var checking = emptyCheckForJC(org, orgc, mer, merc, rec, recc);
     if (checking.counter !== 3) {
-        errorMessage.innerHTML = `<h3>${checking.text}</h3>`;
+        errorMessage.innerHTML = `<h3>${msg}<br>${checking.text}</h3>`;
         $('#myModal200').modal('show');
         return false;
     }
@@ -520,7 +520,7 @@ function check(org, orgc, mer, merc, rec, recc) {
 }
 
 btnJC.addEventListener("click", function (event) {
-    if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC)) {
+    if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC, "Just Created:")) {
         return;
     }
     showInitialModal(event, btnJC);
@@ -587,6 +587,9 @@ function three(button) {
 
 
 btnETP.addEventListener("click", function (event) {
+    if (!check(Org_ETP, Org_ETPC, Mer_ETP, Mer_ETPC, Receiver_ETP, Receiver_ETPC, "Enroute To Pickup:")) {
+        return;
+    }
     showInitialModal(event, btnETP);
     $.ajax
         ({
@@ -651,6 +654,9 @@ function five(button) {
 
 
 btnPU.addEventListener("click", function (event) {
+    if (!check(Org_PU, Org_PUC, Mer_PU, Mer_PUC, Receiver_PU, Receiver_PUC, "Picked Up:")) {
+        return;
+    }
     showInitialModal(event, btnPU);
     $.ajax
         ({
@@ -715,6 +721,9 @@ function seven(button) {
 
 
 btnETD.addEventListener("click", function (event) {
+    if (!check(Org_ETD, Org_ETDC, Mer_ETD, Mer_ETDC, Receiver_ETD, Receiver_ETDC, "Enroute To Delivery:")) {
+        return;
+    }
     showInitialModal(event, btnETD);
     $.ajax
         ({
@@ -779,6 +788,9 @@ function nine(button) {
 
 
 btnD.addEventListener("click", function (event) {
+    if (!check(Org_D, Org_DC, Mer_D, Mer_DC, Receiver_D, Receiver_DC, "Delivered:")) {
+        return;
+    }
     showInitialModal(event, btnD);
     $.ajax
         ({
@@ -842,6 +854,9 @@ function eleven(button) {
 }
 
 btnOH.addEventListener("click", function (event) {
+    if (!check(Org_OH, Org_OHC, Mer_OH, Mer_OHC, Receiver_OH, Receiver_OHC, "On Hold:")) {
+        return;
+    }
     showInitialModal(event, btnOH);
     $.ajax
         ({
@@ -906,6 +921,9 @@ function thirteen(button) {
 }
 
 btnR.addEventListener("click", function (event) {
+    if (!check(Org_R, Org_RC, Mer_R, Mer_RC, Receiver_R, Receiver_RC, "Returned:")) {
+        return;
+    }
     showInitialModal(event, btnR);
     $.ajax
         ({
@@ -970,6 +988,9 @@ function fifteen(button) {
 }
 
 btnC.addEventListener("click", function (event) {
+    if (!check(Org_C, Org_CC, Mer_C, Mer_CC, Receiver_C, Receiver_CC, "Cancelled:")) {
+        return;
+    }
     showInitialModal(event, btnC);
     $.ajax
         ({
