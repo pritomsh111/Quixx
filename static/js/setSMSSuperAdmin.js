@@ -87,6 +87,7 @@ approvedORG.addEventListener("change", function (e) {
             success: function (data) {
                 if (data.data) {
                     data.data.map(item => {
+                        console.log(item);
                         if (item.state === "ASSIGN") {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
