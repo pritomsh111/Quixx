@@ -345,52 +345,45 @@ var Org_JCC = document.getElementById("Org_JCC");
 var Mer_JCC = document.getElementById("Mer_JCC");
 var Receiver_JCC = document.getElementById("Receiver_JCC");
 
-Org_JC.addEventListener("keyup", function (e) {
-    Org_JCC.disabled = true;
-    if (!Org_JC.value.length) {
-        Org_JCC.disabled = false;
-    }
-});
 
-Mer_JC.addEventListener("keyup", function (e) {
-    Mer_JCC.disabled = true;
-    if (!Mer_JC.value.length) {
-        Mer_JCC.disabled = false;
+function textBoxKeyupHandler(checkbox, textbox) {
+    checkbox.disabled = true;
+    if (!textbox.value.length) {
+        checkbox.disabled = false;
     }
-});
-
-Receiver_JC.addEventListener("keyup", function (e) {
-    Receiver_JCC.disabled = true;
-    if (!Receiver_JC.value.length) {
-        Receiver_JCC.disabled = false;
-    }
-});
-
-Org_JCC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_JC.disabled = false;
+}
+function checkBoxClickHandler(checkbox, textbox) {
+    if (checkbox.checked === false) {
+        textbox.disabled = false;
     }
     else {
-        Org_JC.disabled = true;
+        textbox.disabled = true;
+        textbox.value = "";
     }
+}
+
+Org_JC.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_JCC, Org_JC);
 });
 
-Mer_JCC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_JC.disabled = false;
-    }
-    else {
-        Mer_JC.disabled = true;
-    }
+Mer_JC.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_JCC, Mer_JC);
 });
 
-Receiver_JCC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_JC.disabled = false;
-    }
-    else {
-        Receiver_JC.disabled = true;
-    }
+Receiver_JC.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_JCC, Receiver_JC);
+});
+
+Org_JCC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_JCC, Org_JC);
+});
+
+Mer_JCC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_JCC, Mer_JC);
+});
+
+Receiver_JCC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_JCC, Receiver_JC);
 });
 
 
@@ -403,52 +396,28 @@ var Mer_ETPC = document.getElementById("Mer_ETPC");
 var Receiver_ETPC = document.getElementById("Receiver_ETPC");
 
 
-Org_ETP.addEventListener("keyup", function (e) {
-    Org_ETPC.disabled = true;
-    if (!Org_ETP.value.length) {
-        Org_ETPC.disabled = false;
-    }
+Org_ETP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_ETPC, Org_ETP);
 });
 
-Mer_ETP.addEventListener("keyup", function (e) {
-    Mer_ETPC.disabled = true;
-    if (!Mer_ETP.value.length) {
-        Mer_ETPC.disabled = false;
-    }
+Mer_ETP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_ETPC, Mer_ETP);
 });
 
-Receiver_ETP.addEventListener("keyup", function (e) {
-    Receiver_ETPC.disabled = true;
-    if (!Receiver_ETP.value.length) {
-        Receiver_ETPC.disabled = false;
-    }
+Receiver_ETP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_ETPC, Receiver_ETP);
 });
 
-Org_ETPC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_ETP.disabled = false;
-    }
-    else {
-        Org_ETP.disabled = true;
-    }
+Org_ETPC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_ETPC, Org_ETP);
 });
 
-Mer_ETPC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_ETP.disabled = false;
-    }
-    else {
-        Mer_ETP.disabled = true;
-    }
+Mer_ETPC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_ETPC, Mer_ETP);
 });
 
-Receiver_ETPC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_ETP.disabled = false;
-    }
-    else {
-        Receiver_ETP.disabled = true;
-    }
+Receiver_ETPC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_ETPC, Receiver_ETP);
 });
 
 
@@ -461,53 +430,28 @@ var Mer_PUC = document.getElementById("Mer_PUC");
 var Receiver_PUC = document.getElementById("Receiver_PUC");
 
 
-Org_PU.addEventListener("keyup", function (e) {
-    Org_PUC.disabled = true;
-    if (!Org_PU.value.length) {
-        Org_PUC.disabled = false;
-    }
+Org_PU.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_PUC, Org_PU);
 });
 
-Mer_PU.addEventListener("keyup", function (e) {
-    Mer_PUC.disabled = true;
-    if (!Mer_PU.value.length) {
-        Mer_PUC.disabled = false;
-    }
+Mer_PU.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_PUC, Mer_PU);
 });
 
-Receiver_PU.addEventListener("keyup", function (e) {
-    Receiver_PUC.disabled = true;
-    if (!Receiver_PU.value.length) {
-        Receiver_PUC.disabled = false;
-    }
+Receiver_PU.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_PUC, Receiver_PU);
 });
 
-
-Org_PUC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_PU.disabled = false;
-    }
-    else {
-        Org_PU.disabled = true;
-    }
+Org_PUC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_PUC, Org_PU);
 });
 
-Mer_PUC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_PU.disabled = false;
-    }
-    else {
-        Mer_PU.disabled = true;
-    }
+Mer_PUC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_PUC, Mer_PU);
 });
 
-Receiver_PUC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_PU.disabled = false;
-    }
-    else {
-        Receiver_PU.disabled = true;
-    }
+Receiver_PUC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_PUC, Receiver_PU);
 });
 
 var Org_ETD = document.getElementById("Org_ETD");
@@ -519,53 +463,29 @@ var Mer_ETDC = document.getElementById("Mer_ETDC");
 var Receiver_ETDC = document.getElementById("Receiver_ETDC");
 
 
-Org_ETD.addEventListener("keyup", function (e) {
-    Org_ETDC.disabled = true;
-    if (!Org_ETD.value.length) {
-        Org_ETDC.disabled = false;
-    }
+Org_ETD.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_ETDC, Org_ETD);
 });
 
-Mer_ETD.addEventListener("keyup", function (e) {
-    Mer_ETDC.disabled = true;
-    if (!Mer_ETD.value.length) {
-        Mer_ETDC.disabled = false;
-    }
+Mer_ETD.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_ETDC, Mer_ETD);
 });
 
-Receiver_ETD.addEventListener("keyup", function (e) {
-    Receiver_ETDC.disabled = true;
-    if (!Receiver_ETD.value.length) {
-        Receiver_ETDC.disabled = false;
-    }
+Receiver_ETD.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_ETDC, Receiver_ETD);
 });
 
 
-Org_ETDC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_ETD.disabled = false;
-    }
-    else {
-        Org_ETD.disabled = true;
-    }
+Org_ETDC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_ETDC, Org_ETD);
 });
 
-Mer_ETDC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_ETD.disabled = false;
-    }
-    else {
-        Mer_ETD.disabled = true;
-    }
+Mer_ETDC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_ETDC, Mer_ETD);
 });
 
-Receiver_ETDC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_ETD.disabled = false;
-    }
-    else {
-        Receiver_ETD.disabled = true;
-    }
+Receiver_ETDC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_ETDC, Receiver_ETD);
 });
 
 var Org_D = document.getElementById("Org_D");
@@ -577,53 +497,29 @@ var Mer_DC = document.getElementById("Mer_DC");
 var Receiver_DC = document.getElementById("Receiver_DC");
 
 
-Org_D.addEventListener("keyup", function (e) {
-    Org_DC.disabled = true;
-    if (!Org_D.value.length) {
-        Org_DC.disabled = false;
-    }
+Org_D.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_DC, Org_D);
 });
 
-Mer_D.addEventListener("keyup", function (e) {
-    Mer_DC.disabled = true;
-    if (!Mer_D.value.length) {
-        Mer_DC.disabled = false;
-    }
+Mer_D.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_DC, Mer_D);
 });
 
-Receiver_D.addEventListener("keyup", function (e) {
-    Receiver_DC.disabled = true;
-    if (!Receiver_D.value.length) {
-        Receiver_DC.disabled = false;
-    }
+Receiver_D.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_DC, Receiver_D);
 });
 
 
-Org_DC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_D.disabled = false;
-    }
-    else {
-        Org_D.disabled = true;
-    }
+Org_DC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_DC, Org_D);
 });
 
-Mer_DC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_D.disabled = false;
-    }
-    else {
-        Mer_D.disabled = true;
-    }
+Mer_DC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_DC, Mer_D);
 });
 
-Receiver_DC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_D.disabled = false;
-    }
-    else {
-        Receiver_D.disabled = true;
-    }
+Receiver_DC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_DC, Receiver_D);
 });
 
 var Org_OH = document.getElementById("Org_OH");
@@ -634,53 +530,28 @@ var Org_OHC = document.getElementById("Org_OHC");
 var Mer_OHC = document.getElementById("Mer_OHC");
 var Receiver_OHC = document.getElementById("Receiver_OHC");
 
-Org_OH.addEventListener("keyup", function (e) {
-    Org_OHC.disabled = true;
-    if (!Org_OH.value.length) {
-        Org_OHC.disabled = false;
-    }
+Org_OH.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_OHC, Org_OH);
 });
 
-Mer_OH.addEventListener("keyup", function (e) {
-    Mer_OHC.disabled = true;
-    if (!Mer_OH.value.length) {
-        Mer_OHC.disabled = false;
-    }
+Mer_OH.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_OHC, Mer_OH);
 });
 
-Receiver_OH.addEventListener("keyup", function (e) {
-    Receiver_OHC.disabled = true;
-    if (!Receiver_OH.value.length) {
-        Receiver_OHC.disabled = false;
-    }
+Receiver_OH.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_OHC, Receiver_OH);
 });
 
-
-Org_OHC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_OH.disabled = false;
-    }
-    else {
-        Org_OH.disabled = true;
-    }
+Org_OHC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_OHC, Org_OH);
 });
 
-Mer_OHC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_OH.disabled = false;
-    }
-    else {
-        Mer_OH.disabled = true;
-    }
+Mer_OHC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_OHC, Mer_OH);
 });
 
-Receiver_OHC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_OH.disabled = false;
-    }
-    else {
-        Receiver_OH.disabled = true;
-    }
+Receiver_OHC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_OHC, Receiver_OH);
 });
 
 var Org_R = document.getElementById("Org_R");
@@ -691,52 +562,28 @@ var Org_RC = document.getElementById("Org_RC");
 var Mer_RC = document.getElementById("Mer_RC");
 var Receiver_RC = document.getElementById("Receiver_RC");
 
-Org_R.addEventListener("keyup", function (e) {
-    Org_RC.disabled = true;
-    if (!Org_R.value.length) {
-        Org_RC.disabled = false;
-    }
+Org_R.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_RC, Org_R);
 });
 
-Mer_R.addEventListener("keyup", function (e) {
-    Mer_RC.disabled = true;
-    if (!Mer_R.value.length) {
-        Mer_RC.disabled = false;
-    }
+Mer_R.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_RC, Mer_R);
 });
 
-Receiver_R.addEventListener("keyup", function (e) {
-    Receiver_RC.disabled = true;
-    if (!Receiver_R.value.length) {
-        Receiver_RC.disabled = false;
-    }
+Receiver_R.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_RC, Receiver_R);
 });
 
-Org_RC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_R.disabled = false;
-    }
-    else {
-        Org_R.disabled = true;
-    }
+Org_RC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_RC, Org_R);
 });
 
-Mer_RC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_R.disabled = false;
-    }
-    else {
-        Mer_R.disabled = true;
-    }
+Mer_RC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_RC, Mer_R);
 });
 
-Receiver_RC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_R.disabled = false;
-    }
-    else {
-        Receiver_R.disabled = true;
-    }
+Receiver_RC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_RC, Receiver_R);
 });
 
 var Org_C = document.getElementById("Org_C");
@@ -747,54 +594,28 @@ var Org_CC = document.getElementById("Org_CC");
 var Mer_CC = document.getElementById("Mer_CC");
 var Receiver_CC = document.getElementById("Receiver_CC");
 
-
-Org_C.addEventListener("keyup", function (e) {
-    Org_CC.disabled = true;
-    if (!Org_C.value.length) {
-        Org_CC.disabled = false;
-    }
+Org_C.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_CC, Org_C);
 });
 
-Mer_C.addEventListener("keyup", function (e) {
-    Mer_CC.disabled = true;
-    if (!Mer_C.value.length) {
-        Mer_CC.disabled = false;
-    }
+Mer_C.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_CC, Mer_C);
 });
 
-Receiver_C.addEventListener("keyup", function (e) {
-    Receiver_CC.disabled = true;
-    if (!Receiver_C.value.length) {
-        Receiver_CC.disabled = false;
-    }
+Receiver_C.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_CC, Receiver_C);
 });
 
-
-Org_CC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_C.disabled = false;
-    }
-    else {
-        Org_C.disabled = true;
-    }
+Org_CC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_CC, Org_C);
 });
 
-Mer_CC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_C.disabled = false;
-    }
-    else {
-        Mer_C.disabled = true;
-    }
+Mer_CC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_CC, Mer_C);
 });
 
-Receiver_CC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_C.disabled = false;
-    }
-    else {
-        Receiver_C.disabled = true;
-    }
+Receiver_CC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_CC, Receiver_C);
 });
 
 function showInitialModal(event, button) {
@@ -854,10 +675,7 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
 
 function check() {
     var checking = emptyCheckForJC(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC);
-
-    console.log(checking);
     if (checking.counter !== 3) {
-        console.log(checking);
         errorMessage.innerHTML = `<h3>${checking.text}</h3>`;
         $('#myModal200').modal('show');
         return false;
@@ -869,25 +687,25 @@ btnJC.addEventListener("click", function (event) {
     if (!check()) {
         return;
     }
-    // showInitialModal(event, btnJC);
-    // $.ajax
-    //     ({
-    //         type: stateJC[1] ? "PUT" : "POST",
-    //         url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
-    //         headers:
-    //         {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
-    //         },
-    //         success: function (data) {
-    //             stateJC[1] = 1;
-    //             two(btnJC);
-    //         },
-    //         error: function (data) {
-    //             errorShow(data, btnJC);
-    //         }
-    //     })
+    showInitialModal(event, btnJC);
+    $.ajax
+        ({
+            type: stateJC[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateJC[1] = 1;
+                two(btnJC);
+            },
+            error: function (data) {
+                errorShow(data, btnJC);
+            }
+        })
 });
 
 function two(button) {
