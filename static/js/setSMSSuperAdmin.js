@@ -1001,11 +1001,10 @@ btnJC.addEventListener("click", function (event) {
                 errorShow(data, btnJC);
             }
         })
-    showInitialModal(event, btnJC);
     $.ajax
         ({
-            type: stateJC[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1013,8 +1012,6 @@ btnJC.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                stateJC[1] = 1;
-                two(btnJC);
             },
             error: function (data) {
                 errorShow(data, btnJC);
@@ -1027,6 +1024,24 @@ function two(button) {
         ({
             type: stateJC[2] ? "PUT" : "POST",
             url: `${urlForAll}custom/sms/${stateJC[2] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateJC[2] = 1;
+                three(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1056,6 +1071,22 @@ function three(button) {
             success: function (data) {
                 stateJC[3] = 1;
                 showTickSuccessModal(data, button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
             },
             error: function (data) {
                 errorShow(data, button);
