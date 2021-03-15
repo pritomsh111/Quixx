@@ -12,7 +12,7 @@
 
   .flex-all{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     place-items: center;
   }
 
@@ -26,9 +26,7 @@
   }
 
   .flex-all>div label{
-      width: 80px;
       margin: 0.2rem auto;
-      
   }
   @media (max-width: 1475px){
     .flex-all{
@@ -36,7 +34,7 @@
     }
   }
   
-  @media (max-width: 750px){
+  @media (max-width: 1250px){
     .flex-all{
         grid-template-columns: 1fr
     }
@@ -118,7 +116,7 @@
                             <select class="browser-default custom-select col-lg-12 btn" style="height:46px;" id="unapprovedOrg"></select>
                         </form>
                         <form class="p-5" style="color: #0066b3; text-align: left" id="formDD">
-                            <h4 class="center-tx">State: Just Created -&gt; Assign</h4>
+                            <h3 class="center-tx">State: Just Created -&gt; Assign</h3>
                             <div class="flex-all">
                                 <div>
                                     <label for="just_created">Organiztion:</label>
@@ -197,7 +195,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <h4 class="center-tx">State: Assign -&gt; Enroute To Pickup</h4>
+                            <h3 class="center-tx">State: Assign -&gt; Enroute To Pickup</h3>
                             <div class="flex-all">
                                 <div>
                                     <label for="enroute_to_pickup">Organiztion:</label>
@@ -276,7 +274,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <h4 class="center-tx">State: Enroute To Pickup  -&gt; Picked Up</h4>
+                            <h3 class="center-tx">State: Enroute To Pickup  -&gt; Picked Up</h3>
                             <div class="flex-all">
                                 <div>
                                     <label for="picked_up">Organiztion:</label>
@@ -355,7 +353,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <h4 class="center-tx">State: Picked Up -&gt; Enroute To Delivery</h4>
+                            <h3 class="center-tx">State: Picked Up -&gt; Enroute To Delivery</h3>
                             <div class="flex-all">
                                 <div>
                                     <label for="enroute_to_delivery">Organiztion:</label>
@@ -434,7 +432,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <h4 class="center-tx">State: Enroute To Delivery -&gt; Delivered</h4>
+                            <h3 class="center-tx">State: Enroute To Delivery -&gt; Delivered</h3>
                             <div class="flex-all">
                                 <div>
                                     <label for="delivered">Organiztion:</label>
@@ -513,7 +511,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <h4 class="center-tx">State: On Hold</h4>
+                            <h3 class="center-tx">State: On Hold</h3>
                             <div class="flex-all">
                                 <div>
                                     <label for="onHold">Organiztion:</label>
@@ -592,7 +590,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <h4 class="center-tx">State: Returned</h4>
+                            <h3 class="center-tx">State: Returned</h3>
                             <div class="flex-all">
                                 <div>
                                     <label for="returned">Organiztion:</label>
@@ -671,7 +669,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <h4 class="center-tx">State: Cancelled</h4>
+                            <h3 class="center-tx">State: Cancelled</h3>
                             <div class="flex-all">
                                 <div>
                                     <label for="cancelled">Organiztion:</label>
