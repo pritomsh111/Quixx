@@ -509,8 +509,8 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
     return { counter, text };
 }
 
-function check() {
-    var checking = emptyCheckForJC(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC);
+function check(org, orgc, mer, merc, rec, recc) {
+    var checking = emptyCheckForJC(org, orgc, mer, merc, rec, recc);
     if (checking.counter !== 3) {
         errorMessage.innerHTML = `<h3>${checking.text}</h3>`;
         $('#myModal200').modal('show');
@@ -520,7 +520,7 @@ function check() {
 }
 
 btnJC.addEventListener("click", function (event) {
-    if (!check()) {
+    if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC)) {
         return;
     }
     showInitialModal(event, btnJC);
