@@ -2,11 +2,75 @@ $(document).ready(function () {
     $("#settings").hide();
     var orgIDs = [4, 12, 25, 397];
     var orgID = 4;
+    $('#approvedOrg')
+        .empty()
+        .append('<option selected="selected" value="">Choose ORG</option>')
+        ;
+    for (var i = 0; i < orgIDs.length; i++) {
+        var option = new Option(orgIDs[i], orgIDs[i]);
+        $(option).html(orgIDs[i]);
+        $("#approvedOrg").append(option);
+    }
+    // $.ajax
+    //     ({
+    //         url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
+    //         type: "GET",
+    //         async: true,
+    //         headers:
+    //         {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
+    //         },
+
+    //         success: function (data) {
+    //             dataInfo = data;
+    //             $('#approvedOrg')
+    //     .empty()
+    //     .append('<option selected="selected" value="">Choose ORG</option>')
+    //     ;
+    // for (var i = 0; i < orgIDs.length; i++) {
+    //     var option = new Option(orgIDs[i], orgIDs[i]);
+    //     $(option).html(orgIDs[i]);
+    //     $("#approvedOrg").append(option);
+    // }
+    //         }
+    //     });
+    // $.ajax
+    //     ({
+    //         url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
+    //         type: "GET",
+    //         async: true,
+    //         headers:
+    //         {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
+    //         },
+
+    //         success: function (data) {
+    //             $('#unapprovedOrg')
+    //     .empty()
+    //     .append('<option selected="selected" value="">Choose ORG</option>')
+    //     ;
+    // for (var i = 0; i < orgIDs.length; i++) {
+    //     var option = new Option(orgIDs[i], orgIDs[i]);
+    //     $(option).html(orgIDs[i]);
+    //     $("#unapprovedOrg").append(option);
+    // }
+    //         }
+    //     });
+});
+
+var approvedORG = document.getElementById("approvedOrg");
+var unapprovedORG = document.getElementById("approvedOrg");
+
+approvedORG.addEventListener("change", function (e) {
     $.ajax
         ({
             async: true,
             type: "GET",
-            url: urlForAll + "custom/sms/get/" + orgID,
+            url: urlForAll + "custom/sms/get/" + this.value,
             headers:
             {
                 'Accept': 'application/json',
@@ -14,295 +78,300 @@ $(document).ready(function () {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                data.data.map(item => {
-                    if (item.state === "ASSIGN") {
-                        if (item.forOrg) {
-                            stateJC[1] = 1;
-                            Org_JC.value = item.customSms ? item.customSms : "";
-                            Org_JCC.checked = item.noSMS;
-                            if (Org_JC.value) {
-                                Org_JCC.disabled = true;
+                if (data.data) {
+                    data.data.map(item => {
+                        if (item.state === "ASSIGN") {
+                            if (item.forOrg) {
+                                stateJC[1] = 1;
+                                Org_JC.value = item.customSms ? item.customSms : "";
+                                Org_JCC.checked = item.noSMS;
+                                if (Org_JC.value) {
+                                    Org_JCC.disabled = true;
+                                }
+                                if (Org_JCC.checked) {
+                                    Org_JC.disabled = true;
+                                }
                             }
-                            if (Org_JCC.checked) {
-                                Org_JC.disabled = true;
+                            if (item.forSender) {
+                                stateJC[2] = 1;
+                                Mer_JC.value = item.customSms ? item.customSms : "";
+                                Mer_JCC.checked = item.noSMS;
+                                if (Mer_JC.value) {
+                                    Mer_JCC.disabled = true;
+                                }
+                                if (Mer_JCC.checked) {
+                                    Mer_JC.disabled = true;
+                                }
                             }
-                        }
-                        if (item.forSender) {
-                            stateJC[2] = 1;
-                            Mer_JC.value = item.customSms ? item.customSms : "";
-                            Mer_JCC.checked = item.noSMS;
-                            if (Mer_JC.value) {
-                                Mer_JCC.disabled = true;
-                            }
-                            if (Mer_JCC.checked) {
-                                Mer_JC.disabled = true;
-                            }
-                        }
-                        if (item.forReceiver) {
-                            stateJC[3] = 1;
-                            Receiver_JC.value = item.customSms ? item.customSms : "";
-                            Receiver_JCC.checked = item.noSMS;
+                            if (item.forReceiver) {
+                                stateJC[3] = 1;
+                                Receiver_JC.value = item.customSms ? item.customSms : "";
+                                Receiver_JCC.checked = item.noSMS;
 
-                            if (Receiver_JC.value) {
-                                Receiver_JCC.disabled = true;
-                            }
-                            if (Receiver_JCC.checked) {
-                                Receiver_JC.disabled = true;
+                                if (Receiver_JC.value) {
+                                    Receiver_JCC.disabled = true;
+                                }
+                                if (Receiver_JCC.checked) {
+                                    Receiver_JC.disabled = true;
+                                }
                             }
                         }
-                    }
-                    if (item.state === "ENROUTE_TO_PICKUP") {
-                        if (item.forOrg) {
-                            stateETP[1] = 1;
-                            Org_ETP.value = item.customSms ? item.customSms : "";
-                            Org_ETPC.checked = item.noSMS;
+                        if (item.state === "ENROUTE_TO_PICKUP") {
+                            if (item.forOrg) {
+                                stateETP[1] = 1;
+                                Org_ETP.value = item.customSms ? item.customSms : "";
+                                Org_ETPC.checked = item.noSMS;
 
-                            if (Org_ETP.value) {
-                                Org_ETPC.disabled = true;
+                                if (Org_ETP.value) {
+                                    Org_ETPC.disabled = true;
+                                }
+                                if (Org_ETPC.checked) {
+                                    Org_ETP.disabled = true;
+                                }
                             }
-                            if (Org_ETPC.checked) {
-                                Org_ETP.disabled = true;
+                            if (item.forSender) {
+                                stateETP[2] = 1;
+                                Mer_ETP.value = item.customSms ? item.customSms : "";
+                                Mer_ETPC.checked = item.noSMS;
+                                if (Mer_ETP.value) {
+                                    Mer_ETPC.disabled = true;
+                                }
+                                if (Mer_ETPC.checked) {
+                                    Mer_ETP.disabled = true;
+                                }
                             }
-                        }
-                        if (item.forSender) {
-                            stateETP[2] = 1;
-                            Mer_ETP.value = item.customSms ? item.customSms : "";
-                            Mer_ETPC.checked = item.noSMS;
-                            if (Mer_ETP.value) {
-                                Mer_ETPC.disabled = true;
-                            }
-                            if (Mer_ETPC.checked) {
-                                Mer_ETP.disabled = true;
-                            }
-                        }
-                        if (item.forReceiver) {
-                            stateETP[3] = 1;
-                            Receiver_ETP.value = item.customSms ? item.customSms : "";
-                            Receiver_ETPC.checked = item.noSMS;
-                            if (Receiver_ETP.value) {
-                                Receiver_ETPC.disabled = true;
-                            }
-                            if (Receiver_ETPC.checked) {
-                                Receiver_ETP.disabled = true;
-                            }
-                        }
-                    }
-                    if (item.state === "PICKED_UP") {
-                        if (item.forOrg) {
-                            statePU[1] = 1;
-                            Org_PU.value = item.customSms;
-                            Org_PUC.checked = item.noSMS;
-                            if (Org_PU.value) {
-                                Org_PUC.disabled = true;
-                            }
-                            if (Org_PUC.checked) {
-                                Org_PU.disabled = true;
+                            if (item.forReceiver) {
+                                stateETP[3] = 1;
+                                Receiver_ETP.value = item.customSms ? item.customSms : "";
+                                Receiver_ETPC.checked = item.noSMS;
+                                if (Receiver_ETP.value) {
+                                    Receiver_ETPC.disabled = true;
+                                }
+                                if (Receiver_ETPC.checked) {
+                                    Receiver_ETP.disabled = true;
+                                }
                             }
                         }
-                        if (item.forSender) {
-                            statePU[2] = 1;
-                            Mer_PU.value = item.customSms ? item.customSms : "";
-                            Mer_PUC.checked = item.noSMS;
-                            if (Mer_PU.value) {
-                                Mer_PUC.disabled = true;
+                        if (item.state === "PICKED_UP") {
+                            if (item.forOrg) {
+                                statePU[1] = 1;
+                                Org_PU.value = item.customSms;
+                                Org_PUC.checked = item.noSMS;
+                                if (Org_PU.value) {
+                                    Org_PUC.disabled = true;
+                                }
+                                if (Org_PUC.checked) {
+                                    Org_PU.disabled = true;
+                                }
                             }
-                            if (Mer_PUC.checked) {
-                                Mer_PU.disabled = true;
+                            if (item.forSender) {
+                                statePU[2] = 1;
+                                Mer_PU.value = item.customSms ? item.customSms : "";
+                                Mer_PUC.checked = item.noSMS;
+                                if (Mer_PU.value) {
+                                    Mer_PUC.disabled = true;
+                                }
+                                if (Mer_PUC.checked) {
+                                    Mer_PU.disabled = true;
+                                }
+                            }
+                            if (item.forReceiver) {
+                                statePU[3] = 1;
+                                Receiver_PU.value = item.customSms ? item.customSms : "";
+                                Receiver_PUC.checked = item.noSMS;
+                                if (Receiver_PU.value) {
+                                    Receiver_PUC.disabled = true;
+                                }
+                                if (Receiver_PUC.checked) {
+                                    Receiver_PU.disabled = true;
+                                }
                             }
                         }
-                        if (item.forReceiver) {
-                            statePU[3] = 1;
-                            Receiver_PU.value = item.customSms ? item.customSms : "";
-                            Receiver_PUC.checked = item.noSMS;
-                            if (Receiver_PU.value) {
-                                Receiver_PUC.disabled = true;
-                            }
-                            if (Receiver_PUC.checked) {
-                                Receiver_PU.disabled = true;
-                            }
-                        }
-                    }
-                    if (item.state === "ENROUTE_TO_DELIVERY") {
-                        if (item.forOrg) {
-                            stateETD[1] = 1;
-                            Org_ETD.value = item.customSms ? item.customSms : "";
-                            Org_ETDC.checked = item.noSMS;
-                            if (Org_ETD.value) {
-                                Org_ETDC.disabled = true;
-                            }
-                            if (Org_ETDC.checked) {
-                                Org_ETD.disabled = true;
-                            }
+                        if (item.state === "ENROUTE_TO_DELIVERY") {
+                            if (item.forOrg) {
+                                stateETD[1] = 1;
+                                Org_ETD.value = item.customSms ? item.customSms : "";
+                                Org_ETDC.checked = item.noSMS;
+                                if (Org_ETD.value) {
+                                    Org_ETDC.disabled = true;
+                                }
+                                if (Org_ETDC.checked) {
+                                    Org_ETD.disabled = true;
+                                }
 
+                            }
+                            if (item.forSender) {
+                                stateETD[2] = 1;
+                                Mer_ETD.value = item.customSms ? item.customSms : "";
+                                Mer_ETDC.checked = item.noSMS;
+                                if (Mer_ETD.value) {
+                                    Mer_ETDC.disabled = true;
+                                }
+                                if (Mer_ETDC.checked) {
+                                    Mer_ETD.disabled = true;
+                                }
+                            }
+                            if (item.forReceiver) {
+                                stateETD[3] = 1;
+                                Receiver_ETD.value = item.customSms ? item.customSms : "";
+                                Receiver_ETDC.checked = item.noSMS;
+                                if (Receiver_ETD.value) {
+                                    Receiver_ETDC.disabled = true;
+                                }
+                                if (Receiver_ETDC.checked) {
+                                    Receiver_ETD.disabled = true;
+                                }
+                            }
                         }
-                        if (item.forSender) {
-                            stateETD[2] = 1;
-                            Mer_ETD.value = item.customSms ? item.customSms : "";
-                            Mer_ETDC.checked = item.noSMS;
-                            if (Mer_ETD.value) {
-                                Mer_ETDC.disabled = true;
-                            }
-                            if (Mer_ETDC.checked) {
-                                Mer_ETD.disabled = true;
-                            }
-                        }
-                        if (item.forReceiver) {
-                            stateETD[3] = 1;
-                            Receiver_ETD.value = item.customSms ? item.customSms : "";
-                            Receiver_ETDC.checked = item.noSMS;
-                            if (Receiver_ETD.value) {
-                                Receiver_ETDC.disabled = true;
-                            }
-                            if (Receiver_ETDC.checked) {
-                                Receiver_ETD.disabled = true;
-                            }
-                        }
-                    }
-                    if (item.state === "DELIVERED") {
-                        if (item.forOrg) {
-                            stateD[1] = 1;
-                            Org_D.value = item.customSms ? item.customSms : "";
-                            Org_DC.checked = item.noSMS;
-                            if (Org_D.value) {
-                                Org_DC.disabled = true;
-                            }
-                            if (Org_DC.checked) {
-                                Org_D.disabled = true;
-                            }
+                        if (item.state === "DELIVERED") {
+                            if (item.forOrg) {
+                                stateD[1] = 1;
+                                Org_D.value = item.customSms ? item.customSms : "";
+                                Org_DC.checked = item.noSMS;
+                                if (Org_D.value) {
+                                    Org_DC.disabled = true;
+                                }
+                                if (Org_DC.checked) {
+                                    Org_D.disabled = true;
+                                }
 
+                            }
+                            if (item.forSender) {
+                                stateD[2] = 1;
+                                Mer_D.value = item.customSms ? item.customSms : "";
+                                Mer_DC.checked = item.noSMS;
+                                if (Mer_D.value) {
+                                    Mer_DC.disabled = true;
+                                }
+                                if (Mer_DC.checked) {
+                                    Mer_D.disabled = true;
+                                }
+                            }
+                            if (item.forReceiver) {
+                                stateD[3] = 1;
+                                Receiver_D.value = item.customSms ? item.customSms : "";
+                                Receiver_DC.checked = item.noSMS;
+                                if (Receiver_D.value) {
+                                    Receiver_DC.disabled = true;
+                                }
+                                if (Receiver_DC.checked) {
+                                    Receiver_D.disabled = true;
+                                }
+                            }
                         }
-                        if (item.forSender) {
-                            stateD[2] = 1;
-                            Mer_D.value = item.customSms ? item.customSms : "";
-                            Mer_DC.checked = item.noSMS;
-                            if (Mer_D.value) {
-                                Mer_DC.disabled = true;
-                            }
-                            if (Mer_DC.checked) {
-                                Mer_D.disabled = true;
-                            }
-                        }
-                        if (item.forReceiver) {
-                            stateD[3] = 1;
-                            Receiver_D.value = item.customSms ? item.customSms : "";
-                            Receiver_DC.checked = item.noSMS;
-                            if (Receiver_D.value) {
-                                Receiver_DC.disabled = true;
-                            }
-                            if (Receiver_DC.checked) {
-                                Receiver_D.disabled = true;
-                            }
-                        }
-                    }
-                    if (item.state === "ON_HOLD") {
-                        if (item.forOrg) {
-                            stateOH[1] = 1;
-                            Org_OH.value = item.customSms ? item.customSms : "";
-                            Org_OHC.checked = item.noSMS;
-                            if (Org_OH.value) {
-                                Org_OHC.disabled = true;
-                            }
-                            if (Org_OHC.checked) {
-                                Org_OH.disabled = true;
-                            }
+                        if (item.state === "ON_HOLD") {
+                            if (item.forOrg) {
+                                stateOH[1] = 1;
+                                Org_OH.value = item.customSms ? item.customSms : "";
+                                Org_OHC.checked = item.noSMS;
+                                if (Org_OH.value) {
+                                    Org_OHC.disabled = true;
+                                }
+                                if (Org_OHC.checked) {
+                                    Org_OH.disabled = true;
+                                }
 
-                        }
-                        if (item.forSender) {
-                            stateOH[2] = 1;
-                            Mer_OH.value = item.customSms ? item.customSms : "";
-                            Mer_OHC.checked = item.noSMS;
-                            if (Mer_OH.value) {
-                                Mer_OHC.disabled = true;
                             }
-                            if (Mer_OHC.checked) {
-                                Mer_OH.disabled = true;
+                            if (item.forSender) {
+                                stateOH[2] = 1;
+                                Mer_OH.value = item.customSms ? item.customSms : "";
+                                Mer_OHC.checked = item.noSMS;
+                                if (Mer_OH.value) {
+                                    Mer_OHC.disabled = true;
+                                }
+                                if (Mer_OHC.checked) {
+                                    Mer_OH.disabled = true;
+                                }
                             }
-                        }
-                        if (item.forReceiver) {
-                            stateOH[3] = 1;
-                            Receiver_OH.value = item.customSms ? item.customSms : "";
-                            Receiver_OHC.checked = item.noSMS;
-                            if (Receiver_OH.value) {
-                                Receiver_OHC.disabled = true;
-                            }
-                            if (Receiver_OHC.checked) {
-                                Receiver_OH.disabled = true;
-                            }
-                        }
-                    }
-                    if (item.state === "RETURNED") {
-                        if (item.forOrg) {
-                            stateR[1] = 1;
-                            Org_R.value = item.customSms ? item.customSms : "";
-                            Org_RC.checked = item.noSMS;
-                            if (Org_R.value) {
-                                Org_RC.disabled = true;
-                            }
-                            if (Org_RC.checked) {
-                                Org_R.disabled = true;
+                            if (item.forReceiver) {
+                                stateOH[3] = 1;
+                                Receiver_OH.value = item.customSms ? item.customSms : "";
+                                Receiver_OHC.checked = item.noSMS;
+                                if (Receiver_OH.value) {
+                                    Receiver_OHC.disabled = true;
+                                }
+                                if (Receiver_OHC.checked) {
+                                    Receiver_OH.disabled = true;
+                                }
                             }
                         }
-                        if (item.forSender) {
-                            stateR[2] = 1;
-                            Mer_R.value = item.customSms ? item.customSms : "";
-                            Mer_RC.checked = item.noSMS;
-                            if (Mer_R.value) {
-                                Mer_RC.disabled = true;
+                        if (item.state === "RETURNED") {
+                            if (item.forOrg) {
+                                stateR[1] = 1;
+                                Org_R.value = item.customSms ? item.customSms : "";
+                                Org_RC.checked = item.noSMS;
+                                if (Org_R.value) {
+                                    Org_RC.disabled = true;
+                                }
+                                if (Org_RC.checked) {
+                                    Org_R.disabled = true;
+                                }
                             }
-                            if (Mer_RC.checked) {
-                                Mer_R.disabled = true;
+                            if (item.forSender) {
+                                stateR[2] = 1;
+                                Mer_R.value = item.customSms ? item.customSms : "";
+                                Mer_RC.checked = item.noSMS;
+                                if (Mer_R.value) {
+                                    Mer_RC.disabled = true;
+                                }
+                                if (Mer_RC.checked) {
+                                    Mer_R.disabled = true;
+                                }
+                            }
+                            if (item.forReceiver) {
+                                stateR[3] = 1;
+                                Receiver_R.value = item.customSms ? item.customSms : "";
+                                Receiver_RC.checked = item.noSMS;
+                                if (Receiver_R.value) {
+                                    Receiver_RC.disabled = true;
+                                }
+                                if (Receiver_RC.checked) {
+                                    Receiver_R.disabled = true;
+                                }
                             }
                         }
-                        if (item.forReceiver) {
-                            stateR[3] = 1;
-                            Receiver_R.value = item.customSms ? item.customSms : "";
-                            Receiver_RC.checked = item.noSMS;
-                            if (Receiver_R.value) {
-                                Receiver_RC.disabled = true;
+                        if (item.state === "CANCELLED") {
+                            if (item.forOrg) {
+                                stateC[1] = 1;
+                                Org_C.value = item.customSms ? item.customSms : "";
+                                Org_CC.checked = item.noSMS;
+                                if (Org_C.value) {
+                                    Org_CC.disabled = true;
+                                }
+                                if (Org_CC.checked) {
+                                    Org_C.disabled = true;
+                                }
                             }
-                            if (Receiver_RC.checked) {
-                                Receiver_R.disabled = true;
-                            }
-                        }
-                    }
-                    if (item.state === "CANCELLED") {
-                        if (item.forOrg) {
-                            stateC[1] = 1;
-                            Org_C.value = item.customSms ? item.customSms : "";
-                            Org_CC.checked = item.noSMS;
-                            if (Org_C.value) {
-                                Org_CC.disabled = true;
-                            }
-                            if (Org_CC.checked) {
-                                Org_C.disabled = true;
-                            }
-                        }
-                        if (item.forSender) {
-                            stateC[2] = 1;
-                            Mer_C.value = item.customSms ? item.customSms : "";
-                            Mer_CC.checked = item.noSMS;
+                            if (item.forSender) {
+                                stateC[2] = 1;
+                                Mer_C.value = item.customSms ? item.customSms : "";
+                                Mer_CC.checked = item.noSMS;
 
-                            if (Mer_C.value) {
-                                Mer_CC.disabled = true;
+                                if (Mer_C.value) {
+                                    Mer_CC.disabled = true;
+                                }
+                                if (Mer_CC.checked) {
+                                    Mer_C.disabled = true;
+                                }
                             }
-                            if (Mer_CC.checked) {
-                                Mer_C.disabled = true;
-                            }
-                        }
-                        if (item.forReceiver) {
-                            stateC[3] = 1;
-                            Receiver_C.value = item.customSms ? item.customSms : "";
-                            Receiver_CC.checked = item.noSMS;
-                            if (Receiver_C.value) {
-                                Receiver_CC.disabled = true;
-                            }
-                            if (Receiver_CC.checked) {
-                                Receiver_C.disabled = true;
+                            if (item.forReceiver) {
+                                stateC[3] = 1;
+                                Receiver_C.value = item.customSms ? item.customSms : "";
+                                Receiver_CC.checked = item.noSMS;
+                                if (Receiver_C.value) {
+                                    Receiver_CC.disabled = true;
+                                }
+                                if (Receiver_CC.checked) {
+                                    Receiver_C.disabled = true;
+                                }
                             }
                         }
                     }
+                    );
                 }
-                );
+                else {
+                    document.getElementById("formDD").reset();
+                }
             },
             error: function (data) {
                 var ob = Object.keys(data);
