@@ -308,10 +308,10 @@ $(document).ready(function () {
             error: function (data) {
                 var ob = Object.keys(data);
                 if (ob[17] == "responseJSON") {
-                    errorMessage.textContent = data.responseJSON.errorMessage;
+                    errorMessage.innerHTML = `<h3>${data.responseJSON.errorMessage}</h3>`;
                 }
                 else {
-                    errorMessage.textContent = "Something Went Wrong!";
+                    errorMessage.innerHTML = "<h3>Something Went Wrong!</h3>";
                 }
                 $('#myModal200').modal('show');
             }
@@ -828,10 +828,10 @@ function errorShow(data, button) {
     button.disabled = false;
     var ob = Object.keys(data);
     if (ob[17] == "responseJSON") {
-        errorMessage.textContent = data.responseJSON.errorMessage;
+        errorMessage.innerHTML = `<h3>${data.responseJSON.errorMessage}</h3>`;
     }
     else {
-        errorMessage.textContent = "Something Went Wrong!";
+        errorMessage.innerHTML = "<h3>Something Went Wrong!</h3>";
     }
     $("#myModalCreateDDD1").modal('hide');
     $('#myModal200').modal('show');
@@ -839,38 +839,55 @@ function errorShow(data, button) {
 
 function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
     var counter = 0;
-    org.value || orgc.checked ? ++counter : --counter;
-    mer.value || merc.checked ? ++counter : --counter;
-    rec.value || recc.checked ? ++counter : --counter;
-    return counter === 3;
+    var text = "";
+    org.value || orgc.checked ? ++counter : text = "Organization - Either give us some text OR select 'No SMS'";
+    if (text) {
+        return { counter, text };
+    }
+    mer.value || merc.checked ? ++counter : text = "Merchant - Either give us some text OR select 'No SMS'";
+    if (text) {
+        return { counter, text };
+    }
+    rec.value || recc.checked ? ++counter : text = "Receiver - Either give us some text OR select 'No SMS'";
+    return { counter, text };
+}
+
+function check() {
+    var checking = emptyCheckForJC(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC);
+
+    console.log(checking);
+    if (checking.counter !== 3) {
+        console.log(checking);
+        errorMessage.innerHTML = `<h3>${checking.text}</h3>`;
+        $('#myModal200').modal('show');
+        return false;
+    }
+    return true;
 }
 
 btnJC.addEventListener("click", function (event) {
-    if (!emptyCheckForJC(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC)) {
-
-        $('#myModal200').modal('show');
-        errorMessage.textContent = data.responseJSON.errorMessage;
+    if (!check()) {
         return;
     }
-    showInitialModal(event, btnJC);
-    $.ajax
-        ({
-            type: stateJC[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
-            headers:
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            },
-            success: function (data) {
-                stateJC[1] = 1;
-                two(btnJC);
-            },
-            error: function (data) {
-                errorShow(data, btnJC);
-            }
-        })
+    // showInitialModal(event, btnJC);
+    // $.ajax
+    //     ({
+    //         type: stateJC[1] ? "PUT" : "POST",
+    //         url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${localStorage.getItem('userID')}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+    //         headers:
+    //         {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
+    //         },
+    //         success: function (data) {
+    //             stateJC[1] = 1;
+    //             two(btnJC);
+    //         },
+    //         error: function (data) {
+    //             errorShow(data, btnJC);
+    //         }
+    //     })
 });
 
 function two(button) {
