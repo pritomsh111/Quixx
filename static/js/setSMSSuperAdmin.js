@@ -410,6 +410,79 @@ var btnOH = document.getElementById("setSMSBtnOH");
 var btnR = document.getElementById("setSMSBtnR");
 var btnC = document.getElementById("setSMSBtnC");
 
+
+
+// Super Admin Ends
+
+
+var Org_JCSP = document.getElementById("Org_JCSP");
+var Mer_JCSP = document.getElementById("Mer_JCSP");
+var Receiver_JCSP = document.getElementById("Receiver_JCSP");
+
+var Org_JCCSP = document.getElementById("Org_JCCSP");
+var Mer_JCCSP = document.getElementById("Mer_JCCSP");
+var Receiver_JCCSP = document.getElementById("Receiver_JCCSP");
+
+var Org_ETPSP = document.getElementById("Org_ETPSP");
+var Mer_ETPSP = document.getElementById("Mer_ETPSP");
+var Receiver_ETPSP = document.getElementById("Receiver_ETPSP");
+
+var Org_ETPCSP = document.getElementById("Org_ETPCSP");
+var Mer_ETPCSP = document.getElementById("Mer_ETPCSP");
+var Receiver_ETPCSP = document.getElementById("Receiver_ETPCSP");
+
+var Org_PUSP = document.getElementById("Org_PUSP");
+var Mer_PUSP = document.getElementById("Mer_PUSP");
+var Receiver_PUSP = document.getElementById("Receiver_PUSP");
+
+var Org_PUCSP = document.getElementById("Org_PUCSP");
+var Mer_PUCSP = document.getElementById("Mer_PUCSP");
+var Receiver_PUCSP = document.getElementById("Receiver_PUCSP");
+
+var Org_ETDSP = document.getElementById("Org_ETDSP");
+var Mer_ETDSP = document.getElementById("Mer_ETDSP");
+var Receiver_ETDSP = document.getElementById("Receiver_ETDSP");
+
+var Org_ETDCSP = document.getElementById("Org_ETDCSP");
+var Mer_ETDCSP = document.getElementById("Mer_ETDCSP");
+var Receiver_ETDCSP = document.getElementById("Receiver_ETDCSP");
+
+
+var Org_DSP = document.getElementById("Org_DSP");
+var Mer_DSP = document.getElementById("Mer_DSP");
+var Receiver_DSP = document.getElementById("Receiver_DSP");
+
+var Org_DCSP = document.getElementById("Org_DCSP");
+var Mer_DCSP = document.getElementById("Mer_DCSP");
+var Receiver_DCSP = document.getElementById("Receiver_DCSP");
+
+var Org_OHSP = document.getElementById("Org_OHSP");
+var Mer_OHSP = document.getElementById("Mer_OHSP");
+var Receiver_OHSP = document.getElementById("Receiver_OHSP");
+
+var Org_OHCSP = document.getElementById("Org_OHCSP");
+var Mer_OHCSP = document.getElementById("Mer_OHCSP");
+var Receiver_OHCSP = document.getElementById("Receiver_OHCSP");
+
+var Org_RSP = document.getElementById("Org_RSP");
+var Mer_RSP = document.getElementById("Mer_RSP");
+var Receiver_RSP = document.getElementById("Receiver_RSP");
+
+var Org_RCSP = document.getElementById("Org_RCSP");
+var Mer_RCSP = document.getElementById("Mer_RCSP");
+var Receiver_RCSP = document.getElementById("Receiver_RCSP");
+
+
+var Org_CSP = document.getElementById("Org_CSP");
+var Mer_CSP = document.getElementById("Mer_CSP");
+var Receiver_CSP = document.getElementById("Receiver_CSP");
+
+var Org_CCSP = document.getElementById("Org_CCSP");
+var Mer_CCSP = document.getElementById("Mer_CCSP");
+var Receiver_CCSP = document.getElementById("Receiver_CCSP");
+
+// Super Admin Ends
+
 var Org_JC = document.getElementById("Org_JC");
 var Mer_JC = document.getElementById("Mer_JC");
 var Receiver_JC = document.getElementById("Receiver_JC");
