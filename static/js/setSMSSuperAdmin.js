@@ -66,6 +66,13 @@ var approvedORG = document.getElementById("approvedOrg");
 var unapprovedORG = document.getElementById("approvedOrg");
 
 approvedORG.addEventListener("change", function (e) {
+    document.getElementById("formDD").reset();
+    document.querySelectorAll("#formDD textarea").forEach(item => item.disabled = false);
+    document.querySelectorAll("#formDD input[type=checkbox]").forEach(item => item.disabled = false);
+
+    if (!approvedORG.value) {
+        return;
+    }
     $.ajax
         ({
             async: true,
@@ -368,11 +375,6 @@ approvedORG.addEventListener("change", function (e) {
                         }
                     }
                     );
-                }
-                else {
-                    document.getElementById("formDD").reset();
-                    document.querySelectorAll("#formDD textarea").forEach(item => item.disabled = false);
-                    document.querySelectorAll("#formDD input[type=checkbox]").forEach(item => item.disabled = false);
                 }
             },
             error: function (data) {
