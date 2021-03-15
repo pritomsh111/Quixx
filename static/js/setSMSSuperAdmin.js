@@ -1001,6 +1001,25 @@ btnJC.addEventListener("click", function (event) {
                 errorShow(data, btnJC);
             }
         })
+    showInitialModal(event, btnJC);
+    $.ajax
+        ({
+            type: stateJC[1] ? "PUT" : "POST",
+            url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateJC[1] = 1;
+                two(btnJC);
+            },
+            error: function (data) {
+                errorShow(data, btnJC);
+            }
+        })
 });
 
 function two(button) {
