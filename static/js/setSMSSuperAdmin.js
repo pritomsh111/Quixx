@@ -411,8 +411,7 @@ var btnR = document.getElementById("setSMSBtnR");
 var btnC = document.getElementById("setSMSBtnC");
 
 
-
-// Super Admin Ends
+// Super Admin Starts
 
 
 var Org_JCSP = document.getElementById("Org_JCSP");
@@ -685,7 +684,6 @@ Receiver_ETD.addEventListener("keyup", function (e) {
         Receiver_ETDC.disabled = false;
     }
 });
-
 
 Org_ETDC.addEventListener("click", function (e) {
     if (this.checked === false) {
