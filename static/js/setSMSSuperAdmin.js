@@ -371,6 +371,8 @@ approvedORG.addEventListener("change", function (e) {
                 }
                 else {
                     document.getElementById("formDD").reset();
+                    document.querySelectorAll("#formDD textarea").forEach(item => item.disabled = false);
+                    document.querySelectorAll("#formDD input[type=checkbox]").forEach(item => item.disabled = false);
                 }
             },
             error: function (data) {
