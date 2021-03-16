@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $("#settings").hide();
     var orgIDs = [4, 12, 25, 397];
-    var orgID = 4;
     $('#approvedOrg')
         .empty()
         .append('<option selected="selected" value="">Choose ORG</option>')
@@ -66,18 +65,32 @@ var approvedORG = document.getElementById("approvedOrg");
 var unapprovedORG = document.getElementById("approvedOrg");
 
 approvedORG.addEventListener("change", function (e) {
+    selectOrg(approvedORG);
+});
+function forAllFieldsFill(checkbox, textbox, item) {
+    textbox.value = item.customSms ? item.customSms : "";
+    checkbox.checked = item.noSMS;
+    if (textbox.value) {
+        checkbox.disabled = true;
+    }
+    if (checkbox.checked) {
+        textbox.disabled = true;
+    }
+}
+function selectOrg(org) {
     document.getElementById("formDD").reset();
     document.querySelectorAll("#formDD textarea").forEach(item => item.disabled = false);
     document.querySelectorAll("#formDD input[type=checkbox]").forEach(item => item.disabled = false);
 
-    if (!approvedORG.value) {
+    if (!org.value) {
         return;
     }
+
     $.ajax
         ({
             async: true,
             type: "GET",
-            url: urlForAll + "custom/sms/get/" + this.value,
+            url: urlForAll + "custom/sms/get/" + org.value,
             headers:
             {
                 'Accept': 'application/json',
@@ -87,291 +100,117 @@ approvedORG.addEventListener("change", function (e) {
             success: function (data) {
                 if (data.data) {
                     data.data.map(item => {
-                        console.log(item);
                         if (item.state === "ASSIGN") {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
-                                Org_JC.value = item.customSms ? item.customSms : "";
-                                Org_JCC.checked = item.noSMS;
-                                if (Org_JC.value) {
-                                    Org_JCC.disabled = true;
-                                }
-                                if (Org_JCC.checked) {
-                                    Org_JC.disabled = true;
-                                }
+                                forAllFieldsFill(Org_JCC, Org_JC, item);
                             }
                             if (item.forSender) {
                                 stateJC[2] = 1;
-                                Mer_JC.value = item.customSms ? item.customSms : "";
-                                Mer_JCC.checked = item.noSMS;
-                                if (Mer_JC.value) {
-                                    Mer_JCC.disabled = true;
-                                }
-                                if (Mer_JCC.checked) {
-                                    Mer_JC.disabled = true;
-                                }
+                                forAllFieldsFill(Mer_JCC, Mer_JC, item);
                             }
                             if (item.forReceiver) {
                                 stateJC[3] = 1;
-                                Receiver_JC.value = item.customSms ? item.customSms : "";
-                                Receiver_JCC.checked = item.noSMS;
-
-                                if (Receiver_JC.value) {
-                                    Receiver_JCC.disabled = true;
-                                }
-                                if (Receiver_JCC.checked) {
-                                    Receiver_JC.disabled = true;
-                                }
+                                forAllFieldsFill(Receiver_JCC, Receiver_JC, item);
                             }
                         }
                         if (item.state === "ENROUTE_TO_PICKUP") {
                             if (item.forOrg) {
                                 stateETP[1] = 1;
-                                Org_ETP.value = item.customSms ? item.customSms : "";
-                                Org_ETPC.checked = item.noSMS;
-
-                                if (Org_ETP.value) {
-                                    Org_ETPC.disabled = true;
-                                }
-                                if (Org_ETPC.checked) {
-                                    Org_ETP.disabled = true;
-                                }
+                                forAllFieldsFill(Org_ETPC, Org_ETP, item);
                             }
                             if (item.forSender) {
                                 stateETP[2] = 1;
-                                Mer_ETP.value = item.customSms ? item.customSms : "";
-                                Mer_ETPC.checked = item.noSMS;
-                                if (Mer_ETP.value) {
-                                    Mer_ETPC.disabled = true;
-                                }
-                                if (Mer_ETPC.checked) {
-                                    Mer_ETP.disabled = true;
-                                }
+                                forAllFieldsFill(Mer_ETPC, Mer_ETP, item);
                             }
                             if (item.forReceiver) {
                                 stateETP[3] = 1;
-                                Receiver_ETP.value = item.customSms ? item.customSms : "";
-                                Receiver_ETPC.checked = item.noSMS;
-                                if (Receiver_ETP.value) {
-                                    Receiver_ETPC.disabled = true;
-                                }
-                                if (Receiver_ETPC.checked) {
-                                    Receiver_ETP.disabled = true;
-                                }
+                                forAllFieldsFill(Receiver_ETPC, Receiver_ETP, item);
                             }
                         }
                         if (item.state === "PICKED_UP") {
                             if (item.forOrg) {
                                 statePU[1] = 1;
-                                Org_PU.value = item.customSms;
-                                Org_PUC.checked = item.noSMS;
-                                if (Org_PU.value) {
-                                    Org_PUC.disabled = true;
-                                }
-                                if (Org_PUC.checked) {
-                                    Org_PU.disabled = true;
-                                }
+                                forAllFieldsFill(Org_PUC, Org_PU, item);
                             }
                             if (item.forSender) {
                                 statePU[2] = 1;
-                                Mer_PU.value = item.customSms ? item.customSms : "";
-                                Mer_PUC.checked = item.noSMS;
-                                if (Mer_PU.value) {
-                                    Mer_PUC.disabled = true;
-                                }
-                                if (Mer_PUC.checked) {
-                                    Mer_PU.disabled = true;
-                                }
+                                forAllFieldsFill(Mer_PUC, Mer_PU, item);
                             }
                             if (item.forReceiver) {
                                 statePU[3] = 1;
-                                Receiver_PU.value = item.customSms ? item.customSms : "";
-                                Receiver_PUC.checked = item.noSMS;
-                                if (Receiver_PU.value) {
-                                    Receiver_PUC.disabled = true;
-                                }
-                                if (Receiver_PUC.checked) {
-                                    Receiver_PU.disabled = true;
-                                }
+                                forAllFieldsFill(Receiver_PUC, Receiver_PU, item);
                             }
                         }
                         if (item.state === "ENROUTE_TO_DELIVERY") {
                             if (item.forOrg) {
                                 stateETD[1] = 1;
-                                Org_ETD.value = item.customSms ? item.customSms : "";
-                                Org_ETDC.checked = item.noSMS;
-                                if (Org_ETD.value) {
-                                    Org_ETDC.disabled = true;
-                                }
-                                if (Org_ETDC.checked) {
-                                    Org_ETD.disabled = true;
-                                }
-
+                                forAllFieldsFill(Org_ETDC, Org_ETD, item);
                             }
                             if (item.forSender) {
                                 stateETD[2] = 1;
-                                Mer_ETD.value = item.customSms ? item.customSms : "";
-                                Mer_ETDC.checked = item.noSMS;
-                                if (Mer_ETD.value) {
-                                    Mer_ETDC.disabled = true;
-                                }
-                                if (Mer_ETDC.checked) {
-                                    Mer_ETD.disabled = true;
-                                }
+                                forAllFieldsFill(Mer_ETDC, Mer_ETD, item);
                             }
                             if (item.forReceiver) {
                                 stateETD[3] = 1;
-                                Receiver_ETD.value = item.customSms ? item.customSms : "";
-                                Receiver_ETDC.checked = item.noSMS;
-                                if (Receiver_ETD.value) {
-                                    Receiver_ETDC.disabled = true;
-                                }
-                                if (Receiver_ETDC.checked) {
-                                    Receiver_ETD.disabled = true;
-                                }
+                                forAllFieldsFill(Receiver_ETDC, Receiver_ETD, item);
                             }
                         }
                         if (item.state === "DELIVERED") {
                             if (item.forOrg) {
                                 stateD[1] = 1;
-                                Org_D.value = item.customSms ? item.customSms : "";
-                                Org_DC.checked = item.noSMS;
-                                if (Org_D.value) {
-                                    Org_DC.disabled = true;
-                                }
-                                if (Org_DC.checked) {
-                                    Org_D.disabled = true;
-                                }
-
+                                forAllFieldsFill(Org_DC, Org_D, item);
                             }
                             if (item.forSender) {
                                 stateD[2] = 1;
-                                Mer_D.value = item.customSms ? item.customSms : "";
-                                Mer_DC.checked = item.noSMS;
-                                if (Mer_D.value) {
-                                    Mer_DC.disabled = true;
-                                }
-                                if (Mer_DC.checked) {
-                                    Mer_D.disabled = true;
-                                }
+                                forAllFieldsFill(Mer_DC, Mer_D, item);
                             }
                             if (item.forReceiver) {
                                 stateD[3] = 1;
-                                Receiver_D.value = item.customSms ? item.customSms : "";
-                                Receiver_DC.checked = item.noSMS;
-                                if (Receiver_D.value) {
-                                    Receiver_DC.disabled = true;
-                                }
-                                if (Receiver_DC.checked) {
-                                    Receiver_D.disabled = true;
-                                }
+                                forAllFieldsFill(Receiver_DC, Receiver_D, item);
                             }
                         }
                         if (item.state === "ON_HOLD") {
                             if (item.forOrg) {
                                 stateOH[1] = 1;
-                                Org_OH.value = item.customSms ? item.customSms : "";
-                                Org_OHC.checked = item.noSMS;
-                                if (Org_OH.value) {
-                                    Org_OHC.disabled = true;
-                                }
-                                if (Org_OHC.checked) {
-                                    Org_OH.disabled = true;
-                                }
+                                forAllFieldsFill(Org_OHC, Org_OH, item);
 
                             }
                             if (item.forSender) {
                                 stateOH[2] = 1;
-                                Mer_OH.value = item.customSms ? item.customSms : "";
-                                Mer_OHC.checked = item.noSMS;
-                                if (Mer_OH.value) {
-                                    Mer_OHC.disabled = true;
-                                }
-                                if (Mer_OHC.checked) {
-                                    Mer_OH.disabled = true;
-                                }
+                                forAllFieldsFill(Mer_OHC, Mer_OH, item);
                             }
                             if (item.forReceiver) {
                                 stateOH[3] = 1;
-                                Receiver_OH.value = item.customSms ? item.customSms : "";
-                                Receiver_OHC.checked = item.noSMS;
-                                if (Receiver_OH.value) {
-                                    Receiver_OHC.disabled = true;
-                                }
-                                if (Receiver_OHC.checked) {
-                                    Receiver_OH.disabled = true;
-                                }
+                                forAllFieldsFill(Receiver_OHC, Receiver_OH, item);
                             }
                         }
                         if (item.state === "RETURNED") {
                             if (item.forOrg) {
                                 stateR[1] = 1;
-                                Org_R.value = item.customSms ? item.customSms : "";
-                                Org_RC.checked = item.noSMS;
-                                if (Org_R.value) {
-                                    Org_RC.disabled = true;
-                                }
-                                if (Org_RC.checked) {
-                                    Org_R.disabled = true;
-                                }
+                                forAllFieldsFill(Org_RC, Org_R, item);
                             }
                             if (item.forSender) {
                                 stateR[2] = 1;
-                                Mer_R.value = item.customSms ? item.customSms : "";
-                                Mer_RC.checked = item.noSMS;
-                                if (Mer_R.value) {
-                                    Mer_RC.disabled = true;
-                                }
-                                if (Mer_RC.checked) {
-                                    Mer_R.disabled = true;
-                                }
+                                forAllFieldsFill(Mer_RC, Mer_R, item);
                             }
                             if (item.forReceiver) {
                                 stateR[3] = 1;
-                                Receiver_R.value = item.customSms ? item.customSms : "";
-                                Receiver_RC.checked = item.noSMS;
-                                if (Receiver_R.value) {
-                                    Receiver_RC.disabled = true;
-                                }
-                                if (Receiver_RC.checked) {
-                                    Receiver_R.disabled = true;
-                                }
+                                forAllFieldsFill(Receiver_RC, Receiver_R, item);
                             }
                         }
                         if (item.state === "CANCELLED") {
                             if (item.forOrg) {
                                 stateC[1] = 1;
-                                Org_C.value = item.customSms ? item.customSms : "";
-                                Org_CC.checked = item.noSMS;
-                                if (Org_C.value) {
-                                    Org_CC.disabled = true;
-                                }
-                                if (Org_CC.checked) {
-                                    Org_C.disabled = true;
-                                }
+                                forAllFieldsFill(Org_CC, Org_C, item);
                             }
                             if (item.forSender) {
                                 stateC[2] = 1;
-                                Mer_C.value = item.customSms ? item.customSms : "";
-                                Mer_CC.checked = item.noSMS;
-
-                                if (Mer_C.value) {
-                                    Mer_CC.disabled = true;
-                                }
-                                if (Mer_CC.checked) {
-                                    Mer_C.disabled = true;
-                                }
+                                forAllFieldsFill(Mer_CC, Mer_C, item);
                             }
                             if (item.forReceiver) {
                                 stateC[3] = 1;
-                                Receiver_C.value = item.customSms ? item.customSms : "";
-                                Receiver_CC.checked = item.noSMS;
-                                if (Receiver_C.value) {
-                                    Receiver_CC.disabled = true;
-                                }
-                                if (Receiver_CC.checked) {
-                                    Receiver_C.disabled = true;
-                                }
+                                forAllFieldsFill(Receiver_CC, Receiver_C, item);
                             }
                         }
                     }
@@ -381,15 +220,15 @@ approvedORG.addEventListener("change", function (e) {
             error: function (data) {
                 var ob = Object.keys(data);
                 if (ob[17] == "responseJSON") {
-                    errorMessage.textContent = data.responseJSON.errorMessage;
+                    errorMessage.innerHTML = `<h3>${data.responseJSON.errorMessage}</h3>`;
                 }
                 else {
-                    errorMessage.textContent = "Something Went Wrong!";
+                    errorMessage.innerHTML = "<h3>Something Went Wrong!</h3>";
                 }
                 $('#myModal200').modal('show');
             }
         })
-});
+}
 
 var errorMessage = document.querySelector("#myModal200 p");
 var stateJC = [0, 0, 0, 0];
@@ -412,7 +251,6 @@ var btnC = document.getElementById("setSMSBtnC");
 
 
 // Super Admin Starts
-
 
 var Org_JCSP = document.getElementById("Org_JCSP");
 var Mer_JCSP = document.getElementById("Mer_JCSP");
@@ -446,7 +284,6 @@ var Org_ETDCSP = document.getElementById("Org_ETDCSP");
 var Mer_ETDCSP = document.getElementById("Mer_ETDCSP");
 var Receiver_ETDCSP = document.getElementById("Receiver_ETDCSP");
 
-
 var Org_DSP = document.getElementById("Org_DSP");
 var Mer_DSP = document.getElementById("Mer_DSP");
 var Receiver_DSP = document.getElementById("Receiver_DSP");
@@ -471,7 +308,6 @@ var Org_RCSP = document.getElementById("Org_RCSP");
 var Mer_RCSP = document.getElementById("Mer_RCSP");
 var Receiver_RCSP = document.getElementById("Receiver_RCSP");
 
-
 var Org_CSP = document.getElementById("Org_CSP");
 var Mer_CSP = document.getElementById("Mer_CSP");
 var Receiver_CSP = document.getElementById("Receiver_CSP");
@@ -482,6 +318,7 @@ var Receiver_CCSP = document.getElementById("Receiver_CCSP");
 
 // Super Admin Ends
 
+
 var Org_JC = document.getElementById("Org_JC");
 var Mer_JC = document.getElementById("Mer_JC");
 var Receiver_JC = document.getElementById("Receiver_JC");
@@ -490,52 +327,45 @@ var Org_JCC = document.getElementById("Org_JCC");
 var Mer_JCC = document.getElementById("Mer_JCC");
 var Receiver_JCC = document.getElementById("Receiver_JCC");
 
-Org_JC.addEventListener("keyup", function (e) {
-    Org_JCC.disabled = true;
-    if (!Org_JC.value.length) {
-        Org_JCC.disabled = false;
-    }
-});
 
-Mer_JC.addEventListener("keyup", function (e) {
-    Mer_JCC.disabled = true;
-    if (!Mer_JC.value.length) {
-        Mer_JCC.disabled = false;
+function textBoxKeyupHandler(checkbox, textbox) {
+    checkbox.disabled = true;
+    if (!textbox.value.length) {
+        checkbox.disabled = false;
     }
-});
-
-Receiver_JC.addEventListener("keyup", function (e) {
-    Receiver_JCC.disabled = true;
-    if (!Receiver_JC.value.length) {
-        Receiver_JCC.disabled = false;
-    }
-});
-
-Org_JCC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_JC.disabled = false;
+}
+function checkBoxClickHandler(checkbox, textbox) {
+    if (checkbox.checked === false) {
+        textbox.disabled = false;
     }
     else {
-        Org_JC.disabled = true;
+        textbox.disabled = true;
+        textbox.value = "";
     }
+}
+
+Org_JC.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_JCC, Org_JC);
 });
 
-Mer_JCC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_JC.disabled = false;
-    }
-    else {
-        Mer_JC.disabled = true;
-    }
+Mer_JC.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_JCC, Mer_JC);
 });
 
-Receiver_JCC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_JC.disabled = false;
-    }
-    else {
-        Receiver_JC.disabled = true;
-    }
+Receiver_JC.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_JCC, Receiver_JC);
+});
+
+Org_JCC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_JCC, Org_JC);
+});
+
+Mer_JCC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_JCC, Mer_JC);
+});
+
+Receiver_JCC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_JCC, Receiver_JC);
 });
 
 
@@ -548,52 +378,28 @@ var Mer_ETPC = document.getElementById("Mer_ETPC");
 var Receiver_ETPC = document.getElementById("Receiver_ETPC");
 
 
-Org_ETP.addEventListener("keyup", function (e) {
-    Org_ETPC.disabled = true;
-    if (!Org_ETP.value.length) {
-        Org_ETPC.disabled = false;
-    }
+Org_ETP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_ETPC, Org_ETP);
 });
 
-Mer_ETP.addEventListener("keyup", function (e) {
-    Mer_ETPC.disabled = true;
-    if (!Mer_ETP.value.length) {
-        Mer_ETPC.disabled = false;
-    }
+Mer_ETP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_ETPC, Mer_ETP);
 });
 
-Receiver_ETP.addEventListener("keyup", function (e) {
-    Receiver_ETPC.disabled = true;
-    if (!Receiver_ETP.value.length) {
-        Receiver_ETPC.disabled = false;
-    }
+Receiver_ETP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_ETPC, Receiver_ETP);
 });
 
-Org_ETPC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_ETP.disabled = false;
-    }
-    else {
-        Org_ETP.disabled = true;
-    }
+Org_ETPC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_ETPC, Org_ETP);
 });
 
-Mer_ETPC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_ETP.disabled = false;
-    }
-    else {
-        Mer_ETP.disabled = true;
-    }
+Mer_ETPC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_ETPC, Mer_ETP);
 });
 
-Receiver_ETPC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_ETP.disabled = false;
-    }
-    else {
-        Receiver_ETP.disabled = true;
-    }
+Receiver_ETPC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_ETPC, Receiver_ETP);
 });
 
 
@@ -606,53 +412,28 @@ var Mer_PUC = document.getElementById("Mer_PUC");
 var Receiver_PUC = document.getElementById("Receiver_PUC");
 
 
-Org_PU.addEventListener("keyup", function (e) {
-    Org_PUC.disabled = true;
-    if (!Org_PU.value.length) {
-        Org_PUC.disabled = false;
-    }
+Org_PU.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_PUC, Org_PU);
 });
 
-Mer_PU.addEventListener("keyup", function (e) {
-    Mer_PUC.disabled = true;
-    if (!Mer_PU.value.length) {
-        Mer_PUC.disabled = false;
-    }
+Mer_PU.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_PUC, Mer_PU);
 });
 
-Receiver_PU.addEventListener("keyup", function (e) {
-    Receiver_PUC.disabled = true;
-    if (!Receiver_PU.value.length) {
-        Receiver_PUC.disabled = false;
-    }
+Receiver_PU.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_PUC, Receiver_PU);
 });
 
-
-Org_PUC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_PU.disabled = false;
-    }
-    else {
-        Org_PU.disabled = true;
-    }
+Org_PUC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_PUC, Org_PU);
 });
 
-Mer_PUC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_PU.disabled = false;
-    }
-    else {
-        Mer_PU.disabled = true;
-    }
+Mer_PUC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_PUC, Mer_PU);
 });
 
-Receiver_PUC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_PU.disabled = false;
-    }
-    else {
-        Receiver_PU.disabled = true;
-    }
+Receiver_PUC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_PUC, Receiver_PU);
 });
 
 var Org_ETD = document.getElementById("Org_ETD");
@@ -664,52 +445,29 @@ var Mer_ETDC = document.getElementById("Mer_ETDC");
 var Receiver_ETDC = document.getElementById("Receiver_ETDC");
 
 
-Org_ETD.addEventListener("keyup", function (e) {
-    Org_ETDC.disabled = true;
-    if (!Org_ETD.value.length) {
-        Org_ETDC.disabled = false;
-    }
+Org_ETD.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_ETDC, Org_ETD);
 });
 
-Mer_ETD.addEventListener("keyup", function (e) {
-    Mer_ETDC.disabled = true;
-    if (!Mer_ETD.value.length) {
-        Mer_ETDC.disabled = false;
-    }
+Mer_ETD.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_ETDC, Mer_ETD);
 });
 
-Receiver_ETD.addEventListener("keyup", function (e) {
-    Receiver_ETDC.disabled = true;
-    if (!Receiver_ETD.value.length) {
-        Receiver_ETDC.disabled = false;
-    }
+Receiver_ETD.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_ETDC, Receiver_ETD);
 });
 
-Org_ETDC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_ETD.disabled = false;
-    }
-    else {
-        Org_ETD.disabled = true;
-    }
+
+Org_ETDC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_ETDC, Org_ETD);
 });
 
-Mer_ETDC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_ETD.disabled = false;
-    }
-    else {
-        Mer_ETD.disabled = true;
-    }
+Mer_ETDC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_ETDC, Mer_ETD);
 });
 
-Receiver_ETDC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_ETD.disabled = false;
-    }
-    else {
-        Receiver_ETD.disabled = true;
-    }
+Receiver_ETDC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_ETDC, Receiver_ETD);
 });
 
 var Org_D = document.getElementById("Org_D");
@@ -721,53 +479,29 @@ var Mer_DC = document.getElementById("Mer_DC");
 var Receiver_DC = document.getElementById("Receiver_DC");
 
 
-Org_D.addEventListener("keyup", function (e) {
-    Org_DC.disabled = true;
-    if (!Org_D.value.length) {
-        Org_DC.disabled = false;
-    }
+Org_D.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_DC, Org_D);
 });
 
-Mer_D.addEventListener("keyup", function (e) {
-    Mer_DC.disabled = true;
-    if (!Mer_D.value.length) {
-        Mer_DC.disabled = false;
-    }
+Mer_D.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_DC, Mer_D);
 });
 
-Receiver_D.addEventListener("keyup", function (e) {
-    Receiver_DC.disabled = true;
-    if (!Receiver_D.value.length) {
-        Receiver_DC.disabled = false;
-    }
+Receiver_D.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_DC, Receiver_D);
 });
 
 
-Org_DC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_D.disabled = false;
-    }
-    else {
-        Org_D.disabled = true;
-    }
+Org_DC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_DC, Org_D);
 });
 
-Mer_DC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_D.disabled = false;
-    }
-    else {
-        Mer_D.disabled = true;
-    }
+Mer_DC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_DC, Mer_D);
 });
 
-Receiver_DC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_D.disabled = false;
-    }
-    else {
-        Receiver_D.disabled = true;
-    }
+Receiver_DC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_DC, Receiver_D);
 });
 
 var Org_OH = document.getElementById("Org_OH");
@@ -778,53 +512,28 @@ var Org_OHC = document.getElementById("Org_OHC");
 var Mer_OHC = document.getElementById("Mer_OHC");
 var Receiver_OHC = document.getElementById("Receiver_OHC");
 
-Org_OH.addEventListener("keyup", function (e) {
-    Org_OHC.disabled = true;
-    if (!Org_OH.value.length) {
-        Org_OHC.disabled = false;
-    }
+Org_OH.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_OHC, Org_OH);
 });
 
-Mer_OH.addEventListener("keyup", function (e) {
-    Mer_OHC.disabled = true;
-    if (!Mer_OH.value.length) {
-        Mer_OHC.disabled = false;
-    }
+Mer_OH.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_OHC, Mer_OH);
 });
 
-Receiver_OH.addEventListener("keyup", function (e) {
-    Receiver_OHC.disabled = true;
-    if (!Receiver_OH.value.length) {
-        Receiver_OHC.disabled = false;
-    }
+Receiver_OH.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_OHC, Receiver_OH);
 });
 
-
-Org_OHC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_OH.disabled = false;
-    }
-    else {
-        Org_OH.disabled = true;
-    }
+Org_OHC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_OHC, Org_OH);
 });
 
-Mer_OHC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_OH.disabled = false;
-    }
-    else {
-        Mer_OH.disabled = true;
-    }
+Mer_OHC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_OHC, Mer_OH);
 });
 
-Receiver_OHC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_OH.disabled = false;
-    }
-    else {
-        Receiver_OH.disabled = true;
-    }
+Receiver_OHC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_OHC, Receiver_OH);
 });
 
 var Org_R = document.getElementById("Org_R");
@@ -835,52 +544,28 @@ var Org_RC = document.getElementById("Org_RC");
 var Mer_RC = document.getElementById("Mer_RC");
 var Receiver_RC = document.getElementById("Receiver_RC");
 
-Org_R.addEventListener("keyup", function (e) {
-    Org_RC.disabled = true;
-    if (!Org_R.value.length) {
-        Org_RC.disabled = false;
-    }
+Org_R.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_RC, Org_R);
 });
 
-Mer_R.addEventListener("keyup", function (e) {
-    Mer_RC.disabled = true;
-    if (!Mer_R.value.length) {
-        Mer_RC.disabled = false;
-    }
+Mer_R.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_RC, Mer_R);
 });
 
-Receiver_R.addEventListener("keyup", function (e) {
-    Receiver_RC.disabled = true;
-    if (!Receiver_R.value.length) {
-        Receiver_RC.disabled = false;
-    }
+Receiver_R.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_RC, Receiver_R);
 });
 
-Org_RC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_R.disabled = false;
-    }
-    else {
-        Org_R.disabled = true;
-    }
+Org_RC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_RC, Org_R);
 });
 
-Mer_RC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_R.disabled = false;
-    }
-    else {
-        Mer_R.disabled = true;
-    }
+Mer_RC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_RC, Mer_R);
 });
 
-Receiver_RC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_R.disabled = false;
-    }
-    else {
-        Receiver_R.disabled = true;
-    }
+Receiver_RC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_RC, Receiver_R);
 });
 
 var Org_C = document.getElementById("Org_C");
@@ -891,54 +576,28 @@ var Org_CC = document.getElementById("Org_CC");
 var Mer_CC = document.getElementById("Mer_CC");
 var Receiver_CC = document.getElementById("Receiver_CC");
 
-
-Org_C.addEventListener("keyup", function (e) {
-    Org_CC.disabled = true;
-    if (!Org_C.value.length) {
-        Org_CC.disabled = false;
-    }
+Org_C.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_CC, Org_C);
 });
 
-Mer_C.addEventListener("keyup", function (e) {
-    Mer_CC.disabled = true;
-    if (!Mer_C.value.length) {
-        Mer_CC.disabled = false;
-    }
+Mer_C.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_CC, Mer_C);
 });
 
-Receiver_C.addEventListener("keyup", function (e) {
-    Receiver_CC.disabled = true;
-    if (!Receiver_C.value.length) {
-        Receiver_CC.disabled = false;
-    }
+Receiver_C.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_CC, Receiver_C);
 });
 
-
-Org_CC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Org_C.disabled = false;
-    }
-    else {
-        Org_C.disabled = true;
-    }
+Org_CC.addEventListener("click", function () {
+    checkBoxClickHandler(Org_CC, Org_C);
 });
 
-Mer_CC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Mer_C.disabled = false;
-    }
-    else {
-        Mer_C.disabled = true;
-    }
+Mer_CC.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_CC, Mer_C);
 });
 
-Receiver_CC.addEventListener("click", function (e) {
-    if (this.checked === false) {
-        Receiver_C.disabled = false;
-    }
-    else {
-        Receiver_C.disabled = true;
-    }
+Receiver_CC.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_CC, Receiver_C);
 });
 
 function showInitialModal(event, button) {
@@ -964,7 +623,7 @@ function showTickSuccessModal(data, button) {
         setTimeout(function () {
 
             $("#myModalCreateDDD1").modal('hide');
-        }, 2500);
+        }, 4500);
     }
 }
 
@@ -972,13 +631,38 @@ function errorShow(data, button) {
     button.disabled = false;
     var ob = Object.keys(data);
     if (ob[17] == "responseJSON") {
-        errorMessage.textContent = data.responseJSON.errorMessage;
+        errorMessage.innerHTML = `<h3>${data.responseJSON.errorMessage}</h3>`;
     }
     else {
-        errorMessage.textContent = "Something Went Wrong!";
+        errorMessage.innerHTML = "<h3>Something Went Wrong!</h3>";
     }
     $("#myModalCreateDDD1").modal('hide');
     $('#myModal200').modal('show');
+}
+
+function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
+    var counter = 0;
+    var text = "";
+    org.value || orgc.checked ? ++counter : text = "Organization - Either give some text OR check 'No SMS'";
+    if (text) {
+        return { counter, text };
+    }
+    mer.value || merc.checked ? ++counter : text = "Merchant - Either give some text OR check 'No SMS'";
+    if (text) {
+        return { counter, text };
+    }
+    rec.value || recc.checked ? ++counter : text = "Receiver - Either give some text OR check 'No SMS'";
+    return { counter, text };
+}
+
+function check(org, orgc, mer, merc, rec, recc, msg) {
+    var checking = emptyCheckForJC(org, orgc, mer, merc, rec, recc);
+    if (checking.counter !== 3) {
+        errorMessage.innerHTML = `<h3>${msg}<br>${checking.text}</h3>`;
+        $('#myModal200').modal('show');
+        return false;
+    }
+    return true;
 }
 
 btnJC.addEventListener("click", function (event) {
