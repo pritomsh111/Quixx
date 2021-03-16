@@ -52,9 +52,8 @@ function approveText(item) {
     var h4First = document.createElement("h4");
     h4First.innerText = item.approved ? "Approved" : "Unapproved";
     var h4Second = document.createElement("h4");
-    h4Second.innerText = item.approvedBy ? `Approved By: ${item.approvedBy}` : "Null";
+    h4Second.innerText = item.approvedBy ? `Approved By: ${item.approvedBy}` : "";
     approveMessage[approveMessageIterator++].append(h4First, h4Second);
-    console.log(approveMessage, approveMessageIterator);
 }
 function selectOrg(org) {
     approveMessageIterator = 0;
@@ -83,7 +82,6 @@ function selectOrg(org) {
             success: function (data) {
                 if (data.data) {
                     data.data.map(item => {
-                        console.log(item);
                         if (item.state === "ASSIGN") {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
