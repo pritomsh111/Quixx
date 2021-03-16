@@ -846,11 +846,8 @@ function errorShow(data, button) {
     else {
         errorMessage.innerHTML = "<h3>Something Went Wrong!</h3>";
     }
-    console.log("data");
-    document.getElementById("myModalCreateDDD1").classList.remove("fade");
     $("#myModalCreateDDD1").modal('hide');
     $('#myModal200').modal('show');
-
 }
 
 function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
@@ -904,7 +901,7 @@ function Org_JCAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Org_JCSP.value ? Org_JCSP.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Org_JCSP.value ? encodeURIComponent(Org_JCSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -945,7 +942,7 @@ function Mer_JCAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Mer_JCSP.value ? Mer_JCSP.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Mer_JCSP.value ? encodeURIComponent(Mer_JCSP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -987,7 +984,7 @@ function Rec_JCAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Receiver_JCSP.value ? Receiver_JCSP.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Receiver_JCSP.value ? encodeURIComponent(Receiver_JCSP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',

@@ -490,11 +490,8 @@ function errorShow(data, button) {
     else {
         errorMessage.innerHTML = "<h3>Something Went Wrong!</h3>";
     }
-    //$('#myModal200').modal('show');
-    setTimeout(function () {
-
-        $("#myModalCreateDDD1").modal('hide');
-    }, 1);
+    $('#myModal200').modal('show');
+    $("#myModalCreateDDD1").modal('hide');
 }
 
 function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
@@ -523,9 +520,9 @@ function check(org, orgc, mer, merc, rec, recc, msg) {
 }
 
 btnJC.addEventListener("click", function (event) {
-    if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC, "Just Created:")) {
-        return;
-    }
+    // if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC, "Just Created:")) {
+    //     return;
+    // }
     showInitialModal(event, btnJC);
     $.ajax
         ({
