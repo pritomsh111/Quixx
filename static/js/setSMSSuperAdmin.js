@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $("#settings").hide();
     var orgIDs = [4, 12, 25, 397];
+    var orgID;
     $('#approvedOrg')
         .empty()
         .append('<option selected="selected" value="">Choose ORG</option>')
@@ -85,6 +86,7 @@ function selectOrg(org) {
     if (!org.value) {
         return;
     }
+    orgID = org.value;
 
     $.ajax
         ({
@@ -666,7 +668,7 @@ function check(org, orgc, mer, merc, rec, recc, msg) {
 }
 
 btnJC.addEventListener("click", function (event) {
-    showInitialModal(event, btnJC);
+    // showInitialModal(event, btnJC);
     $.ajax
         ({
             type: stateJC[1] ? "PUT" : "POST",
@@ -679,7 +681,7 @@ btnJC.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateJC[1] = 1;
-                two(btnJC);
+                //two(btnJC);
             },
             error: function (data) {
                 errorShow(data, btnJC);
@@ -688,7 +690,7 @@ btnJC.addEventListener("click", function (event) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Org_JCSP.value ? Org_JCSP.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
