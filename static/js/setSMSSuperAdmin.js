@@ -57,10 +57,11 @@ function approveText(item) {
     console.log(approveMessage, approveMessageIterator);
 }
 function selectOrg(org) {
+    approveMessageIterator = 0;
     document.getElementById("formDD").reset();
     document.querySelectorAll("#formDD textarea").forEach(item => item.disabled = false);
     document.querySelectorAll("#formDD input[type=checkbox]").forEach(item => item.disabled = false);
-    approveMessage.forEach(item => item.value = "");
+    approveMessage.forEach(item => item.innerHTML = "");
     if (!org.value) {
         return;
     }

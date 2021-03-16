@@ -4,6 +4,10 @@
     display: none;
   }
 
+  .p-5 {
+    padding: 2rem !important;
+  }
+
   @media (max-width: 500px) {
     .p-5 {
       padding: 1rem !important;
@@ -13,6 +17,7 @@
   .grid{
       display: grid;
       place-items: center;
+      row-gap: 1.5rem;
   }
 
   .flex-all{
@@ -20,6 +25,9 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 3rem;
     place-items: center;
+    padding: 1rem;
+    border: 1px solid rgba(212, 210, 210, 0.4);
+    border-radius: 10px;
   }
   .flex-all>div{
       display: grid;
@@ -29,6 +37,8 @@
   .flex-all>div textarea{
       width: 260px;
       height: 80px;
+      border-radius: 10px;
+      padding: 0.3rem;
   }
 
   .flex-all>div label{
@@ -36,18 +46,18 @@
   }
 
   .flex-all>div:first-child{
-      margin-right: auto;
+      margin: 0 auto;
   }
-  @media (max-width: 1475px){
+  @media (max-width: 1275px){
     .flex-all{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
+    }
+    .flex-all>div:first-child{
+        margin: 0 auto;
     }
   }
   
   @media (max-width: 850px){
-    .flex-all{
-        grid-template-columns: 1fr
-    }
     
     .flex-all>div textarea{
         width: 220px;
@@ -127,7 +137,7 @@
                             <h3 class="center-tx">State: Just Created -&gt; Assign</h3>
                             <div class="grid">
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="just_created">Organiztion:</label>
                                         <textarea
@@ -174,7 +184,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="just_created">Merchant:</label>
                                         <textarea
@@ -221,7 +231,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="just_created">Receiver:</label>
                                         <textarea
@@ -281,7 +291,7 @@
                             <h3 class="center-tx">State: Assign -&gt; Enroute To Pickup</h3>
                             <div class="grid">
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="enroute_to_pickup">Organiztion:</label>
                                         <textarea
@@ -328,7 +338,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="enroute_to_pickup">Merchant:</label>
                                         <textarea
@@ -375,7 +385,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="enroute_to_pickup">Receiver:</label>
                                         <textarea
@@ -435,7 +445,7 @@
                             <h3 class="center-tx">State: Enroute To Pickup  -&gt; Picked Up</h3>
                             <div class="grid">
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="picked_up">Organiztion:</label>
                                         <textarea
@@ -482,7 +492,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="picked_up">Merchant:</label>
                                         <textarea
@@ -529,7 +539,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="picked_up">Receiver:</label>
                                         <textarea
@@ -589,7 +599,7 @@
                             <h3 class="center-tx">State: Picked Up -&gt; Enroute To Delivery</h3>
                             <div class="grid">
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="enroute_to_delivery">Organiztion:</label>
                                         <textarea
@@ -636,7 +646,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="enroute_to_delivery">Merchant:</label>
                                         <textarea
@@ -683,7 +693,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="enroute_to_delivery">Receiver:</label>
                                         <textarea
@@ -743,7 +753,7 @@
                             <h3 class="center-tx">State: Enroute To Delivery -&gt; Delivered</h3>
                             <div class="grid">
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="delivered">Organiztion:</label>
                                         <textarea
@@ -790,7 +800,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="delivered">Merchant:</label>
                                         <textarea
@@ -837,7 +847,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="delivered">Receiver:</label>
                                         <textarea
@@ -897,7 +907,7 @@
                             <h3 class="center-tx">State: On Hold</h3>
                             <div class="grid">
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="onHold">Organiztion:</label>
                                         <textarea
@@ -944,7 +954,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="onHold">Merchant:</label>
                                         <textarea
@@ -991,7 +1001,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="onHold">Receiver:</label>
                                         <textarea
@@ -1051,7 +1061,7 @@
                             <h3 class="center-tx">State: Returned</h3>
                             <div class="grid">
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="returned">Organiztion:</label>
                                         <textarea
@@ -1098,7 +1108,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="returned">Merchant:</label>
                                         <textarea
@@ -1145,7 +1155,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="returned">Receiver:</label>
                                         <textarea
@@ -1205,7 +1215,7 @@
                             <h3 class="center-tx">State: Cancelled</h3>
                             <div class="grid">
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="cancelled">Organiztion:</label>
                                         <textarea
@@ -1252,7 +1262,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="cancelled">Merchant:</label>
                                         <textarea
@@ -1299,7 +1309,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-all">
-                                    <div></div>
+                                    <div>(User Specific Data)</div>
                                     <div>
                                         <label for="cancelled">Receiver:</label>
                                         <textarea
