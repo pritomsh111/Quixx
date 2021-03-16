@@ -490,8 +490,11 @@ function errorShow(data, button) {
     else {
         errorMessage.innerHTML = "<h3>Something Went Wrong!</h3>";
     }
-    $("#myModalCreateDDD1").modal('hide');
     $('#myModal200').modal('show');
+    setTimeout(function () {
+
+        $("#myModalCreateDDD1").modal('hide');
+    }, 1);
 }
 
 function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
