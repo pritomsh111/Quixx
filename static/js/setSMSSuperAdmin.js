@@ -11,6 +11,7 @@ $(document).ready(function () {
         $(option).html(orgIDs[i]);
         $("#approvedOrg").append(option);
     }
+    btnC.disabled = btnD.disabled = btnETD.disabled = btnETP.disabled = btnJC.disabled = btnOH.disabled = btnPU.disabled = btnR.disabled = true;
     // $.ajax
     //     ({
     //         url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
@@ -68,8 +69,11 @@ var unapprovedORG = document.getElementById("approvedOrg");
 approvedORG.addEventListener("change", function (e) {
     selectOrg(approvedORG);
 });
-function forAllFieldsFill(checkbox, textbox, item) {
+function forAllFieldsFill(checkbox, textbox, item, msg = "") {
     textbox.value = item.customSms ? item.customSms : "";
+    if (msg) {
+        textbox.value = item.customSmsSuperAdmin ? item.customSmsSuperAdmin : "";
+    }
     checkbox.checked = item.noSMS;
     if (textbox.value) {
         checkbox.disabled = true;
@@ -86,6 +90,8 @@ function selectOrg(org) {
     if (!org.value) {
         return;
     }
+
+    btnC.disabled = btnD.disabled = btnETD.disabled = btnETP.disabled = btnJC.disabled = btnOH.disabled = btnPU.disabled = btnR.disabled = false;
     orgID = org.value;
 
     $.ajax
@@ -106,13 +112,16 @@ function selectOrg(org) {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
                                 forAllFieldsFill(Org_JCC, Org_JC, item);
+                                forAllFieldsFill(Org_JCC, Org_JC, item);
                             }
                             if (item.forSender) {
                                 stateJC[2] = 1;
                                 forAllFieldsFill(Mer_JCC, Mer_JC, item);
+                                forAllFieldsFill(Mer_JCC, Mer_JC, item);
                             }
                             if (item.forReceiver) {
                                 stateJC[3] = 1;
+                                forAllFieldsFill(Receiver_JCC, Receiver_JC, item);
                                 forAllFieldsFill(Receiver_JCC, Receiver_JC, item);
                             }
                         }
@@ -252,6 +261,22 @@ var btnR = document.getElementById("setSMSBtnR");
 var btnC = document.getElementById("setSMSBtnC");
 
 
+function textBoxKeyupHandler(checkbox, textbox) {
+    checkbox.disabled = true;
+    if (!textbox.value.length) {
+        checkbox.disabled = false;
+    }
+}
+function checkBoxClickHandler(checkbox, textbox) {
+    if (checkbox.checked === false) {
+        textbox.disabled = false;
+    }
+    else {
+        textbox.disabled = true;
+        textbox.value = "";
+    }
+}
+
 // Super Admin Starts
 
 var Org_JCSP = document.getElementById("Org_JCSP");
@@ -320,6 +345,173 @@ var Receiver_CCSP = document.getElementById("Receiver_CCSP");
 
 // Super Admin Ends
 
+Org_JCSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_JCCSP, Org_JCSP);
+});
+Mer_JCSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_JCCSP, Mer_JCSP);
+});
+
+Receiver_JCSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_JCCSP, Receiver_JCSP);
+});
+
+Org_JCCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Org_JCCSP, Org_JCSP);
+});
+
+Mer_JCCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_JCCSP, Mer_JCSP);
+});
+
+Receiver_JCCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_JCCSP, Receiver_JCSP);
+});
+
+Org_ETPSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_ETPCSP, Org_ETPSP);
+});
+
+Mer_ETPSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_ETPCSP, Mer_ETPSP);
+});
+
+Receiver_ETPSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_ETPCSP, Receiver_ETPSP);
+});
+
+Org_ETPCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Org_ETPCSP, Org_ETPSP);
+});
+
+Mer_ETPCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_ETPCSP, Mer_ETPSP);
+});
+
+Receiver_ETPCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_ETPCSP, Receiver_ETPSP);
+});
+
+Org_PUSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_PUCSP, Org_PUSP);
+});
+Mer_PUSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_PUCSP, Mer_PUSP);
+});
+
+Receiver_PUSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_PUCSP, Receiver_PUSP);
+});
+
+Org_PUCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Org_PUCSP, Org_PUSP);
+});
+
+Mer_PUCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_PUCSP, Mer_PUSP);
+});
+
+Receiver_PUCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_PUCSP, Receiver_PUSP);
+});
+
+Org_ETDSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_ETDCSP, Org_ETDSP);
+});
+
+Mer_ETDSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_ETDCSP, Mer_ETDSP);
+});
+
+Receiver_ETDSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_ETDCSP, Receiver_ETDSP);
+});
+
+Org_ETDCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Org_ETDCSP, Org_ETDSP);
+});
+
+Mer_ETDCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_ETDCSP, Mer_ETDSP);
+});
+
+Receiver_ETDCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_ETDCSP, Receiver_ETDSP);
+});
+Org_DSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_DCSP, Org_DSP);
+});
+
+Mer_DSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_DCSP, Mer_DSP);
+});
+Receiver_DSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_DCSP, Receiver_DSP);
+});
+
+Org_DCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Org_DCSP, Org_DSP);
+});
+
+Mer_DCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_DCSP, Mer_DSP);
+});
+
+Receiver_DCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_DCSP, Receiver_DSP);
+});
+Org_OHSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_OHCSP, Org_OHSP);
+});
+
+Mer_OHSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_OHCSP, Mer_OHSP);
+});
+
+Receiver_OHSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_OHCSP, Receiver_OHSP);
+});
+
+Org_OHCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Org_OHCSP, Org_OHSP);
+});
+
+Mer_OHCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_OHCSP, Mer_OHSP);
+});
+
+Receiver_OHCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_OHCSP, Receiver_OHSP);
+});
+
+Org_RSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_RCSP, Org_RSP);
+});
+
+Mer_RSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_RCSP, Mer_RSP);
+});
+
+Receiver_RSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_RCSP, Receiver_RSP);
+});
+
+Org_RCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Org_RCSP, Org_RSP);
+});
+
+Mer_RCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_RCSP, Mer_RSP);
+});
+
+Receiver_RCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_RCSP, Receiver_RSP);
+});
+
+/* 
+
+
+*/
 
 var Org_JC = document.getElementById("Org_JC");
 var Mer_JC = document.getElementById("Mer_JC");
@@ -328,23 +520,6 @@ var Receiver_JC = document.getElementById("Receiver_JC");
 var Org_JCC = document.getElementById("Org_JCC");
 var Mer_JCC = document.getElementById("Mer_JCC");
 var Receiver_JCC = document.getElementById("Receiver_JCC");
-
-
-function textBoxKeyupHandler(checkbox, textbox) {
-    checkbox.disabled = true;
-    if (!textbox.value.length) {
-        checkbox.disabled = false;
-    }
-}
-function checkBoxClickHandler(checkbox, textbox) {
-    if (checkbox.checked === false) {
-        textbox.disabled = false;
-    }
-    else {
-        textbox.disabled = true;
-        textbox.value = "";
-    }
-}
 
 Org_JC.addEventListener("keyup", function () {
     textBoxKeyupHandler(Org_JCC, Org_JC);
