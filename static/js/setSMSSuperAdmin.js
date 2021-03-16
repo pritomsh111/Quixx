@@ -1,85 +1,38 @@
 $(document).ready(function () {
     $("#settings").hide();
-    var orgIDs = [4, 12, 25, 397];
     var orgID;
-    $('#approvedOrg')
-        .empty()
-        .append('<option selected="selected" value="">Choose ORG</option>')
-        ;
-    for (var i = 0; i < orgIDs.length; i++) {
-        var option = new Option(orgIDs[i], orgIDs[i]);
-        $(option).html(orgIDs[i]);
-        $("#approvedOrg").append(option);
-    }
-    $('#unapprovedOrg')
-        .empty()
-        .append('<option selected="selected" value="">Choose ORG</option>')
-        ;
-    for (var i = 0; i < orgIDs.length; i++) {
-        var option = new Option(orgIDs[i], orgIDs[i]);
-        $(option).html(orgIDs[i]);
-        $("#unapprovedOrg").append(option);
-    }
     btnC.disabled = btnD.disabled = btnETD.disabled = btnETP.disabled = btnJC.disabled = btnOH.disabled = btnPU.disabled = btnR.disabled = true;
-    // $.ajax
-    //     ({
-    //         url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
-    //         type: "GET",
-    //         async: true,
-    //         headers:
-    //         {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
-    //         },
-
-    //         success: function (data) {
-    //             dataInfo = data;
-    //             $('#approvedOrg')
-    //     .empty()
-    //     .append('<option selected="selected" value="">Choose ORG</option>')
-    //     ;
-    // for (var i = 0; i < orgIDs.length; i++) {
-    //     var option = new Option(orgIDs[i], orgIDs[i]);
-    //     $(option).html(orgIDs[i]);
-    //     $("#approvedOrg").append(option);
-    // }
-    //         }
-    //     });
-    // $.ajax
-    //     ({
-    //         url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
-    //         type: "GET",
-    //         async: true,
-    //         headers:
-    //         {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
-    //         },
-
-    //         success: function (data) {
-    //             $('#unapprovedOrg')
-    //     .empty()
-    //     .append('<option selected="selected" value="">Choose ORG</option>')
-    //     ;
-    // for (var i = 0; i < orgIDs.length; i++) {
-    //     var option = new Option(orgIDs[i], orgIDs[i]);
-    //     $(option).html(orgIDs[i]);
-    //     $("#unapprovedOrg").append(option);
-    // }
-    //         }
-    //     });
+    $.ajax
+        ({
+            url: urlForAll + "approved/all/organization/id",
+            type: "GET",
+            async: true,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                $('#approvedOrg')
+                    .empty()
+                    .append('<option selected="selected" value="">Choose ORG</option>')
+                    ;
+                for (var i = 0; i < data.data.length; i++) {
+                    var option = new Option(data.data[i], data.data[i]);
+                    $(option).html(data.data[i]);
+                    $("#approvedOrg").append(option);
+                }
+            }
+        });
 });
 
+var textForStatusApprove = document.querySelectorAll(".center-tx");
+console.log(textForStatusApprove);
 var approvedORG = document.getElementById("approvedOrg");
-var unapprovedORG = document.getElementById("approvedOrg");
 
 approvedORG.addEventListener("change", function (e) {
     selectOrg(approvedORG);
-});
-unapprovedORG.addEventListener("change", function (e) {
-    selectOrg(unapprovedORG);
 });
 function forAllFieldsFill(checkbox, textbox, item, msg = "") {
     textbox.value = item.customSms ? item.customSms : "";
@@ -120,6 +73,7 @@ function selectOrg(org) {
             success: function (data) {
                 if (data.data) {
                     data.data.map(item => {
+                        console.log(item);
                         if (item.state === "ASSIGN") {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
@@ -292,7 +246,6 @@ var btnD = document.getElementById("setSMSBtnD");
 var btnOH = document.getElementById("setSMSBtnOH");
 var btnR = document.getElementById("setSMSBtnR");
 var btnC = document.getElementById("setSMSBtnC");
-
 
 function textBoxKeyupHandler(checkbox, textbox) {
     checkbox.disabled = true;

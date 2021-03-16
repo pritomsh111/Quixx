@@ -520,9 +520,9 @@ function check(org, orgc, mer, merc, rec, recc, msg) {
 }
 
 btnJC.addEventListener("click", function (event) {
-    // if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC, "Just Created:")) {
-    //     return;
-    // }
+    if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC, "Just Created:")) {
+        return;
+    }
     showInitialModal(event, btnJC);
     $.ajax
         ({
