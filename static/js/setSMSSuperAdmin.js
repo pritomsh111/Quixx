@@ -11,6 +11,15 @@ $(document).ready(function () {
         $(option).html(orgIDs[i]);
         $("#approvedOrg").append(option);
     }
+    $('#unapprovedOrg')
+        .empty()
+        .append('<option selected="selected" value="">Choose ORG</option>')
+        ;
+    for (var i = 0; i < orgIDs.length; i++) {
+        var option = new Option(orgIDs[i], orgIDs[i]);
+        $(option).html(orgIDs[i]);
+        $("#unapprovedOrg").append(option);
+    }
     btnC.disabled = btnD.disabled = btnETD.disabled = btnETP.disabled = btnJC.disabled = btnOH.disabled = btnPU.disabled = btnR.disabled = true;
     // $.ajax
     //     ({
@@ -68,6 +77,9 @@ var unapprovedORG = document.getElementById("approvedOrg");
 
 approvedORG.addEventListener("change", function (e) {
     selectOrg(approvedORG);
+});
+unapprovedORG.addEventListener("change", function (e) {
+    selectOrg(unapprovedORG);
 });
 function forAllFieldsFill(checkbox, textbox, item, msg = "") {
     textbox.value = item.customSms ? item.customSms : "";
@@ -960,16 +972,19 @@ function three(button) {
             },
             success: function (data) {
                 stateJC[3] = 1;
-                showTickSuccessModal(data, button);
+                Rec_JCAdmin(button);
             },
             error: function (data) {
                 errorShow(data, button);
             }
         })
+}
+
+function Rec_JCAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Receiver_JCSP.value ? Receiver_JCSP.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -977,6 +992,7 @@ function three(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                showTickSuccessModal(data, button);
             },
             error: function (data) {
                 errorShow(data, button);
