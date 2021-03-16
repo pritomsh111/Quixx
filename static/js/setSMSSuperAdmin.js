@@ -27,10 +27,10 @@ $(document).ready(function () {
         });
 });
 
-var textForStatusApprove = document.querySelectorAll(".center-tx");
-console.log(textForStatusApprove);
-var approvedORG = document.getElementById("approvedOrg");
+var approveMessage = document.querySelectorAll(".flex-all>div:first-child");
+var approveMessageIterator = 0;
 
+var approvedORG = document.getElementById("approvedOrg");
 approvedORG.addEventListener("change", function (e) {
     selectOrg(approvedORG);
 });
@@ -47,11 +47,20 @@ function forAllFieldsFill(checkbox, textbox, item, msg = "") {
         textbox.disabled = true;
     }
 }
+
+function approveText(item) {
+    var h4First = document.createElement("h4");
+    h4First.innerText = item.approved ? "Approved" : "Unapproved";
+    var h4Second = document.createElement("h4");
+    h4Second.innerText = item.approvedBy ? `Approved By: ${item.approvedBy}` : "Null";
+    approveMessage[approveMessageIterator++].append(h4First, h4Second);
+    console.log(approveMessage, approveMessageIterator);
+}
 function selectOrg(org) {
     document.getElementById("formDD").reset();
     document.querySelectorAll("#formDD textarea").forEach(item => item.disabled = false);
     document.querySelectorAll("#formDD input[type=checkbox]").forEach(item => item.disabled = false);
-
+    approveMessage.forEach(item => item.value = "");
     if (!org.value) {
         return;
     }
@@ -77,16 +86,19 @@ function selectOrg(org) {
                         if (item.state === "ASSIGN") {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Org_JCC, Org_JC, item);
                                 forAllFieldsFill(Org_JCCSP, Org_JCSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateJC[2] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Mer_JCC, Mer_JC, item);
                                 forAllFieldsFill(Mer_JCCSP, Mer_JCSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateJC[3] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Receiver_JCC, Receiver_JC, item);
                                 forAllFieldsFill(Receiver_JCCSP, Receiver_JCSP, item, "super");
                             }
@@ -94,16 +106,19 @@ function selectOrg(org) {
                         if (item.state === "ENROUTE_TO_PICKUP") {
                             if (item.forOrg) {
                                 stateETP[1] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Org_ETPC, Org_ETP, item);
                                 forAllFieldsFill(Org_ETPCSP, Org_ETPSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateETP[2] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Mer_ETPC, Mer_ETP, item);
                                 forAllFieldsFill(Mer_ETPCSP, Mer_ETPSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateETP[3] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Receiver_ETPC, Receiver_ETP, item);
                                 forAllFieldsFill(Receiver_ETPCSP, Receiver_ETPSP, item, "super");
                             }
@@ -111,16 +126,19 @@ function selectOrg(org) {
                         if (item.state === "PICKED_UP") {
                             if (item.forOrg) {
                                 statePU[1] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Org_PUC, Org_PU, item);
                                 forAllFieldsFill(Org_PUCSP, Org_PUSP, item, "super");
                             }
                             if (item.forSender) {
                                 statePU[2] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Mer_PUC, Mer_PU, item);
                                 forAllFieldsFill(Mer_PUCSP, Mer_PUSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 statePU[3] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Receiver_PUC, Receiver_PU, item);
                                 forAllFieldsFill(Receiver_PUCSP, Receiver_PUSP, item, "super");
                             }
@@ -128,16 +146,19 @@ function selectOrg(org) {
                         if (item.state === "ENROUTE_TO_DELIVERY") {
                             if (item.forOrg) {
                                 stateETD[1] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Org_ETDC, Org_ETD, item);
                                 forAllFieldsFill(Org_ETDCSP, Org_ETDSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateETD[2] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Mer_ETDC, Mer_ETD, item);
                                 forAllFieldsFill(Mer_ETDCSP, Mer_ETDSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateETD[3] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Receiver_ETDC, Receiver_ETD, item);
                                 forAllFieldsFill(Receiver_ETDCSP, Receiver_ETDSP, item, "super");
                             }
@@ -145,16 +166,19 @@ function selectOrg(org) {
                         if (item.state === "DELIVERED") {
                             if (item.forOrg) {
                                 stateD[1] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Org_DC, Org_D, item);
                                 forAllFieldsFill(Org_DCSP, Org_DSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateD[2] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Mer_DC, Mer_D, item);
                                 forAllFieldsFill(Mer_DCSP, Mer_DSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateD[3] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Receiver_DC, Receiver_D, item);
                                 forAllFieldsFill(Receiver_DCSP, Receiver_DSP, item, "super");
                             }
@@ -162,17 +186,20 @@ function selectOrg(org) {
                         if (item.state === "ON_HOLD") {
                             if (item.forOrg) {
                                 stateOH[1] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Org_OHC, Org_OH, item);
                                 forAllFieldsFill(Org_OHCSP, Org_OHSP, item, "super");
 
                             }
                             if (item.forSender) {
                                 stateOH[2] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Mer_OHC, Mer_OH, item);
                                 forAllFieldsFill(Mer_OHCSP, Mer_OHSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateOH[3] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Receiver_OHC, Receiver_OH, item);
                                 forAllFieldsFill(Receiver_OHCSP, Receiver_OHSP, item, "super");
                             }
@@ -180,16 +207,19 @@ function selectOrg(org) {
                         if (item.state === "RETURNED") {
                             if (item.forOrg) {
                                 stateR[1] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Org_RC, Org_R, item);
                                 forAllFieldsFill(Org_RCSP, Org_RSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateR[2] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Mer_RC, Mer_R, item);
                                 forAllFieldsFill(Mer_RCSP, Mer_RSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateR[3] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Receiver_RC, Receiver_R, item);
                                 forAllFieldsFill(Receiver_RCSP, Receiver_RSP, item, "super");
                             }
@@ -197,16 +227,19 @@ function selectOrg(org) {
                         if (item.state === "CANCELLED") {
                             if (item.forOrg) {
                                 stateC[1] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Org_CC, Org_C, item);
                                 forAllFieldsFill(Org_CCSP, Org_CSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateC[2] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Mer_CC, Mer_C, item);
                                 forAllFieldsFill(Mer_CCSP, Mer_CSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateC[3] = 1;
+                                approveText(item);
                                 forAllFieldsFill(Receiver_CC, Receiver_C, item);
                                 forAllFieldsFill(Receiver_CCSP, Receiver_CSP, item, "super");
                             }
