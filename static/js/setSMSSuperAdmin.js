@@ -112,116 +112,137 @@ function selectOrg(org) {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
                                 forAllFieldsFill(Org_JCC, Org_JC, item);
-                                forAllFieldsFill(Org_JCC, Org_JC, item);
+                                forAllFieldsFill(Org_JCCSP, Org_JCSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateJC[2] = 1;
                                 forAllFieldsFill(Mer_JCC, Mer_JC, item);
-                                forAllFieldsFill(Mer_JCC, Mer_JC, item);
+                                forAllFieldsFill(Mer_JCCSP, Mer_JCSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateJC[3] = 1;
                                 forAllFieldsFill(Receiver_JCC, Receiver_JC, item);
-                                forAllFieldsFill(Receiver_JCC, Receiver_JC, item);
+                                forAllFieldsFill(Receiver_JCCSP, Receiver_JCSP, item, "super");
                             }
                         }
                         if (item.state === "ENROUTE_TO_PICKUP") {
                             if (item.forOrg) {
                                 stateETP[1] = 1;
                                 forAllFieldsFill(Org_ETPC, Org_ETP, item);
+                                forAllFieldsFill(Org_ETPCSP, Org_ETPSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateETP[2] = 1;
                                 forAllFieldsFill(Mer_ETPC, Mer_ETP, item);
+                                forAllFieldsFill(Mer_ETPCSP, Mer_ETPSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateETP[3] = 1;
                                 forAllFieldsFill(Receiver_ETPC, Receiver_ETP, item);
+                                forAllFieldsFill(Receiver_ETPCSP, Receiver_ETPSP, item, "super");
                             }
                         }
                         if (item.state === "PICKED_UP") {
                             if (item.forOrg) {
                                 statePU[1] = 1;
                                 forAllFieldsFill(Org_PUC, Org_PU, item);
+                                forAllFieldsFill(Org_PUCSP, Org_PUSP, item, "super");
                             }
                             if (item.forSender) {
                                 statePU[2] = 1;
                                 forAllFieldsFill(Mer_PUC, Mer_PU, item);
+                                forAllFieldsFill(Mer_PUCSP, Mer_PUSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 statePU[3] = 1;
                                 forAllFieldsFill(Receiver_PUC, Receiver_PU, item);
+                                forAllFieldsFill(Receiver_PUCSP, Receiver_PUSP, item, "super");
                             }
                         }
                         if (item.state === "ENROUTE_TO_DELIVERY") {
                             if (item.forOrg) {
                                 stateETD[1] = 1;
                                 forAllFieldsFill(Org_ETDC, Org_ETD, item);
+                                forAllFieldsFill(Org_ETDCSP, Org_ETDSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateETD[2] = 1;
                                 forAllFieldsFill(Mer_ETDC, Mer_ETD, item);
+                                forAllFieldsFill(Mer_ETDCSP, Mer_ETDSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateETD[3] = 1;
                                 forAllFieldsFill(Receiver_ETDC, Receiver_ETD, item);
+                                forAllFieldsFill(Receiver_ETDCSP, Receiver_ETDSP, item, "super");
                             }
                         }
                         if (item.state === "DELIVERED") {
                             if (item.forOrg) {
                                 stateD[1] = 1;
                                 forAllFieldsFill(Org_DC, Org_D, item);
+                                forAllFieldsFill(Org_DCSP, Org_DSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateD[2] = 1;
                                 forAllFieldsFill(Mer_DC, Mer_D, item);
+                                forAllFieldsFill(Mer_DCSP, Mer_DSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateD[3] = 1;
                                 forAllFieldsFill(Receiver_DC, Receiver_D, item);
+                                forAllFieldsFill(Receiver_DCSP, Receiver_DSP, item, "super");
                             }
                         }
                         if (item.state === "ON_HOLD") {
                             if (item.forOrg) {
                                 stateOH[1] = 1;
                                 forAllFieldsFill(Org_OHC, Org_OH, item);
+                                forAllFieldsFill(Org_OHCSP, Org_OHSP, item, "super");
 
                             }
                             if (item.forSender) {
                                 stateOH[2] = 1;
                                 forAllFieldsFill(Mer_OHC, Mer_OH, item);
+                                forAllFieldsFill(Mer_OHCSP, Mer_OHSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateOH[3] = 1;
                                 forAllFieldsFill(Receiver_OHC, Receiver_OH, item);
+                                forAllFieldsFill(Receiver_OHCSP, Receiver_OHSP, item, "super");
                             }
                         }
                         if (item.state === "RETURNED") {
                             if (item.forOrg) {
                                 stateR[1] = 1;
                                 forAllFieldsFill(Org_RC, Org_R, item);
+                                forAllFieldsFill(Org_RCSP, Org_RSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateR[2] = 1;
                                 forAllFieldsFill(Mer_RC, Mer_R, item);
+                                forAllFieldsFill(Mer_RCSP, Mer_RSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateR[3] = 1;
                                 forAllFieldsFill(Receiver_RC, Receiver_R, item);
+                                forAllFieldsFill(Receiver_RCSP, Receiver_RSP, item, "super");
                             }
                         }
                         if (item.state === "CANCELLED") {
                             if (item.forOrg) {
                                 stateC[1] = 1;
                                 forAllFieldsFill(Org_CC, Org_C, item);
+                                forAllFieldsFill(Org_CCSP, Org_CSP, item, "super");
                             }
                             if (item.forSender) {
                                 stateC[2] = 1;
                                 forAllFieldsFill(Mer_CC, Mer_C, item);
+                                forAllFieldsFill(Mer_CCSP, Mer_CSP, item, "super");
                             }
                             if (item.forReceiver) {
                                 stateC[3] = 1;
                                 forAllFieldsFill(Receiver_CC, Receiver_C, item);
+                                forAllFieldsFill(Receiver_CCSP, Receiver_CSP, item, "super");
                             }
                         }
                     }
@@ -843,7 +864,7 @@ function check(org, orgc, mer, merc, rec, recc, msg) {
 }
 
 btnJC.addEventListener("click", function (event) {
-    // showInitialModal(event, btnJC);
+    showInitialModal(event, btnJC);
     $.ajax
         ({
             type: stateJC[1] ? "PUT" : "POST",
@@ -856,12 +877,15 @@ btnJC.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateJC[1] = 1;
-                //two(btnJC);
+                Org_JCAdmin(btnJC);
             },
             error: function (data) {
                 errorShow(data, btnJC);
             }
         })
+});
+
+function Org_JCAdmin(button) {
     $.ajax
         ({
             type: "PUT",
@@ -873,12 +897,13 @@ btnJC.addEventListener("click", function (event) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
+                two(button);
             },
             error: function (data) {
                 errorShow(data, btnJC);
             }
         })
-});
+}
 
 function two(button) {
     $.ajax
@@ -893,16 +918,19 @@ function two(button) {
             },
             success: function (data) {
                 stateJC[2] = 1;
-                three(button);
+                Mer_JCAdmin(button);
             },
             error: function (data) {
                 errorShow(data, button);
             }
         })
+}
+
+function Mer_JCAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ASSIGN&smsContentSuperAdmin=${Mer_JCSP.value ? Mer_JCSP.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -910,7 +938,6 @@ function two(button) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                stateJC[2] = 1;
                 three(button);
             },
             error: function (data) {
@@ -918,6 +945,8 @@ function two(button) {
             }
         })
 }
+
+
 function three(button) {
     $.ajax
         ({
