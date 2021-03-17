@@ -835,7 +835,7 @@ function errorShow(data, button) {
     $('#myModal200').modal('show');
 }
 
-function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
+function emptyCheckForJC(org, orgc, mer, merc, rec, recc, orgsp, orgcsp, mersp, mercsp, recsp, reccsp) {
     var counter = 0;
     var text = "";
     org.value || orgc.checked ? ++counter : text = "Organization - Either give some text OR check 'No SMS'";
@@ -850,7 +850,7 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
     return { counter, text };
 }
 
-function check(org, orgc, mer, merc, rec, recc, msg) {
+function check(org, orgc, mer, merc, rec, recc, msg, orgsp, orgcsp, mersp, mercsp, recsp, reccsp) {
     var checking = emptyCheckForJC(org, orgc, mer, merc, rec, recc);
     if (checking.counter !== 3) {
         errorMessage.innerHTML = `<h3>${msg}<br>${checking.text}</h3>`;
@@ -861,6 +861,9 @@ function check(org, orgc, mer, merc, rec, recc, msg) {
 }
 
 btnJC.addEventListener("click", function (event) {
+    if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC, "Just Created:",)) {
+        return;
+    }
     showInitialModal(event, btnJC);
     $.ajax
         ({
