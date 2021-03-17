@@ -54,6 +54,7 @@ function approveText(item) {
     var h4Second = document.createElement("h4");
     h4Second.innerText = item.approvedBy ? `Approved By: ${item.approvedBy}` : "";
     approveMessage[approveMessageIterator++].append(h4First, h4Second);
+    console.log(item, approveMessageIterator);
 }
 function selectOrg(org) {
     approveMessageIterator = 0;
