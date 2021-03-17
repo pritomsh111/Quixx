@@ -1256,6 +1256,9 @@ function Rec_PUAdmin(button) {
 
 
 btnETD.addEventListener("click", function (event) {
+    if (!check(Org_ETD, Org_ETDC, Mer_ETD, Mer_ETDC, Receiver_ETD, Receiver_ETDC, "Enroute To Pickup:", Org_ETDSP, Org_ETDCSP, Mer_ETDSP, Mer_ETDCSP, Receiver_ETDSP, Receiver_ETDCSP)) {
+        return;
+    }
     showInitialModal(event, btnETD);
     $.ajax
         ({
@@ -1269,13 +1272,33 @@ btnETD.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateETD[1] = 1;
-                eight(btnETD);
+                Org_ETDAdmin(btnETD);
             },
             error: function (data) {
                 errorShow(data, btnETD);
             }
         })
 });
+function Org_ETDAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=PICKED_UP&smsContentSuperAdmin=${Org_ETDSP.value ? encodeURIComponent(Org_ETDSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                eight(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
 
 function eight(button) {
     $.ajax
@@ -1290,6 +1313,25 @@ function eight(button) {
             },
             success: function (data) {
                 stateETD[2] = 1;
+                Mer_ETDAdmin(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+function Mer_ETDAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=PICKED_UP&smsContentSuperAdmin=${Mer_ETDSP.value ? encodeURIComponent(Mer_ETDSP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
                 nine(button);
             },
             error: function (data) {
@@ -1297,6 +1339,7 @@ function eight(button) {
             }
         })
 }
+
 function nine(button) {
     $.ajax
         ({
@@ -1310,7 +1353,7 @@ function nine(button) {
             },
             success: function (data) {
                 stateETD[3] = 1;
-                showTickSuccessModal(data, button);
+                Rec_ETDAdmin(button);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -1318,6 +1361,25 @@ function nine(button) {
         })
 }
 
+function Rec_ETDAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=PICKED_UP&smsContentSuperAdmin=${Receiver_ETDSP.value ? encodeURIComponent(Receiver_ETDSP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                showTickSuccessModal(data, button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
 
 btnD.addEventListener("click", function (event) {
     showInitialModal(event, btnD);
