@@ -53,13 +53,14 @@ function approveText(item, approveMessageIterator) {
     h4First.innerText = item.approved ? "Approved" : "Unapproved";
     var h4Second = document.createElement("h4");
     h4Second.innerText = item.approvedBy ? `Approved By: ${item.approvedBy}` : "";
+    approveMessage[approveMessageIterator].innerHTML = "";
     approveMessage[approveMessageIterator++].append(h4First, h4Second);
 }
 function selectOrg(org) {
     document.getElementById("formDD").reset();
     document.querySelectorAll("#formDD textarea").forEach(item => item.disabled = false);
     document.querySelectorAll("#formDD input[type=checkbox]").forEach(item => item.disabled = false);
-    approveMessage.forEach(item => item.innerHTML = "");
+    approveMessage.forEach(item => item.innerHTML = "(Delivery Specific Data)");
     if (!org.value) {
         return;
     }
@@ -896,7 +897,7 @@ function Org_JCAdmin(button) {
                 two(button);
             },
             error: function (data) {
-                errorShow(data, btnJC);
+                errorShow(data, button);
             }
         })
 }
@@ -999,13 +1000,33 @@ btnETP.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateETP[1] = 1;
-                four(btnETP);
+                Org_ETPAdmin(btnETP);
             },
             error: function (data) {
                 errorShow(data, btnETP);
             }
         })
 });
+
+function Org_ETPAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContentSuperAdmin=${Org_ETPSP.value ? encodeURIComponent(Org_ETPSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                four(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
 
 function four(button) {
     $.ajax
@@ -1020,6 +1041,26 @@ function four(button) {
             },
             success: function (data) {
                 stateETP[2] = 1;
+                Mer_ETPAdmin(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function Mer_ETPAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContentSuperAdmin=${Mer_ETPSP.value ? encodeURIComponent(Mer_ETPSP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
                 five(button);
             },
             error: function (data) {
@@ -1027,6 +1068,7 @@ function four(button) {
             }
         })
 }
+
 function five(button) {
     $.ajax
         ({
@@ -1040,6 +1082,25 @@ function five(button) {
             },
             success: function (data) {
                 stateETP[3] = 1;
+                Rec_ETPAdmin(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+function Rec_ETPAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContentSuperAdmin=${Receiver_ETPSP.value ? encodeURIComponent(Receiver_ETPSP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
