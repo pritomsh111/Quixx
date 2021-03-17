@@ -1,7 +1,8 @@
 $(document).ready(function () {
     $("#settings").hide();
+
     var label = document.querySelectorAll("label:not(.form-check-label)");
-    function forAllFieldsFill(checkbox, textbox, item, msg) {
+    function forAllFieldsFill(checkbox, textbox, item, it, msg) {
         textbox.value = item.customSms ? item.customSms : "";
         checkbox.checked = item.noSMS;
         if (textbox.value) {
@@ -10,8 +11,7 @@ $(document).ready(function () {
         if (checkbox.checked) {
             textbox.disabled = true;
         }
-        console.log(label, label[2]);
-        // label[2].innerHTML = item.approved ? `${msg}(approved)` : msg;
+        label[it].innerHTML = item.approved ? `${msg}<br>(approved)` : msg;
     }
     $.ajax
         ({
@@ -31,114 +31,114 @@ $(document).ready(function () {
                         if (item.state === "ASSIGN") {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
-                                forAllFieldsFill(Org_JCC, Org_JC, item, "Organization");
+                                forAllFieldsFill(Org_JCC, Org_JC, item, 2, "Organization");
                             }
                             if (item.forSender) {
                                 stateJC[2] = 1;
-                                forAllFieldsFill(Mer_JCC, Mer_JC, item);
+                                forAllFieldsFill(Mer_JCC, Mer_JC, item, 3, "Merchant");
                             }
                             if (item.forReceiver) {
                                 stateJC[3] = 1;
-                                forAllFieldsFill(Receiver_JCC, Receiver_JC, item);
+                                forAllFieldsFill(Receiver_JCC, Receiver_JC, item, 4, "Receiver");
                             }
                         }
                         if (item.state === "ENROUTE_TO_PICKUP") {
                             if (item.forOrg) {
                                 stateETP[1] = 1;
-                                forAllFieldsFill(Org_ETPC, Org_ETP, item);
+                                forAllFieldsFill(Org_ETPC, Org_ETP, item, 5, "Organization");
                             }
                             if (item.forSender) {
                                 stateETP[2] = 1;
-                                forAllFieldsFill(Mer_ETPC, Mer_ETP, item);
+                                forAllFieldsFill(Mer_ETPC, Mer_ETP, item, 6, "Merchant");
                             }
                             if (item.forReceiver) {
                                 stateETP[3] = 1;
-                                forAllFieldsFill(Receiver_ETPC, Receiver_ETP, item);
+                                forAllFieldsFill(Receiver_ETPC, Receiver_ETP, item, 7, "Receiver");
                             }
                         }
                         if (item.state === "PICKED_UP") {
                             if (item.forOrg) {
                                 statePU[1] = 1;
-                                forAllFieldsFill(Org_PUC, Org_PU, item);
+                                forAllFieldsFill(Org_PUC, Org_PU, item, 8, "Organization");
                             }
                             if (item.forSender) {
                                 statePU[2] = 1;
-                                forAllFieldsFill(Mer_PUC, Mer_PU, item);
+                                forAllFieldsFill(Mer_PUC, Mer_PU, item, 9, "Merchant");
                             }
                             if (item.forReceiver) {
                                 statePU[3] = 1;
-                                forAllFieldsFill(Receiver_PUC, Receiver_PU, item);
+                                forAllFieldsFill(Receiver_PUC, Receiver_PU, item, 10, "Receiver");
                             }
                         }
                         if (item.state === "ENROUTE_TO_DELIVERY") {
                             if (item.forOrg) {
                                 stateETD[1] = 1;
-                                forAllFieldsFill(Org_ETDC, Org_ETD, item);
+                                forAllFieldsFill(Org_ETDC, Org_ETD, item, 11, "Organization");
                             }
                             if (item.forSender) {
                                 stateETD[2] = 1;
-                                forAllFieldsFill(Mer_ETDC, Mer_ETD, item);
+                                forAllFieldsFill(Mer_ETDC, Mer_ETD, item, 12, "Merchant");
                             }
                             if (item.forReceiver) {
                                 stateETD[3] = 1;
-                                forAllFieldsFill(Receiver_ETDC, Receiver_ETD, item);
+                                forAllFieldsFill(Receiver_ETDC, Receiver_ETD, item, 13, "Receiver");
                             }
                         }
                         if (item.state === "DELIVERED") {
                             if (item.forOrg) {
                                 stateD[1] = 1;
-                                forAllFieldsFill(Org_DC, Org_D, item);
+                                forAllFieldsFill(Org_DC, Org_D, item, 14, "Organization");
                             }
                             if (item.forSender) {
                                 stateD[2] = 1;
-                                forAllFieldsFill(Mer_DC, Mer_D, item);
+                                forAllFieldsFill(Mer_DC, Mer_D, item, 15, "Merchant");
                             }
                             if (item.forReceiver) {
                                 stateD[3] = 1;
-                                forAllFieldsFill(Receiver_DC, Receiver_D, item);
+                                forAllFieldsFill(Receiver_DC, Receiver_D, item, 16, "Receiver");
                             }
                         }
                         if (item.state === "ON_HOLD") {
                             if (item.forOrg) {
                                 stateOH[1] = 1;
-                                forAllFieldsFill(Org_OHC, Org_OH, item);
+                                forAllFieldsFill(Org_OHC, Org_OH, item, 17, "Organization");
 
                             }
                             if (item.forSender) {
                                 stateOH[2] = 1;
-                                forAllFieldsFill(Mer_OHC, Mer_OH, item);
+                                forAllFieldsFill(Mer_OHC, Mer_OH, item, 18, "Merchant");
                             }
                             if (item.forReceiver) {
                                 stateOH[3] = 1;
-                                forAllFieldsFill(Receiver_OHC, Receiver_OH, item);
+                                forAllFieldsFill(Receiver_OHC, Receiver_OH, item, 19, "Receiver");
                             }
                         }
                         if (item.state === "RETURNED") {
                             if (item.forOrg) {
                                 stateR[1] = 1;
-                                forAllFieldsFill(Org_RC, Org_R, item);
+                                forAllFieldsFill(Org_RC, Org_R, item, 20, "Organization");
                             }
                             if (item.forSender) {
                                 stateR[2] = 1;
-                                forAllFieldsFill(Mer_RC, Mer_R, item);
+                                forAllFieldsFill(Mer_RC, Mer_R, item, 21, "Merchant");
                             }
                             if (item.forReceiver) {
                                 stateR[3] = 1;
-                                forAllFieldsFill(Receiver_RC, Receiver_R, item);
+                                forAllFieldsFill(Receiver_RC, Receiver_R, item, 22, "Receiver");
                             }
                         }
                         if (item.state === "CANCELLED") {
                             if (item.forOrg) {
                                 stateC[1] = 1;
-                                forAllFieldsFill(Org_CC, Org_C, item);
+                                forAllFieldsFill(Org_CC, Org_C, item, 23, "Organization");
                             }
                             if (item.forSender) {
                                 stateC[2] = 1;
-                                forAllFieldsFill(Mer_CC, Mer_C, item);
+                                forAllFieldsFill(Mer_CC, Mer_C, item, 24, "Merchant");
                             }
                             if (item.forReceiver) {
                                 stateC[3] = 1;
-                                forAllFieldsFill(Receiver_CC, Receiver_C, item);
+                                forAllFieldsFill(Receiver_CC, Receiver_C, item, 25, "Receiver");
                             }
                         }
                     }
