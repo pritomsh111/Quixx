@@ -54,7 +54,7 @@ function approveText(item, approveMessageIterator) {
     var h4Second = document.createElement("h4");
     h4Second.innerText = item.approvedBy ? `Approved By: ${item.approvedBy}` : "";
     approveMessage[approveMessageIterator].innerHTML = "";
-    approveMessage[approveMessageIterator++].append(h4First, h4Second);
+    approveMessage[approveMessageIterator].append(h4First, h4Second);
 }
 function selectOrg(org) {
     document.getElementById("formDD").reset();
@@ -813,7 +813,7 @@ function showTickSuccessModal(data, button) {
 
             $('#tickDDD2').show();
 
-            $("#sureDDD2").html("Please Wait For Approval!<br><br>You Will Be Notified Through An Email!");
+            $("#sureDDD2").html(`SMS Approved!`);
         }, 1500);
         setTimeout(function () {
 
@@ -1283,7 +1283,7 @@ function Org_ETDAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=PICKED_UP&smsContentSuperAdmin=${Org_ETDSP.value ? encodeURIComponent(Org_ETDSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContentSuperAdmin=${Org_ETDSP.value ? encodeURIComponent(Org_ETDSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1324,7 +1324,7 @@ function Mer_ETDAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=PICKED_UP&smsContentSuperAdmin=${Mer_ETDSP.value ? encodeURIComponent(Mer_ETDSP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContentSuperAdmin=${Mer_ETDSP.value ? encodeURIComponent(Mer_ETDSP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1365,7 +1365,7 @@ function Rec_ETDAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=PICKED_UP&smsContentSuperAdmin=${Receiver_ETDSP.value ? encodeURIComponent(Receiver_ETDSP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContentSuperAdmin=${Receiver_ETDSP.value ? encodeURIComponent(Receiver_ETDSP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1403,6 +1403,26 @@ btnD.addEventListener("click", function (event) {
         })
 });
 
+function Org_ETDAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContentSuperAdmin=${Org_ETDSP.value ? encodeURIComponent(Org_ETDSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                eight(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
 function ten(button) {
     $.ajax
         ({
@@ -1423,6 +1443,26 @@ function ten(button) {
             }
         })
 }
+function Mer_ETDAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContentSuperAdmin=${Mer_ETDSP.value ? encodeURIComponent(Mer_ETDSP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                nine(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
 function eleven(button) {
     $.ajax
         ({
@@ -1436,6 +1476,26 @@ function eleven(button) {
             },
             success: function (data) {
                 stateD[3] = 1;
+                showTickSuccessModal(data, button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function Rec_ETDAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContentSuperAdmin=${Receiver_ETDSP.value ? encodeURIComponent(Receiver_ETDSP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
