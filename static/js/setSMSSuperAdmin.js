@@ -526,6 +526,30 @@ Receiver_RCSP.addEventListener("click", function () {
     checkBoxClickHandler(Receiver_RCSP, Receiver_RSP);
 });
 
+Org_CSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Org_CCSP, Org_CSP);
+});
+
+Mer_CSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Mer_CCSP, Mer_CSP);
+});
+
+Receiver_CSP.addEventListener("keyup", function () {
+    textBoxKeyupHandler(Receiver_CCSP, Receiver_CSP);
+});
+
+Org_CCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Org_CCSP, Org_CSP);
+});
+
+Mer_CCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Mer_CCSP, Mer_CSP);
+});
+
+Receiver_CCSP.addEventListener("click", function () {
+    checkBoxClickHandler(Receiver_CCSP, Receiver_CSP);
+});
+
 /* 
 
 
@@ -1172,7 +1196,6 @@ function Org_PUAdmin(button) {
         })
 }
 
-
 function six(button) {
     $.ajax
         ({
@@ -1256,7 +1279,7 @@ function Rec_PUAdmin(button) {
 
 
 btnETD.addEventListener("click", function (event) {
-    if (!check(Org_ETD, Org_ETDC, Mer_ETD, Mer_ETDC, Receiver_ETD, Receiver_ETDC, "Enroute To Pickup:", Org_ETDSP, Org_ETDCSP, Mer_ETDSP, Mer_ETDCSP, Receiver_ETDSP, Receiver_ETDCSP)) {
+    if (!check(Org_ETD, Org_ETDC, Mer_ETD, Mer_ETDC, Receiver_ETD, Receiver_ETDC, "Enroute To Delivery:", Org_ETDSP, Org_ETDCSP, Mer_ETDSP, Mer_ETDCSP, Receiver_ETDSP, Receiver_ETDCSP)) {
         return;
     }
     showInitialModal(event, btnETD);
@@ -1382,7 +1405,7 @@ function Rec_ETDAdmin(button) {
 }
 
 btnD.addEventListener("click", function (event) {
-    if (!check(Org_D, Org_DC, Mer_D, Mer_DC, Receiver_D, Receiver_DC, "Enroute To Pickup:", Org_DSP, Org_DCSP, Mer_DSP, Mer_DCSP, Receiver_DSP, Receiver_DCSP)) {
+    if (!check(Org_D, Org_DC, Mer_D, Mer_DC, Receiver_D, Receiver_DC, "Delivered:", Org_DSP, Org_DCSP, Mer_DSP, Mer_DCSP, Receiver_DSP, Receiver_DCSP)) {
         return;
     }
     showInitialModal(event, btnD);
@@ -1508,7 +1531,7 @@ function Rec_DAdmin(button) {
 }
 
 btnOH.addEventListener("click", function (event) {
-    if (!check(Org_OH, Org_OHC, Mer_OH, Mer_OHC, Receiver_OH, Receiver_OHC, "Enroute To Pickup:", Org_OHSP, Org_OHCSP, Mer_OHSP, Mer_OHCSP, Receiver_OHSP, Receiver_OHCSP)) {
+    if (!check(Org_OH, Org_OHC, Mer_OH, Mer_OHC, Receiver_OH, Receiver_OHC, "On Hold:", Org_OHSP, Org_OHCSP, Mer_OHSP, Mer_OHCSP, Receiver_OHSP, Receiver_OHCSP)) {
         return;
     }
     showInitialModal(event, btnOH);
@@ -1536,7 +1559,7 @@ function Org_OHAdmin(button) {
     $.ajax
         ({
             type: "PUT",
-            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ON_HOLD&smsContentSuperAdmin=${Org_OHSP.value ? encodeURIComponent(Org_OHSP.value) : ""}&forSenOHer=false&forReceiver=false&forOrg=true&noSms=${Org_OHCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=ON_HOLD&smsContentSuperAdmin=${Org_OHSP.value ? encodeURIComponent(Org_OHSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_OHCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1636,6 +1659,9 @@ function Rec_OHAdmin(button) {
 }
 
 btnR.addEventListener("click", function (event) {
+    if (!check(Org_R, Org_RC, Mer_R, Mer_RC, Receiver_R, Receiver_RC, "Returned:", Org_RSP, Org_RCSP, Mer_RSP, Mer_RCSP, Receiver_RSP, Receiver_RCSP)) {
+        return;
+    }
     showInitialModal(event, btnR);
     $.ajax
         ({
@@ -1649,13 +1675,34 @@ btnR.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateR[1] = 1;
-                fourteen(btnR);
+                Org_RAdmin(btnR);
             },
             error: function (data) {
                 errorShow(data, btnR);
             }
         })
 });
+
+function Org_RAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=RETURNED&smsContentSuperAdmin=${Org_RSP.value ? encodeURIComponent(Org_RSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_RCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                fourteen(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
 
 function fourteen(button) {
     $.ajax
@@ -1670,6 +1717,26 @@ function fourteen(button) {
             },
             success: function (data) {
                 stateR[2] = 1;
+                Mer_RAdmin(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function Mer_RAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=RETURNED&smsContentSuperAdmin=${Mer_RSP.value ? encodeURIComponent(Mer_RSP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_RCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
                 fifteen(button);
             },
             error: function (data) {
@@ -1677,6 +1744,7 @@ function fourteen(button) {
             }
         })
 }
+
 
 function fifteen(button) {
     $.ajax
@@ -1691,6 +1759,26 @@ function fifteen(button) {
             },
             success: function (data) {
                 stateR[3] = 1;
+                Rec_RAdmin(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function Rec_RAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=RETURNED&smsContentSuperAdmin=${Receiver_RSP.value ? encodeURIComponent(Receiver_RSP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_RCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
@@ -1700,6 +1788,9 @@ function fifteen(button) {
 }
 
 btnC.addEventListener("click", function (event) {
+    if (!check(Org_C, Org_CC, Mer_C, Mer_CC, Receiver_C, Receiver_CC, "Cancelled:", Org_CSP, Org_CCSP, Mer_CSP, Mer_CCSP, Receiver_CSP, Receiver_CCSP)) {
+        return;
+    }
     showInitialModal(event, btnC);
     $.ajax
         ({
@@ -1713,13 +1804,34 @@ btnC.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateC[1] = 1;
-                sixteen(btnC);
+                Org_CAdmin(btnC);
             },
             error: function (data) {
                 errorShow(data, btnC);
             }
         })
 });
+
+function Org_CAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=CANCELLED&smsContentSuperAdmin=${Org_CSP.value ? encodeURIComponent(Org_CSP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_CCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                sixteen(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
 
 function sixteen(button) {
     $.ajax
@@ -1734,6 +1846,26 @@ function sixteen(button) {
             },
             success: function (data) {
                 stateC[2] = 1;
+                Mer_CAdmin(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function Mer_CAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=CANCELLED&smsContentSuperAdmin=${Mer_CSP.value ? encodeURIComponent(Mer_CSP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_CCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
                 seventeen(button);
             },
             error: function (data) {
@@ -1755,6 +1887,26 @@ function seventeen(button) {
             },
             success: function (data) {
                 stateC[3] = 1;
+                Rec_CAdmin(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function Rec_CAdmin(button) {
+    $.ajax
+        ({
+            type: "PUT",
+            url: `${urlForAll}custom/sms/update/admin/${orgID}?smsState=CANCELLED&smsContentSuperAdmin=${Receiver_CSP.value ? encodeURIComponent(Receiver_CSP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_CCSP.checked}&approvedBy=${localStorage.getItem('userEmail')}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
                 showTickSuccessModal(data, button);
             },
             error: function (data) {
