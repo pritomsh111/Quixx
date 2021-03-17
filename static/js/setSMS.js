@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $("#settings").hide();
-    function forAllFieldsFill(checkbox, textbox, item) {
+    var label = document.querySelectorAll("label:not(.form-check-label)");
+    function forAllFieldsFill(checkbox, textbox, item, msg) {
         textbox.value = item.customSms ? item.customSms : "";
         checkbox.checked = item.noSMS;
         if (textbox.value) {
@@ -9,6 +10,8 @@ $(document).ready(function () {
         if (checkbox.checked) {
             textbox.disabled = true;
         }
+        console.log(label, label[2]);
+        // label[2].innerHTML = item.approved ? `${msg}(approved)` : msg;
     }
     $.ajax
         ({
@@ -24,10 +27,11 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.data) {
                     data.data.map(item => {
+                        console.log(item);
                         if (item.state === "ASSIGN") {
                             if (item.forOrg) {
                                 stateJC[1] = 1;
-                                forAllFieldsFill(Org_JCC, Org_JC, item);
+                                forAllFieldsFill(Org_JCC, Org_JC, item, "Organization");
                             }
                             if (item.forSender) {
                                 stateJC[2] = 1;
