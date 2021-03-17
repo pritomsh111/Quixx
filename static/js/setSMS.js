@@ -481,7 +481,7 @@ function showTickSuccessModal(data, button) {
         setTimeout(function () {
 
             $("#myModalCreateDDD1").modal('hide');
-        }, 4500);
+        }, 3500);
     }
 }
 

@@ -838,11 +838,11 @@ function showTickSuccessModal(data, button) {
             $('#tickDDD2').show();
 
             $("#sureDDD2").html(`SMS Approved!`);
-        }, 1500);
+        }, 500);
         setTimeout(function () {
 
             $("#myModalCreateDDD1").modal('hide');
-        }, 4500);
+        }, 1500);
     }
 }
 
