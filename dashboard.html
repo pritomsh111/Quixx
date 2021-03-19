@@ -103,4 +103,19 @@
   document.getElementById("date3").innerHTML = today;
   document.getElementById("date4").innerHTML = today;
   document.getElementById("date5").innerHTML = today;
+
+  async function callIT(){
+      
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+
+    const resData = await res.json();
+
+    return resData;
+  }
+
+   function hello() {
+       console.log(callIT());
+  }
+
+  hello();
 </script>
