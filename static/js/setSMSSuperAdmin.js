@@ -64,7 +64,6 @@ function selectOrg(org) {
     if (!org.value) {
         return;
     }
-
     btnC.disabled = btnD.disabled = btnETD.disabled = btnETP.disabled = btnJC.disabled = btnOH.disabled = btnPU.disabled = btnR.disabled = false;
     orgID = org.value;
 
