@@ -529,7 +529,7 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
 
     rec.value || recc.checked ? ++counter : text = "Receiver - Either give some text OR check 'No SMS'";
     if (!rec.disabled && !recc.disabled) {
-        return { counter: 0, text: "Receiver - Select Only One (Either give some text OR check 'No SMS)!" }
+        return { counter: 0, text: "Receiver - Select Only One (Either give some text OR check 'No SMS')!" }
     }
     return { counter, text };
 }
