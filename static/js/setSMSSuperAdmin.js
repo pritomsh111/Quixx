@@ -902,7 +902,7 @@ btnJC.addEventListener("click", function (event) {
     $.ajax
         ({
             type: stateJC[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Org_JC.value ? Org_JC.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            url: `${urlForAll}custom/sms/${stateJC[1] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Org_JC.value ? encodeURIComponent(Org_JC.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -943,7 +943,7 @@ function two(button) {
     $.ajax
         ({
             type: stateJC[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateJC[2] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Mer_JC.value ? Mer_JC.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
+            url: `${urlForAll}custom/sms/${stateJC[2] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Mer_JC.value ? encodeURIComponent(Mer_JC.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -985,7 +985,7 @@ function three(button) {
     $.ajax
         ({
             type: stateJC[3] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateJC[3] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? Receiver_JC.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            url: `${urlForAll}custom/sms/${stateJC[3] ? "update" : "create"}/${orgID}?smsState=ASSIGN&smsContent=${Receiver_JC.value ? encodeURIComponent(Receiver_JC.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1031,7 +1031,7 @@ btnETP.addEventListener("click", function (event) {
     $.ajax
         ({
             type: stateETP[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETP[1] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? Org_ETP.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
+            url: `${urlForAll}custom/sms/${stateETP[1] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContent=${Org_ETP.value ? encodeURIComponent(Org_ETP.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1072,7 +1072,7 @@ function four(button) {
     $.ajax
         ({
             type: stateETP[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETP[2] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? Mer_ETP.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
+            url: `${urlForAll}custom/sms/${stateETP[2] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContent=${Mer_ETP.value ? encodeURIComponent(Mer_ETP.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1113,7 +1113,7 @@ function five(button) {
     $.ajax
         ({
             type: stateETP[3] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETP[3] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? Receiver_ETP.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
+            url: `${urlForAll}custom/sms/${stateETP[3] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_PICKUP&smsContent=${Receiver_ETP.value ? encodeURIComponent(Receiver_ETP.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1158,7 +1158,7 @@ btnPU.addEventListener("click", function (event) {
     $.ajax
         ({
             type: statePU[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${statePU[1] ? "update" : "create"}/${orgID}?smsState=PICKED_UP&smsContent=${Org_PU.value ? Org_PU.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_PUC.checked}`,
+            url: `${urlForAll}custom/sms/${statePU[1] ? "update" : "create"}/${orgID}?smsState=PICKED_UP&smsContent=${Org_PU.value ? encodeURIComponent(Org_PU.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1199,7 +1199,7 @@ function six(button) {
     $.ajax
         ({
             type: statePU[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${statePU[2] ? "update" : "create"}/${orgID}?smsState=PICKED_UP&smsContent=${Mer_PU.value ? Mer_PU.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_PUC.checked}`,
+            url: `${urlForAll}custom/sms/${statePU[2] ? "update" : "create"}/${orgID}?smsState=PICKED_UP&smsContent=${Mer_PU.value ? encodeURIComponent(Mer_PU.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1239,7 +1239,7 @@ function seven(button) {
     $.ajax
         ({
             type: statePU[3] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${statePU[3] ? "update" : "create"}/${orgID}?smsState=PICKED_UP&smsContent=${Receiver_PU.value ? Receiver_PU.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_PUC.checked}`,
+            url: `${urlForAll}custom/sms/${statePU[3] ? "update" : "create"}/${orgID}?smsState=PICKED_UP&smsContent=${Receiver_PU.value ? encodeURIComponent(Receiver_PU.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_PUC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1285,7 +1285,7 @@ btnETD.addEventListener("click", function (event) {
     $.ajax
         ({
             type: stateETD[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETD[1] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Org_ETD.value ? Org_ETD.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDC.checked}`,
+            url: `${urlForAll}custom/sms/${stateETD[1] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Org_ETD.value ? encodeURIComponent(Org_ETD.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1326,7 +1326,7 @@ function eight(button) {
     $.ajax
         ({
             type: stateETD[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETD[2] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Mer_ETD.value ? Mer_ETD.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDC.checked}`,
+            url: `${urlForAll}custom/sms/${stateETD[2] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Mer_ETD.value ? encodeURIComponent(Mer_ETD.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1366,7 +1366,7 @@ function nine(button) {
     $.ajax
         ({
             type: stateETD[3] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateETD[3] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Receiver_ETD.value ? Receiver_ETD.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDC.checked}`,
+            url: `${urlForAll}custom/sms/${stateETD[3] ? "update" : "create"}/${orgID}?smsState=ENROUTE_TO_DELIVERY&smsContent=${Receiver_ETD.value ? encodeURIComponent(Receiver_ETD.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1411,7 +1411,7 @@ btnD.addEventListener("click", function (event) {
     $.ajax
         ({
             type: stateD[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateD[1] ? "update" : "create"}/${orgID}?smsState=DELIVERED&smsContent=${Org_D.value ? Org_D.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_DC.checked}`,
+            url: `${urlForAll}custom/sms/${stateD[1] ? "update" : "create"}/${orgID}?smsState=DELIVERED&smsContent=${Org_D.value ? encodeURIComponent(Org_D.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1452,7 +1452,7 @@ function ten(button) {
     $.ajax
         ({
             type: stateD[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateD[2] ? "update" : "create"}/${orgID}?smsState=DELIVERED&smsContent=${Mer_D.value ? Mer_D.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_DC.checked}`,
+            url: `${urlForAll}custom/sms/${stateD[2] ? "update" : "create"}/${orgID}?smsState=DELIVERED&smsContent=${Mer_D.value ? encodeURIComponent(Mer_D.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1492,7 +1492,7 @@ function eleven(button) {
     $.ajax
         ({
             type: stateD[3] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateD[3] ? "update" : "create"}/${orgID}?smsState=DELIVERED&smsContent=${Receiver_D.value ? Receiver_D.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_DC.checked}`,
+            url: `${urlForAll}custom/sms/${stateD[3] ? "update" : "create"}/${orgID}?smsState=DELIVERED&smsContent=${Receiver_D.value ? encodeURIComponent(Receiver_D.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_DC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1537,7 +1537,7 @@ btnOH.addEventListener("click", function (event) {
     $.ajax
         ({
             type: stateOH[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateOH[1] ? "update" : "create"}/${orgID}?smsState=ON_HOLD&smsContent=${Org_OH.value ? Org_OH.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_OHC.checked}`,
+            url: `${urlForAll}custom/sms/${stateOH[1] ? "update" : "create"}/${orgID}?smsState=ON_HOLD&smsContent=${Org_OH.value ? encodeURIComponent(Org_OH.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_OHC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1579,7 +1579,7 @@ function twelve(button) {
     $.ajax
         ({
             type: stateOH[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateOH[2] ? "update" : "create"}/${orgID}?smsState=ON_HOLD&smsContent=${Mer_OH.value ? Mer_OH.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_OHC.checked}`,
+            url: `${urlForAll}custom/sms/${stateOH[2] ? "update" : "create"}/${orgID}?smsState=ON_HOLD&smsContent=${Mer_OH.value ? encodeURIComponent(Mer_OH.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_OHC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1620,7 +1620,7 @@ function thirteen(button) {
     $.ajax
         ({
             type: stateOH[3] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateOH[3] ? "update" : "create"}/${orgID}?smsState=ON_HOLD&smsContent=${Receiver_OH.value ? Receiver_OH.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_OHC.checked}`,
+            url: `${urlForAll}custom/sms/${stateOH[3] ? "update" : "create"}/${orgID}?smsState=ON_HOLD&smsContent=${Receiver_OH.value ? encodeURIComponent(Receiver_OH.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_OHC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1665,7 +1665,7 @@ btnR.addEventListener("click", function (event) {
     $.ajax
         ({
             type: stateR[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateR[1] ? "update" : "create"}/${orgID}?smsState=RETURNED&smsContent=${Org_R.value ? Org_R.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_RC.checked}`,
+            url: `${urlForAll}custom/sms/${stateR[1] ? "update" : "create"}/${orgID}?smsState=RETURNED&smsContent=${Org_R.value ? encodeURIComponent(Org_R.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_RC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1707,7 +1707,7 @@ function fourteen(button) {
     $.ajax
         ({
             type: stateR[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateR[2] ? "update" : "create"}/${orgID}?smsState=RETURNED&smsContent=${Mer_R.value ? Mer_R.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_RC.checked}`,
+            url: `${urlForAll}custom/sms/${stateR[2] ? "update" : "create"}/${orgID}?smsState=RETURNED&smsContent=${Mer_R.value ? encodeURIComponent(Mer_R.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_RC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1749,7 +1749,7 @@ function fifteen(button) {
     $.ajax
         ({
             type: stateR[3] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateR[3] ? "update" : "create"}/${orgID}?smsState=RETURNED&smsContent=${Receiver_R.value ? Receiver_R.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_RC.checked}`,
+            url: `${urlForAll}custom/sms/${stateR[3] ? "update" : "create"}/${orgID}?smsState=RETURNED&smsContent=${Receiver_R.value ? encodeURIComponent(Receiver_R.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_RC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1794,7 +1794,7 @@ btnC.addEventListener("click", function (event) {
     $.ajax
         ({
             type: stateC[1] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateC[1] ? "update" : "create"}/${orgID}?smsState=CANCELLED&smsContent=${Org_C.value ? Org_C.value : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_CC.checked}`,
+            url: `${urlForAll}custom/sms/${stateC[1] ? "update" : "create"}/${orgID}?smsState=CANCELLED&smsContent=${Org_C.value ? encodeURIComponent(Org_C.value) : ""}&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_CC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1836,7 +1836,7 @@ function sixteen(button) {
     $.ajax
         ({
             type: stateC[2] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateC[2] ? "update" : "create"}/${orgID}?smsState=CANCELLED&smsContent=${Mer_C.value ? Mer_C.value : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_CC.checked}`,
+            url: `${urlForAll}custom/sms/${stateC[2] ? "update" : "create"}/${orgID}?smsState=CANCELLED&smsContent=${Mer_C.value ? encodeURIComponent(Mer_C.value) : ""}&forSender=true&forReceiver=false&forOrg=false&noSms=${Mer_CC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
@@ -1877,7 +1877,7 @@ function seventeen(button) {
     $.ajax
         ({
             type: stateC[3] ? "PUT" : "POST",
-            url: `${urlForAll}custom/sms/${stateC[3] ? "update" : "create"}/${orgID}?smsState=CANCELLED&smsContent=${Receiver_C.value ? Receiver_C.value : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_CC.checked}`,
+            url: `${urlForAll}custom/sms/${stateC[3] ? "update" : "create"}/${orgID}?smsState=CANCELLED&smsContent=${Receiver_C.value ? encodeURIComponent(Receiver_C.value) : ""}&forSender=false&forReceiver=true&forOrg=false&noSms=${Receiver_CC.checked}`,
             headers:
             {
                 'Accept': 'application/json',
