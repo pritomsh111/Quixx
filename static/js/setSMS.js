@@ -521,6 +521,11 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
     return { counter, text };
 }
 
+function emptyTextCheckDelete(checkbox, textbox) {
+    checkbox.checked = false;
+    textbox.value = "";
+}
+
 function check(org, orgc, mer, merc, rec, recc, msg) {
     var checking = emptyCheckForJC(org, orgc, mer, merc, rec, recc);
     if (checking.counter !== 3) {
@@ -1086,6 +1091,7 @@ setSMSBtnJCDelete.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateJC[1] = 0;
+                emptyTextCheckDelete(Org_JCC, Org_JC);
                 error1(setSMSBtnJCDelete);
             },
             error: function (data) {
@@ -1107,6 +1113,7 @@ function error1(button) {
             },
             success: function (data) {
                 stateJC[2] = 0;
+                emptyTextCheckDelete(Mer_JCC, Mer_JC);
                 error2(button);
             },
             error: function (data) {
@@ -1128,6 +1135,7 @@ function error2(button) {
             },
             success: function (data) {
                 stateJC[3] = 0;
+                emptyTextCheckDelete(Receiver_JCC, Receiver_JC);
                 showTickSuccessModal(data, button, true);
             },
             error: function (data) {
@@ -1150,6 +1158,7 @@ setSMSBtnETPDelete.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateETP[1] = 0;
+                emptyTextCheckDelete(Org_ETPC, Org_ETP);
                 error3(setSMSBtnETPDelete);
             },
             error: function (data) {
@@ -1171,6 +1180,7 @@ function error3(button) {
             },
             success: function (data) {
                 stateETP[2] = 0;
+                emptyTextCheckDelete(Mer_ETPC, Mer_ETP);
                 error4(button);
             },
             error: function (data) {
@@ -1192,6 +1202,7 @@ function error4(button) {
             },
             success: function (data) {
                 stateETP[3] = 0;
+                emptyTextCheckDelete(Receiver_ETPC, Receiver_ETP);
                 showTickSuccessModal(data, button, true);
             },
             error: function (data) {
@@ -1215,6 +1226,7 @@ setSMSBtnPUDelete.addEventListener("click", function (event) {
             },
             success: function (data) {
                 statePU[1] = 0;
+                emptyTextCheckDelete(Org_PUC, Org_PU);
                 error5(setSMSBtnPUDelete);
             },
             error: function (data) {
@@ -1236,6 +1248,7 @@ function error5(button) {
             },
             success: function (data) {
                 statePU[2] = 0;
+                emptyTextCheckDelete(Mer_PUC, Mer_PU);
                 error6(button);
             },
             error: function (data) {
@@ -1257,6 +1270,7 @@ function error6(button) {
             },
             success: function (data) {
                 statePU[3] = 0;
+                emptyTextCheckDelete(Receiver_PUC, Receiver_PU);
                 showTickSuccessModal(data, button, true);
             },
             error: function (data) {
@@ -1279,6 +1293,7 @@ setSMSBtnETDDelete.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateETD[1] = 0;
+                emptyTextCheckDelete(Org_ETDC, Org_ETD);
                 error7(setSMSBtnETDDelete);
             },
             error: function (data) {
@@ -1300,6 +1315,7 @@ function error7(button) {
             },
             success: function (data) {
                 stateETD[2] = 0;
+                emptyTextCheckDelete(Mer_ETDC, Mer_ETD);
                 error8(button);
             },
             error: function (data) {
@@ -1321,6 +1337,7 @@ function error8(button) {
             },
             success: function (data) {
                 stateETD[3] = 0;
+                emptyTextCheckDelete(Receiver_ETDC, Receiver_ETD);
                 showTickSuccessModal(data, button, true);
             },
             error: function (data) {
@@ -1343,6 +1360,7 @@ setSMSBtnDDelete.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateD[1] = 0;
+                emptyTextCheckDelete(Org_DC, Org_D);
                 error9(setSMSBtnDDelete);
             },
             error: function (data) {
@@ -1364,6 +1382,7 @@ function error9(button) {
             },
             success: function (data) {
                 stateD[2] = 0;
+                emptyTextCheckDelete(Mer_DC, Mer_D);
                 error10(button);
             },
             error: function (data) {
@@ -1385,6 +1404,7 @@ function error10(button) {
             },
             success: function (data) {
                 stateD[3] = 0;
+                emptyTextCheckDelete(Receiver_DC, Receiver_D);
                 showTickSuccessModal(data, button, true);
             },
             error: function (data) {
@@ -1407,6 +1427,7 @@ setSMSBtnOHDelete.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateOH[1] = 0;
+                emptyTextCheckDelete(Org_OHC, Org_OH);
                 error13(setSMSBtnOHDelete);
             },
             error: function (data) {
@@ -1428,6 +1449,7 @@ function error13(button) {
             },
             success: function (data) {
                 stateOH[2] = 0;
+                emptyTextCheckDelete(Mer_OHC, Mer_OH);
                 error14(button);
             },
             error: function (data) {
@@ -1449,6 +1471,7 @@ function error14(button) {
             },
             success: function (data) {
                 stateOH[3] = 0;
+                emptyTextCheckDelete(Receiver_OHC, Receiver_OH);
                 showTickSuccessModal(data, button, true);
             },
             error: function (data) {
@@ -1471,6 +1494,7 @@ setSMSBtnRDelete.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateR[1] = 0;
+                emptyTextCheckDelete(Org_RC, Org_R);
                 error15(setSMSBtnRDelete);
             },
             error: function (data) {
@@ -1492,6 +1516,7 @@ function error15(button) {
             },
             success: function (data) {
                 stateR[2] = 0;
+                emptyTextCheckDelete(Mer_RC, Mer_R);
                 error16(button);
             },
             error: function (data) {
@@ -1513,6 +1538,7 @@ function error16(button) {
             },
             success: function (data) {
                 stateR[3] = 0;
+                emptyTextCheckDelete(Receiver_RC, Receiver_R);
                 showTickSuccessModal(data, button, true);
             },
             error: function (data) {
@@ -1535,6 +1561,7 @@ setSMSBtnCDelete.addEventListener("click", function (event) {
             },
             success: function (data) {
                 stateC[1] = 0;
+                emptyTextCheckDelete(Org_CC, Org_C);
                 error17(setSMSBtnCDelete);
             },
             error: function (data) {
@@ -1556,6 +1583,7 @@ function error17(button) {
             },
             success: function (data) {
                 stateC[2] = 0;
+                emptyTextCheckDelete(Mer_CC, Mer_C);
                 error18(button);
             },
             error: function (data) {
@@ -1577,6 +1605,7 @@ function error18(button) {
             },
             success: function (data) {
                 stateC[3] = 0;
+                emptyTextCheckDelete(Receiver_CC, Receiver_C);
                 showTickSuccessModal(data, button, true);
             },
             error: function (data) {
