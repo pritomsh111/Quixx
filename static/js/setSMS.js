@@ -196,6 +196,7 @@ var Receiver_JCC = document.getElementById("Receiver_JCC");
 
 function textBoxKeyupHandler(checkbox, textbox) {
     checkbox.disabled = true;
+    checkbox.checked = false;
     if (!textbox.value.length) {
         checkbox.disabled = false;
     }
@@ -510,8 +511,9 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
     var counter = 0;
     var text = "";
     org.value || orgc.checked ? ++counter : text = "Organization - Either give some text OR check 'No SMS'";
+
     if (!org.disabled && !orgc.disabled) {
-        return { counter, text }
+        return { counter: 0, text: "Organization - Select Only One (Either give some text OR check 'No SMS)!" }
     }
     if (text) {
         return { counter, text };
@@ -519,7 +521,7 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
 
     mer.value || merc.checked ? ++counter : text = "Merchant - Either give some text OR check 'No SMS'";
     if (!mer.disabled && !merc.disabled) {
-        return { counter, text }
+        return { counter: 0, text: "Merchant - Select Only One (Either give some text OR check 'No SMS)!" }
     }
     if (text) {
         return { counter, text };
@@ -527,7 +529,7 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
 
     rec.value || recc.checked ? ++counter : text = "Receiver - Either give some text OR check 'No SMS'";
     if (!rec.disabled && !recc.disabled) {
-        return { counter, text }
+        return { counter: 0, text: "Receiver - Select Only One (Either give some text OR check 'No SMS)!" }
     }
     return { counter, text };
 }
