@@ -176,6 +176,15 @@ var btnOH = document.getElementById("setSMSBtnOH");
 var btnR = document.getElementById("setSMSBtnR");
 var btnC = document.getElementById("setSMSBtnC");
 
+var btnJCDelete = document.getElementById("setSMSBtnJCDelete");
+var btnETPDelete = document.getElementById("setSMSBtnETPDelete");
+var btnPUDelete = document.getElementById("setSMSBtnPUDelete");
+var btnETDDelete = document.getElementById("setSMSBtnETDDelete");
+var btnDDelete = document.getElementById("setSMSBtnDDelete");
+var btnOHDelete = document.getElementById("setSMSBtnOHDelete");
+var btnRDelete = document.getElementById("setSMSBtnRDelete");
+var btnCDelete = document.getElementById("setSMSBtnCDelete");
+
 var Org_JC = document.getElementById("Org_JC");
 var Mer_JC = document.getElementById("Mer_JC");
 var Receiver_JC = document.getElementById("Receiver_JC");
@@ -522,6 +531,25 @@ function check(org, orgc, mer, merc, rec, recc, msg) {
     return true;
 }
 
+setSMSBtnJCDelete.addEventListener("click", function (event) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ASSIGN&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                errorShow(data, btnJC);
+            }
+        })
+});
 btnJC.addEventListener("click", function (event) {
     if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC, "Just Created:")) {
         return;
