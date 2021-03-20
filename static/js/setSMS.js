@@ -510,14 +510,29 @@ function emptyCheckForJC(org, orgc, mer, merc, rec, recc) {
     var counter = 0;
     var text = "";
     org.value || orgc.checked ? ++counter : text = "Organization - Either give some text OR check 'No SMS'";
+
+    if (org.value && orgc.checked) {
+        text = "Organization - Cannot Select Both Option!";
+        return { counter, text }
+    }
+
     if (text) {
         return { counter, text };
     }
+
     mer.value || merc.checked ? ++counter : text = "Merchant - Either give some text OR check 'No SMS'";
+    if (mer.value && merc.checked) {
+        text = "Merchant - Cannot Select Both Option!";
+        return { counter, text }
+    }
     if (text) {
         return { counter, text };
     }
     rec.value || recc.checked ? ++counter : text = "Receiver - Either give some text OR check 'No SMS'";
+    if (rec.value && recc.checked) {
+        text = "Receiver - Cannot Select Both Option!";
+        return { counter, text }
+    }
     return { counter, text };
 }
 
