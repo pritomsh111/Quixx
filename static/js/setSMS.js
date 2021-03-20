@@ -476,7 +476,7 @@ function showInitialModal(event, button) {
     $("#sureDDD2").html("Please wait!");
 }
 
-function showTickSuccessModal(data, button) {
+function showTickSuccessModal(data, button, error) {
     button.disabled = false;
     if (data.status == 'OK') {
         setTimeout(function () {
@@ -484,7 +484,7 @@ function showTickSuccessModal(data, button) {
 
             $('#tickDDD2').show();
 
-            $("#sureDDD2").html("Please Wait For Approval!<br><br>You Will Be Notified Through An Email!");
+            error ? $("#sureDDD2").html("Deleted!") : $("#sureDDD2").html("Please Wait For Approval!<br><br>You Will Be Notified Through An Email!");
         }, 1500);
         setTimeout(function () {
 
@@ -531,25 +531,6 @@ function check(org, orgc, mer, merc, rec, recc, msg) {
     return true;
 }
 
-setSMSBtnJCDelete.addEventListener("click", function (event) {
-    $.ajax
-        ({
-            type: "DELETE",
-            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ASSIGN&forSender=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
-            headers:
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            },
-            success: function (data) {
-                console.log(data);
-            },
-            error: function (data) {
-                errorShow(data, btnJC);
-            }
-        })
-});
 btnJC.addEventListener("click", function (event) {
     if (!check(Org_JC, Org_JCC, Mer_JC, Mer_JCC, Receiver_JC, Receiver_JCC, "Just Created:")) {
         return;
@@ -608,7 +589,7 @@ function three(button) {
             },
             success: function (data) {
                 stateJC[3] = 1;
-                showTickSuccessModal(data, button);
+                showTickSuccessModal(data, button, null);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -675,7 +656,7 @@ function five(button) {
             },
             success: function (data) {
                 stateETP[3] = 1;
-                showTickSuccessModal(data, button);
+                showTickSuccessModal(data, button, null);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -742,7 +723,7 @@ function seven(button) {
             },
             success: function (data) {
                 statePU[3] = 1;
-                showTickSuccessModal(data, button);
+                showTickSuccessModal(data, button, null);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -809,7 +790,7 @@ function nine(button) {
             },
             success: function (data) {
                 stateETD[3] = 1;
-                showTickSuccessModal(data, button);
+                showTickSuccessModal(data, button, null);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -876,7 +857,7 @@ function eleven(button) {
             },
             success: function (data) {
                 stateD[3] = 1;
-                showTickSuccessModal(data, button);
+                showTickSuccessModal(data, button, null);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -943,7 +924,7 @@ function thirteen(button) {
             },
             success: function (data) {
                 stateOH[3] = 1;
-                showTickSuccessModal(data, button);
+                showTickSuccessModal(data, button, null);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -1010,7 +991,7 @@ function fifteen(button) {
             },
             success: function (data) {
                 stateR[3] = 1;
-                showTickSuccessModal(data, button);
+                showTickSuccessModal(data, button, null);
             },
             error: function (data) {
                 errorShow(data, button);
@@ -1077,7 +1058,526 @@ function seventeen(button) {
             },
             success: function (data) {
                 stateC[3] = 1;
-                showTickSuccessModal(data, button);
+                showTickSuccessModal(data, button, null);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+
+/* 
+
+Error
+
+*/
+setSMSBtnJCDelete.addEventListener("click", function (event) {
+    showInitialModal(event, setSMSBtnJCDelete);
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ASSIGN&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateJC[1] = 0;
+                error1(setSMSBtnJCDelete);
+            },
+            error: function (data) {
+                errorShow(data, setSMSBtnJCDelete);
+            }
+        })
+});
+
+function error1(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ASSIGN&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateJC[2] = 0;
+                error2(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function error2(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ASSIGN&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_JCC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateJC[3] = 0;
+                showTickSuccessModal(data, button, true);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+setSMSBtnETPDelete.addEventListener("click", function (event) {
+    showInitialModal(event, setSMSBtnETPDelete);
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_ETPC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateETP[1] = 0;
+                error3(setSMSBtnETPDelete);
+            },
+            error: function (data) {
+                errorShow(data, setSMSBtnETPDelete);
+            }
+        })
+});
+
+function error3(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_ETPC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateETP[2] = 0;
+                error4(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function error4(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_PICKUP&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETPC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateETP[3] = 0;
+                showTickSuccessModal(data, button, true);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+
+setSMSBtnPUDelete.addEventListener("click", function (event) {
+    showInitialModal(event, setSMSBtnPUDelete);
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=PICKED_UP&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_PUC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                statePU[1] = 0;
+                error5(setSMSBtnPUDelete);
+            },
+            error: function (data) {
+                errorShow(data, setSMSBtnPUDelete);
+            }
+        })
+});
+
+function error5(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=PICKED_UP&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_PUC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                statePU[2] = 0;
+                error6(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function error6(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=PICKED_UP&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_PUC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                statePU[3] = 0;
+                showTickSuccessModal(data, button, true);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+setSMSBtnETDDelete.addEventListener("click", function (event) {
+    showInitialModal(event, setSMSBtnETDDelete);
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_ETDC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateETD[1] = 0;
+                error7(setSMSBtnETDDelete);
+            },
+            error: function (data) {
+                errorShow(data, setSMSBtnETDDelete);
+            }
+        })
+});
+
+function error7(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_ETDC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateETD[2] = 0;
+                error8(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function error8(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ENROUTE_TO_DELIVERY&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_ETDC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateETD[3] = 0;
+                showTickSuccessModal(data, button, true);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+setSMSBtnDDelete.addEventListener("click", function (event) {
+    showInitialModal(event, setSMSBtnDDelete);
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=DELIVERED&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_DC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateD[1] = 0;
+                error9(setSMSBtnDDelete);
+            },
+            error: function (data) {
+                errorShow(data, setSMSBtnDDelete);
+            }
+        })
+});
+
+function error9(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=DELIVERED&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_DC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateD[2] = 0;
+                error10(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function error10(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=DELIVERED&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_DC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateD[3] = 0;
+                showTickSuccessModal(data, button, true);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+setSMSBtnOHDelete.addEventListener("click", function (event) {
+    showInitialModal(event, setSMSBtnOHDelete);
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ON_HOLD&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_OHC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateOH[1] = 0;
+                error13(setSMSBtnOHDelete);
+            },
+            error: function (data) {
+                errorShow(data, setSMSBtnOHDelete);
+            }
+        })
+});
+
+function error13(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ON_HOLD&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_OHC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateOH[2] = 0;
+                error14(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function error14(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=ON_HOLD&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_OHC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateOH[3] = 0;
+                showTickSuccessModal(data, button, true);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+setSMSBtnRDelete.addEventListener("click", function (event) {
+    showInitialModal(event, setSMSBtnRDelete);
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=RETURNED&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_RC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateR[1] = 0;
+                error15(setSMSBtnRDelete);
+            },
+            error: function (data) {
+                errorShow(data, setSMSBtnRDelete);
+            }
+        })
+});
+
+function error15(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=RETURNED&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_RC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateR[2] = 0;
+                error16(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function error16(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=RETURNED&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_RC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateR[3] = 0;
+                showTickSuccessModal(data, button, true);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+setSMSBtnCDelete.addEventListener("click", function (event) {
+    showInitialModal(event, setSMSBtnCDelete);
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=CANCELLED&forSernder=false&forReceiver=false&forOrg=true&noSms=${Org_CC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateC[1] = 0;
+                error17(setSMSBtnCDelete);
+            },
+            error: function (data) {
+                errorShow(data, setSMSBtnCDelete);
+            }
+        })
+});
+
+function error17(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=CANCELLED&forSernder=true&forReceiver=false&forOrg=false&noSms=${Mer_CC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateC[2] = 0;
+                error18(button);
+            },
+            error: function (data) {
+                errorShow(data, button);
+            }
+        })
+}
+
+function error18(button) {
+    $.ajax
+        ({
+            type: "DELETE",
+            url: `${urlForAll}custom/sms/delete/${localStorage.getItem('userID')}?smsState=CANCELLED&forSernder=false&forReceiver=true&forOrg=false&noSms=${Receiver_CC.checked}`,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                stateC[3] = 0;
+                showTickSuccessModal(data, button, true);
             },
             error: function (data) {
                 errorShow(data, button);
