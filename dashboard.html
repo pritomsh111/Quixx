@@ -104,9 +104,8 @@
   document.getElementById("date4").innerHTML = today;
   document.getElementById("date5").innerHTML = today;
 
-  async function callIT(){
-      
-    const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+  async function callIT() {
+    const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
     console.log("one");
     const resData = await res.json();
     console.log("two");
@@ -116,14 +115,20 @@
 
   async function hello() {
     console.log("three");
-    console.log( await callIT());
+    console.log(await callIT());
     console.log("four");
   }
 
   hello();
-  function omgg(){
-  }
+  function omgg() {}
   omgg();
   let aaa = 10;
   console.log(aaa);
+
+  try {
+    console.log(koko);
+    let koko;
+  } catch (e) {
+    console.log(e);
+  }
 </script>
