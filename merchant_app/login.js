@@ -1,4 +1,7 @@
 if (document.location.host.includes("portal")) {
+    // Clear Background Image
+    document.body.style.background = "white";
+
     // ClientWho
     let cw = document.location.host.split(".");
 
