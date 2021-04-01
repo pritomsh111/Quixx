@@ -93,6 +93,19 @@ p.error {
     transition: visibility 500ms ease-in-out, opacity 500ms ease-in-out;
 }
 
+.Company {
+    text-align: center;
+}
+
+.Company>div {
+    height: 45px;
+    width: 125px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 1rem auto;
+}
+
 .Quixx__Form__Main {
     border-radius: 10px;
     position: relative;

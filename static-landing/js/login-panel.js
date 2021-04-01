@@ -30,7 +30,7 @@
     // CompanyName
     let cn = document.querySelector(".Company>h1");
 
-    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : "";
+    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : cw[1] === "parcelboat" ? "Parcel Boat" : "";
 
     let encKey =
         cw[1] === "easyparcel" ? "someKey" :

@@ -1,3 +1,25 @@
+if (document.location.host.includes("portal")) {
+    // ClientWho
+    let cw = document.location.host.split(".");
+
+    // Logo
+    let lg = document.querySelector(".Company>div");
+    lg.style.backgroundImage = "url(../static-landing/img/clients/" + cw[1] + ".png)";
+
+    // Favicon
+    let fc = document.querySelector("link[rel='shortcut icon']");
+    fc.href = "../static-landing/img/clients/" + cw[1] + ".png";
+
+    // CompanyName
+    let cn = document.querySelector(".Company>h1");
+
+    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : cw[1] === "parcelboat" ? "Parcel Boat" : "";
+
+    cn.innerHTML = vl;
+
+    document.title = vl;
+}
+
 let preloader = document.querySelector(".preloader");
 
 let modal = document.querySelector(".Modal__Quixx");
