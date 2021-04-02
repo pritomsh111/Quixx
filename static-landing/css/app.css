@@ -523,7 +523,7 @@ ul {
 
 /* Home - Section 2 - Side__Prod*/
 
-.Quixx__Side__Prod {
+/* .Quixx__Side__Prod {
     padding: 3rem 5.1rem;
     display: flex;
     justify-content: space-around;
@@ -538,14 +538,14 @@ ul {
 
 .Quixx__Side__Prod a:nth-child(1) div {
     background: url("../img/quixx_digital.png") center/contain no-repeat;
-}
+} */
 
 /* .Quixx__Side__Prod a:nth-child(2) div {
     width: 180px;
     background: url("../img/quixx_nilkhetian.jpg") center/contain no-repeat;
 } */
 
-.Quixx__Side__Prod a:nth-child(2) div {
+/* .Quixx__Side__Prod a:nth-child(2) div {
     background: url("../img/quixx_projects.png") center/contain no-repeat;
 }
 
@@ -553,7 +553,7 @@ ul {
     .Quixx__Side__Prod {
         padding: 3rem 2rem;
     }
-}
+} */
 
 /* Home - Section 3 - Delivery__Agent__Application */
 

@@ -9,6 +9,11 @@ if (document.location.host.includes("portal")) {
     let lg = document.querySelector(".Company>div");
     lg.style.backgroundImage = "url(../static-landing/img/clients/" + cw[1] + ".png)";
 
+    // Change width/height of Logo
+    if (cw[1] === "parcelboat") {
+        lg.style.height = "105px";
+    }
+
     // Favicon
     let fc = document.querySelector("link[rel='shortcut icon']");
     fc.href = "../static-landing/img/clients/" + cw[1] + ".png";
