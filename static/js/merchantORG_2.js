@@ -1124,7 +1124,21 @@ $('.btn-okActivate2').click(function () {
 	var table = $('#dtBasicExampleActivate').DataTable();
 					
 	console.log(table.cell({ row: table.row($t.closest('tr')).index(), column: 7 }).data());
-	console.log(table.row($t).selector.rows[0]);
+	console.log(table.row($t));
+	console.log(table.row($t.closest('tr').data()));
+	// console.log(table.row($t).find('td').eq(7)[0]);
+	table.rows($t).every(function(index, element) {
+		var row = $(this.node());
+		console.log(row);
+		console.log("Hello")
+		// row.find('td').eq(7)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[index].approved_merchant_id)!== -1 ? true : false;
+		// row.find('td').eq(8)[0].children[0].disabled = !row.find('td').eq(7)[0].children[0].disabled;
+		// console.log(row.find('td').eq(7)[0].children[0]);
+		// console.log(element, row, statusElement, row.find('td'));
+		// var isChecked = statusElement.prop('checked');
+		// /* ... etc ... */
+		});
+	console.log($t);
 	// $("#sureActivate").html("Please wait!");
 	// document.getElementById('modalCancel1Activate2').disabled = true;
 	// document.getElementById('modalApprove1Activate2').disabled = true;
