@@ -8,6 +8,10 @@
         <meta name="author" content="Quixx">
         <script>
             if(document.location.host.includes("portal")){
+                if (!document.location.pathname.includes("/login-panel")) {
+                    console.log("Hello");
+                    window.location.href = "/login-panel";
+                }
                 window.location.href = "/login-panel";
             }
         </script>
