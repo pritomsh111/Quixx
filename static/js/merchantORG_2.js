@@ -1111,64 +1111,63 @@ $('#dtBasicExampleActivate').on('click', '.btn-DisableOTP', function () {
 	merId = $(this).attr('id');
 	orgId = $(this).attr('name');
 	$t = $(this);
-	$('#tickActivate').hide();
+	$('#tickActivate2').hide();
 	$(".circle-loader").removeClass("load-complete");
-	$("#myModalLabelWork").html("Disable OTP?");
 
-	$("#sureActivate").html("Are you sure?");
-	$("#myModalMerActivate").modal('show');
+	$("#sureActivate2").html("Are you sure?");
+	$("#myModalMerActivate2").modal('show');
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okActivate').click(function () {
+$('.btn-okActivate2').click(function () {
+		
+	var table = $('#dtBasicExampleActivate').DataTable();
+					
+	console.log(table.cell({ row: table.row($t.closest('tr')).index(), column: 7 }).data());
+	console.log(table.row($t).selector.rows[0]);
+	// $("#sureActivate").html("Please wait!");
+	// document.getElementById('modalCancel1Activate2').disabled = true;
+	// document.getElementById('modalApprove1Activate2').disabled = true;
+	// $.ajax
+	// 	({
+	// 		async: true,
+	// 		type: "PUT",
+	// 		url: urlForAll + "otp/disable/disable/" + merId,
 
-	$("#sureActivate").html("Please wait!");
-	document.getElementById('modalCancel1Activate').disabled = true;
-	document.getElementById('modalApprove1Activate').disabled = true;
-	$.ajax
-		({
-			async: true,
-			type: "PUT",
-			url: urlForAll + "orgHead/disable/merchant/" + merId + "/" + orgId,
+	// 		headers:
+	// 		{
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json',
+	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
+	// 		},
+	// 		success: function (data) {
+	// 			$("#sureActivate2").html("Please wait!");
+	// 			setTimeout(function () {
+	// 				$(".circle-loader").addClass("load-complete");
 
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function (data) {
-				$("#sureActivate").html("Please wait!");
-				setTimeout(function () {
-					$(".circle-loader").addClass("load-complete");
+	// 				$('#tickActivate2').show();
 
-					$('#tickActivate').show();
+	// 				$("#sureActivate2").html("Merchant's OTP Disabled!");
+	// 			}, 900);
 
-					$("#sureActivate").html("Merchant Disabled!");
-				}, 900);
+	// 			setTimeout(function () {
+	// 				$("#myModalMerActivate2").modal('hide');
+	// 				var table = $('#dtBasicExampleActivate').DataTable();
+	// 				table.row($t.parents('tr')).every((index, item) => {
+	// 					console.log(this);
+	// 					console.log(row.find('td').eq(7)[0].children[0]);
+	// 				});
 
-				setTimeout(function () {
-					$("#myModalMerActivate").modal('hide');
-					var table = $('#dtBasicExampleActivate').DataTable();
-					table
-						.row($t.parents('tr'))
-						.remove()
-						.draw();
-					document.getElementById('four').innerHTML = 'Activated Merchant: ' + table
-						.column(0)
-						.data()
-						.length;
+	// 				document.getElementById('modalCancel1Activate2').disabled = false;
+	// 				document.getElementById('modalApprove1Activate2').disabled = false;
+	// 			}, 2000);
+	// 		},
+	// 		error: function (data) {
 
-					document.getElementById('modalCancel1Activate').disabled = false;
-					document.getElementById('modalApprove1Activate').disabled = false;
-				}, 2000);
-			},
-			error: function (data) {
-
-				document.getElementById('modalCancel1Activate').disabled = false;
-				document.getElementById('modalApprove1Activate').disabled = false;
-				$('#myModalMerActivate').modal('hide');
-				$('#myModal2').modal('show');
-			}
-		});
+	// 			document.getElementById('modalCancel1Activate2').disabled = false;
+	// 			document.getElementById('modalApprove1Activate2').disabled = false;
+	// 			$('#myModalMerActivate2').modal('hide');
+	// 			$('#myModal2').modal('show');
+	// 		}
+	// 	});
 });
