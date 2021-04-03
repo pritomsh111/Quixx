@@ -27,6 +27,9 @@ if (document.location.host.includes("portal")) {
 
     document.title = vl;
 }
+else {
+    document.querySelector(".Company").style.display = "none";
+}
 
 let preloader = document.querySelector(".preloader");
 
