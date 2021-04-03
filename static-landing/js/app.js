@@ -17,7 +17,6 @@
             };
             if (fragmentId !== "login" && fragmentId !== "home") {
                 window.location.hash = "home";
-                return;
             }
             xhttp.open("GET", fragmentId + ".html", true);
             xhttp.send();

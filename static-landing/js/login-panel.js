@@ -1,7 +1,6 @@
 (() => {
     if (!document.location.host.includes("portal")) {
         window.location.href = "/";
-        return;
     }
 
     // Storage Event
