@@ -1,4 +1,8 @@
 (() => {
+    if (document.location.host.includes("portal")) {
+        window.location.href = "/";
+        return;
+    }
     window.addEventListener('storage', function (event) {
         if (event.key == 'login-event') {
             window.location.href = "panel.html";
