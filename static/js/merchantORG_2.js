@@ -237,22 +237,34 @@ var unApprovedMer = () => {
 	$('.b').show();
 };
 
-function merchantActivateFunction(data, table) {
-	$.each(data.data, function (i, item) {
-		var table_rows = '<tr><td>'
-			+ data.data[i].merchant_id + '</td><td>'
-			+ data.data[i].org_name + '</td><td>'
-			+ data.data[i].person_name + '</td><td>'
-			+ data.data[i].email + '</td><td>'
-			+ data.data[i].phone_number + '</td><td>'
-			+ data.data[i].business_filed + '</td><td>'
-			+ data.data[i].per_delivery_cost + '</td><td>'
-			+ '<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
-
-		table.rows.add($(table_rows)).draw();
-	});
+function merchantActivateFunction(dataGet, table) {
+	$.ajax
+		({
+			type: "GET",
+			"url": urlForAll + "otp/enable/all/" + org_ID,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				$.each(dataGet.data, function (i, item) {
+					var table_rows = '<tr><td>'
+						+ dataGet.data[i].merchant_id + '</td><td>'
+						+ dataGet.data[i].org_name + '</td><td>'
+						+ dataGet.data[i].person_name + '</td><td>'
+						+ dataGet.data[i].email + '</td><td>'
+						+ dataGet.data[i].phone_number + '</td><td>'
+						+ dataGet.data[i].business_filed + '</td><td>'
+						+ dataGet.data[i].per_delivery_cost + '</td><td>'
+						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
+			
+					table.rows.add($(table_rows)).draw();
+				});
+			}
+		});
 }
-
 var activated = () => {
 	document.getElementById('three').disabled = false;
 	document.getElementById('two').disabled = false;
