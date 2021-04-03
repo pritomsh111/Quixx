@@ -258,6 +258,8 @@ function merchantActivateFunction(dataGet, table) {
 						+ dataGet.data[i].phone_number + '</td><td>'
 						+ dataGet.data[i].business_filed + '</td><td>'
 						+ dataGet.data[i].per_delivery_cost + '</td><td>'
+						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>' + '</td><td>'
+						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>' + '</td><td>'
 						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
 			
 					table.rows.add($(table_rows)).draw();
