@@ -263,27 +263,16 @@ function merchantActivateFunction(dataGet, table) {
 						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
 			
 					table.rows.add($(table_rows)).draw();
-					table.rows().every(function (index, element) {
-						var row = $(this.node());
-						console.log(index, element);
-						console.log(table.rows());
-						// console.log(row.find('td').eq(7)[0].children[0]);
-						// console.log(dataOTP, dataOTP.data.indexOf(dataGet.data[i].approved_merchant_id));
-						// row.find('td').eq(7)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[i].approved_merchant_id)!== -1 ? false : true;
-						
-					// console.log(row.find('td').eq(8)[0].children[0]);
-					// // console.log(dataOTP, dataOTP.data.indexOf(dataGet.data[i].approved_merchant_id));
-					// // row.find('td').eq(7)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[i].approved_merchant_id)!== -1 ? false : true;
-					// console.log(row.find('td'));
-						
-						
-						// console.log(row.find('td').eq(7)[0].children[0]);
-						// console.log(element, row, statusElement, row.find('td'));
-						// var isChecked = statusElement.prop('checked');
-						// /* ... etc ... */
-					});
-					
 				});
+				table.rows().every(function(index, element) {
+					var row = $(this.node());
+					row.find('td').eq(7)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[index].approved_merchant_id)!== -1 ? true : false;
+					row.find('td').eq(8)[0].children[0].disabled = !row.find('td').eq(7)[0].children[0].disabled;
+					console.log(row.find('td').eq(7)[0].children[0]);
+					// console.log(element, row, statusElement, row.find('td'));
+					// var isChecked = statusElement.prop('checked');
+					// /* ... etc ... */
+					});
 			}
 		});
 }
