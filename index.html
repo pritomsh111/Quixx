@@ -10,6 +10,9 @@
             if(document.location.host.includes("portal")){
                 window.location.href = "/login-panel";
             }
+            else if(window.location.hash!=="login" && window.location.hash!=="home"){
+                window.location.hash = "home";
+            }
         </script>
         <title>Quixx</title>
         <link href="https://fonts.googleapis.com/css?family=Didact Gothic" rel="stylesheet">
