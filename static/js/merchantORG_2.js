@@ -248,7 +248,7 @@ function merchantActivateFunction(dataGet, table) {
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-			success: function (data) {
+			success: function (dataOTP) {
 				$.each(dataGet.data, function (i, item) {
 					var table_rows = '<tr><td>'
 						+ dataGet.data[i].merchant_id + '</td><td>'
@@ -263,6 +263,15 @@ function merchantActivateFunction(dataGet, table) {
 						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
 			
 					table.rows.add($(table_rows)).draw();
+					table.rows().every(function(index, element) {
+						var row = $(this.node());
+						var statusElement = row.find('td').eq(7); // Index 6 - the 7th column in the table
+						
+						console.log(row.find('td').eq(7)[0]);
+						// console.log(element, row, statusElement, row.find('td'));
+						// var isChecked = statusElement.prop('checked');
+						// /* ... etc ... */
+					  });
 				});
 			}
 		});
