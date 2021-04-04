@@ -45,7 +45,8 @@
         cw[1] === "easyparcel" ? "someKey" :
             cw[1] === "quixx" ? "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq" :
                 cw[1] === "quixxprojects" ? "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy" :
-                    "";
+                    cw[1] === "parcelboat" ? "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW" :
+                        "";
 
     cn.innerHTML = vl;
 
