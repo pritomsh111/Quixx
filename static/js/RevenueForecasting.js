@@ -28,7 +28,7 @@ function SalesOnlyModule() {
             y: sales,
             type: "scatter",
             mode: "lines",
-            marker: { color: "#ad4d4d", size: 12 },
+            marker: { color: "#ffcf5c", size: 12 },
             name: "Previous Sales",
             fill: "tozeroy",
         };
