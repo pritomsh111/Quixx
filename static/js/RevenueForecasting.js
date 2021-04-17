@@ -1,17 +1,9 @@
 function SalesOnlyModule() {
-    // var server = "http://127.0.0.1:5000";
     var server = "https://ai.quixx.xyz";
     var appdir = "/sales_only";
     var org = "/Express Food Delivery_2756";
-    // var org = '/Express Food Delivery_2751'
     var send_msg = "<p>Sending</p>";
     console.log(send_msg);
-    // $.ajax({
-    //     type: "POST",
-    //     url: server + appdir + org,
-    //     data: JSON.stringify(send_Data),
-    //     dataType: 'json'
-
     $.ajax({
         type: "GET",
         url: server + appdir + org,
