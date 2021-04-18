@@ -3,8 +3,9 @@ var fileTag = document.getElementById("filetag");
 var fileTag2 = document.getElementById("filetag2");
 var preview = document.getElementById("preview");
 let favicon = document.querySelector("link[rel='shortcut icon']");
+var orgName;
 
-function changeFavicon(img){
+function changeFavicon(img) {
 	favicon.href = img;
 }
 
@@ -153,6 +154,7 @@ else if (user === 'ORGANIZATIONAL_ADMIN') {
 				document.getElementById("namee").innerHTML = data.data;
 				document.getElementById("dashName").innerHTML = data.data + "'s Panel";
 				document.title = data.data;
+				orgName = data.data;
 			}
 		});
 	myNode = document.getElementById("merchant");

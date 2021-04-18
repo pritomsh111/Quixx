@@ -3,6 +3,7 @@ function SalesOnlyModule() {
     var appdir = "/sales_only";
     var org = "/Express Food Delivery_2756";
     var send_msg = "<p>Sending</p>";
+    console.log(orgName);
     console.log(send_msg);
     $.ajax({
         type: "GET",
