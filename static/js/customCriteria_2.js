@@ -1,42 +1,37 @@
 var org_ID = localStorage.getItem('userID');
-var abtn = document.querySelector('#btn');
-abtn.onclick = checkAll;
 
 var createCriteria = () => {
-    document.getElementById('one-cc').disabled = true;
-    document.getElementById('two-cc').disabled = false;
+    // document.getElementById('four').disabled = true;
+    // document.getElementById('twoa').disabled = false;
+    // document.getElementById('threea').disabled = false;
+    // document.getElementById('onea').disabled = false;
+    // document.getElementById('four').style.fontSize = '14.5px';
+    // document.getElementById('twoa').style.fontSize = '13px';
+    // document.getElementById('threea').style.fontSize = '13px';
+    // document.getElementById('onea').style.fontSize = '13px';
 
-    document.getElementById('one-cc').style.fontSize = '14.5px';
-    document.getElementById('two-cc').style.fontSize = '13px';
+    // document.getElementById('foura').style.fontSize = '13px';
+    // document.getElementById('fivea').style.fontSize = '13px';
+    // document.getElementById('foura').innerHTML = 'Activated Delivery Man';
+    // document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
 
+    // document.getElementById('foura').disabled = false;
+    // document.getElementById('fivea').disabled = false;
+    // $('#dtBasicExampleActivate').hide();
+    // $('#dtBasicExampleDisable').hide();
+    // $('.c').hide();
+    // $('.d').hide();
+
+    // document.getElementById('onea').innerHTML = 'Registered Delivery Man';
+    // document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
+    // document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
+    // $('#dtBasicExample').hide();
+    // $('#dtBasicExample2').hide();
+    // $('.a').hide();
+    // $('.b').hide();
     $('#createCriteria').show();
 };
 
-
-function uncheckAll(event) {
-    event.preventDefault();
-    check(false);
-    // reassign click event handler
-    this.onclick = checkAll;
-}
-
-function checkAll(event) {
-    event.preventDefault();
-    check();
-    // reassign click event handler
-    this.onclick = uncheckAll;
-}
-
-function check(checked = true) {
-    const cbs = document.querySelectorAll('input[name="mycheckboxes"]');
-    cbs.forEach((cb) => {
-        cb.checked = checked;
-    });
-}
-
-var thisInvoice = (id) => {
-    window.open(urlForAll + "reports/individual/deliveryMan/report/" + org_ID + "/" + id.id);
-}
 
 var registeredDeliveryMan = () => {
     document.getElementById('onea').disabled = true;
