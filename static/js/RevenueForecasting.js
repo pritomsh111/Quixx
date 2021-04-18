@@ -1,13 +1,14 @@
-function SalesOnlyModule() {
+function SalesOnlyModule(orgName) {
     var server = "https://ai.quixx.xyz";
     var appdir = "/sales_only";
-    var org = "/Express Food Delivery_2756";
-    var send_msg = "<p>Sending</p>";
-    console.log(orgName);
-    console.log(send_msg);
+    // console.log(orgName);
+    // var org = "Food_12";
+    var org = "Express Food Delivery_2756";
+    // var send_msg = "<p>Sending</p>";
+    // console.log(send_msg);
     $.ajax({
         type: "GET",
-        url: server + appdir + org,
+        url: server + appdir + "/" + encodeURIComponent(org),
     }).done(function (data) {
         console.log(data);
         timeseries = data["data"]["delivery_charge"];
@@ -37,4 +38,18 @@ function SalesOnlyModule() {
         Plotly.newPlot("chart", allData, layout);
     });
 }
-SalesOnlyModule();
+$.ajax
+    ({
+
+        type: "GET",
+        url: urlForAll + "orgHead/get/org/name/" + localStorage.getItem('userID'),
+        headers:
+        {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": 'Bearer ' + localStorage.getItem('token')
+        },
+        success: function (data) {
+            SalesOnlyModule(`${data.data}_${localStorage.getItem('userID')}`);
+        }
+    });

@@ -4656,7 +4656,7 @@ h2.title {
 .sidebar .sidebar-wrapper {
   padding-top: 20px;
   position: relative;
-  height: 60%;
+  height: 75%;
   overflow-y: scroll;
   width: 260px;
   z-index: 4;
