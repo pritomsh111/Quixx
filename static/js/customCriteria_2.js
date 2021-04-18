@@ -32,6 +32,49 @@ var createCriteria = () => {
     $('#createCriteria').show();
 };
 
+var createField = (type) => {
+    let typeForCreate = type === "day" ? ".col.day" : type === "type" ? ".col.type" : type === "weight" ? ".col.weight" : type === "distance" ? ".col.distance" : null;
+    let div = document.querySelector(`${typeForCreate}`);
+    let input = document.createElement("input");
+    input.type = "text";
+    input.style.cssText = "color: #0066b3;margin-top:0.2rem";
+    input.className = "form-control day-input";
+    input.placeholder = "/* Urgent SameDay NextDay */";
+    div.append(input);
+}
+
+var remove = (type) => {
+    let typeForCreate = type === "day" ? ".col.day" : type === "type" ? ".col.type" : type === "weight" ? ".col.weight" : type === "distance" ? ".col.distance" : null;
+    let div = document.querySelector(`${typeForCreate}`);
+    // <input
+    //     type="text"
+    //     id="dayType"
+    //     style="color: #0066b3"
+    //     class="form-control"
+    //     placeholder=""
+    // ></input>
+    let input = document.createElement("input");
+    input.type = "text";
+    input.style.cssText = "color: #0066b3;margin-top:0.2rem";
+    input.className = "form-control day-input";
+    input.placeholder = "/* Urgent SameDay NextDay */";
+    div.append(input);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var registeredDeliveryMan = () => {
     document.getElementById('onea').disabled = true;

@@ -3,6 +3,14 @@
   div.hideKoro8 {
     display: none;
   }
+  input{
+      width: 80%;
+  }
+  div.flexIt{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
 </style>
 <script src="static/js/customCriteria_00.js"></script>
 <link rel="stylesheet" href="static/css/deliveryManORG.css">
@@ -66,15 +74,8 @@
                 <div class="card-body table-responsive blur">
                     <form class="text-center p-5" style="color: #0066b3">
                         <div class="form-row mb-4">
-                            <div class="col" style="text-align: left">
+                            <div class="col day" style="text-align: left">
                                 Day Type:
-                                <input
-                                    type="text"
-                                    id="dayType"
-                                    style="color: #0066b3"
-                                    class="form-control"
-                                    placeholder=""
-                                >
                             </div>
                         </div>
                         <br>
@@ -83,7 +84,7 @@
                         class="btn btn-round btn-outline"
                         style="background: #ffffd4; margin-top: -7rem"
                         type="submit"
-                        id="dayTypeCreation"
+                        onclick="createField('day')"
                     >
                         Add New Day Type Criteria
                     </button>
@@ -95,15 +96,8 @@
                 <div class="card-body table-responsive blur">
                     <form class="text-center p-5" style="color: #0066b3">
                         <div class="form-row mb-4">
-                            <div class="col" style="text-align: left">
+                            <div class="col distance" style="text-align: left">
                                 Product Distance Type:
-                                <input
-                                    type="text"
-                                    id="productDistance"
-                                    style="color: #0066b3"
-                                    class="form-control"
-                                    placeholder=""
-                                >
                             </div>
                         </div>
                         <br>
@@ -112,7 +106,7 @@
                         class="btn btn-round btn-outline"
                         style="background: #ffffd4; margin-top: -7rem"
                         type="submit"
-                        id="productDistanceCreation"
+                        onclick="createField('distance')"
                     >
                         Add New Product Distace Criteria
                     </button>
@@ -124,15 +118,8 @@
                 <div class="card-body table-responsive blur">
                     <form class="text-center p-5" style="color: #0066b3">
                         <div class="form-row mb-4">
-                            <div class="col" style="text-align: left">
+                            <div class="col type" style="text-align: left">
                                 Product Type:
-                                <input
-                                    type="text"
-                                    id="productType"
-                                    style="color: #0066b3"
-                                    class="form-control"
-                                    placeholder=""
-                                >
                             </div>
                         </div>
                         <br>
@@ -141,7 +128,7 @@
                         class="btn btn-round btn-outline"
                         style="background: #ffffd4; margin-top: -7rem"
                         type="submit"
-                        id="productTypeCreation"
+                        onclick="createField('type')"
                     >
                         Add New Product Type Criteria
                     </button>
@@ -153,15 +140,8 @@
                 <div class="card-body table-responsive blur">
                     <form class="text-center p-5" style="color: #0066b3">
                         <div class="form-row mb-4">
-                            <div class="col" style="text-align: left">
+                            <div class="col weight" style="text-align: left">
                                 Product Weight:
-                                <input
-                                    type="text"
-                                    id="productWeight"
-                                    style="color: #0066b3"
-                                    class="form-control"
-                                    placeholder=""
-                                >
                             </div>
                         </div>
                         <br>
@@ -170,7 +150,7 @@
                         class="btn btn-round btn-outline"
                         style="background: #ffffd4; margin-top: -7rem"
                         type="submit"
-                        id="productWeightCreation"
+                        onclick="createField('weight')"
                     >
                         Add New Product Weight Criteria
                     </button>
