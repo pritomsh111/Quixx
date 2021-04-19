@@ -13,7 +13,7 @@ var createCriteria = () => {
 
 var createField = (types, values = undefined) => {
     let typeForCreate = types === "dayType" ? ".col.dayType" : types === "productType" ? ".col.productType" : types === "weight" ? ".col.weight" : types === "distance" ? ".col.distance" : null;
-    let placeHolder = types === "dayType" ? "... Urgent SameDay NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ...(KG)" : types === "distance" ? "... 1-2, 2, 3, 0.4 ...(KM)" : null;
+    let placeHolder = types === "dayType" ? "... Urgent SameDay NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
     let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dsc" : null;
     let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
 
@@ -66,6 +66,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
     Array.from(document.querySelectorAll(".flexIt")).map(item => {
         if (item.children[0].value) {
             if (item.classList.item(0).includes("dc")) {
+
                 dayType.push(item.children[0].value);
             }
             else if (item.classList.item(0).includes("wc")) {
@@ -78,7 +79,6 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
                 productType.push(item.children[0].value);
             }
         }
-
     });
     $.ajax
         ({
