@@ -124,7 +124,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
 var fillInputDetails = (types, values = undefined) => {
     let typeForCreate = types === "dayType" ? ".col.dayType2" : types === "productType" ? ".col.productType2" : types === "weight" ? ".col.weight2" : types === "distance" ? ".col.distance2" : null;
     let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
-    let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dsc" : null;
+    let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : null;
     let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
 
     let div = document.querySelector(`${typeForCreate}`);
@@ -132,20 +132,18 @@ var fillInputDetails = (types, values = undefined) => {
     let dummyDivFlex = document.createElement("div");
     dummyDivFlex.className = `${classesName}${increment} flexIt`;
 
-    let input = document.createElement("input");
-    input.type = "text";
-    input.value = values !== undefined ? values : "";
-    input.style.cssText = "color: #0066b3; margin-top:0.2rem; width: 100%;";
-    input.className = `form-control`;
-    input.placeholder = placeHolder;
+    let input = document.createElement("span");
+    input.innerHTML = values !== undefined ? `${values}:` : "";
+    input.style.cssText = "color: #0066b3; margin:1rem 0;";
 
-    let deleteIcon = document.createElement("i");
-    deleteIcon.className = `material-icons`;
-    deleteIcon.style.cssText = "cursor: pointer;";
-    deleteIcon.innerHTML = "delete_outline";
-    deleteIcon.onclick = remove.bind(this, `${classesName}${increment}`);
+    let identidier = document.createElement("input");
+    identidier.type = "text";
+    // identidier.value = values !== undefined ? values : "";
+    identidier.style.cssText = "color: #0066b3; width: 100%;";
+    identidier.className = `form-control`;
+
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
-    dummyDivFlex.append(input, deleteIcon);
+    dummyDivFlex.append(input, identidier);
 
     div.append(dummyDivFlex);
 }
