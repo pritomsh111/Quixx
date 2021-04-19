@@ -21,7 +21,7 @@ var createField = (types, values = undefined) => {
     let input = document.createElement("input");
     input.type = "text";
     input.value = values !== undefined ? values : "";
-    input.style.cssText = "color: #0066b3; margin-top:0.2rem; width: 100%;";
+    input.style.cssText = "color: #0066b3; margin-top:0.4rem; width: 100%;";
     input.className = `form-control`;
     input.placeholder = placeHolder;
 
@@ -131,19 +131,20 @@ var fillInputDetails = (types, values = undefined) => {
 
     let dummyDivFlex = document.createElement("div");
     dummyDivFlex.className = `${classesName}${increment} flexIt`;
+    dummyDivFlex.style.cssText = "align-items: center;flex-wrap: wrap;";
 
-    let input = document.createElement("span");
-    input.innerHTML = values !== undefined ? `${values}:` : "";
-    input.style.cssText = "color: #0066b3; margin:1rem 0;";
+    let identifier = document.createElement("span");
+    identifier.innerHTML = values !== undefined ? `${values}:` : "";
+    identifier.style.cssText = "color: #0066b3; margin:rem 0;";
 
-    let identidier = document.createElement("input");
-    identidier.type = "text";
+    let input = document.createElement("input");
+    input.type = "text";
     // identidier.value = values !== undefined ? values : "";
-    identidier.style.cssText = "color: #0066b3; width: 100%;";
-    identidier.className = `form-control`;
+    input.style.cssText = "color: #0066b3; width: 100%;";
+    input.className = `form-control`;
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
-    dummyDivFlex.append(input, identidier);
+    dummyDivFlex.append(identifier, input);
 
     div.append(dummyDivFlex);
 }
