@@ -11,7 +11,10 @@ $(document).ready(function () {
         let div;
         Object.keys(data).map(item => {
             div = document.querySelector(`.col.${item}`);
-
+            for (let i of data[item]) {
+                createField(item, i);
+                // item === "dayType" ? day++ : item === "productType" ? type++ : item === "weight" ? weight++ : item === "distance" ? distance++ : null;
+            }
         });
     }
     function fillInput() {

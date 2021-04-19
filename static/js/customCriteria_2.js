@@ -13,19 +13,19 @@ var createCriteria = () => {
     $('#createCriteria').show();
 };
 
-var createField = (types) => {
-    let typeForCreate = types === "day" ? ".col.dayType" : types === "type" ? ".col.productType" : types === "weight" ? ".col.weight" : types === "distance" ? ".col.distance" : null;
-    let placeHolder = types === "day" ? "... Urgent SameDay NextDay ..." : types === "type" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ...(KG)" : types === "distance" ? "... 1-2, 2, 3, 0.4 ...(KM)" : null;
-    let classesName = types === "day" ? "dc" : types === "type" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dcc" : null;
-    let increment = types === "day" ? day : types === "type" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
+var createField = (types, values = undefined) => {
+    let typeForCreate = types === "dayType" ? ".col.dayType" : types === "productType" ? ".col.productType" : types === "weight" ? ".col.weight" : types === "distance" ? ".col.distance" : null;
+    let placeHolder = types === "dayType" ? "... Urgent SameDay NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ...(KG)" : types === "distance" ? "... 1-2, 2, 3, 0.4 ...(KM)" : null;
+    let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dcc" : null;
+    let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
 
     let div = document.querySelector(`${typeForCreate}`);
 
     let dummyDivFlex = document.createElement("div");
     dummyDivFlex.className = `flexIt ${classesName}${increment}`;
-
     let input = document.createElement("input");
     input.type = "text";
+    input.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3; margin-top:0.2rem; width: 100%;";
     input.className = `form-control day-input`;
     input.placeholder = placeHolder;
@@ -35,7 +35,7 @@ var createField = (types) => {
     deleteIcon.style.cssText = "cursor: pointer;";
     deleteIcon.innerHTML = "delete_outline";
     deleteIcon.onclick = remove.bind(this, `${classesName}${increment}`);
-    types === "day" ? day++ : types === "type" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
+    types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
     dummyDivFlex.append(input, deleteIcon);
 
     div.append(dummyDivFlex);
