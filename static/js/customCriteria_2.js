@@ -1,5 +1,4 @@
 var org_ID = localStorage.getItem('userID');
-var day = 0;
 
 var createCriteria = () => {
     // document.getElementById('four').disabled = true;
@@ -36,10 +35,13 @@ var createCriteria = () => {
 var createField = (type) => {
     let typeForCreate = type === "day" ? ".col.day" : type === "type" ? ".col.type" : type === "weight" ? ".col.weight" : type === "distance" ? ".col.distance" : null;
     let placeHolder = type === "day" ? "Urgent SameDay NextDay ..." : type === "type" ? "Glass, Food ..." : type === "weight" ? "1-2, 1-4, 3, 0.6 ...(KG)" : type === "distance" ? "1-2, 2, 3, 0.4 ...(KM)" : null;
+    let classesName = type === "day" ? "dc" : type === "type" ? "tc" : type === "weight" ? "wc" : type === "distance" ? "dc" : null;
+
+
     let div = document.querySelector(`${typeForCreate}`);
 
     let dummyDivFlex = document.createElement("div");
-    dummyDivFlex.className = `flexIt di${div.childElementCount}`;
+    dummyDivFlex.className = `flexIt ${classesName}${div.childElementCount}`;
 
     let input = document.createElement("input");
     input.type = "text";
@@ -51,7 +53,7 @@ var createField = (type) => {
     deleteIcon.className = "material-icons";
     deleteIcon.style.cssText = "cursor: pointer;";
     deleteIcon.innerHTML = "delete_outline";
-    deleteIcon.onclick = remove.bind(this, div, day);
+    deleteIcon.onclick = remove.bind(this, div, div.childElementCount);
 
     dummyDivFlex.append(input, deleteIcon);
 
@@ -59,7 +61,8 @@ var createField = (type) => {
 }
 
 var remove = (criteriaDiv, criteriatype) => {
-    console.log(criteriaDiv.children, criteriatype);
+    console.log(criteriaDiv.children[criteriatype], criteriatype);
+    criteriaDiv.children[criteriatype].remove();
 }
 
 
