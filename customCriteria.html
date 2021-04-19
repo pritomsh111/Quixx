@@ -8,6 +8,9 @@
       justify-content: space-between;
       align-items: flex-end;
   }
+  #criteriaSubmit{
+      display: none;
+  }
 </style>
 <script src="static/js/customCriteria_00.js"></script>
 <link rel="stylesheet" href="static/css/deliveryManORG.css">
@@ -65,201 +68,108 @@
             </div>
         </div>
     </div>
-    <div class="row" id="createCriteria">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body table-responsive blur">
-                    <form class="text-center p-5" style="color: #0066b3">
-                        <div class="form-row mb-4">
-                            <div class="col dayType" style="text-align: left">
-                                Day Type:
+    <div class="card-body table-responsive">
+        <div class="row" id="createCriteria">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body table-responsive blur">
+                        <form class="text-center p-5" style="color: #0066b3">
+                            <div class="form-row mb-4">
+                                <div class="col dayType" style="text-align: left">
+                                    Day Type:
+                                </div>
                             </div>
-                        </div>
-                        <br>
-                    </form>
-                    <button
-                        class="btn btn-round btn-outline"
-                        style="background: #ffffd4; margin-top: -7rem"
-                        type="submit"
-                        onclick="createField('dayType')"
-                    >
-                        Add New Day Type Criteria
-                    </button>
+                            <br>
+                        </form>
+                        <button
+                            class="btn btn-round btn-outline"
+                            style="background: #ffffd4; margin-top: -7rem"
+                            type="submit"
+                            onclick="createField('dayType')"
+                        >
+                            Add New Day Type Criteria
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body table-responsive blur">
+                        <form class="text-center p-5" style="color: #0066b3">
+                            <div class="form-row mb-4">
+                                <div class="col distance" style="text-align: left">
+                                    Product Distance Type:
+                                </div>
+                            </div>
+                            <br>
+                        </form>
+                        <button
+                            class="btn btn-round btn-outline"
+                            style="background: #ffffd4; margin-top: -7rem"
+                            type="submit"
+                            onclick="createField('distance')"
+                        >
+                            Add New Product Distace Criteria
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body table-responsive blur">
+                        <form class="text-center p-5" style="color: #0066b3">
+                            <div class="form-row mb-4">
+                                <div class="col productType" style="text-align: left">
+                                    Product Type:
+                                </div>
+                            </div>
+                            <br>
+                        </form>
+                        <button
+                            class="btn btn-round btn-outline"
+                            style="background: #ffffd4; margin-top: -7rem"
+                            type="submit"
+                            onclick="createField('productType')"
+                        >
+                            Add New Product Type Criteria
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body table-responsive blur">
+                        <form class="text-center p-5" style="color: #0066b3">
+                            <div class="form-row mb-4">
+                                <div class="col weight" style="text-align: left">
+                                    Product Weight:
+                                </div>
+                            </div>
+                            <br>
+                        </form>
+                        <button
+                            class="btn btn-round btn-outline"
+                            style="background: #ffffd4; margin-top: -7rem"
+                            type="submit"
+                            onclick="createField('weight')"
+                        >
+                            Add New Product Weight Criteria
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body table-responsive blur">
-                    <form class="text-center p-5" style="color: #0066b3">
-                        <div class="form-row mb-4">
-                            <div class="col distance" style="text-align: left">
-                                Product Distance Type:
-                            </div>
-                        </div>
-                        <br>
-                    </form>
-                    <button
-                        class="btn btn-round btn-outline"
-                        style="background: #ffffd4; margin-top: -7rem"
-                        type="submit"
-                        onclick="createField('distance')"
-                    >
-                        Add New Product Distace Criteria
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body table-responsive blur">
-                    <form class="text-center p-5" style="color: #0066b3">
-                        <div class="form-row mb-4">
-                            <div class="col productType" style="text-align: left">
-                                Product Type:
-                            </div>
-                        </div>
-                        <br>
-                    </form>
-                    <button
-                        class="btn btn-round btn-outline"
-                        style="background: #ffffd4; margin-top: -7rem"
-                        type="submit"
-                        onclick="createField('productType')"
-                    >
-                        Add New Product Type Criteria
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body table-responsive blur">
-                    <form class="text-center p-5" style="color: #0066b3">
-                        <div class="form-row mb-4">
-                            <div class="col weight" style="text-align: left">
-                                Product Weight:
-                            </div>
-                        </div>
-                        <br>
-                    </form>
-                    <button
-                        class="btn btn-round btn-outline"
-                        style="background: #ffffd4; margin-top: -7rem"
-                        type="submit"
-                        onclick="createField('weight')"
-                    >
-                        Add New Product Weight Criteria
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style="text-align:center">
-        <button
-            class="btn btn-round btn-outline"
-            style="background: #f6f7ff;margin-bottom: 1rem;"
-            type="submit"
-            id="criteriaSubmit"
-        >
-            Submit Criteria
-        </button>
-    </div>
-    <!-- <div class="card a">
-        <div class="card-body table-responsive a">
-            <table
-                id="dtBasicExample"
-                class="stripe hover"
-                style="color: #0066b3"
-                cellspacing="0"
-                width="100%"
+        <div style="text-align:center">
+            <button
+                class="btn btn-round btn-outline"
+                style="background: #f6f7ff;margin-bottom: 1rem;"
+                type="submit"
+                id="criteriaSubmit"
             >
-                <thead>
-                    <tr>
-                        <th class="th-sm">ID</th>
-                        <th class="th-sm">Delivery Man's Name</th>
-                        <th class="th-sm">Delivery Man's Email</th>
-                        <th class="th-sm">Phone Number</th>
-                        <th class="th-sm">Delivery Area</th>
-                        <th class="th-sm">Reporting Boss Email</th>
-                        <th class="th-sm">Invoice</th>
-                    </tr>
-                </thead>
-                <tfoot></tfoot>
-            </table>
+                Submit Criteria
+            </button>
         </div>
     </div>
-    <div class="card b">
-        <div class="card-body table-responsive b">
-            <table
-                id="dtBasicExample2"
-                class="stripe hover"
-                style="color: #0066b3"
-                cellspacing="0"
-                width="100%"
-            >
-                <thead>
-                    <tr>
-                        <th class="th-sm">ID</th>
-                        <th class="th-sm">Delivery Man's Name</th>
-                        <th class="th-sm">Delivery Man's Email</th>
-                        <th class="th-sm">Phone Number</th>
-                        <th class="th-sm">Delivery Area</th>
-                        <th class="th-sm">Reporting Boss Email</th>
-                        <th class="th-sm">Approve?</th>
-                    </tr>
-                </thead>
-                <tfoot></tfoot>
-            </table>
-        </div>
-    </div>
-    <div class="card c">
-        <div class="card-body table-responsive c">
-            <table
-                id="dtBasicExampleActivate"
-                class="stripe hover"
-                style="color: #0066b3"
-                cellspacing="0"
-                width="100%"
-            >
-                <thead>
-                    <tr>
-                        <th class="th-sm">ID</th>
-                        <th class="th-sm">Delivery Man's Name</th>
-                        <th class="th-sm">Delivery Man's Email</th>
-                        <th class="th-sm">Phone Number</th>
-                        <th class="th-sm">Delivery Area</th>
-                        <th class="th-sm">Reporting Boss Email</th>
-                        <th class="th-sm">Disable?</th>
-                    </tr>
-                </thead>
-                <tfoot></tfoot>
-            </table>
-        </div>
-    </div>
-    <div class="card d">
-        <div class="card-body table-responsive d">
-            <table
-                id="dtBasicExampleDisable"
-                class="stripe hover"
-                style="color: #0066b3"
-                cellspacing="0"
-                width="100%"
-            >
-                <thead>
-                    <tr>
-                        <th class="th-sm">ID</th>
-                        <th class="th-sm">Delivery Man's Name</th>
-                        <th class="th-sm">Delivery Man's Email</th>
-                        <th class="th-sm">Delivery Area</th>
-                        <th class="th-sm">Reporting Boss Email</th>
-                        <th class="th-sm">Activate?</th>
-                    </tr>
-                </thead>
-                <tfoot></tfoot>
-            </table>
-        </div>
-    </div> -->
 </div>
 <div
     class="modal fade"

@@ -11,6 +11,7 @@ function three3() {
 
         document.getElementById('one-cc').style.fontSize = '14.5px';
         document.getElementById('two-cc').style.fontSize = '13px';
+        document.getElementById('criteriaSubmit').style.display = 'inline-block';
 
         $('#createCriteria').show();
     }, 3700);

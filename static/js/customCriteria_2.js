@@ -1,5 +1,3 @@
-var org_ID = localStorage.getItem('userID');
-
 var createCriteria = () => {
     // document.getElementById('four').disabled = true;
     // document.getElementById('twoa').disabled = false;
@@ -47,17 +45,25 @@ var remove = (criteriatype) => {
 
 document.querySelector("#criteriaSubmit").addEventListener("click", function (e) {
     e.preventDefault();
-    document.getElementById('criteriaSubmit').disabled = true;
-    $('#tickActivate').hide();
-    $(".circle-loader").removeClass("load-complete");
+    // document.getElementById('criteriaSubmit').disabled = true;
+    // $('#tickActivate').hide();
+    // $(".circle-loader").removeClass("load-complete");
 
-    $("#sureActivate").html("Are you sure?");
-    $("#myModalMerActivate").modal('show');
+    // $("#sureActivate").html("Are you sure?");
+    // $("#myModalMerActivate").modal('show');
+
+    Array.from(document.querySelectorAll(".flexIt")).map(item => {
+        if (item.classList.item(0).includes("dc")) {
+            console.log("He");
+        }
+    });
 });
 
 document.querySelector("#modalCancel1Activate").addEventListener("click", function (e) {
     let method = flag ? "PUT" : "POST";
-
+    document.querySelectorAll(".flexIt").map(item => {
+        console.log(item);
+    });
     document.getElementById('criteriaSubmit').disabled = true;
     $.ajax
         ({
