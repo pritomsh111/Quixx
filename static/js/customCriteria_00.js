@@ -6,6 +6,7 @@ function two2() {
 }
 function three3() {
     setTimeout(function () {
+        document.getElementById('setCriteriaDetails').style.display = "none";
         document.getElementById('one-cc').disabled = true;
         document.getElementById('two-cc').disabled = false;
 

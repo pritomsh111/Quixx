@@ -1,13 +1,8 @@
 var createCriteria = () => {
-    // document.getElementById('four').disabled = true;
-    // document.getElementById('twoa').disabled = false;
-    // document.getElementById('threea').disabled = false;
-    // document.getElementById('onea').disabled = false;
-    // document.getElementById('four').style.fontSize = '14.5px';
-    // document.getElementById('twoa').style.fontSize = '13px';
-    // document.getElementById('threea').style.fontSize = '13px';
-    // document.getElementById('onea').style.fontSize = '13px';
-
+    document.getElementById('one-cc').disabled = true;
+    document.getElementById('two-cc').disabled = false;
+    document.getElementById('two-cc').style.fontSize = '13px';
+    document.getElementById('one-cc').style.fontSize = '14.5px';
     $('#createCriteria').show();
 };
 

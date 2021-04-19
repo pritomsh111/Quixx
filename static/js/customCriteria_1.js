@@ -5,7 +5,7 @@ $(document).ready(function () {
     $('#settings').hide();
     $('.container').hide();
     $('#createCriteria').hide();
-
+    document.getElementById('setCriteriaDetails').style.display = "none";
     function createFieldStart(data) {
         let div;
         Object.keys(data).map(item => {
