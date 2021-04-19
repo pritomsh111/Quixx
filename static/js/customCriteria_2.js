@@ -45,6 +45,55 @@ var remove = (criteriatype) => {
     document.querySelector(`.flexIt.${criteriatype}`).remove();
 }
 
+document.querySelector("#criteriaSubmit").addEventListener("click", function (e) {
+    e.preventDefault();
+    document.getElementById('criteriaSubmit').disabled = true;
+    $('#tickActivate').hide();
+    $(".circle-loader").removeClass("load-complete");
+
+    $("#sureActivate").html("Are you sure?");
+    $("#myModalMerActivate").modal('show');
+});
+
+document.querySelector("#modalCancel1Activate").addEventListener("click", function (e) {
+    let method = flag ? "PUT" : "POST";
+    document.getElementById('criteriaSubmit').disabled = true;
+
+    $.ajax
+        ({
+            type: method,
+            url: urlForAll + "delivery/criteria/keys" + org_ID,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                $("#sureActivate").html("Please wait!");
+                setTimeout(function () {
+                    $(".circle-loader").addClass("load-complete");
+
+                    $('#tickActivate').show();
+
+                    $("#sureActivate").html(`Criteria ${flag ? "Updated" : "Set"}`);
+                }, 900);
+
+                setTimeout(function () {
+                    $("#myModalMerActivate").modal('hide');
+                    document.getElementById('modalCancel1Activate').disabled = false;
+                    document.getElementById('modalApprove1Activate').disabled = false;
+                }, 2000);
+            },
+            error: function (data) {
+
+                document.getElementById('modalCancel1Activate').disabled = false;
+                document.getElementById('modalApprove1Activate').disabled = false;
+                $('#myModalMerActivate').modal('hide');
+                $('#myModalE').modal('show');
+            }
+        });
+});
 
 
 
