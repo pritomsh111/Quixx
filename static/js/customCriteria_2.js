@@ -114,8 +114,10 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
                 document.getElementById('criteriaSubmit').disabled = false;
                 document.getElementById('modalCriteriaCancel').disabled = false;
                 document.getElementById('modalCriteriaSet').disabled = false;
-                $('#myModalMerActivate').modal('hide');
-                $('#myModalE').modal('show');
+                $('#myModalCriteria').modal('hide');
+                setTimeout(() => {
+                    $('#myModalE').modal('show');
+                }, 0);
             }
         });
 });
@@ -131,16 +133,16 @@ var fillInputDetails = (types, values = undefined) => {
 
     let dummyDivFlex = document.createElement("div");
     dummyDivFlex.className = `${classesName}${increment} flexIt`;
-    dummyDivFlex.style.cssText = "align-items: center;flex-wrap: wrap;";
+    dummyDivFlex.style.cssText = "align-items: center;";
 
     let identifier = document.createElement("span");
     identifier.innerHTML = values !== undefined ? `${values}:` : "";
-    identifier.style.cssText = "color: #0066b3; margin:rem 0;";
+    identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 12%;";
 
     let input = document.createElement("input");
     input.type = "text";
     // identidier.value = values !== undefined ? values : "";
-    input.style.cssText = "color: #0066b3; width: 100%;";
+    input.style.cssText = "color: #0066b3;";
     input.className = `form-control`;
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
