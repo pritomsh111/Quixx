@@ -1,4 +1,5 @@
 var org_ID = localStorage.getItem('userID');
+var day = 0;
 
 var createCriteria = () => {
     // document.getElementById('four').disabled = true;
@@ -34,31 +35,31 @@ var createCriteria = () => {
 
 var createField = (type) => {
     let typeForCreate = type === "day" ? ".col.day" : type === "type" ? ".col.type" : type === "weight" ? ".col.weight" : type === "distance" ? ".col.distance" : null;
+    let placeHolder = type === "day" ? "Urgent SameDay NextDay ..." : type === "type" ? "Glass, Food ..." : type === "weight" ? "1-2, 1-4, 3, 0.6 ...(KG)" : type === "distance" ? "1-2, 2, 3, 0.4 ...(KM)" : null;
     let div = document.querySelector(`${typeForCreate}`);
+
+    let dummyDivFlex = document.createElement("div");
+    dummyDivFlex.className = `flexIt di${div.childElementCount}`;
+
     let input = document.createElement("input");
     input.type = "text";
-    input.style.cssText = "color: #0066b3;margin-top:0.2rem";
-    input.className = "form-control day-input";
-    input.placeholder = "/* Urgent SameDay NextDay */";
-    div.append(input);
+    input.style.cssText = "color: #0066b3; margin-top:0.2rem; width: 100%;";
+    input.className = `form-control day-input`;
+    input.placeholder = placeHolder;
+
+    let deleteIcon = document.createElement("i");
+    deleteIcon.className = "material-icons";
+    deleteIcon.style.cssText = "cursor: pointer;";
+    deleteIcon.innerHTML = "delete_outline";
+    deleteIcon.onclick = remove.bind(this, div, day);
+
+    dummyDivFlex.append(input, deleteIcon);
+
+    div.append(dummyDivFlex);
 }
 
-var remove = (type) => {
-    let typeForCreate = type === "day" ? ".col.day" : type === "type" ? ".col.type" : type === "weight" ? ".col.weight" : type === "distance" ? ".col.distance" : null;
-    let div = document.querySelector(`${typeForCreate}`);
-    // <input
-    //     type="text"
-    //     id="dayType"
-    //     style="color: #0066b3"
-    //     class="form-control"
-    //     placeholder=""
-    // ></input>
-    let input = document.createElement("input");
-    input.type = "text";
-    input.style.cssText = "color: #0066b3;margin-top:0.2rem";
-    input.className = "form-control day-input";
-    input.placeholder = "/* Urgent SameDay NextDay */";
-    div.append(input);
+var remove = (criteriaDiv, criteriatype) => {
+    console.log(criteriaDiv.children, criteriatype);
 }
 
 
