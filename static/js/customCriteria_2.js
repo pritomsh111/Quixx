@@ -16,13 +16,13 @@ var createCriteria = () => {
 var createField = (types, values = undefined) => {
     let typeForCreate = types === "dayType" ? ".col.dayType" : types === "productType" ? ".col.productType" : types === "weight" ? ".col.weight" : types === "distance" ? ".col.distance" : null;
     let placeHolder = types === "dayType" ? "... Urgent SameDay NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ...(KG)" : types === "distance" ? "... 1-2, 2, 3, 0.4 ...(KM)" : null;
-    let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dcc" : null;
+    let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dsc" : null;
     let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
 
     let div = document.querySelector(`${typeForCreate}`);
 
     let dummyDivFlex = document.createElement("div");
-    dummyDivFlex.className = `flexIt ${classesName}${increment}`;
+    dummyDivFlex.className = `${classesName}${increment} flexIt`;
     let input = document.createElement("input");
     input.type = "text";
     input.value = values !== undefined ? values : "";
@@ -57,8 +57,8 @@ document.querySelector("#criteriaSubmit").addEventListener("click", function (e)
 
 document.querySelector("#modalCancel1Activate").addEventListener("click", function (e) {
     let method = flag ? "PUT" : "POST";
-    document.getElementById('criteriaSubmit').disabled = true;
 
+    document.getElementById('criteriaSubmit').disabled = true;
     $.ajax
         ({
             type: method,
@@ -83,10 +83,12 @@ document.querySelector("#modalCancel1Activate").addEventListener("click", functi
                     $("#myModalMerActivate").modal('hide');
                     document.getElementById('modalCancel1Activate').disabled = false;
                     document.getElementById('modalApprove1Activate').disabled = false;
+                    document.getElementById('criteriaSubmit').disabled = false;
                 }, 2000);
             },
             error: function (data) {
 
+                document.getElementById('criteriaSubmit').disabled = false;
                 document.getElementById('modalCancel1Activate').disabled = false;
                 document.getElementById('modalApprove1Activate').disabled = false;
                 $('#myModalMerActivate').modal('hide');
