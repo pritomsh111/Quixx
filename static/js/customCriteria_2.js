@@ -164,11 +164,11 @@ function setUpdateCriteria() {
     document.getElementById('one-cc').style.fontSize = '13px';
     document.getElementById('setCriteriaDetails').style.display = "block";
     document.getElementById('createCriteria').style.display = "none";
-
-    Array.from(document.querySelectorAll("#setCriteriaDetails input")).map(item => item.remove());
-    Array.from(document.querySelectorAll("#setCriteriaDetails span")).map(item => item.remove());
-    fillInput(true);
-    criteriaEnabled ? getData() : null;
+    if (flag) {
+        Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2")).map(item => item.remove());
+        fillInput(true);
+        criteriaEnabled ? getData() : null;
+    }
 }
 
 function getData() {
@@ -185,6 +185,9 @@ function getData() {
             success: function (data) {
                 Object.keys(data.data).map(item => {
                     console.log(item);
+                    if (item !== "id" && item !== "userId") {
+                        console.log(data[item]);
+                    }
                 });
             },
             error: function (data) {
