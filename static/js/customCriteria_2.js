@@ -1,4 +1,5 @@
 var org_ID = localStorage.getItem('userID');
+var day = weight = distance = type = 0;
 
 var createCriteria = () => {
     // document.getElementById('four').disabled = true;
@@ -37,7 +38,6 @@ var createField = (type) => {
     let placeHolder = type === "day" ? "Urgent SameDay NextDay ..." : type === "type" ? "Glass, Food ..." : type === "weight" ? "1-2, 1-4, 3, 0.6 ...(KG)" : type === "distance" ? "1-2, 2, 3, 0.4 ...(KM)" : null;
     let classesName = type === "day" ? "dc" : type === "type" ? "tc" : type === "weight" ? "wc" : type === "distance" ? "dc" : null;
 
-
     let div = document.querySelector(`${typeForCreate}`);
 
     let dummyDivFlex = document.createElement("div");
@@ -53,16 +53,15 @@ var createField = (type) => {
     deleteIcon.className = "material-icons";
     deleteIcon.style.cssText = "cursor: pointer;";
     deleteIcon.innerHTML = "delete_outline";
-    deleteIcon.onclick = remove.bind(this, div, div.childElementCount);
+    deleteIcon.onclick = remove.bind(this, `${classesName}${div.childElementCount}`);
 
     dummyDivFlex.append(input, deleteIcon);
 
     div.append(dummyDivFlex);
 }
 
-var remove = (criteriaDiv, criteriatype) => {
-    console.log(criteriaDiv.children[criteriatype], criteriatype);
-    criteriaDiv.children[criteriatype].remove();
+var remove = (criteriatype) => {
+    document.querySelector(`.${criteriatype}`).remove();
 }
 
 
