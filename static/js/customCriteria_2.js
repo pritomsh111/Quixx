@@ -149,7 +149,7 @@ var fillInputDetails = (types, values = undefined) => {
     input.type = "text";
     // identidier.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3;";
-    input.className = `form-control`;
+    input.className = `form-control X${values.replace(/ /, "")}`;
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
     dummyDivFlex.append(identifier, input);
@@ -187,9 +187,11 @@ function getData() {
                     if (item === "id" || item === "userId") {
                         return;
                     }
-                    Array.from(document.querySelector(`.dyn.${item}`).children).map(item => {
-                        console.log(item);
-                    });
+                    Array.from(Object.keys(data.data[item]).map(itemKeys => {
+                        console.log(itemKeys);
+                        console.log("");
+                        document.querySelector(`.X${itemKeys}`).value = data.data[item][itemKeys.replace(/ /, "")];
+                    }));
                 });
             },
             error: function (data) {
