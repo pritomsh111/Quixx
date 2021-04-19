@@ -45,36 +45,57 @@ var remove = (criteriatype) => {
 
 document.querySelector("#criteriaSubmit").addEventListener("click", function (e) {
     e.preventDefault();
-    // document.getElementById('criteriaSubmit').disabled = true;
-    // $('#tickActivate').hide();
-    // $(".circle-loader").removeClass("load-complete");
+    document.getElementById('criteriaSubmit').disabled = true;
+    $('#tickActivate').hide();
+    $(".circle-loader").removeClass("load-complete");
 
-    // $("#sureActivate").html("Are you sure?");
-    // $("#myModalMerActivate").modal('show');
-
-    Array.from(document.querySelectorAll(".flexIt")).map(item => {
-        if (item.classList.item(0).includes("dc")) {
-            console.log("He");
-        }
-    });
+    $("#sureActivate").html("Are you sure?");
+    $("#myModalCriteria").modal('show');
 });
 
-document.querySelector("#modalCancel1Activate").addEventListener("click", function (e) {
+document.querySelector("#modalCriteriaSet").addEventListener("click", function (e) {
     let method = flag ? "PUT" : "POST";
-    document.querySelectorAll(".flexIt").map(item => {
-        console.log(item);
-    });
     document.getElementById('criteriaSubmit').disabled = true;
+    document.getElementById('modalCriteriaCancel').disabled = true;
+    document.getElementById('modalCriteriaSet').disabled = true;
+    let dayType, productType, weight, distance;
+    dayType = [];
+    productType = [];
+    weight = [];
+    distance = [];
+    Array.from(document.querySelectorAll(".flexIt")).map(item => {
+        if (item.children[0].value) {
+            if (item.classList.item(0).includes("dc")) {
+                dayType.push(item.children[0].value);
+            }
+            else if (item.classList.item(0).includes("wc")) {
+                weight.push(item.children[0].value);
+            }
+            else if (item.classList.item(0).includes("ds")) {
+                distance.push(item.children[0].value);
+            }
+            else if (item.classList.item(0).includes("tc")) {
+                productType.push(item.children[0].value);
+            }
+        }
+
+    });
     $.ajax
         ({
             type: method,
-            url: urlForAll + "delivery/criteria/keys" + org_ID,
+            url: urlForAll + "delivery/criteria/keys/" + org_ID,
             headers:
             {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
+            data: JSON.stringify({
+                "dayType": dayType,
+                "productType": productType,
+                "weight": weight,
+                "distance": distance
+            }),
             success: function (data) {
                 $("#sureActivate").html("Please wait!");
                 setTimeout(function () {
@@ -86,17 +107,16 @@ document.querySelector("#modalCancel1Activate").addEventListener("click", functi
                 }, 900);
 
                 setTimeout(function () {
-                    $("#myModalMerActivate").modal('hide');
-                    document.getElementById('modalCancel1Activate').disabled = false;
-                    document.getElementById('modalApprove1Activate').disabled = false;
+                    $("#myModalCriteria").modal('hide');
+                    document.getElementById('modalCriteriaCancel').disabled = false;
+                    document.getElementById('modalCriteriaSet').disabled = false;
                     document.getElementById('criteriaSubmit').disabled = false;
                 }, 2000);
             },
             error: function (data) {
-
                 document.getElementById('criteriaSubmit').disabled = false;
-                document.getElementById('modalCancel1Activate').disabled = false;
-                document.getElementById('modalApprove1Activate').disabled = false;
+                document.getElementById('modalCriteriaCancel').disabled = false;
+                document.getElementById('modalCriteriaSet').disabled = false;
                 $('#myModalMerActivate').modal('hide');
                 $('#myModalE').modal('show');
             }
