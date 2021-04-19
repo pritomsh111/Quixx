@@ -62,7 +62,6 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
     distance = [];
     Array.from(document.querySelectorAll(".flexIt")).map(item => {
         if (item.children[0].value) {
-            console.log(item.children[0]);
             if (item.classList.item(0).includes("dc")) {
                 dayType.push(item.children[0].value);
             }
@@ -169,12 +168,14 @@ function setUpdateCriteria() {
     Array.from(document.querySelectorAll("#setCriteriaDetails input")).map(item => item.remove());
     Array.from(document.querySelectorAll("#setCriteriaDetails span")).map(item => item.remove());
     fillInput(true);
-    let method2;
+    criteriaEnabled ? getData() : null;
+}
 
+function getData() {
     $.ajax
         ({
             type: "GET",
-            url: urlForAll + "delivery/criteria/enable/" + org_ID,
+            url: urlForAll + "delivery/criteria/" + org_ID,
             headers:
             {
                 'Accept': 'application/json',
@@ -182,8 +183,9 @@ function setUpdateCriteria() {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                method2 = data.data;
-                method2 ? fillupFields(method2) : null;
+                Object.keys(data.data).map(item => {
+                    console.log(item);
+                });
             },
             error: function (data) {
 
@@ -191,9 +193,8 @@ function setUpdateCriteria() {
         });
 }
 
-
 function fillupFields(method2) {
-    method ? $.ajax
+    $.ajax
         ({
             type: method2 ? "PUT" : "POST",
             url: urlForAll + "delivery/criteria/" + method2 ? "update/" : "create/" + org_ID,
@@ -204,11 +205,8 @@ function fillupFields(method2) {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             success: function (data) {
-                method2 = data.data;
-                method2 ? fillupFields() : null;
             },
             error: function (data) {
-
             }
-        }) : null;
+        });
 }
