@@ -26,11 +26,18 @@ function fillInput(isTab = false) {
         }
     });
 }
+
+function getKeys() {
+    let keys = [4, 12];
+    return keys.indexOf(Number(localStorage.getItem("userID"))) !== -1 ? true : false;
+}
+
 $(document).ready(function () {
     $('#settings').hide();
     $('.container').hide();
     $('#createCriteria').hide();
     document.getElementById('setCriteriaDetails').style.display = "none";
+    flag = getKeys();
     $.ajax({
         url: urlForAll + "delivery/criteria/enable/" + org_ID,
         type: "GET",
@@ -41,12 +48,6 @@ $(document).ready(function () {
             "Authorization": 'Bearer ' + localStorage.getItem('token')
         },
         success: function (data) {
-            if (data.data === true) {
-                flag = 1;
-            }
-            else {
-                flag = 0;
-            }
             fillInput();
         }
     });

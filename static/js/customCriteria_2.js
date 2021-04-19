@@ -140,8 +140,7 @@ var fillInputDetails = (types, values = undefined) => {
     let div = document.querySelector(`${typeForCreate}`);
 
     let dummyDivFlex = document.createElement("div");
-    dummyDivFlex.className = `${classesName}${increment} flexIt`;
-    dummyDivFlex.style.cssText = "align-items: center;";
+    dummyDivFlex.className = `${classesName}${increment} flexIt2`;
 
     let identifier = document.createElement("span");
     identifier.innerHTML = values !== undefined ? `${values}:` : "";
@@ -170,4 +169,46 @@ function setUpdateCriteria() {
     Array.from(document.querySelectorAll("#setCriteriaDetails input")).map(item => item.remove());
     Array.from(document.querySelectorAll("#setCriteriaDetails span")).map(item => item.remove());
     fillInput(true);
+    let method2;
+
+    $.ajax
+        ({
+            type: "GET",
+            url: urlForAll + "delivery/criteria/enable/" + org_ID,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                method2 = data.data;
+                method2 ? fillupFields(method2) : null;
+            },
+            error: function (data) {
+
+            }
+        });
+}
+
+
+function fillupFields(method2) {
+    method ? $.ajax
+        ({
+            type: method2 ? "PUT" : "POST",
+            url: urlForAll + "delivery/criteria/" + method2 ? "update/" : "create/" + org_ID,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function (data) {
+                method2 = data.data;
+                method2 ? fillupFields() : null;
+            },
+            error: function (data) {
+
+            }
+        }) : null;
 }
