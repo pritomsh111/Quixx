@@ -157,7 +157,7 @@ var fillInputDetails = (types, values = undefined) => {
     div.append(dummyDivFlex);
 }
 
-function setUpdateCriteria() {
+async function setUpdateCriteria() {
     document.getElementById('one-cc').disabled = false;
     document.getElementById('two-cc').disabled = true;
     document.getElementById('two-cc').style.fontSize = '14.5px';
@@ -166,7 +166,7 @@ function setUpdateCriteria() {
     document.getElementById('createCriteria').style.display = "none";
     if (flag) {
         Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2")).map(item => item.remove());
-        fillInput(true);
+        await fillInput(true);
         criteriaEnabled ? getData() : null;
     }
 }
@@ -188,9 +188,9 @@ function getData() {
                         return;
                     }
                     Array.from(Object.keys(data.data[item]).map(itemKeys => {
-                        // console.log(itemKeys);
-                        // console.log("");
-                        // console.log(document.querySelector(`.${item}${itemKeys}`), `.${item}${itemKeys}`);
+                        console.log(itemKeys);
+                        console.log("");
+                        console.log(document.querySelector(`.${item}${itemKeys}`), `.${item}${itemKeys}`);
 
                         document.querySelector(`.${item}${itemKeys}`) ? document.querySelector(`.${item}${itemKeys}`).value = data.data[item][itemKeys.replace(/ /, "")] : null;
                     }));
@@ -203,11 +203,26 @@ function getData() {
 }
 
 function fillupFields() {
+    let obj;
     Object.keys(fillData).map(item => {
         fillData[item].map(i => {
-            console.log(document.querySelector(`div[class*='${i.replace(/ /, "")}']`));
+            console.log(i, document.querySelector(`input[class*='${i.replace(/ /, "")}']`));
         });
     });
+    let obj = {
+        "dayTypeMap": {
+            "Urgent": 0
+        },
+        "productDistanceMap": {
+            "1-2": 0
+        },
+        "productTypeMap": {
+            "Glass": 10
+        },
+        "productWeightMap": {
+            "1-2": 0
+        }
+    };
     // $.ajax
     //     ({
     //         type: criteriaEnabled ? "PUT" : "POST",

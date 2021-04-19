@@ -10,8 +10,9 @@ function createFieldStart(data, isTab) {
         }
     });
 }
-function fillInput(isTab = false) {
-    $.ajax({
+
+async function fillInput(isTab = false) {
+    await $.ajax({
         url: urlForAll + "delivery/criteria/keys/" + org_ID,
         type: "GET",
         headers:
@@ -25,6 +26,7 @@ function fillInput(isTab = false) {
             fillData = data.data;
         }
     });
+
 }
 
 function getKeys() {
