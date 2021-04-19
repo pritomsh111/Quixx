@@ -202,40 +202,87 @@ function getData() {
         });
 }
 
-function fillupFields() {
-    let obj;
-    Object.keys(fillData).map(item => {
-        fillData[item].map(i => {
-            console.log(i, document.querySelector(`input[class*='${i.replace(/ /, "")}']`));
-        });
-    });
-    let obj = {
-        "dayTypeMap": {
-            "Urgent": 0
-        },
-        "productDistanceMap": {
-            "1-2": 0
-        },
-        "productTypeMap": {
-            "Glass": 10
-        },
-        "productWeightMap": {
-            "1-2": 0
-        }
-    };
-    // $.ajax
-    //     ({
-    //         type: criteriaEnabled ? "PUT" : "POST",
-    //         url: urlForAll + "delivery/criteria/" + criteriaEnabled ? "update/" : "create/" + org_ID,
-    //         headers:
-    //         {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
-    //         },
-    //         success: function (data) {
-    //         },
-    //         error: function (data) {
-    //         }
-    //     });
+function fillupFields(e) {
+    if (flag) {
+        e.preventDefault();
+        $('#tickActivateConfirm').hide();
+        $(".circle-loader").removeClass("load-complete");
+
+        $("#sureActivateConfirm").html("Are you sure?");
+        $("#myModalCriteriaConfirm").modal('show');
+    }
 }
+
+
+document.querySelector("#modalCriteriaSet").addEventListener("click", function () {
+    document.getElementById('modalCriteriaCancelConfirm').disabled = true;
+    document.getElementById('modalCriteriaSetConfirm').disabled = true;
+    let array = [];
+    Object.keys(fillData).map(item => {
+        let obj = {};
+        fillData[item].map(i => {
+            obj[i] = document.querySelector(`input[class*='${i.replace(/ /, "")}']`).value;
+            // console.log(i, document.querySelector(`input[class*='${i.replace(/ /, "")}']`));
+        });
+        array.push(obj);
+    });
+    console.log(array);
+    $.ajax
+        ({
+            type: criteriaEnabled ? "PUT" : "POST",
+            url: urlForAll + "delivery/criteria/" + criteriaEnabled ? "update/" : "create/" + org_ID,
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            },
+            data: JSON.stringify({
+                "dayTypeMap": {
+                    "Urgent": array[0]
+                },
+                "productTypeMap": {
+                    "Glass": array[1]
+                },
+                "productDistanceMap": {
+                    "1-2": array[3]
+                },
+                "productWeightMap": {
+                    "1-2": array[2]
+                }
+            }),
+            success: function (data) {
+                console.log(data);
+                $("#sureActivateConfirm").html("Please wait!");
+                setTimeout(function () {
+                    $(".circle-loader").addClass("load-complete");
+
+                    $('#tickActivateConfirm').show();
+
+                    $("#sureActivateConfirm").html(`Criteria ${flag ? "Updated" : "Set"}`);
+                }, 900);
+
+                setTimeout(function () {
+                    $("#myModalCriteria").modal('hide');
+                    document.getElementById('modalCriteriaCancelConfirm').disabled = false;
+                    document.getElementById('modalCriteriaSet').disabled = false;
+                }, 2000);
+            },
+            error: function (data) {
+                document.getElementById('modalCriteriaCancelConfirm').disabled = false;
+                document.getElementById('modalCriteriaSetConfirm').disabled = false;
+                let ob = Object.keys(data);
+                let modalErr = document.querySelector('#myModalWrongDManCreate p');
+                if (ob[17] == "responseJSON") {
+                    modalErr.innerHTML = data.responseJSON.errorMessage;
+                }
+                else {
+                    modalErr.innerHTML = "Please Wait! We are working!";
+                }
+                $('#myModalCriteriaConfirm').modal('hide');
+                setTimeout(() => {
+                    $('#myModalWrongDManCreate').modal('show');
+                }, 0);
+            }
+        });
+});
