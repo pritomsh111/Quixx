@@ -131,7 +131,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
 
 
 var fillInputDetails = (types, values = undefined) => {
-    let typeForCreate = types === "dayType" ? ".col.dayType2" : types === "productType" ? ".col.productType2" : types === "weight" ? ".col.weight2" : types === "distance" ? ".col.distance2" : null;
+    let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : null;
     let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
     let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : null;
     let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
@@ -184,10 +184,12 @@ function getData() {
             },
             success: function (data) {
                 Object.keys(data.data).map(item => {
-                    console.log(item);
-                    if (item !== "id" && item !== "userId") {
-                        console.log(data[item]);
+                    if (item === "id" || item === "userId") {
+                        return;
                     }
+                    Array.from(document.querySelector(`.dyn.${item}`).children).map(item => {
+                        console.log(item);
+                    });
                 });
             },
             error: function (data) {
