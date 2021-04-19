@@ -1,7 +1,7 @@
 var org_ID = localStorage.getItem('userID');
 var org_Email = localStorage.getItem('userEmail');
 var day = weight = distance = type = flag = 0;
-var criteriaEnabled = false;
+var criteriaEnabled = false, fillData;
 function createFieldStart(data, isTab) {
     Object.keys(data).map(item => {
         div = document.querySelector(`.col.${item}`);
@@ -22,6 +22,7 @@ function fillInput(isTab = false) {
         },
         success: function (data) {
             createFieldStart(data.data, isTab);
+            fillData = data.data;
         }
     });
 }

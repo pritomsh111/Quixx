@@ -149,7 +149,7 @@ var fillInputDetails = (types, values = undefined) => {
     input.type = "text";
     // identidier.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3;";
-    input.className = `form-control X${values.replace(/ /, "")}`;
+    input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /, "")}`;
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
     dummyDivFlex.append(identifier, input);
@@ -188,9 +188,11 @@ function getData() {
                         return;
                     }
                     Array.from(Object.keys(data.data[item]).map(itemKeys => {
-                        console.log(itemKeys);
-                        console.log("");
-                        document.querySelector(`.X${itemKeys}`).value = data.data[item][itemKeys.replace(/ /, "")];
+                        // console.log(itemKeys);
+                        // console.log("");
+                        // console.log(document.querySelector(`.${item}${itemKeys}`), `.${item}${itemKeys}`);
+
+                        document.querySelector(`.${item}${itemKeys}`) ? document.querySelector(`.${item}${itemKeys}`).value = data.data[item][itemKeys.replace(/ /, "")] : null;
                     }));
                 });
             },
@@ -200,20 +202,25 @@ function getData() {
         });
 }
 
-function fillupFields(method2) {
-    $.ajax
-        ({
-            type: method2 ? "PUT" : "POST",
-            url: urlForAll + "delivery/criteria/" + method2 ? "update/" : "create/" + org_ID,
-            headers:
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            },
-            success: function (data) {
-            },
-            error: function (data) {
-            }
+function fillupFields() {
+    Object.keys(fillData).map(item => {
+        fillData[item].map(i => {
+            console.log(document.querySelector(`div[class*='${i.replace(/ /, "")}']`));
         });
+    });
+    // $.ajax
+    //     ({
+    //         type: criteriaEnabled ? "PUT" : "POST",
+    //         url: urlForAll + "delivery/criteria/" + criteriaEnabled ? "update/" : "create/" + org_ID,
+    //         headers:
+    //         {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             "Authorization": 'Bearer ' + localStorage.getItem('token')
+    //         },
+    //         success: function (data) {
+    //         },
+    //         error: function (data) {
+    //         }
+    //     });
 }
