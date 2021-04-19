@@ -12,6 +12,7 @@ $(document).ready(function () {
             div = document.querySelector(`.col.${item}`);
             for (let i of data[item]) {
                 createField(item, i);
+                fillInputDetails(item, i);
             }
         });
     }

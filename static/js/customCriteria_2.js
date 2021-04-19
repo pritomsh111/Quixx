@@ -9,7 +9,7 @@ var createCriteria = () => {
 
 var createField = (types, values = undefined) => {
     let typeForCreate = types === "dayType" ? ".col.dayType" : types === "productType" ? ".col.productType" : types === "weight" ? ".col.weight" : types === "distance" ? ".col.distance" : null;
-    let placeHolder = types === "dayType" ? "... Urgent SameDay NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
+    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
     let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dsc" : null;
     let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
 
@@ -17,6 +17,7 @@ var createField = (types, values = undefined) => {
 
     let dummyDivFlex = document.createElement("div");
     dummyDivFlex.className = `${classesName}${increment} flexIt`;
+
     let input = document.createElement("input");
     input.type = "text";
     input.value = values !== undefined ? values : "";
@@ -119,6 +120,36 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
         });
 });
 
+
+var fillInputDetails = (types, values = undefined) => {
+    let typeForCreate = types === "dayType" ? ".col.dayType2" : types === "productType" ? ".col.productType2" : types === "weight" ? ".col.weight2" : types === "distance" ? ".col.distance2" : null;
+    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
+    let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dsc" : null;
+    let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
+
+    let div = document.querySelector(`${typeForCreate}`);
+
+    let dummyDivFlex = document.createElement("div");
+    dummyDivFlex.className = `${classesName}${increment} flexIt`;
+
+    let input = document.createElement("input");
+    input.type = "text";
+    input.value = values !== undefined ? values : "";
+    input.style.cssText = "color: #0066b3; margin-top:0.2rem; width: 100%;";
+    input.className = `form-control`;
+    input.placeholder = placeHolder;
+
+    let deleteIcon = document.createElement("i");
+    deleteIcon.className = `material-icons`;
+    deleteIcon.style.cssText = "cursor: pointer;";
+    deleteIcon.innerHTML = "delete_outline";
+    deleteIcon.onclick = remove.bind(this, `${classesName}${increment}`);
+    types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
+    dummyDivFlex.append(input, deleteIcon);
+
+    div.append(dummyDivFlex);
+}
+
 function setUpdateCriteria() {
     document.getElementById('one-cc').disabled = false;
     document.getElementById('two-cc').disabled = true;
@@ -126,6 +157,9 @@ function setUpdateCriteria() {
     document.getElementById('one-cc').style.fontSize = '13px';
     document.getElementById('setCriteriaDetails').style.display = "block";
     document.getElementById('createCriteria').style.display = "none";
+    if (flag) {
+
+    }
 }
 
 
