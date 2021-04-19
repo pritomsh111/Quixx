@@ -7,7 +7,12 @@ $(document).ready(function () {
     $('#createCriteria').hide();
 
     function createFieldStart(data) {
-        console.log(Object.keys(data));
+        console.log(Object.keys(data), data);
+        let div;
+        Object.keys(data).map(item => {
+            div = document.querySelector(`.col.${item}`);
+
+        });
     }
     function fillInput() {
         $.ajax({
