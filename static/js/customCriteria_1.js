@@ -17,19 +17,23 @@ $(document).ready(function () {
         });
     }
     function fillInput() {
-        $.ajax({
-            url: urlForAll + "delivery/criteria/keys/" + org_ID,
-            type: "GET",
-            headers:
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            },
-            success: function (data) {
-                createFieldStart(data.data);
-            }
-        });
+        try {
+            $.ajax({
+                url: urlForAll + "delivery/criteria/keys/" + org_ID,
+                type: "GET",
+                headers:
+                {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function (data) {
+                    createFieldStart(data.data);
+                }
+            });
+        } catch (e) {
+            console.log(e + "Hello");
+        }
     }
     $.ajax({
         url: urlForAll + "delivery/criteria/enable/" + org_ID,
@@ -42,9 +46,12 @@ $(document).ready(function () {
         },
         success: function (data) {
             if (data.data === true) {
-                fillInput();
                 flag = 1;
             }
+            else {
+                flag = 0;
+            }
+            fillInput();
         }
     });
 });

@@ -114,9 +114,17 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
                 document.getElementById('criteriaSubmit').disabled = false;
                 document.getElementById('modalCriteriaCancel').disabled = false;
                 document.getElementById('modalCriteriaSet').disabled = false;
+                let ob = Object.keys(data);
+                let modalErr = document.querySelector('#myModalWrongDManCreate p');
+                if (ob[17] == "responseJSON") {
+                    modalErr.innerHTML = data.responseJSON.errorMessage;
+                }
+                else {
+                    modalErr.innerHTML = "Please Wait! We are working!";
+                }
                 $('#myModalCriteria').modal('hide');
                 setTimeout(() => {
-                    $('#myModalE').modal('show');
+                    $('#myModalWrongDManCreate').modal('show');
                 }, 0);
             }
         });
@@ -159,7 +167,7 @@ function setUpdateCriteria() {
     document.getElementById('setCriteriaDetails').style.display = "block";
     document.getElementById('createCriteria').style.display = "none";
     if (flag) {
-
+        fillInput();
     }
 }
 
