@@ -1,5 +1,4 @@
 var org_ID = localStorage.getItem('userID');
-var day = weight = distance = type = 0;
 
 var createCriteria = () => {
     // document.getElementById('four').disabled = true;
@@ -11,37 +10,19 @@ var createCriteria = () => {
     // document.getElementById('threea').style.fontSize = '13px';
     // document.getElementById('onea').style.fontSize = '13px';
 
-    // document.getElementById('foura').style.fontSize = '13px';
-    // document.getElementById('fivea').style.fontSize = '13px';
-    // document.getElementById('foura').innerHTML = 'Activated Delivery Man';
-    // document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
-
-    // document.getElementById('foura').disabled = false;
-    // document.getElementById('fivea').disabled = false;
-    // $('#dtBasicExampleActivate').hide();
-    // $('#dtBasicExampleDisable').hide();
-    // $('.c').hide();
-    // $('.d').hide();
-
-    // document.getElementById('onea').innerHTML = 'Registered Delivery Man';
-    // document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
-    // document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
-    // $('#dtBasicExample').hide();
-    // $('#dtBasicExample2').hide();
-    // $('.a').hide();
-    // $('.b').hide();
     $('#createCriteria').show();
 };
 
-var createField = (type) => {
-    let typeForCreate = type === "day" ? ".col.day" : type === "type" ? ".col.type" : type === "weight" ? ".col.weight" : type === "distance" ? ".col.distance" : null;
-    let placeHolder = type === "day" ? "Urgent SameDay NextDay ..." : type === "type" ? "Glass, Food ..." : type === "weight" ? "1-2, 1-4, 3, 0.6 ...(KG)" : type === "distance" ? "1-2, 2, 3, 0.4 ...(KM)" : null;
-    let classesName = type === "day" ? "dc" : type === "type" ? "tc" : type === "weight" ? "wc" : type === "distance" ? "dc" : null;
+var createField = (types) => {
+    let typeForCreate = types === "day" ? ".col.dayType" : types === "type" ? ".col.productType" : types === "weight" ? ".col.weight" : types === "distance" ? ".col.distance" : null;
+    let placeHolder = types === "day" ? "... Urgent SameDay NextDay ..." : types === "type" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ...(KG)" : types === "distance" ? "... 1-2, 2, 3, 0.4 ...(KM)" : null;
+    let classesName = types === "day" ? "dc" : types === "type" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dcc" : null;
+    let increment = types === "day" ? day : types === "type" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
 
     let div = document.querySelector(`${typeForCreate}`);
 
     let dummyDivFlex = document.createElement("div");
-    dummyDivFlex.className = `flexIt ${classesName}${div.childElementCount}`;
+    dummyDivFlex.className = `flexIt ${classesName}${increment}`;
 
     let input = document.createElement("input");
     input.type = "text";
@@ -50,18 +31,18 @@ var createField = (type) => {
     input.placeholder = placeHolder;
 
     let deleteIcon = document.createElement("i");
-    deleteIcon.className = "material-icons";
+    deleteIcon.className = `material-icons`;
     deleteIcon.style.cssText = "cursor: pointer;";
     deleteIcon.innerHTML = "delete_outline";
-    deleteIcon.onclick = remove.bind(this, `${classesName}${div.childElementCount}`);
-
+    deleteIcon.onclick = remove.bind(this, `${classesName}${increment}`);
+    types === "day" ? day++ : types === "type" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
     dummyDivFlex.append(input, deleteIcon);
 
     div.append(dummyDivFlex);
 }
 
 var remove = (criteriatype) => {
-    document.querySelector(`.${criteriatype}`).remove();
+    document.querySelector(`.flexIt.${criteriatype}`).remove();
 }
 
 
