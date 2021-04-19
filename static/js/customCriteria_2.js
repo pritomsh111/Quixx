@@ -3,6 +3,7 @@ var createCriteria = () => {
     document.getElementById('two-cc').disabled = false;
     document.getElementById('two-cc').style.fontSize = '13px';
     document.getElementById('one-cc').style.fontSize = '14.5px';
+    document.getElementById('setCriteriaDetails').style.display = "none";
     $('#createCriteria').show();
 };
 
@@ -20,7 +21,7 @@ var createField = (types, values = undefined) => {
     input.type = "text";
     input.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3; margin-top:0.2rem; width: 100%;";
-    input.className = `form-control day-input`;
+    input.className = `form-control`;
     input.placeholder = placeHolder;
 
     let deleteIcon = document.createElement("i");
@@ -118,7 +119,14 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
         });
 });
 
-
+function setUpdateCriteria() {
+    document.getElementById('one-cc').disabled = false;
+    document.getElementById('two-cc').disabled = true;
+    document.getElementById('two-cc').style.fontSize = '14.5px';
+    document.getElementById('one-cc').style.fontSize = '13px';
+    document.getElementById('setCriteriaDetails').style.display = "block";
+    document.getElementById('createCriteria').style.display = "none";
+}
 
 
 
