@@ -179,16 +179,16 @@ $(document).ready(function () {
 			},
 
 			success: function (data) {
-				Object.keys(data.data).map(types => {
+				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na"]
+				Object.keys(data.data).map((types, index) => {
 					console.log(types);
-					types.map(value => {
-
-						$('#senderList')
-							.append('<option value="' + org_ID + '">Organization Head</option>')
-							;
-						var option = new Option(data.data[i], data.data[i]);
-						$(option).html(data.data[i]);
-						$("#managers").append(option);
+					$(`#${types}`)
+						.append('<option value="' + naValues[index] + '">---</option>')
+						;
+					data.data[types].map(value => {
+						var option = new Option(value, value);
+						$(option).html(value);
+						$(`#${types}`).append(option);
 					});
 				});
 				// document.getElementById('managers').selectedIndex = dhakaIndex;
@@ -642,7 +642,6 @@ function initAutocomplete() {
 	});
 
 }
-
 
 function removeMarkers2() {
 	for (var i = 0; i < markers2.length; i++) {

@@ -2154,6 +2154,10 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var delivery_longi = String(document.getElementById('des_longi').value);
 	var product_name = String(document.getElementById('product_name').value);
 	var product_qty = String(document.getElementById('product_qty').value);
+	var dayType = document.getElementById('dayType').value;
+	var productType = document.getElementById('productType').value;
+	var distance = document.getElementById('distance').value;
+	var weight = document.getElementById('weight').value;
 	var senderGuy = document.getElementById('senderList').value;
 	var product_cost = document.getElementById('product_cost').value;
 	var yesno = document.getElementById('autoAss').value;
@@ -2384,7 +2388,11 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"product_qty": product_qty,
 				"pickup_time": pickup_time,
 				"delivery_note": delivery_note,
-				"delivery_area": area
+				"delivery_area": area,
+				"delivery_day_type": dayType,
+				"delivery_product_type": productType,
+				"weight": weight,
+				"distance": distance
 			});
 		console.log(datap);
 		$('#tickD2').hide();
@@ -2410,7 +2418,9 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 					$("#myModalCreateD1").modal('show');
 					$("#sureD2").html("Please wait!");
 					if (data.status == 'OK') {
+						console.log(data);
 						setTimeout(function () {
+							removeMarkers2();
 							$(".circle-loader").addClass("load-complete");
 							var keys = Object.keys(data.data);
 							$('#tickD2').show();
