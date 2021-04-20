@@ -1313,12 +1313,29 @@ function fillupFields() {
 		$("#sure3Criteria").html("Please wait!");
 		$("#sure3Criteria").show();
 		let array = [];
-		Object.keys(fillData).map(item => {
+		Array.from(document.querySelectorAll(".flexIt2")).map(item => {
+			if (item.children[0].value) {
+				if (item.classList.item(0).includes("qdc")) {
+					dayType.push(item.children[0].value.trim().replace(/ /g, ""));
+				}
+				else if (item.classList.item(0).includes("qwc")) {
+					weight.push(item.children[0].value.trim().replace(/ /g, ""));
+				}
+				else if (item.classList.item(0).includes("qds")) {
+					distance.push(item.children[0].value.trim().replace(/ /g, ""));
+				}
+				else if (item.classList.item(0).includes("qtc")) {
+					productType.push(item.children[0].value.trim().replace(/ /g, ""));
+				}
+			}
+		});
+		let typesArray = ["dayType", "productType", "productWeight", "productDistance"];
+		Object.keys(fillData).map((item, index) => {
 			let obj = {};
 			fillData[item].map(i => {
-				console.log(item, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`))
+				console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`))
 
-				obj[i] = document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value : 0;
+				obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
 				// console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
 			});
 			array.push(obj);
