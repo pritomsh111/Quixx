@@ -1270,6 +1270,10 @@ var fillInputDetails = (types, values = undefined) => {
 	div.append(dummyDivFlex);
 }
 function getData() {
+
+	Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
+		item.value = "";
+	});
 	$.ajax
 		({
 			type: "GET",
@@ -1297,9 +1301,6 @@ function getData() {
 			},
 			error: function (data) {
 				criteriaEnabledMer = false;
-				Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
-					item.value = "";
-				});
 			}
 		});
 }
