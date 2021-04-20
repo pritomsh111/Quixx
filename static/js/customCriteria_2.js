@@ -213,10 +213,13 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
     document.getElementById('modalCriteriaCancelConfirm').disabled = true;
     document.getElementById('modalCriteriaSetConfirm').disabled = true;
     let array = [];
-    Object.keys(fillData).map(item => {
+    let typesArray = ["dayType", "productType", "productWeight", "productDistance"];
+    Object.keys(fillData).map((item, index) => {
         let obj = {};
         fillData[item].map(i => {
-            obj[i] = document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value : 0;
+            console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`))
+
+            obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
             // console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
         });
         array.push(obj);
