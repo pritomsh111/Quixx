@@ -267,8 +267,8 @@ function merchantActivateFunction(dataGet, table) {
 				});
 				table.rows().every(function (index, element) {
 					var row = $(this.node());
-					row.find('td').eq(7)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[index].approved_merchant_id) !== -1 ? true : false;
-					row.find('td').eq(8)[0].children[0].disabled = !row.find('td').eq(7)[0].children[0].disabled;
+					row.find('td').eq(8)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[index].approved_merchant_id) !== -1 ? true : false;
+					row.find('td').eq(9)[0].children[0].disabled = !row.find('td').eq(7)[0].children[0].disabled;
 
 					// console.log(element, row, statusElement, row.find('td'));
 					// var isChecked = statusElement.prop('checked');
@@ -1151,8 +1151,8 @@ $('.btn-okActivate2').click(function () {
 					var btn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP" disabled>Disable OTP</button>';
 					var btn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>';
 
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 7 }).data(btn22);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btn11);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btn22);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(btn11);
 
 					document.getElementById('modalCancel1Activate2').disabled = false;
 					document.getElementById('modalApprove1Activate2').disabled = false;
@@ -1211,8 +1211,8 @@ $('.btn-okActivate3').click(function () {
 					var table = $('#dtBasicExampleActivate').DataTable();
 					var btnn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>';
 					var btnn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP" disabled>Enable OTP</button>';
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btnn11);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 7 }).data(btnn22);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(btnn11);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btnn22);
 
 					document.getElementById('modalCancel1Activate3').disabled = false;
 					document.getElementById('modalApprove1Activate3').disabled = false;
