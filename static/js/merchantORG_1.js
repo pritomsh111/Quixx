@@ -29,12 +29,24 @@ async function fillInput() {
 	});
 }
 
-function getKeys() {
-	let keys = [4, 12];
-	return keys.indexOf(Number(localStorage.getItem("userID"))) !== -1 ? true : false;
+async function getKeys() {
+	let result = await $.ajax({
+		url: urlForAll + "delivery/criteria/enable/key/" + org_ID,
+		type: "GET",
+		headers:
+		{
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function (data) {
+
+		}
+	});
+	return result.data;
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
 	$('#settings').hide();
 	$('#hideUpdate').hide();
 	$('.container').hide();
@@ -48,7 +60,7 @@ $(document).ready(function () {
 	$('.c').hide();
 	$('.d').hide();
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
-	flag = getKeys();
+	flag = await getKeys();
 	if (flag) {
 		$.ajax({
 			url: urlForAll + "delivery/criteria/enable/" + org_ID,

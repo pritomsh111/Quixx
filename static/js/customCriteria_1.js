@@ -29,19 +29,30 @@ async function fillInput(isTab = false) {
 
 }
 
-function getKeys() {
-    let keys = [4, 12];
-    return keys.indexOf(Number(localStorage.getItem("userID"))) !== -1 ? true : false;
-}
 
-$(document).ready(function () {
+async function getKeys() {
+    let result = await $.ajax({
+        url: urlForAll + "delivery/criteria/enable/key/" + org_ID,
+        type: "GET",
+        headers:
+        {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": 'Bearer ' + localStorage.getItem('token')
+        },
+        success: function (data) {
+
+        }
+    });
+    return result.data;
+}
+$(document).ready(async function () {
     $('#settings').hide();
     $('.container').hide();
     $('#createCriteria').hide();
     document.getElementById('setCriteriaDetails').style.display = "none";
-    flag = getKeys();
+    flag = await getKeys();
     if (flag) {
-
         $.ajax({
             url: urlForAll + "delivery/criteria/enable/" + org_ID,
             type: "GET",
