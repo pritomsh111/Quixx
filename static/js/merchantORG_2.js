@@ -258,21 +258,22 @@ function merchantActivateFunction(dataGet, table) {
 						+ dataGet.data[i].phone_number + '</td><td>'
 						+ dataGet.data[i].business_filed + '</td><td>'
 						+ dataGet.data[i].per_delivery_cost + '</td><td>'
+						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-EditCriteria">Edit</button>' + '</td><td>'
 						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>' + '</td><td>'
 						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>' + '</td><td>'
 						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
-			
+
 					table.rows.add($(table_rows)).draw();
 				});
-				table.rows().every(function(index, element) {
+				table.rows().every(function (index, element) {
 					var row = $(this.node());
-					row.find('td').eq(7)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[index].approved_merchant_id)!== -1 ? true : false;
+					row.find('td').eq(7)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[index].approved_merchant_id) !== -1 ? true : false;
 					row.find('td').eq(8)[0].children[0].disabled = !row.find('td').eq(7)[0].children[0].disabled;
-					
+
 					// console.log(element, row, statusElement, row.find('td'));
 					// var isChecked = statusElement.prop('checked');
 					// /* ... etc ... */
-					});
+				});
 			}
 		});
 }
@@ -334,7 +335,7 @@ var activated = () => {
 				document.getElementById('four').innerHTML = 'Activated Merchant: ' + data.data.length;
 				var trHTML = '';
 				merchantActivateFunction(data, table);
-				
+
 			},
 			complete: function (data) {
 				document.getElementById("dtBasicExampleActivate_processing").style.display = "none";
@@ -1117,7 +1118,7 @@ $('#dtBasicExampleActivate').on('click', '.btn-DisableOTP', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okActivate2').click(function () {			
+$('.btn-okActivate2').click(function () {
 
 	$("#sureActivate").html("Please wait!");
 	document.getElementById('modalCancel1Activate2').disabled = true;
@@ -1148,11 +1149,11 @@ $('.btn-okActivate2').click(function () {
 					$("#myModalMerActivate2").modal('hide');
 					var table = $('#dtBasicExampleActivate').DataTable();
 					var btn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP" disabled>Disable OTP</button>';
-					var btn22 = '<button id="' + merId+ '" class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>';
-					
+					var btn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>';
+
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 7 }).data(btn22);
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btn11);
-				
+
 					document.getElementById('modalCancel1Activate2').disabled = false;
 					document.getElementById('modalApprove1Activate2').disabled = false;
 				}, 2000);
@@ -1172,14 +1173,14 @@ $('#dtBasicExampleActivate').on('click', '.btn-EnableOTP', function () {
 	$t = $(this);
 	$('#tickActivate3').hide();
 	$(".circle-loader").removeClass("load-complete");
-	
+
 	$("#sureActivate3").html("Are you sure?");
 	$("#myModalMerActivate3").modal('show');
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okActivate3').click(function () {			
-	
+$('.btn-okActivate3').click(function () {
+
 	$("#sureActivate").html("Please wait!");
 	document.getElementById('modalCancel1Activate3').disabled = true;
 	document.getElementById('modalApprove1Activate3').disabled = true;
@@ -1209,7 +1210,7 @@ $('.btn-okActivate3').click(function () {
 					$("#myModalMerActivate3").modal('hide');
 					var table = $('#dtBasicExampleActivate').DataTable();
 					var btnn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>';
-					var btnn22 = '<button id="' + merId+ '" class="btn-round btn-outline btn btn-EnableOTP" disabled>Enable OTP</button>';
+					var btnn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP" disabled>Enable OTP</button>';
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btnn11);
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 7 }).data(btnn22);
 
@@ -1225,4 +1226,30 @@ $('.btn-okActivate3').click(function () {
 				$('#myModal2').modal('show');
 			}
 		});
+});
+
+
+$('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
+	merId = $(this).attr('id');
+
+	// arr = merId.split('$$');
+
+	// document.getElementById('org_name2').value = arr[1];
+	// document.getElementById('person_name2').value = arr[2];
+	// document.getElementById('email2').value = arr[3];
+	// document.getElementById('phone_number2').value = arr[4];
+	// document.getElementById('business_filed2').value = arr[5];
+	// document.getElementById('per_cost').value = arr[6];
+	// document.getElementById('cod_per').value = arr[7];
+
+	$t = $(this);
+
+	$("#formUpdateCriteria").show();
+	$('#tick3Criteria').hide();
+	//$(".circle-loader").removeClass("load-complete");
+	$("#circleLoad3Criteria").hide();
+
+	$("#sure3Criteria").hide();
+	//$("#sure3").html("Are you sure?");
+	$("#myModalMerUpdateCriteria").modal('show');
 });
