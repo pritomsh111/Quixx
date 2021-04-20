@@ -1230,7 +1230,7 @@ $('.btn-okActivate3').click(function () {
 		});
 });
 
-var criteriaMer;
+var criteriaMer, criteriaEnabledMer;
 $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 	criteriaMer = $(this).attr('id');
 	$t = $(this);
@@ -1240,7 +1240,7 @@ $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 	$("#circleLoad3Criteria").hide();
 	$("#sure3Criteria").hide();
 	$("#myModalMerUpdateCriteria").modal('show');
-	setUpdateCriteria();
+	getData();
 });
 
 var fillInputDetails = (types, values = undefined) => {
@@ -1269,11 +1269,6 @@ var fillInputDetails = (types, values = undefined) => {
 
 	div.append(dummyDivFlex);
 }
-
-function setUpdateCriteria() {
-	criteriaEnabled ? getData() : null;
-}
-
 function getData() {
 	$.ajax
 		({
@@ -1286,6 +1281,7 @@ function getData() {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
+				criteriaEnabledMer = true;
 				Object.keys(data.data).map(item => {
 					if (item === "id" || item === "userId") {
 						return;
@@ -1300,34 +1296,7 @@ function getData() {
 				});
 			},
 			error: function (data) {
-				$.ajax
-					({
-						type: "GET",
-						url: urlForAll + "delivery/criteria/" + org_ID,
-						headers:
-						{
-							'Accept': 'application/json',
-							'Content-Type': 'application/json',
-							"Authorization": 'Bearer ' + localStorage.getItem('token')
-						},
-						success: function (data) {
-							Object.keys(data.data).map(item => {
-								if (item === "id" || item === "userId") {
-									return;
-								}
-								Array.from(Object.keys(data.data[item]).map(itemKeys => {
-									console.log(itemKeys);
-									console.log("");
-									console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
-
-									document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
-								}));
-							});
-						},
-						error: function (data) {
-
-						}
-					});
+				criteriaEnabledMer = false;
 			}
 		});
 }
@@ -1355,8 +1324,8 @@ function fillupFields() {
 		console.log(array);
 		$.ajax
 			({
-				type: criteriaEnabled ? "PUT" : "POST",
-				url: `${urlForAll}delivery/criteria/${criteriaEnabled ? "update" : "create"}/${criteriaMer}`,
+				type: criteriaEnabledMer ? "PUT" : "POST",
+				url: `${urlForAll}delivery/criteria/${criteriaEnabledMer ? "update" : "create"}/${criteriaMer}`,
 				headers:
 				{
 					'Accept': 'application/json',
