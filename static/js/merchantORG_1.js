@@ -12,6 +12,7 @@ function createFieldStart(data) {
 }
 
 async function fillInput() {
+	console.log("Yello");
 	await $.ajax({
 		url: urlForAll + "delivery/criteria/keys/" + org_ID,
 		type: "GET",
@@ -49,7 +50,6 @@ $(document).ready(function () {
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 	flag = getKeys();
 	if (flag) {
-
 		$.ajax({
 			url: urlForAll + "delivery/criteria/enable/" + org_ID,
 			type: "GET",

@@ -1230,32 +1230,18 @@ $('.btn-okActivate3').click(function () {
 		});
 });
 
-
+var criteriaMer;
 $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
-	merId = $(this).attr('id');
-
-	// arr = merId.split('$$');
-
-	// document.getElementById('org_name2').value = arr[1];
-	// document.getElementById('person_name2').value = arr[2];
-	// document.getElementById('email2').value = arr[3];
-	// document.getElementById('phone_number2').value = arr[4];
-	// document.getElementById('business_filed2').value = arr[5];
-	// document.getElementById('per_cost').value = arr[6];
-	// document.getElementById('cod_per').value = arr[7];
-
+	criteriaMer = $(this).attr('id');
 	$t = $(this);
 
 	$("#formUpdateCriteria").show();
 	$('#tick3Criteria').hide();
-	//$(".circle-loader").removeClass("load-complete");
 	$("#circleLoad3Criteria").hide();
-
 	$("#sure3Criteria").hide();
-	//$("#sure3").html("Are you sure?");
 	$("#myModalMerUpdateCriteria").modal('show');
+	setUpdateCriteria();
 });
-
 
 var fillInputDetails = (types, values = undefined) => {
 	let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : null;
@@ -1284,19 +1270,15 @@ var fillInputDetails = (types, values = undefined) => {
 	div.append(dummyDivFlex);
 }
 
-async function setUpdateCriteria() {
-	if (flag) {
-		Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2")).map(item => item.remove());
-		await fillInput(true);
-		criteriaEnabled ? getData() : null;
-	}
+function setUpdateCriteria() {
+	criteriaEnabled ? getData() : null;
 }
 
 function getData() {
 	$.ajax
 		({
 			type: "GET",
-			url: urlForAll + "delivery/criteria/" + org_ID,
+			url: urlForAll + "delivery/criteria/" + criteriaMer,
 			headers:
 			{
 				'Accept': 'application/json',
@@ -1318,7 +1300,34 @@ function getData() {
 				});
 			},
 			error: function (data) {
+				$.ajax
+					({
+						type: "GET",
+						url: urlForAll + "delivery/criteria/" + org_ID,
+						headers:
+						{
+							'Accept': 'application/json',
+							'Content-Type': 'application/json',
+							"Authorization": 'Bearer ' + localStorage.getItem('token')
+						},
+						success: function (data) {
+							Object.keys(data.data).map(item => {
+								if (item === "id" || item === "userId") {
+									return;
+								}
+								Array.from(Object.keys(data.data[item]).map(itemKeys => {
+									console.log(itemKeys);
+									console.log("");
+									console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
+									document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
+								}));
+							});
+						},
+						error: function (data) {
+
+						}
+					});
 			}
 		});
 }
