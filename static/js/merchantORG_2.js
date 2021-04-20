@@ -1332,78 +1332,82 @@ function getData() {
 		});
 }
 
-// function fillupFields() {
-// 	if (flag) {
-// 		$('#tickActivateConfirm').hide();
-// 		$(".circle-loader").removeClass("load-complete");
+function fillupFields() {
+	if (flag) {
+		document.getElementById('modalApproveCriteria').disabled = true;
+		document.getElementById('modalCancelCriteria').disabled = true;
+		$('.btn-ok-updateCriteria').attr('disabled', true);
+		$('.cancelModCriteria').prop('disabled', true);
+		$("#formUpdateCriteria").hide();
+		$(".circle-loader").removeClass("load-complete");
+		$(".circle-loader").show();
+		$("#sure3Criteria").html("Please wait!");
+		$("#sure3Criteria").show();
+	}
+}
 
-// 		$("#sureActivateConfirm").html("Are you sure?");
-// 		$("#myModalCriteriaConfirm").modal('show');
-// 	}
-// }
 
+document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", function () {
+	document.getElementById('modalCriteriaCancelConfirm').disabled = true;
+	document.getElementById('modalCriteriaSetConfirm').disabled = true;
+	let array = [];
+	Object.keys(fillData).map(item => {
+		let obj = {};
+		fillData[item].map(i => {
+			obj[i] = document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value : 0;
+			// console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
+		});
+		array.push(obj);
+	});
+	console.log(array);
+	$.ajax
+		({
+			type: criteriaEnabled ? "PUT" : "POST",
+			url: `${urlForAll}delivery/criteria/${criteriaEnabled ? "update" : "create"}/${org_ID}`,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			data: JSON.stringify({
+				"dayTypeMap": array[0],
+				"productTypeMap": array[1],
+				"productDistanceMap": array[3],
+				"productWeightMap": array[2]
+			}),
+			success: function (data) {
+				console.log(data);
+				$("#sureActivateConfirm").html("Please wait!");
+				setTimeout(function () {
+					$(".circle-loader").addClass("load-complete");
 
-// document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", function () {
-// 	document.getElementById('modalCriteriaCancelConfirm').disabled = true;
-// 	document.getElementById('modalCriteriaSetConfirm').disabled = true;
-// 	let array = [];
-// 	Object.keys(fillData).map(item => {
-// 		let obj = {};
-// 		fillData[item].map(i => {
-// 			obj[i] = document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value : 0;
-// 			// console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
-// 		});
-// 		array.push(obj);
-// 	});
-// 	console.log(array);
-// 	$.ajax
-// 		({
-// 			type: criteriaEnabled ? "PUT" : "POST",
-// 			url: `${urlForAll}delivery/criteria/${criteriaEnabled ? "update" : "create"}/${org_ID}`,
-// 			headers:
-// 			{
-// 				'Accept': 'application/json',
-// 				'Content-Type': 'application/json',
-// 				"Authorization": 'Bearer ' + localStorage.getItem('token')
-// 			},
-// 			data: JSON.stringify({
-// 				"dayTypeMap": array[0],
-// 				"productTypeMap": array[1],
-// 				"productDistanceMap": array[3],
-// 				"productWeightMap": array[2]
-// 			}),
-// 			success: function (data) {
-// 				console.log(data);
-// 				$("#sureActivateConfirm").html("Please wait!");
-// 				setTimeout(function () {
-// 					$(".circle-loader").addClass("load-complete");
+					$('#tickActivateConfirm').show();
 
-// 					$('#tickActivateConfirm').show();
+					$("#sureActivateConfirm").html(`Criteria ${flag ? "Updated" : "Set"}`);
+				}, 900);
 
-// 					$("#sureActivateConfirm").html(`Criteria ${flag ? "Updated" : "Set"}`);
-// 				}, 900);
-
-// 				setTimeout(function () {
-// 					$("#myModalCriteriaConfirm").modal('hide');
-// 					document.getElementById('modalCriteriaCancelConfirm').disabled = false;
-// 					document.getElementById('modalCriteriaSetConfirm').disabled = false;
-// 				}, 2000);
-// 			},
-// 			error: function (data) {
-// 				document.getElementById('modalCriteriaCancelConfirm').disabled = false;
-// 				document.getElementById('modalCriteriaSetConfirm').disabled = false;
-// 				let ob = Object.keys(data);
-// 				let modalErr = document.querySelector('#myModalWrongDManCreate p');
-// 				if (ob[17] == "responseJSON") {
-// 					modalErr.innerHTML = data.responseJSON.errorMessage;
-// 				}
-// 				else {
-// 					modalErr.innerHTML = "Please Wait! We are working!";
-// 				}
-// 				$('#myModalCriteriaConfirm').modal('hide');
-// 				setTimeout(() => {
-// 					$('#myModalWrongDManCreate').modal('show');
-// 				}, 0);
-// 			}
-// 		});
-// });
+				setTimeout(function () {
+					$("#myModalCriteriaConfirm").modal('hide');
+					document.getElementById('modalCriteriaCancelConfirm').disabled = false;
+					document.getElementById('modalCriteriaSetConfirm').disabled = false;
+				}, 2000);
+			},
+			error: function (data) {
+				document.getElementById('modalCriteriaCancelConfirm').disabled = false;
+				document.getElementById('modalCriteriaSetConfirm').disabled = false;
+				let ob = Object.keys(data);
+				let modalErr = document.querySelector('#myModalWrongDManCreate p');
+				if (ob[17] == "responseJSON") {
+					modalErr.innerHTML = data.responseJSON.errorMessage;
+				}
+				else {
+					modalErr.innerHTML = "Please Wait! We are working!";
+				}
+				$('#myModalCriteriaConfirm').modal('hide');
+				setTimeout(() => {
+					$('#myModalWrongDManCreate').modal('show');
+				}, 0);
+			}
+		});
+});
