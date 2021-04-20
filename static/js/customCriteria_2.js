@@ -202,9 +202,8 @@ function getData() {
         });
 }
 
-function fillupFields(e) {
+function fillupFields() {
     if (flag) {
-        e.preventDefault();
         $('#tickActivateConfirm').hide();
         $(".circle-loader").removeClass("load-complete");
 
@@ -214,14 +213,14 @@ function fillupFields(e) {
 }
 
 
-document.querySelector("#modalCriteriaSet").addEventListener("click", function () {
+document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", function () {
     document.getElementById('modalCriteriaCancelConfirm').disabled = true;
     document.getElementById('modalCriteriaSetConfirm').disabled = true;
     let array = [];
     Object.keys(fillData).map(item => {
         let obj = {};
         fillData[item].map(i => {
-            obj[i] = document.querySelector(`input[class*='${i.replace(/ /, "")}']`).value;
+            obj[i] = document.querySelector(`input[class*='${i.replace(/ /, "")}']`).value ? document.querySelector(`input[class*='${i.replace(/ /, "")}']`).value : 0;
             // console.log(i, document.querySelector(`input[class*='${i.replace(/ /, "")}']`));
         });
         array.push(obj);
@@ -230,7 +229,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
     $.ajax
         ({
             type: criteriaEnabled ? "PUT" : "POST",
-            url: urlForAll + "delivery/criteria/" + criteriaEnabled ? "update/" : "create/" + org_ID,
+            url: `${urlForAll}delivery/criteria/${criteriaEnabled ? "update" : "create"}/${org_ID}`,
             headers:
             {
                 'Accept': 'application/json',
