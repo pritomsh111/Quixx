@@ -42,7 +42,6 @@ var remove = (criteriatype) => {
 
 document.querySelector("#criteriaSubmit").addEventListener("click", function (e) {
     e.preventDefault();
-    document.getElementById('criteriaSubmit').disabled = true;
     $('#tickActivate').hide();
     $(".circle-loader").removeClass("load-complete");
 
@@ -52,7 +51,6 @@ document.querySelector("#criteriaSubmit").addEventListener("click", function (e)
 
 document.querySelector("#modalCriteriaSet").addEventListener("click", function (e) {
     let method = flag ? "PUT" : "POST";
-    document.getElementById('criteriaSubmit').disabled = true;
     document.getElementById('modalCriteriaCancel').disabled = true;
     document.getElementById('modalCriteriaSet').disabled = true;
     let dayType, productType, weight, distance;
@@ -63,16 +61,16 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
     Array.from(document.querySelectorAll(".flexIt")).map(item => {
         if (item.children[0].value) {
             if (item.classList.item(0).includes("dc")) {
-                dayType.push(item.children[0].value);
+                dayType.push(item.children[0].value.trim().replace(/ /g, ""));
             }
             else if (item.classList.item(0).includes("wc")) {
-                weight.push(item.children[0].value);
+                weight.push(item.children[0].value.trim().replace(/ /g, ""));
             }
             else if (item.classList.item(0).includes("ds")) {
-                distance.push(item.children[0].value);
+                distance.push(item.children[0].value.trim().replace(/ /g, ""));
             }
             else if (item.classList.item(0).includes("tc")) {
-                productType.push(item.children[0].value);
+                productType.push(item.children[0].value.trim().replace(/ /g, ""));
             }
         }
     });
@@ -106,11 +104,9 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
                     $("#myModalCriteria").modal('hide');
                     document.getElementById('modalCriteriaCancel').disabled = false;
                     document.getElementById('modalCriteriaSet').disabled = false;
-                    document.getElementById('criteriaSubmit').disabled = false;
                 }, 2000);
             },
             error: function (data) {
-                document.getElementById('criteriaSubmit').disabled = false;
                 document.getElementById('modalCriteriaCancel').disabled = false;
                 document.getElementById('modalCriteriaSet').disabled = false;
                 let ob = Object.keys(data);
@@ -190,9 +186,9 @@ function getData() {
                     Array.from(Object.keys(data.data[item]).map(itemKeys => {
                         console.log(itemKeys);
                         console.log("");
-                        console.log(document.querySelector(`.${item}${itemKeys}`), `.${item}${itemKeys}`);
+                        console.log(document.querySelector(`.${item}${itemKeys.replace(/ /, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /, "")}`);
 
-                        document.querySelector(`.${item}${itemKeys}`) ? document.querySelector(`.${item}${itemKeys}`).value = data.data[item][itemKeys.replace(/ /, "")] : null;
+                        document.querySelector(`.${item}${itemKeys.replace(/ /, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /, "")}`).value = data.data[item][itemKeys] : null;
                     }));
                 });
             },
@@ -237,18 +233,10 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             },
             data: JSON.stringify({
-                "dayTypeMap": {
-                    "Urgent": array[0]
-                },
-                "productTypeMap": {
-                    "Glass": array[1]
-                },
-                "productDistanceMap": {
-                    "1-2": array[3]
-                },
-                "productWeightMap": {
-                    "1-2": array[2]
-                }
+                "dayTypeMap": array[0],
+                "productTypeMap": array[1],
+                "productDistanceMap": array[3],
+                "productWeightMap": array[2]
             }),
             success: function (data) {
                 console.log(data);
@@ -262,9 +250,9 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
                 }, 900);
 
                 setTimeout(function () {
-                    $("#myModalCriteria").modal('hide');
+                    $("#myModalCriteriaConfirm").modal('hide');
                     document.getElementById('modalCriteriaCancelConfirm').disabled = false;
-                    document.getElementById('modalCriteriaSet').disabled = false;
+                    document.getElementById('modalCriteriaSetConfirm').disabled = false;
                 }, 2000);
             },
             error: function (data) {
