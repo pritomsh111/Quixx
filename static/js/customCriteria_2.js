@@ -145,7 +145,7 @@ var fillInputDetails = (types, values = undefined) => {
     input.type = "text";
     // identidier.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3;";
-    input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /, "")}`;
+    input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
     dummyDivFlex.append(identifier, input);
@@ -186,9 +186,9 @@ function getData() {
                     Array.from(Object.keys(data.data[item]).map(itemKeys => {
                         console.log(itemKeys);
                         console.log("");
-                        console.log(document.querySelector(`.${item}${itemKeys.replace(/ /, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /, "")}`);
+                        console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
-                        document.querySelector(`.${item}${itemKeys.replace(/ /, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /, "")}`).value = data.data[item][itemKeys] : null;
+                        document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
                     }));
                 });
             },
@@ -216,8 +216,8 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
     Object.keys(fillData).map(item => {
         let obj = {};
         fillData[item].map(i => {
-            obj[i] = document.querySelector(`input[class*='${i.replace(/ /, "")}']`).value ? document.querySelector(`input[class*='${i.replace(/ /, "")}']`).value : 0;
-            // console.log(i, document.querySelector(`input[class*='${i.replace(/ /, "")}']`));
+            obj[i] = document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value : 0;
+            // console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
         });
         array.push(obj);
     });
