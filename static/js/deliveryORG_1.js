@@ -158,6 +158,44 @@ $(document).ready(function () {
 			}
 		});
 
+	$('#dayType')
+		.empty();
+	$('#productType')
+		.empty();
+	$('#weight')
+		.empty();
+	$('#distance')
+		.empty();
+	$.ajax
+		({
+			url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
+			type: "GET",
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				Object.keys(data.data).map(types => {
+					console.log(types);
+					types.map(value => {
+
+						$('#senderList')
+							.append('<option value="' + org_ID + '">Organization Head</option>')
+							;
+						var option = new Option(data.data[i], data.data[i]);
+						$(option).html(data.data[i]);
+						$("#managers").append(option);
+					});
+				});
+				// document.getElementById('managers').selectedIndex = dhakaIndex;
+			}
+		});
+
+
 });
 
 function initialize() {
@@ -508,9 +546,6 @@ function initAutocomplete() {
 
 	// Listen for the event fired when the user selects a prediction and retrieve
 	// more details for that place.
-
-
-
 
 	//NewMAP
 	searchBox2.addListener('places_changed', function () {
