@@ -2147,6 +2147,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var delivery_note = document.getElementById('DELIVERY_NOTE').value;
 	var delivery_type = document.getElementById('deliveryType').value;
 	var delivery_charge = document.getElementById('delivery_charge').value;
+	var deliveryCity = String(document.getElementById('managers').value);
 	var area = String(document.getElementById('managers_2').value);
 	var pickup_lat = String(document.getElementById('lat').value);
 	var pickup_longi = String(document.getElementById('longi').value);
@@ -2388,11 +2389,12 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"product_qty": product_qty,
 				"pickup_time": pickup_time,
 				"delivery_note": delivery_note,
+				"delivery_city": deliveryCity,
 				"delivery_area": area,
 				"delivery_day_type": dayType,
 				"delivery_product_type": productType,
-				"weight": weight,
-				"distance": distance
+				"delivery_weight": weight,
+				"delivery_distance": distance
 			});
 		console.log(datap);
 		$('#tickD2').hide();
