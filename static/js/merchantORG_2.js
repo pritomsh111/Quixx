@@ -1343,8 +1343,6 @@ function fillupFields() {
 		$(".circle-loader").show();
 		$("#sure3Criteria").html("Please wait!");
 		$("#sure3Criteria").show();
-		document.getElementById('modalCriteriaCancelConfirm').disabled = true;
-		document.getElementById('modalCriteriaSetConfirm').disabled = true;
 		let array = [];
 		Object.keys(fillData).map(item => {
 			let obj = {};
@@ -1358,7 +1356,7 @@ function fillupFields() {
 		$.ajax
 			({
 				type: criteriaEnabled ? "PUT" : "POST",
-				url: `${urlForAll}delivery/criteria/${criteriaEnabled ? "update" : "create"}/${org_ID}`,
+				url: `${urlForAll}delivery/criteria/${criteriaEnabled ? "update" : "create"}/${criteriaMer}`,
 				headers:
 				{
 					'Accept': 'application/json',
@@ -1390,17 +1388,17 @@ function fillupFields() {
 				error: function (data) {
 					$('.btn-ok-updateCriteria').attr('disabled', false);
 					$('.cancelModCriteria').prop('disabled', false);
-					let ob = Object.keys(data);
-					let modalErr = document.querySelector('#myModalWrongDManCreate p');
+
+					var ob = Object.keys(data);
 					if (ob[17] == "responseJSON") {
-						modalErr.innerHTML = data.responseJSON.errorMessage;
+						$("#errorFix").html(data.responseJSON.errorMessage);
 					}
 					else {
-						modalErr.innerHTML = "Please Wait! We are working!";
+						$("#errorFix").html("Something Went Wrong!");
 					}
-					$('#myModalCriteriaConfirm').modal('hide');
+					$('#myModalMerUpdateCriteria').modal('hide');
 					setTimeout(() => {
-						$('#myModalWrongDManCreate').modal('show');
+						$('#myModal2XYZ').modal('show');
 					}, 0);
 				}
 			});
