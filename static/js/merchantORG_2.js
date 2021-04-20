@@ -1297,6 +1297,9 @@ function getData() {
 			},
 			error: function (data) {
 				criteriaEnabledMer = false;
+				Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
+					item.value = "";
+				});
 			}
 		});
 }
@@ -1313,22 +1316,6 @@ function fillupFields() {
 		$("#sure3Criteria").html("Please wait!");
 		$("#sure3Criteria").show();
 		let array = [];
-		Array.from(document.querySelectorAll(".flexIt2")).map(item => {
-			if (item.children[0].value) {
-				if (item.classList.item(0).includes("qdc")) {
-					dayType.push(item.children[0].value.trim().replace(/ /g, ""));
-				}
-				else if (item.classList.item(0).includes("qwc")) {
-					weight.push(item.children[0].value.trim().replace(/ /g, ""));
-				}
-				else if (item.classList.item(0).includes("qds")) {
-					distance.push(item.children[0].value.trim().replace(/ /g, ""));
-				}
-				else if (item.classList.item(0).includes("qtc")) {
-					productType.push(item.children[0].value.trim().replace(/ /g, ""));
-				}
-			}
-		});
 		let typesArray = ["dayType", "productType", "productWeight", "productDistance"];
 		Object.keys(fillData).map((item, index) => {
 			let obj = {};
