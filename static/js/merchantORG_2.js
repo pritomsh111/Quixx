@@ -1316,6 +1316,8 @@ function fillupFields() {
 		Object.keys(fillData).map(item => {
 			let obj = {};
 			fillData[item].map(i => {
+				console.log(item, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`))
+
 				obj[i] = document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class*='${i.replace(/ /g, "")}']`).value : 0;
 				// console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
 			});
