@@ -451,6 +451,16 @@ var unassignedDeliveries = () => {
 					return "---";
 				}
 			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 23, "data": "delivery_note" },
@@ -463,7 +473,7 @@ var unassignedDeliveries = () => {
 			{
 				"targets": 21, "data": "update", render: function (data, type, row) {
 
-					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '$$' + row.delivery_product_type + '$$' + row.delivery_weight + '$$' + row.delivery_day_type + '$$' + row.delivery_distance + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>'
+					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '$$' + row.delivery_product_type + '$$' + row.delivery_weight + '$$' + row.delivery_day_type + '$$' + row.delivery_distance + "$$" + row.delivery_city_criteria + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>'
 				}
 			},
 			{
@@ -699,6 +709,16 @@ var assignedDeliveries = () => {
 					let a = row.delivery_distance;
 					if (a) {
 						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -944,6 +964,16 @@ var onHoldDeliveries = () => {
 					return "---";
 				}
 			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 20, "data": "delivery_note" }
@@ -1168,6 +1198,16 @@ var onGoingDeliveries = () => {
 					let a = row.delivery_distance;
 					if (a) {
 						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1415,6 +1455,16 @@ var completedDeliveries = () => {
 					return "---";
 				}
 			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -1649,6 +1699,16 @@ var canceledDeliveries = () => {
 					return "---";
 				}
 			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -1856,6 +1916,56 @@ var returnedDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -2441,6 +2551,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var productType = document.getElementById('productType').value;
 	var distance = document.getElementById('distance').value;
 	var weight = document.getElementById('weight').value;
+	var cityType = document.getElementById('city').value;
 	var senderGuy = document.getElementById('senderList').value;
 	var product_cost = document.getElementById('product_cost').value;
 	var yesno = document.getElementById('autoAss').value;
@@ -2676,7 +2787,8 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"delivery_day_type": dayType,
 				"delivery_product_type": productType,
 				"delivery_weight": weight,
-				"delivery_distance": distance
+				"delivery_distance": distance,
+				"delivery_city_criteria": cityType
 			});
 		console.log(datap);
 		$('#tickD2').hide();
@@ -3431,6 +3543,17 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 					return "---";
 				}
 			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
+
 			{ "targets": 14, "data": "delivery_charge" },
 			{ "targets": 15, "data": "payment_method" },
 		]
@@ -3715,6 +3838,8 @@ var thikKoro = async (method, areaa, cityy, ...typeList) => {
 		.empty();
 	$('#distanceU')
 		.empty();
+	$('#cityU')
+		.empty();
 	$.ajax
 		({
 			url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
@@ -3728,7 +3853,7 @@ var thikKoro = async (method, areaa, cityy, ...typeList) => {
 			},
 
 			success: function (data) {
-				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na"]
+				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"]
 				Object.keys(data.data).map((types, index) => {
 					console.log(types);
 					$(`#${types}U`)
@@ -3772,7 +3897,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 
 	del_id = arr[0];
 	creator_ID = arr[1];
-	thikKoro(arr[8], arr[11], arr[26], arr[29], arr[27], arr[28], arr[30]);
+	thikKoro(arr[8], arr[11], arr[26], arr[29], arr[27], arr[28], arr[30], arr[31]);
 	//console.log(arr);
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];
@@ -3793,6 +3918,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	document.getElementById('weightU').value = arr[28];
 	document.getElementById('dayTypeU').value = arr[29];
 	document.getElementById('distanceU').value = arr[30];
+	document.getElementById('cityU').value = arr[31];
 
 	if (markerx.length > 0) {
 		removeMarkers3();
@@ -3849,6 +3975,7 @@ $('.btn-ok-updateDC').click(function () {
 	var productType = document.getElementById('productTypeU').value;
 	var distance = document.getElementById('distanceU').value;
 	var weight = document.getElementById('weightU').value;
+	var cityType = document.getElementById('cityU').value;
 	var v0 = () => {
 		if (parseInt(delivery_cost_update) <= 0 || delivery_cost_update.charAt(0) == 0) {
 			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than 0!";
@@ -4061,7 +4188,7 @@ $('.btn-ok-updateDC').click(function () {
 			"delivery_product_type": productType,
 			"delivery_weight": weight,
 			"delivery_distance": distance,
-			"delivery_city_criteria": "delivery_city_criteria_na"
+			"delivery_city_criteria": cityType
 		});
 	console.log(datap);
 	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v0() == 1 && v4() == 1 && v12() == 1) {
@@ -4142,7 +4269,7 @@ $('.btn-ok-updateDC').click(function () {
 						"delivery_product_type": productType,
 						"delivery_weight": weight,
 						"delivery_distance": distance,
-						"delivery_city_criteria": "delivery_city_criteria_na"
+						"delivery_city_criteria": cityType
 					}),
 				headers:
 				{
@@ -4175,7 +4302,7 @@ $('.btn-ok-updateDC').click(function () {
 						//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
 						//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
 						//table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
-						document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance;
+						document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance + '$$' + data.data.delivery_city_criteria;
 
 					}
 					catch (e) {

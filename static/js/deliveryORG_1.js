@@ -187,13 +187,11 @@ $(document).ready(function () {
 					$(`#${types}`)
 						.append('<option value="' + naValues[index] + '">---</option>')
 						;
-					if (data.data[types]) {
-						data.data[types].map(value => {
-							var option = new Option(value, value);
-							$(option).html(value);
-							$(`#${types}`).append(option);
-						});
-					}
+					data.data[types].map(value => {
+						var option = new Option(value, value);
+						$(option).html(value);
+						$(`#${types}`).append(option);
+					});
 				});
 				// document.getElementById('managers').selectedIndex = dhakaIndex;
 			}
