@@ -612,6 +612,12 @@ var assignedDeliveries = () => {
 			{ "targets": 9, "data": "sender_address" },
 			{ "targets": 10, "data": "receiver_name" },
 			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
 			{ "targets": 12, "data": "delivery_area" },
 			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 14, "data": "delivery_type" },
@@ -806,6 +812,12 @@ var onHoldDeliveries = () => {
 			{ "targets": 9, "data": "sender_address" },
 			{ "targets": 10, "data": "receiver_name" },
 			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
 			{ "targets": 12, "data": "delivery_area" },
 			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 14, "data": "delivery_type" },
@@ -990,6 +1002,12 @@ var onGoingDeliveries = () => {
 			{ "targets": 10, "data": "receiver_name" },
 			{ "targets": 11, "data": "receiver_phone_number" },
 			{ "targets": 12, "data": "delivery_area" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
 			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 14, "data": "delivery_type" },
 			{ "targets": 15, "data": "product_name" },
@@ -1185,6 +1203,12 @@ var completedDeliveries = () => {
 			{ "targets": 9, "data": "sender_address" },
 			{ "targets": 10, "data": "receiver_name" },
 			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
 			{ "targets": 12, "data": "delivery_area" },
 			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 14, "data": "delivery_type" },
@@ -1373,6 +1397,12 @@ var canceledDeliveries = () => {
 			{ "targets": 9, "data": "sender_address" },
 			{ "targets": 10, "data": "receiver_name" },
 			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
 			{ "targets": 12, "data": "delivery_area" },
 			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 14, "data": "delivery_type" },
@@ -1574,6 +1604,12 @@ var returnedDeliveries = () => {
 			{ "targets": 9, "data": "sender_address" },
 			{ "targets": 10, "data": "receiver_name" },
 			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
 			{ "targets": 12, "data": "delivery_area" },
 			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 14, "data": "delivery_type" },
