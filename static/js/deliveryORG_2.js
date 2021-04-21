@@ -411,6 +411,46 @@ var unassignedDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 23, "data": "delivery_note" },
@@ -624,6 +664,46 @@ var assignedDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -824,6 +904,46 @@ var onHoldDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 20, "data": "delivery_note" }
@@ -1013,6 +1133,46 @@ var onGoingDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -1215,6 +1375,46 @@ var completedDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -1409,6 +1609,46 @@ var canceledDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
