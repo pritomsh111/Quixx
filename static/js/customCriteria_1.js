@@ -37,7 +37,6 @@ async function fillInput(isTab = false) {
 
 }
 
-
 async function getKeys() {
     let result = await $.ajax({
         url: urlForAll + "delivery/criteria/enable/key/" + org_ID,
