@@ -3602,9 +3602,13 @@ var thikKoro = async (method, areaa, cityy) => {
 	if (cityy === "Cox's Bazar") {
 		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
 	}
+	if (!cityy) {
+		url = urlForAll + "approved/delivery/thana/Dhaka";
+		cityIndex = 13;
+	}
 	await $.ajax
 		({
-			url: url,
+			url: urlForAll + "approved/delivery/district",
 			type: "GET",
 
 			headers:
@@ -3628,7 +3632,7 @@ var thikKoro = async (method, areaa, cityy) => {
 		});
 	$.ajax
 		({
-			url: urlForAll + "approved/delivery/thana/" + cityy,
+			url: url,
 			type: "GET",
 
 			headers:
