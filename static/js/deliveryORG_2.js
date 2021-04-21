@@ -3611,7 +3611,6 @@ var thikKoro = async (method, areaa, cityy) => {
 				for (var i = 0; i < data.data.length; i++) {
 					if (data.data[i] === cityy) {
 						cityIndex = i;
-						city = data.data[i];
 					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
@@ -3622,7 +3621,7 @@ var thikKoro = async (method, areaa, cityy) => {
 		});
 	$.ajax
 		({
-			url: urlForAll + "approved/delivery/thana/" + city,
+			url: urlForAll + "approved/delivery/thana/" + cityy,
 			type: "GET",
 
 			headers:
@@ -3695,7 +3694,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 
 	del_id = arr[0];
 	creator_ID = arr[1];
-	thikKoro(arr[8], arr[11], arr[20]);
+	thikKoro(arr[8], arr[11], arr[26]);
 	//console.log(arr);
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];
@@ -3711,7 +3710,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	document.getElementById('rec_addressU').value = arr[12];
 	document.getElementById('des_latU').value = arr[13];
 	document.getElementById('des_longiU').value = arr[14];
-	document.getElementById('delivery_cityU').value = arr[20];
+	document.getElementById('delivery_cityU').value = arr[26];
 
 	if (markerx.length > 0) {
 		removeMarkers3();
