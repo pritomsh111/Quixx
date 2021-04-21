@@ -187,15 +187,23 @@ function getData() {
                     if (item === "id" || item === "userId") {
                         return;
                     }
-                    if (data.data[item]) {
-                        Array.from(Object.keys(data.data[item]).map(itemKeys => {
-                            console.log(itemKeys);
-                            console.log("");
-                            console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+                    Array.from(Object.keys(data.data[item]).map(itemKeys => {
+                        console.log(itemKeys);
+                        console.log("");
+                        console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
-                            document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
-                        }));
-                    }
+                        document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
+                    }));
+                    // if (data.data[item]) {
+
+                    //     Array.from(Object.keys(data.data[item]).map(itemKeys => {
+                    //         console.log(itemKeys);
+                    //         console.log("");
+                    //         console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+
+                    //         document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
+                    //     }));
+                    // }
                 });
             },
             error: function (data) {
@@ -224,9 +232,14 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
         let obj = {};
         fillData[item].map(i => {
             console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`))
-            if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`)) {
-                obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
-            }
+
+            obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
+
+
+            // if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`)) {
+            //     obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
+
+            // }
             // console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
         });
         array.push(obj);

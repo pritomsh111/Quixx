@@ -166,6 +166,8 @@ $(document).ready(function () {
 		.empty();
 	$('#distance')
 		.empty();
+	$('#city')
+		.empty();
 	$.ajax
 		({
 			url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
@@ -179,17 +181,19 @@ $(document).ready(function () {
 			},
 
 			success: function (data) {
-				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na"]
+				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
 				Object.keys(data.data).map((types, index) => {
 					console.log(types);
 					$(`#${types}`)
 						.append('<option value="' + naValues[index] + '">---</option>')
 						;
-					data.data[types].map(value => {
-						var option = new Option(value, value);
-						$(option).html(value);
-						$(`#${types}`).append(option);
-					});
+					if (data.data[types]) {
+						data.data[types].map(value => {
+							var option = new Option(value, value);
+							$(option).html(value);
+							$(`#${types}`).append(option);
+						});
+					}
 				});
 				// document.getElementById('managers').selectedIndex = dhakaIndex;
 			}
