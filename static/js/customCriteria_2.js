@@ -8,10 +8,10 @@ var createCriteria = () => {
 };
 
 var createField = (types, values = undefined) => {
-    let typeForCreate = types === "dayType" ? ".col.dayType" : types === "productType" ? ".col.productType" : types === "weight" ? ".col.weight" : types === "distance" ? ".col.distance" : null;
-    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
-    let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dsc" : null;
-    let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
+    let typeForCreate = types === "dayType" ? ".col.dayType" : types === "productType" ? ".col.productType" : types === "weight" ? ".col.weight" : types === "distance" ? ".col.distance" : types === "city" ? ".col.city" : null;
+    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 7..." : types === "distance" ? "... 1-2, 2, 3 ..." : types === "city" ? "... Inside Dhaka, Outside Dhaka ..." : null;
+    let classesName = types === "dayType" ? "dc" : types === "productType" ? "tc" : types === "weight" ? "wc" : types === "distance" ? "dsc" : types === "city" ? "cc" : null;
+    let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : types === "city" ? city : null;
 
     let div = document.querySelector(`${typeForCreate}`);
 
@@ -30,7 +30,7 @@ var createField = (types, values = undefined) => {
     deleteIcon.style.cssText = "cursor: pointer;";
     deleteIcon.innerHTML = "delete_outline";
     deleteIcon.onclick = remove.bind(this, `${classesName}${increment}`);
-    types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
+    types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : types === "city" ? city++ : null;
     dummyDivFlex.append(input, deleteIcon);
 
     div.append(dummyDivFlex);
@@ -53,11 +53,12 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
     let method = flag ? "PUT" : "POST";
     document.getElementById('modalCriteriaCancel').disabled = true;
     document.getElementById('modalCriteriaSet').disabled = true;
-    let dayType, productType, weight, distance;
+    let dayType, productType, weight, distance, city;
     dayType = [];
     productType = [];
     weight = [];
     distance = [];
+    city = [];
     Array.from(document.querySelectorAll(".flexIt")).map(item => {
         if (item.children[0].value) {
             if (item.classList.item(0).includes("dc")) {
@@ -71,6 +72,9 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
             }
             else if (item.classList.item(0).includes("tc")) {
                 productType.push(item.children[0].value.trim().replace(/ /g, ""));
+            }
+            else if (item.classList.item(0).includes("cc")) {
+                city.push(item.children[0].value.trim().replace(/ /g, ""));
             }
         }
     });
@@ -88,7 +92,8 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
                 "dayType": dayType,
                 "productType": productType,
                 "weight": weight,
-                "distance": distance
+                "distance": distance,
+                "city": city
             }),
             success: function (data) {
                 $("#sureActivate").html("Please wait!");
@@ -125,12 +130,11 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
         });
 });
 
-
 var fillInputDetails = (types, values = undefined) => {
-    let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : null;
-    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
-    let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : null;
-    let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
+    let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : types === "city" ? ".dyn.productCity" : null;
+    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : types === "city" ? "... Inside Dhaka, Outside Dhaka ..." : null;
+    let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : types === "city" ? "qcc" : null;
+    let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : types === "city" ? city : null;
 
     let div = document.querySelector(`${typeForCreate}`);
 
@@ -147,7 +151,7 @@ var fillInputDetails = (types, values = undefined) => {
     input.style.cssText = "color: #0066b3;";
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
 
-    types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
+    types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : types === "city" ? city++ : null;
     dummyDivFlex.append(identifier, input);
 
     div.append(dummyDivFlex);
@@ -183,13 +187,15 @@ function getData() {
                     if (item === "id" || item === "userId") {
                         return;
                     }
-                    Array.from(Object.keys(data.data[item]).map(itemKeys => {
-                        console.log(itemKeys);
-                        console.log("");
-                        console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+                    if (data.data[item]) {
+                        Array.from(Object.keys(data.data[item]).map(itemKeys => {
+                            console.log(itemKeys);
+                            console.log("");
+                            console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
-                        document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
-                    }));
+                            document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
+                        }));
+                    }
                 });
             },
             error: function (data) {
@@ -213,13 +219,14 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
     document.getElementById('modalCriteriaCancelConfirm').disabled = true;
     document.getElementById('modalCriteriaSetConfirm').disabled = true;
     let array = [];
-    let typesArray = ["dayType", "productType", "productWeight", "productDistance"];
+    let typesArray = ["dayType", "productType", "productWeight", "productDistance, productCity"];
     Object.keys(fillData).map((item, index) => {
         let obj = {};
         fillData[item].map(i => {
             console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`))
-
-            obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
+            if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`)) {
+                obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
+            }
             // console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
         });
         array.push(obj);
@@ -239,7 +246,8 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
                 "dayTypeMap": array[0],
                 "productTypeMap": array[1],
                 "productDistanceMap": array[3],
-                "productWeightMap": array[2]
+                "productWeightMap": array[2],
+                "productCity": array[3]
             }),
             success: function (data) {
                 console.log(data);

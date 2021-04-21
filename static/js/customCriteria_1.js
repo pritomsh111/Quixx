@@ -24,8 +24,14 @@ async function fillInput(isTab = false) {
             "Authorization": 'Bearer ' + localStorage.getItem('token')
         },
         success: function (data) {
+            // let check = ["city", "dayType", "productType", "distance", "weight"]
             createFieldStart(data.data, isTab);
             fillData = data.data;
+            // check.map(item => {
+            //     if (!data.data[item]) {
+            //         delete fillData[item];
+            //     }
+            // });
         }
     });
 
