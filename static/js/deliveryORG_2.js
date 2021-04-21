@@ -4116,31 +4116,36 @@ $('.btn-ok-updateDC').click(function () {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					//console.log(data);
+					console.log(data);
 					var table = $('#dtBasicExampled').DataTable();
+					try {
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(data.data.receiver_name);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(data.data.receiver_phone_number);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 10 }).data(data.data.delivery_city);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.delivery_area);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 12 }).data(data.data.receiver_address);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 14 }).data(data.data.product_name);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_qty);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
 
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(data.data.receiver_name);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(data.data.receiver_phone_number);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 10 }).data(data.data.delivery_city);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.delivery_area);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 12 }).data(data.data.receiver_address);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 14 }).data(data.data.product_name);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_qty);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance);
 
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_charge);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 22 }).data(data.data.payment_method);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 23 }).data(data.data.delivery_note);
+						//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
+						//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
+						//table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
+						document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance;
 
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_charge);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.payment_method);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_note);
-					//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
-					//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
-					//table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
-					document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance;
+					}
+					catch (e) {
+						console.log(e);
+					}
 
 					setTimeout(function () {
 						$(".circle-loader").addClass("load-complete");
