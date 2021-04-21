@@ -3380,11 +3380,57 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 			{ "targets": 6, "data": "sender_address" },
 			{ "targets": 7, "data": "receiver_name" },
 			{ "targets": 8, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
 			{ "targets": 9, "data": "delivery_area" },
 			{ "targets": 10, "data": "receiver_address" },
 			{ "targets": 11, "data": "product_name" },
 			{ "targets": 12, "data": "product_qty" },
 			{ "targets": 13, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 14, "data": "delivery_charge" },
 			{ "targets": 15, "data": "payment_method" },
 		]
