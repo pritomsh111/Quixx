@@ -3589,11 +3589,50 @@ function autoAssignDeliveryManUnassingedTable(ddeliveryAutoIterator) {
 
 var arr;
 var id_delivery_update, del_id, creator_ID;
-var thikKoro = async (method, areaa, cityy) => {
+
+$("#delivery_cityU").change(function () {
+	var value = $(this).val();
+	url = urlForAll + "approved/delivery/upazila/" + value;
+	if (value === "Dhaka") {
+		url = urlForAll + "approved/delivery/thana/Dhaka";
+	}
+	if (value === "Cox's Bazar") {
+		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
+	}
+	thanaUpazilla(url);
+});
+
+async function thanaUpazilla(url, areaa = null) {
 	$('#managersU')
 		.empty();
-	$('#delivery_cityU')
-		.empty();
+	await $.ajax
+		({
+			url: url,
+			type: "GET",
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				var j = 0;
+				for (var i = 0; i < data.data.length; i++) {
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					if (areaa == data.data[i]) {
+						j = i;
+					}
+					$("#managersU").append(option);
+				}
+				document.getElementById('managersU').selectedIndex = j; //area
+			}
+		});
+}
+
+async function cityChange(cityy, areaa) {
 	var cityIndex;
 	url = urlForAll + "approved/delivery/upazila/" + cityy;
 	if (cityy === "Dhaka") {
@@ -3630,31 +3669,16 @@ var thikKoro = async (method, areaa, cityy) => {
 				document.getElementById('delivery_cityU').selectedIndex = cityIndex;
 			}
 		});
-	$.ajax
-		({
-			url: url,
-			type: "GET",
+	await thanaUpazilla(url, areaa);
+}
 
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
 
-			success: function (data) {
-				var j;
-				for (var i = 0; i < data.data.length; i++) {
-					var option = new Option(data.data[i], data.data[i]);
-					$(option).html(data.data[i]);
-					if (areaa == data.data[i]) {
-						j = i;
-					}
-					$("#managersU").append(option);
-				}
-				document.getElementById('managersU').selectedIndex = j; //area
-			}
-		});
+var thikKoro = async (method, areaa, cityy) => {
+
+	$('#delivery_cityU')
+		.empty();
+	await cityChange(cityy, areaa);
+
 	$('#managers2U')
 		.empty();
 	$.ajax
