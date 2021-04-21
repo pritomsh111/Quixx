@@ -195,10 +195,10 @@ $("#senderListExcel").change(function () {
 						document.getElementById('senderInfo').innerHTML = "Sender's Information For Excel:";
 						document.getElementById('senLatLong').innerHTML =
 							`Sender's Address: ${data.data.sender_address}<br>
-					Sender's Name: ${data.data.sender_name}<br>
-					Sender's Phone Number: ${data.data.sender_phone_number}<br>
-					Sender's Lattitude: ${data.data.sender_lat}<br>
-					Sender's Longitude: ${data.data.sender_longi}<br>`;
+						Sender's Name: ${data.data.sender_name}<br>
+						Sender's Phone Number: ${data.data.sender_phone_number}<br>
+						Sender's Lattitude: ${data.data.sender_lat}<br>
+						Sender's Longitude: ${data.data.sender_longi}<br>`;
 
 					}
 				},
@@ -399,6 +399,7 @@ var unassignedDeliveries = () => {
 			{ "targets": 9, "data": "sender_address" },
 			{ "targets": 10, "data": "receiver_name" },
 			{ "targets": 11, "data": "receiver_phone_number" },
+			{ "targets": 24, "data": "delivery_city" },
 			{ "targets": 12, "data": "delivery_area" },
 			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 14, "data": "delivery_type" },
@@ -417,7 +418,7 @@ var unassignedDeliveries = () => {
 			{
 				"targets": 21, "data": "update", render: function (data, type, row) {
 
-					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>'
+					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>'
 				}
 			},
 			{
@@ -3261,12 +3262,40 @@ function autoAssignDeliveryManUnassingedTable(ddeliveryAutoIterator) {
 
 var arr;
 var id_delivery_update, del_id, creator_ID;
-var thikKoro = (method, areaa) => {
+var thikKoro = async (method, areaa, cityy) => {
 	$('#managersU')
 		.empty();
+	$('#delivery_cityU')
+		.empty();
+	var cityIndex, city;
+	await $.ajax
+		({
+			url: urlForAll + "approved/delivery/district",
+			type: "GET",
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				for (var i = 0; i < data.data.length; i++) {
+					if (data.data[i] === cityy) {
+						cityIndex = i;
+						city = data.data[i];
+					}
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					$("#delivery_cityU").append(option);
+				}
+				document.getElementById('delivery_cityU').selectedIndex = cityIndex;
+			}
+		});
 	$.ajax
 		({
-			url: urlForAll + "approved/delivery/thana/Dhaka",
+			url: urlForAll + "approved/delivery/thana/" + city,
 			type: "GET",
 
 			headers:
@@ -3339,7 +3368,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 
 	del_id = arr[0];
 	creator_ID = arr[1];
-	thikKoro(arr[8], arr[11]);
+	thikKoro(arr[8], arr[11], arr[20]);
 	//console.log(arr);
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];
@@ -3355,6 +3384,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	document.getElementById('rec_addressU').value = arr[12];
 	document.getElementById('des_latU').value = arr[13];
 	document.getElementById('des_longiU').value = arr[14];
+	document.getElementById('delivery_cityU').value = arr[20];
 
 	if (markerx.length > 0) {
 		removeMarkers3();
@@ -3394,6 +3424,7 @@ $('.btn-ok-updateDC').click(function () {
 	var delivery_note = document.getElementById('DELIVERY_NOTEU').value;
 	var delivery_type = arr[18];
 	var area = String(document.getElementById('managersU').value);
+	var deliveryCity = String(document.getElementById('delivery_cityU').value);
 	var pickup_lat = String(arr[19]);
 	var pickup_longi = String(arr[20]);
 	var delivery_lat = String(document.getElementById('des_latU').value);
@@ -3656,6 +3687,7 @@ $('.btn-ok-updateDC').click(function () {
 						"pickup_time": pickup_time,
 						"delivery_note": delivery_note,
 						"delivery_area": area,
+						"delivery_city": deliveryCity,
 						"delivery_created_date": created_date,
 						"delivery_created_by_name": created_by_name,
 						"delivery_created_by_role": created_by_role,
@@ -3675,13 +3707,14 @@ $('.btn-ok-updateDC').click(function () {
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(data.data.receiver_name);
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(data.data.receiver_phone_number);
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 10 }).data(data.data.delivery_area);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.receiver_address);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 13 }).data(data.data.product_name);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 14 }).data(data.data.product_qty);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_cost);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.delivery_charge);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.payment_method);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_note);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.delivery_city);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 12 }).data(data.data.receiver_address);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 14 }).data(data.data.product_name);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_qty);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_charge);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.payment_method);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_note);
 					//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
 					//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
 					//table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
