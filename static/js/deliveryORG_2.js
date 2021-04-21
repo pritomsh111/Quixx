@@ -4029,7 +4029,41 @@ $('.btn-ok-updateDC').click(function () {
 			return 1;
 		}
 	}
-	var datap;
+	var datap = JSON.stringify
+		({
+			"collection_name": collection_name,
+			"creator_id": creator_ID,
+			"delivery_charge": delivery_cost_update,
+			"delivery_type": delivery_type,
+			"sender_address": s_address,
+			"receiver_address": rec_address,
+			"sender_phone_number": s_number,
+			"receiver_phone_number": r_number,
+			"sender_name": s_name,
+			"receiver_name": r_name,
+			"payment_method": payment_method,
+			"product_cost": product_cost,
+			"sender_lat": pickup_lat,
+			"sender_longi": pickup_longi,
+			"receiver_lat": delivery_lat,
+			"receiver_longi": delivery_longi,
+			"product_name": product_name,
+			"product_qty": product_qty,
+			"pickup_time": pickup_time,
+			"delivery_note": delivery_note,
+			"delivery_area": area,
+			"delivery_created_date": created_date,
+			"delivery_created_by_name": created_by_name,
+			"delivery_created_by_role": created_by_role,
+			"delivery_status": delivery_statusx,
+			"delivery_city": deliveryCity,
+			"delivery_day_type": dayType,
+			"delivery_product_type": productType,
+			"delivery_weight": weight,
+			"delivery_distance": distance,
+			"delivery_city_criteria": "delivery_city_criteria_na"
+		});
+	console.log(datap);
 	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v0() == 1 && v4() == 1 && v12() == 1) {
 		//pickup_time = convertTime24to12(pickup_time);
 		//console.log(pickup_time);
@@ -4107,7 +4141,8 @@ $('.btn-ok-updateDC').click(function () {
 						"delivery_day_type": dayType,
 						"delivery_product_type": productType,
 						"delivery_weight": weight,
-						"delivery_distance": distance
+						"delivery_distance": distance,
+						"delivery_city_criteria": "delivery_city_criteria_na"
 					}),
 				headers:
 				{
