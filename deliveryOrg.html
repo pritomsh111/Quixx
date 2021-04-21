@@ -276,6 +276,23 @@ table.dataTable tbody th, table.dataTable tbody td {
                                     placeholder="1000"
                                 >
                                 <br>
+                                <div class="criteria">
+                                    Product Type Criteria:
+                                    <select class="custom-select col-lg-12 btn" id="productType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                    <br>
+                                    Product Weight Criteria:
+                                    <select class="custom-select col-lg-12 btn" id="weight" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                    <br>
+                                    Day Criteria:
+                                    <select class="custom-select col-lg-12 btn" id="dayType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                    <br>
+                                    Distance Criteria:
+                                    <select class="custom-select col-lg-12 btn" id="distance" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                    <br>
+                                    City Criteria:
+                                    <select class="custom-select col-lg-12 btn" id="city" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                    <br>
+                                </div>
                                 <div id="D_charge"></div>
                                 <input
                                     type="text"
@@ -288,23 +305,6 @@ table.dataTable tbody th, table.dataTable tbody td {
                                 Payment Method:
                                 <select class="custom-select col-lg-12 btn" id="managers2" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
                                 <br>
-                                <div class="criteria">
-                                    Day Criteria:
-                                    <select class="custom-select col-lg-12 btn" id="dayType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                    <br>
-                                    Product Type Criteria:
-                                    <select class="custom-select col-lg-12 btn" id="productType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                    <br>
-                                    Product Weight Criteria:
-                                    <select class="custom-select col-lg-12 btn" id="weight" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                    <br>
-                                    Distance Criteria:
-                                    <select class="custom-select col-lg-12 btn" id="distance" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                    <br>
-                                    City Criteria:
-                                    <select class="custom-select col-lg-12 btn" id="city" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                    <br>
-                                </div>
                                 Delivery Note:
                                 <input
                                     type="text"
@@ -1551,6 +1551,34 @@ table.dataTable tbody th, table.dataTable tbody td {
                     >
                     <h6 type="hidden" id="wrongpercost" style="color:red"></h6>
                     <br>
+                    <h5>
+                        Day Criteria:
+                    </h5>
+                    <select class="custom-select col-lg-12 btn" id="dayTypeU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;text-align:center;width:50%;margin-bottom:2rem"></select>
+                    <br>
+                    <h5>
+                        Product Type Criteria:
+                    </h5>
+                    <select class="custom-select col-lg-12 btn" id="productTypeU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;text-align:center;width:50%;margin-bottom:2rem"></select>
+                    <br>
+                    <h5>Product Weight Criteria:</h5>
+                    <select class="custom-select col-lg-12 btn" id="weightU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;text-align:center;width:50%;margin-bottom:2rem"></select>
+                    <br>
+                    <h5>
+                        Distance Criteria:
+                    </h5>
+                    <select class="custom-select col-lg-12 btn" id="distanceU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;text-align:center;width:50%;margin-bottom:2rem"></select>
+                    <br>
+                    <h5>
+                        City Criteria:
+                    </h5>
+                    <select class="custom-select col-lg-12 btn" id="cityU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;text-align:center;width:50%;margin-bottom:2rem"></select>
+                    <br>
+                    <h5 style="margin-top:9px;">Payment Method:</h5>
+                    <select class="custom-select col-lg-12 btn" id="managers2U" style="color:#0066b3;background:#fbfcfd;text-align-last:center;text-align:center;width:50%;margin:0 auto 2rem;">
+                        <h6 type="hidden" id="wrongrmethod" style="color:red"></h6>
+                    </select>
+                    <br>
                     <h5 style="margin-top:9px;">Delivery Charge:</h5>
                     <input
                         type="text"
@@ -1560,30 +1588,6 @@ table.dataTable tbody th, table.dataTable tbody td {
                         placeholder=""
                     >
                     <h6 type="hidden" id="wrongdcost" style="color:red"></h6>
-                    <br>
-                    <h5 style="margin-top:9px;">Payment Method:</h5>
-                    <select class="custom-select col-lg-12 btn" id="managers2U" style="color:#0066b3;background:#fbfcfd;text-align-last:center;text-align:center;width:50%;margin:0 auto;">
-                        <h6 type="hidden" id="wrongrmethod" style="color:red"></h6>
-                    </select>
-                    <br>
-                    <div class="criteria">
-                        Day Criteria:
-                        <select class="custom-select col-lg-12 btn" id="dayTypeU" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                        <br>
-                        Product Type Criteria:
-                        <select class="custom-select col-lg-12 btn" id="productTypeU" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                        <br>
-                        Product Weight Criteria:
-                        <select class="custom-select col-lg-12 btn" id="weightU" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                        <br>
-                        Distance Criteria:
-                        <select class="custom-select col-lg-12 btn" id="distanceU" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                        <br>
-                        City Criteria:
-                        <select class="custom-select col-lg-12 btn" id="cityU" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                        <br>
-                    </div>
-                    <br>
                     <br>
                     <h5 style="margin-top:9px;">Delivery Note:</h5>
                     <input
