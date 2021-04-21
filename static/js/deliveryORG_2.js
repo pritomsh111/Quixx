@@ -3594,7 +3594,7 @@ var thikKoro = async (method, areaa, cityy) => {
 		.empty();
 	$('#delivery_cityU')
 		.empty();
-	var cityIndex, city;
+	var cityIndex;
 	url = urlForAll + "approved/delivery/upazila/" + cityy;
 	if (cityy === "Dhaka") {
 		url = urlForAll + "approved/delivery/thana/Dhaka";
@@ -3602,7 +3602,7 @@ var thikKoro = async (method, areaa, cityy) => {
 	if (cityy === "Cox's Bazar") {
 		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
 	}
-	if (!cityy) {
+	if (cityy === "undefined") {
 		url = urlForAll + "approved/delivery/thana/Dhaka";
 		cityIndex = 13;
 	}
