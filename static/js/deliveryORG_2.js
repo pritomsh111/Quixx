@@ -3673,7 +3673,7 @@ async function cityChange(cityy, areaa) {
 }
 
 
-var thikKoro = async (method, areaa, cityy, prodType, weight, day, distance) => {
+var thikKoro = async (method, areaa, cityy, ...typeList) => {
 
 	$('#delivery_cityU')
 		.empty();
@@ -3731,16 +3731,22 @@ var thikKoro = async (method, areaa, cityy, prodType, weight, day, distance) => 
 				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na"]
 				Object.keys(data.data).map((types, index) => {
 					console.log(types);
-					$(`#${types}`)
+					$(`#${types}U`)
 						.append('<option value="' + naValues[index] + '">---</option>')
 						;
-					data.data[types].map(value => {
+					j = 0;
+					data.data[types].map((value, ind) => {
+						if (value === typeList[index]) {
+							j = ind;
+							j++;
+						}
+						console.log(value, typeList[index]);
 						var option = new Option(value, value);
 						$(option).html(value);
-						$(`#${types}`).append(option);
+						$(`#${types}U`).append(option);
 					});
+					document.getElementById(`${types}U`).selectedIndex = j;
 				});
-				// document.getElementById('managers').selectedIndex = dhakaIndex;
 			}
 		});
 }
@@ -3766,7 +3772,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 
 	del_id = arr[0];
 	creator_ID = arr[1];
-	thikKoro(arr[8], arr[11], arr[26], arr[27], arr[28], arr[29], arr[30]);
+	thikKoro(arr[8], arr[11], arr[26], arr[29], arr[27], arr[28], arr[30]);
 	//console.log(arr);
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];
@@ -3783,7 +3789,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	document.getElementById('des_latU').value = arr[13];
 	document.getElementById('des_longiU').value = arr[14];
 	document.getElementById('delivery_cityU').value = arr[26];
-	ocument.getElementById('productTypeU').value = arr[27];
+	document.getElementById('productTypeU').value = arr[27];
 	document.getElementById('weightU').value = arr[28];
 	document.getElementById('dayTypeU').value = arr[29];
 	document.getElementById('distanceU').value = arr[30];
