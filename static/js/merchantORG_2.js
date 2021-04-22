@@ -1052,7 +1052,7 @@ $('.btn-ok-update').click(function () {
 	}
 });
 var orgx, merx;
-$('#dtBasicExample').on('click', '.btn-taka', function () {
+$('#dtBasicExampleActivate').on('click', '.btn-taka', function () {
 	orgx = $(this).attr('id');
 	merx = $(this).attr('name');
 	$t = $(this);

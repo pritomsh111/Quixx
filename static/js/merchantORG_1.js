@@ -1,5 +1,5 @@
 var org_ID = localStorage.getItem('userID');
-var day = weight = distance = type = flag = 0;
+var day = weight = distance = type = city = flag = 0;
 var criteriaEnabled = false, fillData;
 
 function createFieldStart(data) {
