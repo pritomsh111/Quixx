@@ -4298,12 +4298,11 @@ $('.btn-ok-updateDC').click(function () {
 						table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
 
 						if (criteriaEnabled) {
-							console.log(table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data());
-							table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type ? data.data.delivery_product_type : "---");
-							table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight ? data.data.delivery_weight : "---");
-							table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type ? data.data.delivery_day_type : "---");
-							table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance ? data.data.delivery_distance : "---");
-							table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_city_criteria ? data.data.delivery_city_criteria : "---");
+							data.data.delivery_product_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type) : null;
+							data.data.delivery_weight ? table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight) : null;
+							data.data.delivery_day_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type) : null;
+							data.data.delivery_distance ? table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance) : null;
+							data.data.delivery_city_criteria ? table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_city_criteria) : null;
 						}
 
 						table.cell({ row: table.row($t.closest('tr')).index(), column: 22 }).data(data.data.delivery_charge);
