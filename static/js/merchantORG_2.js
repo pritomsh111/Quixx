@@ -1255,7 +1255,7 @@ var fillInputDetails = (types, values = undefined) => {
 	dummyDivFlex.className = `${classesName}${increment} flexIt2`;
 
 	let identifier = document.createElement("span");
-	identifier.innerHTML = values !== undefined ? `${values}:` : "";
+	identifier.innerHTML = values !== undefined ? `${values.replace(/ /g, "")}:` : "";
 	identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 25%;";
 
 	let input = document.createElement("input");

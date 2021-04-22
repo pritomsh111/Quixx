@@ -78,6 +78,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
             }
         }
     });
+    // Custom keys, not all keys, check array length, then place undefined!
     $.ajax
         ({
             type: method,
