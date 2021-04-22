@@ -415,7 +415,7 @@ var unassignedDeliveries = () => {
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
-						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -425,7 +425,7 @@ var unassignedDeliveries = () => {
 				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
-						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
 						return a;
 					}
 					return "---";
@@ -435,7 +435,7 @@ var unassignedDeliveries = () => {
 				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
-						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -445,7 +445,7 @@ var unassignedDeliveries = () => {
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -678,7 +678,7 @@ var assignedDeliveries = () => {
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
-						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -688,7 +688,7 @@ var assignedDeliveries = () => {
 				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
-						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
 						return a;
 					}
 					return "---";
@@ -698,7 +698,7 @@ var assignedDeliveries = () => {
 				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
-						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -708,7 +708,7 @@ var assignedDeliveries = () => {
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -718,7 +718,7 @@ var assignedDeliveries = () => {
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -928,7 +928,7 @@ var onHoldDeliveries = () => {
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
-						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -938,7 +938,7 @@ var onHoldDeliveries = () => {
 				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
-						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
 						return a;
 					}
 					return "---";
@@ -948,7 +948,7 @@ var onHoldDeliveries = () => {
 				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
-						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -958,7 +958,7 @@ var onHoldDeliveries = () => {
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -968,7 +968,7 @@ var onHoldDeliveries = () => {
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1167,7 +1167,7 @@ var onGoingDeliveries = () => {
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
-						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1177,7 +1177,7 @@ var onGoingDeliveries = () => {
 				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
-						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
 						return a;
 					}
 					return "---";
@@ -1187,7 +1187,7 @@ var onGoingDeliveries = () => {
 				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
-						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1197,7 +1197,7 @@ var onGoingDeliveries = () => {
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -1207,7 +1207,7 @@ var onGoingDeliveries = () => {
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1419,7 +1419,7 @@ var completedDeliveries = () => {
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
-						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1429,7 +1429,7 @@ var completedDeliveries = () => {
 				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
-						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
 						return a;
 					}
 					return "---";
@@ -1439,7 +1439,7 @@ var completedDeliveries = () => {
 				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
-						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1449,7 +1449,7 @@ var completedDeliveries = () => {
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -1459,7 +1459,7 @@ var completedDeliveries = () => {
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1663,7 +1663,7 @@ var canceledDeliveries = () => {
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
-						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1673,7 +1673,7 @@ var canceledDeliveries = () => {
 				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
-						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
 						return a;
 					}
 					return "---";
@@ -1683,7 +1683,7 @@ var canceledDeliveries = () => {
 				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
-						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1693,7 +1693,7 @@ var canceledDeliveries = () => {
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -1703,7 +1703,7 @@ var canceledDeliveries = () => {
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1920,7 +1920,7 @@ var returnedDeliveries = () => {
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
-						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1930,7 +1930,7 @@ var returnedDeliveries = () => {
 				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
-						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
 						return a;
 					}
 					return "---";
@@ -1940,7 +1940,7 @@ var returnedDeliveries = () => {
 				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
-						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -1950,7 +1950,7 @@ var returnedDeliveries = () => {
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -1960,7 +1960,7 @@ var returnedDeliveries = () => {
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -3507,7 +3507,7 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
-						a = a.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -3517,7 +3517,7 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
-						a = a.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
 						return a;
 					}
 					return "---";
@@ -3527,7 +3527,7 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
-						a = a.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -3537,7 +3537,7 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -3547,7 +3547,7 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -4297,14 +4297,17 @@ $('.btn-ok-updateDC').click(function () {
 						table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_qty);
 						table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
 
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance);
+						if (criteriaEnabled) {
+							table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type);
+							table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight);
+							table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type);
+							table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance);
+							table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_city_criteria);
+						}
 
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_charge);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 22 }).data(data.data.payment_method);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 23 }).data(data.data.delivery_note);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 22 }).data(data.data.delivery_charge);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 23 }).data(data.data.payment_method);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
 						//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
 						//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
 						//table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
