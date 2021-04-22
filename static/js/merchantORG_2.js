@@ -270,7 +270,7 @@ function merchantActivateFunction(dataGet, table) {
 					row.find('td').eq(8)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[index].approved_merchant_id) !== -1 ? true : false;
 					row.find('td').eq(9)[0].children[0].disabled = !row.find('td').eq(8)[0].children[0].disabled;
 
-					row.find('td').eq(7)[0].children[0].disabled = flag ? false : true;
+					row.find('td').eq(7)[0].children[0].disabled = criteriaEnabled ? false : true;
 
 					// console.log(element, row, statusElement, row.find('td'));
 					// var isChecked = statusElement.prop('checked');
@@ -1270,7 +1270,6 @@ var fillInputDetails = (types, values = undefined) => {
 	div.append(dummyDivFlex);
 }
 function getData() {
-
 	Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
 		item.value = "";
 	});
