@@ -120,9 +120,7 @@ var approvedMer = () => {
 						+ data.data[i].business_filed + '</td><td>'
 						+ data.data[i].per_delivery_cost + '</td><td>'
 						+ data.data[i].cod_percentage + '</td><td>'
-						+ '<button id="' + data.data[i].merchant_id + '$$' + data.data[i].org_name + '$$' + data.data[i].person_name + '$$' + data.data[i].email + '$$' + data.data[i].phone_number + '$$' + data.data[i].business_filed + '$$' + data.data[i].per_delivery_cost + '$$' + data.data[i].cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button></td><td>'
-						+ '<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>' + '</td><td>'
-						+ '<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>' + '</td></tr>';
+						+ '<button id="' + data.data[i].merchant_id + '$$' + data.data[i].org_name + '$$' + data.data[i].person_name + '$$' + data.data[i].email + '$$' + data.data[i].phone_number + '$$' + data.data[i].business_filed + '$$' + data.data[i].per_delivery_cost + '$$' + data.data[i].cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button></td></tr>';
 					table.rows.add($(table_rows)).draw();
 				});
 			},
@@ -261,6 +259,8 @@ function merchantActivateFunction(dataGet, table) {
 						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-EditCriteria">Edit</button>' + '</td><td>'
 						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>' + '</td><td>'
 						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>' + '</td><td>'
+						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>' + '</td><td>'
+						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>' + '</td><td>'
 						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
 
 					table.rows.add($(table_rows)).draw();
@@ -1015,9 +1015,7 @@ $('.btn-ok-update').click(function () {
 						data.data.business_filed,
 						data.data.per_delivery_cost,
 						data.data.cod_percentage,
-						'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>',
-						'<button id="' + org_ID + '" name="' + data.data.approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>',
-						'<button id="' + org_ID + '" name="' + data.data.approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>'
+						'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
 					];
 					//$("#sure").html("Please wait!");
 					setTimeout(function () {
