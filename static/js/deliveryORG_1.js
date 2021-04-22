@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(async function () {
 	var dhakaIndex, url;
 	document.getElementById("fileName").innerHTML = "";
 	$('#settings').hide();
@@ -25,7 +25,6 @@ $(document).ready(function () {
 	$('.i').hide();
 	$('.j').hide();
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
-
 	$('#managers')
 		.empty();
 	$.ajax
@@ -157,47 +156,66 @@ $(document).ready(function () {
 				//recall1(saveIT);
 			}
 		});
+	await $.ajax({
+		url: urlForAll + "delivery/criteria/enable/" + org_ID,
+		type: "GET",
+		headers:
+		{
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function (data) {
+			criteriaEnabled = data.data;
+		}
+	});
+	if (criteriaEnabled) {
+		$('.criteria')
+			.show();
 
-	$('#dayType')
-		.empty();
-	$('#productType')
-		.empty();
-	$('#weight')
-		.empty();
-	$('#distance')
-		.empty();
-	$('#city')
-		.empty();
-	$.ajax
-		({
-			url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
-			type: "GET",
+		$('#dayType')
+			.empty();
+		$('#productType')
+			.empty();
+		$('#weight')
+			.empty();
+		$('#distance')
+			.empty();
+		$('#city')
+			.empty();
+		$.ajax
+			({
+				url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
+				type: "GET",
 
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
 
-			success: function (data) {
-				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
-				Object.keys(data.data).map((types, index) => {
-					console.log(types);
-					$(`#${types}`)
-						.append('<option value="' + naValues[index] + '">---</option>')
-						;
-					data.data[types].map(value => {
-						var option = new Option(value, value);
-						$(option).html(value);
-						$(`#${types}`).append(option);
+				success: function (data) {
+					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
+					Object.keys(data.data).map((types, index) => {
+						console.log(types);
+						$(`#${types}`)
+							.append('<option value="' + naValues[index] + '">---</option>')
+							;
+						data.data[types].map(value => {
+							var option = new Option(value, value);
+							$(option).html(value);
+							$(`#${types}`).append(option);
+						});
 					});
-				});
-				// document.getElementById('managers').selectedIndex = dhakaIndex;
-			}
-		});
-
-
+					// document.getElementById('managers').selectedIndex = dhakaIndex;
+				}
+			});
+	}
+	else {
+		$('.criteria')
+			.hide();
+	}
 });
 
 function initialize() {

@@ -455,7 +455,7 @@ var unassignedDeliveries = () => {
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
@@ -3796,7 +3796,7 @@ async function cityChange(cityy, areaa) {
 }
 
 
-var thikKoro = async (method, areaa, cityy, ...typeList) => {
+var thikKoro = async (method, areaa, cityy) => {
 
 	$('#delivery_cityU')
 		.empty();
@@ -3829,6 +3829,10 @@ var thikKoro = async (method, areaa, cityy, ...typeList) => {
 				document.getElementById('managers2U').selectedIndex = k; //area
 			}
 		});
+}
+var thikKoroCriteria = async (...typeList) => {
+	$('.criteriaU')
+		.show();
 
 	$('#dayTypeU')
 		.empty();
@@ -3897,7 +3901,8 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 
 	del_id = arr[0];
 	creator_ID = arr[1];
-	thikKoro(arr[8], arr[11], arr[26], arr[29], arr[27], arr[28], arr[30], arr[31]);
+	thikKoro(arr[8], arr[11], arr[26]);
+	criteriaEnabled ? thikKoroCriteria(arr[29], arr[27], arr[28], arr[30], arr[31]) : $('.criteriaU').hide();
 	//console.log(arr);
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];
@@ -3928,6 +3933,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 		position: new google.maps.LatLng(arr[13], arr[14]),
 		map: window.map,
 	});
+
 	const center = new google.maps.LatLng(arr[13], arr[14]);
 	window.map.setZoom(13);
 	window.map.panTo(center);
