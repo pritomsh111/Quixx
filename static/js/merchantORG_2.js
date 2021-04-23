@@ -28,6 +28,7 @@ var createMer = () => {
 	$('#merchantCreate').show();
 };
 var invoice = (id) => {
+	console.log("This");
 	$.ajax
 		({
 			async: true,
@@ -44,7 +45,7 @@ var invoice = (id) => {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				window.open(urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name);
+				window.open(urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name, "_blank");
 			},
 			error: function (data) {
 				document.getElementById('wrongThisMerCreate').innerHTML = data.responseJSON.errorMessage;
