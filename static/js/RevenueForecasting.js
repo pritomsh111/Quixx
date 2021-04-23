@@ -2,13 +2,13 @@ function SalesOnlyModule(orgName) {
     var server = "https://ai.quixx.xyz";
     var appdir = "/sales_only";
     // console.log(orgName);
-    // var org = "Food_12";
+    // var org = "Quixx_Org_Pritom_4"; // Only Production
     var org = "Express Food Delivery_2756";
     // var send_msg = "<p>Sending</p>";
     // console.log(send_msg);
     $.ajax({
         type: "GET",
-        url: server + appdir + "/" + encodeURIComponent(org),
+        url: server + appdir + "/" + org,
     }).done(function (data) {
         console.log(data);
         timeseries = data["data"]["delivery_charge"];
