@@ -1,14 +1,12 @@
 function SalesOnlyModule(orgName) {
     var server = "https://ai.quixx.xyz";
     var appdir = "/sales_only";
-    // console.log(orgName);
-    // var org = "Quixx_Org_Pritom_4"; // Only Production
+    // var org = orgName;
+
     var org = "Express Food Delivery_2756";
-    // var send_msg = "<p>Sending</p>";
-    // console.log(send_msg);
     $.ajax({
         type: "GET",
-        url: server + appdir + "/" + org,
+        url: server + appdir + "/" + encodeURIComponent(org),
     }).done(function (data) {
         console.log(data);
         timeseries = data["data"]["delivery_charge"];
@@ -22,7 +20,7 @@ function SalesOnlyModule(orgName) {
             y: sales,
             type: "scatter",
             mode: "lines",
-            marker: { color: "#ffcf5c", size: 12 },
+            marker: { color: "#ffcf5c", size: 12, opacity: 0.8 },
             name: "Previous Sales",
             fill: "tozeroy",
         };
