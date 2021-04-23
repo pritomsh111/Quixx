@@ -1242,10 +1242,10 @@ $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 });
 
 var fillInputDetails = (types, values = undefined) => {
-	let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : null;
-	let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : null;
-	let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : null;
-	let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : null;
+	let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : types === "city" ? ".dyn.productCity" : null;
+	let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3 ..." : types === "distance" ? "... 1-2, 2, 6 ..." : types === "city" ? "... Inside Dhaka, Outside Dhaka ..." : null;
+	let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : types === "city" ? "qcc" : null;
+	let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : types === "city" ? city : null;
 
 	let div = document.querySelector(`${typeForCreate}`);
 
@@ -1262,7 +1262,8 @@ var fillInputDetails = (types, values = undefined) => {
 	input.style.cssText = "color: #0066b3;";
 	input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
 
-	types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : null;
+
+	types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : types === "city" ? city++ : null;
 	dummyDivFlex.append(identifier, input);
 
 	div.append(dummyDivFlex);
@@ -1314,7 +1315,7 @@ function fillupFields() {
 		$("#sure3Criteria").html("Please wait!");
 		$("#sure3Criteria").show();
 		let array = [];
-		let typesArray = ["dayType", "productType", "productWeight", "productDistance"];
+		let typesArray = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
 		Object.keys(fillData).map((item, index) => {
 			let obj = {};
 			fillData[item].map(i => {
@@ -1340,7 +1341,8 @@ function fillupFields() {
 					"dayTypeMap": array[0],
 					"productTypeMap": array[1],
 					"productDistanceMap": array[3],
-					"productWeightMap": array[2]
+					"productWeightMap": array[2],
+					"productCity": array[4]
 				}),
 				success: function (data) {
 					console.log(data);

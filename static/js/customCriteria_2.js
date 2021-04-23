@@ -133,7 +133,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
 
 var fillInputDetails = (types, values = undefined) => {
     let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : types === "city" ? ".dyn.productCity" : null;
-    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3, 0.6 ..." : types === "distance" ? "... 1-2, 2, 3, 0.4 ..." : types === "city" ? "... Inside Dhaka, Outside Dhaka ..." : null;
+    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3 ..." : types === "distance" ? "... 1-2, 2, 6 ..." : types === "city" ? "... Inside Dhaka, Outside Dhaka ..." : null;
     let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : types === "city" ? "qcc" : null;
     let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : types === "city" ? city : null;
 
