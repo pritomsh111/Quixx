@@ -3,6 +3,11 @@
   font-size: .875rem;
 }
 
+::placeholder {
+  opacity: 0.75;
+  font-size: 1rem;
+}
+
 @media print {
   *, *::before, *::after {
     text-shadow: none !important;

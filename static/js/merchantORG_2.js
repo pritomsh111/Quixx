@@ -28,7 +28,6 @@ var createMer = () => {
 	$('#merchantCreate').show();
 };
 var invoice = (id) => {
-	console.log("This");
 	$.ajax
 		({
 			async: true,
