@@ -12,10 +12,11 @@ function MakeBarChart() {
 			},
 			success: function (data) {
 				timeseries = data['data'];
-				length = Object.getOwnPropertyNames(timeseries).length;
+				length = Object.keys(timeseries).length;
 				dates = Object.keys(timeseries);
 				deliveries = Object.values(timeseries);
 
+				console.log(timeseries, length, dates, deliveries);
 				var xValue = dates;
 
 				var yValue = deliveries;
