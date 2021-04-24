@@ -33,7 +33,11 @@ function SalesOnlyModule(orgName) {
             height: 400,
         };
 
-        Plotly.newPlot("chart", allData, layout);
+        var config = {
+            "displaylogo": false
+        }
+
+        Plotly.newPlot("chart", allData, layout, config);
     });
 }
 $.ajax

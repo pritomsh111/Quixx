@@ -44,7 +44,11 @@ async function MakeBarChart(id, url) {
 			barmode: 'stack'
 		};
 
-		Plotly.newPlot(id, allData, layout);
+		var config = {
+			"displaylogo": false
+		}
+
+		Plotly.newPlot(id, allData, layout, config);
 
 	});
 }

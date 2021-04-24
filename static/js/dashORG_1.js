@@ -43,7 +43,11 @@ function MakeBarChart() {
 					barmode: 'stack'
 				};
 
-				Plotly.newPlot('bar_chart', allData, layout);
+				var config = {
+					"displaylogo": false
+				}
+
+				Plotly.newPlot('bar_chart', allData, layout, config);
 			}
 		});
 }
