@@ -5471,7 +5471,7 @@ a .material-icons {
 }
 
 .card .card-header-black17 .card-icon, .card .card-header-black17 .card-text, .card .card-header-black17:not(.card-header-icon):not(.card-header-text), .card.bg-black17, .card.card-rotate.bg-black17 .front, .card.card-rotate.bg-black17 .back {
-  background: linear-gradient(60deg, #808080, #808080);
+  background: linear-gradient(60deg, #000000, #000000);
 }
 
 .card .card-header-black18 .card-icon, .card .card-header-black18 .card-text, .card .card-header-black18:not(.card-header-icon):not(.card-header-text), .card.bg-black18, .card.card-rotate.bg-black18 .front, .card.card-rotate.bg-black18 .back {
@@ -5487,11 +5487,15 @@ a .material-icons {
 }
 
 .card .card-header-black22 .card-icon, .card .card-header-black20 .card-text, .card .card-header-black20:not(.card-header-icon):not(.card-header-text), .card.bg-black20, .card.card-rotate.bg-black20 .front, .card.card-rotate.bg-black20 .back {
-  background: linear-gradient(60deg, #643b99, #643b99);
+  background: linear-gradient(60deg, #3b284a, #3b284a);
 }
 
-.card .card-header-black23 .card-icon, .card .card-header-black20 .card-text, .card .card-header-black20:not(.card-header-icon):not(.card-header-text), .card.bg-black20, .card.card-rotate.bg-black20 .front, .card.card-rotate.bg-black20 .back {
-  background: linear-gradient(60deg, #643b99, #643b99);
+.card-header.card-header-tabs.card-header-black23 {
+  background: linear-gradient(60deg, #2e9993, #2e9993);
+}
+
+.card-header.card-header-tabs.card-header-black22 {
+  background: linear-gradient(60deg, #ef5350, #e53935);
 }
 
 .card .card-header-danger .card-icon, .card .card-header-danger .card-text, .card .card-header-danger:not(.card-header-icon):not(.card-header-text), .card.bg-danger, .card.card-rotate.bg-danger .front, .card.card-rotate.bg-danger .back {
