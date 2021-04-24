@@ -1344,7 +1344,7 @@ function fillupFields() {
 					"productTypeMap": array[1],
 					"productDistanceMap": array[3],
 					"productWeightMap": array[2],
-					"productCity": array[4]
+					"productCityMap": array[4]
 				}),
 				success: function (data) {
 					console.log(data);
