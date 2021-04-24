@@ -2,16 +2,19 @@ async function MakeBarChart(id, url) {
 	await $.ajax({
 		type: "GET",
 		url: url
-		// url: "https://prod.quixx.xyz/api/quixx/v1/orgHead/total/complete/delivery/for/graph/2756"
 	}).done(function (data) {
 		timeseries = data['data'];
 		length = Object.keys(timeseries).length;
-
-
-		dates = Object.keys(timeseries);
-		deliveries = Object.values(timeseries);
-
-
+		dates = [];
+		deliveries = [];
+		Object.keys(timeseries).map(item => {
+			Object.keys(timeseries[item]).map(date => {
+				dates.push(date);
+				deliveries.push(timeseries[item][date]);
+				console.log(date);
+			});
+		}
+		);
 
 		console.log(timeseries, length, dates, deliveries);
 
@@ -25,10 +28,10 @@ async function MakeBarChart(id, url) {
 			type: 'bar',
 			textposition: 'auto',
 			marker: {
-				color: 'rgb(225,218,158)',
+				color: '#ffcf5c',
 				opacity: 0.6,
 				line: {
-					color: 'rgb(107,97,8)',
+					color: '#ffcf5c',
 					width: 1.5
 				}
 			}
@@ -41,7 +44,7 @@ async function MakeBarChart(id, url) {
 			barmode: 'stack'
 		};
 
-		Plotly.newPlot('chartContainer', allData, layout);
+		Plotly.newPlot(id, allData, layout);
 
 	});
 }
