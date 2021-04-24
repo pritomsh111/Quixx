@@ -144,7 +144,7 @@ var fillInputDetails = (types, values = undefined) => {
 
     let identifier = document.createElement("span");
     identifier.innerHTML = values !== undefined ? `${values.replace(/ /g, "")}:` : "";
-    identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 20%; font-size: 1.1rem";
+    identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 20%;";
 
     let input = document.createElement("input");
     input.type = "text";
@@ -188,13 +188,17 @@ function getData() {
                     if (item === "id" || item === "userId") {
                         return;
                     }
-                    Array.from(Object.keys(data.data[item]).map(itemKeys => {
-                        console.log(itemKeys);
-                        console.log("");
-                        console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
-                        document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
-                    }));
+                    if (data.data[item]) {
+                        Array.from(Object.keys(data.data[item]).map(itemKeys => {
+                            console.log(itemKeys);
+                            console.log("");
+                            console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+
+                            document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
+                        }));
+                    }
+
                     // if (data.data[item]) {
 
                     //     Array.from(Object.keys(data.data[item]).map(itemKeys => {
@@ -228,9 +232,10 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
     document.getElementById('modalCriteriaCancelConfirm').disabled = true;
     document.getElementById('modalCriteriaSetConfirm').disabled = true;
     let array = [];
-    let typesArray = ["dayType", "productType", "productWeight", "productDistance, productCity"];
+    let typesArray = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
     Object.keys(fillData).map((item, index) => {
         let obj = {};
+        console.log(item, fillData[item]);
         fillData[item].map(i => {
             console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`))
 
@@ -261,7 +266,7 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
                 "productTypeMap": array[1],
                 "productDistanceMap": array[3],
                 "productWeightMap": array[2],
-                "productCity": array[4]
+                "productCityMap": array[4]
             }),
             success: function (data) {
                 console.log(data);
