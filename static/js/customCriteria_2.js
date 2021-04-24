@@ -144,7 +144,7 @@ var fillInputDetails = (types, values = undefined) => {
 
     let identifier = document.createElement("span");
     identifier.innerHTML = values !== undefined ? `${values.replace(/ /g, "")}:` : "";
-    identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 12%;";
+    identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 20%; font-size: 1.1rem";
 
     let input = document.createElement("input");
     input.type = "text";
