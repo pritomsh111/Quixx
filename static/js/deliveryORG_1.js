@@ -174,15 +174,15 @@ $(document).ready(async function () {
 			.show();
 
 		$('#dayType')
-			.empty();
+			.empty().hide();
 		$('#productType')
-			.empty();
-		$('#weight')
-			.empty();
-		$('#distance')
-			.empty();
-		$('#city')
-			.empty();
+			.empty().hide();
+		$('#productWeight')
+			.empty().hide();
+		$('#productDistance')
+			.empty().hide();
+		$('#productCity')
+			.empty().hide();
 		$.ajax
 			({
 				url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
@@ -194,12 +194,12 @@ $(document).ready(async function () {
 					'Content-Type': 'application/json',
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
-
 				success: function (data) {
 					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
 					Object.keys(data.data).map((types, index) => {
 						console.log(types);
 						$(`#${types}`)
+							.show()
 							.append('<option value="' + naValues[index] + '">---</option>')
 							;
 						data.data[types].map(value => {
