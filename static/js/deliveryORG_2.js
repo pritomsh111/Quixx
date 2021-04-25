@@ -2549,9 +2549,9 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var product_qty = String(document.getElementById('product_qty').value);
 	var dayType = document.getElementById('dayType').value;
 	var productType = document.getElementById('productType').value;
-	var distance = document.getElementById('distance').value;
-	var weight = document.getElementById('weight').value;
-	var cityType = document.getElementById('city').value;
+	var distance = document.getElementById('productDistance')?.value;
+	var weight = document.getElementById('productWeight').value;
+	var cityType = document.getElementById('productCity').value;
 	var senderGuy = document.getElementById('senderList').value;
 	var product_cost = document.getElementById('product_cost').value;
 	var yesno = document.getElementById('autoAss').value;
@@ -3831,79 +3831,101 @@ var thikKoro = async (method, areaa, cityy) => {
 		});
 }
 var thikKoroCriteria = async (...typeList) => {
-	$('.criteriaU')
-		.show();
+	await $.ajax({
+		url: urlForAll + "delivery/criteria/enable/" + org_ID,
+		type: "GET",
+		headers:
+		{
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function (data) {
+			criteriaEnabled = data.data;
+		}
+	});
+	if (criteriaEnabled) {
+		$('.criteriaU')
+			.show();
 
-	$('#dayTypeU')
-		.hide().empty();
-	$('#productTypeU')
-		.hide().empty();
-	$('#weightU')
-		.hide().empty();
-	$('#distanceU')
-		.hide().empty();
-	$('#cityU')
-		.hide().empty();
-	$('#dayType1U')
-		.hide().empty();
-	$('#productType1U')
-		.hide().empty();
-	$('#weight1U')
-		.hide().empty();
-	$('#distance1U')
-		.hide().empty();
-	$('#city1U')
-		.hide().empty();
-	$.ajax
-		({
-			url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
-			type: "GET",
+		$('#dayTypeU')
+			.hide().empty();
+		$('#productTypeU')
+			.hide().empty();
+		$('#weightU')
+			.hide().empty();
+		$('#distanceU')
+			.hide().empty();
+		$('#cityU')
+			.hide().empty();
+		$('#dayType1U')
+			.hide().empty();
+		$('#productType1U')
+			.hide().empty();
+		$('#weight1U')
+			.hide().empty();
+		$('#distance1U')
+			.hide().empty();
+		$('#city1U')
+			.hide().empty();
+		$.ajax
+			({
+				url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
+				type: "GET",
 
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
 
-			success: function (data) {
-				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"]
-				Object.keys(data.data).map((types, index) => {
-					console.log(types);
-					// $(`#${types}1U`).show();
-					// $(`#${types}U`)
-					// 	.append('<option value="' + naValues[index] + '">---</option>')
-					// 	;
-					// j = 0;
-					// data.data[types].map((value, ind) => {
-					// 	if (value === typeList[index]) {
-					// 		j = ind;
-					// 		j++;
-					// 	}
-					// 	console.log(value, typeList[index]);
-					// 	var option = new Option(value, value);
-					// 	$(option).html(value);
-					// 	$(`#${types}U`).append(option);
-					// });
-					$(`#${types}1U`).show();
-					$(`#${types}U`)
-						.show()
-						.empty()
-						.append('<option value="' + naValues[index] + '">---</option>')
-						;
-					Object.keys(data.data[types]).map(value => {
-						if (value === typeList[index]) {
-							j = ind;
-							j++;
+				success: function (data) {
+					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"]
+					Object.keys(data.data).map((types, index) => {
+						console.log(types);
+						// $(`#${types}1U`).show();
+						// $(`#${types}U`)
+						// 	.append('<option value="' + naValues[index] + '">---</option>')
+						// 	;
+						// j = 0;
+						// data.data[types].map((value, ind) => {
+						// 	if (value === typeList[index]) {
+						// 		j = ind;
+						// 		j++;
+						// 	}
+						// 	console.log(value, typeList[index]);
+						// 	var option = new Option(value, value);
+						// 	$(option).html(value);
+						// 	$(`#${types}U`).append(option);
+						// });
+
+						if (types !== "userId") {
+							$(`#${types}1U`).show();
+							$(`#${types}U`)
+								.show()
+								.empty()
+								.append('<option value="' + naValues[index] + '">---</option>')
+								;
+							Object.keys(data.data[types]).map(value => {
+								if (value === typeList[index]) {
+									j = ind;
+									j++;
+								}
+								var option = new Option(data.data[types][value], data.data[types][value]);
+								$(option).html(value);
+								$(`#${types}`).append(option);
+							});
 						}
-						var option = new Option(data.data[types][value], data.data[types][value]);
-						$(option).html(value);
-						$(`#${types}`).append(option);
+						document.getElementById(`${types}U`).selectedIndex = j;
 					});
-					document.getElementById(`${types}U`).selectedIndex = j;
-				});
-			}
-		});
+				}
+			});
+	}
+	else {
+		$('.criteriaU')
+			.show();
+	}
 }
 
 var wrongKeteDao = () => {
@@ -4005,9 +4027,9 @@ $('.btn-ok-updateDC').click(function () {
 	var delivery_statusx = arr[25];
 	var dayType = document.getElementById('dayTypeU').value;
 	var productType = document.getElementById('productTypeU').value;
-	var distance = document.getElementById('distanceU').value;
-	var weight = document.getElementById('weightU').value;
-	var cityType = document.getElementById('cityU').value;
+	var distance = document.getElementById('productDistanceU')?.value;
+	var weight = document.getElementById('productWeightU').value;
+	var cityType = document.getElementById('productCityU').value;
 	var v0 = () => {
 		if (parseInt(delivery_cost_update) <= 0 || delivery_cost_update.charAt(0) == 0) {
 			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than 0!";
