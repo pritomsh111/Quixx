@@ -1,3 +1,5 @@
+let typesArray = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
+
 var createCriteria = () => {
     document.getElementById('one-cc').disabled = true;
     document.getElementById('two-cc').disabled = false;
@@ -151,14 +153,23 @@ var fillInputDetails = (types, values = undefined) => {
     // identidier.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3;";
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
-    input.addEventListener("keyup", function (e) {
-        console.log(e.target.value);
-    });
+    input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : types === "city" ? city++ : null;
     dummyDivFlex.append(identifier, input);
 
     div.append(dummyDivFlex);
+}
+
+function blockInputs(classNameInput) {
+    Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2"))
+        .map(item => {
+            // console.log(item.children[1].classList.contains(classNameInput), item.classList, item.children[1], item.children[1].classList);
+            if (!item.children[1].classList.item(1).includes(classNameInput)) {
+                item.children[1].disabled = true;
+                item.children[1].placeholder = "You're Not Allowed To Set This";
+            }
+        });
 }
 
 async function setUpdateCriteria() {
@@ -235,7 +246,6 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
     document.getElementById('modalCriteriaCancelConfirm').disabled = true;
     document.getElementById('modalCriteriaSetConfirm').disabled = true;
     let array = [];
-    let typesArray = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
     Object.keys(fillData).map((item, index) => {
         let obj = {};
         console.log(item, fillData[item]);
