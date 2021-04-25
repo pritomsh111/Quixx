@@ -174,18 +174,28 @@ $(document).ready(async function () {
 			.show();
 
 		$('#dayType')
-			.empty().hide();
+			.hide();
 		$('#productType')
-			.empty().hide();
+			.hide();
 		$('#productWeight')
-			.empty().hide();
+			.hide();
 		$('#productDistance')
-			.empty().hide();
+			.hide();
 		$('#productCity')
-			.empty().hide();
+			.hide();
+		$('#dayType1')
+			.hide();
+		$('#productType1')
+			.hide();
+		$('#productWeight1')
+			.hide();
+		$('#productDistance1')
+			.hide();
+		$('#productCity1')
+			.hide();
 		$.ajax
 			({
-				url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
+				url: urlForAll + "delivery/criteria/active/" + localStorage.getItem("userID"),
 				type: "GET",
 
 				headers:
@@ -198,15 +208,21 @@ $(document).ready(async function () {
 					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
 					Object.keys(data.data).map((types, index) => {
 						console.log(types);
-						$(`#${types}`)
-							.show()
-							.append('<option value="' + naValues[index] + '">---</option>')
-							;
-						data.data[types].map(value => {
-							var option = new Option(value, value);
-							$(option).html(value);
-							$(`#${types}`).append(option);
-						});
+						if (types !== "userId") {
+							$(`#${types}1`).show();
+							$(`#${types}`)
+								.show()
+								.empty()
+								.append('<option value="' + naValues[index] + '">---</option>')
+								;
+							Object.keys(data.data[types]).map(value => {
+								var option = new Option(data.data[types][value], data.data[types][value]);
+								$(option).html(value);
+								$(`#${types}`).append(option);
+							});
+							console.log(data.data[types]);
+						}
+
 					});
 					// document.getElementById('managers').selectedIndex = dhakaIndex;
 				}

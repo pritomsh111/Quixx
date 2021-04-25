@@ -2784,11 +2784,11 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"delivery_note": delivery_note,
 				"delivery_city": deliveryCity,
 				"delivery_area": area,
-				"delivery_day_type": dayType,
-				"delivery_product_type": productType,
-				"delivery_weight": weight,
-				"delivery_distance": distance,
-				"delivery_city_criteria": cityType
+				"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+				"delivery_product_type": productType ? productType : "delivery_product_type_na",
+				"delivery_weight": weight ? weight : "delivery_weight_na",
+				"delivery_distance": distance ? distance : "delivery_distance_na",
+				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 			});
 		console.log(datap);
 		$('#tickD2').hide();
@@ -4271,11 +4271,12 @@ $('.btn-ok-updateDC').click(function () {
 						"delivery_created_by_name": created_by_name,
 						"delivery_created_by_role": created_by_role,
 						"delivery_status": delivery_statusx,
-						"delivery_day_type": dayType,
-						"delivery_product_type": productType,
-						"delivery_weight": weight,
-						"delivery_distance": distance,
-						"delivery_city_criteria": cityType
+
+						"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+						"delivery_product_type": productType ? productType : "delivery_product_type_na",
+						"delivery_weight": weight ? weight : "delivery_weight_na",
+						"delivery_distance": distance ? distance : "delivery_distance_na",
+						"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 					}),
 				headers:
 				{
