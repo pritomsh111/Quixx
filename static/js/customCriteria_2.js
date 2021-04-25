@@ -1,4 +1,4 @@
-let typesArray = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
+var typesArray = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
 
 var createCriteria = () => {
     document.getElementById('one-cc').disabled = true;

@@ -1261,12 +1261,54 @@ var fillInputDetails = (types, values = undefined) => {
 	// identidier.value = values !== undefined ? values : "";
 	input.style.cssText = "color: #0066b3;";
 	input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
-
+	input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
 
 	types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : types === "city" ? city++ : null;
 	dummyDivFlex.append(identifier, input);
 
 	div.append(dummyDivFlex);
+}
+
+
+function lockElse(classNameInput, event) {
+
+	Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input:not(input[class*=${classNameInput}])`))
+		.map(item => {
+			if (event.target.classList.item(1).includes("dayType") || event.target.classList.item(1).includes("productCity")) {
+				if (item.classList.item(1).includes("productCity") || item.classList.item(1).includes("dayType")) {
+					return;
+				}
+			}
+			item.disabled = true;
+			item.placeholder = "You're Not Allowed To Set This";
+		});
+}
+
+function unlockAll(classNameInput) {
+	let dis = false;
+	Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input`))
+		.map(item => {
+			if (item.value) {
+				dis = true;
+			}
+		});
+	if (dis === false) {
+		console.log(dis);
+		Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input:not(input[class*=${classNameInput}])`))
+			.map(item => {
+				item.disabled = false;
+				item.placeholder = "";
+			});
+	}
+}
+
+function blockInputs(classNameInput, event) {
+	if (event.key === "Backspace") {
+		unlockAll(classNameInput, event);
+	}
+	else {
+		lockElse(classNameInput, event);
+	}
 }
 function getData() {
 	Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
@@ -1304,6 +1346,7 @@ function getData() {
 			}
 		});
 }
+
 
 function fillupFields() {
 	if (flag) {
