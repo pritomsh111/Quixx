@@ -153,7 +153,7 @@ var fillInputDetails = (types, values = undefined) => {
     // identidier.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3;";
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
-    input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
+    input.addEventListener("keypress", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : types === "city" ? city++ : null;
     dummyDivFlex.append(identifier, input);
@@ -161,9 +161,14 @@ var fillInputDetails = (types, values = undefined) => {
     div.append(dummyDivFlex);
 }
 
-function lockElse() {
+function lockElse(classNameInput, event) {
     Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2"))
         .map(item => {
+            if (event.target.classList.item(1).includes("dayType") || event.target.classList.item(1).includes("productCity")) {
+                if (item.children[1].classList.item(1).includes("productCity") || item.children[1].classList.item(1).includes("dayType")) {
+                    return;
+                }
+            }
             if (!item.children[1].classList.item(1).includes(classNameInput)) {
                 item.children[1].disabled = true;
                 item.children[1].placeholder = "You're Not Allowed To Set This";
@@ -174,10 +179,8 @@ function lockElse() {
 function unlockAll() {
     Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2"))
         .map(item => {
-            if (!item.children[1].classList.item(1).includes(classNameInput)) {
-                item.children[1].disabled = true;
-                item.children[1].placeholder = "You're Not Allowed To Set This";
-            }
+            item.children[1].disabled = false;
+            item.children[1].placeholder = "";
         });
 }
 
@@ -186,7 +189,7 @@ function blockInputs(classNameInput, event) {
         unlockAll();
     }
     else {
-        lockElse();
+        lockElse(classNameInput, event);
     }
 
 }
