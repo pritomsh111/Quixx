@@ -3835,15 +3835,25 @@ var thikKoroCriteria = async (...typeList) => {
 		.show();
 
 	$('#dayTypeU')
-		.empty();
+		.hide().empty();
 	$('#productTypeU')
-		.empty();
+		.hide().empty();
 	$('#weightU')
-		.empty();
+		.hide().empty();
 	$('#distanceU')
-		.empty();
+		.hide().empty();
 	$('#cityU')
-		.empty();
+		.hide().empty();
+	$('#dayType1U')
+		.hide().empty();
+	$('#productType1U')
+		.hide().empty();
+	$('#weight1U')
+		.hide().empty();
+	$('#distance1U')
+		.hide().empty();
+	$('#city1U')
+		.hide().empty();
 	$.ajax
 		({
 			url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
@@ -3860,19 +3870,35 @@ var thikKoroCriteria = async (...typeList) => {
 				let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"]
 				Object.keys(data.data).map((types, index) => {
 					console.log(types);
+					// $(`#${types}1U`).show();
+					// $(`#${types}U`)
+					// 	.append('<option value="' + naValues[index] + '">---</option>')
+					// 	;
+					// j = 0;
+					// data.data[types].map((value, ind) => {
+					// 	if (value === typeList[index]) {
+					// 		j = ind;
+					// 		j++;
+					// 	}
+					// 	console.log(value, typeList[index]);
+					// 	var option = new Option(value, value);
+					// 	$(option).html(value);
+					// 	$(`#${types}U`).append(option);
+					// });
+					$(`#${types}1U`).show();
 					$(`#${types}U`)
+						.show()
+						.empty()
 						.append('<option value="' + naValues[index] + '">---</option>')
 						;
-					j = 0;
-					data.data[types].map((value, ind) => {
+					Object.keys(data.data[types]).map(value => {
 						if (value === typeList[index]) {
 							j = ind;
 							j++;
 						}
-						console.log(value, typeList[index]);
-						var option = new Option(value, value);
+						var option = new Option(data.data[types][value], data.data[types][value]);
 						$(option).html(value);
-						$(`#${types}U`).append(option);
+						$(`#${types}`).append(option);
 					});
 					document.getElementById(`${types}U`).selectedIndex = j;
 				});
@@ -4271,7 +4297,6 @@ $('.btn-ok-updateDC').click(function () {
 						"delivery_created_by_name": created_by_name,
 						"delivery_created_by_role": created_by_role,
 						"delivery_status": delivery_statusx,
-
 						"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
 						"delivery_product_type": productType ? productType : "delivery_product_type_na",
 						"delivery_weight": weight ? weight : "delivery_weight_na",
