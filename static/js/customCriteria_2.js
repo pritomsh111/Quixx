@@ -153,7 +153,7 @@ var fillInputDetails = (types, values = undefined) => {
     // identidier.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3;";
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
-    input.addEventListener("keypress", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
+    input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : types === "city" ? city++ : null;
     dummyDivFlex.append(identifier, input);
@@ -162,17 +162,16 @@ var fillInputDetails = (types, values = undefined) => {
 }
 
 function lockElse(classNameInput, event) {
-    Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2"))
+    Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input:not(.${classNameInput})`))
         .map(item => {
             if (event.target.classList.item(1).includes("dayType") || event.target.classList.item(1).includes("productCity")) {
-                if (item.children[1].classList.item(1).includes("productCity") || item.children[1].classList.item(1).includes("dayType")) {
+                if (item.classList.item(1).includes("productCity") || item.classList.item(1).includes("dayType")) {
                     return;
                 }
             }
-            if (!item.children[1].classList.item(1).includes(classNameInput)) {
-                item.children[1].disabled = true;
-                item.children[1].placeholder = "You're Not Allowed To Set This";
-            }
+
+            item.disabled = true;
+            item.placeholder = "You're Not Allowed To Set This";
         });
 }
 
@@ -185,13 +184,14 @@ function unlockAll() {
 }
 
 function blockInputs(classNameInput, event) {
-    if (!event.target.value) {
-        unlockAll();
-    }
-    else {
-        lockElse(classNameInput, event);
-    }
-
+    // if (!event.target.value) {
+    //     unlockAll();
+    // }
+    // else {
+    //     lockElse(classNameInput, event);
+    // }
+    console.log("Hello", event.key);
+    lockElse(classNameInput, event);
 }
 
 async function setUpdateCriteria() {
