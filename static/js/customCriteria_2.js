@@ -177,7 +177,7 @@ function lockElse(classNameInput, event) {
 
 function unlockAll(classNameInput) {
     let dis = false;
-    Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input[class*=${classNameInput}]`))
+    Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input`))
         .map(item => {
             if (item.value) {
                 dis = true;
@@ -185,7 +185,7 @@ function unlockAll(classNameInput) {
         });
     if (dis === false) {
         console.log(dis);
-        Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input`))
+        Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input:not(input[class*=${classNameInput}])`))
             .map(item => {
                 item.disabled = false;
                 item.placeholder = "";
