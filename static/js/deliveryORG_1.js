@@ -156,8 +156,12 @@ $(document).ready(async function () {
 				//recall1(saveIT);
 			}
 		});
+	criteriaInfo(org_ID);
+});
+
+async function criteriaInfo(value) {
 	await $.ajax({
-		url: urlForAll + "delivery/criteria/enable/" + org_ID,
+		url: urlForAll + "delivery/criteria/enable/" + value,
 		type: "GET",
 		headers:
 		{
@@ -195,7 +199,7 @@ $(document).ready(async function () {
 			.hide();
 		$.ajax
 			({
-				url: urlForAll + "delivery/criteria/active/" + localStorage.getItem("userID"),
+				url: urlForAll + "delivery/criteria/active/" + value,
 				type: "GET",
 
 				headers:
@@ -216,7 +220,7 @@ $(document).ready(async function () {
 								.append('<option value="' + naValues[index] + '">---</option>')
 								;
 							Object.keys(data.data[types]).map(value => {
-								var option = new Option(data.data[types][value], data.data[types][value]);
+								var option = new Option(value, value);
 								$(option).html(value);
 								$(`#${types}`).append(option);
 							});
@@ -232,7 +236,7 @@ $(document).ready(async function () {
 		$('.criteria')
 			.hide();
 	}
-});
+}
 
 function initialize() {
 	initAutocomplete();

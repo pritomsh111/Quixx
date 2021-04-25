@@ -214,12 +214,10 @@ $("#senderListExcel").change(function () {
 	}
 });
 
-
-
-$("#senderList").change(function () {
+$("#senderList").change(async function () {
 	var value = $(this).val();
 	if (value) {
-		$.ajax
+		await $.ajax
 			({
 				async: true,
 				type: "GET",
@@ -265,6 +263,7 @@ $("#senderList").change(function () {
 					$('#myModal2').modal('show');
 				}
 			})
+		criteriaInfo(value);
 	}
 	else {
 
@@ -3912,7 +3911,7 @@ var thikKoroCriteria = async (...typeList) => {
 									j = ind;
 									j++;
 								}
-								var option = new Option(data.data[types][value], data.data[types][value]);
+								var option = new Option(value, value);
 								$(option).html(value);
 								$(`#${types}`).append(option);
 							});
