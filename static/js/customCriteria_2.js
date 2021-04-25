@@ -151,6 +151,9 @@ var fillInputDetails = (types, values = undefined) => {
     // identidier.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3;";
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
+    input.addEventListener("keyup", function (e) {
+        console.log(e.target.value);
+    });
 
     types === "dayType" ? day++ : types === "productType" ? type++ : types === "weight" ? weight++ : types === "distance" ? distance++ : types === "city" ? city++ : null;
     dummyDivFlex.append(identifier, input);
