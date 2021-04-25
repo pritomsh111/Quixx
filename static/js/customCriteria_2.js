@@ -161,15 +161,34 @@ var fillInputDetails = (types, values = undefined) => {
     div.append(dummyDivFlex);
 }
 
-function blockInputs(classNameInput) {
+function lockElse() {
     Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2"))
         .map(item => {
-            // console.log(item.children[1].classList.contains(classNameInput), item.classList, item.children[1], item.children[1].classList);
             if (!item.children[1].classList.item(1).includes(classNameInput)) {
                 item.children[1].disabled = true;
                 item.children[1].placeholder = "You're Not Allowed To Set This";
             }
         });
+}
+
+function unlockAll() {
+    Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2"))
+        .map(item => {
+            if (!item.children[1].classList.item(1).includes(classNameInput)) {
+                item.children[1].disabled = true;
+                item.children[1].placeholder = "You're Not Allowed To Set This";
+            }
+        });
+}
+
+function blockInputs(classNameInput, event) {
+    if (!event.target.value) {
+        unlockAll();
+    }
+    else {
+        lockElse();
+    }
+
 }
 
 async function setUpdateCriteria() {
