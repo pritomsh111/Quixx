@@ -297,30 +297,65 @@ function fillupFields() {
 document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", function () {
     document.getElementById('modalCriteriaCancelConfirm').disabled = true;
     document.getElementById('modalCriteriaSetConfirm').disabled = true;
-    let array = [], flagger = 0;
-    Object.keys(fillData).map((item, index) => {
+    let array = [], flagger = 1;
+    for (const [index, item] of Object.keys(fillData).entries()) {
+        console.log(index, item);
         let obj = {};
-        console.log(item, fillData[item]);
-        fillData[item].map(i => {
-            console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
-            let testing = /D+/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
-            if (testing) {
-                console.log("dhoraaaa");
-                flagger = 1;
-                document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
+        for (const i of fillData[item]) {
+            if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value) {
+                console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
+                let testingNumber = /^\D+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
+                if (!testingNumber) {
+                    let modalErr = document.querySelector('#myModalWrongDManCreate p');
+                    modalErr.innerHTML = "Value Must Be A Number!";
+                    $('#myModalWrongDManCreate').modal('show');
+                    $('#myModalCriteriaConfirm').modal('hide');
+                    document.getElementById('modalCriteriaCancelConfirm').disabled = false;
+                    document.getElementById('modalCriteriaSetConfirm').disabled = false;
+
+                    flagger = 0;
+                    document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
+                    break;
+                }
             }
             obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
-
-
-            // if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`)) {
-            //     obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
-
-            // }
-            // console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
-        });
+        }
+        if (!flagger) {
+            break;
+        }
         array.push(obj);
-    });
+    }
     console.log(array);
+    // Object.keys(fillData).map((item, index) => {
+    //     let obj = {};
+    //     console.log(item, fillData[item]);
+    //     fillData[item].map(i => {
+    //         console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
+    //         let testingNumber = /^\D+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
+    //         if (!testingNumber) {
+    //             let modalErr = document.querySelector('#myModalWrongDManCreate p');
+    //             modalErr.innerHTML = "Value Must Be A Number!";
+    //             $('#myModalWrongDManCreate').modal('show');
+    //             $('#myModalCriteriaConfirm').modal('hide');
+    //             document.getElementById('modalCriteriaCancelConfirm').disabled = false;
+    //             document.getElementById('modalCriteriaSetConfirm').disabled = false;
+
+    //             flagger = 0;
+    //             document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
+    //             return;
+    //         }
+    //         obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
+
+
+    //         // if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`)) {
+    //         //     obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
+
+    //         // }
+    //         // console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
+    //     });
+    //     array.push(obj);
+    // });
+    // console.log(array);
     if (flagger) {
         $.ajax
             ({
