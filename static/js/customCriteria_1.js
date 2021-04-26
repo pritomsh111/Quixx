@@ -5,8 +5,6 @@ var criteriaEnabled = false, fillData;
 function createFieldStart(data, isTab) {
     Object.keys(data).map(item => {
         div = document.querySelector(`.col.${item}`);
-        // if (data[item]) {
-        // }
         for (let i of data[item]) {
             isTab ? fillInputDetails(item, i) : createField(item, i);
         }
