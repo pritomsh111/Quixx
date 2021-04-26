@@ -2,9 +2,9 @@
     if (document.location.host.includes("portal")) {
         window.location.href = "/login-panel";
     }
-    else if (document.location.pathname!=="/") {
+    else if (document.location.pathname !== "/") {
         window.location.href = "/";
-    }    
+    }
     window.addEventListener('storage', function (event) {
         if (event.key == 'login-event') {
             window.location.href = "panel.html";
@@ -42,53 +42,57 @@
     }));
 
     const changeImage = () => {
+        try {
+            let overlay2 = document.querySelector("#overlay2");
+            let overlay3 = document.querySelector("#overlay3");
+            let overlay4 = document.querySelector("#overlay4");
 
-        let overlay2 = document.querySelector("#overlay2");
-        let overlay3 = document.querySelector("#overlay3");
-        let overlay4 = document.querySelector("#overlay4");
+            let img1 = document.querySelector(".Top__Select img");
+            let img2 = document.querySelector(".Middle__Select img");
+            let img3 = document.querySelector(".Bottom__Select img");
 
-        let img1 = document.querySelector(".Top__Select img");
-        let img2 = document.querySelector(".Middle__Select img");
-        let img3 = document.querySelector(".Bottom__Select img");
+            let p1 = document.querySelector(".Top__Select p");
+            let p2 = document.querySelector(".Middle__Select p");
+            let p3 = document.querySelector(".Bottom__Select p");
 
-        let p1 = document.querySelector(".Top__Select p");
-        let p2 = document.querySelector(".Middle__Select p");
-        let p3 = document.querySelector(".Bottom__Select p");
+            if (count === 0) {
+                overlay2.style.opacity = 1;
+                img1.classList.add("scaleUpImage");
+                p1.classList.add("scaleUpPara");
+            }
+            if (count === 1) {
+                overlay3.style.opacity = 1;
+                img2.classList.add("scaleUpImage");
+                p2.classList.add("scaleUpPara");
+            }
+            if (count === 2) {
+                overlay4.style.opacity = 1;
+                img3.classList.add("scaleUpImage");
+                p3.classList.add("scaleUpPara");
+            }
+            // console.log(imageOverlay[count % 3], count);
+            count = (count + 1) % 3;
+            setTimeout(() => {
+                overlay2.style.opacity = 0;
+                overlay3.style.opacity = 0;
+                overlay4.style.opacity = 0;
 
-        if (count === 0) {
-            overlay2.style.opacity = 1;
-            img1.classList.add("scaleUpImage");
-            p1.classList.add("scaleUpPara");
-        }
-        if (count === 1) {
-            overlay3.style.opacity = 1;
-            img2.classList.add("scaleUpImage");
-            p2.classList.add("scaleUpPara");
-        }
-        if (count === 2) {
-            overlay4.style.opacity = 1;
-            img3.classList.add("scaleUpImage");
-            p3.classList.add("scaleUpPara");
-        }
-        // console.log(imageOverlay[count % 3], count);
-        count = (count + 1) % 3;
-        setTimeout(() => {
-            overlay2.style.opacity = 0;
-            overlay3.style.opacity = 0;
-            overlay4.style.opacity = 0;
+                img1.classList.remove("scaleUpImage");
+                img2.classList.remove("scaleUpImage");
+                img3.classList.remove("scaleUpImage");
 
-            img1.classList.remove("scaleUpImage");
-            img2.classList.remove("scaleUpImage");
-            img3.classList.remove("scaleUpImage");
+                p1.classList.remove("scaleUpPara");
+                p2.classList.remove("scaleUpPara");
+                p3.classList.remove("scaleUpPara");
+                changeImage();
+            }, 3000);
+        } catch (e) { }
 
-            p1.classList.remove("scaleUpPara");
-            p2.classList.remove("scaleUpPara");
-            p3.classList.remove("scaleUpPara");
-            changeImage();
-        }, 3000);
     }
+    try {
 
-    changeImage();
+        changeImage();
+    } catch (e) { }
 
     const imageMove = () => {
         img.classList.add(imgClassArray[imgCount]);
@@ -98,7 +102,6 @@
             imageMove();
         }, 3000);
     }
-
     imageMove();
 
     new Swiper(".merchant-app", {
