@@ -1254,10 +1254,11 @@ var fillInputDetails = (types, values = undefined) => {
 
 	let identifier = document.createElement("span");
 	identifier.innerHTML = values !== undefined ? `${values.replace(/ /g, "")}:` : "";
-	identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 25%;";
+	identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 40%;";
 
 	let input = document.createElement("input");
 	input.type = "text";
+	input.placeholder = placeHolder;
 	// identidier.value = values !== undefined ? values : "";
 	input.style.cssText = "color: #0066b3;";
 	input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
@@ -1268,7 +1269,6 @@ var fillInputDetails = (types, values = undefined) => {
 
 	div.append(dummyDivFlex);
 }
-
 
 function lockElse(classNameInput, event) {
 
@@ -1281,6 +1281,7 @@ function lockElse(classNameInput, event) {
 			}
 			item.disabled = true;
 			item.placeholder = "You're Not Allowed To Set This";
+			item.value = "";
 		});
 }
 
@@ -1293,17 +1294,27 @@ function unlockAll(classNameInput) {
 			}
 		});
 	if (dis === false) {
-		console.log(dis);
 		Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input:not(input[class*=${classNameInput}])`))
 			.map(item => {
 				item.disabled = false;
 				item.placeholder = "";
+				item.value = "";
 			});
 	}
 }
 
+function reset() {
+	document.querySelectorAll(`#setCriteriaDetails .flexIt2`) ?
+		Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input`))
+			.map(item => {
+				item.disabled = false;
+				item.placeholder = "";
+				item.value = "";
+			}) : null;
+}
+
 function blockInputs(classNameInput, event) {
-	if (event.key === "Backspace") {
+	if (event.key === "Backspace" || event.key === "Tab") {
 		unlockAll(classNameInput, event);
 	}
 	else {
@@ -1317,7 +1328,7 @@ function getData() {
 	$.ajax
 		({
 			type: "GET",
-			url: urlForAll + "delivery/criteria/" + criteriaMer,
+			url: urlForAll + "delivery/criteria/active/" + criteriaMer,
 			headers:
 			{
 				'Accept': 'application/json',
@@ -1332,11 +1343,9 @@ function getData() {
 					}
 					if (data.data[item]) {
 						Array.from(Object.keys(data.data[item]).map(itemKeys => {
-							console.log(itemKeys);
-							console.log("");
-							console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
 							document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
+							console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 						}));
 					}
 				});
