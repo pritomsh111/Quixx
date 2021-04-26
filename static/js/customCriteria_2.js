@@ -196,14 +196,9 @@ function unlockAll(classNameInput) {
     let dis = false;
     Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input`))
         .map(item => {
-            console.log("HELLOOOO");
-
-            return;
-            // if (item.value) {
-            //     dis = true;
-            //     console.log("HELLOOOO");
-            //     // return;
-            // }
+            if (item.value) {
+                dis = true;
+            }
         });
     if (dis === false) {
         console.log(dis);
@@ -213,6 +208,16 @@ function unlockAll(classNameInput) {
                 item.placeholder = "";
             });
     }
+}
+
+function reset() {
+    document.querySelectorAll(`#setCriteriaDetails .flexIt2`) ?
+        Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input`))
+            .map(item => {
+                item.disabled = false;
+                item.placeholder = "";
+                item.value = "";
+            }) : null;
 }
 
 function blockInputs(classNameInput, event) {
