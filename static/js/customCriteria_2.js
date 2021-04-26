@@ -297,13 +297,18 @@ function fillupFields() {
 document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", function () {
     document.getElementById('modalCriteriaCancelConfirm').disabled = true;
     document.getElementById('modalCriteriaSetConfirm').disabled = true;
-    let array = [];
+    let array = [], flagger = 0;
     Object.keys(fillData).map((item, index) => {
         let obj = {};
         console.log(item, fillData[item]);
         fillData[item].map(i => {
             console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
-            / hello /.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
+            let testing = /D+/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
+            if (testing) {
+                console.log("dhoraaaa");
+                flagger = 1;
+                document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
+            }
             obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
 
 
@@ -316,55 +321,58 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
         array.push(obj);
     });
     console.log(array);
-    $.ajax
-        ({
-            type: criteriaEnabled ? "PUT" : "POST",
-            url: `${urlForAll}delivery/criteria/${criteriaEnabled ? "update" : "create"}/${org_ID}`,
-            headers:
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            },
-            data: JSON.stringify({
-                "dayTypeMap": array[0],
-                "productTypeMap": array[1],
-                "productDistanceMap": array[3],
-                "productWeightMap": array[2],
-                "productCityMap": array[4]
-            }),
-            success: function (data) {
-                console.log(data);
-                $("#sureActivateConfirm").html("Please wait!");
-                setTimeout(function () {
-                    $(".circle-loader").addClass("load-complete");
+    if (flagger) {
+        $.ajax
+            ({
+                type: criteriaEnabled ? "PUT" : "POST",
+                url: `${urlForAll}delivery/criteria/${criteriaEnabled ? "update" : "create"}/${org_ID}`,
+                headers:
+                {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                data: JSON.stringify({
+                    "dayTypeMap": array[0],
+                    "productTypeMap": array[1],
+                    "productDistanceMap": array[3],
+                    "productWeightMap": array[2],
+                    "productCityMap": array[4]
+                }),
+                success: function (data) {
+                    console.log(data);
+                    $("#sureActivateConfirm").html("Please wait!");
+                    setTimeout(function () {
+                        $(".circle-loader").addClass("load-complete");
 
-                    $('#tickActivateConfirm').show();
+                        $('#tickActivateConfirm').show();
 
-                    $("#sureActivateConfirm").html(`Criteria ${flag ? "Updated" : "Set"}`);
-                }, 900);
+                        $("#sureActivateConfirm").html(`Criteria ${flag ? "Updated" : "Set"}`);
+                    }, 900);
 
-                setTimeout(function () {
-                    $("#myModalCriteriaConfirm").modal('hide');
+                    setTimeout(function () {
+                        $("#myModalCriteriaConfirm").modal('hide');
+                        document.getElementById('modalCriteriaCancelConfirm').disabled = false;
+                        document.getElementById('modalCriteriaSetConfirm').disabled = false;
+                    }, 2000);
+                },
+                error: function (data) {
                     document.getElementById('modalCriteriaCancelConfirm').disabled = false;
                     document.getElementById('modalCriteriaSetConfirm').disabled = false;
-                }, 2000);
-            },
-            error: function (data) {
-                document.getElementById('modalCriteriaCancelConfirm').disabled = false;
-                document.getElementById('modalCriteriaSetConfirm').disabled = false;
-                let ob = Object.keys(data);
-                let modalErr = document.querySelector('#myModalWrongDManCreate p');
-                if (ob[17] == "responseJSON") {
-                    modalErr.innerHTML = data.responseJSON.errorMessage;
+                    let ob = Object.keys(data);
+                    let modalErr = document.querySelector('#myModalWrongDManCreate p');
+                    if (ob[17] == "responseJSON") {
+                        modalErr.innerHTML = data.responseJSON.errorMessage;
+                    }
+                    else {
+                        modalErr.innerHTML = "Value Must Be A Number!";
+                    }
+                    $('#myModalCriteriaConfirm').modal('hide');
+                    setTimeout(() => {
+                        $('#myModalWrongDManCreate').modal('show');
+                    }, 0);
                 }
-                else {
-                    modalErr.innerHTML = "Value Must Be A Number!";
-                }
-                $('#myModalCriteriaConfirm').modal('hide');
-                setTimeout(() => {
-                    $('#myModalWrongDManCreate').modal('show');
-                }, 0);
-            }
-        });
+            });
+    }
+
 });
