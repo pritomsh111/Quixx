@@ -3858,15 +3858,15 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 		$('#productCity1U')
 			.hide();
 
-		$('#dayType1')
+		$('#dayTypeU')
 			.empty();
-		$('#productType1')
+		$('#productTypeU')
 			.empty();
-		$('#productWeight1')
+		$('#productWeightU')
 			.empty();
-		$('#productDistance1')
+		$('#productDistanceU')
 			.empty();
-		$('#productCity1')
+		$('#productCityU')
 			.empty();
 		$.ajax
 			({
@@ -4240,11 +4240,11 @@ $('.btn-ok-updateDC').click(function () {
 			"delivery_created_by_role": created_by_role,
 			"delivery_status": delivery_statusx,
 			"delivery_city": deliveryCity,
-			"delivery_day_type": dayType,
-			"delivery_product_type": productType,
-			"delivery_weight": weight,
-			"delivery_distance": distance,
-			"delivery_city_criteria": cityType
+			"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+			"delivery_product_type": productType ? productType : "delivery_product_type_na",
+			"delivery_weight": weight ? weight : "delivery_weight_na",
+			"delivery_distance": distance ? distance : "delivery_distance_na",
+			"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 		});
 	console.log(datap);
 	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v0() == 1 && v4() == 1 && v12() == 1) {

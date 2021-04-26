@@ -176,6 +176,7 @@ async function criteriaInfo(value) {
 			criteriaEnabled = data.data;
 		}
 	});
+	console.log(criteriaEnabled);
 	if (criteriaEnabled) {
 		$('.criteria')
 			.show();
