@@ -41,6 +41,7 @@
         location.hash = "#login";
     }));
 
+    let time;
     const changeImage = () => {
         try {
             let overlay2 = document.querySelector("#overlay2");
@@ -72,7 +73,8 @@
             }
             // console.log(imageOverlay[count % 3], count);
             count = (count + 1) % 3;
-            setTimeout(() => {
+            clearTimeout(time);
+            time = setTimeout(() => {
                 overlay2.style.opacity = 0;
                 overlay3.style.opacity = 0;
                 overlay4.style.opacity = 0;
@@ -89,10 +91,7 @@
         } catch (e) { }
 
     }
-    try {
-
-        changeImage();
-    } catch (e) { }
+    changeImage();
 
     const imageMove = () => {
         img.classList.add(imgClassArray[imgCount]);

@@ -11,7 +11,7 @@
             window.location.href = "panel.html";
         }
     });
-    let phone;
+    let phone, timer;
 
     // Typewritter Effect
     try {
@@ -20,11 +20,15 @@
         let parag = document.querySelector(".Quixx__Q>h1");
         const typeWritter = () => {
             if (ctn === type.length) {
-                document.querySelector(".Q__Us").classList.add("show");
+                try {
+                    document.querySelector(".Q__Us").classList.add("show");
+                }
+                catch (e) { }
                 return;
             }
             parag.innerHTML += type[ctn];
-            setTimeout(() => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
                 ctn = ctn + 1;
                 typeWritter();
             }, 150);
