@@ -1303,15 +1303,16 @@ function unlockAll(classNameInput) {
 	}
 }
 
-function reset() {
-	document.querySelectorAll(`#setCriteriaDetails .flexIt2`) ?
-		Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input`))
+document.querySelector("#criteriaReset").addEventListener("click", function (e) {
+	e.preventDefault();
+	document.querySelectorAll(`.flexIt2`) ?
+		Array.from(document.querySelectorAll(`.flexIt2 input`))
 			.map(item => {
 				item.disabled = false;
 				item.placeholder = "";
 				item.value = "";
 			}) : null;
-}
+});
 
 function blockInputs(classNameInput, event) {
 	if (event.key === "Backspace" || event.key === "Tab") {
