@@ -220,7 +220,7 @@ function getData() {
     $.ajax
         ({
             type: "GET",
-            url: urlForAll + "delivery/criteria/" + org_ID,
+            url: urlForAll + "delivery/criteria/active/" + org_ID,
             headers:
             {
                 'Accept': 'application/json',
@@ -235,13 +235,20 @@ function getData() {
 
                     if (data.data[item]) {
                         Array.from(Object.keys(data.data[item]).map(itemKeys => {
-                            console.log(itemKeys);
-                            console.log("");
-                            console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
                             document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
+                            console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+
                         }));
                     }
+                    // else {
+                    //     Array.from(Object.keys(data.data[item]).map(itemKeys => {
+
+
+                    //         document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).disabled = true : null;
+                    //         console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+                    //     }));
+                    // }
 
                     // if (data.data[item]) {
 
