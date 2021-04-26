@@ -302,8 +302,8 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
         let obj = {};
         console.log(item, fillData[item]);
         fillData[item].map(i => {
-            console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`))
-
+            console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
+            / hello /.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
             obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
 
 
@@ -359,7 +359,7 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
                     modalErr.innerHTML = data.responseJSON.errorMessage;
                 }
                 else {
-                    modalErr.innerHTML = "Please Wait! We are working!";
+                    modalErr.innerHTML = "Value Must Be A Number!";
                 }
                 $('#myModalCriteriaConfirm').modal('hide');
                 setTimeout(() => {

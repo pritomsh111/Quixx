@@ -236,6 +236,9 @@ async function criteriaInfo(value) {
 					// document.getElementById('managers').selectedIndex = dhakaIndex;
 				}
 			});
+		// $("#delivery_charge").attr('placeholder', "1000");
+		// document.getElementById('delivery_charge').value = "";
+		document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:<br>**If you fill up the criteria above, this charge wil not be counted! But give atleast some value for future purposes";
 	}
 	else {
 		$('.criteria')

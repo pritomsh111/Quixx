@@ -3277,7 +3277,12 @@ function doIt(i, lengx) {
 					"product_qty": product_qty,
 					"pickup_time": pickup_time,
 					"delivery_note": delivery_note,
-					"delivery_area": area
+					"delivery_area": area,
+					"delivery_day_type": "delivery_day_type_na",
+					"delivery_product_type": "delivery_product_type_na",
+					"delivery_weight": "delivery_weight_na",
+					"delivery_distance": "delivery_distance_na",
+					"delivery_city_criteria": "delivery_city_criteria_na"
 				});
 			// console.log(datap);
 			$.ajax
