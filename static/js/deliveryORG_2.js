@@ -3851,15 +3851,15 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 			.hide();
 		$('#productType1U')
 			.hide();
-		$('#weight1U')
+		$('#productWeight1U')
 			.hide();
-		$('#distance1U')
+		$('#productDistance1U')
 			.hide();
-		$('#city1U')
+		$('#productCity1U')
 			.hide();
 		$.ajax
 			({
-				url: urlForAll + "delivery/criteria/active/" + localStorage.getItem("userID"),
+				url: urlForAll + "delivery/criteria/active/" + creator_ID,
 				type: "GET",
 
 				headers:
@@ -3868,9 +3868,9 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 					'Content-Type': 'application/json',
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
-
 				success: function (data) {
-					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"]
+					let naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
+					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
 					Object.keys(data.data).map((types, index) => {
 						console.log(types);
 						// $(`#${types}1U`).show();
@@ -3890,11 +3890,13 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 						// });
 
 						if (types !== "userId") {
+							let typ = naValuesType.indexOf(types);
 							$(`#${types}1U`).show();
 							$(`#${types}U`)
 								.empty()
-								.append('<option value="' + naValues[index] + '">---</option>')
+								.append('<option value="' + naValues[typ] + '">---</option>')
 								;
+							j = 0;
 							Object.keys(data.data[types]).map(value => {
 								if (value === typeList[index]) {
 									j = ind;
@@ -3904,15 +3906,15 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 								$(option).html(value);
 								$(`#${types}`).append(option);
 							});
+							document.getElementById(`${types}U`).selectedIndex = j;
 						}
-						document.getElementById(`${types}U`).selectedIndex = j;
 					});
 				}
 			});
 	}
 	else {
 		$('.criteriaU')
-			.show();
+			.hide();
 	}
 }
 
@@ -3956,10 +3958,10 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	document.getElementById('des_longiU').value = arr[14];
 	document.getElementById('delivery_cityU').value = arr[26];
 	document.getElementById('productTypeU').value = arr[27];
-	document.getElementById('weightU').value = arr[28];
+	document.getElementById('productWeightU').value = arr[28];
 	document.getElementById('dayTypeU').value = arr[29];
-	document.getElementById('distanceU').value = arr[30];
-	document.getElementById('cityU').value = arr[31];
+	document.getElementById('productDistanceU').value = arr[30];
+	document.getElementById('productCityU').value = arr[31];
 
 	if (markerx.length > 0) {
 		removeMarkers3();

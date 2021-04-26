@@ -156,7 +156,9 @@ $(document).ready(async function () {
 				//recall1(saveIT);
 			}
 		});
-	criteriaInfo(org_ID);
+	$('.criteria')
+		.hide();
+	// criteriaInfo(org_ID);
 });
 
 async function criteriaInfo(value) {
@@ -198,14 +200,16 @@ async function criteriaInfo(value) {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
+					let naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
 					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
 					Object.keys(data.data).map((types, index) => {
 						console.log(types);
 						if (types !== "userId") {
+							let typ = naValuesType.indexOf(types);
 							$(`#${types}1`).show();
 							$(`#${types}`)
 								.empty()
-								.append('<option value="' + naValues[index] + '">---</option>')
+								.append('<option value="' + naValues[typ] + '">---</option>')
 								;
 							Object.keys(data.data[types]).map(value => {
 								var option = new Option(value, value);
