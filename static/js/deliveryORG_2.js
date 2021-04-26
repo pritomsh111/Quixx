@@ -2682,7 +2682,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	}
 	var v9 = () => {
 		if (product_name == "" || product_name == null) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Name cannot be empty!";
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Details cannot be empty!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_name").focus();
 			return 0;
@@ -3119,7 +3119,7 @@ function doIt(i, lengx) {
 		}
 		var v9 = () => {
 			if (product_name == "" || product_name == null || product_name == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Name cannot be empty!`;
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Details cannot be empty!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
 				hello();
@@ -4147,7 +4147,7 @@ $('.btn-ok-updateDC').click(function () {
 	}
 	var v9 = () => {
 		if (product_name == "" || product_name == null) {
-			document.getElementById('wrongpname').innerHTML = "Product Name cannot be empty!";
+			document.getElementById('wrongpname').innerHTML = "Product Details cannot be empty!";
 			$('#wrongpname').show();
 			document.getElementById("product_nameU").focus();
 			return 0;
@@ -4465,7 +4465,7 @@ $('.btn-okReturn').click(function () {
 	}
 	var v2 = () => {
 		if (product_name == "" || product_name == null) {
-			document.getElementById('wrongpnameR').innerHTML = "Product Name cannot be empty!";
+			document.getElementById('wrongpnameR').innerHTML = "Product Details cannot be empty!";
 			$('#wrongpnameR').show();
 			document.getElementById("product_nameUR").focus();
 			return 0;
