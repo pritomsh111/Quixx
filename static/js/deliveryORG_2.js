@@ -1,6 +1,7 @@
 var org_ID = localStorage.getItem('userID');
 var dataInfo, excelData, flag = false;
 var this_select_content = "";
+var criteriaEnabledDelivery = false;
 var createDelivery = () => {
 	document.getElementById('threeb').disabled = true;
 	document.getElementById('twob').disabled = false;
@@ -3830,7 +3831,6 @@ var thikKoro = async (method, areaa, cityy) => {
 		});
 }
 var thikKoroCriteria = async (creator_ID, ...typeList) => {
-	let criteriaEnabled;
 	await $.ajax({
 		url: urlForAll + "delivery/criteria/enable/" + creator_ID,
 		type: "GET",
@@ -3841,10 +3841,10 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 			"Authorization": 'Bearer ' + localStorage.getItem('token')
 		},
 		success: function (data) {
-			criteriaEnabled = data.data;
+			criteriaEnabledDelivery = data.data;
 		}
 	});
-	if (criteriaEnabled) {
+	if (criteriaEnabledDelivery) {
 		$('.criteriaU')
 			.show();
 		$('#dayType1U')
@@ -4347,7 +4347,7 @@ $('.btn-ok-updateDC').click(function () {
 						table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_qty);
 						table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
 
-						if (criteriaEnabled) {
+						if (criteriaEnabledDelivery) {
 							data.data.delivery_product_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type) : null;
 							data.data.delivery_weight ? table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight) : null;
 							data.data.delivery_day_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type) : null;

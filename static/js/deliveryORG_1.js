@@ -162,6 +162,7 @@ $(document).ready(async function () {
 });
 
 async function criteriaInfo(value) {
+	let criteriaEnabled;
 	await $.ajax({
 		url: urlForAll + "delivery/criteria/enable/" + value,
 		type: "GET",
@@ -188,7 +189,7 @@ async function criteriaInfo(value) {
 			.hide();
 		$('#productCity1')
 			.hide();
-		
+
 		$('#dayType')
 			.empty();
 		$('#productType')
