@@ -152,7 +152,7 @@ async function setUpdateCriteria() {
 
 var fillInputDetails = (types, values = undefined) => {
     let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : types === "city" ? ".dyn.productCity" : null;
-    let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3 ..." : types === "distance" ? "... 1-2, 2, 6 ..." : types === "city" ? "... Inside Dhaka, Outside Dhaka ..." : null;
+    let placeHolder = types === "dayType" ? "... 80/120/150 (BDT) ..." : types === "productType" ? "... 80/120/150 (BDT) ..." : types === "weight" ? "... 80/120/150 (BDT) ..." : types === "distance" ? "... 80/120/150 (BDT) ..." : types === "city" ? "... 80/120/150 (BDT) ..." : null;
     let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : types === "city" ? "qcc" : null;
     let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : types === "city" ? city : null;
 
@@ -169,6 +169,7 @@ var fillInputDetails = (types, values = undefined) => {
     input.type = "text";
     // identidier.value = values !== undefined ? values : "";
     input.style.cssText = "color: #0066b3;";
+    input.placeholder = placeHolder;
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
     input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
 
@@ -189,6 +190,7 @@ function lockElse(classNameInput, event) {
             }
             item.disabled = true;
             item.placeholder = "You're Not Allowed To Set This";
+            item.value = "";
         });
 }
 
@@ -201,11 +203,11 @@ function unlockAll(classNameInput) {
             }
         });
     if (dis === false) {
-        console.log(dis);
         Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input:not(input[class*=${classNameInput}])`))
             .map(item => {
                 item.disabled = false;
                 item.placeholder = "";
+                item.value = "";
             });
     }
 }
@@ -221,7 +223,7 @@ function reset() {
 }
 
 function blockInputs(classNameInput, event) {
-    if (event.key === "Backspace") {
+    if (event.key === "Backspace" || event.key === "Tab") {
         unlockAll(classNameInput, event);
     }
     else {
