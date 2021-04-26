@@ -3829,9 +3829,10 @@ var thikKoro = async (method, areaa, cityy) => {
 			}
 		});
 }
-var thikKoroCriteria = async (...typeList) => {
+var thikKoroCriteria = async (creator_ID, ...typeList) => {
+	let criteriaEnabled;
 	await $.ajax({
-		url: urlForAll + "delivery/criteria/enable/" + org_ID,
+		url: urlForAll + "delivery/criteria/enable/" + creator_ID,
 		type: "GET",
 		headers:
 		{
@@ -3846,30 +3847,19 @@ var thikKoroCriteria = async (...typeList) => {
 	if (criteriaEnabled) {
 		$('.criteriaU')
 			.show();
-
-		$('#dayTypeU')
-			.hide().empty();
-		$('#productTypeU')
-			.hide().empty();
-		$('#weightU')
-			.hide().empty();
-		$('#distanceU')
-			.hide().empty();
-		$('#cityU')
-			.hide().empty();
 		$('#dayType1U')
-			.hide().empty();
+			.hide();
 		$('#productType1U')
-			.hide().empty();
+			.hide();
 		$('#weight1U')
-			.hide().empty();
+			.hide();
 		$('#distance1U')
-			.hide().empty();
+			.hide();
 		$('#city1U')
-			.hide().empty();
+			.hide();
 		$.ajax
 			({
-				url: urlForAll + "delivery/criteria/keys/" + localStorage.getItem("userID"),
+				url: urlForAll + "delivery/criteria/active/" + localStorage.getItem("userID"),
 				type: "GET",
 
 				headers:
@@ -3902,7 +3892,6 @@ var thikKoroCriteria = async (...typeList) => {
 						if (types !== "userId") {
 							$(`#${types}1U`).show();
 							$(`#${types}U`)
-								.show()
 								.empty()
 								.append('<option value="' + naValues[index] + '">---</option>')
 								;
@@ -3949,7 +3938,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	del_id = arr[0];
 	creator_ID = arr[1];
 	thikKoro(arr[8], arr[11], arr[26]);
-	criteriaEnabled ? thikKoroCriteria(arr[29], arr[27], arr[28], arr[30], arr[31]) : $('.criteriaU').hide();
+	thikKoroCriteria(creator_ID, arr[29], arr[27], arr[28], arr[30], arr[31]);
 	//console.log(arr);
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];

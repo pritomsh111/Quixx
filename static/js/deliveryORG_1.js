@@ -176,17 +176,6 @@ async function criteriaInfo(value) {
 	if (criteriaEnabled) {
 		$('.criteria')
 			.show();
-
-		$('#dayType')
-			.hide();
-		$('#productType')
-			.hide();
-		$('#productWeight')
-			.hide();
-		$('#productDistance')
-			.hide();
-		$('#productCity')
-			.hide();
 		$('#dayType1')
 			.hide();
 		$('#productType1')
@@ -215,7 +204,6 @@ async function criteriaInfo(value) {
 						if (types !== "userId") {
 							$(`#${types}1`).show();
 							$(`#${types}`)
-								.show()
 								.empty()
 								.append('<option value="' + naValues[index] + '">---</option>')
 								;
