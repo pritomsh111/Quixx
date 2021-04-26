@@ -80,7 +80,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
             }
         }
     });
-    // Custom keys, not all keys, check array length, then place undefined!
+    // Custom keys, not all keys, check array length, then place undefined! - not necessary now!
     $.ajax
         ({
             type: method,
@@ -133,6 +133,23 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
         });
 });
 
+
+// Set/Update Criteria
+async function setUpdateCriteria() {
+    document.getElementById('one-cc').disabled = false;
+    document.getElementById('two-cc').disabled = true;
+    document.getElementById('two-cc').style.fontSize = '14.5px';
+    document.getElementById('one-cc').style.fontSize = '13px';
+    document.getElementById('setCriteriaDetails').style.display = "block";
+    document.getElementById('createCriteria').style.display = "none";
+    if (flag) {
+        Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2")).map(item => item.remove());
+        await fillInput(true);
+        criteriaEnabled ? getData() : null;
+    }
+}
+
+
 var fillInputDetails = (types, values = undefined) => {
     let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : types === "city" ? ".dyn.productCity" : null;
     let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3 ..." : types === "distance" ? "... 1-2, 2, 6 ..." : types === "city" ? "... Inside Dhaka, Outside Dhaka ..." : null;
@@ -179,9 +196,14 @@ function unlockAll(classNameInput) {
     let dis = false;
     Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input`))
         .map(item => {
-            if (item.value) {
-                dis = true;
-            }
+            console.log("HELLOOOO");
+
+            return;
+            // if (item.value) {
+            //     dis = true;
+            //     console.log("HELLOOOO");
+            //     // return;
+            // }
         });
     if (dis === false) {
         console.log(dis);
@@ -199,20 +221,6 @@ function blockInputs(classNameInput, event) {
     }
     else {
         lockElse(classNameInput, event);
-    }
-}
-
-async function setUpdateCriteria() {
-    document.getElementById('one-cc').disabled = false;
-    document.getElementById('two-cc').disabled = true;
-    document.getElementById('two-cc').style.fontSize = '14.5px';
-    document.getElementById('one-cc').style.fontSize = '13px';
-    document.getElementById('setCriteriaDetails').style.display = "block";
-    document.getElementById('createCriteria').style.display = "none";
-    if (flag) {
-        Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2")).map(item => item.remove());
-        await fillInput(true);
-        criteriaEnabled ? getData() : null;
     }
 }
 
