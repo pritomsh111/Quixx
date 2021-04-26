@@ -1243,7 +1243,7 @@ $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 
 var fillInputDetails = (types, values = undefined) => {
 	let typeForCreate = types === "dayType" ? ".dyn.dayType" : types === "productType" ? ".dyn.productType" : types === "weight" ? ".dyn.productWeight" : types === "distance" ? ".dyn.productDistance" : types === "city" ? ".dyn.productCity" : null;
-	let placeHolder = types === "dayType" ? "... Urgent, SameDay, NextDay ..." : types === "productType" ? "... Glass, Food ..." : types === "weight" ? "... 1-2, 1-4, 3 ..." : types === "distance" ? "... 1-2, 2, 6 ..." : types === "city" ? "... Inside Dhaka, Outside Dhaka ..." : null;
+	let placeHolder = types === "dayType" ? "... 80/120/150 ..." : types === "productType" ? "... 80/120/150 ..." : types === "weight" ? "... 80/120/150 ..." : types === "distance" ? "... 80/120/150 ..." : types === "city" ? "... 80/120/150 ..." : null;
 	let classesName = types === "dayType" ? "qdc" : types === "productType" ? "qtc" : types === "weight" ? "qwc" : types === "distance" ? "qdsc" : types === "city" ? "qcc" : null;
 	let increment = types === "dayType" ? day : types === "productType" ? type : types === "weight" ? weight : types === "distance" ? distance : types === "city" ? city : null;
 
@@ -1346,8 +1346,6 @@ function getData() {
 			}
 		});
 }
-
-
 function fillupFields() {
 	if (flag) {
 		document.getElementById('modalApproveCriteria').disabled = true;
