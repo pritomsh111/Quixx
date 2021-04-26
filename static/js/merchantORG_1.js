@@ -12,7 +12,6 @@ function createFieldStart(data) {
 }
 
 async function fillInput() {
-	console.log("Yello");
 	await $.ajax({
 		url: urlForAll + "delivery/criteria/keys/" + org_ID,
 		type: "GET",
@@ -62,19 +61,6 @@ $(document).ready(async function () {
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 	flag = await getKeys();
 	if (flag) {
-		$.ajax({
-			url: urlForAll + "delivery/criteria/enable/" + org_ID,
-			type: "GET",
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function (data) {
-				criteriaEnabled = data.data;
-				fillInput();
-			}
-		});
+		fillInput();
 	}
 });
