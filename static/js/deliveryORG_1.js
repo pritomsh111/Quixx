@@ -188,6 +188,17 @@ async function criteriaInfo(value) {
 			.hide();
 		$('#productCity1')
 			.hide();
+		
+		$('#dayType')
+			.empty();
+		$('#productType')
+			.empty();
+		$('#productWeight')
+			.empty();
+		$('#productDistance')
+			.empty();
+		$('#productCity')
+			.empty();
 		$.ajax
 			({
 				url: urlForAll + "delivery/criteria/active/" + value,

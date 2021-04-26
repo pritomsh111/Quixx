@@ -3857,6 +3857,17 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 			.hide();
 		$('#productCity1U')
 			.hide();
+
+		$('#dayType1')
+			.empty();
+		$('#productType1')
+			.empty();
+		$('#productWeight1')
+			.empty();
+		$('#productDistance1')
+			.empty();
+		$('#productCity1')
+			.empty();
 		$.ajax
 			({
 				url: urlForAll + "delivery/criteria/active/" + creator_ID,
@@ -3897,14 +3908,15 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 								.append('<option value="' + naValues[typ] + '">---</option>')
 								;
 							j = 0;
-							Object.keys(data.data[types]).map(value => {
-								if (value === typeList[index]) {
+							Object.keys(data.data[types]).map((value, ind) => {
+								console.log(value, typeList[typ]);
+								if (value === typeList[typ]) {
 									j = ind;
 									j++;
 								}
 								var option = new Option(value, value);
 								$(option).html(value);
-								$(`#${types}`).append(option);
+								$(`#${types}U`).append(option);
 							});
 							document.getElementById(`${types}U`).selectedIndex = j;
 						}
