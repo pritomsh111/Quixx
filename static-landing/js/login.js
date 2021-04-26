@@ -2,7 +2,7 @@
     if (document.location.host.includes("portal")) {
         window.location.href = "/login-panel";
     }
-    else if (document.location.pathname!=="/") {
+    else if (document.location.pathname !== "/") {
         window.location.href = "/";
     }
     // Storage Event
@@ -14,23 +14,25 @@
     let phone;
 
     // Typewritter Effect
-    let type = "Grow Your Business"
-    let ctn = 0;
-    let parag = document.querySelector(".Quixx__Q>h1");
-    const typeWritter = () => {
-        if (ctn === type.length) {
-            document.querySelector(".Q__Us").classList.add("show");
-            return;
+    try {
+        let type = "Grow Your Business"
+        let ctn = 0;
+        let parag = document.querySelector(".Quixx__Q>h1");
+        const typeWritter = () => {
+            if (ctn === type.length) {
+                document.querySelector(".Q__Us").classList.add("show");
+                return;
+            }
+            parag.innerHTML += type[ctn];
+            setTimeout(() => {
+                ctn = ctn + 1;
+                typeWritter();
+            }, 150);
         }
-        parag.innerHTML += type[ctn];
         setTimeout(() => {
-            ctn = ctn + 1;
             typeWritter();
-        }, 150);
-    }
-    setTimeout(() => {
-        typeWritter();
-    }, 500);
+        }, 500);
+    } catch (e) { }
     // DOM manipulation
 
     let hoverProduct = document.querySelector(".Quixx__Login__Signup li:last-child");
