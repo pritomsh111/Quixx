@@ -1358,77 +1358,125 @@ function getData() {
 }
 function fillupFields() {
 	if (flag) {
-		document.getElementById('modalApproveCriteria').disabled = true;
-		document.getElementById('modalCancelCriteria').disabled = true;
-		$('.btn-ok-updateCriteria').attr('disabled', true);
-		$('.cancelModCriteria').prop('disabled', true);
-		$("#formUpdateCriteria").hide();
-		$(".circle-loader").removeClass("load-complete");
-		$(".circle-loader").show();
-		$("#sure3Criteria").html("Please wait!");
-		$("#sure3Criteria").show();
-		let array = [];
 		let typesArray = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
-		Object.keys(fillData).map((item, index) => {
+		let array = [], flagger = 1;
+		for (const [index, item] of Object.keys(fillData).entries()) {
+			console.log(index, item);
 			let obj = {};
-			fillData[item].map(i => {
-				console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`))
+			for (const i of fillData[item]) {
+				if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value) {
+					console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
+					let testingNumber = /^\d+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
+					if (!testingNumber) {
 
-				obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
-				// console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
-			});
-			array.push(obj);
-		});
-		console.log(array);
-		$.ajax
-			({
-				type: criteriaEnabledMer ? "PUT" : "POST",
-				url: `${urlForAll}delivery/criteria/${criteriaEnabledMer ? "update" : "create"}/${criteriaMer}`,
-				headers:
-				{
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					"Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				data: JSON.stringify({
-					"dayTypeMap": array[0],
-					"productTypeMap": array[1],
-					"productDistanceMap": array[3],
-					"productWeightMap": array[2],
-					"productCityMap": array[4]
-				}),
-				success: function (data) {
-					console.log(data);
-					setTimeout(function () {
-						$(".circle-loader").addClass("load-complete");
-
-						$('#tick3Criteria').show();
-
-						$("#sure3Criteria").html("Merchant's Criteria Updated!");
-					}, 1500);
-
-					setTimeout(function () {
-						$("#myModalMerUpdateCriteria").modal('hide');
 						$('.btn-ok-updateCriteria').attr('disabled', false);
 						$('.cancelModCriteria').prop('disabled', false);
-					}, 3000);
-				},
-				error: function (data) {
-					$('.btn-ok-updateCriteria').attr('disabled', false);
-					$('.cancelModCriteria').prop('disabled', false);
 
-					var ob = Object.keys(data);
-					if (ob[17] == "responseJSON") {
-						$("#errorFix").html(data.responseJSON.errorMessage);
-					}
-					else {
-						$("#errorFix").html("Something Went Wrong!");
-					}
-					$('#myModalMerUpdateCriteria').modal('hide');
-					setTimeout(() => {
+						$("#errorFix").html(`"${i}" Must Be A Number!`);
+						// $('#myModalMerUpdateCriteria').modal('hide');
 						$('#myModal2XYZ').modal('show');
-					}, 0);
+
+						flagger = 0;
+						document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
+						break;
+					}
+
+					let testingNumberLength = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value.match(/\d/g);
+					if (testingNumberLength.length > 5) {
+
+						$('.btn-ok-updateCriteria').attr('disabled', false);
+						$('.cancelModCriteria').prop('disabled', false);
+
+						$("#errorFix").html(`"${i}" Must Be Less Than 5 Digits!`);
+						// $('#myModalMerUpdateCriteria').modal('hide');
+						$('#myModal2XYZ').modal('show');
+
+						flagger = 0;
+						document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
+						break;
+					}
 				}
-			});
+				obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
+			}
+			if (!flagger) {
+				document.getElementById("myModalMerUpdateCriteria").style.overflowY = "auto";
+				break;
+			}
+			array.push(obj);
+		}
+
+		// Object.keys(fillData).map((item, index) => {
+		// 	let obj = {};
+		// 	fillData[item].map(i => {
+		// 		console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`))
+
+		// 		obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
+		// 		// console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
+		// 	});
+		// 	array.push(obj);
+		// });
+		console.log(array);
+		if (flagger) {
+			document.getElementById('modalApproveCriteria').disabled = true;
+			document.getElementById('modalCancelCriteria').disabled = true;
+			$('.btn-ok-updateCriteria').attr('disabled', true);
+			$('.cancelModCriteria').prop('disabled', true);
+			$("#formUpdateCriteria").hide();
+			$(".circle-loader").removeClass("load-complete");
+			$(".circle-loader").show();
+			$("#sure3Criteria").html("Please wait!");
+			$("#sure3Criteria").show();
+			$.ajax
+				({
+					type: criteriaEnabledMer ? "PUT" : "POST",
+					url: `${urlForAll}delivery/criteria/${criteriaEnabledMer ? "update" : "create"}/${criteriaMer}`,
+					headers:
+					{
+						'Accept': 'application/json',
+						'Content-Type': 'application/json',
+						"Authorization": 'Bearer ' + localStorage.getItem('token')
+					},
+					data: JSON.stringify({
+						"dayTypeMap": array[0],
+						"productTypeMap": array[1],
+						"productDistanceMap": array[3],
+						"productWeightMap": array[2],
+						"productCityMap": array[4]
+					}),
+					success: function (data) {
+						console.log(data);
+						setTimeout(function () {
+							$(".circle-loader").addClass("load-complete");
+
+							$('#tick3Criteria').show();
+
+							$("#sure3Criteria").html("Merchant's Criteria Updated!");
+						}, 1500);
+
+						setTimeout(function () {
+							$("#myModalMerUpdateCriteria").modal('hide');
+							$('.btn-ok-updateCriteria').attr('disabled', false);
+							$('.cancelModCriteria').prop('disabled', false);
+						}, 3000);
+					},
+					error: function (data) {
+						$('.btn-ok-updateCriteria').attr('disabled', false);
+						$('.cancelModCriteria').prop('disabled', false);
+
+						var ob = Object.keys(data);
+						if (ob[17] == "responseJSON") {
+							$("#errorFix").html(data.responseJSON.errorMessage);
+						}
+						else {
+							$("#errorFix").html("Something Went Wrong!");
+						}
+						$('#myModalMerUpdateCriteria').modal('hide');
+						setTimeout(() => {
+							$('#myModal2XYZ').modal('show');
+						}, 0);
+					}
+				});
+		}
+
 	}
 }
