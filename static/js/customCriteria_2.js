@@ -304,10 +304,24 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
         for (const i of fillData[item]) {
             if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value) {
                 console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
-                let testingNumber = /^\D+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
+                let testingNumber = /^\d+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
                 if (!testingNumber) {
                     let modalErr = document.querySelector('#myModalWrongDManCreate p');
-                    modalErr.innerHTML = "Value Must Be A Number!";
+                    modalErr.innerHTML = `"${i}" Must Be A Number!`;
+                    $('#myModalWrongDManCreate').modal('show');
+                    $('#myModalCriteriaConfirm').modal('hide');
+                    document.getElementById('modalCriteriaCancelConfirm').disabled = false;
+                    document.getElementById('modalCriteriaSetConfirm').disabled = false;
+
+                    flagger = 0;
+                    document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
+                    break;
+                }
+
+                let testingNumberLength = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value.match(/\d/g);
+                if (testingNumberLength.length > 5) {
+                    let modalErr = document.querySelector('#myModalWrongDManCreate p');
+                    modalErr.innerHTML = `"${i}" Must Be Less Than 5 Digits!`;
                     $('#myModalWrongDManCreate').modal('show');
                     $('#myModalCriteriaConfirm').modal('hide');
                     document.getElementById('modalCriteriaCancelConfirm').disabled = false;
