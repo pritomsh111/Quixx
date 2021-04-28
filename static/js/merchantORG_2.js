@@ -1,5 +1,4 @@
 var org_ID = localStorage.getItem('userID');
-var table;
 
 function merchantOrgButtonActive() {
 	document.getElementById('one').disabled = false;
@@ -22,16 +21,21 @@ function merchantOrgButtonActive() {
 	document.getElementById('five').disabled = false;
 }
 
-function merchantOrgHide() {
+function merchantOrgTableHide() {
 	$('#merchantCreate').hide();
 	$('#dtBasicExample').hide();
+	$('#dtBasicExample2').hide();
+	$('#dtBasicExampleActivate').hide();
+	$('#dtBasicExampleDisable').hide();
 	$('.a').hide();
+	$('.b').hide();
+	$('.c').hide();
+	$('.d').hide();
 }
 
 var createMer = () => {
+	merchantOrgTableHide();
 	merchantOrgButtonActive();
-	merchantOrgHide();
-
 	document.getElementById('one').disabled = true;
 	document.getElementById('one').style.fontSize = '14.5px';
 
@@ -54,13 +58,8 @@ function merchantOrgDatatableStyle() {
 var invoice = (id) => {
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
-			"url": urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name,
+			url: urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name,
 			headers:
 			{
 				'Accept': 'application/json',
@@ -78,11 +77,11 @@ var invoice = (id) => {
 };
 var approvedMer = () => {
 	merchantOrgButtonActive();
-	merchantOrgHide();
+	merchantOrgTableHide();
 	document.getElementById('two').disabled = true;
 	document.getElementById('two').style.fontSize = '14.5px';
-	table ? table.destroy() : null;
-	table = $('#dtBasicExample').DataTable({
+
+	var table = $('#dtBasicExample').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -108,7 +107,7 @@ var approvedMer = () => {
 	$.ajax
 		({
 			type: "GET",
-			"url": urlForAll + "orgHead/merchant/approved/details/" + org_ID,
+			url: urlForAll + "orgHead/merchant/approved/details/" + org_ID,
 			headers:
 			{
 				'Accept': 'application/json',
@@ -146,12 +145,12 @@ var approvedMer = () => {
 
 var unApprovedMer = () => {
 	merchantOrgButtonActive();
-	merchantOrgHide();
+	merchantOrgTableHide();
 
 	document.getElementById('three').disabled = true;
 	document.getElementById('three').style.fontSize = '14.5px';
-	table.destroy();
-	table = $('#dtBasicExample').DataTable({
+
+	var table = $('#dtBasicExample2').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -175,8 +174,11 @@ var unApprovedMer = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			type: "GET",
-			"url": urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
+			async: true,
+			contentType: 'application/json',
+			secure: true,
+			crossDomain: true,
+			url: urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
 			headers:
 			{
 				'Accept': 'application/json',
@@ -184,7 +186,7 @@ var unApprovedMer = () => {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			beforeSend: function () {
-				document.getElementById("dtBasicExample_processing").style.display = "block";
+				document.getElementById("dtBasicExample2_processing").style.display = "block";
 			},
 			success: function (data) {
 				document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + data.data.length;
@@ -204,19 +206,19 @@ var unApprovedMer = () => {
 				});
 			},
 			complete: function (data) {
-				document.getElementById("dtBasicExample_processing").style.display = "none";
+				document.getElementById("dtBasicExample2_processing").style.display = "none";
 			}
 		});
 	merchantOrgDatatableStyle();
-	$('#dtBasicExample').show();
-	$('.a').show();
+	$('#dtBasicExample2').show();
+	$('.b').show();
 };
 
 function merchantActivateFunction(dataGet, table) {
 	$.ajax
 		({
 			type: "GET",
-			"url": urlForAll + "otp/enable/all/" + org_ID,
+			url: urlForAll + "otp/enable/all/" + org_ID,
 			headers:
 			{
 				'Accept': 'application/json',
@@ -259,7 +261,7 @@ function merchantActivateFunction(dataGet, table) {
 var activated = () => {
 
 	merchantOrgButtonActive();
-	merchantOrgHide();
+	merchantOrgTableHide();
 	document.getElementById('four').style.fontSize = '14.5px';
 	document.getElementById('four').disabled = true;
 
@@ -270,18 +272,40 @@ var activated = () => {
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
 		},
 		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"columns": [
+			{ title: "Merchant ID" },
+			{ title: "Company Name" },
+			{ title: "Owner Name" },
+			{ title: "Email" },
+			{ title: "Phone Number" },
+			{ title: "Business Field" },
+			{ title: "Per Delivery Cost" },
+			{
+				orderable: false, title: "Update Criteria"
+			},
+			{
+				orderable: false, title: "Enable OTP"
+			},
+			{
+				orderable: false, title: "Disable OTP"
+			},
+			{
+				orderable: false, title: "Invoice"
+			},
+			{
+				orderable: false, title: "Payment"
+			},
+			{
+				orderable: false, title: "Disable Merchant?"
+			}
+		]
 	});
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
-			"url": urlForAll + "orgHead/enable/merchant/" + org_ID,
+			url: urlForAll + "orgHead/enable/merchant/" + org_ID,
 			headers:
 			{
 				'Accept': 'application/json',
@@ -309,7 +333,7 @@ var activated = () => {
 
 var disabledd = () => {
 	merchantOrgButtonActive();
-	merchantOrgHide();
+	merchantOrgTableHide();
 
 	document.getElementById('five').style.fontSize = '14.5px';
 	document.getElementById('five').disabled = true;
@@ -321,13 +345,25 @@ var disabledd = () => {
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
 		},
 		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"columns": [
+			{ title: "Merchant ID" },
+			{ title: "Company Name" },
+			{ title: "Owner Name" },
+			{ title: "Email" },
+			{ title: "Phone Number" },
+			{ title: "Business Field" },
+			{ title: "Per Delivery Cost" },
+			{
+				orderable: false, title: "Activate Merchant?"
+			}
+		]
 	});
 	table.clear().draw();
 	$.ajax
 		({
 			type: "GET",
-			"url": urlForAll + "orgHead/disable/merchant/" + org_ID,
+			url: urlForAll + "orgHead/disable/merchant/" + org_ID,
 			headers:
 			{
 				'Accept': 'application/json',
