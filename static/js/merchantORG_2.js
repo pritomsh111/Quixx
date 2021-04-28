@@ -766,7 +766,7 @@ $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant Criteria?";
 
 	$("#formUpdateCriteria").show();
-	$("#modalApproveFormCriteria").show();
+	$("#modalApproveCriteria").show();
 	getData();
 });
 
