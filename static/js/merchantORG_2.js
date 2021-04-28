@@ -54,7 +54,6 @@ function merchantOrgDatatableStyle() {
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
 		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-
 }
 var invoice = (id) => {
 	$.ajax
@@ -82,8 +81,8 @@ var invoice = (id) => {
 		});
 };
 var approvedMer = () => {
-	merchantOrgTableHide();
 	merchantOrgButtonActive();
+	merchantOrgTableHide();
 	document.getElementById('two').disabled = true;
 	document.getElementById('two').style.fontSize = '14.5px';
 
@@ -131,35 +130,18 @@ var approvedMer = () => {
 			}
 		});
 
+	merchantOrgDatatableStyle();
 	$('#dtBasicExample').show();
 	$('.a').show();
 }
 
 var unApprovedMer = () => {
+	merchantOrgButtonActive();
+	merchantOrgTableHide();
+
 	document.getElementById('three').disabled = true;
-	document.getElementById('two').disabled = false;
-	document.getElementById('one').disabled = false;
 	document.getElementById('three').style.fontSize = '14.5px';
-	document.getElementById('two').style.fontSize = '13px';
-	document.getElementById('one').style.fontSize = '13px';
-	document.getElementById('two').innerHTML = 'Approved Merchant';
 
-	document.getElementById('four').style.fontSize = '13px';
-	document.getElementById('four').innerHTML = 'Activated Merchant';
-	document.getElementById('four').disabled = false;
-
-	document.getElementById('five').style.fontSize = '13px';
-	document.getElementById('five').innerHTML = 'Disabled Merchant';
-	document.getElementById('five').disabled = false;
-	$('#merchantCreate').hide();
-	$('#dtBasicExample').hide();
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.a').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
 	var table = $('#dtBasicExample2').DataTable({
 		"processing": true,
 		'language': {
@@ -190,7 +172,6 @@ var unApprovedMer = () => {
 			},
 			success: function (data) {
 				document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + data.data.length;
-				var trHTML = '';
 
 				$.each(data.data, function (i, item) {
 					var table_rows = '<tr><td>'
@@ -210,18 +191,7 @@ var unApprovedMer = () => {
 				document.getElementById("dtBasicExample2_processing").style.display = "none";
 			}
 		});
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-
+	merchantOrgDatatableStyle();
 	$('#dtBasicExample2').show();
 	$('.b').show();
 };
@@ -271,31 +241,12 @@ function merchantActivateFunction(dataGet, table) {
 		});
 }
 var activated = () => {
-	document.getElementById('three').disabled = false;
-	document.getElementById('two').disabled = false;
-	document.getElementById('one').disabled = false;
-	document.getElementById('three').style.fontSize = '13px';
-	document.getElementById('two').style.fontSize = '13px';
-	document.getElementById('one').style.fontSize = '13px';
-	document.getElementById('two').innerHTML = 'Approved Merchant';
-	document.getElementById('three').innerHTML = 'Unapproved Merchant';
 
+	merchantOrgButtonActive();
+	merchantOrgTableHide();
 	document.getElementById('four').style.fontSize = '14.5px';
-	document.getElementById('four').innerHTML = 'Activated Merchant';
 	document.getElementById('four').disabled = true;
 
-	document.getElementById('five').style.fontSize = '13px';
-	document.getElementById('five').innerHTML = 'Disabled Merchant';
-	document.getElementById('five').disabled = false;
-	$('#merchantCreate').hide();
-	$('#dtBasicExample').hide();
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.a').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
 	var table = $('#dtBasicExampleActivate').DataTable({
 		"processing": true,
 		'language': {
@@ -334,48 +285,19 @@ var activated = () => {
 				document.getElementById("dtBasicExampleActivate_processing").style.display = "none";
 			}
 		});
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
 
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-
+	merchantOrgDatatableStyle();
 	$('#dtBasicExampleActivate').show();
 	$('.c').show();
 };
 
 var disabledd = () => {
-	document.getElementById('three').disabled = false;
-	document.getElementById('two').disabled = false;
-	document.getElementById('one').disabled = false;
-	document.getElementById('three').style.fontSize = '13px';
-	document.getElementById('two').style.fontSize = '13px';
-	document.getElementById('one').style.fontSize = '13px';
-	document.getElementById('two').innerHTML = 'Approved Merchant';
-	document.getElementById('three').innerHTML = 'Unapproved Merchant';
+	merchantOrgButtonActive();
+	merchantOrgTableHide();
 
 	document.getElementById('five').style.fontSize = '14.5px';
-	document.getElementById('five').innerHTML = 'Disabled Merchant';
 	document.getElementById('five').disabled = true;
 
-	document.getElementById('four').style.fontSize = '13px';
-	document.getElementById('four').innerHTML = 'Activated Merchant';
-	document.getElementById('four').disabled = false;
-	$('#merchantCreate').hide();
-	$('#dtBasicExample').hide();
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.a').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
 	var table = $('#dtBasicExampleDisable').DataTable({
 		"processing": true,
 		'language': {
@@ -388,12 +310,7 @@ var disabledd = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			"url": urlForAll + "orgHead/disable/merchant/" + org_ID,
 			headers:
 			{
@@ -406,7 +323,6 @@ var disabledd = () => {
 			},
 			success: function (data) {
 				document.getElementById('five').innerHTML = 'Disabled Merchant: ' + data.data.length;
-				var trHTML = '';
 
 				$.each(data.data, function (i, item) {
 					var table_rows = '<tr><td>'
@@ -426,24 +342,14 @@ var disabledd = () => {
 				document.getElementById("dtBasicExampleDisable_processing").style.display = "none";
 			}
 		});
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
 
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-
+	merchantOrgDatatableStyle();
 	$('#dtBasicExampleDisable').show();
 	$('.d').show();
 };
 
 var addMerchant = () => {
-	var canMan, canDeliver;
+
 	var name = document.getElementById('person_name').value;
 	var company = document.getElementById('org_name').value;
 	var email = document.getElementById('email').value;

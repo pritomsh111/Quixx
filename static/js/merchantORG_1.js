@@ -59,6 +59,7 @@ $(document).ready(async function () {
 	$('.c').hide();
 	$('.d').hide();
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
+
 	flag = await getKeys();
 	if (flag) {
 		fillInput();
