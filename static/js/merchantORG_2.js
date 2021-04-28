@@ -583,6 +583,9 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	modalForm();
 	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant?";
 
+	$('.cancelMod').prop('disabled', false);
+	$('.btn-ok-update').prop('disabled', false);
+
 	$("#formUpdate").show();
 	$("#modalApproveForm").show();
 });
@@ -692,7 +695,6 @@ $('.btn-ok-update').click(function () {
 		trimmer = parseInt(trimmer);
 		$.ajax
 			({
-				async: true,
 				type: "PUT",
 				url: urlForAll + "orgHead/merchant",
 				data: JSON.stringify
@@ -764,9 +766,15 @@ $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 
 	modalForm();
 	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant Criteria?";
-
+	Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
+		item.value = "";
+		item.disabled = false;
+		item.placeholder = "";
+	});
 	$("#formUpdateCriteria").show();
 	$("#modalApproveCriteria").show();
+	$('.cancelMod').prop('disabled', false);
+	$('.btn-ok-updateCriteria').prop('disabled', false);
 	getData();
 });
 
@@ -851,9 +859,6 @@ function blockInputs(classNameInput, event) {
 	}
 }
 function getData() {
-	Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
-		item.value = "";
-	});
 	$.ajax
 		({
 			type: "GET",
@@ -920,7 +925,7 @@ function fillupFields() {
 				obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
 			}
 			if (!flagger) {
-				document.getElementById("myModalFormHeader").style.overflowY = "auto";
+				document.getElementById("myModalForm").style.overflowY = "auto";
 				break;
 			}
 			array.push(obj);
@@ -964,13 +969,13 @@ function fillupFields() {
 							$('#tickForm').show();
 
 							$("#sureForm").html("Merchant's Criteria Updated!");
-						}, 1500);
+						}, 1000);
 
 						setTimeout(function () {
 							$("#myModalForm").modal('hide');
 							$('.btn-ok-updateCriteria').attr('disabled', false);
 							$('.cancelModCriteria').prop('disabled', false);
-						}, 3000);
+						}, 2000);
 					},
 					error: function (data) {
 						$('.btn-ok-updateCriteria').attr('disabled', false);
