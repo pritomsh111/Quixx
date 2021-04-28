@@ -580,6 +580,8 @@ function modalStart() {
 	$("#sure").html("Are you sure?");
 
 	$("#myModalForAll").modal('show');
+
+	document.getElementById('modalCancelButton').disabled = false;
 }
 
 function modalTickDone(message) {
@@ -774,11 +776,29 @@ $('.btn-ok').click(function () {
 		});
 });
 
+function modalForm() {
+	$("#formUpdate").hide();
+	$("#formUpdateCriteria").hide();
+
+	$('#tickForm').hide();
+	$("#circleLoadForm").hide();
+
+	$("#modalApproveForm").hide();
+	$("#modalApproveCriteria").hide();
+
+	$("#sureForm").hide();
+	$("#myModalForm").modal('show');
+}
+
+
+// Form 
 var arr;
 $('#dtBasicExample').on('click', '.updateIT', function () {
 	merId = $(this).attr('id');
 
 	arr = merId.split('$$');
+
+	$t = $(this);
 
 	document.getElementById('org_name2').value = arr[1];
 	document.getElementById('person_name2').value = arr[2];
@@ -788,19 +808,19 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	document.getElementById('per_cost').value = arr[6];
 	document.getElementById('cod_per').value = arr[7];
 
-	$t = $(this);
+	modalForm();
+	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant?";
 
 	$("#formUpdate").show();
-	$('#tick3').hide();
-	//$(".circle-loader").removeClass("load-complete");
-	$("#circleLoad3").hide();
-
-	$("#sure3").hide();
-	//$("#sure3").html("Are you sure?");
-	$("#myModalMerUpdate").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+	$("#modalApproveForm").show();
 });
+
+function modalErrorShowForCreateUpdateMerchant(message, focusWehere) {
+	document.getElementById('error').innerHTML = message;
+	document.getElementById('errorButton').innerHTML = "Correct It";
+	$('#myModalError').modal('show');
+	document.getElementById(focusWehere).focus();
+}
 $('.btn-ok-update').click(function () {
 
 	var org_name = document.getElementById('org_name2').value;
@@ -810,12 +830,9 @@ $('.btn-ok-update').click(function () {
 	var business_filed = document.getElementById('business_filed2').value;
 	var per_delivery_cost = document.getElementById('per_cost').value;
 	var cod_per = document.getElementById('cod_per').value;
-
 	var v1 = () => {
 		if (org_name == "" || org_name == null) {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Company Name cannot be empty!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("org_name2").focus();
+			modalErrorShowForCreateUpdateMerchant("Company Name cannot be empty!", "org_name2");
 			return 0;
 		}
 		else {
@@ -824,9 +841,7 @@ $('.btn-ok-update').click(function () {
 	}
 	var v2 = () => {
 		if (person_name == "" || person_name == null) {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Owner Name cannot be empty!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("person_name2").focus();
+			modalErrorShowForCreateUpdateMerchant("Owner Name cannot be empty!", "person_name2");
 			return 0;
 		}
 		else {
@@ -835,55 +850,41 @@ $('.btn-ok-update').click(function () {
 	}
 	var v3 = () => {
 		if (phone_number == "" || phone_number == null) {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Phone Number cannot be empty!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("phone_number2").focus();
+			modalErrorShowForCreateUpdateMerchant("Phone Number cannot be empty!", "phone_number2");
 			return 0;
 		}
 		else if ((phone_number.length < 11 || phone_number.length > 11) && !/\D/.test(phone_number) == true) {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Phone Number must be of 11 digits!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("phone_number2").focus();
+			modalErrorShowForCreateUpdateMerchant("Phone Number must be of 11 digits!", "phone_number2");
 			return 0;
 		}
 		else if (phone_number.match(/\d/g).length === 11 && !/\D/.test(phone_number) == true) {
 			return 1;
 		}
 		else {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Phone Number not valid!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("phone_number2").focus();
+			modalErrorShowForCreateUpdateMerchant("Phone Number not valid!", "phone_number2");
 			return 0;
 		}
 	}
 	var v4 = () => {
 		if (email == "" || email == null) {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Email cannot be empty!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("email2").focus();
+			modalErrorShowForCreateUpdateMerchant("Email cannot be empty!", "email2");
 			return 0;
 		}
 		else if (email != "" || email != null) {
-			var em = email.split("@").length - 1;
-			var atposition = email.indexOf("@");
-			var dotposition = email.lastIndexOf(".");
-			if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length || em > 1) {
-				document.getElementById('wrongThisMerUpdate').innerHTML = "Please enter a valid e-mail address!";
-				$('#myModalWrongMerUpdate').modal('show');
-				document.getElementById("email2").focus();
-				return 0;
-			}
-			else {
+			if (/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(
+				email
+			)) {
 				return 1;
 			}
+			else {
+				modalErrorShowForCreateUpdateMerchant("Please enter a valid e-mail address!", "email2");
+				return 0;
+			}
 		}
-
 	}
 	var v5 = () => {
 		if (business_filed == "" || business_filed == null) {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Business Field cannot be empty!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("business_filed2").focus();
+			modalErrorShowForCreateUpdateMerchant("Business Field cannot be empty!", "business_filed2");
 			return 0;
 		}
 		else {
@@ -892,15 +893,11 @@ $('.btn-ok-update').click(function () {
 	}
 	var v6 = () => {
 		if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Per Delivery Cost must be greater than 0!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("per_cost").focus();
+			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than 0!", "per_cost");
 			return 0;
 		}
 		else if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "Per Delivery Cost must be a number!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("per_cost").focus();
+			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be a number!", "per_cost");
 			return 0;
 		}
 		else if (!/\D/.test(per_delivery_cost) == true) {
@@ -909,9 +906,7 @@ $('.btn-ok-update').click(function () {
 	}
 	var v7 = () => {
 		if (isNaN(cod_per) == true || cod_per == "") {
-			document.getElementById('wrongThisMerUpdate').innerHTML = "COD Percentage must be a number!";
-			$('#myModalWrongMerUpdate').modal('show');
-			document.getElementById("cod_per").focus();
+			modalErrorShowForCreateUpdateMerchant("COD Percentage must be a number!", "cod_per");
 			return 0;
 		}
 		else {

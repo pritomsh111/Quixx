@@ -464,9 +464,10 @@
         </div>
     </div>
 </div> -->
+<!-- Type Modal - 0,  Click the button, then Form, then modal tick done-->
 <div
     class="modal fade"
-    id="myModalMerUpdate"
+    id="myModalForm"
     tabindex="-1"
     role="dialog"
     aria-labelledby="myModalLabel"
@@ -482,9 +483,7 @@
                     data-dismiss="modal"
                     aria-hidden="true"
                 ></button>
-                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
-                    Update Merchant?
-                </h4>
+                <h4 class="modal-title" style="color: #0066b3" id="myModalFormHeader"></h4>
             </div>
             <div class="modal-body" style="text-align: center; overflow-y: scroll">
                 <form class="p-1" style="color: #0066b3" id="formUpdate">
@@ -596,17 +595,17 @@
                         placeholder=""
                     >
                 </form>
-                <div class="circle-loader" style="text-align: center" id="circleLoad3">
-                    <div class="checkmark draw" id="tick3"></div>
+                <div class="circle-loader" style="text-align: center" id="circleLoadForm">
+                    <div class="checkmark draw" id="tickForm"></div>
                 </div>
-                <h4 id="sure3" style="color: #0066b3"></h4>
+                <h4 id="sureForm" style="color: #0066b3"></h4>
             </div>
             <div class="modal-footer">
                 <button
                     type="button"
                     style="color: #0066b3"
                     class="btn btn-outline btn-default cancelMod"
-                    id="modalCancel"
+                    id="modalCancelForm"
                     data-dismiss="modal"
                 >
                     Cancel
@@ -615,7 +614,7 @@
                     type="button"
                     style="color: #0066b3"
                     class="btn btn-outline btn-danger btn-ok-update"
-                    id="modalApprove"
+                    id="modalApproveForm"
                 >
                     Update
                 </button>
@@ -868,7 +867,7 @@
         </div>
     </div>
 </div>
-<!-- Type Modal 3: Server Error -->
+<!-- Type Modal 3: Server/Client Error -->
 <div id="myModalError" class="modal fade" data-backdrop="static">
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
@@ -880,69 +879,6 @@
                     style="color: #0066b3"
                     data-dismiss="modal"
                 ></button>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="myModataka" class="modal fade">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h3 style="color: #0066b3" id="wrongTaka"></h3>
-                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
-                    Sorry!
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="myModal2" class="modal fade" data-backdrop="static">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h4 style="color: #0066b3">Ooops!</h4>
-                <p style="color: #0066b3">Something went wrong. Please try again!</p>
-                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
-                    Try Again
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="myModal2XYZ" class="modal fade" data-backdrop="static">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h4 style="color: #0066b3">Ooops!</h4>
-                <p style="color: #0066b3" id="errorFix"></p>
-                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
-                    Try Again
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="myModal23" class="modal fade" data-backdrop="static">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h4 style="color: #0066b3">Ooops!</h4>
-                <p style="color: #0066b3">Please fill up properly!</p>
-                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
-                    Try Again
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="myModalWrongMerCreate" class="modal fade">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <p id="wrongThisMerCreate"></p>
-                <button class="btn btn-success" data-dismiss="modal">
-                    Correct it!
-                </button>
             </div>
         </div>
     </div>
