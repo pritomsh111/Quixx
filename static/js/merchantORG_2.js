@@ -506,8 +506,6 @@ var addMerchant = () => {
 	}
 	if (v2() == 1 && v1() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1) {
 		document.getElementById('MERCHANT_CREATION').disabled = true;
-		//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-		//$(".container").show();
 		$.ajax
 			({
 				type: "POST",
@@ -712,7 +710,7 @@ $('#dtBasicExample2').on('click', '.approveIT', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-ok').click(function () {
+$('.btn-okx').click(function () {
 
 	$("#sure").html("Please wait!");
 	document.getElementById('modalCancel1').disabled = true;
@@ -999,28 +997,34 @@ $('.btn-ok-update').click(function () {
 			});
 	}
 });
+
+
+// Complete Payment
 var orgx, merx;
 $('#dtBasicExampleActivate').on('click', '.btn-taka', function () {
+
 	orgx = $(this).attr('id');
 	merx = $(this).attr('name');
 	$t = $(this);
 
-	$('#tick2taka').hide();
+	$('#tick').hide();
 	$(".circle-loader").removeClass("load-complete");
 
-	$("#sure2taka").html("Are you sure?");
-	$("#myModaltaka").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-});
-$('.btn-ok-taka').click(function () {
+	$("#sure").html("Are you sure?");
+	$("#modalForAllHeader").html("Complete Payment?");
+	$("#modalYesButton").html("Complete Payment?");
 
-	$("#sure2taka").html("Please wait!");
-	document.getElementById('modalCanceltaka').disabled = true;
-	document.getElementById('modalApprovetaka').disabled = true;
+	$("#myModalForAll").modal('show');
+
+});
+$('.btn-okPayment').click(function (e) {
+	e.stopPropagation();
+	e.stopImmediatePropagation();
+	$("#sure").html("Please wait!");
+	document.getElementById('modalCancelButton').disabled = true;
+	document.getElementById('modalYesButton').disabled = true;
 	$.ajax
 		({
-			async: true,
 			type: "PUT",
 			url: urlForAll + "orgHead/payment/comlete/" + orgx + "/" + merx,
 			headers:
@@ -1030,50 +1034,59 @@ $('.btn-ok-taka').click(function () {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				$("#sure2taka").html("Please wait!");
+				$("#sure").html("Please wait!");
 				setTimeout(function () {
 					$(".circle-loader").addClass("load-complete");
 
-					$('#tick2taka').show();
+					$('#tick').show();
 
-					$("#sure2taka").html("Payment Complete!");
+					$("#sure").html("Payment Complete!");
 				}, 900);
 
 				setTimeout(function () {
-					$("#myModaltaka").modal('hide');
-					document.getElementById('modalCanceltaka').disabled = false;
-					document.getElementById('modalApprovetaka').disabled = false;
+					$("#myModalForAll").modal('hide');
+
+					document.getElementById('modalCancelButton').disabled = false;
+					document.getElementById('modalYesButton').disabled = false;
 				}, 2000);
 			},
 			error: function (data) {
+				document.getElementById('modalCancelButton').disabled = false;
+				document.getElementById('modalYesButton').disabled = false;
 
-				document.getElementById('modalCanceltaka').disabled = false;
-				document.getElementById('modalApprovetaka').disabled = false;
-				$('#myModaltaka').modal('hide');
-				document.getElementById('wrongTaka').innerHTML = data.responseJSON.errorMessage;
-				$('#myModataka').modal('show');
+				$('#myModalForAll').modal('hide');
+				document.getElementById('error').innerHTML = data.responseJSON.errorMessage;
+				document.getElementById('errorButton').innerHTML = "Sorry";
+				$('#myModalError').modal('show');
 			}
 		});
 });
 
+
 $('#dtBasicExampleActivate').on('click', '.btn-DisableOTP', function () {
 	merId = $(this).attr('id');
 	$t = $(this);
-	$('#tickActivate2').hide();
-	$(".circle-loader").removeClass("load-complete");
-	$("#sureActivate2").html("Are you sure?");
-	$("#myModalMerActivate2").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-});
-$('.btn-okActivate2').click(function () {
 
-	$("#sureActivate").html("Please wait!");
-	document.getElementById('modalCancel1Activate2').disabled = true;
-	document.getElementById('modalApprove1Activate2').disabled = true;
+	$('#tick').hide();
+	$(".circle-loader").removeClass("load-complete");
+
+	$("#sure").html("Are you sure?");
+	$("#modalForAllHeader").html("Disable OTP?");
+	$("#modalYesButton").html("Disable");
+
+	$("#myModalForAll").modal('show');
+});
+$('.btn-okActivate2').click(function (e) {
+
+	e.stopPropagation();
+	e.stopImmediatePropagation();
+	$("#sure").html("Please wait!");
+
+	document.getElementById('modalCancelButton').disabled = true;
+	document.getElementById('modalYesButton').disabled = true;
+
 	$.ajax
 		({
-			async: true,
 			type: "PUT",
 			url: urlForAll + "otp/disable/disable/" + merId,
 
@@ -1084,17 +1097,17 @@ $('.btn-okActivate2').click(function () {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				$("#sureActivate2").html("Please wait!");
+				$("#sure").html("Please wait!");
 				setTimeout(function () {
 					$(".circle-loader").addClass("load-complete");
 
-					$('#tickActivate2').show();
+					$('#tick').show();
 
-					$("#sureActivate2").html("Merchant's OTP Disabled!");
+					$("#sure").html("Merchant's OTP Disabled!");
 				}, 900);
 
 				setTimeout(function () {
-					$("#myModalMerActivate2").modal('hide');
+					$("#myModalForAll").modal('hide');
 					var table = $('#dtBasicExampleActivate').DataTable();
 					var btn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP" disabled>Disable OTP</button>';
 					var btn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>';
@@ -1102,16 +1115,19 @@ $('.btn-okActivate2').click(function () {
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btn22);
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(btn11);
 
-					document.getElementById('modalCancel1Activate2').disabled = false;
-					document.getElementById('modalApprove1Activate2').disabled = false;
+					document.getElementById('modalCancelButton').disabled = false;
+					document.getElementById('modalYesButton').disabled = false;
 				}, 2000);
 			},
 			error: function (data) {
 
-				document.getElementById('modalCancel1Activate2').disabled = false;
-				document.getElementById('modalApprove1Activate2').disabled = false;
-				$('#myModalMerActivate2').modal('hide');
-				$('#myModal2').modal('show');
+				document.getElementById('modalCancelButton').disabled = false;
+				document.getElementById('modalYesButton').disabled = false;
+
+				$('#myModalForAll').modal('hide');
+				document.getElementById('error').innerHTML = data.responseJSON.errorMessage;
+				document.getElementById('errorButton').innerHTML = "Sorry";
+				$('#myModalError').modal('show');
 			}
 		});
 });

@@ -214,7 +214,7 @@
         </div>
     </div>
 </div>
-<div
+<!-- <div
     class="modal fade"
     id="myModalMer"
     tabindex="-1"
@@ -463,7 +463,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div
     class="modal fade"
     id="myModalMerUpdate"
@@ -758,6 +758,7 @@
         </div>
     </div>
 </div>
+<!-- Type Modal - 1,  Click the button, then modal tick done-->
 <div
     class="modal fade"
     id="myModal"
@@ -778,9 +779,10 @@
         </div>
     </div>
 </div>
+<!-- Type Modal - 2,  Click the button, then 'are you sure', then done-->
 <div
     class="modal fade"
-    id="myModaltaka"
+    id="myModalForAll"
     tabindex="-1"
     role="dialog"
     aria-labelledby="myModalLabel"
@@ -796,22 +798,20 @@
                     data-dismiss="modal"
                     aria-hidden="true"
                 ></button>
-                <h4 class="modal-title" style="color: #0066b3" id="myModalLabel">
-                    Complete Payment?
-                </h4>
+                <h4 class="modal-title" style="color: #0066b3" id="modalForAllHeader"></h4>
             </div>
             <div class="modal-body" style="text-align: center">
                 <div class="circle-loader" style="text-align: center">
-                    <div class="checkmark draw" id="tick2taka"></div>
+                    <div class="checkmark draw" id="tick"></div>
                 </div>
-                <h4 id="sure2taka" style="color: #0066b3"></h4>
+                <h4 id="sure" style="color: #0066b3"></h4>
             </div>
             <div class="modal-footer">
                 <button
                     type="button"
                     style="color: #0066b3"
-                    class="btn btn-outline btn-default canceltaka"
-                    id="modalCanceltaka"
+                    class="btn btn-outline btn-default btn-cancel"
+                    id="modalCancelButton"
                     data-dismiss="modal"
                 >
                     Cancel
@@ -819,21 +819,25 @@
                 <button
                     type="button"
                     style="color: #0066b3"
-                    class="btn btn-outline btn-info btn-ok-taka"
-                    id="modalApprovetaka"
-                >
-                    Complete Payment
-                </button>
+                    class="btn btn-outline btn-info btn-ok .btn-okActivate2"
+                    id="modalYesButton"
+                ></button>
             </div>
         </div>
     </div>
 </div>
-<div id="myModa" class="modal fade" data-backdrop="static">
+<!-- Type Modal 3: Server Error -->
+<div id="myModalError" class="modal fade" data-backdrop="static">
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
             <div class="modal-body text-center">
-                <h3 style="color: #0066b3" id="wrong"></h3>
-                <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                <h3 style="color: #0066b3" id="error"></h3>
+                <button
+                    class="btn btn-outline btn-danger btn-error"
+                    id="errorButton"
+                    style="color: #0066b3"
+                    data-dismiss="modal"
+                >
                     Try Again
                 </button>
             </div>
