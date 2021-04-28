@@ -593,6 +593,21 @@ function modalTickDone(message) {
 	}, 900);
 }
 
+function modalError(data) {
+
+	document.getElementById('modalCancelButton').disabled = false;
+	var ob = Object.keys(data);
+	if (ob[17] == "responseJSON") {
+		document.getElementById('error').innerHTML = data.responseJSON.errorMessage;
+	}
+	else {
+		document.getElementById('error').innerHTML = "Something Went Wrong!";
+	}
+	$('#myModalForAll').modal('hide');
+	document.getElementById('errorButton').innerHTML = "Sorry";
+	$('#myModalError').modal('show');
+}
+
 
 $('#dtBasicExampleActivate').on('click', '.btn-Disable', function () {
 	modalButtonHide();
@@ -643,13 +658,8 @@ $('.btn-okActivate').click(function () {
 				}, 2000);
 			},
 			error: function (data) {
-				document.getElementById('modalCancelButton').disabled = false;
 				document.getElementById('modalApprove1Activate').disabled = false;
-
-				$('#myModalForAll').modal('hide');
-				document.getElementById('error').innerHTML = data.responseJSON.errorMessage;
-				document.getElementById('errorButton').innerHTML = "Sorry";
-				$('#myModalError').modal('show');
+				modalError(data);
 			}
 		});
 });
@@ -703,38 +713,31 @@ $('.btn-okDisable').click(function () {
 				}, 2000);
 			},
 			error: function (data) {
-				document.getElementById('modalCancelButton').disabled = false;
 				document.getElementById('modalApprove1Disable').disabled = false;
-
-				$('#myModalForAll').modal('hide');
-				document.getElementById('error').innerHTML = data.responseJSON.errorMessage;
-				document.getElementById('errorButton').innerHTML = "Sorry";
-				$('#myModalError').modal('show');
+				modalError(data);
 			}
 		});
 });
 
 $('#dtBasicExample2').on('click', '.approveIT', function () {
+	modalButtonHide();
 	merId = $(this).attr('id');
 	orgId = $(this).attr('name');
 	$t = $(this);
 
-	$('#tick').hide();
-	$(".circle-loader").removeClass("load-complete");
+	$('.btn-ok').show();
 
-	$("#sure").html("Are you sure?");
-	$("#myModalMer").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+	$("#modalForAllHeader").html("Approve Merchant?");
+
+	modalStart();
 });
-$('.btn-okx').click(function () {
+$('.btn-ok').click(function () {
 
 	$("#sure").html("Please wait!");
-	document.getElementById('modalCancel1').disabled = true;
+	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalApprove1').disabled = true;
 	$.ajax
 		({
-			async: true,
 			type: "GET",
 			url: urlForAll + "orgHead/merchant/" + merId + "/" + orgId,
 
@@ -745,14 +748,7 @@ $('.btn-okx').click(function () {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				$("#sure").html("Please wait!");
-				setTimeout(function () {
-					$(".circle-loader").addClass("load-complete");
-
-					$('#tick').show();
-
-					$("#sure").html("Merchant Approved!");
-				}, 900);
+				modalTickDone("Merchant Approved!");
 
 				setTimeout(function () {
 					$("#myModalMer").modal('hide');
@@ -766,23 +762,14 @@ $('.btn-okx').click(function () {
 						.data()
 						.length;
 
-					document.getElementById('modalCancel1').disabled = false;
+					document.getElementById('modalCancelButton').disabled = false;
 					document.getElementById('modalApprove1').disabled = false;
 				}, 2000);
 			},
 			error: function (data) {
 
-				document.getElementById('modalCancel1').disabled = false;
 				document.getElementById('modalApprove1').disabled = false;
-				$('#myModalMer').modal('hide');
-				var ob = Object.keys(data);
-				if (ob[17] == "responseJSON") {
-					$("#errorFix").html(data.responseJSON.errorMessage);
-				}
-				else {
-					$("#errorFix").html("Something Went Wrong!");
-				}
-				$('#myModal2XYZ').modal('show');
+				modalError(data);
 			}
 		});
 });
