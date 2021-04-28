@@ -903,29 +903,20 @@ function fillupFields() {
 					if (!testingNumber) {
 						$('.btn-ok-updateCriteria').attr('disabled', false);
 						$('.cancelMod').prop('disabled', false);
-						$("#errorFix").html(`"${i}" Must Be A Number!`);
-						// $('#myModalMerUpdateCriteria').modal('hide');
-						$('#myModal2XYZ').modal('show');
-
-
-						document.getElementById('error').innerHTML = message;
+						document.getElementById('error').innerHTML = `"${i}" Must Be A Number!`;
 						document.getElementById('errorButton').innerHTML = "Correct It";
 						$('#myModalError').modal('show');
 						flagger = 0;
 						document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
 						break;
 					}
-
 					let testingNumberLength = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value.match(/\d/g);
 					if (testingNumberLength.length > 5) {
-
 						$('.btn-ok-updateCriteria').attr('disabled', false);
-						$('.cancelModCriteria').prop('disabled', false);
-
-						$("#errorFix").html(`"${i}" Must Be Less Than 5 Digits!`);
-						// $('#myModalMerUpdateCriteria').modal('hide');
-						$('#myModal2XYZ').modal('show');
-
+						$('.cancelMod').prop('disabled', false);
+						document.getElementById('error').innerHTML = `"${i}" Must Be Less Than 5 Digits!`;
+						document.getElementById('errorButton').innerHTML = "Correct It";
+						$('#myModalError').modal('show');
 						flagger = 0;
 						document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
 						break;
@@ -934,7 +925,7 @@ function fillupFields() {
 				obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
 			}
 			if (!flagger) {
-				document.getElementById("myModalMerUpdateCriteria").style.overflowY = "auto";
+				document.getElementById("myModalFormHeader").style.overflowY = "auto";
 				break;
 			}
 			array.push(obj);
@@ -952,15 +943,7 @@ function fillupFields() {
 		// });
 		console.log(array);
 		if (flagger) {
-			document.getElementById('modalApproveCriteria').disabled = true;
-			document.getElementById('modalCancelCriteria').disabled = true;
-			$('.btn-ok-updateCriteria').attr('disabled', true);
-			$('.cancelModCriteria').prop('disabled', true);
-			$("#formUpdateCriteria").hide();
-			$(".circle-loader").removeClass("load-complete");
-			$(".circle-loader").show();
-			$("#sure3Criteria").html("Please wait!");
-			$("#sure3Criteria").show();
+			modalFormBeforeSuccess();
 			$.ajax
 				({
 					type: criteriaEnabledMer ? "PUT" : "POST",
@@ -983,13 +966,13 @@ function fillupFields() {
 						setTimeout(function () {
 							$(".circle-loader").addClass("load-complete");
 
-							$('#tick3Criteria').show();
+							$('#tickForm').show();
 
-							$("#sure3Criteria").html("Merchant's Criteria Updated!");
+							$("#sureForm").html("Merchant's Criteria Updated!");
 						}, 1500);
 
 						setTimeout(function () {
-							$("#myModalMerUpdateCriteria").modal('hide');
+							$("#myModalForm").modal('hide');
 							$('.btn-ok-updateCriteria').attr('disabled', false);
 							$('.cancelModCriteria').prop('disabled', false);
 						}, 3000);
@@ -997,18 +980,8 @@ function fillupFields() {
 					error: function (data) {
 						$('.btn-ok-updateCriteria').attr('disabled', false);
 						$('.cancelModCriteria').prop('disabled', false);
-
-						var ob = Object.keys(data);
-						if (ob[17] == "responseJSON") {
-							$("#errorFix").html(data.responseJSON.errorMessage);
-						}
-						else {
-							$("#errorFix").html("Something Went Wrong!");
-						}
-						$('#myModalMerUpdateCriteria').modal('hide');
-						setTimeout(() => {
-							$('#myModal2XYZ').modal('show');
-						}, 0);
+						$('#myModalForm').modal('hide');
+						modalError(data);
 					}
 				});
 		}
@@ -1042,6 +1015,7 @@ function modalTickDone(message) {
 	}, 900);
 }
 function modalError(data) {
+	$('#myModalForAll').modal('hide');
 	document.getElementById('modalCancelButton').disabled = false;
 	var ob = Object.keys(data);
 	if (ob[17] == "responseJSON") {
@@ -1050,7 +1024,6 @@ function modalError(data) {
 	else {
 		document.getElementById('error').innerHTML = "Something Went Wrong!";
 	}
-	$('#myModalForAll').modal('hide');
 	document.getElementById('errorButton').innerHTML = "Sorry";
 	$('#myModalError').modal('show');
 }
