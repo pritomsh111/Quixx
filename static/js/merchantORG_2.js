@@ -93,7 +93,18 @@ var approvedMer = () => {
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
 		},
 		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
+		"oSearch": { "bSmart": false, "bRegex": true },
+		columns: [
+			{ title: "Merchant ID" },
+			{ title: "Company Name" },
+			{ title: "Owner Name" },
+			{ title: "Email" },
+			{ title: "Phone Number" },
+			{ title: "Business Field" },
+			{ title: "Per Delivery Cost" },
+			{ title: "Cash On Delivery Percentage" },
+			{ title: "Update Merchant" }
+		]
 	});
 	table.clear().draw();
 	$.ajax
@@ -379,27 +390,26 @@ var addMerchant = () => {
 		}
 	}
 	var v3 = () => {
-		if (email == "" || email == null) {
+
+		if (email === "" || email === null) {
 			document.getElementById('wrongThisMerCreate').innerHTML = "Email cannot be empty!";
 			$('#myModalWrongMerCreate').modal('show');
 			document.getElementById("email").focus();
 			return 0;
 		}
-		else if (email != "" || email != null) {
-			var em = email.split("@").length - 1;
-			var atposition = email.indexOf("@");
-			var dotposition = email.lastIndexOf(".");
-			if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length || em > 1) {
+		else if (email !== "" || email !== null) {
+			if (/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(
+				email
+			)) {
+				return 1;
+			}
+			else {
 				document.getElementById('wrongThisMerCreate').innerHTML = "Please enter a valid e-mail address!";
 				$('#myModalWrongMerCreate').modal('show');
 				document.getElementById("email").focus();
 				return 0;
 			}
-			else {
-				return 1;
-			}
 		}
-
 	}
 	var v4 = () => {
 		if (phone == "" || phone == null) {
