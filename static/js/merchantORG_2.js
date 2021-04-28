@@ -563,28 +563,58 @@ var addMerchant = () => {
 	}
 };
 
+
+function modalButtonHide() {
+	$('#modalYesButton').hide();
+	$('#modalApprove1').hide();
+	$('#modalApprove1Activate').hide();
+	$('#modalApprove1Disable').hide();
+	$('#modalApprove1Activate2').hide();
+	$('#modalApprove1Activate3').hide();
+}
+
+function modalStart() {
+	$('#tick').hide();
+	$(".circle-loader").removeClass("load-complete");
+
+	$("#sure").html("Are you sure?");
+
+	$("#myModalForAll").modal('show');
+}
+
+function modalTickDone(message) {
+	$("#sure").html("Please wait!");
+	setTimeout(function () {
+		$(".circle-loader").addClass("load-complete");
+
+		$('#tick').show();
+
+		$("#sure").html(message);
+	}, 900);
+}
+
+
 $('#dtBasicExampleActivate').on('click', '.btn-Disable', function () {
+	modalButtonHide();
+
 	merId = $(this).attr('id');
 	orgId = $(this).attr('name');
 	$t = $(this);
 
-	$('#tickActivate').hide();
-	$(".circle-loader").removeClass("load-complete");
-	$("#myModalLabelWork").html("Disable Merchant?");
+	$('.btn-okActivate').show();
 
-	$("#sureActivate").html("Are you sure?");
-	$("#myModalMerActivate").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+	$("#modalForAllHeader").html("Disable Merchant?");
+
+	modalStart();
+
 });
 $('.btn-okActivate').click(function () {
 
-	$("#sureActivate").html("Please wait!");
-	document.getElementById('modalCancel1Activate').disabled = true;
+	$("#sure").html("Please wait!");
+	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalApprove1Activate').disabled = true;
 	$.ajax
 		({
-			async: true,
 			type: "PUT",
 			url: urlForAll + "orgHead/disable/merchant/" + merId + "/" + orgId,
 
@@ -595,17 +625,9 @@ $('.btn-okActivate').click(function () {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				$("#sureActivate").html("Please wait!");
+				modalTickDone("Merchant Disabled!");
 				setTimeout(function () {
-					$(".circle-loader").addClass("load-complete");
-
-					$('#tickActivate').show();
-
-					$("#sureActivate").html("Merchant Disabled!");
-				}, 900);
-
-				setTimeout(function () {
-					$("#myModalMerActivate").modal('hide');
+					$("#myModalForAll").modal('hide');
 					var table = $('#dtBasicExampleActivate').DataTable();
 					table
 						.row($t.parents('tr'))
@@ -616,41 +638,42 @@ $('.btn-okActivate').click(function () {
 						.data()
 						.length;
 
-					document.getElementById('modalCancel1Activate').disabled = false;
+					document.getElementById('modalCancelButton').disabled = false;
 					document.getElementById('modalApprove1Activate').disabled = false;
 				}, 2000);
 			},
 			error: function (data) {
-
-				document.getElementById('modalCancel1Activate').disabled = false;
+				document.getElementById('modalCancelButton').disabled = false;
 				document.getElementById('modalApprove1Activate').disabled = false;
-				$('#myModalMerActivate').modal('hide');
-				$('#myModal2').modal('show');
+
+				$('#myModalForAll').modal('hide');
+				document.getElementById('error').innerHTML = data.responseJSON.errorMessage;
+				document.getElementById('errorButton').innerHTML = "Sorry";
+				$('#myModalError').modal('show');
 			}
 		});
 });
 
 $('#dtBasicExampleDisable').on('click', '.btn-Activate', function () {
+	modalButtonHide();
+
 	merId = $(this).attr('id');
 	orgId = $(this).attr('name');
 	$t = $(this);
 
-	$('#tickDisable').hide();
-	$(".circle-loader").removeClass("load-complete");
+	$('.btn-okDisable').show();
 
-	$("#sureDisable").html("Are you sure?");
-	$("#myModalMerDisable").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+	$("#modalForAllHeader").html("Activate Merchant?");
+
+	modalStart();
 });
 $('.btn-okDisable').click(function () {
 
 	$("#sureDisable").html("Please wait!");
-	document.getElementById('modalCancel1Disable').disabled = true;
+	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalApprove1Disable').disabled = true;
 	$.ajax
 		({
-			async: true,
 			type: "PUT",
 			url: urlForAll + "orgHead/activate/merchant/" + merId + "/" + orgId,
 
@@ -661,17 +684,10 @@ $('.btn-okDisable').click(function () {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				$("#sureDisable").html("Please wait!");
-				setTimeout(function () {
-					$(".circle-loader").addClass("load-complete");
-
-					$('#tickDisable').show();
-
-					$("#sureDisable").html("Merchant Activated!");
-				}, 900);
+				modalTickDone("Merchant Activated!");
 
 				setTimeout(function () {
-					$("#myModalMerDisable").modal('hide');
+					$("#myModalForAll").modal('hide');
 					var table = $('#dtBasicExampleDisable').DataTable();
 					table
 						.row($t.parents('tr'))
@@ -682,20 +698,21 @@ $('.btn-okDisable').click(function () {
 						.data()
 						.length;
 
-					document.getElementById('modalCancel1Disable').disabled = false;
+					document.getElementById('modalCancelButton').disabled = true;
 					document.getElementById('modalApprove1Disable').disabled = false;
 				}, 2000);
 			},
 			error: function (data) {
-
-				document.getElementById('modalCancel1Disable').disabled = false;
+				document.getElementById('modalCancelButton').disabled = false;
 				document.getElementById('modalApprove1Disable').disabled = false;
-				$('#myModalMerDisable').modal('hide');
-				$('#myModal2').modal('show');
+
+				$('#myModalForAll').modal('hide');
+				document.getElementById('error').innerHTML = data.responseJSON.errorMessage;
+				document.getElementById('errorButton').innerHTML = "Sorry";
+				$('#myModalError').modal('show');
 			}
 		});
 });
-
 
 $('#dtBasicExample2').on('click', '.approveIT', function () {
 	merId = $(this).attr('id');
