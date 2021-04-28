@@ -1,4 +1,5 @@
 var org_ID = localStorage.getItem('userID');
+var table;
 
 function merchantOrgButtonActive() {
 	document.getElementById('one').disabled = false;
@@ -21,21 +22,16 @@ function merchantOrgButtonActive() {
 	document.getElementById('five').disabled = false;
 }
 
-function merchantOrgTableHide() {
+function merchantOrgHide() {
 	$('#merchantCreate').hide();
 	$('#dtBasicExample').hide();
-	$('#dtBasicExample2').hide();
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
 	$('.a').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
 }
 
 var createMer = () => {
-	merchantOrgTableHide();
 	merchantOrgButtonActive();
+	merchantOrgHide();
+
 	document.getElementById('one').disabled = true;
 	document.getElementById('one').style.fontSize = '14.5px';
 
@@ -82,11 +78,11 @@ var invoice = (id) => {
 };
 var approvedMer = () => {
 	merchantOrgButtonActive();
-	merchantOrgTableHide();
+	merchantOrgHide();
 	document.getElementById('two').disabled = true;
 	document.getElementById('two').style.fontSize = '14.5px';
-
-	var table = $('#dtBasicExample').DataTable({
+	table ? table.destroy() : null;
+	table = $('#dtBasicExample').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -94,7 +90,7 @@ var approvedMer = () => {
 		},
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true },
-		columns: [
+		"columns": [
 			{ title: "Merchant ID" },
 			{ title: "Company Name" },
 			{ title: "Owner Name" },
@@ -103,7 +99,9 @@ var approvedMer = () => {
 			{ title: "Business Field" },
 			{ title: "Per Delivery Cost" },
 			{ title: "Cash On Delivery Percentage" },
-			{ title: "Update Merchant" }
+			{
+				orderable: false, title: "Update Merchant"
+			}
 		]
 	});
 	table.clear().draw();
@@ -148,29 +146,36 @@ var approvedMer = () => {
 
 var unApprovedMer = () => {
 	merchantOrgButtonActive();
-	merchantOrgTableHide();
+	merchantOrgHide();
 
 	document.getElementById('three').disabled = true;
 	document.getElementById('three').style.fontSize = '14.5px';
-
-	var table = $('#dtBasicExample2').DataTable({
+	table.destroy();
+	table = $('#dtBasicExample').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
 		},
 		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"columns": [
+			{ title: "Merchant ID" },
+			{ title: "Company Name" },
+			{ title: "Owner Name" },
+			{ title: "Email" },
+			{ title: "Phone Number" },
+			{ title: "Business Field" },
+			{ title: "Per Delivery Cost" },
+			{
+				orderable: false, title: "Approve Merchant?"
+			}
+		],
 	});
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			"url": urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
 			headers:
 			{
@@ -179,7 +184,7 @@ var unApprovedMer = () => {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			beforeSend: function () {
-				document.getElementById("dtBasicExample2_processing").style.display = "block";
+				document.getElementById("dtBasicExample_processing").style.display = "block";
 			},
 			success: function (data) {
 				document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + data.data.length;
@@ -199,12 +204,12 @@ var unApprovedMer = () => {
 				});
 			},
 			complete: function (data) {
-				document.getElementById("dtBasicExample2_processing").style.display = "none";
+				document.getElementById("dtBasicExample_processing").style.display = "none";
 			}
 		});
 	merchantOrgDatatableStyle();
-	$('#dtBasicExample2').show();
-	$('.b').show();
+	$('#dtBasicExample').show();
+	$('.a').show();
 };
 
 function merchantActivateFunction(dataGet, table) {
@@ -254,7 +259,7 @@ function merchantActivateFunction(dataGet, table) {
 var activated = () => {
 
 	merchantOrgButtonActive();
-	merchantOrgTableHide();
+	merchantOrgHide();
 	document.getElementById('four').style.fontSize = '14.5px';
 	document.getElementById('four').disabled = true;
 
@@ -304,7 +309,7 @@ var activated = () => {
 
 var disabledd = () => {
 	merchantOrgButtonActive();
-	merchantOrgTableHide();
+	merchantOrgHide();
 
 	document.getElementById('five').style.fontSize = '14.5px';
 	document.getElementById('five').disabled = true;
