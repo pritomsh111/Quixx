@@ -38,7 +38,6 @@ var createMer = () => {
 	merchantOrgButtonActive();
 	document.getElementById('one').disabled = true;
 	document.getElementById('one').style.fontSize = '14.5px';
-
 	$('#merchantCreate').show();
 };
 
@@ -70,8 +69,7 @@ var invoice = (id) => {
 				window.open(urlForAll + "reports/reportForMerchant/report/" + id.id + "/" + id.name, "_blank");
 			},
 			error: function (data) {
-				document.getElementById('wrongThisMerCreate').innerHTML = data.responseJSON.errorMessage;
-				$('#myModalWrongMerCreate').modal('show');
+				modalError(data);
 			}
 		});
 };
@@ -174,10 +172,7 @@ var unApprovedMer = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
+			type: "GET",
 			url: urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
 			headers:
 			{
@@ -770,7 +765,7 @@ $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 	modalForm();
 	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant Criteria?";
 
-	$("#formUpdate").show();
+	$("#formUpdateCriteria").show();
 	$("#modalApproveFormCriteria").show();
 	getData();
 });
@@ -1170,7 +1165,7 @@ $('.btn-ok').click(function () {
 				modalTickDone("Merchant Approved!");
 
 				setTimeout(function () {
-					$("#myModalMer").modal('hide');
+					$("#myModalForAll").modal('hide');
 					var table = $('#dtBasicExample2').DataTable();
 					table
 						.row($t.parents('tr'))
@@ -1186,7 +1181,6 @@ $('.btn-ok').click(function () {
 				}, 2000);
 			},
 			error: function (data) {
-
 				document.getElementById('modalApprove1').disabled = false;
 				modalError(data);
 			}
