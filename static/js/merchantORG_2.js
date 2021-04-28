@@ -773,6 +773,7 @@ $('.btn-ok').click(function () {
 			}
 		});
 });
+
 var arr;
 $('#dtBasicExample').on('click', '.updateIT', function () {
 	merId = $(this).attr('id');
