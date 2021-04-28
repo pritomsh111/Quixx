@@ -1,13 +1,16 @@
 var org_ID = localStorage.getItem('userID');
-var createMer = () => {
-	document.getElementById('one').disabled = true;
+
+function merchantOrgButtonActive() {
+	document.getElementById('one').disabled = false;
+	document.getElementById('one').style.fontSize = '13px';
+
 	document.getElementById('two').disabled = false;
-	document.getElementById('three').disabled = false;
-	document.getElementById('one').style.fontSize = '14.5px';
+	document.getElementById('two').innerHTML = 'Approved Merchant';
 	document.getElementById('two').style.fontSize = '13px';
+
+	document.getElementById('three').disabled = false;
 	document.getElementById('three').style.fontSize = '13px';
 	document.getElementById('three').innerHTML = 'Unapproved Merchant';
-	document.getElementById('two').innerHTML = 'Approved Merchant';
 
 	document.getElementById('four').style.fontSize = '13px';
 	document.getElementById('four').innerHTML = 'Activated Merchant';
@@ -16,7 +19,10 @@ var createMer = () => {
 	document.getElementById('five').style.fontSize = '13px';
 	document.getElementById('five').innerHTML = 'Disabled Merchant';
 	document.getElementById('five').disabled = false;
+}
 
+function merchantOrgTableHide() {
+	$('#merchantCreate').hide();
 	$('#dtBasicExample').hide();
 	$('#dtBasicExample2').hide();
 	$('#dtBasicExampleActivate').hide();
@@ -25,8 +31,31 @@ var createMer = () => {
 	$('.b').hide();
 	$('.c').hide();
 	$('.d').hide();
+}
+
+var createMer = () => {
+	merchantOrgTableHide();
+	merchantOrgButtonActive();
+	document.getElementById('one').disabled = true;
+	document.getElementById('one').style.fontSize = '14.5px';
+
 	$('#merchantCreate').show();
 };
+
+function merchantOrgDatatableStyle() {
+	$('.dataTables_filter input[type="search"]').
+		attr('placeholder', 'Search anything!').
+		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+
+	$('.dataTables_filter input[type="search"]').
+		attr('class', 'btn btn-round').
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+
+	$('.dataTables_length select').
+		attr('class', 'btn btn-round').
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+
+}
 var invoice = (id) => {
 	$.ajax
 		({
@@ -53,31 +82,11 @@ var invoice = (id) => {
 		});
 };
 var approvedMer = () => {
+	merchantOrgTableHide();
+	merchantOrgButtonActive();
 	document.getElementById('two').disabled = true;
-	document.getElementById('one').disabled = false;
-	document.getElementById('three').disabled = false;
 	document.getElementById('two').style.fontSize = '14.5px';
-	document.getElementById('one').style.fontSize = '13px';
-	document.getElementById('three').style.fontSize = '13px';
-	document.getElementById('three').innerHTML = 'Unapproved Merchant';
 
-	document.getElementById('four').style.fontSize = '13px';
-	document.getElementById('four').innerHTML = 'Activated Merchant';
-	document.getElementById('four').disabled = false;
-
-	document.getElementById('five').style.fontSize = '13px';
-	document.getElementById('five').innerHTML = 'Disabled Merchant';
-	document.getElementById('five').disabled = false;
-
-	$('#merchantCreate').hide();
-	$('#dtBasicExample2').hide();
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
 	var table = $('#dtBasicExample').DataTable({
 		"processing": true,
 		'language': {
@@ -90,12 +99,7 @@ var approvedMer = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			"url": urlForAll + "orgHead/merchant/approved/details/" + org_ID,
 			headers:
 			{
@@ -108,8 +112,6 @@ var approvedMer = () => {
 			},
 			success: function (data) {
 				document.getElementById('two').innerHTML = 'Approved Merchant: ' + data.data.length;
-
-				var trHTML = '';
 				$.each(data.data, function (i, item) {
 					var table_rows = '<tr><td>'
 						+ data.data[i].merchant_id + '</td><td>'
@@ -128,17 +130,6 @@ var approvedMer = () => {
 				document.getElementById("dtBasicExample_processing").style.display = "none";
 			}
 		});
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('#dtBasicExample').show();
 	$('.a').show();
