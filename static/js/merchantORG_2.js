@@ -538,7 +538,7 @@ var addMerchant = () => {
 	}
 };
 
-// Form 
+// Form
 
 function modalForm() {
 	$("#formUpdate").hide();
@@ -546,20 +546,23 @@ function modalForm() {
 
 	$('#tickForm').hide();
 	$("#circleLoadForm").hide();
+	$("#sureForm").hide();
 
 	$("#modalApproveForm").hide();
 	$("#modalApproveCriteria").hide();
 
-	$("#sureForm").hide();
 	$("#myModalForm").modal('show');
 }
 
 function modalFormBeforeSuccess() {
 	document.getElementById('modalApproveForm').disabled = true;
+	document.getElementById('modalApproveCriteria').disabled = true;
 	document.getElementById('modalCancelForm').disabled = true;
 	$('.btn-ok-update').attr('disabled', true);
 	$('.cancelMod').prop('disabled', true);
+	$('.btn-ok-updateCriteria').prop('disabled', true);
 	$("#formUpdate").hide();
+	$("#formUpdateCriteria").hide();
 	$(".circle-loader").removeClass("load-complete");
 	$(".circle-loader").show();
 	$("#sureForm").html("Please wait!");
@@ -764,11 +767,11 @@ $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 	criteriaMer = $(this).attr('id');
 	$t = $(this);
 
-	$("#formUpdateCriteria").show();
-	$('#tick3Criteria').hide();
-	$("#circleLoad3Criteria").hide();
-	$("#sure3Criteria").hide();
-	$("#myModalMerUpdateCriteria").modal('show');
+	modalForm();
+	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant Criteria?";
+
+	$("#formUpdate").show();
+	$("#modalApproveFormCriteria").show();
 	getData();
 });
 
@@ -802,7 +805,6 @@ var fillInputDetails = (types, values = undefined) => {
 }
 
 function lockElse(classNameInput, event) {
-
 	Array.from(document.querySelectorAll(`#setCriteriaDetails .flexIt2 input:not(input[class*=${classNameInput}])`))
 		.map(item => {
 			if (event.target.classList.item(1).includes("dayType") || event.target.classList.item(1).includes("productCity")) {
@@ -899,14 +901,16 @@ function fillupFields() {
 					console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
 					let testingNumber = /^\d+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
 					if (!testingNumber) {
-
 						$('.btn-ok-updateCriteria').attr('disabled', false);
-						$('.cancelModCriteria').prop('disabled', false);
-
+						$('.cancelMod').prop('disabled', false);
 						$("#errorFix").html(`"${i}" Must Be A Number!`);
 						// $('#myModalMerUpdateCriteria').modal('hide');
 						$('#myModal2XYZ').modal('show');
 
+
+						document.getElementById('error').innerHTML = message;
+						document.getElementById('errorButton').innerHTML = "Correct It";
+						$('#myModalError').modal('show');
 						flagger = 0;
 						document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).focus();
 						break;
