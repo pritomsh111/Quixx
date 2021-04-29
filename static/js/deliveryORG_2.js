@@ -3984,6 +3984,7 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 								console.log(value, typeList[typ]);
 								if (value === typeList[typ]) {
 									j = ind;
+									document.getElementById('delivery_cost_update').disabled = true;
 									j++;
 								}
 								var option = new Option(value, value);
@@ -4004,6 +4005,7 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 	else {
 		$('.criteriaU')
 			.hide();
+		document.getElementById('delivery_cost_update').disabled = false;
 
 		$('#dayTypeU')
 			.empty();
@@ -4097,10 +4099,11 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	del_id = arr[0];
 	creator_ID = arr[1];
 	thikKoro(arr[8], arr[11], arr[26]);
+	document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
+	document.getElementById('delivery_cost_update').disabled = false;
 	thikKoroCriteria(creator_ID, arr[29], arr[27], arr[28], arr[30], arr[31]);
 	//console.log(arr);
 	modalCostPerMerchant = arr[2];
-	document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
 	setDynSelecChangeForUpdate();
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];

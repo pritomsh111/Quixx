@@ -180,7 +180,34 @@
                                     placeholder="1000"
                                 >
                                 <br>
-                                Delivery Charge:
+                                <div class="criteria">
+                                    <div id="productType1">
+                                        Product Type Criteria:
+                                        <select class="custom-select col-lg-12 btn" id="productType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                        <br>
+                                    </div>
+                                    <div id="productWeight1">
+                                        Product Weight Criteria [KG]:
+                                        <select class="custom-select col-lg-12 btn" id="productWeight" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                        <br>
+                                    </div>
+                                    <div id="dayType1">
+                                        Delivery Day Criteria:
+                                        <select class="custom-select col-lg-12 btn" id="dayType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                        <br>
+                                    </div>
+                                    <div id="productDistance1">
+                                        Deilvery Distance Criteria [KM]:
+                                        <select class="custom-select col-lg-12 btn" id="productDistance" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                        <br>
+                                    </div>
+                                    <div id="productCity1">
+                                        Delivery City Criteria:
+                                        <select class="custom-select col-lg-12 btn" id="productCity" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                        <br>
+                                    </div>
+                                </div>
+                                Delivery Charge [BDT]:
                                 <input
                                     type="text"
                                     style="color: #0066b3"
@@ -229,7 +256,7 @@
                                 <input type="hidden" id="longi" name="longi">
                                 <input type="hidden" id="des_lat" name="des_lat">
                                 <input type="hidden" id="des_longi" name="des_longi">
-                                <h5 style="text-align:center;color:#0066b3;margin-top:35px;">District</h5>
+                                <h5 style="text-align:center;color:#0066b3;margin-top:1.4rempx;">District</h5>
                                 <select class="custom-select col-lg-12 btn" id="managers" style="color:#0066b3;text-align-last:center;height: 46px;"></select>
                                 <h5 style="text-align:center;color:#0066b3;margin-top:35px;">Receiver's Area: Make Sure You Give The Correct Area Otherwise Your Delivery Will Not Count</h5>
                                 <select class="custom-select col-lg-12 btn" id="managers_2" style="color:#0066b3;text-align-last:center;height: 46px;"></select>
@@ -273,9 +300,11 @@
                             <br>
                             <br>
                             <br>
+                            <br>
+                            <br>
                             <button
                                 class="btn btn-outline btn-round"
-                                style="background: #ffffd4; margin-top: 20px"
+                                style="background: #ffffd4; margin-top: 2.4rem;"
                                 type="button"
                                 id="createDelivery"
                             >
@@ -328,28 +357,25 @@
                                         &nbsp;&nbsp;Cancel Excel
                                         <h4 id="fileNamex" style="margin-top: 8px"></h4>
                                     </label>
-                                    <center>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            onclick="mapxx()"
-                                            style="background: #fff; margin-top: 10px"
-                                            type="button"
-                                        >
-                                            <i class="fa fa-map-marker fa-x" aria-hidden="true"></i>
-                                            <center>Receiver's Location Finder</center>
-                                        </button>
-                                    </center>
                                     <br>
-                                    <center>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #fbfcfd; margin-top: 10px"
-                                            type="button"
-                                            id="createDeliverywithExcel"
-                                        >
-                                            <center>Create Delivery</center>
-                                        </button>
-                                    </center>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        onclick="mapxx()"
+                                        style="background: #fff; margin-top: 10px"
+                                        type="button"
+                                    >
+                                        <i class="fa fa-map-marker fa-x" aria-hidden="true"></i>
+                                        Receiver's Location Finder
+                                    </button>
+                                    <br>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #fbfcfd; margin-top: 10px"
+                                        type="button"
+                                        id="createDeliverywithExcel"
+                                    >
+                                        Create Delivery
+                                    </button>
                                     <br>
                                 </div>
                             </form>
