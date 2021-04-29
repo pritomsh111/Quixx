@@ -213,6 +213,7 @@ async function criteriaInfo(value) {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
+					console.log(data);
 					let naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
 					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
 					Object.keys(data.data).map((types, index) => {
@@ -238,7 +239,7 @@ async function criteriaInfo(value) {
 			});
 		// $("#delivery_charge").attr('placeholder', "1000");
 		// document.getElementById('delivery_charge').value = "";
-		document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:<br>**If you fill up the criteria above, this charge wil not be counted! But give atleast some value for future purposes";
+		// document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:<br>**If you fill up the criteria above, this charge wil not be counted! But give atleast some value for future purposes";
 	}
 	else {
 		$('.criteria')
