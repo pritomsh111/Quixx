@@ -464,11 +464,12 @@ var addMerchant = () => {
 		}
 	}
 	var v6 = () => {
-		if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
-			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than 0!", "per_delivery_cost");
-			return 0;
-		}
-		else if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
+		// if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
+		// 	modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than 0!", "per_delivery_cost");
+		// 	return 0;
+		// }
+		// else
+		if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
 			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be a number!", "per_delivery_cost");
 			return 0;
 		}
@@ -667,11 +668,11 @@ $('.btn-ok-update').click(function () {
 		}
 	}
 	var v6 = () => {
-		if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
-			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than 0!", "per_cost");
-			return 0;
-		}
-		else if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
+		// if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
+		// 	modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than 0!", "per_cost");
+		// 	return 0;
+		// }
+		if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
 			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be a number!", "per_cost");
 			return 0;
 		}
