@@ -604,6 +604,13 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var product_name = String(document.getElementById('product_name').value);
 	var product_qty = String(document.getElementById('product_qty').value);
 	var product_cost = document.getElementById('product_cost').value;
+	var delivery_charge = document.getElementById('delivery_charge').value;
+	var deliveryCity = String(document.getElementById('managers').value);
+	var dayType = document.getElementById('dayType').value;
+	var productType = document.getElementById('productType').value;
+	var distance = document.getElementById('productDistance')?.value;
+	var weight = document.getElementById('productWeight').value;
+	var cityType = document.getElementById('productCity').value;
 	var v1 = () => {
 		if (pickup_time == "" || pickup_time == null) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give a Pickup Time!";
@@ -766,9 +773,35 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 			return 1;
 		}
 	}
+	var vDC = () => {
+		let en = document.getElementById('delivery_charge').disabled;
+		if (!en) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("delivery_charge").focus();
+			return 0;
+		}
+
+		// if (parseInt(delivery_charge) <= 0 || delivery_charge.charAt(0) == 0) {
+		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than 0!";
+		// 	$('#myModalWrongDeliveryCreate').modal('show');
+		// 	document.getElementById("delivery_charge").focus();
+		// 	return 0;
+		// }
+		// else
+		if (isNaN(delivery_charge) == true || delivery_charge == "" || !/\D/.test(delivery_charge) == false) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be a number!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("delivery_charge").focus();
+			return 0;
+		}
+		else if (!/\D/.test(delivery_charge) == true) {
+			return 1;
+		}
+	}
 	var datap;
 
-	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v4() == 1 && v12() == 1) {
+	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && vDC() == 1 && v4() == 1 && v12() == 1) {
 		document.getElementById('createDelivery').disabled = true;
 		$(".circle-loader").show();
 		datap = JSON.stringify
@@ -791,7 +824,14 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"product_qty": product_qty,
 				"pickup_time": pickup_time,
 				"delivery_note": delivery_note,
-				"delivery_area": area
+				"delivery_area": area,
+				"delivery_charge": delivery_charge,
+				"delivery_city": deliveryCity,
+				"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+				"delivery_product_type": productType ? productType : "delivery_product_type_na",
+				"delivery_weight": weight ? weight : "delivery_weight_na",
+				"delivery_distance": distance ? distance : "delivery_distance_na",
+				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 			});
 		$.ajax
 			({
@@ -805,6 +845,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
+					console.log(data);
 					$('#tickD2').hide();
 					$(".circle-loader").removeClass("load-complete");
 					$("#sureD2").html("");
@@ -829,7 +870,6 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 					}
 				},
 				error: function (data) {
-					console.log(data);
 					document.getElementById('createDelivery').disabled = false;
 					//console.log(data.responseJSON.errorMessage);
 					//console.log(data);

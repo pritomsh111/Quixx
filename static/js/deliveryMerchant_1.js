@@ -105,7 +105,7 @@ $.ajax
 			}
 		}
 	});
-
+var merchantPerDeliveryCost = 0;
 var criteriaMap = new Map();
 var naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
 var naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
@@ -213,6 +213,54 @@ async function criteriaInfo(value) {
 	}
 }
 criteriaInfo(localStorage.getItem('userID'));
+naValuesType.map(item => {
+	document.querySelector(`select#${item}`).addEventListener('change', function (e) {
+		if (item !== "dayType" && item !== "productCity") {
+			let obj = criteriaMap.get(item);
+			// console.log(obj[e.target.value]);
+			if (/^\d+$/.test(obj[e.target.value])) {
+				document.getElementById('delivery_charge').value = obj[e.target.value];
+				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+			}
+			else {
+				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
+				document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
+			}
+		}
+		else {
+			console.log("Hello");
+			let objDayType = criteriaMap.get("dayType");
+			let objProductCity = criteriaMap.get("productCity");
+			let dayType = document.querySelector(`select#dayType`).value;
+			let productCity = document.querySelector(`select#productCity`).value;
+			console.log(dayType, productCity);
+
+			console.log(objDayType?.[dayType], objProductCity?.[productCity]);
+
+			console.log((/^\d+$/.test(objDayType?.[dayType])));
+			console.log((/^\d+$/.test(objProductCity?.[productCity])));
+
+			if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
+				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+				document.getElementById('delivery_charge').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
+			}
+			else {
+				if (objDayType?.[dayType] || objDayType?.[dayType] === 0) {
+					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_charge').value = objDayType[dayType];
+				}
+				else if (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) {
+					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_charge').value = objProductCity[productCity];
+				}
+				else {
+					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+					document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
+				}
+			}
+		}
+	});
+});
 
 
 var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
@@ -254,13 +302,14 @@ function initAutocomplete() {
 					document.getElementById('lat').value = data.data.sender_lat;
 					document.getElementById('longi').value = data.data.sender_longi;
 					document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
+					merchantPerDeliveryCost = data.data.per_delivery_cost;
 
 					document.getElementById('senLatLong').innerHTML =
 						`Sender's Address: ${data.data.sender_address}<br>
-				Sender's Name: ${data.data.sender_name}<br>
-				Sender's Phone Number: ${data.data.sender_phone_number}<br>
-				Sender's Lattitude: ${data.data.sender_lat}<br>
-				Sender's Longitude: ${data.data.sender_longi}<br>`;
+						Sender's Name: ${data.data.sender_name}<br>
+						Sender's Phone Number: ${data.data.sender_phone_number}<br>
+						Sender's Lattitude: ${data.data.sender_lat}<br>
+						Sender's Longitude: ${data.data.sender_longi}<br>`;
 				}
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
