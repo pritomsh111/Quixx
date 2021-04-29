@@ -4017,7 +4017,7 @@ function setDynSelecChangeForUpdate() {
 		document.querySelector(`select#${item}U`).addEventListener('change', function (e) {
 			if (item !== "dayType" && item !== "productCity") {
 				let obj = criteriaMapForDeliveryUpdate.get(item);
-				// console.log(obj[e.target.value]);
+				console.log(obj[e.target.value]);
 				if (/^\d+$/.test(obj[e.target.value])) {
 					document.getElementById('delivery_cost_update').value = obj[e.target.value];
 					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
@@ -4088,6 +4088,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	thikKoroCriteria(creator_ID, arr[29], arr[27], arr[28], arr[30], arr[31]);
 	//console.log(arr);
 	modalCostPerMerchant = arr[2];
+	document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
 	setDynSelecChangeForUpdate();
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];
