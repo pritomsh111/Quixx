@@ -4001,6 +4001,57 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 	}
 }
 
+function setDynSelecChangeForUpdate() {
+	naValuesType.map(item => {
+		document.querySelector(`select#${item}U`).addEventListener('change', function (e) {
+			if (item !== "dayType" && item !== "productCity") {
+				let obj = criteriaMap.get(item);
+				// console.log(obj[e.target.value]);
+				if (/^\d+$/.test(obj[e.target.value])) {
+					document.getElementById('delivery_charge').value = obj[e.target.value];
+					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+				}
+				else {
+					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
+					document.getElementById('delivery_charge').value = modalCostPerMerchant;
+				}
+			}
+			else {
+				console.log("Hello");
+				let objDayType = criteriaMap.get("dayType");
+				let objProductCity = criteriaMap.get("productCity");
+				let dayType = document.querySelector(`select#dayType`).value;
+				let productCity = document.querySelector(`select#productCity`).value;
+				console.log(dayType, productCity);
+	
+				console.log(objDayType?.[dayType], objProductCity?.[productCity]);
+	
+				console.log((/^\d+$/.test(objDayType?.[dayType])));
+				console.log((/^\d+$/.test(objProductCity?.[productCity])));
+	
+				if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
+					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_charge').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
+				}
+				else {
+					if (objDayType?.[dayType] || objDayType?.[dayType] === 0) {
+						document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+						document.getElementById('delivery_charge').value = objDayType[dayType];
+					}
+					else if (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) {
+						document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+						document.getElementById('delivery_charge').value = objProductCity[productCity];
+					}
+					else {
+						document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+						document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
+					}
+				}
+			}
+		});
+	});	
+}
+
 var wrongKeteDao = () => {
 	$('#wrongmaplocation').hide();
 	$('#wrongpercost').hide();
@@ -4014,7 +4065,7 @@ var wrongKeteDao = () => {
 	$('#wrongraddress').hide();
 }
 
-var l = 0;
+var l = 0, modalCostPerMerchant = 0;
 $('#dtBasicExampled').on('click', '.updateCh', function () {
 	id_delivery_update = $(this).attr('id');
 
@@ -4025,6 +4076,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	thikKoro(arr[8], arr[11], arr[26]);
 	thikKoroCriteria(creator_ID, arr[29], arr[27], arr[28], arr[30], arr[31]);
 	//console.log(arr);
+	modalCostPerMerchant = arr[2];
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];
 	document.getElementById('r_nameU').value = arr[4];
