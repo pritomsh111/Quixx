@@ -4020,10 +4020,10 @@ function setDynSelecChangeForUpdate() {
 				// console.log(obj[e.target.value]);
 				if (/^\d+$/.test(obj[e.target.value])) {
 					document.getElementById('delivery_cost_update').value = obj[e.target.value];
-					document.getElementById('D_charge').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 				}
 				else {
-					document.getElementById('D_charge').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
+					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
 					document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
 				}
 			}
@@ -4041,21 +4041,21 @@ function setDynSelecChangeForUpdate() {
 				console.log((/^\d+$/.test(objProductCity?.[productCity])));
 
 				if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
-					document.getElementById('delivery_cost_update').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 					document.getElementById('delivery_cost_update').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
 				}
 				else {
 					if (objDayType?.[dayType] || objDayType?.[dayType] === 0) {
-						document.getElementById('delivery_cost_update').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 						document.getElementById('delivery_cost_update').value = objDayType[dayType];
 					}
 					else if (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) {
-						document.getElementById('delivery_cost_update').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 						document.getElementById('delivery_cost_update').value = objProductCity[productCity];
 					}
 					else {
-						document.getElementById('delivery_cost_update').previousElementSibling.innerHTML = "Delivery Charge [BDT]:";
-						document.getElementById('delivery_cost_update').value = merchantPerDeliveryCost;
+						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
+						document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
 					}
 				}
 			}
