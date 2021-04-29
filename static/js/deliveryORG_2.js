@@ -176,6 +176,11 @@ document.getElementById('cancelUpload').addEventListener('click', function (e) {
 	$('.b').show();
 }*/
 
+naValuesType.map(item => {
+	document.querySelector(`select#${item}`).addEventListener('change', function (e) {
+		console.log(e.target.value);
+	});
+});
 
 $("#senderListExcel").change(function () {
 	var value = $(this).val();

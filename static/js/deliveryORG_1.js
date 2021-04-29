@@ -162,6 +162,9 @@ $(document).ready(async function () {
 });
 
 var criteriaMap = new Map();
+let naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
+let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
+
 async function criteriaInfo(value) {
 	let criteriaEnabled;
 	await $.ajax({
@@ -215,8 +218,9 @@ async function criteriaInfo(value) {
 				},
 				success: function (data) {
 					console.log(data);
-					let naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
-					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
+					if (criteriaMap.size) {
+						criteriaMap.clear();
+					}
 					Object.keys(data.data).map((types, index) => {
 						console.log(types);
 						let mapObj = {};
@@ -233,8 +237,9 @@ async function criteriaInfo(value) {
 								$(`#${types}`).append(option);
 
 							});
-							mapObj = { ...naValues[typ], ...data.data[types] };
+							mapObj = { [naValues[typ]]: naValues[typ], ...data.data[types] };
 							criteriaMap.set(types, mapObj);
+
 							console.log(mapObj, criteriaMap);
 
 							console.log(data.data[types]);
