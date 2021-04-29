@@ -775,13 +775,24 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	}
 	var vDC = () => {
 		let en = document.getElementById('delivery_charge').disabled;
+		console.log(en);
 		if (!en) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("delivery_charge").focus();
 			return 0;
 		}
-
+		let fl = false;
+		fl = Array.from(document.querySelectorAll(".criteria select")).some(item => item.value === delivery_charge);
+		console.log(fl);
+		if (!fl) {
+			if (delivery_charge !== merchantPerDeliveryCost) {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
+				$('#myModalWrongDeliveryCreate').modal('show');
+				document.getElementById("delivery_charge").focus();
+				return 0;
+			}
+		}
 		// if (parseInt(delivery_charge) <= 0 || delivery_charge.charAt(0) == 0) {
 		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than 0!";
 		// 	$('#myModalWrongDeliveryCreate').modal('show');
@@ -857,13 +868,13 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 
 							$('#tickD2').show();
 
-							$("#sureD2").html(`Delivery ID: ${data.data.delivery_Id} added! A message will be sent to your phone!`);
-						}, 1000);
+							$("#sureD2").html(`Delivery ID: ${data.data.delivery_Id} added! Thank You!`);
+						}, 500);
 						setTimeout(function () {
 
 							document.getElementById('createDelivery').disabled = false;
 							$("#myModalCreateD1").modal('hide');
-						}, 4500);
+						}, 2000);
 
 						document.getElementById('timepicker-12-hr').value = pickup_time;
 						recall();
