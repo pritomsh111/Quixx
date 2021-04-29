@@ -162,8 +162,8 @@ $(document).ready(async function () {
 });
 
 var criteriaMap = new Map();
-let naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
-let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
+var naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
+var naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
 
 async function criteriaInfo(value) {
 	let criteriaEnabled;

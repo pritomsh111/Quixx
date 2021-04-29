@@ -176,13 +176,20 @@ document.getElementById('cancelUpload').addEventListener('click', function (e) {
 	$('.b').show();
 }*/
 
+var merchantPerDeliveryCost;
 naValuesType.map(item => {
 	document.querySelector(`select#${item}`).addEventListener('change', function (e) {
 		if (item !== "dayType" && item !== "productCity") {
 			let obj = criteriaMap.get(item);
 			console.log(obj[e.target.value]);
-			document.getElementById('delivery_charge').value = obj[e.target.value];
-			document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+			if (/^\d+$/.test(obj[e.target.value])) {
+				document.getElementById('delivery_charge').value = obj[e.target.value];
+				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: Based on Criteria";
+			}
+			else {
+				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
+				document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
+			}
 		}
 	});
 });
@@ -259,6 +266,7 @@ $("#senderList").change(async function () {
 						document.getElementById('lat').value = data.data.sender_lat;
 						document.getElementById('longi').value = data.data.sender_longi;
 						if (data.data.per_delivery_cost > 0) {
+							merchantPerDeliveryCost = data.data.per_delivery_cost;
 							document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
 							document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
 						}
