@@ -191,6 +191,19 @@ naValuesType.map(item => {
 				document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
 			}
 		}
+		else {
+			console.log("Hello");
+			let dayType = document.querySelector(`select#dayType`).value;
+			let productCity = document.querySelector(`select#productCity`).value;
+			console.log(dayType, productCity);
+
+			if (/^\d+$/.test(dayType) && /^\d+$/.test(productCity)) {
+				document.getElementById('delivery_charge').value = Math.max(obj[dayType], obj[productCity]);
+			}
+			else if (/^\d+$/.test(dayType) || /^\d+$/.test(productCity)) {
+				document.getElementById('delivery_charge').value = dayType ? dayType : productCity ? productCity : merchantPerDeliveryCost;
+			}
+		}
 	});
 });
 

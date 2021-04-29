@@ -255,6 +255,16 @@ async function criteriaInfo(value) {
 	else {
 		$('.criteria')
 			.hide();
+		$('#dayType')
+			.empty();
+		$('#productType')
+			.empty();
+		$('#productWeight')
+			.empty();
+		$('#productDistance')
+			.empty();
+		$('#productCity')
+			.empty();
 	}
 }
 
