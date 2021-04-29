@@ -237,7 +237,7 @@ async function criteriaInfo(value) {
 								$(`#${types}`).append(option);
 
 							});
-							mapObj = { [naValues[typ]]: naValues[typ], ...data.data[types] };
+							mapObj = { [naValues[typ]]: "", ...data.data[types] };
 							criteriaMap.set(types, mapObj);
 
 							console.log(mapObj, criteriaMap);

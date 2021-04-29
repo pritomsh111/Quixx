@@ -181,10 +181,10 @@ naValuesType.map(item => {
 	document.querySelector(`select#${item}`).addEventListener('change', function (e) {
 		if (item !== "dayType" && item !== "productCity") {
 			let obj = criteriaMap.get(item);
-			console.log(obj[e.target.value]);
+			// console.log(obj[e.target.value]);
 			if (/^\d+$/.test(obj[e.target.value])) {
 				document.getElementById('delivery_charge').value = obj[e.target.value];
-				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: Based on Criteria";
+				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 			}
 			else {
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
@@ -201,14 +201,14 @@ naValuesType.map(item => {
 
 			console.log(objDayType?.[dayType], objProductCity?.[productCity]);
 
-			console.log((/^\d+$/.test(objDayType?.[dayType]));
-			console.log((/^\d+$/.test(objProductCity?.[productCity]));
+			console.log((/^\d+$/.test(objDayType?.[dayType])));
+			console.log((/^\d+$/.test(objProductCity?.[productCity])));
+
 			if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
-				console.log("Im here");
+				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 				document.getElementById('delivery_charge').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
 			}
 			else {
-				console.log("Im ttttttthere");
 				document.getElementById('delivery_charge').value = (objDayType?.[dayType] || objDayType?.[dayType] === 0) ? objDayType?.[dayType] : (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) ? objProductCity?.[productCity] : merchantPerDeliveryCost;
 			}
 		}
