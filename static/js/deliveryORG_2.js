@@ -3890,6 +3890,8 @@ var thikKoro = async (method, areaa, cityy) => {
 			}
 		});
 }
+var criteriaMapForDeliveryUpdate = new Map();
+
 var thikKoroCriteria = async (creator_ID, ...typeList) => {
 	await $.ajax({
 		url: urlForAll + "delivery/criteria/enable/" + creator_ID,
@@ -3942,8 +3944,12 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 				success: function (data) {
 					let naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
 					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
+					if (criteriaMapForDeliveryUpdate.size) {
+						criteriaMapForDeliveryUpdate.clear();
+					}
 					Object.keys(data.data).map((types, index) => {
 						console.log(types);
+						let mapObj = {};
 						// $(`#${types}1U`).show();
 						// $(`#${types}U`)
 						// 	.append('<option value="' + naValues[index] + '">---</option>')
@@ -3978,6 +3984,11 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 								$(option).html(value);
 								$(`#${types}U`).append(option);
 							});
+
+							mapObj = { [naValues[typ]]: "", ...data.data[types] };
+							criteriaMapForDeliveryUpdate.set(types, mapObj);
+
+							console.log(mapObj, criteriaMapForDeliveryUpdate);
 							document.getElementById(`${types}U`).selectedIndex = j;
 						}
 					});
@@ -4005,51 +4016,51 @@ function setDynSelecChangeForUpdate() {
 	naValuesType.map(item => {
 		document.querySelector(`select#${item}U`).addEventListener('change', function (e) {
 			if (item !== "dayType" && item !== "productCity") {
-				let obj = criteriaMap.get(item);
+				let obj = criteriaMapForDeliveryUpdate.get(item);
 				// console.log(obj[e.target.value]);
 				if (/^\d+$/.test(obj[e.target.value])) {
-					document.getElementById('delivery_charge').value = obj[e.target.value];
-					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_cost_update').value = obj[e.target.value];
+					document.getElementById('D_charge').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 				}
 				else {
-					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
-					document.getElementById('delivery_charge').value = modalCostPerMerchant;
+					document.getElementById('D_charge').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
+					document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
 				}
 			}
 			else {
 				console.log("Hello");
-				let objDayType = criteriaMap.get("dayType");
-				let objProductCity = criteriaMap.get("productCity");
-				let dayType = document.querySelector(`select#dayType`).value;
-				let productCity = document.querySelector(`select#productCity`).value;
+				let objDayType = criteriaMapForDeliveryUpdate.get("dayType");
+				let objProductCity = criteriaMapForDeliveryUpdate.get("productCity");
+				let dayType = document.querySelector(`select#dayTypeU`).value;
+				let productCity = document.querySelector(`select#productCityU`).value;
 				console.log(dayType, productCity);
-	
+
 				console.log(objDayType?.[dayType], objProductCity?.[productCity]);
-	
+
 				console.log((/^\d+$/.test(objDayType?.[dayType])));
 				console.log((/^\d+$/.test(objProductCity?.[productCity])));
-	
+
 				if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
-					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
-					document.getElementById('delivery_charge').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
+					document.getElementById('delivery_cost_update').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_cost_update').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
 				}
 				else {
 					if (objDayType?.[dayType] || objDayType?.[dayType] === 0) {
-						document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
-						document.getElementById('delivery_charge').value = objDayType[dayType];
+						document.getElementById('delivery_cost_update').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+						document.getElementById('delivery_cost_update').value = objDayType[dayType];
 					}
 					else if (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) {
-						document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
-						document.getElementById('delivery_charge').value = objProductCity[productCity];
+						document.getElementById('delivery_cost_update').previousElementSibling.innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+						document.getElementById('delivery_cost_update').value = objProductCity[productCity];
 					}
 					else {
-						document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
-						document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
+						document.getElementById('delivery_cost_update').previousElementSibling.innerHTML = "Delivery Charge [BDT]:";
+						document.getElementById('delivery_cost_update').value = merchantPerDeliveryCost;
 					}
 				}
 			}
 		});
-	});	
+	});
 }
 
 var wrongKeteDao = () => {
@@ -4077,6 +4088,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	thikKoroCriteria(creator_ID, arr[29], arr[27], arr[28], arr[30], arr[31]);
 	//console.log(arr);
 	modalCostPerMerchant = arr[2];
+	setDynSelecChangeForUpdate();
 	document.getElementById('delivery_cost_update').value = arr[2];
 	document.getElementById('timeU').value = arr[3];
 	document.getElementById('r_nameU').value = arr[4];
