@@ -161,6 +161,7 @@ $(document).ready(async function () {
 	// criteriaInfo(org_ID);
 });
 
+var criteriaMap = new Map();
 async function criteriaInfo(value) {
 	let criteriaEnabled;
 	await $.ajax({
@@ -218,6 +219,7 @@ async function criteriaInfo(value) {
 					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
 					Object.keys(data.data).map((types, index) => {
 						console.log(types);
+						let mapObj = {};
 						if (types !== "userId") {
 							let typ = naValuesType.indexOf(types);
 							$(`#${types}1`).show();
@@ -229,10 +231,14 @@ async function criteriaInfo(value) {
 								var option = new Option(value, value);
 								$(option).html(value);
 								$(`#${types}`).append(option);
+
 							});
+							mapObj = { ...naValues[typ], ...data.data[types] };
+							criteriaMap.set(types, mapObj);
+							console.log(mapObj, criteriaMap);
+
 							console.log(data.data[types]);
 						}
-
 					});
 					// document.getElementById('managers').selectedIndex = dhakaIndex;
 				}
