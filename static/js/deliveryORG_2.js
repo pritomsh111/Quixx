@@ -178,7 +178,12 @@ document.getElementById('cancelUpload').addEventListener('click', function (e) {
 
 naValuesType.map(item => {
 	document.querySelector(`select#${item}`).addEventListener('change', function (e) {
-		console.log(e.target.value);
+		if (item !== "dayType" && item !== "productCity") {
+			let obj = criteriaMap.get(item);
+			console.log(obj[e.target.value]);
+			document.getElementById('delivery_charge').value = obj[e.target.value];
+			document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+		}
 	});
 });
 
