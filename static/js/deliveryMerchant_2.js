@@ -829,6 +829,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 					}
 				},
 				error: function (data) {
+					console.log(data);
 					document.getElementById('createDelivery').disabled = false;
 					//console.log(data.responseJSON.errorMessage);
 					//console.log(data);

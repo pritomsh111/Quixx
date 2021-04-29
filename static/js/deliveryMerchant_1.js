@@ -13,6 +13,8 @@ $(document).ready(function () {
 	$('.c').hide();
 	$('.d').hide();
 	$('.e').hide();
+	$('.criteria')
+		.hide();
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 });
 
@@ -103,6 +105,115 @@ $.ajax
 			}
 		}
 	});
+
+var criteriaMap = new Map();
+var naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
+var naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
+
+async function criteriaInfo(value) {
+	let criteriaEnabled;
+	await $.ajax({
+		url: urlForAll + "delivery/criteria/enable/" + value,
+		type: "GET",
+		headers:
+		{
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function (data) {
+			criteriaEnabled = data.data;
+		}
+	});
+	console.log(criteriaEnabled);
+	if (criteriaEnabled) {
+		$('.criteria')
+			.show();
+		$('#dayType1')
+			.hide();
+		$('#productType1')
+			.hide();
+		$('#productWeight1')
+			.hide();
+		$('#productDistance1')
+			.hide();
+		$('#productCity1')
+			.hide();
+
+		$('#dayType')
+			.empty();
+		$('#productType')
+			.empty();
+		$('#productWeight')
+			.empty();
+		$('#productDistance')
+			.empty();
+		$('#productCity')
+			.empty();
+		$.ajax
+			({
+				url: urlForAll + "delivery/criteria/active/" + value,
+				type: "GET",
+
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					console.log(data);
+					if (criteriaMap.size) {
+						criteriaMap.clear();
+					}
+					Object.keys(data.data).map((types, index) => {
+						console.log(types);
+						let mapObj = {};
+						if (types !== "userId") {
+							let typ = naValuesType.indexOf(types);
+							$(`#${types}1`).show();
+							$(`#${types}`)
+								.empty()
+								.append('<option value="' + naValues[typ] + '">---</option>')
+								;
+							Object.keys(data.data[types]).map(value => {
+								var option = new Option(value, value);
+								$(option).html(value);
+								$(`#${types}`).append(option);
+
+							});
+							mapObj = { [naValues[typ]]: "", ...data.data[types] };
+							criteriaMap.set(types, mapObj);
+
+							console.log(mapObj, criteriaMap);
+
+							console.log(data.data[types]);
+						}
+					});
+					// document.getElementById('managers').selectedIndex = dhakaIndex;
+				}
+			});
+		// $("#delivery_charge").attr('placeholder', "1000");
+		// document.getElementById('delivery_charge').value = "";
+		// document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:<br>**If you fill up the criteria above, this charge wil not be counted! But give atleast some value for future purposes";
+	}
+	else {
+		$('.criteria')
+			.hide();
+		$('#dayType')
+			.empty();
+		$('#productType')
+			.empty();
+		$('#productWeight')
+			.empty();
+		$('#productDistance')
+			.empty();
+		$('#productCity')
+			.empty();
+	}
+}
+criteriaInfo(localStorage.getItem('userID'));
+
 
 var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
 var markers = [];
