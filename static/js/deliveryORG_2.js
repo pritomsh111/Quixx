@@ -193,15 +193,19 @@ naValuesType.map(item => {
 		}
 		else {
 			console.log("Hello");
+			let obj = criteriaMap.get(item);
 			let dayType = document.querySelector(`select#dayType`).value;
 			let productCity = document.querySelector(`select#productCity`).value;
-			console.log(dayType, productCity);
+			console.log(dayType, productCity, obj);
+			console.log(obj[dayType], obj[productCity]);
 
-			if (/^\d+$/.test(dayType) && /^\d+$/.test(productCity)) {
+			if (/^\d+$/.test(obj[dayType]) && /^\d+$/.test(obj[productCity])) {
+				console.log("Im here");
 				document.getElementById('delivery_charge').value = Math.max(obj[dayType], obj[productCity]);
 			}
-			else if (/^\d+$/.test(dayType) || /^\d+$/.test(productCity)) {
-				document.getElementById('delivery_charge').value = dayType ? dayType : productCity ? productCity : merchantPerDeliveryCost;
+			else if (/^\d+$/.test(obj[dayType]) || /^\d+$/.test(obj[productCity])) {
+				console.log("Im ttttttthere");
+				document.getElementById('delivery_charge').value = obj[dayType] ? obj[dayType] : obj[productCity] ? obj[productCity] : merchantPerDeliveryCost;
 			}
 		}
 	});
@@ -284,6 +288,7 @@ $("#senderList").change(async function () {
 							document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
 						}
 						else {
+							merchantPerDeliveryCost = 0;
 							$("#delivery_charge").attr('placeholder', "1000");
 							document.getElementById('delivery_charge').value = "";
 							document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
