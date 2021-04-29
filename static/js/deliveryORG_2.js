@@ -193,19 +193,23 @@ naValuesType.map(item => {
 		}
 		else {
 			console.log("Hello");
-			let obj = criteriaMap.get(item);
+			let objDayType = criteriaMap.get("dayType");
+			let objProductCity = criteriaMap.get("productCity");
 			let dayType = document.querySelector(`select#dayType`).value;
 			let productCity = document.querySelector(`select#productCity`).value;
-			console.log(dayType, productCity, obj);
-			console.log(obj[dayType], obj[productCity]);
+			console.log(dayType, productCity);
 
-			if (/^\d+$/.test(obj[dayType]) && /^\d+$/.test(obj[productCity])) {
+			console.log(objDayType?.[dayType], objProductCity?.[productCity]);
+
+			console.log((/^\d+$/.test(objDayType?.[dayType]));
+			console.log((/^\d+$/.test(objProductCity?.[productCity]));
+			if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
 				console.log("Im here");
-				document.getElementById('delivery_charge').value = Math.max(obj[dayType], obj[productCity]);
+				document.getElementById('delivery_charge').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
 			}
-			else if (/^\d+$/.test(obj[dayType]) || /^\d+$/.test(obj[productCity])) {
+			else {
 				console.log("Im ttttttthere");
-				document.getElementById('delivery_charge').value = obj[dayType] ? obj[dayType] : obj[productCity] ? obj[productCity] : merchantPerDeliveryCost;
+				document.getElementById('delivery_charge').value = (objDayType?.[dayType] || objDayType?.[dayType] === 0) ? objDayType?.[dayType] : (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) ? objProductCity?.[productCity] : merchantPerDeliveryCost;
 			}
 		}
 	});
