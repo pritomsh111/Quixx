@@ -185,9 +185,11 @@ naValuesType.map(item => {
 			if (/^\d+$/.test(obj[e.target.value])) {
 				document.getElementById('delivery_charge').value = obj[e.target.value];
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+				document.getElementById('delivery_charge').disabled = true;
 			}
 			else {
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
+				document.getElementById('delivery_charge').disabled = false;
 				document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
 			}
 		}
@@ -207,18 +209,22 @@ naValuesType.map(item => {
 			if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 				document.getElementById('delivery_charge').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
+				document.getElementById('delivery_charge').disabled = true;
 			}
 			else {
 				if (objDayType?.[dayType] || objDayType?.[dayType] === 0) {
 					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_charge').disabled = true;
 					document.getElementById('delivery_charge').value = objDayType[dayType];
 				}
 				else if (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) {
 					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_charge').disabled = true;
 					document.getElementById('delivery_charge').value = objProductCity[productCity];
 				}
 				else {
 					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+					document.getElementById('delivery_charge').disabled = false;
 					document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
 				}
 			}
@@ -4020,10 +4026,12 @@ function setDynSelecChangeForUpdate() {
 				console.log(obj[e.target.value]);
 				if (/^\d+$/.test(obj[e.target.value])) {
 					document.getElementById('delivery_cost_update').value = obj[e.target.value];
+					document.getElementById('delivery_cost_update').disabled = true;
 					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 				}
 				else {
 					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
+					document.getElementById('delivery_cost_update').disabled = false;
 					document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
 				}
 			}
@@ -4042,20 +4050,24 @@ function setDynSelecChangeForUpdate() {
 
 				if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
 					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_cost_update').disabled = true;
 					document.getElementById('delivery_cost_update').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
 				}
 				else {
 					if (objDayType?.[dayType] || objDayType?.[dayType] === 0) {
 						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 						document.getElementById('delivery_cost_update').value = objDayType[dayType];
+						document.getElementById('delivery_cost_update').disabled = true;
 					}
 					else if (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) {
 						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 						document.getElementById('delivery_cost_update').value = objProductCity[productCity];
+						document.getElementById('delivery_cost_update').disabled = true;
 					}
 					else {
 						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
 						document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
+						document.getElementById('delivery_cost_update').disabled = false;
 					}
 				}
 			}

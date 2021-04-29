@@ -277,7 +277,7 @@ var activated = () => {
 			{ title: "Business Field" },
 			{ title: "Per Delivery Cost" },
 			{
-				orderable: false, title: "Update Criteria"
+				orderable: false, title: "Update Criteria Details"
 			},
 			{
 				orderable: false, title: "Enable OTP"
