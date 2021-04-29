@@ -73,6 +73,25 @@ var invoice = (id) => {
 			}
 		});
 };
+
+function format(d) {
+	// `d` is the original data object for the row
+	return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+		'<tr>' +
+		'<td>Full name:</td>' +
+		'<td>' + d.name + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Extension number:</td>' +
+		'<td>' + d.extn + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Extra info:</td>' +
+		'<td>And any further details here (images etc)...</td>' +
+		'</tr>' +
+		'</table>';
+}
+
 var approvedMer = () => {
 	merchantOrgButtonActive();
 	merchantOrgTableHide();
@@ -88,6 +107,12 @@ var approvedMer = () => {
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true },
 		"columns": [
+			{
+				"className": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": ''
+			},
 			{ title: "Merchant ID" },
 			{ title: "Company Name" },
 			{ title: "Owner Name" },
@@ -99,7 +124,8 @@ var approvedMer = () => {
 			{
 				orderable: false, title: "Update Merchant"
 			}
-		]
+		],
+		"order": [[1, 'asc']]
 	});
 	table.clear().draw();
 	$.ajax
