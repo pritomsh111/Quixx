@@ -159,6 +159,56 @@ var onGoingDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 14, "data": "delivery_type" },
@@ -305,6 +355,56 @@ var completeDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 14, "data": "delivery_type" },
@@ -457,6 +557,56 @@ var onHoldDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 14, "data": "delivery_type" },
@@ -775,7 +925,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	}
 	var vDC = () => {
 		let en = document.getElementById('delivery_charge').disabled;
-		console.log(en);
+		// console.log(en);
 		if (!en) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
 			$('#myModalWrongDeliveryCreate').modal('show');
@@ -783,10 +933,15 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 			return 0;
 		}
 		let fl = false;
-		fl = Array.from(document.querySelectorAll(".criteria select")).map(item => {
+		Array.from(document.querySelectorAll(".criteria select")).map(item => {
 			if (item.childElementCount) {
-				for (let prop in criteriaMap[item.id]) {
-					console.log(criteriaMap[item.id], prop, criteriaMap[item.id][prop]);
+				for (let prop in criteriaMap.get(item.id)) {
+					console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
+					if (criteriaMap.get(item.id)[prop] == delivery_charge) {
+						fl = true;
+						console.log("MIllaaaagese");
+						break;
+					}
 				}
 			}
 		});
