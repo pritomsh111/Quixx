@@ -783,10 +783,16 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 			return 0;
 		}
 		let fl = false;
-		fl = Array.from(document.querySelectorAll(".criteria select")).some(item => item.value === delivery_charge);
-		console.log(fl);
+		fl = Array.from(document.querySelectorAll(".criteria select")).map(item => {
+			if (item.childElementCount) {
+				for (let prop in criteriaMap[item.id]) {
+					console.log(criteriaMap[item.id], prop, criteriaMap[item.id][prop]);
+				}
+			}
+		});
+		console.log(fl, delivery_charge, merchantPerDeliveryCost);
 		if (!fl) {
-			if (delivery_charge !== merchantPerDeliveryCost) {
+			if (+delivery_charge !== merchantPerDeliveryCost) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById("delivery_charge").focus();
@@ -812,7 +818,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	}
 	var datap;
 
-	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && vDC() == 1 && v4() == 1 && v12() == 1) {
+	if (vDC() == 1 && v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && vDC() == 1 && v4() == 1 && v12() == 1) {
 		document.getElementById('createDelivery').disabled = true;
 		$(".circle-loader").show();
 		datap = JSON.stringify
