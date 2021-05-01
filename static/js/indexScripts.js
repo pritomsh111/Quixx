@@ -43,6 +43,7 @@ else if (user === 'ORGANIZATIONAL_ADMIN') {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
+				console.log(data);
 				if (data.data.image_str == "") {
 					$('#two2').hide();
 				}
