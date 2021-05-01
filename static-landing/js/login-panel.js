@@ -32,17 +32,27 @@
     if (cw[1] === "parcelboat") {
         lg.style.height = "105px";
     }
-
-
+    
     lg.style.width = "140px";
     lg.style.height = "80px";
     document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
-    document.body.style.background = "url('./static-landing/img/clients/nogonbondhu.png') no-repeat left bottom/168vh";
-    if (window.innerWidth < 555) {
-        document.querySelector(".Company").style.cssText = 'position: relative;left: -26%;top: -32%;';
+    document.body.style.background = "url('./static-landing/img/clients/nogonbondhu-bg.png') no-repeat left bottom/138vh";
+    if (window.innerWidth < 1080) {
+        document.querySelector(".Company").style.cssText = 'position: relative;left: -25%;top: -22%;';
     }
-    if (cw[1] === "nogorbondhu") {
+    document.querySelector(".Company>h1").style.fontSize = "1rem";
+    document.querySelector(".Company>h1").style.marginTop = "-1rem";
 
+    if (cw[1] === "nogorbondhu") {
+        lg.style.width = "140px";
+        lg.style.height = "80px";
+        document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
+        document.body.style.background = "url('./static-landing/img/clients/nogonbondhu-bg.png') no-repeat left bottom/138vh";
+        if (window.innerWidth < 1080) {
+            document.querySelector(".Company").style.cssText = 'position: relative;left: -25%;top: -22%;';
+        }
+        document.querySelector(".Company>h1").style.fontSize = "1rem";
+        document.querySelector(".Company>h1").style.marginTop = "-1rem";
     }
     // Favicon
     let fc = document.querySelector("link[rel='shortcut icon']");
@@ -61,7 +71,7 @@
                         cw[1] === "nogorbondhu" ? "NONEFORNOW" :
                             "";
 
-    cn.innerHTML = vl;
+    // cn.innerHTML = vl;
 
     document.title = vl;
 
