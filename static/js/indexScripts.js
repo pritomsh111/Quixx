@@ -21,7 +21,8 @@
 		document.getElementById("dashName").innerHTML = "Super Admin's Panel";
 	}
 	else if (user === 'ORGANIZATIONAL_ADMIN') {
-		$.ajax
+		let isLogo = true;
+		await $.ajax
 			({
 				type: "GET",
 				url: urlForAll + "orgHead/get/logo/" + localStorage.getItem('userID'),
@@ -35,11 +36,13 @@
 					console.log(data);
 					if (data.data.image_str == "") {
 						$('#two2').hide();
+						isLogo = false;
 					}
 					else if (data.data.image_str != "") {
 						changeFavicon(data.data.image_str);
 						preview.setAttribute('src', data.data.image_str);
 						$('#one1').hide();
+						isLogo = true;
 					}
 				}
 			});
@@ -54,11 +57,9 @@
 			if (input.files && input.files[0]) {
 				reader = new FileReader();
 				reader.onload = function (e) {
-					console.log(e);
-					console.log(e.target);
-					console.log(e.target.files);
-					console.log(e.target.files[0]);
-					console.log(e.target.files[0], type);
+					console.log(isLogo);
+					console.log(e.target.result);
+					console.log(e.target.result.includes("data:image"));
 					// $.ajax
 					// 	({
 					// 		type: "POST",
@@ -85,7 +86,6 @@
 					//console.log(e.target.result);
 					//preview.setAttribute('src', e.target.result);
 				}
-
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
@@ -150,20 +150,9 @@
 				}
 			});
 		myNode = document.getElementById("merchant");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
 		myNode.remove();
 		myNode = document.getElementById("superAdmin");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
 		myNode.remove();
-		/*myNode = document.getElementById("manager");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
-		myNode.remove();*/
 		//document.getElementById("dashName").innerHTML = "Organization Head's Panel";
 	}
 	/*else if(user == 'MANAGER')
@@ -209,10 +198,8 @@
 	}*/
 	else if (user === 'MERCHANT') {
 		$('#logooo').hide();
-
 		$.ajax
 			({
-
 				type: "GET",
 				url: urlForAll + "merchant/get/org/logo/" + localStorage.getItem('userID'),
 				headers:
@@ -241,7 +228,6 @@
 					document.getElementById("namee").innerHTML = data.data;
 				}
 			});
-
 		$.ajax
 			({
 
@@ -262,16 +248,9 @@
 		var fileTag = document.getElementById("filetag");
 		var fileTag2 = document.getElementById("filetag2");
 		preview = document.getElementById("preview");
-		//document.getElementById("dashName").innerHTML = "Merchant's Panel";
 		myNode = document.getElementById("organizationHead");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
 		myNode.remove();
 		myNode = document.getElementById("superAdmin");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
 		myNode.remove();
 		/*myNode = document.getElementById("manager");
 		while (myNode.firstChild) {
