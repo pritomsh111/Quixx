@@ -1,58 +1,8 @@
 (async function () {
 	var myNode;
 	var fileTag = document.getElementById("filetag");
-	var fileTag2 = document.getElementById("filetag2");
 	var preview = document.getElementById("preview");
 	let favicon = document.querySelector("link[rel='shortcut icon']");
-
-	fileTag.addEventListener("change", function (e) {
-		e.preventDefault();
-		console.dir(this);
-		if (this.files && this.files[0]) {
-			reader = new FileReader();
-			reader.onload = function (e) {
-				console.log(isLogo);
-				console.log(e.target.result.includes("data:image"));
-			}
-		}
-		//changeImage(this);
-	});
-	function changeImage(input) {
-		var reader;
-		if (input.files && input.files[0]) {
-			reader = new FileReader();
-			reader.onload = function (e) {
-				console.log(isLogo);
-				console.log(e.target.result.includes("data:image"));
-				// $.ajax
-				// 	({
-				// 		type: "POST",
-				// 		url: urlForAll + "approved/insert/logo",
-				// 		data: JSON.stringify
-				// 			({
-				// 				"user_id": localStorage.getItem('userID'),
-				// 				"image_str": e.target.result
-				// 			}),
-				// 		headers:
-				// 		{
-				// 			'Accept': 'application/json',
-				// 			'Content-Type': 'application/json',
-				// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-				// 		},
-				// 		success: function (data) {
-				// console.log(data);
-				// 			$('#one1').hide();
-				// 			$('#two2').show();
-				// 			changeFavicon(e.target.result);
-				// 			preview.setAttribute('src', e.target.result);
-				// 		}
-				// 	});
-				//console.log(e.target.result);
-				//preview.setAttribute('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
 
 	function changeFavicon(img) {
 		favicon.href = img;
@@ -84,59 +34,15 @@
 				success: function (data) {
 					console.log(data);
 					if (data.data.image_str == "") {
-						$('#two2').hide();
 						isLogo = false;
 					}
 					else if (data.data.image_str != "") {
 						changeFavicon(data.data.image_str);
 						preview.setAttribute('src', data.data.image_str);
-						$('#one1').hide();
 						isLogo = true;
 					}
 				}
 			});
-
-		fileTag2.addEventListener("change", function () {
-			changeImage2(this);
-		});
-
-		function changeImage2(input2) {
-			var reader;
-
-			if (input2.files && input2.files[0]) {
-				reader = new FileReader();
-
-				reader.onload = function (e) {
-
-					$.ajax
-						({
-
-							type: "PUT",
-							url: urlForAll + "approved/update/logo",
-							data: JSON.stringify
-								({
-									"user_id": localStorage.getItem('userID'),
-									"image_str": e.target.result
-								}),
-							headers:
-							{
-								'Accept': 'application/json',
-								'Content-Type': 'application/json',
-								"Authorization": 'Bearer ' + localStorage.getItem('token')
-							},
-							success: function (data) {
-								$('#one1').hide();
-								$('#two2').show();
-								changeFavicon(e.target.result);
-								preview.setAttribute('src', e.target.result);
-							}
-						});
-					//console.log(e.target.result);
-				}
-
-				reader.readAsDataURL(input2.files[0]);
-			}
-		}
 
 		$.ajax
 			({
@@ -159,8 +65,10 @@
 		myNode.remove();
 		myNode = document.getElementById("superAdmin");
 		myNode.remove();
-		//document.getElementById("dashName").innerHTML = "Organization Head's Panel";
 	}
+
+	//document.getElementById("dashName").innerHTML = "Organization Head's Panel";
+
 	/*else if(user == 'MANAGER')
 	{
 		$('#logooo').hide();
