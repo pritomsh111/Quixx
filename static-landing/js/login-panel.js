@@ -25,13 +25,24 @@
 
     // Logo
     let lg = document.querySelector(".Company>div");
-    lg.style.backgroundImage = "url(static-landing/img/clients/" + cw[1] + ".png)";
+    lg.style.backgroundImage = "url(static-landing/img/clients/" + "nogorbondhu" + ".png)";
 
     // Change width/height of Logo
+
     if (cw[1] === "parcelboat") {
         lg.style.height = "105px";
     }
 
+
+    lg.style.width = "240px";
+    lg.style.height = "141px";
+    document.body.style.height = "100vh";
+    document.querySelector(".Quixx__Form").style.height = "100%";
+    document.body.style.background = "url('./static-landing/img/clients/nogonbondhu.png') no-repeat left/138vh";
+
+    if (cw[1] === "nogorbondhu") {
+
+    }
     // Favicon
     let fc = document.querySelector("link[rel='shortcut icon']");
     fc.href = "static-landing/img/clients/" + cw[1] + ".png";
@@ -39,14 +50,15 @@
     // CompanyName
     let cn = document.querySelector(".Company>h1");
 
-    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : cw[1] === "parcelboat" ? "Parcel Boat" : "";
+    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : cw[1] === "parcelboat" ? "Parcel Boat" : cw[1] === "nogorbondhu" ? "Nogor Bondhu" : "";
 
     let encKey =
         cw[1] === "easyparcel" ? "someKey" :
             cw[1] === "quixx" ? "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq" :
                 cw[1] === "quixxprojects" ? "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy" :
                     cw[1] === "parcelboat" ? "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW" :
-                        "";
+                        cw[1] === "nogorbondhu" ? "NONEFORNOW" :
+                            "";
 
     cn.innerHTML = vl;
 
