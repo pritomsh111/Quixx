@@ -5,6 +5,55 @@
 	var preview = document.getElementById("preview");
 	let favicon = document.querySelector("link[rel='shortcut icon']");
 
+	fileTag.addEventListener("change", function (e) {
+		e.preventDefault();
+		console.dir(this);
+		if (this.files && this.files[0]) {
+			reader = new FileReader();
+			reader.onload = function (e) {
+				console.log(isLogo);
+				console.log(e.target.result.includes("data:image"));
+			}
+		}
+		//changeImage(this);
+	});
+	function changeImage(input) {
+		var reader;
+		if (input.files && input.files[0]) {
+			reader = new FileReader();
+			reader.onload = function (e) {
+				console.log(isLogo);
+				console.log(e.target.result.includes("data:image"));
+				// $.ajax
+				// 	({
+				// 		type: "POST",
+				// 		url: urlForAll + "approved/insert/logo",
+				// 		data: JSON.stringify
+				// 			({
+				// 				"user_id": localStorage.getItem('userID'),
+				// 				"image_str": e.target.result
+				// 			}),
+				// 		headers:
+				// 		{
+				// 			'Accept': 'application/json',
+				// 			'Content-Type': 'application/json',
+				// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
+				// 		},
+				// 		success: function (data) {
+				// console.log(data);
+				// 			$('#one1').hide();
+				// 			$('#two2').show();
+				// 			changeFavicon(e.target.result);
+				// 			preview.setAttribute('src', e.target.result);
+				// 		}
+				// 	});
+				//console.log(e.target.result);
+				//preview.setAttribute('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
 	function changeFavicon(img) {
 		favicon.href = img;
 	}
@@ -46,49 +95,6 @@
 					}
 				}
 			});
-
-
-		fileTag.addEventListener("change", function () {
-			changeImage(this);
-		});
-		function changeImage(input) {
-			var reader;
-
-			if (input.files && input.files[0]) {
-				reader = new FileReader();
-				reader.onload = function (e) {
-					console.log(isLogo);
-					console.log(e.target.result);
-					console.log(e.target.result.includes("data:image"));
-					// $.ajax
-					// 	({
-					// 		type: "POST",
-					// 		url: urlForAll + "approved/insert/logo",
-					// 		data: JSON.stringify
-					// 			({
-					// 				"user_id": localStorage.getItem('userID'),
-					// 				"image_str": e.target.result
-					// 			}),
-					// 		headers:
-					// 		{
-					// 			'Accept': 'application/json',
-					// 			'Content-Type': 'application/json',
-					// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-					// 		},
-					// 		success: function (data) {
-					// console.log(data);
-					// 			$('#one1').hide();
-					// 			$('#two2').show();
-					// 			changeFavicon(e.target.result);
-					// 			preview.setAttribute('src', e.target.result);
-					// 		}
-					// 	});
-					//console.log(e.target.result);
-					//preview.setAttribute('src', e.target.result);
-				}
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
 
 		fileTag2.addEventListener("change", function () {
 			changeImage2(this);
