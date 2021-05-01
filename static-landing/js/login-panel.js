@@ -34,12 +34,13 @@
     }
 
 
-    lg.style.width = "240px";
-    lg.style.height = "141px";
-    document.body.style.height = "100vh";
-    document.querySelector(".Quixx__Form").style.height = "100%";
-    document.body.style.background = "url('./static-landing/img/clients/nogonbondhu.png') no-repeat left/138vh";
-
+    lg.style.width = "140px";
+    lg.style.height = "80px";
+    document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
+    document.body.style.background = "url('./static-landing/img/clients/nogonbondhu.png') no-repeat left bottom/168vh";
+    if (window.innerWidth < 555) {
+        document.querySelector(".Company").style.cssText = 'position: relative;left: -26%;top: -32%;';
+    }
     if (cw[1] === "nogorbondhu") {
 
     }
