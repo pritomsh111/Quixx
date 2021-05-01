@@ -25,34 +25,24 @@
 
     // Logo
     let lg = document.querySelector(".Company>div");
-    lg.style.backgroundImage = "url(static-landing/img/clients/" + "nogorbondhu" + ".png)";
+    lg.style.backgroundImage = "url(static-landing/img/clients/" + cw[1] + ".png)";
 
     // Change width/height of Logo
 
     if (cw[1] === "parcelboat") {
         lg.style.height = "105px";
     }
-    
-    lg.style.width = "140px";
-    lg.style.height = "80px";
-    document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
-    document.body.style.background = "url('./static-landing/img/clients/nogonbondhu-bg.png') no-repeat left bottom/138vh";
-    if (window.innerWidth < 1080) {
-        document.querySelector(".Company").style.cssText = 'position: relative;left: -25%;top: -22%;';
-    }
-    document.querySelector(".Company>h1").style.fontSize = "1rem";
-    document.querySelector(".Company>h1").style.marginTop = "-1rem";
-
+   
     if (cw[1] === "nogorbondhu") {
         lg.style.width = "140px";
         lg.style.height = "80px";
         document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
         document.body.style.background = "url('./static-landing/img/clients/nogonbondhu-bg.png') no-repeat left bottom/138vh";
-        if (window.innerWidth < 1080) {
-            document.querySelector(".Company").style.cssText = 'position: relative;left: -25%;top: -22%;';
+        if (window.innerWidth < 961) {
+            document.querySelector(".Company").style.cssText = 'position: unset;left: unset;top: unset;';
         }
         document.querySelector(".Company>h1").style.fontSize = "1rem";
-        document.querySelector(".Company>h1").style.marginTop = "-1rem";
+        document.querySelector(".Company>h1").style.marginTop = "-0.8rem";
     }
     // Favicon
     let fc = document.querySelector("link[rel='shortcut icon']");
@@ -71,7 +61,7 @@
                         cw[1] === "nogorbondhu" ? "NONEFORNOW" :
                             "";
 
-    // cn.innerHTML = vl;
+    cn.innerHTML = vl;
 
     document.title = vl;
 
