@@ -627,7 +627,7 @@ var addDeliveryMan = () => {
 
 							document.getElementById('DeliveryMan_CREATION').disabled = false;
 							$("#myModal").modal('hide');
-						}, 1000);
+						}, 1200);
 					}
 				},
 				error: function (data) {
@@ -692,7 +692,7 @@ $('.btn-ok').click(function () {
 					document.getElementById('modalCancelX').disabled = false;
 					document.getElementById('modalApproveX').disabled = false;
 
-				}, 1000);
+				}, 1200);
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -756,7 +756,7 @@ $('.btn-okActivate').click(function () {
 
 					document.getElementById('modalCancel1Activate').disabled = false;
 					document.getElementById('modalApprove1Activate').disabled = false;
-				}, 1000);
+				}, 1200);
 			},
 			error: function (data) {
 
@@ -820,7 +820,7 @@ $('.btn-okDisable').click(function () {
 
 					document.getElementById('modalCancel1Disable').disabled = false;
 					document.getElementById('modalApprove1Disable').disabled = false;
-				}, 1000);
+				}, 1200);
 			},
 			error: function (data) {
 

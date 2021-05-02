@@ -2172,7 +2172,7 @@ $('.btn-ok').click(function () {
 						$('#tick').show();
 
 						$("#sure").html("Delivery man assigned!");
-					}, 1000);
+					}, 800);
 
 					setTimeout(function () {
 						$("#myModal").modal('hide');
@@ -2336,7 +2336,7 @@ $('.btn-okReassign').click(function () {
 						$('#tickReassign').show();
 
 						$("#sureReassign").html("Delivery man re-assigned!");
-					}, 1000);
+					}, 800);
 
 					setTimeout(function () {
 						$("#myModalReassign").modal('hide');
@@ -2447,7 +2447,7 @@ $('.btn-okRD').click(function () {
 					$('#tickRD').show();
 
 					$("#sureRD").html("Delivery Recreated! Please Check Unassigned Deliveries!");
-				}, 1000);
+				}, 800);
 
 				setTimeout(function () {
 					$("#myModalRecreateDelete").modal('hide');
@@ -2519,7 +2519,7 @@ $('.btn-okRD2').click(function () {
 					$('#tickRD').show();
 
 					$("#sureRD").html("This Delivery Has Been Deleted!");
-				}, 1000);
+				}, 800);
 
 				setTimeout(function () {
 					$("#myModalRecreateDelete").modal('hide');
