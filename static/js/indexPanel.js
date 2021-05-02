@@ -1,5 +1,4 @@
 $(document).ready(function () {
-	var count = 0;
 	md.initDashboardPageCharts();
 });
 
@@ -23,7 +22,6 @@ function dashio() {
 };
 
 $(".toggle-password").click(function () {
-
 	$(this).toggleClass("fa-eye fa-eye-slash");
 	var input = $($(this).attr("toggle"));
 	if (input.attr("type") == "password") {
@@ -95,10 +93,9 @@ $('#password-field3').on('keyup', function () {
 });
 
 $('.btn-ok1k').click(function () {
-
+	$("#myModalFor").modal('show');
 	document.getElementById('modalCancelA').disabled = true;
 	document.getElementById('modalUpdateA').disabled = true;
-	$('.frm').hide();
 	$('#tick223').hide();
 	$(".circle-loader2").removeClass("load-complete2");
 	$(".circle-loader2").show();

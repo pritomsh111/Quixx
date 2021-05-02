@@ -46,9 +46,9 @@
 <div class="card naV hideKoro5" id="hideKoro5">
     <script>
     $("#loaderMama5").show();
-    one1();
-    two2();
-    three3();
+    one1x();
+    two2x();
+    three3x();
     </script>
     <div class="card-body table-responsive">
         <div class="row">
@@ -137,8 +137,71 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body table-responsive blur">
-                        <form class="p-5" style="color: #0066b3; text-align: left">
-                            <div style="text-align: center; margin-top: 2rem"></div>
+                        <form class="form-horizontal">
+                            <br>
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" style="color: #0066b3">
+                                    Previous Password:
+                                </label>
+                                <div class="col-md-12">
+                                    <input
+                                        id="password-field1"
+                                        type="password"
+                                        class="form-control"
+                                        name="password"
+                                        style="text-align: center"
+                                        onkeyup="milse(this)"
+                                        value=""
+                                    >
+                                    <span toggle="#password-field1" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" style="color: #0066b3">
+                                    Password:
+                                </label>
+                                <div class="col-md-12">
+                                    <input
+                                        id="password-field2"
+                                        type="password"
+                                        class="form-control"
+                                        name="password"
+                                        style="text-align: center"
+                                        placeholder="Atleast 8 characters"
+                                        value=""
+                                    >
+                                    <span toggle="#password-field2" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" style="color: #0066b3">
+                                    Confirm Password:
+                                </label>
+                                <div class="col-md-12">
+                                    <input
+                                        id="password-field3"
+                                        type="password"
+                                        class="form-control"
+                                        name="password"
+                                        placeholder="Atleast 8 characters"
+                                        style="text-align: center"
+                                        value=""
+                                    >
+                                    <span toggle="#password-field3" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
+                                </div>
+                            </div>
+                            <h4 id="msg" style="margin-top: 10px;font-size: 16px;text-align: center;"></h4>
+                            <button
+                                type="button"
+                                style="color: #0066b3;background: #ffffd4;"
+                                class="btn btn-outline btn-default btn-ok1k btn-primary"
+                                id="modalUpdateA"
+                                disabled
+                            >
+                                Change
+                            </button>
                         </form>
                     </div>
                 </div>
