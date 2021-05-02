@@ -13,7 +13,7 @@ function three3x() {
 		document.getElementById('uporg1').style.fontSize = '14.5px';
 		document.getElementById('uporg2').disabled = false;
 		document.getElementById('uporg2').style.fontSize = '13px';
-		$('#mapForm').fadeIn();
+		$('#mapForm').show();
 		$('#passForm').hide();
 	}, 3700);
 }

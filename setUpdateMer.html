@@ -52,40 +52,40 @@ div.hideKoro3{
                                 Search on Map and Show The Exact Location Using
                                 <br>
                                 <b>Draggable Marker:</b>
-                            </br>
-                        </h5>
-                        <br>
-                        <input
-                            id="pac-input"
-                            class="controls form-control"
-                            type="text"
-                            placeholder="Search Your Address and Then Drag The Marker to The Exact Location"
-                            style="text-align:center;color:#0066b3;background:#ffffff;border:2px solid #ffcf5c;font-size:16px;"
-                        >
-                        <div style="margin-top:-13px;height: 40%;position: absolute;" id="map"></div>
-                        <input type="hidden" id="lat" name="lat">
-                        <input type="hidden" id="longi" name="longi">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <div style="text-align: center;">
-                            <button
-                                class="btn btn-outline btn-round"
-                                style="background:#ffffd4;"
-                                type="button"
-                                id="updateMerchant"
+                            </h5>
+                            <br>
+                            <input
+                                id="pac-input"
+                                class="controls form-control"
+                                type="text"
+                                placeholder="Search Your Address and Then Drag The Marker to The Exact Location"
+                                style="text-align:center;color:#0066b3;background:#ffffff;border:2px solid #ffcf5c;font-size:16px;"
                             >
-                                <center>Update Merchant</center>
-                            </button>
-                        </div>
+                            <div style="margin-top:-13px;height: 40%;position: absolute;" id="map"></div>
+                            <input type="hidden" id="lat" name="lat">
+                            <input type="hidden" id="longi" name="longi">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div style="text-align: center;">
+                                <button
+                                    class="btn btn-outline btn-round"
+                                    style="background:#ffffd4;"
+                                    type="button"
+                                    id="updateMerchant"
+                                >
+                                    Update Merchant
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -136,9 +136,6 @@ div.hideKoro3{
 <div id="myModalWrongMerSet" class="modal fade">
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
-            <!--<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>-->
             <div class="modal-body text-center">
                 <p id="wrongThisMerSet"></p>
                 <button class="btn btn-success" data-dismiss="modal">Correct it!</button>
@@ -149,9 +146,7 @@ div.hideKoro3{
 <script src="static/js/updateMer.js"></script>
 <script>
 mq = window.matchMedia( "(min-width: 730px)" );
-
 if (mq.matches) {
-	
 	var daynight=document.getElementById("map");
 	var daynight2=document.getElementById("updateMerchant");
 	daynight.style.width="86.4%";	
