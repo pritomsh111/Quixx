@@ -14,6 +14,24 @@ if (document.location.host.includes("portal")) {
         lg.style.height = "105px";
     }
 
+    document.querySelector(".Company>div").style.cursor = "pointer";
+    document.querySelector(".Company>div").addEventListener('click', function (e) {
+        e.preventDefault();
+        location.reload();
+    });
+
+    if (cw[1] === "nogorbondhu") {
+        lg.style.width = "140px";
+        lg.style.height = "80px";
+        // document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
+        // document.body.style.background = "url('./static-landing/img/clients/nogonbondhu-bg.png') no-repeat left bottom/138vh";
+        if (window.innerWidth < 961) {
+            document.querySelector(".Company").style.cssText = 'position: relative;top: -1.6rem;';
+        }
+        document.querySelector(".Company>h1").style.fontSize = "1.3rem";
+        document.querySelector(".Company>h1").style.marginTop = "-0.1rem";
+    }
+
     // Favicon
     let fc = document.querySelector("link[rel='shortcut icon']");
     fc.href = "../static-landing/img/clients/" + cw[1] + ".png";
@@ -21,7 +39,7 @@ if (document.location.host.includes("portal")) {
     // CompanyName
     let cn = document.querySelector(".Company>h1");
 
-    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : cw[1] === "parcelboat" ? "Parcel Boat" : "";
+    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : cw[1] === "parcelboat" ? "Parcel Boat" : cw[1] === "nogorbondhu" ? "Nogor Bondhu" : "";
 
     cn.innerHTML = vl;
 

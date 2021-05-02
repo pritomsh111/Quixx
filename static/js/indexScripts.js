@@ -16,7 +16,7 @@
 		myNode = document.getElementById("organizationHead");
 		myNode.remove();
 		changeFavicon("static/img/Logo.png");
-		document.querySelector('.logo>a').style.background = "url(static/img/Logo.png) no-repeat center/contain";
+		document.querySelector('.logo>a>div').style.background = "url(static/img/Logo.png) no-repeat center/contain";
 		document.getElementById("dashName").innerHTML = "Super Admin's Panel";
 	}
 	else if (user === 'ORGANIZATIONAL_ADMIN') {
@@ -38,7 +38,7 @@
 					}
 					else if (data.data.image_str != "") {
 						changeFavicon(data.data.image_str);
-						document.querySelector('.logo>a').style.background = "url('" + data.data.image_str.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
+						document.querySelector('.logo>a>div').style.background = "url('" + data.data.image_str.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
 						isLogo = true;
 					}
 				}
@@ -81,7 +81,8 @@
 								},
 								success: function (data) {
 									changeFavicon(e.target.result);
-									document.querySelector('.logo>a').style.background = "url('" + e.target.result.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
+									document.querySelector('.logo>a>div').style.background = "none";
+									document.querySelector('.logo>a>div').style.background = "url('" + e.target.result.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
 								}
 							});
 					}
@@ -131,7 +132,7 @@
 				},
 				success: function (data) {
 					changeFavicon(data.data.image_str);
-					document.querySelector('.logo>a').style.background = "url('" + data.data.image_str.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
+					document.querySelector('.logo>a>div').style.background = "url('" + data.data.image_str.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
 				}
 			});
 		$.ajax

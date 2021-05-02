@@ -2172,7 +2172,7 @@ $('.btn-ok').click(function () {
 						$('#tick').show();
 
 						$("#sure").html("Delivery man assigned!");
-					}, 800);
+					}, 900);
 
 					setTimeout(function () {
 						$("#myModal").modal('hide');
@@ -2336,7 +2336,7 @@ $('.btn-okReassign').click(function () {
 						$('#tickReassign').show();
 
 						$("#sureReassign").html("Delivery man re-assigned!");
-					}, 800);
+					}, 900);
 
 					setTimeout(function () {
 						$("#myModalReassign").modal('hide');
@@ -2447,7 +2447,7 @@ $('.btn-okRD').click(function () {
 					$('#tickRD').show();
 
 					$("#sureRD").html("Delivery Recreated! Please Check Unassigned Deliveries!");
-				}, 800);
+				}, 900);
 
 				setTimeout(function () {
 					$("#myModalRecreateDelete").modal('hide');
@@ -2463,7 +2463,7 @@ $('.btn-okRD').click(function () {
 
 					document.getElementById('modalCancelG').disabled = false;
 					document.getElementById('modalRecDelV').disabled = false;
-				}, 2000);
+				}, 3600);
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -2519,7 +2519,7 @@ $('.btn-okRD2').click(function () {
 					$('#tickRD').show();
 
 					$("#sureRD").html("This Delivery Has Been Deleted!");
-				}, 800);
+				}, 900);
 
 				setTimeout(function () {
 					$("#myModalRecreateDelete").modal('hide');
@@ -2535,7 +2535,7 @@ $('.btn-okRD2').click(function () {
 
 					document.getElementById('modalCancelG').disabled = false;
 					document.getElementById('modalRecDelV2').disabled = false;
-				}, 2000);
+				}, 3000);
 			},
 			error: function (data) {
 				document.getElementById('modalCancelG').disabled = false;
@@ -4527,7 +4527,7 @@ $('.btn-ok-updateDC').click(function () {
 						$('#tick3DC').show();
 
 						$("#sure3DC").html("Delivery Updated!");
-					}, 1000);
+					}, 1500);
 
 					setTimeout(function () {
 						$("#myModalDeliveryCostUpdate").modal('hide');
@@ -4540,7 +4540,7 @@ $('.btn-ok-updateDC').click(function () {
 
 						$('.btn-ok-updateDC').attr('disabled', false);
 						$('.cancelModDC').prop('disabled', false);
-					}, 2000);
+					}, 3000);
 				},
 				error: function (data) {
 
@@ -4723,7 +4723,7 @@ $('.btn-okReturn').click(function () {
 						$('#tickReturn').show();
 
 						$("#sureReturn").html("Delivery Updated!");
-					}, 1000);
+					}, 1500);
 
 					setTimeout(function () {
 						$("#myModalReturn").modal('hide');
@@ -4745,7 +4745,7 @@ $('.btn-okReturn').click(function () {
 
 						$('.btn-okReturn').attr('disabled', false);
 						$('.btn-cancel-Return').prop('disabled', false);
-					}, 2000);
+					}, 3000);
 				},
 				error: function (data) {
 
