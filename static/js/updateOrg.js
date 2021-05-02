@@ -436,20 +436,39 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 			return 1;
 		}
 	}
-
-	if (v1() == 1 && v2() == 1 && v3() == 1) {
+	let json, isOK = false;
+	if (operations_manager_number) {
+		if (v0() == 1 && v1() == 1 && v2() == 1 && v3() == 1) {
+			json = JSON.stringify
+				({
+					"user_id": localStorage.getItem('userID'),
+					"operations_manager_number": operations_manager_number,
+					"sender_address": s_address,
+					"sender_lat": s_lat,
+					"sender_longi": s_longi
+				})
+			isOK = true;
+		}
+	}
+	else {
+		if (v1() == 1 && v2() == 1 && v3() == 1) {
+			json = JSON.stringify
+				({
+					"user_id": localStorage.getItem('userID'),
+					"sender_address": s_address,
+					"sender_lat": s_lat,
+					"sender_longi": s_longi
+				})
+			isOK = true;
+		}
+	}
+	if (isOK) {
+		console.log(json);
 		$.ajax
 			({
 				type: "PUT",
 				url: urlForAll + "profile/update/settings",
-				data: JSON.stringify
-					({
-						"user_id": localStorage.getItem('userID'),
-						"operations_manager_number": operations_manager_number,
-						"sender_address": s_address,
-						"sender_lat": s_lat,
-						"sender_longi": s_longi
-					}),
+				data: json,
 				headers:
 				{
 					'Accept': 'application/json',
@@ -463,22 +482,30 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 					$("#myModalCreateDD1").modal('show');
 					$("#sureDD2").html("Please wait!");
 					if (data.status == 'OK') {
+						console.log(data);
 						setTimeout(function () {
 							$(".circle-loader").addClass("load-complete");
 
 							$('#tickDD2').show();
 
 							$("#sureDD2").html("Organization Settings Updated!");
-						}, 2000);
+						}, 1000);
 						setTimeout(function () {
 							$("#myModalCreateDD1").modal('hide');
-						}, 3000);
+						}, 2000);
 						$("#cod").hide();
 					}
 				},
-				error: function (XMLHttpRequest, textStatus, errorThrown) {
+				error: function (data) {
 					$("#myModalCreateDD1").modal('hide');
-					$('#myModal2').modal('show');
+					var ob = Object.keys(data);
+					if (ob[17] == "responseJSON") {
+						$("#wrongThisMerSet").html(data.responseJSON.errorMessage);
+					}
+					else {
+						$("#wrongThisMerSet").html("Please wait, We're Working!");
+					}
+					$('#myModalWrongMerSet').modal('show');
 				}
 			})
 	}
