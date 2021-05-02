@@ -119,7 +119,7 @@
 	else if (user === 'MERCHANT') {
 		$('.logo>a>label').hide();
 		$('.logo>a>input').hide();
-
+		document.querySelector(".logo>a>div").style.height = "130px";
 		$.ajax
 			({
 				type: "GET",
