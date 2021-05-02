@@ -7,6 +7,141 @@ var markers = [];
 var markers2 = [];
 
 
+function addressUpdateMer() {
+	document.getElementById('uporg1').disabled = true;
+	document.getElementById('uporg1').style.fontSize = '14.5px';
+	document.getElementById('uporg2').disabled = false;
+	document.getElementById('uporg2').style.fontSize = '13px';
+	$('#mapForm').show();
+	$('#passForm').hide();
+}
+function passUpdateMer() {
+	document.getElementById('uporg2').disabled = true;
+	document.getElementById('uporg2').style.fontSize = '14.5px';
+	document.getElementById('uporg1').disabled = false;
+	document.getElementById('uporg1').style.fontSize = '13px';
+	$('#mapForm').hide();
+	$('#passForm').show();
+}
+
+var buttonUpdate = document.getElementById('modalUpdateAA');
+$(".toggle-password").click(function () {
+	$(this).toggleClass("fa-eye fa-eye-slash");
+	var input = $($(this).attr("toggle"));
+	if (input.attr("type") == "password") {
+		input.attr("type", "text");
+	} else {
+		input.attr("type", "password");
+	}
+});
+
+function milse() {
+	var agerPass = document.getElementById("password-field1").value;
+	var msg = document.getElementById("msg").innerHTML;
+	if (agerPass.length > 0 && msg == "Password Matched!") {
+		buttonUpdate.disabled = false;
+	}
+	else {
+		buttonUpdate.disabled = true;
+	}
+}
+
+$('#password-field2').on('keyup', function () {
+	var pas3 = document.getElementById('password-field2').value;
+	if ($(this).val().length >= 8 && $(this).val() == $('#password-field3').val()) {
+		$('#msg').html('Password Matched!').css('color', 'green');
+
+		var agerPass = document.getElementById("password-field1").value;
+
+		if (agerPass.length > 0) {
+			buttonUpdate.disabled = false;
+		}
+		else {
+			buttonUpdate.disabled = true;
+		}
+	}
+	else if (pas3.length > 0) {
+		buttonUpdate.disabled = true;
+		$('#msg').html('Password Do Not Match!').css('color', 'red');
+	}
+});
+
+$('#password-field3').on('keyup', function () {
+	if ($(this).val().length >= 8 && $(this).val() == $('#password-field2').val()) {
+		$('#msg').html('Password Matched!').css('color', 'green');
+		var agerPass = document.getElementById("password-field1").value;
+		if (agerPass.length > 0) {
+			buttonUpdate.disabled = false;
+		}
+		else {
+			buttonUpdate.disabled = true;
+		}
+	}
+	else {
+		buttonUpdate.disabled = true;
+		$('#msg').html('Password Do Not Match!').css('color', 'red');
+	}
+});
+
+$('.btn-ok1k').click(function () {
+	$("#myModalFor").modal('show');
+	document.getElementById('modalCancelA').disabled = true;
+	document.getElementById('modalUpdateAA').disabled = true;
+	$('#tick223').hide();
+	$(".circle-loader2").removeClass("load-complete2");
+	$(".circle-loader2").show();
+	$("#sure223").html("Please wait!");
+	$.ajax
+		({
+			type: "PUT",
+			url: urlForAll + "approved/change/password/" + localStorage.getItem('userID'),
+			data: JSON.stringify
+				({
+					"prev_password": document.getElementById('password-field1').value,
+					"new_password": document.getElementById('password-field2').value,
+					"confirm_password": document.getElementById('password-field3').value
+				}),
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				if (data.status == 'OK') {
+					setTimeout(function () {
+						$(".circle-loader2").addClass("load-complete2");
+
+						$('#tick223').show();
+						$('#msg').html("");
+
+						$("#sure223").html("Password Updated!");
+					}, 1000);
+					document.getElementById('password-field1').value = "";
+					document.getElementById('password-field2').value = "";
+					document.getElementById('password-field3').value = "";
+					setTimeout(function () {
+						$("#myModalFor").modal('hide');
+						document.getElementById('modalCancelA').disabled = false;
+						document.getElementById('modalUpdateAA').disabled = false;
+					}, 2000);
+				}
+			},
+			error: function (data) {
+				document.getElementById('modalCancelA').disabled = false;
+				document.getElementById('modalUpdateAA').disabled = false;
+				$(".circle-loader2").hide();
+				$('#tick223').hide();
+				var ob = Object.keys(data);
+				if (ob[17] == "responseJSON") {
+					$("#sure223").html(data.responseJSON.errorMessage);
+				}
+				else {
+					$("#sure223").html("Please wait, We're Working!");
+				}
+			}
+		})
+});
 function initAutocomplete() {
 	var datap;
 	$.ajax
