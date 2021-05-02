@@ -101,12 +101,7 @@ var registeredDeliveryMan = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			url: urlForAll + "deliveryMan/getDeliveryManByUserId/" + org_ID,
 			headers:
 			{
@@ -191,12 +186,7 @@ var approvedDeliveryMan = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			url: urlForAll + "deliveryMan/approved/" + org_ID,
 			headers:
 			{
@@ -283,12 +273,7 @@ var unApprovedDeliveryMan = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			url: urlForAll + "deliveryMan/unApproved/" + org_ID,
 			headers:
 			{
@@ -376,12 +361,7 @@ var activatedd = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			url: urlForAll + "orgHead/all/enable/deliveryMan/" + org_ID,
 			headers:
 			{
@@ -470,12 +450,7 @@ var disableddd = () => {
 	table.clear().draw();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			url: urlForAll + "orgHead/all/disable/deliveryMan/" + org_ID,
 			headers:
 			{
@@ -643,7 +618,7 @@ var addDeliveryMan = () => {
 							$('#tick').show();
 
 							$("#sure").html("Delivery man added!");
-						}, 3000);
+						}, 500);
 						$('input[type=checkbox]').prop('checked', false);
 						document.getElementById('deliveryManName').value = "";
 						document.getElementById('deliveryManEmail').value = "";
@@ -652,7 +627,7 @@ var addDeliveryMan = () => {
 
 							document.getElementById('DeliveryMan_CREATION').disabled = false;
 							$("#myModal").modal('hide');
-						}, 4000);
+						}, 1000);
 					}
 				},
 				error: function (data) {
@@ -683,7 +658,6 @@ $('.btn-ok').click(function () {
 	document.getElementById('modalApproveX').disabled = true;
 	$.ajax
 		({
-			async: true,
 			type: "GET",
 			url: urlForAll + "orgHead/deliveryMan/" + deliveryManId,
 
@@ -701,7 +675,7 @@ $('.btn-ok').click(function () {
 					$('#tick2').show();
 
 					$("#sure2").html("Delivery Man Approved!");
-				}, 900);
+				}, 500);
 
 				setTimeout(function () {
 					$("#myModalMer").modal('hide');
@@ -718,7 +692,7 @@ $('.btn-ok').click(function () {
 					document.getElementById('modalCancelX').disabled = false;
 					document.getElementById('modalApproveX').disabled = false;
 
-				}, 2000);
+				}, 1000);
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -749,7 +723,6 @@ $('.btn-okActivate').click(function () {
 	document.getElementById('modalApprove1Activate').disabled = true;
 	$.ajax
 		({
-			async: true,
 			type: "PUT",
 			url: urlForAll + "orgHead/disable/deliveryMan/" + org_ID + "/" + merId,
 
@@ -767,7 +740,7 @@ $('.btn-okActivate').click(function () {
 					$('#tickActivate').show();
 
 					$("#sureActivate").html("Delivery Man Disabled!");
-				}, 900);
+				}, 500);
 
 				setTimeout(function () {
 					$("#myModalMerActivate").modal('hide');
@@ -783,7 +756,7 @@ $('.btn-okActivate').click(function () {
 
 					document.getElementById('modalCancel1Activate').disabled = false;
 					document.getElementById('modalApprove1Activate').disabled = false;
-				}, 2000);
+				}, 1000);
 			},
 			error: function (data) {
 
@@ -814,7 +787,6 @@ $('.btn-okDisable').click(function () {
 	document.getElementById('modalApprove1Disable').disabled = true;
 	$.ajax
 		({
-			async: true,
 			type: "PUT",
 			url: urlForAll + "orgHead/enable/deliveryMan/" + org_ID + "/" + merId,
 
@@ -832,7 +804,7 @@ $('.btn-okDisable').click(function () {
 					$('#tickDisable').show();
 
 					$("#sureDisable").html("Delivery Man Activated!");
-				}, 900);
+				}, 500);
 
 				setTimeout(function () {
 					$("#myModalMerDisable").modal('hide');
@@ -848,7 +820,7 @@ $('.btn-okDisable').click(function () {
 
 					document.getElementById('modalCancel1Disable').disabled = false;
 					document.getElementById('modalApprove1Disable').disabled = false;
-				}, 2000);
+				}, 1000);
 			},
 			error: function (data) {
 

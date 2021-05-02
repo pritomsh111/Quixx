@@ -1,7 +1,7 @@
 (() => {
-    // if (!document.location.host.includes("portal")) {
-    //     window.location.href = "/";
-    // }
+    if (!document.location.host.includes("portal")) {
+        window.location.href = "/";
+    }
 
     // Storage Event
     window.addEventListener('storage', function (event) {
@@ -32,7 +32,7 @@
     if (cw[1] === "parcelboat") {
         lg.style.height = "105px";
     }
-
+    document.querySelector(".Company>div").style.cursor = "pointer";
     document.querySelector(".Company>div").addEventListener('click', function (e) {
         e.preventDefault();
         location.reload();
@@ -43,11 +43,11 @@
         lg.style.height = "80px";
         // document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
         // document.body.style.background = "url('./static-landing/img/clients/nogonbondhu-bg.png') no-repeat left bottom/138vh";
-        // if (window.innerWidth < 961) {
-        //     document.querySelector(".Company").style.cssText = 'position: unset;left: unset;top: unset;';
-        // }
-        document.querySelector(".Company>h1").style.fontSize = "1rem";
-        document.querySelector(".Company>h1").style.marginTop = "-0.4rem";
+        if (window.innerWidth < 961) {
+            document.querySelector(".Company").style.cssText = 'position: relative;top: -1.6rem;';
+        }
+        document.querySelector(".Company>h1").style.fontSize = "1.3rem";
+        document.querySelector(".Company>h1").style.marginTop = "-0.1rem";
     }
     // Favicon
     let fc = document.querySelector("link[rel='shortcut icon']");
