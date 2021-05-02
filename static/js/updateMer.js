@@ -84,6 +84,10 @@ $('#password-field3').on('keyup', function () {
 });
 
 $('.btn-ok1k').click(function () {
+	if (document.getElementById('password-field1').value < 8 || document.getElementById('password-field2').value < 8) {
+		$('#msg').html('Password Fields Must Be Filled Properly!').css('color', 'red');
+		return;
+	}
 	$("#myModalFor").modal('show');
 	document.getElementById('modalCancelA').disabled = true;
 	document.getElementById('modalUpdateAA').disabled = true;

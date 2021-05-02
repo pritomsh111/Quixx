@@ -48,8 +48,8 @@
 		});
 		function changeImage(input) {
 			var reader;
-			if (input.files[0].size > 500000) {
-				document.querySelector("#myModalForE2Setup3 p").innerHTML = "File Size Must Be Less Than 500KB!";
+			if (input.files[0].size > 200000) {
+				document.querySelector("#myModalForE2Setup3 p").innerHTML = "File Size Must Be Less Than 200KB!";
 				$('#myModalForE2Setup3').modal('show');
 			}
 			else if (input.files && input.files[0]) {
