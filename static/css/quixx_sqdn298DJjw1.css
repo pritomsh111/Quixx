@@ -2370,6 +2370,12 @@ button.close {
   padding: 3rem !important;
 }
 
+@media (max-width: 540px) {
+  .p-5 {
+    padding: 2rem !important;
+  }
+}
+
 .text-justify {
   text-align: justify !important;
 }

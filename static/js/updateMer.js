@@ -12,16 +12,16 @@ function addressUpdateMer() {
 	document.getElementById('uporg1').style.fontSize = '14.5px';
 	document.getElementById('uporg2').disabled = false;
 	document.getElementById('uporg2').style.fontSize = '13px';
-	$('#mapForm').show();
-	$('#passForm').hide();
+	$('#mapFormMer').show();
+	$('#passFormMer').hide();
 }
 function passUpdateMer() {
 	document.getElementById('uporg2').disabled = true;
 	document.getElementById('uporg2').style.fontSize = '14.5px';
 	document.getElementById('uporg1').disabled = false;
 	document.getElementById('uporg1').style.fontSize = '13px';
-	$('#mapForm').hide();
-	$('#passForm').show();
+	$('#mapFormMer').hide();
+	$('#passFormMer').show();
 }
 
 var buttonUpdate = document.getElementById('modalUpdateAA');
@@ -143,10 +143,8 @@ $('.btn-ok1k').click(function () {
 		})
 });
 function initAutocomplete() {
-	var datap;
 	$.ajax
 		({
-			async: true,
 			type: "GET",
 			url: urlForAll + "profile/get/profile/" + localStorage.getItem('userID'),
 			headers:
@@ -416,7 +414,6 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 			return 1;
 		}
 	}
-
 	if (v1() == 1 && v2() == 1 && v3() == 1) {
 		$.ajax
 			({
@@ -448,17 +445,14 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 							$('#tickDD2').show();
 
 							$("#sureDD2").html("Merchant Updated!");
-						}, 3000);
+						}, 2000);
 						setTimeout(function () {
-
 							$("#myModalCreateDD1").modal('hide');
-						}, 4000);
+						}, 3000);
 						$("#cod").hide();
-
 					}
 				},
-				error: function (XMLHttpRequest, textStatus, errorThrown) {
-
+				error: function (data) {
 					$("#myModalCreateDD1").modal('hide');
 					$('#myModal2').modal('show');
 				}
