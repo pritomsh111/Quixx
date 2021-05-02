@@ -8,7 +8,8 @@
 	}
 
 	if (user === 'SUPER_ADMIN') {
-		$('#logooo').hide();
+		$('.logo>a>label').hide();
+		$('.logo>a>input').hide();
 		document.title = "Super Admin";
 		myNode = document.getElementById("merchant");
 		myNode.remove();
@@ -37,7 +38,7 @@
 					}
 					else if (data.data.image_str != "") {
 						changeFavicon(data.data.image_str);
-						preview.setAttribute('src', data.data.image_str);
+						document.querySelector('.logo>a').style.background = "url('" + data.data.image_str.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
 						isLogo = true;
 					}
 				}
@@ -47,11 +48,13 @@
 		});
 		function changeImage(input) {
 			var reader;
-			console.dir(input.files);
-			if (input.files && input.files[0]) {
+			if (input.files[0].size > 500000) {
+				document.querySelector("#myModalForE2Setup3 p").innerHTML = "File Size Must Be Less Than 500KB!";
+				$('#myModalForE2Setup3').modal('show');
+			}
+			else if (input.files && input.files[0]) {
 				reader = new FileReader();
 				reader.onload = function (e) {
-					// console.log(e.target.result);
 					let method = "PUT";
 					let url = urlForAll + "approved/update/logo";
 					if (isLogo) {
@@ -59,41 +62,34 @@
 						method = "POST";
 					}
 					console.log(isLogo);
-					// console.log(e.target);
 					if (e.target.result.includes("data:image")) {
 						changeFavicon(e.target.result);
-						document.querySelector('.logo>a').style.background = "url('" + e.target.result.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
+						$.ajax
+							({
+								type: method,
+								url: url,
+								data: JSON.stringify
+									({
+										"user_id": localStorage.getItem('userID'),
+										"image_str": e.target.result
+									}),
+								headers:
+								{
+									'Accept': 'application/json',
+									'Content-Type': 'application/json',
+									"Authorization": 'Bearer ' + localStorage.getItem('token')
+								},
+								success: function (data) {
+									changeFavicon(e.target.result);
+									document.querySelector('.logo>a').style.background = "url('" + e.target.result.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
+								}
+							});
 					}
 					else {
+						document.querySelector("#myModalForE2Setup3 p").innerHTML = "Not an image file!";
 						$('#myModalForE2Setup3').modal('show');
 					}
-					// $.ajax
-					// 	({
-					// 		type: "POST",
-					// 		url: urlForAll + "approved/insert/logo",
-					// 		data: JSON.stringify
-					// 			({
-					// 				"user_id": localStorage.getItem('userID'),
-					// 				"image_str": e.target.result
-					// 			}),
-					// 		headers:
-					// 		{
-					// 			'Accept': 'application/json',
-					// 			'Content-Type': 'application/json',
-					// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-					// 		},
-					// 		success: function (data) {
-					// console.log(data);
-					// 			$('#one1').hide();
-					// 			$('#two2').show();
-					// 			changeFavicon(e.target.result);
-					// 			preview.setAttribute('src', e.target.result);
-					// 		}
-					// 	});
-					//console.log(e.target.result);
-					//preview.setAttribute('src', e.target.result);
 				}
-
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
@@ -115,22 +111,16 @@
 				}
 			});
 		myNode = document.getElementById("merchant");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
 		myNode.remove();
 		myNode = document.getElementById("superAdmin");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
 		myNode.remove();
 	}
 	else if (user === 'MERCHANT') {
-		$('#logooo').hide();
+		$('.logo>a>label').hide();
+		$('.logo>a>input').hide();
 
 		$.ajax
 			({
-
 				type: "GET",
 				url: urlForAll + "merchant/get/org/logo/" + localStorage.getItem('userID'),
 				headers:
@@ -141,7 +131,7 @@
 				},
 				success: function (data) {
 					changeFavicon(data.data.image_str);
-					preview.setAttribute('src', data.data.image_str);
+					document.querySelector('.logo>a').style.background = "url('" + data.data.image_str.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
 				}
 			});
 		$.ajax
@@ -176,20 +166,9 @@
 					document.getElementById("dashName").innerHTML = data.data.sender_name + "'s Panel";
 				}
 			})
-
-		var fileTag = document.getElementById("filetag");
-		var fileTag2 = document.getElementById("filetag2");
-		preview = document.getElementById("preview");
-		//document.getElementById("dashName").innerHTML = "Merchant's Panel";
 		myNode = document.getElementById("organizationHead");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
 		myNode.remove();
 		myNode = document.getElementById("superAdmin");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
 		myNode.remove();
 	}
 	else {
