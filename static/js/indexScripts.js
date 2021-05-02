@@ -55,11 +55,11 @@
 			else if (input.files && input.files[0]) {
 				reader = new FileReader();
 				reader.onload = function (e) {
-					let method = "PUT";
-					let url = urlForAll + "approved/update/logo";
+					let url = urlForAll + "approved/insert/logo";
+					let method = "POST";
 					if (isLogo) {
-						url = urlForAll + "approved/insert/logo";
-						method = "POST";
+						method = "PUT";
+						url = urlForAll + "approved/update/logo";
 					}
 					console.log(isLogo);
 					if (e.target.result.includes("data:image")) {
