@@ -21,7 +21,7 @@
   cursor: pointer;
   margin: 0 auto;
   /* border: 1px solid; */
-  box-shadow: rgb(0 0 0 / 8%) 0px 4px 9px;
+  box-shadow: rgb(0 0 0 / 8%) 0px 3px 9px;
   position: relative;
   overflow: hidden;
 }
