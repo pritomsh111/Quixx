@@ -20,6 +20,7 @@
   border-radius: 50%;
   background-color: #008394;
   cursor: pointer;
+  background: url("../img/company_logo.png") no-repeat center/cover;
   margin: 0 auto;
   /* border: 1px solid; */
   box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.075), -1px -2px 1px -1px rgba(0, 0, 0, 0.075);

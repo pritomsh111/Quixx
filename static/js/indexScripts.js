@@ -52,8 +52,6 @@
 			if (input.files && input.files[0]) {
 				reader = new FileReader();
 				reader.onload = function (e) {
-					console.log(e);
-					console.log(e.target);
 					console.log(e.target.result);
 					let method = "PUT";
 					let url = urlForAll + "approved/update/logo";
@@ -64,6 +62,8 @@
 					console.log(isLogo);
 					if (e.target.result.includes("data:image")) {
 						console.log("IMAGE MAMA");
+						changeFavicon(e.target.result);
+						preview.setAttribute('src', e.target.result);
 					}
 					else {
 						$('#myModalForE2Setup3').modal('show');
