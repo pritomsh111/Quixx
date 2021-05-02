@@ -1,7 +1,6 @@
 (async function () {
 	var myNode;
 	var fileTag = document.getElementById("filetag");
-	var preview = document.getElementById("preview");
 	let favicon = document.querySelector("link[rel='shortcut icon']");
 
 	function changeFavicon(img) {
@@ -15,8 +14,8 @@
 		myNode.remove();
 		myNode = document.getElementById("organizationHead");
 		myNode.remove();
-		preview = document.getElementById("preview");
-		preview.setAttribute('src', 'static/img/Logo.png');
+		changeFavicon("static/img/Logo.png");
+		document.querySelector('.logo>a').style.background = "url(static/img/Logo.png) no-repeat center/contain";
 		document.getElementById("dashName").innerHTML = "Super Admin's Panel";
 	}
 	else if (user === 'ORGANIZATIONAL_ADMIN') {
@@ -48,11 +47,11 @@
 		});
 		function changeImage(input) {
 			var reader;
-
+			console.dir(input.files);
 			if (input.files && input.files[0]) {
 				reader = new FileReader();
 				reader.onload = function (e) {
-					console.log(e.target.result);
+					// console.log(e.target.result);
 					let method = "PUT";
 					let url = urlForAll + "approved/update/logo";
 					if (isLogo) {
@@ -60,10 +59,10 @@
 						method = "POST";
 					}
 					console.log(isLogo);
+					// console.log(e.target);
 					if (e.target.result.includes("data:image")) {
-						console.log("IMAGE MAMA");
 						changeFavicon(e.target.result);
-						preview.setAttribute('src', e.target.result);
+						document.querySelector('.logo>a').style.background = "url('" + e.target.result.replace(/(\r\n|\n|\r)/gm, "") + "') no-repeat center/contain";
 					}
 					else {
 						$('#myModalForE2Setup3').modal('show');
