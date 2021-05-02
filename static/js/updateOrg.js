@@ -437,7 +437,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 		}
 	}
 
-	if (v0() == 1 && v1() == 1 && v2() == 1 && v3() == 1) {
+	if (v1() == 1 && v2() == 1 && v3() == 1) {
 		$.ajax
 			({
 				type: "PUT",
