@@ -21,15 +21,14 @@ if (document.location.host.includes("portal")) {
     });
 
     if (cw[1] === "nogorbondhu") {
-        lg.style.width = "140px";
-        lg.style.height = "80px";
+        lg.style.width = "200px";
+        lg.style.height = "110px";
         // document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
         // document.body.style.background = "url('./static-landing/img/clients/nogonbondhu-bg.png') no-repeat left bottom/138vh";
         if (window.innerWidth < 961) {
             document.querySelector(".Company").style.cssText = 'position: relative;top: -1.6rem;';
         }
-        document.querySelector(".Company>h1").style.fontSize = "1.3rem";
-        document.querySelector(".Company>h1").style.marginTop = "-0.1rem";
+        document.querySelector(".Company>h1").style.display = "none";
     }
 
     // Favicon

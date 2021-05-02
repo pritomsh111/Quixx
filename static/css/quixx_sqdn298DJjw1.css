@@ -4692,7 +4692,7 @@ h2.title {
   z-index: 2;
   width: 260px;
   background: #f9f6ff;
-  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 20px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 20px -5px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar .caret {
@@ -5215,7 +5215,7 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 body {
-  background-color: #f9f6ff;
+  background: hsla(60, 36.4%, 95.7%, 1);
   color: #3C4858;
   font-weight: 250;
 }
