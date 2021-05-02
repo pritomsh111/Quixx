@@ -1,7 +1,6 @@
-(function () {
+(async function () {
 	var myNode;
 	var fileTag = document.getElementById("filetag");
-	var fileTag2 = document.getElementById("filetag2");
 	var preview = document.getElementById("preview");
 	let favicon = document.querySelector("link[rel='shortcut icon']");
 
@@ -21,7 +20,8 @@
 		document.getElementById("dashName").innerHTML = "Super Admin's Panel";
 	}
 	else if (user === 'ORGANIZATIONAL_ADMIN') {
-		$.ajax
+		let isLogo = true;
+		await $.ajax
 			({
 				type: "GET",
 				url: urlForAll + "orgHead/get/logo/" + localStorage.getItem('userID'),
@@ -34,17 +34,15 @@
 				success: function (data) {
 					console.log(data);
 					if (data.data.image_str == "") {
-						$('#two2').hide();
+						isLogo = false;
 					}
 					else if (data.data.image_str != "") {
 						changeFavicon(data.data.image_str);
 						preview.setAttribute('src', data.data.image_str);
-						$('#one1').hide();
+						isLogo = true;
 					}
 				}
 			});
-
-
 		fileTag.addEventListener("change", function () {
 			changeImage(this);
 		});
