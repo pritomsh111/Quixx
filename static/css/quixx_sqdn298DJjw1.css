@@ -46,7 +46,7 @@ a label {
 
 a label:hover {
   opacity: 0.7;
-  background-color: rgba(255, 255, 255, 0.774);
+  background-color: rgba(255, 255, 255, 0.65);
   color: #000;
 }
 
@@ -112,7 +112,7 @@ a label:hover {
 }
 
 html {
-  font-family: 'Roboto';
+  font-family: 'Didact Gothic';
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -130,7 +130,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0;
-  font-family: 'Roboto';
+  font-family: 'Didact Gothic';
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5em;
@@ -257,7 +257,7 @@ a:not([href]):not([tabindex]):focus {
 }
 
 pre, code, kbd, samp {
-  font-family: 'Roboto';
+  font-family: 'Didact Gothic';
   font-size: 1em;
 }
 
@@ -553,7 +553,7 @@ mark, .mark {
 }
 
 code, kbd, pre, samp {
-  font-family: 'Roboto';
+  font-family: 'Didact Gothic';
 }
 
 code {
@@ -4355,7 +4355,7 @@ html * {
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
-  font-family: 'Roboto';
+  font-family: 'Didact Gothic';
   font-weight: 300;
   line-height: 1.5em;
 }
@@ -5214,7 +5214,7 @@ legend {
 }
 
 .serif-font {
-  font-family: 'Roboto';
+  font-family: 'Didact Gothic';
 }
 
 * {
