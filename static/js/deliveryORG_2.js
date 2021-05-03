@@ -2721,14 +2721,13 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	}
 	var v8 = () => {
 
-		// if (parseInt(delivery_charge) <= 0 || delivery_charge.charAt(0) == 0) {
-		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than 0!";
-		// 	$('#myModalWrongDeliveryCreate').modal('show');
-		// 	document.getElementById("delivery_charge").focus();
-		// 	return 0;
-		// }
-		// else
-		if (isNaN(delivery_charge) == true || delivery_charge == "" || !/\D/.test(delivery_charge) == false) {
+		if (parseInt(delivery_charge) < 0) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than or equal to 0!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("delivery_charge").focus();
+			return 0;
+		}
+		else if (isNaN(delivery_charge) == true || delivery_charge == "" || !/\D/.test(delivery_charge) == false) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be a number!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("delivery_charge").focus();
@@ -2767,14 +2766,13 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v11 = () => {
-		// if (parseInt(product_cost) <= 0 || product_cost.charAt(0) == 0) {
-		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than 0!";
-		// 	$('#myModalWrongDeliveryCreate').modal('show');
-		// 	document.getElementById("product_cost").focus();
-		// 	return 0;
-		// }
-		// else
-		if (isNaN(product_cost) == true || product_cost == "" || !/\D/.test(product_cost) == false) {
+		if (parseInt(product_cost) < 0) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than or equal to 0!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("product_cost").focus();
+			return 0;
+		}
+		else if (isNaN(product_cost) == true || product_cost == "" || !/\D/.test(product_cost) == false) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be a number!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_cost").focus();
@@ -3152,18 +3150,17 @@ function doIt(i, lengx) {
 			}
 		}
 		var v8 = () => {
-			// if (parseInt(delivery_charge) <= 0 || String(delivery_charge).charAt(0) == 0) {
-			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be greater than 0!`;
-			// 	$('#myModalWrongDeliveryCreate').modal('show');
-			// 	document.getElementById('CLOSEIT').disabled = false;
-			// 	hello();
-			// 	setTimeout(function () {
-			// 		$('#myModalCreateD1').modal('hide');
-			// 	}, 2500);
-			// 	return 0;
-			// }
-			// else
-			if (isNaN(delivery_charge) == true || delivery_charge == "" || delivery_charge == undefined || !/\D/.test(delivery_charge) == false) {
+			if (parseInt(delivery_charge) < 0) {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be greater than or equal to 0!`;
+				$('#myModalWrongDeliveryCreate').modal('show');
+				document.getElementById('CLOSEIT').disabled = false;
+				hello();
+				setTimeout(function () {
+					$('#myModalCreateD1').modal('hide');
+				}, 2500);
+				return 0;
+			}
+			else if (isNaN(delivery_charge) == true || delivery_charge == "" || delivery_charge == undefined || !/\D/.test(delivery_charge) == false) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be a number!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
@@ -3218,18 +3215,17 @@ function doIt(i, lengx) {
 			}
 		}
 		var v11 = () => {
-			// if (parseInt(product_cost) <= 0 || String(product_cost).charAt(0) == 0) {
-			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Cost must be greater than 0!`;
-			// 	$('#myModalWrongDeliveryCreate').modal('show');
-			// 	document.getElementById('CLOSEIT').disabled = false;
-			// 	hello();
-			// 	setTimeout(function () {
-			// 		$('#myModalCreateD1').modal('hide');
-			// 	}, 2500);
-			// 	return 0;
-			// }
-			// else
-			if (isNaN(product_cost) == true || product_cost == "" || product_cost == undefined || !/\D/.test(product_cost) == false) {
+			if (parseInt(product_cost) < 0) {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Cost must be greater than or equal to 0!`;
+				$('#myModalWrongDeliveryCreate').modal('show');
+				document.getElementById('CLOSEIT').disabled = false;
+				hello();
+				setTimeout(function () {
+					$('#myModalCreateD1').modal('hide');
+				}, 2500);
+				return 0;
+			}
+			else if (isNaN(product_cost) == true || product_cost == "" || product_cost == undefined || !/\D/.test(product_cost) == false) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Cost must be a number!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
@@ -4184,14 +4180,13 @@ $('.btn-ok-updateDC').click(function () {
 	var weight = document.getElementById('productWeightU').value;
 	var cityType = document.getElementById('productCityU').value;
 	var v0 = () => {
-		// if (parseInt(delivery_cost_update) <= 0 || delivery_cost_update.charAt(0) == 0) {
-		// 	document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than 0!";
-		// 	$('#wrongdcost').show();
-		// 	document.getElementById("delivery_cost_update").focus();
-		// 	return 0;
-		// }
-		// else
-		if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
+		if (parseInt(delivery_cost_update) < 0) {
+			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than or equal to 0!";
+			$('#wrongdcost').show();
+			document.getElementById("delivery_cost_update").focus();
+			return 0;
+		}
+		else if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
 			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be a number!";
 			$('#wrongdcost').show();
 			document.getElementById("delivery_cost_update").focus();
@@ -4326,14 +4321,13 @@ $('.btn-ok-updateDC').click(function () {
 		}
 	}
 	var v11 = () => {
-		// if (parseInt(product_cost) <= 0 || product_cost.charAt(0) == 0) {
-		// 	document.getElementById('wrongpercost').innerHTML = "Product Cost must be greater than 0!";
-		// 	$('#wrongpercost').show();
-		// 	document.getElementById("product_costU").focus();
-		// 	return 0;
-		// }
-		// else
-		if (isNaN(product_cost) == true || product_cost == "" || !/\D/.test(product_cost) == false) {
+		if (parseInt(product_cost) < 0) {
+			document.getElementById('wrongpercost').innerHTML = "Product Cost must be greater than or equal to 0!";
+			$('#wrongpercost').show();
+			document.getElementById("product_costU").focus();
+			return 0;
+		}
+		else if (isNaN(product_cost) == true || product_cost == "" || !/\D/.test(product_cost) == false) {
 			document.getElementById('wrongpercost').innerHTML = "Product Cost must be a number!";
 			$('#wrongpercost').show();
 			document.getElementById("product_costU").focus();
@@ -4600,14 +4594,13 @@ $('.btn-okReturn').click(function () {
 	var product_cost = document.getElementById('product_costUR').value;
 
 	var v1 = () => {
-		// if (parseInt(delivery_cost_update) <= 0 || delivery_cost_update.charAt(0) == 0) {
-		// 	document.getElementById('wrongdcostR').innerHTML = "Delivery Charge must be greater than 0!";
-		// 	$('#wrongdcostR').show();
-		// 	document.getElementById("delivery_cost_updateR").focus();
-		// 	return 0;
-		// }
-		// else
-		if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
+		if (parseInt(delivery_cost_update) < 0) {
+			document.getElementById('wrongdcostR').innerHTML = "Delivery Charge must be greater than or equal to 0!";
+			$('#wrongdcostR').show();
+			document.getElementById("delivery_cost_updateR").focus();
+			return 0;
+		}
+		else if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
 			document.getElementById('wrongdcostR').innerHTML = "Delivery Charge must be a number!";
 			$('#wrongdcostR').show();
 			document.getElementById("delivery_cost_updateR").focus();
@@ -4646,14 +4639,13 @@ $('.btn-okReturn').click(function () {
 		}
 	}
 	var v4 = () => {
-		// if (parseInt(product_cost) <= 0 || product_cost.charAt(0) == 0) {
-		// 	document.getElementById('wrongpercostR').innerHTML = "Product Cost must be greater than 0!";
-		// 	$('#wrongpercostR').show();
-		// 	document.getElementById("product_costUR").focus();
-		// 	return 0;
-		// }
-		// else
-		if (isNaN(product_cost) == true || product_cost == "" || !/\D/.test(product_cost) == false) {
+		if (parseInt(product_cost) < 0) {
+			document.getElementById('wrongpercostR').innerHTML = "Product Cost must be greater than or equal to 0!";
+			$('#wrongpercostR').show();
+			document.getElementById("product_costUR").focus();
+			return 0;
+		}
+		else if (isNaN(product_cost) == true || product_cost == "" || !/\D/.test(product_cost) == false) {
 			document.getElementById('wrongpercostR').innerHTML = "Product Cost must be a number!";
 			$('#wrongpercostR').show();
 			document.getElementById("product_costUR").focus();
