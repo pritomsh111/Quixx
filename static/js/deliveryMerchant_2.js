@@ -868,11 +868,10 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v10 = () => {
-		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+		if (parseInt(product_qty) <= 0) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be greater than 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_qty").focus();
-
 			return 0;
 		}
 		else if (isNaN(product_qty) == true || product_qty == "" || !/\D/.test(product_qty) == false) {
@@ -886,8 +885,8 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v11 = () => {
-		if (parseInt(product_cost) <= 0 || product_cost.charAt(0) == 0) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than 0!";
+		if (parseInt(product_cost) < 0) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_cost").focus();
 			return 0;
@@ -1232,8 +1231,8 @@ function doIt(i, lengx) {
 			}
 		}
 		var v8 = () => {
-			if (parseInt(delivery_charge) <= 0 || String(delivery_charge).charAt(0) == 0) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be greater than 0!`;
+			if (parseInt(delivery_charge) < 0) {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be greater than or equal to 0!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
 				hello();
@@ -1272,7 +1271,7 @@ function doIt(i, lengx) {
 			}
 		}
 		var v10 = () => {
-			if (parseInt(product_qty) <= 0 || String(product_qty).charAt(0) == 0) {
+			if (parseInt(product_qty) <= 0) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Quantity must be greater than 0!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
@@ -1297,8 +1296,8 @@ function doIt(i, lengx) {
 			}
 		}
 		var v11 = () => {
-			if (parseInt(product_cost) <= 0 || String(product_cost).charAt(0) == 0) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Cost must be greater than 0!`;
+			if (parseInt(product_cost) < 0) {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Cost must be greater than or equal to 0!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
 				hello();
