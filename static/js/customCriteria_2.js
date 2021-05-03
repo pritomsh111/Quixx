@@ -106,6 +106,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
                     $('#tickActivate').show();
 
                     $("#sureActivate").html(`Criteria ${flag ? "Updated" : "Set"}`);
+                    flag = 1;
                 }, 900);
 
                 setTimeout(function () {
