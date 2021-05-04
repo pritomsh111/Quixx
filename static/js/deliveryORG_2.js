@@ -4426,6 +4426,42 @@ $('.btn-ok-updateDC').click(function () {
 				"delivery_status": delivery_statusx
 			});
 			console.log(data);*/
+		datal = JSON.stringify
+			({
+				"collection_name": collection_name,
+				"creator_id": creator_ID,
+				"delivery_charge": delivery_cost_update,
+				"delivery_type": delivery_type,
+				"sender_address": s_address,
+				"receiver_address": rec_address,
+				"sender_phone_number": s_number,
+				"receiver_phone_number": r_number,
+				"sender_name": s_name,
+				"receiver_name": r_name,
+				"payment_method": payment_method,
+				"product_cost": product_cost,
+				"sender_lat": pickup_lat,
+				"sender_longi": pickup_longi,
+				"receiver_lat": delivery_lat,
+				"receiver_longi": delivery_longi,
+				"product_name": product_name,
+				"product_qty": product_qty,
+				"pickup_time": pickup_time,
+				"delivery_note": delivery_note,
+				"delivery_area": area,
+				"delivery_city": deliveryCity,
+				"delivery_created_date": created_date,
+				"delivery_created_by_name": created_by_name,
+				"delivery_created_by_role": created_by_role,
+				"delivery_status": delivery_statusx,
+				"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+				"delivery_product_type": productType ? productType : "delivery_product_type_na",
+				"delivery_weight": weight ? weight : "delivery_weight_na",
+				"delivery_distance": distance ? distance : "delivery_distance_na",
+				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
+			});
+		console.log(datal);
+
 		document.getElementById('modalApproveDC').disabled = true;
 		document.getElementById('modalCancelDC').disabled = true;
 		$('.btn-ok-updateDC').attr('disabled', true);
@@ -4437,7 +4473,6 @@ $('.btn-ok-updateDC').click(function () {
 		$("#sure3DC").show();
 		$.ajax
 			({
-				async: true,
 				type: "PUT",
 				url: urlForAll + "delivery/update/full/" + org_ID + "/" + creator_ID + "/" + del_id,
 				data: JSON.stringify
