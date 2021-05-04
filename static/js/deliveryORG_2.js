@@ -2840,12 +2840,12 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"pickup_time": pickup_time,
 				"delivery_note": delivery_note,
 				"delivery_city": deliveryCity,
-				"delivery_area": area
-				// "delivery_day_type": dayType ? dayType : "delivery_day_type_na",
-				// "delivery_product_type": productType ? productType : "delivery_product_type_na",
-				// "delivery_weight": weight ? weight : "delivery_weight_na",
-				// "delivery_distance": distance ? distance : "delivery_distance_na",
-				// "delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
+				"delivery_area": area,
+				"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+				"delivery_product_type": productType ? productType : "delivery_product_type_na",
+				"delivery_weight": weight ? weight : "delivery_weight_na",
+				"delivery_distance": distance ? distance : "delivery_distance_na",
+				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 			});
 		console.log(datap);
 		$('#tickD2').hide();

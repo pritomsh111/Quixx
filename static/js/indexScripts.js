@@ -10,6 +10,7 @@
 	if (user === 'SUPER_ADMIN') {
 		$('.logo>a>label').hide();
 		$('.logo>a>input').hide();
+		document.querySelector(".logo>a>div").style.height = "130px";
 		document.title = "Super Admin";
 		myNode = document.getElementById("merchant");
 		myNode.remove();
