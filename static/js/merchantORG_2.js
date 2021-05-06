@@ -173,6 +173,7 @@ var approvedMer = () => {
 	$('#dtBasicExample tbody').on('click', 'td.details-control', function (e) {
 		e.preventDefault();
 		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExample').DataTable();
 		var row = table.row(tr);
 		console.log(tr);
 		console.log(row, row.child, row.data());
@@ -296,12 +297,13 @@ var unApprovedMer = () => {
 		document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + json.data.length;
 	});
 	table.clear().draw();
-
+	console.log(table);
 	merchantOrgDatatableStyle();
 	$('#dtBasicExample2').show();
 	$('.b').show();
 	$('#dtBasicExample2 tbody').on('click', 'td.details-control', function () {
 		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExample2').DataTable();
 		var row = table.row(tr);
 		if (row.child.isShown()) {
 			// This row is already open - close it
