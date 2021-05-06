@@ -73,13 +73,30 @@ var invoice = (id) => {
 			}
 		});
 };
+
+function format(d) {
+	// `d` is the original data object for the row
+	console.log(d);
+	return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+		'<tr>' +
+		'<td>ID:</td>' +
+		'<td>' + d.approved_merchant_id + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Email:</td>' +
+		'<td>' + d.email + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Extra info:</td>' +
+		'<td>And any further details here (images etc)...</td>' +
+		'</tr>' +
+		'</table>';
+}
 var approvedMer = () => {
 	merchantOrgButtonActive();
 	merchantOrgTableHide();
 	document.getElementById('two').disabled = true;
 	document.getElementById('two').style.fontSize = '14.5px';
-
-
 
 	var table = $('#dtBasicExample').DataTable({
 		"processing": true,
@@ -106,7 +123,7 @@ var approvedMer = () => {
 				"class": 'details-control',
 				"orderable": false,
 				"data": null,
-				"defaultContent": ''
+				"defaultContent": "<i class='fa fa fa-plus-square-o'></i>"
 			},
 			{ "targets": 0, "data": "merchant_id" },
 			{ "targets": 1, "data": "org_name" },
@@ -127,7 +144,8 @@ var approvedMer = () => {
 	});
 	table.on('xhr', function () {
 		var json = table.ajax.json();
-		document.getElementById('two').innerHTML = 'Approved Merchant: ' + json.recordsTotal;
+		console.log(json)
+		document.getElementById('two').innerHTML = 'Approved Merchant: ' + json.data.length;
 	});
 	table.clear().draw();
 
@@ -192,6 +210,22 @@ var approvedMer = () => {
 	merchantOrgDatatableStyle();
 	$('#dtBasicExample').show();
 	$('.a').show();
+	$('#dtBasicExample tbody').on('click', 'td.details-control', function () {
+		var tr = $(this).parents('tr');
+		var row = table.row(tr);
+		console.log("HELLO");
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(format(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
+
 }
 
 var unApprovedMer = () => {

@@ -10,12 +10,19 @@
 
 td.details-control {
   cursor: pointer;
-  border-radius: 6%;
-  background: #fff;
 }
 
-tr.shown td.details-control {
-  background: #999;
+td.details-control i {
+  vertical-align: text-bottom;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+td.details-control:hover i {
+  opacity: 0.8;
+}
+
+tr.shown td.details-control i {
+  transform: rotate(90deg);
 }
 
 .logo {
