@@ -77,18 +77,22 @@ var invoice = (id) => {
 function format(d) {
 	// `d` is the original data object for the row
 	console.log(d);
-	return '<table style="padding: 1rem;">' +
+	return '<table style="border-collapse: separate; padding: 1rem;">' +
 		'<tr>' +
-		'<td>ID:</td>' +
+		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Owner Name:</td>' +
+		'<td>' + d.person_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Email:</td>' +
 		'<td>' + d.email + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Extra info:</td>' +
-		'<td>And any further details here (images etc)...</td>' +
+		'<td>Busienss Field:</td>' +
+		'<td>' + d.business_filed + '</td>' +
 		'</tr>' +
 		'</table>';
 }
@@ -125,12 +129,8 @@ var approvedMer = () => {
 				"data": null,
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			{ "targets": 0, "data": "merchant_id" },
 			{ "targets": 1, "data": "org_name" },
-			{ "targets": 3, "data": "person_name" },
-			{ "targets": 4, "data": "email" },
 			{ "targets": 5, "data": "phone_number" },
-			{ "targets": 6, "data": "business_filed" },
 			{ "targets": 7, "data": "per_delivery_cost" },
 			{ "targets": 8, "data": "cod_percentage" },
 			{
