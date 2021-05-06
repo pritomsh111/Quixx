@@ -77,7 +77,7 @@ var invoice = (id) => {
 function format(d) {
 	// `d` is the original data object for the row
 	console.log(d);
-	return '<table style="border-collapse: separate; padding: 1rem;">' +
+	return '<table style="border-collapse: separate; border-spacing: 1rem; padding: 1rem;">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
@@ -136,7 +136,7 @@ var approvedMer = () => {
 			{
 				"orderable": false, "targets": 9, "data": "update", render: function (data, type, row) {
 
-					return '<button id="' + row.merchant_id + '$$' + row.org_name + '$$' + row.person_name + '$$' + row.email + '$$' + row.phone_number + '$$' + row.business_filed + '$$' + row.per_delivery_cost + '$$' + row.cod_percentage + '" class="btn-round btn-outline btn updateIT" style="font-size:14.5px">Update</button>'
+					return '<button id="' + row.merchant_id + '$$' + row.org_name + '$$' + row.person_name + '$$' + row.email + '$$' + row.phone_number + '$$' + row.business_filed + '$$' + row.per_delivery_cost + '$$' + row.cod_percentage + '" class="btn-round btn-outline btn updateIT" style="font-size:13px">Update</button>'
 				}
 			}
 		],
@@ -551,12 +551,11 @@ var addMerchant = () => {
 		}
 	}
 	var v6 = () => {
-		// if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
-		// 	modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than 0!", "per_delivery_cost");
-		// 	return 0;
-		// }
-		// else
-		if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
+		if (parseInt(per_delivery_cost) < 0) {
+			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than or equal to 0!", "per_delivery_cost");
+			return 0;
+		}
+		else if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
 			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be a number!", "per_delivery_cost");
 			return 0;
 		}
@@ -652,9 +651,10 @@ function modalFormBeforeSuccess() {
 	$("#sureForm").show();
 }
 
-var arr;
+var arr, id_merchant_update;
 $('#dtBasicExample').on('click', '.updateIT', function () {
 	merId = $(this).attr('id');
+	id_merchant_update = $(this).attr('id');
 
 	arr = merId.split('$$');
 
@@ -755,11 +755,11 @@ $('.btn-ok-update').click(function () {
 		}
 	}
 	var v6 = () => {
-		// if (parseInt(per_delivery_cost) <= 0 || per_delivery_cost.charAt(0) == 0) {
-		// 	modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than 0!", "per_cost");
-		// 	return 0;
-		// }
-		if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
+		if (parseInt(per_delivery_cost) < 0) {
+			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than or equal to 0!", "per_cost");
+			return 0;
+		}
+		else if (isNaN(per_delivery_cost) == true || per_delivery_cost == "" || !/\D/.test(per_delivery_cost) == false) {
 			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be a number!", "per_cost");
 			return 0;
 		}
@@ -804,18 +804,29 @@ $('.btn-ok-update').click(function () {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					var newArr;
-					newArr = [
-						data.data.merchant_id,
-						data.data.org_name,
-						data.data.person_name,
-						data.data.email,
-						data.data.phone_number,
-						data.data.business_filed,
-						data.data.per_delivery_cost,
-						data.data.cod_percentage,
-						'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
-					];
+					// var newArr;
+					// newArr = [
+					// 	data.data.merchant_id,
+					// 	data.data.org_name,
+					// 	data.data.person_name,
+					// 	data.data.email,
+					// 	data.data.phone_number,
+					// 	data.data.business_filed,
+					// 	data.data.per_delivery_cost,
+					// 	data.data.cod_percentage,
+					// 	'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
+					// ];
+					var table = $('#dtBasicExample').DataTable();
+					try {
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.cod_percentage);
+						document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
+					}
+					catch (e) {
+						console.log(e);
+					}
 					setTimeout(function () {
 						$(".circle-loader").addClass("load-complete");
 
@@ -826,11 +837,6 @@ $('.btn-ok-update').click(function () {
 
 					setTimeout(function () {
 						$("#myModalForm").modal('hide');
-						var table = $('#dtBasicExample').DataTable();
-						table
-							.row($t.parents('tr'))
-							.data(newArr)
-							.draw();
 						$('.btn-ok-update').attr('disabled', false);
 						$('.cancelMod').prop('disabled', false);
 					}, 2000);
