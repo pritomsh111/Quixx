@@ -1,7 +1,6 @@
 var org_ID = localStorage.getItem('userID');
 var day = weight = distance = type = city = flag = 0;
 var criteriaEnabledMerchant = false, fillData;
-
 function createFieldStart(data) {
 	Object.keys(data).map(item => {
 		div = document.querySelector(`.col.${item}`);

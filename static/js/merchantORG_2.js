@@ -75,8 +75,7 @@ var invoice = (id) => {
 };
 
 function formatApproved(d) {
-	console.log(d);
-	return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
+	return '<table style="border-collapse: separate; border-spacing: 1rem; text-align: left">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
@@ -111,25 +110,41 @@ function formatUnapproved(d) {
 		'</tr>' +
 		'</table>';
 }
+function formatActivated(d) {
+	return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
+		'<tr>' +
+		'<td>Owner Name:</td>' +
+		'<td>' + d.person_name + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Email:</td>' +
+		'<td>' + d.email + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Phone Number:</td>' +
+		'<td>' + d.phone_number + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Per Delivery Cost:</td>' +
+		'<td>' + d.per_delivery_cost + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Cash On Delivery Percentage:</td>' +
+		'<td>' + d.cod_percentage + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Busienss Field:</td>' +
+		'<td>' + d.business_filed + '</td>' +
+		'</tr>' +
+		'</table>';
+}
 var approvedMer = () => {
 	merchantOrgButtonActive();
 	merchantOrgTableHide();
 	document.getElementById('two').disabled = true;
 	document.getElementById('two').style.fontSize = '14.5px';
 
-
-	var tableId = "#dtBasicExample";
-	// clear first
-	if (table != null) {
-		table.clear();
-		table.destroy();
-	}
-	//2nd empty html
-	$(tableId + " tbody").empty();
-
-	//3rd reCreate Datatable object
-
-	var table = $(tableId).DataTable({
+	var table = $('#dtBasicExample').DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -179,11 +194,10 @@ var approvedMer = () => {
 	$('#dtBasicExample').show();
 	$('.a').show();
 
+	$('#dtBasicExample tbody').off('click', 'td.details-control');
 	$('#dtBasicExample tbody').on('click', 'td.details-control', function (e) {
 		e.preventDefault();
 		var tr = $(this).parents('tr');
-		console.log(tr);
-		console.log(this);
 		var table = $('#dtBasicExample').DataTable();
 		var row = table.row(tr);
 		if (row.child.isShown()) {
@@ -305,10 +319,11 @@ var unApprovedMer = () => {
 		document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + json.data.length;
 	});
 	table.clear().draw();
-	console.log(table);
 	merchantOrgDatatableStyle();
 	$('#dtBasicExample2').show();
 	$('.b').show();
+
+	$('#dtBasicExample2 tbody').off('click', 'td.details-control');
 	$('#dtBasicExample2 tbody').on('click', 'td.details-control', function (e) {
 		e.preventDefault();
 		var tr = $(this).parents('tr');
@@ -317,10 +332,12 @@ var unApprovedMer = () => {
 		if (row.child.isShown()) {
 			// This row is already open - close it
 			row.child.hide();
+			tr.removeClass('shown');
 		}
 		else {
 			// Open this row
 			row.child(formatUnapproved(row.data())).show();
+			tr.addClass('shown');
 		}
 	});
 };
@@ -384,58 +401,81 @@ var activated = () => {
 		},
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true },
-		"columns": [
-			{ title: "Merchant ID" },
-			{ title: "Company Name" },
-			{ title: "Owner Name" },
-			{ title: "Email" },
-			{ title: "Phone Number" },
-			{ title: "Business Field" },
-			{ title: "Per Delivery Cost" },
-			{
-				orderable: false, title: "Update Criteria Details"
-			},
-			{
-				orderable: false, title: "Enable OTP"
-			},
-			{
-				orderable: false, title: "Disable OTP"
-			},
-			{
-				orderable: false, title: "Invoice"
-			},
-			{
-				orderable: false, title: "Payment"
-			},
-			{
-				orderable: false, title: "Disable Merchant?"
-			}
-		]
-	});
-	table.clear().draw();
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "orgHead/enable/merchant/" + org_ID,
-			headers:
+		"ajax":
+		{
+			"url": urlForAll + "orgHead/enable/merchant/" + org_ID,
+			"type": "GET",
+			"headers":
 			{
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-			beforeSend: function () {
-				document.getElementById("dtBasicExampleActivate_processing").style.display = "block";
+			"dataSrc": "data"
+		},
+		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			success: function (data) {
-				document.getElementById('four').innerHTML = 'Activated Merchant: ' + data.data.length;
-				var trHTML = '';
-				merchantActivateFunction(data, table);
+			{ "targets": 1, "data": "org_name" },
+			{
+				"orderable": false, "targets": 2, "data": "update", render: function (data, type, row) {
 
+					return '<button id="' + row.approved_merchant_id + '"  class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>'
+				}
 			},
-			complete: function (data) {
-				document.getElementById("dtBasicExampleActivate_processing").style.display = "none";
+			{
+				"orderable": false, "targets": 3, "data": "update", render: function (data, type, row) {
+
+					return '<button id="' + row.approved_merchant_id + '"  class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>'
+				}
+			},
+			{
+				"orderable": false, "targets": 4, "data": "update", render: function (data, type, row) {
+
+					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>'
+				}
+			},
+			{
+				"orderable": false, "targets": 5, "data": "update", render: function (data, type, row) {
+
+					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>'
+				}
+			},
+			{
+				"orderable": false, "targets": 6, "data": "update", render: function (data, type, row) {
+
+					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>'
+				}
 			}
-		});
+		],
+		"order": [[1, 'asc']]
+	});
+	table.on('xhr', function () {
+		var json = table.ajax.json();
+		console.log(json)
+		document.getElementById('four').innerHTML = 'Activated Merchant: ' + json.data.length;
+	});
+	$('#dtBasicExampleActivate tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleActivate tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleActivate').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatApproved(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 
 	merchantOrgDatatableStyle();
 	$('#dtBasicExampleActivate').show();
