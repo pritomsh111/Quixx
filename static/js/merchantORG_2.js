@@ -1444,6 +1444,12 @@ $('#dtBasicExampleActivate').on('click', '.btn-EnableOTP', function () {
 
 	$("#modalForAllHeader").html("Enable OTP?");
 
+
+
+	var table = $('#dtBasicExampleActivate').DataTable();
+	//table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(btnn22);
+	console.log(table.row($(this).closest('tr')).data());
+
 	modalStart();
 });
 $('.btn-okActivate3').click(function () {
@@ -1469,7 +1475,9 @@ $('.btn-okActivate3').click(function () {
 					var table = $('#dtBasicExampleActivate').DataTable();
 					var btnn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP">Disableeeee OTP</button>';
 					var btnn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP" disabled>Enableeeee OTP</button>';
-					console.log(table.row(0).cell(0));
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(btnn11);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(btnn22);
+					console.log(table.cell({ row: table.row($t.closest('tr')).index(), column: 0 }).data());
 
 					document.getElementById('modalCancelButton').disabled = false;
 					document.getElementById('modalApprove1Activate3').disabled = false;
