@@ -75,9 +75,8 @@ var invoice = (id) => {
 };
 
 function formatApproved(d) {
-	// `d` is the original data object for the row
 	console.log(d);
-	return '<table style="border-collapse: separate; border-spacing: 1rem; padding: 1rem;">' +
+	return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
@@ -97,9 +96,7 @@ function formatApproved(d) {
 		'</table>';
 }
 function formatUnapproved(d) {
-	// `d` is the original data object for the row
-	console.log(d);
-	return '<table style="border-collapse: separate; border-spacing: 1rem; padding: 1rem;">' +
+	return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
 		'<tr>' +
 		'<td>Owner Name:</td>' +
 		'<td>' + d.person_name + '</td>' +
@@ -120,7 +117,19 @@ var approvedMer = () => {
 	document.getElementById('two').disabled = true;
 	document.getElementById('two').style.fontSize = '14.5px';
 
-	var table = $('#dtBasicExample').DataTable({
+
+	var tableId = "#dtBasicExample";
+	// clear first
+	if (table != null) {
+		table.clear();
+		table.destroy();
+	}
+	//2nd empty html
+	$(tableId + " tbody").empty();
+
+	//3rd reCreate Datatable object
+
+	var table = $(tableId).DataTable({
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -173,11 +182,10 @@ var approvedMer = () => {
 	$('#dtBasicExample tbody').on('click', 'td.details-control', function (e) {
 		e.preventDefault();
 		var tr = $(this).parents('tr');
+		console.log(tr);
+		console.log(this);
 		var table = $('#dtBasicExample').DataTable();
 		var row = table.row(tr);
-		console.log(tr);
-		console.log(row, row.child, row.data());
-		console.log("HELLO");
 		if (row.child.isShown()) {
 			// This row is already open - close it
 			row.child.hide();
@@ -301,19 +309,18 @@ var unApprovedMer = () => {
 	merchantOrgDatatableStyle();
 	$('#dtBasicExample2').show();
 	$('.b').show();
-	$('#dtBasicExample2 tbody').on('click', 'td.details-control', function () {
+	$('#dtBasicExample2 tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
 		var tr = $(this).parents('tr');
 		var table = $('#dtBasicExample2').DataTable();
 		var row = table.row(tr);
 		if (row.child.isShown()) {
 			// This row is already open - close it
 			row.child.hide();
-			tr.removeClass('shown');
 		}
 		else {
 			// Open this row
 			row.child(formatUnapproved(row.data())).show();
-			tr.addClass('shown');
 		}
 	});
 };
