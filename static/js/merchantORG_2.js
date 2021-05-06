@@ -210,6 +210,7 @@ var approvedMer = () => {
 	merchantOrgDatatableStyle();
 	$('#dtBasicExample').show();
 	$('.a').show();
+
 	$('#dtBasicExample tbody').on('click', 'td.details-control', function () {
 		var tr = $(this).parents('tr');
 		var row = table.row(tr);
@@ -225,7 +226,6 @@ var approvedMer = () => {
 			tr.addClass('shown');
 		}
 	});
-
 }
 
 var unApprovedMer = () => {
@@ -235,6 +235,62 @@ var unApprovedMer = () => {
 	document.getElementById('three').disabled = true;
 	document.getElementById('three').style.fontSize = '14.5px';
 
+	// var table = $('#dtBasicExample2').DataTable({
+	// 	"processing": true,
+	// 	'language': {
+	// 		'loadingRecords': '&nbsp;',
+	// 		'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
+	// 	},
+	// 	"destroy": true,
+	// 	"oSearch": { "bSmart": false, "bRegex": true },
+	// 	"columns": [
+	// 		{ title: "Merchant ID" },
+	// 		{ title: "Company Name" },
+	// 		{ title: "Owner Name" },
+	// 		{ title: "Email" },
+	// 		{ title: "Phone Number" },
+	// 		{ title: "Business Field" },
+	// 		{ title: "Per Delivery Cost" },
+	// 		{
+	// 			orderable: false, title: "Approve Merchant?"
+	// 		}
+	// 	],
+	// });
+	// table.clear().draw();
+	// $.ajax
+	// 	({
+	// 		type: "GET",
+	// 		url: urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
+	// 		headers:
+	// 		{
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json',
+	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
+	// 		},
+	// 		beforeSend: function () {
+	// 			document.getElementById("dtBasicExample2_processing").style.display = "block";
+	// 		},
+	// 		success: function (data) {
+	// 			document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + data.data.length;
+
+	// 			$.each(data.data, function (i, item) {
+	// 				var table_rows = '<tr><td>'
+	// 					+ data.data[i].merchant_id + '</td><td>'
+	// 					+ data.data[i].org_name + '</td><td>'
+	// 					+ data.data[i].person_name + '</td><td>'
+	// 					+ data.data[i].email + '</td><td>'
+	// 					+ data.data[i].phone_number + '</td><td>'
+	// 					+ data.data[i].business_filed + '</td><td>'
+	// 					+ data.data[i].per_delivery_cost + '</td><td>'
+	// 					+ '<button id="' + data.data[i].merchant_id + '" name="' + data.data[i].user_id + '" class="btn-round btn-outline btn approveIT">Approve</button></td></tr>';;
+
+	// 				table.rows.add($(table_rows)).draw();
+	// 			});
+	// 		},
+	// 		complete: function (data) {
+	// 			document.getElementById("dtBasicExample2_processing").style.display = "none";
+	// 		}
+	// 	});
 	var table = $('#dtBasicExample2').DataTable({
 		"processing": true,
 		'language': {
@@ -243,57 +299,61 @@ var unApprovedMer = () => {
 		},
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true },
-		"columns": [
-			{ title: "Merchant ID" },
-			{ title: "Company Name" },
-			{ title: "Owner Name" },
-			{ title: "Email" },
-			{ title: "Phone Number" },
-			{ title: "Business Field" },
-			{ title: "Per Delivery Cost" },
-			{
-				orderable: false, title: "Approve Merchant?"
-			}
-		],
-	});
-	table.clear().draw();
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
-			headers:
+		"ajax":
+		{
+			"url": urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
+			"type": "GET",
+			"headers":
 			{
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-			beforeSend: function () {
-				document.getElementById("dtBasicExample2_processing").style.display = "block";
+			"dataSrc": "data"
+		},
+		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			success: function (data) {
-				document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + data.data.length;
-
-				$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-						+ data.data[i].merchant_id + '</td><td>'
-						+ data.data[i].org_name + '</td><td>'
-						+ data.data[i].person_name + '</td><td>'
-						+ data.data[i].email + '</td><td>'
-						+ data.data[i].phone_number + '</td><td>'
-						+ data.data[i].business_filed + '</td><td>'
-						+ data.data[i].per_delivery_cost + '</td><td>'
-						+ '<button id="' + data.data[i].merchant_id + '" name="' + data.data[i].user_id + '" class="btn-round btn-outline btn approveIT">Approve</button></td></tr>';;
-
-					table.rows.add($(table_rows)).draw();
-				});
-			},
-			complete: function (data) {
-				document.getElementById("dtBasicExample2_processing").style.display = "none";
+			{ "targets": 1, "data": "org_name" },
+			{ "targets": 5, "data": "phone_number" },
+			{ "targets": 7, "data": "per_delivery_cost" },
+			{ "targets": 8, "data": "cod_percentage" },
+			{
+				"orderable": false, "targets": 9, "data": "approve", render: function (data, type, row) {
+					return '<button id="' + row.merchant_id + '" name="' + row.user_id + '" class="btn-round btn-outline btn approveIT">Approve</button>'
+				}
 			}
-		});
+		],
+		"order": [[1, 'asc']]
+	});
+	table.on('xhr', function () {
+		var json = table.ajax.json();
+		document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + json.data.length;
+	});
+	table.clear().draw();
+
 	merchantOrgDatatableStyle();
 	$('#dtBasicExample2').show();
 	$('.b').show();
+	$('#dtBasicExample2 tbody').on('click', 'td.details-control', function () {
+		var tr = $(this).parents('tr');
+		var row = table.row(tr);
+		console.log(row);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(format(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 };
 
 function merchantActivateFunction(dataGet, table) {
