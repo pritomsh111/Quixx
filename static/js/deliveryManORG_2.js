@@ -34,6 +34,18 @@ var createDeliveryMan = () => {
 	$('#deliveryManCreate').show();
 };
 
+function formatApproved(d) {
+	return '<table style="border-collapse: separate; border-spacing: 1rem; text-align: left">' +
+		'<tr>' +
+		'<td>Delivery Man ID:</td>' +
+		'<td>' + d.delivery_man_id + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Delivery Area:</td>' +
+		'<td>' + d.delivery_area + '</td>' +
+		'</tr>' +
+		'</table>';
+}
 
 function uncheckAll(event) {
 	event.preventDefault();
@@ -60,93 +72,92 @@ var thisInvoice = (id) => {
 	window.open(urlForAll + "reports/individual/deliveryMan/report/" + org_ID + "/" + id.id);
 }
 
-var registeredDeliveryMan = () => {
-	document.getElementById('onea').disabled = true;
-	document.getElementById('twoa').disabled = false;
-	document.getElementById('threea').disabled = false;
-	document.getElementById('four').disabled = false;
-	document.getElementById('onea').style.fontSize = '14.5px';
-	document.getElementById('twoa').style.fontSize = '13px';
-	document.getElementById('threea').style.fontSize = '13px';
-	document.getElementById('four').style.fontSize = '13px';
-	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
-	document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
-	document.getElementById('foura').style.fontSize = '13px';
-	document.getElementById('fivea').style.fontSize = '13px';
-	document.getElementById('foura').innerHTML = 'Activated Delivery Man';
-	document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
+// var registeredDeliveryMan = () => {
+// 	document.getElementById('onea').disabled = true;
+// 	document.getElementById('twoa').disabled = false;
+// 	document.getElementById('threea').disabled = false;
+// 	document.getElementById('four').disabled = false;
+// 	document.getElementById('onea').style.fontSize = '14.5px';
+// 	document.getElementById('twoa').style.fontSize = '13px';
+// 	document.getElementById('threea').style.fontSize = '13px';
+// 	document.getElementById('four').style.fontSize = '13px';
+// 	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
+// 	document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
+// 	document.getElementById('foura').style.fontSize = '13px';
+// 	document.getElementById('fivea').style.fontSize = '13px';
+// 	document.getElementById('foura').innerHTML = 'Activated Delivery Man';
+// 	document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
 
-	document.getElementById('foura').disabled = false;
-	document.getElementById('fivea').disabled = false;
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.c').hide();
-	$('.d').hide();
+// 	document.getElementById('foura').disabled = false;
+// 	document.getElementById('fivea').disabled = false;
+// 	$('#dtBasicExampleActivate').hide();
+// 	$('#dtBasicExampleDisable').hide();
+// 	$('.c').hide();
+// 	$('.d').hide();
+// 	$('#deliveryManCreate').hide();
+// 	$('#dtBasicExample2').hide();
+// 	$('.b').hide();
+// 	$('#dtBasicExample').hide();
+// 	$('.a').hide();
 
+// 	var table = $('#dtBasicExample').DataTable({
+// 		"processing": true,
+// 		'language': {
+// 			'loadingRecords': '&nbsp;',
+// 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
+// 		},
+// 		"destroy": true,
+// 		"oSearch": { "bSmart": false, "bRegex": true }
+// 	});
+// 	table.clear().draw();
+// 	$.ajax
+// 		({
+// 			type: "GET",
+// 			url: urlForAll + "deliveryMan/getDeliveryManByUserId/" + org_ID,
+// 			headers:
+// 			{
+// 				'Accept': 'application/json',
+// 				'Content-Type': 'application/json',
+// 				"Authorization": 'Bearer ' + localStorage.getItem('token')
+// 			},
+// 			beforeSend: function () {
+// 				document.getElementById("dtBasicExample_processing").style.display = "block";
+// 			},
+// 			success: function (data) {
+// 				document.getElementById('onea').innerHTML = 'Registered Delivery Man: ' + data.data.length;
+// 				var trHTML = '';
+// 				$.each(data.data, function (i, item) {
+// 					var table_rows = '<tr><td>'
+// 						+ data.data[i].delivery_man_id + '</td><td>'
+// 						+ data.data[i].name + '</td><td>'
+// 						+ data.data[i].email + '</td><td>'
+// 						+ data.data[i].phone_number + '</td><td>'
+// 						+ data.data[i].delivery_area + '</td><td>'
+// 						+ data.data[i].reporting_boss_email + '</td><td>'
+// 						+ '<button class="btn-round btn-outline btn" disabled>Invoice</button></td></tr>';
 
-	$('#deliveryManCreate').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	var table = $('#dtBasicExample').DataTable({
-		"processing": true,
-		'language': {
-			'loadingRecords': '&nbsp;',
-			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
-		},
-		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
-	});
-	table.clear().draw();
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "deliveryMan/getDeliveryManByUserId/" + org_ID,
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			beforeSend: function () {
-				document.getElementById("dtBasicExample_processing").style.display = "block";
-			},
-			success: function (data) {
-				document.getElementById('onea').innerHTML = 'Registered Delivery Man: ' + data.data.length;
-				var trHTML = '';
-				$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-						+ data.data[i].delivery_man_id + '</td><td>'
-						+ data.data[i].name + '</td><td>'
-						+ data.data[i].email + '</td><td>'
-						+ data.data[i].phone_number + '</td><td>'
-						+ data.data[i].delivery_area + '</td><td>'
-						+ data.data[i].reporting_boss_email + '</td><td>'
-						+ '<button class="btn-round btn-outline btn" disabled>Invoice</button></td></tr>';
+// 					table.rows.add($(table_rows)).draw();
+// 				});
+// 			},
+// 			complete: function (data) {
+// 				document.getElementById("dtBasicExample_processing").style.display = "none";
+// 			}
+// 		});
 
-					table.rows.add($(table_rows)).draw();
-				});
-			},
-			complete: function (data) {
-				document.getElementById("dtBasicExample_processing").style.display = "none";
-			}
-		});
+// 	$('.dataTables_filter input[type="search"]').
+// 		attr('placeholder', 'Search anything!').
+// 		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
 
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+// 	$('.dataTables_filter input[type="search"]').
+// 		attr('class', 'btn btn-round').
+// 		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-	$('#dtBasicExample').show();
-	$('.a').show();
-};
+// 	$('.dataTables_length select').
+// 		attr('class', 'btn btn-round').
+// 		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+// 	$('#dtBasicExample').show();
+// 	$('.a').show();
+// };
 var approvedDeliveryMan = () => {
 	document.getElementById('twoa').disabled = true;
 	document.getElementById('onea').disabled = false;
@@ -174,6 +185,7 @@ var approvedDeliveryMan = () => {
 	$('.a').hide();
 	$('#dtBasicExample2').hide();
 	$('.b').hide();
+
 	var table = $('#dtBasicExample').DataTable({
 		"processing": true,
 		'language': {
@@ -181,42 +193,54 @@ var approvedDeliveryMan = () => {
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
 		},
 		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
-	});
-	table.clear().draw();
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "deliveryMan/approved/" + org_ID,
-			headers:
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"ajax":
+		{
+			"url": urlForAll + "deliveryMan/approved/" + org_ID,
+			"type": "GET",
+			"headers":
 			{
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-			beforeSend: function () {
-				document.getElementById("dtBasicExample_processing").style.display = "block";
+			"dataSrc": "data"
+		},
+		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			success: function (data) {
-				document.getElementById('twoa').innerHTML = 'Approved Delivery Man: ' + data.data.length;
-				var trHTML = '';
-				$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-						+ data.data[i].delivery_man_id + '</td><td>'
-						+ data.data[i].name + '</td><td>'
-						+ data.data[i].email + '</td><td>'
-						+ data.data[i].phone_number + '</td><td>'
-						+ data.data[i].delivery_area + '</td><td>'
-						+ data.data[i].reporting_boss_email + '</td><td>'
-						+ '<button class="btn-round btn-outline btn" disabled>Invoice</button></td></tr>';
+			{ "targets": 12, "data": "name" },
+			{ "targets": 52, "data": "phone_number" },
+			{ "targets": 72, "data": "reporting_boss_email" }
+		],
+		"order": [[1, 'asc']]
+	});
+	table.on('xhr', function () {
+		var json = table.ajax.json();
+		document.getElementById('twoa').innerHTML = 'Approved Delivery Man: ' + json.data.length;
+	});
 
-					table.rows.add($(table_rows)).draw();
-				});
-			},
-			complete: function (data) {
-				document.getElementById("dtBasicExample_processing").style.display = "none";
-			}
-		});
+	$('#dtBasicExample tbody').off('click', 'td.details-control');
+	$('#dtBasicExample tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExample').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatApproved(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
@@ -268,42 +292,60 @@ var unApprovedDeliveryMan = () => {
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
 		},
 		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
-	});
-	table.clear().draw();
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "deliveryMan/unApproved/" + org_ID,
-			headers:
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"ajax":
+		{
+			"url": urlForAll + "deliveryMan/unApproved/" + org_ID,
+			"type": "GET",
+			"headers":
 			{
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-			beforeSend: function () {
-				document.getElementById("dtBasicExample2_processing").style.display = "block";
+			"dataSrc": "data"
+		},
+		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			success: function (data) {
-				document.getElementById('threea').innerHTML = 'Unapproved Delivery Man: ' + data.data.length;
-				var trHTML = '';
-				$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-						+ data.data[i].delivery_man_id + '</td><td>'
-						+ data.data[i].name + '</td><td>'
-						+ data.data[i].email + '</td><td>'
-						+ data.data[i].phone_number + '</td><td>'
-						+ data.data[i].delivery_area + '</td><td>'
-						+ data.data[i].reporting_boss_email + '</td><td>'
-						+ '<button id="' + data.data[i].delivery_man_id + '" class="btn-round btn-outline btn approveIT">Approve</button></td></tr>';;
+			{ "targets": 12, "data": "name" },
+			{ "targets": 52, "data": "phone_number" },
+			{ "targets": 72, "data": "reporting_boss_email" },
+			{
+				"orderable": false, "targets": 4, "data": "approve", render: function (data, type, row) {
 
-					table.rows.add($(table_rows)).draw();
-				});
+					return '<button id="' + data.data[i].delivery_man_id + '" class="btn-round btn-outline btn approveIT">Approve</button>'
+				}
 			},
-			complete: function (data) {
-				document.getElementById("dtBasicExample2_processing").style.display = "none";
-			}
-		});
+		],
+		"order": [[1, 'asc']]
+	});
+	table.on('xhr', function () {
+		var json = table.ajax.json();
+		document.getElementById('threea').innerHTML = 'Unapproved Delivery Man: ' + json.data.length;
+	});
+
+	$('#dtBasicExample2 tbody').off('click', 'td.details-control');
+	$('#dtBasicExample2 tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExample2').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatApproved(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
