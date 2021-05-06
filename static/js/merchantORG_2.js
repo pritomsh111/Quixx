@@ -342,50 +342,6 @@ var unApprovedMer = () => {
 	});
 };
 
-function merchantActivateFunction(dataGet, table) {
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "otp/enable/all/" + org_ID,
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function (dataOTP) {
-				$.each(dataGet.data, function (i, item) {
-					var table_rows = '<tr><td>'
-						+ dataGet.data[i].merchant_id + '</td><td>'
-						+ dataGet.data[i].org_name + '</td><td>'
-						+ dataGet.data[i].person_name + '</td><td>'
-						+ dataGet.data[i].email + '</td><td>'
-						+ dataGet.data[i].phone_number + '</td><td>'
-						+ dataGet.data[i].business_filed + '</td><td>'
-						+ dataGet.data[i].per_delivery_cost + '</td><td>'
-						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-EditCriteria">Edit</button>' + '</td><td>'
-						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>' + '</td><td>'
-						+ '<button id="' + dataGet.data[i].approved_merchant_id + '"  class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>' + '</td><td>'
-						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>' + '</td><td>'
-						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>' + '</td><td>'
-						+ '<button id="' + org_ID + '" name="' + dataGet.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>' + '</td></tr>';
-
-					table.rows.add($(table_rows)).draw();
-				});
-				table.rows().every(function (index, element) {
-					var row = $(this.node());
-					row.find('td').eq(8)[0].children[0].disabled = dataOTP.data.indexOf(dataGet.data[index].approved_merchant_id) !== -1 ? true : false;
-					row.find('td').eq(9)[0].children[0].disabled = !row.find('td').eq(8)[0].children[0].disabled;
-
-					row.find('td').eq(7)[0].children[0].disabled = flag ? false : true;
-
-					// console.log(element, row, statusElement, row.find('td'));
-					// var isChecked = statusElement.prop('checked');
-					// /* ... etc ... */
-				});
-			}
-		});
-}
 var activated = () => {
 
 	merchantOrgButtonActive();
@@ -422,6 +378,12 @@ var activated = () => {
 			},
 			{ "targets": 1, "data": "org_name" },
 			{
+				"orderable": false, "targets": 7, "data": "update", render: function (data, type, row) {
+
+					return '<button id="' + row.approved_merchant_id + '"  class="btn-round btn-outline btn btn-EditCriteria">Edit</button>'
+				}
+			},
+			{
 				"orderable": false, "targets": 2, "data": "update", render: function (data, type, row) {
 
 					return '<button id="' + row.approved_merchant_id + '"  class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>'
@@ -457,6 +419,32 @@ var activated = () => {
 	table.on('xhr', function () {
 		var json = table.ajax.json();
 		console.log(json)
+		$.ajax
+			({
+				type: "GET",
+				url: urlForAll + "otp/enable/all/" + org_ID,
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (dataOTP) {
+					console.log(dataOTP);
+					table.rows().every(function (index, element) {
+
+						var row = $(this.node());
+						row.find('td').eq(3)[0].children[0].disabled = dataOTP.data.indexOf(json.data[index].approved_merchant_id) !== -1 ? true : false;
+						row.find('td').eq(4)[0].children[0].disabled = !row.find('td').eq(3)[0].children[0].disabled;
+
+						row.find('td').eq(2)[0].children[0].disabled = flag ? false : true;
+
+						// console.log(element, row, statusElement, row.find('td'));
+						// var isChecked = statusElement.prop('checked');
+						// /* ... etc ... */
+					});
+				}
+			});
 		document.getElementById('four').innerHTML = 'Activated Merchant: ' + json.data.length;
 	});
 	$('#dtBasicExampleActivate tbody').off('click', 'td.details-control');
@@ -472,7 +460,7 @@ var activated = () => {
 		}
 		else {
 			// Open this row
-			row.child(formatApproved(row.data())).show();
+			row.child(formatActivated(row.data())).show();
 			tr.addClass('shown');
 		}
 	});
@@ -1430,11 +1418,11 @@ $('.btn-okActivate2').click(function () {
 				setTimeout(function () {
 					$("#myModalForAll").modal('hide');
 					var table = $('#dtBasicExampleActivate').DataTable();
-					var btn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP" disabled>Disable OTP</button>';
-					var btn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>';
+					var btn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP" disabled>Disableeeee OTP</button>';
+					var btn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP">Enableeeee OTP</button>';
 
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btn22);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(btn11);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(btn22);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(btn11);
 
 					document.getElementById('modalCancelButton').disabled = false;
 					document.getElementById('modalApprove1Activate2').disabled = false;
@@ -1479,10 +1467,9 @@ $('.btn-okActivate3').click(function () {
 				setTimeout(function () {
 					$("#myModalForAll").modal('hide');
 					var table = $('#dtBasicExampleActivate').DataTable();
-					var btnn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>';
-					var btnn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP" disabled>Enable OTP</button>';
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(btnn11);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(btnn22);
+					var btnn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP">Disableeeee OTP</button>';
+					var btnn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP" disabled>Enableeeee OTP</button>';
+					console.log(table.row(0).cell(0));
 
 					document.getElementById('modalCancelButton').disabled = false;
 					document.getElementById('modalApprove1Activate3').disabled = false;
