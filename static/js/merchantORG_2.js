@@ -113,6 +113,10 @@ function formatUnapproved(d) {
 function formatActivated(d) {
 	return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
 		'<tr>' +
+		'<td>Merchant ID:</td>' +
+		'<td>' + d.approved_merchant_id + '</td>' +
+		'</tr>' +
+		'<tr>' +
 		'<td>Owner Name:</td>' +
 		'<td>' + d.person_name + '</td>' +
 		'</tr>' +
@@ -186,7 +190,7 @@ var approvedMer = () => {
 	});
 	table.on('xhr', function () {
 		var json = table.ajax.json();
-		console.log(json)
+
 		document.getElementById('two').innerHTML = 'Approved Merchant: ' + json.data.length;
 	});
 	table.clear().draw();
@@ -418,7 +422,6 @@ var activated = () => {
 	});
 	table.on('xhr', function () {
 		var json = table.ajax.json();
-		console.log(json)
 		$.ajax
 			({
 				type: "GET",
@@ -485,55 +488,59 @@ var disabledd = () => {
 		},
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true },
-		"columns": [
-			{ title: "Merchant ID" },
-			{ title: "Company Name" },
-			{ title: "Owner Name" },
-			{ title: "Email" },
-			{ title: "Phone Number" },
-			{ title: "Business Field" },
-			{ title: "Per Delivery Cost" },
-			{
-				orderable: false, title: "Activate Merchant?"
-			}
-		]
-	});
-	table.clear().draw();
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "orgHead/disable/merchant/" + org_ID,
-			headers:
+		"ajax":
+		{
+			"url": urlForAll + "orgHead/disable/merchant/" + org_ID,
+			"type": "GET",
+			"headers":
 			{
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-			beforeSend: function () {
-				document.getElementById("dtBasicExampleDisable_processing").style.display = "block";
+			"dataSrc": "data"
+		},
+		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			success: function (data) {
-				document.getElementById('five').innerHTML = 'Disabled Merchant: ' + data.data.length;
-
-				$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-						+ data.data[i].merchant_id + '</td><td>'
-						+ data.data[i].org_name + '</td><td>'
-						+ data.data[i].person_name + '</td><td>'
-						+ data.data[i].email + '</td><td>'
-						+ data.data[i].phone_number + '</td><td>'
-						+ data.data[i].business_filed + '</td><td>'
-						+ data.data[i].per_delivery_cost + '</td><td>'
-						+ '<button id="' + org_ID + '" name="' + data.data[i].approved_merchant_id + '" class="btn-round btn-outline btn btn-Activate">Activate</button>' + '</td></tr>';
-
-					table.rows.add($(table_rows)).draw();
-				});
-			},
-			complete: function (data) {
-				document.getElementById("dtBasicExampleDisable_processing").style.display = "none";
+			{ "targets": 1, "data": "org_name" },
+			{ "targets": 5, "data": "phone_number" },
+			{ "targets": 7, "data": "per_delivery_cost" },
+			{ "targets": 8, "data": "cod_percentage" },
+			{
+				"orderable": false, "targets": 9, "data": "Activate", render: function (data, type, row) {
+					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn btn-Activate">Activate</button>'
+				}
 			}
-		});
+		],
+		"order": [[1, 'asc']]
+	});
+	table.on('xhr', function () {
+		var json = table.ajax.json();
+		document.getElementById('five').innerHTML = 'Disabled Merchant: ' + json.data.length;
+	});
 
+	$('#dtBasicExampleDisable tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleDisable tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleDisable').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatApproved(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 	merchantOrgDatatableStyle();
 	$('#dtBasicExampleDisable').show();
 	$('.d').show();
