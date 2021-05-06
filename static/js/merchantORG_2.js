@@ -384,31 +384,31 @@ var activated = () => {
 				}
 			},
 			{
-				"orderable": false, "targets": 2, "data": "update", render: function (data, type, row) {
+				"orderable": false, "targets": 2, "data": "enable_otp", render: function (data, type, row) {
 
-					return '<button id="' + row.approved_merchant_id + '"  class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>'
+					return '<button id="' + row.approved_merchant_id + 'AenaOTP"  class="btn-round btn-outline btn btn-EnableOTP">Enable OTP</button>'
 				}
 			},
 			{
-				"orderable": false, "targets": 3, "data": "update", render: function (data, type, row) {
+				"orderable": false, "targets": 3, "data": "disable_otp", render: function (data, type, row) {
 
-					return '<button id="' + row.approved_merchant_id + '"  class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>'
+					return '<button id="' + row.approved_merchant_id + 'AdisOTP"  class="btn-round btn-outline btn btn-DisableOTP">Disable OTP</button>'
 				}
 			},
 			{
-				"orderable": false, "targets": 4, "data": "update", render: function (data, type, row) {
+				"orderable": false, "targets": 4, "data": "invoice", render: function (data, type, row) {
 
 					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>'
 				}
 			},
 			{
-				"orderable": false, "targets": 5, "data": "update", render: function (data, type, row) {
+				"orderable": false, "targets": 5, "data": "complete_payment", render: function (data, type, row) {
 
 					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>'
 				}
 			},
 			{
-				"orderable": false, "targets": 6, "data": "update", render: function (data, type, row) {
+				"orderable": false, "targets": 6, "data": "disable", render: function (data, type, row) {
 
 					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>'
 				}
@@ -1390,7 +1390,7 @@ $('.btn-okPayment').click(function () {
 
 $('#dtBasicExampleActivate').on('click', '.btn-DisableOTP', function () {
 	modalButtonHide();
-	merId = $(this).attr('id');
+	merId = $(this).attr('id').split("A")[0];
 	$t = $(this);
 	$('.btn-okActivate2').show();
 
@@ -1417,12 +1417,9 @@ $('.btn-okActivate2').click(function () {
 				modalTickDone("Merchant's OTP Disabled!");
 				setTimeout(function () {
 					$("#myModalForAll").modal('hide');
-					var table = $('#dtBasicExampleActivate').DataTable();
-					var btn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP" disabled>Disableeeee OTP</button>';
-					var btn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP">Enableeeee OTP</button>';
 
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(btn22);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(btn11);
+					document.getElementById(`${merId}AenaOTP`).disabled = false;
+					document.getElementById(`${merId}AdisOTP`).disabled = true;
 
 					document.getElementById('modalCancelButton').disabled = false;
 					document.getElementById('modalApprove1Activate2').disabled = false;
@@ -1436,19 +1433,13 @@ $('.btn-okActivate2').click(function () {
 });
 
 $('#dtBasicExampleActivate').on('click', '.btn-EnableOTP', function () {
-	merId = $(this).attr('id');
+	merId = $(this).attr('id').split("A")[0];
 	$t = $(this);
 
 	modalButtonHide();
 	$('.btn-okActivate3').show();
 
 	$("#modalForAllHeader").html("Enable OTP?");
-
-
-
-	var table = $('#dtBasicExampleActivate').DataTable();
-	//table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(btnn22);
-	console.log(table.row($(this).closest('tr')).data());
 
 	modalStart();
 });
@@ -1472,12 +1463,9 @@ $('.btn-okActivate3').click(function () {
 				modalTickDone("Merchant's OTP Enabled!");
 				setTimeout(function () {
 					$("#myModalForAll").modal('hide');
-					var table = $('#dtBasicExampleActivate').DataTable();
-					var btnn11 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-DisableOTP">Disableeeee OTP</button>';
-					var btnn22 = '<button id="' + merId + '" class="btn-round btn-outline btn btn-EnableOTP" disabled>Enableeeee OTP</button>';
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(btnn11);
-					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(btnn22);
-					console.log(table.cell({ row: table.row($t.closest('tr')).index(), column: 0 }).data());
+
+					document.getElementById(`${merId}AenaOTP`).disabled = true;
+					document.getElementById(`${merId}AdisOTP`).disabled = false;
 
 					document.getElementById('modalCancelButton').disabled = false;
 					document.getElementById('modalApprove1Activate3').disabled = false;
