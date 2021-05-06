@@ -74,7 +74,7 @@ var invoice = (id) => {
 		});
 };
 
-function format(d) {
+function formatApproved(d) {
 	// `d` is the original data object for the row
 	console.log(d);
 	return '<table style="border-collapse: separate; border-spacing: 1rem; padding: 1rem;">' +
@@ -82,6 +82,24 @@ function format(d) {
 		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
 		'</tr>' +
+		'<tr>' +
+		'<td>Owner Name:</td>' +
+		'<td>' + d.person_name + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Email:</td>' +
+		'<td>' + d.email + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Busienss Field:</td>' +
+		'<td>' + d.business_filed + '</td>' +
+		'</tr>' +
+		'</table>';
+}
+function formatUnapproved(d) {
+	// `d` is the original data object for the row
+	console.log(d);
+	return '<table style="border-collapse: separate; border-spacing: 1rem; padding: 1rem;">' +
 		'<tr>' +
 		'<td>Owner Name:</td>' +
 		'<td>' + d.person_name + '</td>' +
@@ -148,72 +166,16 @@ var approvedMer = () => {
 		document.getElementById('two').innerHTML = 'Approved Merchant: ' + json.data.length;
 	});
 	table.clear().draw();
-
-	// var table = $('#dtBasicExample').DataTable({
-	// 	"processing": true,
-	// 	'language': {
-	// 		'loadingRecords': '&nbsp;',
-	// 		'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
-	// 	},
-	// 	"destroy": true,
-	// 	"oSearch": { "bSmart": false, "bRegex": true },
-	// 	"columns": [
-	// 		{ title: "Merchant ID" },
-	// 		{ title: "Company Name" },
-	// 		{ title: "Owner Name" },
-	// 		{ title: "Email" },
-	// 		{ title: "Phone Number" },
-	// 		{ title: "Business Field" },
-	// 		{ title: "Per Delivery Cost" },
-	// 		{ title: "Cash On Delivery Percentage" },
-	// 		{
-	// 			orderable: false, title: "Update Merchant"
-	// 		}
-	// 	],
-	// 	"order": [[1, 'asc']]
-	// });
-	// table.clear().draw();
-	// $.ajax
-	// 	({
-	// 		type: "GET",
-	// 		url: urlForAll + "orgHead/merchant/approved/details/" + org_ID,
-	// 		headers:
-	// 		{
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-	// 		},
-	// 		beforeSend: function () {
-	// 			document.getElementById("dtBasicExample_processing").style.display = "block";
-	// 		},
-	// 		success: function (data) {
-	// 			document.getElementById('two').innerHTML = 'Approved Merchant: ' + data.data.length;
-	// 			$.each(data.data, function (i, item) {
-	// 				var table_rows = '<tr><td>'
-	// 					+ data.data[i].merchant_id + '</td><td>'
-	// 					+ data.data[i].org_name + '</td><td>'
-	// 					+ data.data[i].person_name + '</td><td>'
-	// 					+ data.data[i].email + '</td><td>'
-	// 					+ data.data[i].phone_number + '</td><td>'
-	// 					+ data.data[i].business_filed + '</td><td>'
-	// 					+ data.data[i].per_delivery_cost + '</td><td>'
-	// 					+ data.data[i].cod_percentage + '</td><td>'
-	// 					+ '<button id="' + data.data[i].merchant_id + '$$' + data.data[i].org_name + '$$' + data.data[i].person_name + '$$' + data.data[i].email + '$$' + data.data[i].phone_number + '$$' + data.data[i].business_filed + '$$' + data.data[i].per_delivery_cost + '$$' + data.data[i].cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button></td></tr>';
-	// 				table.rows.add($(table_rows)).draw();
-	// 			});
-	// 		},
-	// 		complete: function (data) {
-	// 			document.getElementById("dtBasicExample_processing").style.display = "none";
-	// 		}
-	// 	});
-
 	merchantOrgDatatableStyle();
 	$('#dtBasicExample').show();
 	$('.a').show();
 
-	$('#dtBasicExample tbody').on('click', 'td.details-control', function () {
+	$('#dtBasicExample tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
 		var tr = $(this).parents('tr');
 		var row = table.row(tr);
+		console.log(tr);
+		console.log(row, row.child, row.data());
 		console.log("HELLO");
 		if (row.child.isShown()) {
 			// This row is already open - close it
@@ -222,7 +184,7 @@ var approvedMer = () => {
 		}
 		else {
 			// Open this row
-			row.child(format(row.data())).show();
+			row.child(formatApproved(row.data())).show();
 			tr.addClass('shown');
 		}
 	});
@@ -318,12 +280,11 @@ var unApprovedMer = () => {
 				"data": null,
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			{ "targets": 1, "data": "org_name" },
-			{ "targets": 5, "data": "phone_number" },
-			{ "targets": 7, "data": "per_delivery_cost" },
-			{ "targets": 8, "data": "cod_percentage" },
+			{ "targets": 12, "data": "org_name" },
+			{ "targets": 52, "data": "phone_number" },
+			{ "targets": 72, "data": "per_delivery_cost" },
 			{
-				"orderable": false, "targets": 9, "data": "approve", render: function (data, type, row) {
+				"orderable": false, "targets": 92, "data": "approve", render: function (data, type, row) {
 					return '<button id="' + row.merchant_id + '" name="' + row.user_id + '" class="btn-round btn-outline btn approveIT">Approve</button>'
 				}
 			}
@@ -342,7 +303,6 @@ var unApprovedMer = () => {
 	$('#dtBasicExample2 tbody').on('click', 'td.details-control', function () {
 		var tr = $(this).parents('tr');
 		var row = table.row(tr);
-		console.log(row);
 		if (row.child.isShown()) {
 			// This row is already open - close it
 			row.child.hide();
@@ -350,7 +310,7 @@ var unApprovedMer = () => {
 		}
 		else {
 			// Open this row
-			row.child(format(row.data())).show();
+			row.child(formatUnapproved(row.data())).show();
 			tr.addClass('shown');
 		}
 	});
