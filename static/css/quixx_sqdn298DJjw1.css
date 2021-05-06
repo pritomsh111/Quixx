@@ -8,6 +8,16 @@
   font-size: 1rem;
 }
 
+td.details-control {
+  cursor: pointer;
+  border-radius: 6%;
+  background: #fff;
+}
+
+tr.shown td.details-control {
+  background: #999;
+}
+
 .logo {
   position: relative;
   z-index: 100;
