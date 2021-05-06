@@ -37,12 +37,12 @@ var createDeliveryMan = () => {
 function formatApproved(d) {
 	return '<table style="border-collapse: separate; border-spacing: 1rem; text-align: left">' +
 		'<tr>' +
-		'<td>Delivery Man ID:</td>' +
+		'<td>Delivery Man\'s ID:</td > ' +
 		'<td>' + d.delivery_man_id + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Delivery Area:</td>' +
-		'<td>' + d.delivery_area + '</td>' +
+		'<td>' + d.delivery_area.replace(/,/g, ", ") + '</td>' +
 		'</tr>' +
 		'</table>';
 }
@@ -317,8 +317,7 @@ var unApprovedDeliveryMan = () => {
 			{ "targets": 72, "data": "reporting_boss_email" },
 			{
 				"orderable": false, "targets": 4, "data": "approve", render: function (data, type, row) {
-
-					return '<button id="' + data.data[i].delivery_man_id + '" class="btn-round btn-outline btn approveIT">Approve</button>'
+					return '<button id="' + row.delivery_man_id + '" class="btn-round btn-outline btn approveIT">Approve</button>'
 				}
 			},
 		],
@@ -398,43 +397,64 @@ var activatedd = () => {
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
 		},
 		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
-	});
-	table.clear().draw();
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "orgHead/all/enable/deliveryMan/" + org_ID,
-			headers:
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"ajax":
+		{
+			"url": urlForAll + "orgHead/all/enable/deliveryMan/" + org_ID,
+			"type": "GET",
+			"headers":
 			{
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-			beforeSend: function () {
-				document.getElementById("dtBasicExampleActivate_processing").style.display = "block";
+			"dataSrc": "data"
+		},
+		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			success: function (data) {
-				document.getElementById('foura').innerHTML = 'Activated Delivery Man: ' + data.data.length;
-				var trHTML = '';
-				$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-						+ data.data[i].delivery_man_id + '</td><td>'
-						+ data.data[i].name + '</td><td>'
-						+ data.data[i].email + '</td><td>'
-						+ data.data[i].phone_number + '</td><td>'
-						+ data.data[i].delivery_area + '</td><td>'
-						+ data.data[i].reporting_boss_email + '</td><td>'
-						+ '<button id="' + data.data[i].delivery_man_id + '" class="btn-round btn-outline btn" onclick="thisInvoice(this)">Invoice</button>' + '</td><td>'
-						+ '<button id="' + data.data[i].delivery_man_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button></td></tr>';
+			{ "targets": 12, "data": "name" },
+			{ "targets": 52, "data": "phone_number" },
+			{ "targets": 72, "data": "reporting_boss_email" },
+			{
+				"orderable": false, "targets": 4, "data": "invoice", render: function (data, type, row) {
+					return '<button id="' + row.delivery_man_id + '" class="btn-round btn-outline btn" onclick="thisInvoice(this)">Invoice</button>'
+				}
+			},
+			{
+				"orderable": false, "targets": 44, "data": "disable", render: function (data, type, row) {
+					return '<button id="' + row.delivery_man_id + '" class="btn-round btn-outline btn btn-Disable">Disable</button>'
+				}
+			},
+		],
+		"order": [[1, 'asc']]
+	});
+	table.on('xhr', function () {
+		var json = table.ajax.json();
+		document.getElementById('foura').innerHTML = 'Activated Delivery Man: ' + json.data.length;
+	});
 
-					table.rows.add($(table_rows)).draw();
-				});
-			},
-			complete: function (data) {
-				document.getElementById("dtBasicExampleActivate_processing").style.display = "none";
-			}
-		});
+	$('#dtBasicExampleActivate tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleActivate tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleActivate').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatApproved(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
@@ -487,41 +507,58 @@ var disableddd = () => {
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
 		},
 		"destroy": true,
-		"oSearch": { "bSmart": false, "bRegex": true }
-	});
-	table.clear().draw();
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "orgHead/all/disable/deliveryMan/" + org_ID,
-			headers:
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"ajax":
+		{
+			"url": urlForAll + "orgHead/all/disable/deliveryMan/" + org_ID,
+			"type": "GET",
+			"headers":
 			{
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-			beforeSend: function () {
-				document.getElementById("dtBasicExampleDisable_processing").style.display = "block";
+			"dataSrc": "data"
+		},
+		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
-			success: function (data) {
-				document.getElementById('fivea').innerHTML = 'Disabled Delivery Man: ' + data.data.length;
-				var trHTML = '';
-				$.each(data.data, function (i, item) {
-					var table_rows = '<tr><td>'
-						+ data.data[i].delivery_man_id + '</td><td>'
-						+ data.data[i].name + '</td><td>'
-						+ data.data[i].email + '</td><td>'
-						+ data.data[i].delivery_area + '</td><td>'
-						+ data.data[i].reporting_boss_email + '</td><td>'
-						+ '<button id="' + data.data[i].delivery_man_id + '" class="btn-round btn-outline btn btn-Activate">Activate</button></td></tr>';;
-
-					table.rows.add($(table_rows)).draw();
-				});
-			},
-			complete: function (data) {
-				document.getElementById("dtBasicExampleDisable_processing").style.display = "none";
+			{ "targets": 12, "data": "name" },
+			{ "targets": 72, "data": "reporting_boss_email" },
+			{
+				"orderable": false, "targets": 4, "data": "enable", render: function (data, type, row) {
+					return '<button id="' + row.delivery_man_id + '" class="btn-round btn-outline btn btn-Activate">Activate</button>'
+				}
 			}
-		});
+		],
+		"order": [[1, 'asc']]
+	});
+	table.on('xhr', function () {
+		var json = table.ajax.json();
+		document.getElementById('fivea').innerHTML = 'Disabled Delivery Man: ' + json.data.length;
+	});
+
+	$('#dtBasicExampleDisable tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleDisable tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleDisable').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatApproved(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
