@@ -77,7 +77,7 @@ var invoice = (id) => {
 function format(d) {
 	// `d` is the original data object for the row
 	console.log(d);
-	return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+	return '<table style="padding: 1rem;">' +
 		'<tr>' +
 		'<td>ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
@@ -123,7 +123,7 @@ var approvedMer = () => {
 				"class": 'details-control',
 				"orderable": false,
 				"data": null,
-				"defaultContent": "<i class='fa fa fa-plus-square-o'></i>"
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
 			{ "targets": 0, "data": "merchant_id" },
 			{ "targets": 1, "data": "org_name" },
