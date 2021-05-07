@@ -335,6 +335,15 @@ $("#senderList").change(async function () {
 	}
 });
 
+function checkCriteria(val, msg) {
+	let a = val;
+	if (a) {
+		a = a?.includes(`${msg}`) ? "NOT_SELECTED" : a;
+		return a;
+	}
+	return "---";
+}
+
 function formatUnassigned(d) {
 	console.log(d);
 	// { "targets": 1, "data": "delivery_created_date" },
@@ -365,6 +374,13 @@ function formatUnassigned(d) {
 	let delivery_city = d.delivery_city || "";
 	let delivery_area = d.delivery_area || "";
 	let receiver_address = d.receiver_address || "";
+
+	//Criteria Info
+	let delivery_product_type = checkCriteria(d.delivery_product_type, "delivery_product_type_na");
+	let delivery_weight = checkCriteria(d.delivery_weight, "delivery_weight_na");
+	let delivery_day_type = checkCriteria(d.delivery_day_type, "delivery_day_type_na");
+	let delivery_distance = checkCriteria(d.delivery_distance, "delivery_distance_na");
+	let delivery_city_criteria = checkCriteria(d.delivery_city_criteria, "delivery_city_criteria_na");
 
 	return '<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
 		'<thead>' +
@@ -399,7 +415,7 @@ function formatUnassigned(d) {
 		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Sender\'s  Info</th>" +
+		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
 		'<td>Sender\'s Name:</td>' +
@@ -417,7 +433,7 @@ function formatUnassigned(d) {
 		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Receivers\'s  Info</th>" +
+		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
 		'<td>Receiver\'s Name:</td>' +
@@ -438,6 +454,32 @@ function formatUnassigned(d) {
 		'<tr>' +
 		'<td>Receiver\'s Address:</td>' +
 		'<td>' + receiver_address + '</td>' +
+		'</tr>' +
+		'</table>' +
+		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
+		'<thead>' +
+		"<tr colspan='2'>" +
+		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
+		"</tr ></thead >" +
+		'<tr>' +
+		'<td>Product Type:</td>' +
+		'<td>' + delivery_product_type + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Product Weight [KG]</td>' +
+		'<td>' + delivery_weight + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Day Type:</td>' +
+		'<td>' + delivery_day_type + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Distance Type [KM]:</td>' +
+		'<td>' + delivery_distance + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>City Type:</td>' +
+		'<td>' + delivery_city_criteria + '</td>' +
 		'</tr>' +
 		'</table>';
 }
@@ -555,56 +597,6 @@ var unassignedDeliveries = () => {
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
-			{
-				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
-					let a = row.delivery_product_type;
-					if (a) {
-						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
-					let a = row.delivery_weight;
-					if (a) {
-						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
-					let a = row.delivery_day_type;
-					if (a) {
-						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
-					let a = row.delivery_distance;
-					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
-					let a = row.delivery_city_criteria;
-					if (a) {
-						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -616,7 +608,7 @@ var unassignedDeliveries = () => {
 			{
 				"targets": 21, "data": "update", render: function (data, type, row) {
 
-					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '$$' + row.delivery_product_type + '$$' + row.delivery_weight + '$$' + row.delivery_day_type + '$$' + row.delivery_distance + "$$" + row.delivery_city_criteria + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>'
+					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '$$' + row.delivery_product_type + '$$' + row.delivery_weight + '$$' + row.delivery_day_type + '$$' + row.delivery_distance + "$$" + row.delivery_city_criteria + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update</button>'
 				}
 			},
 			{
@@ -633,7 +625,6 @@ var unassignedDeliveries = () => {
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
-
 	$('#dtBasicExampled tbody').off('click', 'td.details-control');
 	$('#dtBasicExampled tbody').on('click', 'td.details-control', function (e) {
 		e.preventDefault();
