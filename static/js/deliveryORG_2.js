@@ -358,8 +358,9 @@ function formatUnassigned(d) {
 	//Delivery Info
 	let delivery_created_date = d.delivery_created_date || "";
 	let pickup_time = d.pickup_time || "";
-	let delivery_created_by_name = d.delivery_created_by_name || "";
-	let delivery_created_by_role = d.delivery_created_by_role || "";
+	// let delivery_created_by_name = d.delivery_created_by_name || "";
+	// let delivery_created_by_role = d.delivery_created_by_role || "";
+	let delivery_created_by_name_role = d.delivery_created_by_name + " ," + delivery_created_by_role;
 	let delivery_type = d.delivery_type || "";
 	let delivery_note = d.delivery_note || "";
 
@@ -396,12 +397,8 @@ function formatUnassigned(d) {
 		'<td>' + pickup_time + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Company Name:</td>' +
-		'<td>' + delivery_created_by_name + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Designation:</td>' +
-		'<td>' + delivery_created_by_role + '</td>' +
+		'<td>Company Name &amp Designation:</td>' +
+		'<td>' + delivery_created_by_name_role + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Delivery Type:</td>' +
@@ -602,19 +599,19 @@ var unassignedDeliveries = () => {
 			{
 				"targets": 20, "data": "assign", render: function (data, type, row) {
 
-					return '<button id="' + row.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>'
+					return '<button id="' + row.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:13px; padding: 9px 23px">Assign</button>'
 				}
 			},
 			{
 				"targets": 21, "data": "update", render: function (data, type, row) {
 
-					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '$$' + row.delivery_product_type + '$$' + row.delivery_weight + '$$' + row.delivery_day_type + '$$' + row.delivery_distance + "$$" + row.delivery_city_criteria + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update</button>'
+					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '$$' + row.delivery_product_type + '$$' + row.delivery_weight + '$$' + row.delivery_day_type + '$$' + row.delivery_distance + "$$" + row.delivery_city_criteria + '" class="btn-round btn-outline btn updateCh" style="font-size:13px; padding: 9px 23px">Update</button>'
 				}
 			},
 			{
 				"targets": 22, "data": "invoice", render: function (data, type, row) {
 
-					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>'
+					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)"; style="padding: 9px 23px">Invoice</button>'
 				}
 			}
 		]
@@ -699,7 +696,7 @@ var unassignedDeliveries = () => {
 			+data.data[i].delivery_charge+'</td><td>'
 			+data.data[i].payment_method+'</td><td>'
 			+data.data[i].delivery_note+'</td><td>'
-			+'<button id="' + data.data[i].delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button></td><td>'
+			+'<button id="' + data.data[i].delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:13px">Assign</button></td><td>'
 			+'<button id="' + data.data[i].delivery_Id + '$$' + data.data[i].creator_id + '$$' + data.data[i].delivery_charge + '$$' + data.data[i].pickup_time + '$$' + data.data[i].receiver_name + '$$' + data.data[i].receiver_phone_number + '$$' + data.data[i].product_name + '$$' + data.data[i].product_qty + '$$' + data.data[i].payment_method + '$$' + data.data[i].product_cost + '$$' + data.data[i].delivery_note + '$$' + data.data[i].delivery_area + '$$' + data.data[i].receiver_address + '$$' + data.data[i].receiver_lat + '$$' + data.data[i].receiver_longi + '$$' + data.data[i].sender_name + '$$' + data.data[i].sender_phone_number + '$$' + data.data[i].sender_address + '$$' + data.data[i].delivery_type + '$$' + data.data[i].sender_lat + '$$' + data.data[i].sender_longi+  '$$' + data.data[i].delivery_created_date+  '$$' + data.data[i].delivery_created_by_name+  '$$' + data.data[i].delivery_created_by_role + '$$' + data.data[i].collection_name + '$$' + data.data[i].delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button></td><td>'
 			+'<button id="' + org_ID + '" name="' + data.data[i].delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button></td></tr>';
 			table.rows.add($(table_rows)).draw();
