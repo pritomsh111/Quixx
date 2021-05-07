@@ -360,7 +360,7 @@ function formatUnassigned(d) {
 	let pickup_time = d.pickup_time || "";
 	// let delivery_created_by_name = d.delivery_created_by_name || "";
 	// let delivery_created_by_role = d.delivery_created_by_role || "";
-	let delivery_created_by_name_role = d.delivery_created_by_name + " ," + delivery_created_by_role;
+	let delivery_created_by_name_role = d.delivery_created_by_name + " ," + d.delivery_created_by_role;
 	let delivery_type = d.delivery_type || "";
 	let delivery_note = d.delivery_note || "";
 
@@ -383,7 +383,7 @@ function formatUnassigned(d) {
 	let delivery_distance = checkCriteria(d.delivery_distance, "delivery_distance_na");
 	let delivery_city_criteria = checkCriteria(d.delivery_city_criteria, "delivery_city_criteria_na");
 
-	return '<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
+	return '<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
@@ -409,25 +409,33 @@ function formatUnassigned(d) {
 		'<td>' + delivery_note + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
+		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +
+		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
-		'<td>Sender\'s Name:</td>' +
-		'<td>' + sender_name + '</td>' +
+		'<td>Product Type:</td>' +
+		'<td>' + delivery_product_type + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Sender\'s Phone Number:</td>' +
-		'<td>' + sender_phone_number + '</td>' +
+		'<td>Product Weight [KG]</td>' +
+		'<td>' + delivery_weight + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Sender\'s Address:</td>' +
-		'<td>' + sender_address + '</td>' +
+		'<td>Day Type:</td>' +
+		'<td>' + delivery_day_type + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Distance Type [KM]:</td>' +
+		'<td>' + delivery_distance + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>City Type:</td>' +
+		'<td>' + delivery_city_criteria + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
+		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
@@ -453,30 +461,22 @@ function formatUnassigned(d) {
 		'<td>' + receiver_address + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
+		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
+		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
-		'<td>Product Type:</td>' +
-		'<td>' + delivery_product_type + '</td>' +
+		'<td>Sender\'s Name:</td>' +
+		'<td>' + sender_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Product Weight [KG]</td>' +
-		'<td>' + delivery_weight + '</td>' +
+		'<td>Sender\'s Phone Number:</td>' +
+		'<td>' + sender_phone_number + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Day Type:</td>' +
-		'<td>' + delivery_day_type + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Distance Type [KM]:</td>' +
-		'<td>' + delivery_distance + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>City Type:</td>' +
-		'<td>' + delivery_city_criteria + '</td>' +
+		'<td>Sender\'s Address:</td>' +
+		'<td>' + sender_address + '</td>' +
 		'</tr>' +
 		'</table>';
 }
@@ -637,75 +637,9 @@ var unassignedDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "7");
+			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
 		}
 	});
-	/*var table = $('#dtBasicExampled').DataTable( {
-	"processing": true,
-	'language': {
-		'loadingRecords': '&nbsp;',
-		'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
-	},
-	"destroy": true,
-	"oSearch": { "bSmart": false, "bRegex": true }
-	} );
-	table.clear().draw();
-	$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		url: urlForAll + "manager/all/unAssign/delivery/" + org_ID,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		beforeSend: function()
-		{
-			document.getElementById("dtBasicExampled_processing").style.display = "block";	
-		},
-		success: function(data) 
-		{
-			console.log(data);
-			document.getElementById('oneb').innerHTML = 'Unassigned Deliveries: ' + data.data.length;
-			var trHTML = '';
-			$.each(data.data, function (i, item) {
-			var table_rows = 
-			'<tr><td>'+data.data[i].delivery_Id+'</td><td>'
-			+data.data[i].delivery_created_date+'</td><td>'
-			+data.data[i].delivery_created_by_name+'</td><td>'
-			+data.data[i].delivery_created_by_role+'</td><td>'
-			//+data.data[i].assigned_delivery_man_name+'</td><td>'
-			+data.data[i].pickup_time+'</td><td>'
-			+data.data[i].sender_name+'</td><td>'
-			+data.data[i].sender_phone_number+'</td><td>'
-			+data.data[i].sender_address+'</td><td>'
-			+data.data[i].receiver_name+'</td><td>'
-			+data.data[i].receiver_phone_number+'</td><td>'
-			+data.data[i].delivery_area+'</td><td>'
-			+data.data[i].receiver_address+'</td><td>'
-			+data.data[i].delivery_type+'</td><td>'
-			+data.data[i].product_name+'</td><td>'
-			+data.data[i].product_qty+'</td><td>'
-			+data.data[i].product_cost+'</td><td>'
-			+data.data[i].delivery_charge+'</td><td>'
-			+data.data[i].payment_method+'</td><td>'
-			+data.data[i].delivery_note+'</td><td>'
-			+'<button id="' + data.data[i].delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:13px">Assign</button></td><td>'
-			+'<button id="' + data.data[i].delivery_Id + '$$' + data.data[i].creator_id + '$$' + data.data[i].delivery_charge + '$$' + data.data[i].pickup_time + '$$' + data.data[i].receiver_name + '$$' + data.data[i].receiver_phone_number + '$$' + data.data[i].product_name + '$$' + data.data[i].product_qty + '$$' + data.data[i].payment_method + '$$' + data.data[i].product_cost + '$$' + data.data[i].delivery_note + '$$' + data.data[i].delivery_area + '$$' + data.data[i].receiver_address + '$$' + data.data[i].receiver_lat + '$$' + data.data[i].receiver_longi + '$$' + data.data[i].sender_name + '$$' + data.data[i].sender_phone_number + '$$' + data.data[i].sender_address + '$$' + data.data[i].delivery_type + '$$' + data.data[i].sender_lat + '$$' + data.data[i].sender_longi+  '$$' + data.data[i].delivery_created_date+  '$$' + data.data[i].delivery_created_by_name+  '$$' + data.data[i].delivery_created_by_role + '$$' + data.data[i].collection_name + '$$' + data.data[i].delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button></td><td>'
-			+'<button id="' + org_ID + '" name="' + data.data[i].delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button></td></tr>';
-			table.rows.add($(table_rows)).draw();
-			});
-		},
-		complete:function(data){
-			document.getElementById("dtBasicExampled_processing").style.display = "none";	
-		}
-	});*/
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
 		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
