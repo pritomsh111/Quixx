@@ -408,7 +408,7 @@ var activated = () => {
 			{
 				"orderable": false, "targets": 5, "data": "complete_payment", render: function (data, type, row) {
 
-					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete Payment</button>'
+					return '<button id="' + org_ID + '" name="' + row.approved_merchant_id + '" class="btn-round btn-outline btn btn-taka">Complete</button>'
 				}
 			},
 			{
