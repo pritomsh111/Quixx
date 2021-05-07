@@ -108,66 +108,6 @@ document.getElementById('cancelUpload').addEventListener('click', function (e) {
 
 });
 
-/*var directlyAssign = () =>
-{
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
-	
-		var table = $('#dtBasicExampleAp').DataTable( {
-		"processing": true,
-		"destroy": true
-		} );
-		table.clear().draw();
-		$.ajax
-		({
-			async: true,
-			type: "GET",
-			cors: true,
-			contentType:'application/json',
-			secure: true,
-			crossDomain: true,
-			url: urlForAll + "deliveryMan/approved/" + org_ID,
-			headers: 
-			{
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json',
-			  "Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function(data) 
-			{
-				var trHTML = '';
-				$.each(data.data, function (i, item) {
-				var table_rows = '<tr><td>'+data.data[i].delivery_man_id+'</td><td>'+data.data[i].name+'</td><td>'
-				+'<button id="' + data.data[i].delivery_man_id + '" name="' + data.data[i].name + '" class="btn-round btn-outline btn" onclick=save(this)>Add Delivery</button></td></tr>';
-
-				table.rows.add($(table_rows)).draw();
-				});
-			}
-		});
-			
-		$('.dataTables_filter input[type="search"]').
-		attr('placeholder','Search anything!').
-		css({'width':'300px','display':'inline-block','background':'white'});
-
-		$('.dataTables_filter input[type="search"]').
-		attr('class','btn btn-round').
-		css({'width':'300px','display':'inline-block','color':'#000000','background':'#FFFFFA'});
-
-		$('.dataTables_length select').
-		attr('class','btn btn-round').
-		css({'width':'80px','background-color':'white','color':'#000000','background':'#FFFFFA'});
-		
-	$('#dtBasicExampleAp').show();
-	$('.b').show();
-}*/
-
 var merchantPerDeliveryCost;
 naValuesType.map(item => {
 	document.querySelector(`select#${item}`).addEventListener('change', function (e) {
@@ -345,23 +285,13 @@ function checkCriteria(val, msg) {
 }
 
 function formatUnassigned(d) {
-	console.log(d);
-	console.log("AYYYYYYYMAMAMMAM");
-	// { "targets": 1, "data": "delivery_created_date" },
-	// { "targets": 3, "data": "delivery_created_by_name" },
-	// { "targets": 4, "data": "delivery_created_by_role" },
-	// { "targets": 2, "data": "pickup_time" },
-	// { "targets": 7, "data": "sender_name" },
-	// { "targets": 8, "data": "sender_phone_number" },
-	// { "targets": 9, "data": "sender_address" },
-	// { "targets": 10, "data": "receiver_name" },
-	// { "targets": 11, "data": "receiver_phone_number" },
 	//Delivery Info
 	let delivery_created_date = d.delivery_created_date || "";
 	let pickup_time = d.pickup_time || "";
+	let delivery_status = d.delivery_status || "";
 	// let delivery_created_by_name = d.delivery_created_by_name || "";
 	// let delivery_created_by_role = d.delivery_created_by_role || "";
-	let delivery_created_by_name_role = d.delivery_created_by_name + " ," + d.delivery_created_by_role;
+	let delivery_created_by_name_role = d.delivery_created_by_name + ", " + d.delivery_created_by_role;
 	let delivery_type = d.delivery_type || "";
 	let delivery_note = d.delivery_note || "";
 
@@ -409,7 +339,38 @@ function formatUnassigned(d) {
 		'<td>Receiver\'s Address:</td>' +
 		'<td>' + receiver_address + '</td>' +
 		'</tr>' +
+		'</table>' +
 		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
+		'<thead>' +
+		"<tr colspan='2'>" +
+		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
+		"</tr ></thead >" +
+		'<tr>' +
+		'<td>Delivery Status:</td>' +
+		'<td>' + delivery_status + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Delivery Creation Date and Time:</td>' +
+		'<td>' + delivery_created_date + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Pickup Time:</td>' +
+		'<td>' + pickup_time + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Company Name &amp Designation:</td>' +
+		'<td>' + delivery_created_by_name_role + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Delivery Type:</td>' +
+		'<td>' + delivery_type + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Delivery Note:</td>' +
+		'<td>' + delivery_note + '</td>' +
+		'</tr>' +
+		'</table>' +
+		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
@@ -434,33 +395,6 @@ function formatUnassigned(d) {
 		'<td>City Type:</td>' +
 		'<td>' + delivery_city_criteria + '</td>' +
 		'</tr>' +
-		'</table>' +
-		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
-		'<thead>' +
-		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
-		"</tr ></thead >" +
-		'<tr>' +
-		'<td>Delivery Creation Date and Time:</td>' +
-		'<td>' + delivery_created_date + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Pickup Time:</td>' +
-		'<td>' + pickup_time + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Company Name &amp Designation:</td>' +
-		'<td>' + delivery_created_by_name_role + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Delivery Type:</td>' +
-		'<td>' + delivery_type + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Delivery Note:</td>' +
-		'<td>' + delivery_note + '</td>' +
-		'</tr>' +
-		'</table>' +
 		'</table>' +
 		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
 		'<thead>' +
@@ -3627,7 +3561,7 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a;
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
 						return a;
 					}
 					return "---";
@@ -3637,7 +3571,7 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
-						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
