@@ -410,7 +410,7 @@ function formatUnassigned(d) {
 		'</tr>' +
 		'<tr>' +
 		'<td>Receiver\'s Address:</td>' +
-		'<td>' + d.sender_address + '</td>' +
+		'<td>' + d.receiver_address + '</td>' +
 		'</tr>' +
 		'</table>';
 }
@@ -630,7 +630,7 @@ var unassignedDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			document.querySelectorAll('td[colspan]').item(0).colSpan = "10";
+			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "7");
 		}
 	});
 	/*var table = $('#dtBasicExampled').DataTable( {
