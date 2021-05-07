@@ -347,82 +347,70 @@ function formatUnassigned(d) {
 	// { "targets": 10, "data": "receiver_name" },
 	// { "targets": 11, "data": "receiver_phone_number" },
 
-	// 	+
-	// 	'<table style="display: inline-block;border-collapse: separate; border-spacing: 1rem;">' +
-	// 	'<tr>' +
-	// 	'<td>Sender\'s Name:</td>' +
-	// 	'<td>' + d.sender_name + '</td>' +
-	// 	'</tr>' +
-	// 	'<tr>' +
-	// 	'<td>Sender\'s Phone Number:</td>' +
-	// 	'<td>' + d.sender_phone_number ? "" : null + '</td>' +
-	// 	'</tr>' +
-	// 	'<tr>' +
-	// 	'<td>Sender\'s Address:</td>' +
-	// 	'<td>' + d.sender_address + '</td>' +
-	// 	'</tr>' +
-	// '</table>';
-	// return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
-	// 	'<tr>' +
-	// 	'<td>Delivery Creation Date and Time:</td>' +
-	// 	'<td>' + d.delivery_created_date + '</td>' +
-	// 	'</tr>' +
-	// 	'<tr>' +
-	// 	'<td>Company Name:</td>' +
-	// 	'<td>' + d.delivery_created_by_name ? "" : null + '</td>' +
-	// 	'</tr>' +
-	// 	'<tr>' +
-	// 	'<td>Designation:</td>' +
-	// 	'<td>' + d.delivery_created_by_role + '</td>' +
-	// 	'</tr>' +
-	// 	'<tr>' +
-	// 	'<td>Pickup Time:</td>' +
-	// 	'<td>' + d.pickup_time + '</td>' +
-	// 	'</tr>' +
-	// '</table>';
-
-	return '<table style="padding: 1rem; margin:1rem;display: inline-block;border: 1px solid #0066b3;border-radius: 2%;border-collapse: separate; border-spacing: 1rem; text-align: left">' +
+	return '<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
-		'<td>Merchant ID:</td>' +
+		'<td>Delivery Creation Date and Time:</td>' +
 		'<td>' + d.delivery_created_date + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Owner Name:</td>' +
+		'<td>Pickup Time:</td>' +
 		'<td>' + d.pickup_time + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Email:</td>' +
+		'<td>Company Name:</td>' +
+		'<td>' + d.delivery_created_by_name + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Designation:</td>' +
 		'<td>' + d.delivery_created_by_role + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Busienss Field:</td>' +
-		'<td>' + d.delivery_created_by_name + '</td>' +
+		'<td>Delivery Type:</td>' +
+		'<td>' + d.delivery_type + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Delivery Note:</td>' +
+		'<td>' + d.delivery_note + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="padding: 1rem; margin:1rem;display: inline-block;border: 1px solid #0066b3;border-radius: 2%;border-collapse: separate; border-spacing: 1rem; text-align: left">' +
+		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Sender Info</th>" +
+		"<th colspan='2' style='text-align:center;'>Sender\'s  Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
-		'<td>Merchant ID:</td>' +
-		'<td>' + d.delivery_created_date + '</td>' +
+		'<td>Sender\'s Name:</td>' +
+		'<td>' + d.sender_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Owner Name:</td>' +
-		'<td>' + d.pickup_time + '</td>' +
+		'<td>Sender\'s Phone Number:</td>' +
+		'<td>' + d.sender_phone_number + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Email:</td>' +
-		'<td>' + d.delivery_created_by_role + '</td>' +
+		'<td>Sender\'s Address:</td>' +
+		'<td>' + d.sender_address + '</td>' +
+		'</tr>' +
+		'</table>' +
+		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
+		'<thead>' +
+		"<tr colspan='2'>" +
+		"<th colspan='2' style='text-align:center;'>Receivers\'s  Info</th>" +
+		"</tr ></thead >" +
+		'<tr>' +
+		'<td>Receiver\'s Name:</td>' +
+		'<td>' + d.receiver_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Busienss Field:</td>' +
-		'<td>' + d.delivery_created_by_name + '</td>' +
+		'<td>Receiver\'s Phone Number:</td>' +
+		'<td>' + d.receiver_phone_number + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Receiver\'s Address:</td>' +
+		'<td>' + d.sender_address + '</td>' +
 		'</tr>' +
 		'</table>';
 }
@@ -545,7 +533,6 @@ var unassignedDeliveries = () => {
 			},
 			{ "targets": 12, "data": "delivery_area" },
 			{ "targets": 13, "data": "receiver_address" },
-			{ "targets": 14, "data": "delivery_type" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
@@ -601,7 +588,6 @@ var unassignedDeliveries = () => {
 			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
-			{ "targets": 23, "data": "delivery_note" },
 			{
 				"targets": 20, "data": "assign", render: function (data, type, row) {
 
@@ -644,6 +630,7 @@ var unassignedDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
+			document.querySelectorAll('td[colspan]').item(0).colSpan = "10";
 		}
 	});
 	/*var table = $('#dtBasicExampled').DataTable( {
