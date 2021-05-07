@@ -383,33 +383,32 @@ function formatUnassigned(d) {
 	let delivery_distance = checkCriteria(d.delivery_distance, "delivery_distance_na");
 	let delivery_city_criteria = checkCriteria(d.delivery_city_criteria, "delivery_city_criteria_na");
 
-	return '<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;">' +
+	return '<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
+		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
-		'<td>Delivery Creation Date and Time:</td>' +
-		'<td>' + delivery_created_date + '</td>' +
+		'<td>Receiver\'s Name:</td>' +
+		'<td>' + receiver_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Pickup Time:</td>' +
-		'<td>' + pickup_time + '</td>' +
+		'<td>Receiver\'s Phone Number:</td>' +
+		'<td>' + receiver_phone_number + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Company Name &amp Designation:</td>' +
-		'<td>' + delivery_created_by_name_role + '</td>' +
+		'<td>Receiver\'s City:</td>' +
+		'<td>' + delivery_city + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Delivery Type:</td>' +
-		'<td>' + delivery_type + '</td>' +
+		'<td>Receiver\'s Area:</td>' +
+		'<td>' + delivery_area + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Delivery Note:</td>' +
-		'<td>' + delivery_note + '</td>' +
+		'<td>Receiver\'s Address:</td>' +
+		'<td>' + receiver_address + '</td>' +
 		'</tr>' +
-		'</table>' +
-		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;">' +
+		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
@@ -435,33 +434,34 @@ function formatUnassigned(d) {
 		'<td>' + delivery_city_criteria + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;">' +
+		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
+		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
-		'<td>Receiver\'s Name:</td>' +
-		'<td>' + receiver_name + '</td>' +
+		'<td>Delivery Creation Date and Time:</td>' +
+		'<td>' + delivery_created_date + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Receiver\'s Phone Number:</td>' +
-		'<td>' + receiver_phone_number + '</td>' +
+		'<td>Pickup Time:</td>' +
+		'<td>' + pickup_time + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Receiver\'s City:</td>' +
-		'<td>' + delivery_city + '</td>' +
+		'<td>Company Name &amp Designation:</td>' +
+		'<td>' + delivery_created_by_name_role + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Receiver\'s Area:</td>' +
-		'<td>' + delivery_area + '</td>' +
+		'<td>Delivery Type:</td>' +
+		'<td>' + delivery_type + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Receiver\'s Address:</td>' +
-		'<td>' + receiver_address + '</td>' +
+		'<td>Delivery Note:</td>' +
+		'<td>' + delivery_note + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;">' +
+		'</table>' +
+		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +
@@ -4422,72 +4422,41 @@ $('.btn-ok-updateDC').click(function () {
 		});
 	console.log(datap);
 	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v0() == 1 && v4() == 1 && v12() == 1) {
-		//pickup_time = convertTime24to12(pickup_time);
-		//console.log(pickup_time);
-		/*data= JSON.stringify
-			({
-				"collection_name": collection_name,
-				"creator_id": creator_ID,
-				"delivery_charge": delivery_cost_update,
-				"delivery_type": delivery_type,
-				"sender_address": s_address,
-				"receiver_address": rec_address,
-				"sender_phone_number": s_number,
-				"receiver_phone_number": r_number,
-				"sender_name": s_name,
-				"receiver_name": r_name,
-				"payment_method": payment_method,
-				"product_cost": product_cost,
-				"sender_lat": pickup_lat,
-				"sender_longi": pickup_longi,
-				"receiver_lat": delivery_lat,
-				"receiver_longi": delivery_longi,
-				"product_name": product_name,
-				"product_qty": product_qty,
-				"pickup_time": pickup_time,
-				"delivery_note": delivery_note,
-				"delivery_area": area,
-				"delivery_created_date": created_date,
-				"delivery_created_by_name": created_by_name,
-				"delivery_created_by_role": created_by_role,
-				"delivery_status": delivery_statusx
-			});
-			console.log(data);*/
-		datal = JSON.stringify
-			({
-				"collection_name": collection_name,
-				"creator_id": creator_ID,
-				"delivery_charge": delivery_cost_update,
-				"delivery_type": delivery_type,
-				"sender_address": s_address,
-				"receiver_address": rec_address,
-				"sender_phone_number": s_number,
-				"receiver_phone_number": r_number,
-				"sender_name": s_name,
-				"receiver_name": r_name,
-				"payment_method": payment_method,
-				"product_cost": product_cost,
-				"sender_lat": pickup_lat,
-				"sender_longi": pickup_longi,
-				"receiver_lat": delivery_lat,
-				"receiver_longi": delivery_longi,
-				"product_name": product_name,
-				"product_qty": product_qty,
-				"pickup_time": pickup_time,
-				"delivery_note": delivery_note,
-				"delivery_area": area,
-				"delivery_city": deliveryCity,
-				"delivery_created_date": created_date,
-				"delivery_created_by_name": created_by_name,
-				"delivery_created_by_role": created_by_role,
-				"delivery_status": delivery_statusx,
-				"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
-				"delivery_product_type": productType ? productType : "delivery_product_type_na",
-				"delivery_weight": weight ? weight : "delivery_weight_na",
-				"delivery_distance": distance ? distance : "delivery_distance_na",
-				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
-			});
-		console.log(datal);
+		// datal = JSON.stringify
+		// 	({
+		// 		"collection_name": collection_name,
+		// 		"creator_id": creator_ID,
+		// 		"delivery_charge": delivery_cost_update,
+		// 		"delivery_type": delivery_type,
+		// 		"sender_address": s_address,
+		// 		"receiver_address": rec_address,
+		// 		"sender_phone_number": s_number,
+		// 		"receiver_phone_number": r_number,
+		// 		"sender_name": s_name,
+		// 		"receiver_name": r_name,
+		// 		"payment_method": payment_method,
+		// 		"product_cost": product_cost,
+		// 		"sender_lat": pickup_lat,
+		// 		"sender_longi": pickup_longi,
+		// 		"receiver_lat": delivery_lat,
+		// 		"receiver_longi": delivery_longi,
+		// 		"product_name": product_name,
+		// 		"product_qty": product_qty,
+		// 		"pickup_time": pickup_time,
+		// 		"delivery_note": delivery_note,
+		// 		"delivery_area": area,
+		// 		"delivery_city": deliveryCity,
+		// 		"delivery_created_date": created_date,
+		// 		"delivery_created_by_name": created_by_name,
+		// 		"delivery_created_by_role": created_by_role,
+		// 		"delivery_status": delivery_statusx,
+		// 		"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+		// 		"delivery_product_type": productType ? productType : "delivery_product_type_na",
+		// 		"delivery_weight": weight ? weight : "delivery_weight_na",
+		// 		"delivery_distance": distance ? distance : "delivery_distance_na",
+		// 		"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
+		// 	});
+		// console.log(datal);
 
 		document.getElementById('modalApproveDC').disabled = true;
 		document.getElementById('modalCancelDC').disabled = true;
@@ -4546,31 +4515,56 @@ $('.btn-ok-updateDC').click(function () {
 					console.log(data);
 					var table = $('#dtBasicExampled').DataTable();
 					try {
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(data.data.receiver_name);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(data.data.receiver_phone_number);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 10 }).data(data.data.delivery_city);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.delivery_area);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 12 }).data(data.data.receiver_address);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 14 }).data(data.data.product_name);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_qty);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(data.data.receiver_name);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(data.data.receiver_phone_number);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 10 }).data(data.data.delivery_city);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.delivery_area);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 12 }).data(data.data.receiver_address);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.product_name);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.product_qty);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.product_cost);
 
-						if (criteriaEnabledDelivery) {
-							data.data.delivery_product_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type) : null;
-							data.data.delivery_weight ? table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight) : null;
-							data.data.delivery_day_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type) : null;
-							data.data.delivery_distance ? table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance) : null;
-							data.data.delivery_city_criteria ? table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_city_criteria) : null;
-						}
+						// if (criteriaEnabledDelivery) {
+						// 	data.data.delivery_product_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type) : null;
+						// 	data.data.delivery_weight ? table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight) : null;
+						// 	data.data.delivery_day_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type) : null;
+						// 	data.data.delivery_distance ? table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance) : null;
+						// 	data.data.delivery_city_criteria ? table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_city_criteria) : null;
+						// }
 
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 22 }).data(data.data.delivery_charge);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 23 }).data(data.data.payment_method);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 5 }).data(data.data.delivery_charge);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 6 }).data(data.data.payment_method);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
 						//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
 						//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
 						//table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
 						document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_city + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance + '$$' + data.data.delivery_city_criteria;
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(data.data.receiver_name);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(data.data.receiver_phone_number);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 10 }).data(data.data.delivery_city);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.delivery_area);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 12 }).data(data.data.receiver_address);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 14 }).data(data.data.product_name);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_qty);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
+
+						// if (criteriaEnabledDelivery) {
+						// 	data.data.delivery_product_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type) : null;
+						// 	data.data.delivery_weight ? table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight) : null;
+						// 	data.data.delivery_day_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type) : null;
+						// 	data.data.delivery_distance ? table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance) : null;
+						// 	data.data.delivery_city_criteria ? table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_city_criteria) : null;
+						// }
+
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 22 }).data(data.data.delivery_charge);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 23 }).data(data.data.payment_method);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
+						// //table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
+						// //table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
+						// //table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
+						// document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_city + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance + '$$' + data.data.delivery_city_criteria;
 
 					}
 					catch (e) {

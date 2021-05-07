@@ -5,7 +5,7 @@
 
 ::placeholder {
   opacity: 0.70;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 td.details-control {
@@ -23,6 +23,14 @@ td.details-control:hover i {
 
 tr.shown td.details-control i {
   transform: rotate(90deg);
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd, table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
+  transition: background-color 150ms ease-in;
+}
+
+table.dataTable.stripe tbody tr.odd.shown, table.dataTable.display tbody tr.odd.shown, table.dataTable.stripe tbody tr.even.shown, table.dataTable.display tbody tr.even.shown {
+  background-color: #ffcf5c;
 }
 
 .logo {
