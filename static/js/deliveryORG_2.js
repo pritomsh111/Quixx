@@ -346,6 +346,25 @@ function formatUnassigned(d) {
 	// { "targets": 9, "data": "sender_address" },
 	// { "targets": 10, "data": "receiver_name" },
 	// { "targets": 11, "data": "receiver_phone_number" },
+	//Delivery Info
+	let delivery_created_date = d.delivery_created_date || "";
+	let pickup_time = d.pickup_time || "";
+	let delivery_created_by_name = d.delivery_created_by_name || "";
+	let delivery_created_by_role = d.delivery_created_by_role || "";
+	let delivery_type = d.delivery_type || "";
+	let delivery_note = d.delivery_note || "";
+
+	//Sender's Info
+	let sender_name = d.sender_name || "";
+	let sender_phone_number = d.sender_phone_number || "";
+	let sender_address = d.sender_address || "";
+
+	//Receiver's Info
+	let receiver_name = d.receiver_name || "";
+	let receiver_phone_number = d.receiver_phone_number || "";
+	let delivery_city = d.delivery_city || "";
+	let delivery_area = d.delivery_area || "";
+	let receiver_address = d.receiver_address || "";
 
 	return '<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
 		'<thead>' +
@@ -354,27 +373,27 @@ function formatUnassigned(d) {
 		"</tr ></thead >" +
 		'<tr>' +
 		'<td>Delivery Creation Date and Time:</td>' +
-		'<td>' + d.delivery_created_date + '</td>' +
+		'<td>' + delivery_created_date + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Pickup Time:</td>' +
-		'<td>' + d.pickup_time + '</td>' +
+		'<td>' + pickup_time + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Company Name:</td>' +
-		'<td>' + d.delivery_created_by_name + '</td>' +
+		'<td>' + delivery_created_by_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Designation:</td>' +
-		'<td>' + d.delivery_created_by_role + '</td>' +
+		'<td>' + delivery_created_by_role + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Delivery Type:</td>' +
-		'<td>' + d.delivery_type + '</td>' +
+		'<td>' + delivery_type + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Delivery Note:</td>' +
-		'<td>' + d.delivery_note + '</td>' +
+		'<td>' + delivery_note + '</td>' +
 		'</tr>' +
 		'</table>' +
 		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
@@ -384,15 +403,15 @@ function formatUnassigned(d) {
 		"</tr ></thead >" +
 		'<tr>' +
 		'<td>Sender\'s Name:</td>' +
-		'<td>' + d.sender_name + '</td>' +
+		'<td>' + sender_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Sender\'s Phone Number:</td>' +
-		'<td>' + d.sender_phone_number + '</td>' +
+		'<td>' + sender_phone_number + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Sender\'s Address:</td>' +
-		'<td>' + d.sender_address + '</td>' +
+		'<td>' + sender_address + '</td>' +
 		'</tr>' +
 		'</table>' +
 		'<table style="display: inline-block;border-right: 1px solid #0066b3;margin-right:0.8rem;">' +
@@ -402,15 +421,23 @@ function formatUnassigned(d) {
 		"</tr ></thead >" +
 		'<tr>' +
 		'<td>Receiver\'s Name:</td>' +
-		'<td>' + d.receiver_name + '</td>' +
+		'<td>' + receiver_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Receiver\'s Phone Number:</td>' +
-		'<td>' + d.receiver_phone_number + '</td>' +
+		'<td>' + receiver_phone_number + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Receiver\'s City:</td>' +
+		'<td>' + delivery_city + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Receiver\'s Area:</td>' +
+		'<td>' + delivery_area + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Receiver\'s Address:</td>' +
-		'<td>' + d.receiver_address + '</td>' +
+		'<td>' + receiver_address + '</td>' +
 		'</tr>' +
 		'</table>';
 }
@@ -525,14 +552,6 @@ var unassignedDeliveries = () => {
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
 			{ "targets": 0, "data": "delivery_Id" },
-			{
-				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
-					let a = row.delivery_city;
-					return a ? row.delivery_city : "";
-				}
-			},
-			{ "targets": 12, "data": "delivery_area" },
-			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
