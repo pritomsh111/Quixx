@@ -57,7 +57,6 @@ var goToDelivery = () => {
 	window.open('addDeliverToDeliveryMan.html', '_blank');
 }
 var ExcelToJSON = function () {
-
 	this.parseExcel = function (file) {
 		var reader = new FileReader();
 
@@ -87,12 +86,6 @@ var ExcelToJSON = function () {
 };
 
 function handleFileSelect(evt) {
-	//preventDefault***************************
-	//preventDefault***************************
-	//preventDefault***************************
-	//preventDefault***************************
-	//preventDefault***************************
-	//preventDefault***************************
 	evt.preventDefault();
 	if (evt.target.files[0].type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
 		document.getElementById("fileName").innerHTML = evt.target.files[0].name;
@@ -101,7 +94,6 @@ function handleFileSelect(evt) {
 		xl2json.parseExcel(files[0]);
 	}
 	else {
-
 		document.getElementById('wrongThisUpload').innerHTML = "Invalid File";
 		$('#myModalWrongUpload').modal('show');
 	}
@@ -343,6 +335,98 @@ $("#senderList").change(async function () {
 	}
 });
 
+function formatUnassigned(d) {
+	console.log(d);
+	// { "targets": 1, "data": "delivery_created_date" },
+	// { "targets": 3, "data": "delivery_created_by_name" },
+	// { "targets": 4, "data": "delivery_created_by_role" },
+	// { "targets": 2, "data": "pickup_time" },
+	// { "targets": 7, "data": "sender_name" },
+	// { "targets": 8, "data": "sender_phone_number" },
+	// { "targets": 9, "data": "sender_address" },
+	// { "targets": 10, "data": "receiver_name" },
+	// { "targets": 11, "data": "receiver_phone_number" },
+
+	// 	+
+	// 	'<table style="display: inline-block;border-collapse: separate; border-spacing: 1rem;">' +
+	// 	'<tr>' +
+	// 	'<td>Sender\'s Name:</td>' +
+	// 	'<td>' + d.sender_name + '</td>' +
+	// 	'</tr>' +
+	// 	'<tr>' +
+	// 	'<td>Sender\'s Phone Number:</td>' +
+	// 	'<td>' + d.sender_phone_number ? "" : null + '</td>' +
+	// 	'</tr>' +
+	// 	'<tr>' +
+	// 	'<td>Sender\'s Address:</td>' +
+	// 	'<td>' + d.sender_address + '</td>' +
+	// 	'</tr>' +
+	// '</table>';
+	// return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
+	// 	'<tr>' +
+	// 	'<td>Delivery Creation Date and Time:</td>' +
+	// 	'<td>' + d.delivery_created_date + '</td>' +
+	// 	'</tr>' +
+	// 	'<tr>' +
+	// 	'<td>Company Name:</td>' +
+	// 	'<td>' + d.delivery_created_by_name ? "" : null + '</td>' +
+	// 	'</tr>' +
+	// 	'<tr>' +
+	// 	'<td>Designation:</td>' +
+	// 	'<td>' + d.delivery_created_by_role + '</td>' +
+	// 	'</tr>' +
+	// 	'<tr>' +
+	// 	'<td>Pickup Time:</td>' +
+	// 	'<td>' + d.pickup_time + '</td>' +
+	// 	'</tr>' +
+	// '</table>';
+
+	return '<table style="padding: 1rem; margin:1rem;display: inline-block;border: 1px solid #0066b3;border-radius: 2%;border-collapse: separate; border-spacing: 1rem; text-align: left">' +
+		'<thead>' +
+		"<tr colspan='2'>" +
+		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
+		"</tr ></thead >" +
+		'<tr>' +
+		'<td>Merchant ID:</td>' +
+		'<td>' + d.delivery_created_date + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Owner Name:</td>' +
+		'<td>' + d.pickup_time + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Email:</td>' +
+		'<td>' + d.delivery_created_by_role + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Busienss Field:</td>' +
+		'<td>' + d.delivery_created_by_name + '</td>' +
+		'</tr>' +
+		'</table>' +
+		'<table style="padding: 1rem; margin:1rem;display: inline-block;border: 1px solid #0066b3;border-radius: 2%;border-collapse: separate; border-spacing: 1rem; text-align: left">' +
+		'<thead>' +
+		"<tr colspan='2'>" +
+		"<th colspan='2' style='text-align:center;'>Sender Info</th>" +
+		"</tr ></thead >" +
+		'<tr>' +
+		'<td>Merchant ID:</td>' +
+		'<td>' + d.delivery_created_date + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Owner Name:</td>' +
+		'<td>' + d.pickup_time + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Email:</td>' +
+		'<td>' + d.delivery_created_by_role + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Busienss Field:</td>' +
+		'<td>' + d.delivery_created_by_name + '</td>' +
+		'</tr>' +
+		'</table>';
+}
+
 var unassignedDeliveries = () => {
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('oneb').disabled = true;
@@ -446,16 +530,13 @@ var unassignedDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+			},
 			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_date" },
-			{ "targets": 3, "data": "delivery_created_by_name" },
-			{ "targets": 4, "data": "delivery_created_by_role" },
-			{ "targets": 2, "data": "pickup_time" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
 			{
 				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
 					let a = row.delivery_city;
@@ -547,6 +628,24 @@ var unassignedDeliveries = () => {
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
+
+	$('#dtBasicExampled tbody').off('click', 'td.details-control');
+	$('#dtBasicExampled tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampled').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatUnassigned(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 	/*var table = $('#dtBasicExampled').DataTable( {
 	"processing": true,
 	'language': {
