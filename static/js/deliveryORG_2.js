@@ -3627,7 +3627,7 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a;
 						return a;
 					}
 					return "---";
