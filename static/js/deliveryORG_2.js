@@ -755,6 +755,7 @@ var onGoingDeliveries = () => {
 		},
 		"paging": true,
 		"pageLength": 100,
+		"autoWidth": false,
 		"searching": false,
 		"ordering": false,
 		"deferRender": true,
@@ -774,15 +775,19 @@ var onGoingDeliveries = () => {
 			},
 			"dataSrc": "data"
 		},
+		"columnDefs": [
+			{ "width": "2%", "targets": 1 }
+		],
 		"columns": [
 			{
+				"targets": 0,
 				"class": 'details-control',
 				"orderable": false,
 				"data": null,
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>",
-				"width": "15px"
+				"width": "2%"
 			},
-			{ "targets": 0, "data": "delivery_Id" },
+			{ "width": "2%", "targets": 1, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
 			{
 				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
