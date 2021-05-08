@@ -786,7 +786,7 @@ var onGoingDeliveries = () => {
 			{
 				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
 
-					return row.assign_delivery_man_name + "<br>" + row.assign_delivery_man_phone;
+					return `${row.assign_delivery_man_name} ${row.assign_delivery_man_phone}`;
 				}
 			},
 			{ "targets": 15, "data": "product_name" },
@@ -1428,8 +1428,8 @@ $('.btn-okReassign').click(function () {
 				success: function (data) {
 					console.log(data);
 					var table2 = $(`${tablexxx}`).DataTable();
-					let newString = data.assign_delivery_man_name + "<br>" + assign_delivery_man_phone;
-					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 3 }).data(newString);
+					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_name);
+
 					$("#sureReassign").html("Please wait!");
 					setTimeout(function () {
 						$(".circle-loader").addClass("load-complete");
