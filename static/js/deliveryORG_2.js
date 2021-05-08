@@ -283,10 +283,10 @@ $("#senderList").change(async function () {
 	}
 });
 
-function checkCriteria(val, msg) {
+function checkCriteria(val, msg, ex = "") {
 	let a = val;
 	if (a) {
-		a = a?.includes(`${msg}`) ? "NOT_SELECTED" : a;
+		a = a?.includes(`${msg}`) ? "NOT_SELECTED" : a + ex;
 		return a;
 	}
 	return "---";
@@ -331,9 +331,9 @@ function formatUnassigned(d) {
 
 	//Criteria Info
 	let delivery_product_type = checkCriteria(d.delivery_product_type, "delivery_product_type_na");
-	let delivery_weight = checkCriteria(d.delivery_weight, "delivery_weight_na");
+	let delivery_weight = checkCriteria(d.delivery_weight, "delivery_weight_na", " KG");
 	let delivery_day_type = checkCriteria(d.delivery_day_type, "delivery_day_type_na");
-	let delivery_distance = checkCriteria(d.delivery_distance, "delivery_distance_na");
+	let delivery_distance = checkCriteria(d.delivery_distance, "delivery_distance_na", " KM");
 	let delivery_city_criteria = checkCriteria(d.delivery_city_criteria, "delivery_city_criteria_na");
 
 	//Product Info
@@ -412,7 +412,7 @@ function formatUnassigned(d) {
 		'</tr>' +
 		'<tr>' +
 		'<td>Product Weight [KG]</td>' +
-		'<td>' + delivery_weight + " KG" + '</td>' +
+		'<td>' + delivery_weight + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Day Type:</td>' +
@@ -420,7 +420,7 @@ function formatUnassigned(d) {
 		'</tr>' +
 		'<tr>' +
 		'<td>Distance Type [KM]:</td>' +
-		'<td>' + delivery_distance + " KM" + '</td>' +
+		'<td>' + delivery_distance + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>City Type:</td>' +
@@ -614,7 +614,7 @@ var assignedDeliveries = () => {
 			{
 				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
 
-					return row.assign_delivery_man_name + "<br>" + row.assign_delivery_man_phone;
+					return row.assign_delivery_man_name + ", " + row.assign_delivery_man_phone;
 				}
 			},
 			{ "targets": 15, "data": "product_name" },
@@ -702,7 +702,7 @@ var onHoldDeliveries = () => {
 			{
 				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
 
-					return row.assign_delivery_man_name + "<br>" + row.assign_delivery_man_phone;
+					return row.assign_delivery_man_name + ", " + row.assign_delivery_man_phone;
 				}
 			},
 			{ "targets": 15, "data": "product_name" },
@@ -775,9 +775,6 @@ var onGoingDeliveries = () => {
 			},
 			"dataSrc": "data"
 		},
-		"columnDefs": [
-			{ "width": "2%", "targets": 1 }
-		],
 		"columns": [
 			{
 				"targets": 0,
@@ -785,14 +782,13 @@ var onGoingDeliveries = () => {
 				"orderable": false,
 				"data": null,
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>",
-				"width": "2%"
 			},
-			{ "width": "2%", "targets": 1, "data": "delivery_Id" },
+			{ "targets": 1, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
 			{
 				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
 
-					return `${row.assign_delivery_man_name} ${row.assign_delivery_man_phone}`;
+					return `${row.assign_delivery_man_name}, ${row.assign_delivery_man_phone}`;
 				}
 			},
 			{ "targets": 15, "data": "product_name" },
@@ -889,7 +885,7 @@ var completedDeliveries = () => {
 			{
 				"targets": 7, "data": "assign_delivery_man_phone", render: function (data, type, row) {
 
-					return `${row.assign_delivery_man_name} ${row.assign_delivery_man_phone}`;
+					return `${row.assign_delivery_man_name}, ${row.assign_delivery_man_phone}`;
 				}
 			},
 			{ "targets": 15, "data": "product_name" },
@@ -967,78 +963,17 @@ var canceledDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
-			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_by_name" },
-			{ "targets": 2, "data": "delivery_created_by_role" },
-			{ "targets": 3, "data": "delivery_created_date" },
-			{ "targets": 4, "data": "delivery_status" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
 			{
-				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
-					let a = row.delivery_city;
-					return a ? row.delivery_city : "";
-				}
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>",
+				"width": "2%"
 			},
-			{ "targets": 12, "data": "delivery_area" },
-			{ "targets": 13, "data": "receiver_address" },
-			{ "targets": 14, "data": "delivery_type" },
+			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
-			{
-				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
-					let a = row.delivery_product_type;
-					if (a) {
-						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
-					let a = row.delivery_weight;
-					if (a) {
-						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
-					let a = row.delivery_day_type;
-					if (a) {
-						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
-					let a = row.delivery_distance;
-					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
-					let a = row.delivery_city_criteria;
-					if (a) {
-						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -1060,6 +995,24 @@ var canceledDeliveries = () => {
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
+	$('#dtBasicExampleNewi tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleNewi tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleNewi').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatUnassigned(row.data())).show();
+			tr.addClass('shown');
+			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+		}
+	});
 	dataTableStyle();
 	$('#dtBasicExampleNewi').show();
 	$('.i').show();
@@ -1099,78 +1052,17 @@ var returnedDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
-			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_by_name" },
-			{ "targets": 2, "data": "delivery_created_by_role" },
-			{ "targets": 3, "data": "delivery_created_date" },
-			{ "targets": 4, "data": "delivery_status" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
 			{
-				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
-					let a = row.delivery_city;
-					return a ? row.delivery_city : "";
-				}
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>",
+				"width": "2%"
 			},
-			{ "targets": 12, "data": "delivery_area" },
-			{ "targets": 13, "data": "receiver_address" },
-			{ "targets": 14, "data": "delivery_type" },
+			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
-			{
-				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
-					let a = row.delivery_product_type;
-					if (a) {
-						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
-					let a = row.delivery_weight;
-					if (a) {
-						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
-					let a = row.delivery_day_type;
-					if (a) {
-						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
-					let a = row.delivery_distance;
-					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
-					let a = row.delivery_city_criteria;
-					if (a) {
-						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -1186,6 +1078,24 @@ var returnedDeliveries = () => {
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
+	$('#dtBasicExampleNewj tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleNewj tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleNewj').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatUnassigned(row.data())).show();
+			tr.addClass('shown');
+			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+		}
+	});
 	dataTableStyle();
 	$('#dtBasicExampleNewj').show();
 	$('.j').show();
@@ -1398,8 +1308,8 @@ $('.btn-okReassign').click(function () {
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_phone);
 					table.rows().every(function (index, element) {
 						var row = $(this.node());
-						if (row.find('td').eq(3)[0].innerHTML === `${datapp.assign_delivery_man_name} ${datapp.assign_delivery_man_phone}`) {
-							row.find('td').eq(3)[0].innerHTML = `${data.assign_delivery_man_name} ${data.assign_delivery_man_phone}`;
+						if (row.find('td').eq(3)[0].innerHTML === `${datapp.assign_delivery_man_name}, ${datapp.assign_delivery_man_phone}`) {
+							row.find('td').eq(3)[0].innerHTML = `${data.assign_delivery_man_name}, ${data.assign_delivery_man_phone}`;
 						}
 					});
 
