@@ -1487,6 +1487,14 @@ a.btn.disabled, fieldset:disabled a.btn {
   font-weight: 600;
 }
 
+table[id^="dtBasic"] .btn {
+  padding: 9px 23px;
+}
+
+select[name^="dtBasic"] {
+  padding: 10px 29px;
+}
+
 .btn-outline-secondary {
   color: #6c757d;
   background-color: transparent;
