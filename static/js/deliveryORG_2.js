@@ -784,9 +784,9 @@ var onGoingDeliveries = () => {
 			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
 			{
-				"targets": 5, "data": "update", render: function (data, type, row) {
+				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
 
-					return `${row.assign_delivery_man_name}`;
+					return row.assign_delivery_man_name + "<br>" + row.assign_delivery_man_phone;
 				}
 			},
 			{ "targets": 15, "data": "product_name" },
@@ -1320,46 +1320,46 @@ $('.btn-ok').click(function () {
 
 });
 var tablexxx;
-$('#dtBasicExampleNew').on('click', '.reassignIt', function () {
-	tablexxx = "#dtBasicExampleNew";
-	$("#dml").show();
-	$("#deliveryManList2").show();
-	$.ajax
-		({
-			url: urlForAll + "deliveryMan/approved/" + org_ID,
-			type: "GET",
+// $('#dtBasicExampleNew').on('click', '.reassignIt', function () {
+// 	tablexxx = "#dtBasicExampleNew";
+// 	$("#dml").show();
+// 	$("#deliveryManList2").show();
+// 	$.ajax
+// 		({
+// 			url: urlForAll + "deliveryMan/approved/" + org_ID,
+// 			type: "GET",
 
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
+// 			headers:
+// 			{
+// 				'Accept': 'application/json',
+// 				'Content-Type': 'application/json',
+// 				"Authorization": 'Bearer ' + localStorage.getItem('token')
+// 			},
 
-			success: function (data) {
-				$('#deliveryManList2')
-					.empty()
-					.append('<option selected="selected" value="">Select Delivery Man</option>')
-					;
-				for (var i = 0; i < data.data.length; i++) {
-					var option = new Option(data.data[i].delivery_man_id, data.data[i].delivery_man_id);
-					$(option).html(data.data[i].name);
-					$("#deliveryManList2").append(option);
-				}
-			}
-		});
-	orgid = $(this).attr('id'); //delivery ID
-	$t = $(this);
+// 			success: function (data) {
+// 				$('#deliveryManList2')
+// 					.empty()
+// 					.append('<option selected="selected" value="">Select Delivery Man</option>')
+// 					;
+// 				for (var i = 0; i < data.data.length; i++) {
+// 					var option = new Option(data.data[i].delivery_man_id, data.data[i].delivery_man_id);
+// 					$(option).html(data.data[i].name);
+// 					$("#deliveryManList2").append(option);
+// 				}
+// 			}
+// 		});
+// 	orgid = $(this).attr('id'); //delivery ID
+// 	$t = $(this);
 
-	$('#tickReassign').hide();
-	$(".circle-loader").hide();
-	$("#sureReassign").hide();
-	$(".circle-loader").removeClass("load-complete");
-	//$("#sureReassign").html("Are you sure?");
-	$("#myModalReassign").modal();
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-});
+// 	$('#tickReassign').hide();
+// 	$(".circle-loader").hide();
+// 	$("#sureReassign").hide();
+// 	$(".circle-loader").removeClass("load-complete");
+// 	//$("#sureReassign").html("Are you sure?");
+// 	$("#myModalReassign").modal();
+// 	//$(".container").show();
+// 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+// });
 
 $('#dtBasicExampleNewg').on('click', '.reassignIt', function () {
 	tablexxx = "#dtBasicExampleNewg";
@@ -1418,6 +1418,7 @@ $('.btn-okReassign').click(function () {
 				async: true,
 				type: "PUT",
 				url: urlForAll + "delivery/assign/" + org_ID + "/" + orgid + "/" + deliveryManId,
+
 				headers:
 				{
 					'Accept': 'application/json',
@@ -1426,8 +1427,10 @@ $('.btn-okReassign').click(function () {
 				},
 				success: function (data) {
 					console.log(data);
-					var table2 = $(`${tablexxx}`).DataTable();
+					var table2 = $("#dtBasicExampleNewg").DataTable();
 					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_name);
+					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_phone);
+
 					$("#sureReassign").html("Please wait!");
 					setTimeout(function () {
 						$(".circle-loader").addClass("load-complete");
