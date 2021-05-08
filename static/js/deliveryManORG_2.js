@@ -35,7 +35,7 @@ var createDeliveryMan = () => {
 };
 
 function formatApproved(d) {
-	return '<table style="border-collapse: separate; border-spacing: 1rem; text-align: left">' +
+	return '<table id="innerRowTable" style="border-spacing: 5rem; text-align: left">' +
 		'<tr>' +
 		'<td>Delivery Man\'s ID:</td > ' +
 		'<td>' + d.delivery_man_id + '</td>' +

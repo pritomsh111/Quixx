@@ -75,7 +75,7 @@ var invoice = (id) => {
 };
 
 function formatApproved(d) {
-	return '<table style="border-spacing: 2rem; text-align: left">' +
+	return '<table id="innerRowTable" style="border-spacing: 2rem; text-align: left">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
@@ -95,7 +95,7 @@ function formatApproved(d) {
 		'</table>';
 }
 function formatUnapproved(d) {
-	return '<table style="border-spacing: 2rem; text-align: left">' +
+	return '<table id="innerRowTable" style="border-spacing: 2rem; text-align: left">' +
 		'<tr>' +
 		'<td>Owner Name:</td>' +
 		'<td>' + d.person_name + '</td>' +
@@ -111,7 +111,7 @@ function formatUnapproved(d) {
 		'</table>';
 }
 function formatActivated(d) {
-	return '<table style="border-spacing: 2rem; text-align: left">' +
+	return '<table id="innerRowTable" style="border-spacing: 1rem; text-align: left">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
@@ -134,7 +134,7 @@ function formatActivated(d) {
 		'</tr>' +
 		'<tr>' +
 		'<td>Cash On Delivery Percentage:</td>' +
-		'<td>' + d.cod_percentage + '</td>' +
+		'<td>' + d.cod_percentage + "%" + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Busienss Field:</td>' +

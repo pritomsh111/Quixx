@@ -1483,6 +1483,10 @@ a.btn.disabled, fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.5);
 }
 
+#innerRowTable tbody tr td:first-child {
+  font-weight: 600;
+}
+
 .btn-outline-secondary {
   color: #6c757d;
   background-color: transparent;
