@@ -2,25 +2,33 @@ var org_ID = localStorage.getItem('userID');
 var dataInfo, excelData, flag = false;
 var this_select_content = "";
 var criteriaEnabledDelivery = false;
+
 var createDelivery = () => {
+	buttonActive();
 	document.getElementById('threeb').disabled = true;
-	document.getElementById('twob').disabled = false;
-	document.getElementById('oneb').disabled = false;
 	document.getElementById('threeb').style.fontSize = '14.5px';
-	document.getElementById('twob').style.fontSize = '13px';
+	$('.c').show();
+	$("#deliveryCreate").show();
+}
+
+function buttonActive() {
+	document.getElementById('oneb').disabled = false;
+	document.getElementById('oneb').innerHTML = 'Unassigned Deliveries';
 	document.getElementById('oneb').style.fontSize = '13px';
+	document.getElementById('twob').disabled = false;
+	document.getElementById('twob').innerHTML = 'Assigned Deliveries';
+	document.getElementById('twob').style.fontSize = '13px';
+	document.getElementById('threeb').disabled = false;
+	document.getElementById('threeb').style.fontSize = '13px';
 
 	document.getElementById('sixb').disabled = false;
-	document.getElementById('sevenb').disabled = false;
-	document.getElementById('eightb').disabled = false;
-	document.getElementById('sixb').style.fontSize = '13px';
-	document.getElementById('sevenb').style.fontSize = '13px';
-	document.getElementById('eightb').style.fontSize = '13px';
-
-	document.getElementById('twob').innerHTML = 'Assigned Deliveries';
-	document.getElementById('oneb').innerHTML = 'Unassigned Deliveries';
 	document.getElementById('sixb').innerHTML = 'On Hold Deliveries';
+	document.getElementById('sixb').style.fontSize = '13px';
+	document.getElementById('sevenb').disabled = false;
 	document.getElementById('sevenb').innerHTML = 'Ongoing Deliveries';
+	document.getElementById('sevenb').style.fontSize = '13px';
+	document.getElementById('eightb').disabled = false;
+	document.getElementById('eightb').style.fontSize = '13px';
 	document.getElementById('eightb').innerHTML = 'Completed Deliveries';
 
 	document.getElementById('nineb').disabled = false;
@@ -35,7 +43,7 @@ var createDelivery = () => {
 	$('#dtBasicExampleAp').hide();
 	$('#dtBasicExampleNew').hide();
 	$('.b').hide();
-	$('.c').show();
+	$('.c').hide();
 	$('.d').hide();
 	$('.e').hide();
 	$('#dtBasicExampled').hide();
@@ -50,9 +58,9 @@ var createDelivery = () => {
 	$('.i').hide();
 	$('#dtBasicExampleNewj').hide();
 	$('.j').hide();
-	$("#deliveryCreate").show();
-
+	$("#deliveryCreate").hide();
 }
+
 var goToDelivery = () => {
 	window.open('addDeliverToDeliveryMan.html', '_blank');
 }
@@ -440,54 +448,11 @@ function formatUnassigned(d) {
 }
 
 var unassignedDeliveries = () => {
+	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('oneb').disabled = true;
-	document.getElementById('twob').disabled = false;
-	document.getElementById('threeb').disabled = false;
 	document.getElementById('oneb').style.fontSize = '14.5px';
-	document.getElementById('twob').style.fontSize = '13px';
-	document.getElementById('threeb').style.fontSize = '13px';
-	document.getElementById('sixb').disabled = false;
-	document.getElementById('sevenb').disabled = false;
-	document.getElementById('eightb').disabled = false;
-	document.getElementById('sixb').style.fontSize = '13px';
-	document.getElementById('sevenb').style.fontSize = '13px';
-	document.getElementById('eightb').style.fontSize = '13px';
-	document.getElementById('nineb').disabled = false;
-	document.getElementById('nineb').style.fontSize = '13px';
-
-	document.getElementById('tenb').disabled = false;
-	document.getElementById('tenb').style.fontSize = '13px';
-	document.getElementById('tenb').innerHTML = 'Returned Deliveries';
-	$('#dtBasicExampleNewj').hide();
-	$('.j').hide();
 	this_select_content = "";
-	document.getElementById('twob').innerHTML = 'Assigned Deliveries';
-	document.getElementById('sixb').innerHTML = 'On Hold Deliveries';
-	document.getElementById('sevenb').innerHTML = 'Ongoing Deliveries';
-	document.getElementById('eightb').innerHTML = 'Completed Deliveries';
-	document.getElementById('nineb').innerHTML = 'Canceled Deliveries';
-	$('#dtBasicExampleNewj').hide();
-	$('.j').hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
-	$('#deliveryCreate').hide();
-
-	$('#dtBasicExampleNewf').hide();
-	$('#dtBasicExampleNewg').hide();
-	$('#dtBasicExampleNewh').hide();
-	$('.f').hide();
-	$('.g').hide();
-	$('.h').hide();
-	$('#dtBasicExampleNewi').hide();
-	$('.i').hide();
 	$.ajax
 		({
 			url: urlForAll + "deliveryMan/approved/" + org_ID,
@@ -605,54 +570,10 @@ var unassignedDeliveries = () => {
 }
 //New
 var assignedDeliveries = () => {
+	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('twob').disabled = true;
-	document.getElementById('oneb').disabled = false;
-	document.getElementById('threeb').disabled = false;
 	document.getElementById('twob').style.fontSize = '14.5px';
-	document.getElementById('oneb').style.fontSize = '13px';
-	document.getElementById('threeb').style.fontSize = '13px';
-
-	document.getElementById('sixb').disabled = false;
-	document.getElementById('sevenb').disabled = false;
-	document.getElementById('eightb').disabled = false;
-	document.getElementById('sixb').style.fontSize = '13px';
-	document.getElementById('sevenb').style.fontSize = '13px';
-	document.getElementById('eightb').style.fontSize = '13px';
-	document.getElementById('nineb').disabled = false;
-	document.getElementById('nineb').style.fontSize = '13px';
-
-	document.getElementById('oneb').innerHTML = 'Unassigned Deliveries';
-	document.getElementById('sixb').innerHTML = 'On Hold Deliveries';
-	document.getElementById('sevenb').innerHTML = 'Ongoing Deliveries';
-	document.getElementById('eightb').innerHTML = 'Completed Deliveries';
-	document.getElementById('nineb').innerHTML = 'Canceled Deliveries';
-
-	document.getElementById('tenb').disabled = false;
-	document.getElementById('tenb').style.fontSize = '13px';
-	document.getElementById('tenb').innerHTML = 'Returned Deliveries';
-	$('#dtBasicExampleNewj').hide();
-	$('.j').hide();
-
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
-	$('#deliveryCreate').hide();
-
-	$('#dtBasicExampleNewf').hide();
-	$('#dtBasicExampleNewg').hide();
-	$('#dtBasicExampleNewh').hide();
-	$('.f').hide();
-	$('.g').hide();
-	$('.h').hide();
-	$('#dtBasicExampleNewi').hide();
-	$('.i').hide();
 
 	var table = $('#dtBasicExampleNew').DataTable({
 		"processing": true,
@@ -739,55 +660,9 @@ var assignedDeliveries = () => {
 }
 
 var onHoldDeliveries = () => {
-	document.getElementById('body').style.pointerEvents = "none";
-	document.getElementById('twob').disabled = false;
-	document.getElementById('oneb').disabled = false;
-	document.getElementById('threeb').disabled = false;
-	document.getElementById('twob').style.fontSize = '13px';
-	document.getElementById('oneb').style.fontSize = '13px';
-	document.getElementById('threeb').style.fontSize = '13px';
-
+	buttonActive();
 	document.getElementById('sixb').disabled = true;
-	document.getElementById('sevenb').disabled = false;
-	document.getElementById('eightb').disabled = false;
 	document.getElementById('sixb').style.fontSize = '14.5px';
-	document.getElementById('sevenb').style.fontSize = '13px';
-	document.getElementById('eightb').style.fontSize = '13px';
-	document.getElementById('nineb').disabled = false;
-	document.getElementById('nineb').style.fontSize = '13px';
-
-	document.getElementById('sevenb').innerHTML = 'Ongoing Deliveries';
-	document.getElementById('eightb').innerHTML = 'Completed Deliveries';
-
-	document.getElementById('twob').innerHTML = 'Assigned Deliveries';
-	document.getElementById('oneb').innerHTML = 'Unassigned Deliveries';
-
-	document.getElementById('nineb').innerHTML = 'Canceled Deliveries';
-	document.getElementById('tenb').disabled = false;
-	document.getElementById('tenb').style.fontSize = '13px';
-	document.getElementById('tenb').innerHTML = 'Returned Deliveries';
-	$('#dtBasicExampleNewj').hide();
-	$('.j').hide();
-
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
-	$('#deliveryCreate').hide();
-
-	$('#dtBasicExampleNewf').hide();
-	$('#dtBasicExampleNewg').hide();
-	$('#dtBasicExampleNewh').hide();
-	$('.f').hide();
-	$('.g').hide();
-	$('.h').hide();
-	$('#dtBasicExampleNewi').hide();
-	$('.i').hide();
 
 	var table = $('#dtBasicExampleNewf').DataTable({
 		"processing": true,
@@ -868,55 +743,10 @@ var onHoldDeliveries = () => {
 
 
 var onGoingDeliveries = () => {
+	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
-	document.getElementById('twob').disabled = false;
-	document.getElementById('oneb').disabled = false;
-	document.getElementById('threeb').disabled = false;
-	document.getElementById('twob').style.fontSize = '13px';
-	document.getElementById('oneb').style.fontSize = '13px';
-	document.getElementById('threeb').style.fontSize = '13px';
-
-	document.getElementById('sixb').disabled = false;
 	document.getElementById('sevenb').disabled = true;
-	document.getElementById('eightb').disabled = false;
-	document.getElementById('sixb').style.fontSize = '13px';
 	document.getElementById('sevenb').style.fontSize = '14.5px';
-	document.getElementById('eightb').style.fontSize = '13px';
-	document.getElementById('nineb').disabled = false;
-	document.getElementById('nineb').style.fontSize = '13px';
-
-	document.getElementById('twob').innerHTML = 'Assigned Deliveries';
-	document.getElementById('oneb').innerHTML = 'Unassigned Deliveries';
-
-	document.getElementById('sixb').innerHTML = 'On Hold Deliveries';
-	document.getElementById('eightb').innerHTML = 'Completed Deliveries';
-	document.getElementById('nineb').innerHTML = 'Canceled Deliveries';
-	document.getElementById('tenb').disabled = false;
-	document.getElementById('tenb').style.fontSize = '13px';
-	document.getElementById('tenb').innerHTML = 'Returned Deliveries';
-	$('#dtBasicExampleNewj').hide();
-	$('.j').hide();
-
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
-	$('#deliveryCreate').hide();
-
-	$('#dtBasicExampleNewf').hide();
-	$('#dtBasicExampleNewg').hide();
-	$('#dtBasicExampleNewh').hide();
-	$('.f').hide();
-	$('.g').hide();
-	$('.h').hide();
-	$('#dtBasicExampleNewi').hide();
-	$('.i').hide();
-
 	var table = $('#dtBasicExampleNewg').DataTable({
 		"processing": true,
 		'language': {
@@ -945,6 +775,12 @@ var onGoingDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+			},
 			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
 			{
@@ -978,60 +814,34 @@ var onGoingDeliveries = () => {
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
+	$('#dtBasicExampleNewg tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleNewg tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleNewg').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatUnassigned(row.data())).show();
+			tr.addClass('shown');
+			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+		}
+	});
 	dataTableStyle();
 	$('#dtBasicExampleNewg').show();
 	$('.g').show();
 }
 
 var completedDeliveries = () => {
+	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
-	document.getElementById('twob').disabled = false;
-	document.getElementById('oneb').disabled = false;
-	document.getElementById('threeb').disabled = false;
-	document.getElementById('twob').style.fontSize = '13px';
-	document.getElementById('oneb').style.fontSize = '13px';
-	document.getElementById('threeb').style.fontSize = '13px';
-
-	document.getElementById('sixb').disabled = false;
-	document.getElementById('sevenb').disabled = false;
 	document.getElementById('eightb').disabled = true;
-	document.getElementById('sixb').style.fontSize = '13px';
-	document.getElementById('sevenb').style.fontSize = '13px';
 	document.getElementById('eightb').style.fontSize = '14.5px';
-	document.getElementById('nineb').disabled = false;
-	document.getElementById('nineb').style.fontSize = '13px';
-
-	document.getElementById('twob').innerHTML = 'Assigned Deliveries';
-	document.getElementById('oneb').innerHTML = 'Unassigned Deliveries';
-
-	document.getElementById('sixb').innerHTML = 'On Hold Deliveries';
-	document.getElementById('sevenb').innerHTML = 'Ongoing Deliveries';
-	document.getElementById('nineb').innerHTML = 'Canceled Deliveries';
-	document.getElementById('tenb').disabled = false;
-	document.getElementById('tenb').style.fontSize = '13px';
-	document.getElementById('tenb').innerHTML = 'Returned Deliveries';
-	$('#dtBasicExampleNewj').hide();
-	$('.j').hide();
-
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
-	$('#deliveryCreate').hide();
-
-	$('#dtBasicExampleNewf').hide();
-	$('#dtBasicExampleNewg').hide();
-	$('#dtBasicExampleNewh').hide();
-	$('.f').hide();
-	$('.g').hide();
-	$('.h').hide();
-	$('#dtBasicExampleNewi').hide();
-	$('.i').hide();
 
 	var table = $('#dtBasicExampleNewh').DataTable({
 		"processing": true,
@@ -1158,55 +968,10 @@ var completedDeliveries = () => {
 }
 
 var canceledDeliveries = () => {
+	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
-	document.getElementById('twob').disabled = false;
-	document.getElementById('oneb').disabled = false;
-	document.getElementById('threeb').disabled = false;
-	document.getElementById('twob').style.fontSize = '13px';
-	document.getElementById('oneb').style.fontSize = '13px';
-	document.getElementById('threeb').style.fontSize = '13px';
-
-	document.getElementById('sixb').disabled = false;
-	document.getElementById('sevenb').disabled = false;
-	document.getElementById('eightb').disabled = false;
-	document.getElementById('sixb').style.fontSize = '13px';
-	document.getElementById('sevenb').style.fontSize = '13px';
-	document.getElementById('eightb').style.fontSize = '13px';
 	document.getElementById('nineb').disabled = true;
 	document.getElementById('nineb').style.fontSize = '14.5px';
-
-	document.getElementById('twob').innerHTML = 'Assigned Deliveries';
-	document.getElementById('oneb').innerHTML = 'Unassigned Deliveries';
-
-	document.getElementById('sixb').innerHTML = 'On Hold Deliveries';
-	document.getElementById('sevenb').innerHTML = 'Ongoing Deliveries';
-	document.getElementById('eightb').innerHTML = 'Completed Deliveries';
-	document.getElementById('tenb').disabled = false;
-	document.getElementById('tenb').style.fontSize = '13px';
-	document.getElementById('tenb').innerHTML = 'Returned Deliveries';
-	$('#dtBasicExampleNewj').hide();
-	$('.j').hide();
-
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
-	$('#deliveryCreate').hide();
-
-	$('#dtBasicExampleNewf').hide();
-	$('#dtBasicExampleNewg').hide();
-	$('#dtBasicExampleNewh').hide();
-	$('.f').hide();
-	$('.g').hide();
-	$('.h').hide();
-	$('#dtBasicExampleNewi').hide();
-	$('.i').hide();
-
 	var table = $('#dtBasicExampleNewi').DataTable({
 		"processing": true,
 		'language': {
@@ -1334,54 +1099,10 @@ var canceledDeliveries = () => {
 }
 
 var returnedDeliveries = () => {
+	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
-	document.getElementById('twob').disabled = false;
-	document.getElementById('oneb').disabled = false;
-	document.getElementById('threeb').disabled = false;
-	document.getElementById('twob').style.fontSize = '13px';
-	document.getElementById('oneb').style.fontSize = '13px';
-	document.getElementById('threeb').style.fontSize = '13px';
-
-	document.getElementById('sixb').disabled = false;
-	document.getElementById('sevenb').disabled = false;
-	document.getElementById('eightb').disabled = false;
-	document.getElementById('sixb').style.fontSize = '13px';
-	document.getElementById('sevenb').style.fontSize = '13px';
-	document.getElementById('eightb').style.fontSize = '13px';
-	document.getElementById('nineb').disabled = false;
-	document.getElementById('nineb').style.fontSize = '13px';
-	document.getElementById('nineb').innerHTML = 'Canceled Deliveries';
-
-	document.getElementById('twob').innerHTML = 'Assigned Deliveries';
-	document.getElementById('oneb').innerHTML = 'Unassigned Deliveries';
-
-	document.getElementById('sixb').innerHTML = 'On Hold Deliveries';
-	document.getElementById('sevenb').innerHTML = 'Ongoing Deliveries';
-	document.getElementById('eightb').innerHTML = 'Completed Deliveries';
 	document.getElementById('tenb').disabled = true;
 	document.getElementById('tenb').style.fontSize = '14.5px';
-	$('#dtBasicExampleNewj').hide();
-	$('.j').hide();
-
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
-	$('#deliveryCreate').hide();
-
-	$('#dtBasicExampleNewf').hide();
-	$('#dtBasicExampleNewg').hide();
-	$('#dtBasicExampleNewh').hide();
-	$('.f').hide();
-	$('.g').hide();
-	$('.h').hide();
-	$('#dtBasicExampleNewi').hide();
-	$('.i').hide();
 
 	var table = $('#dtBasicExampleNewj').DataTable({
 		"processing": true,
@@ -1509,6 +1230,7 @@ var save = (id) => {
 	localStorage.setItem("'Accept': 'application/jsonN'", id.name);
 	window.open('addDeliverToDeliveryMan.html', '_blank');
 };
+
 var orgid;
 var deliveryManId;
 var $t;
@@ -1706,9 +1428,8 @@ $('.btn-okReassign').click(function () {
 				success: function (data) {
 					console.log(data);
 					var table2 = $(`${tablexxx}`).DataTable();
-					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 5 }).data(data.assign_delivery_man_name);
-					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 6 }).data(data.assign_delivery_man_phone);
-
+					let newString = data.assign_delivery_man_name + "<br>" + assign_delivery_man_phone;
+					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 3 }).data(newString);
 					$("#sureReassign").html("Please wait!");
 					setTimeout(function () {
 						$(".circle-loader").addClass("load-complete");
