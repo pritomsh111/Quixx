@@ -75,7 +75,7 @@ var invoice = (id) => {
 };
 
 function formatApproved(d) {
-	return '<table style="border-collapse: separate; border-spacing: 1rem; text-align: left">' +
+	return '<table style="border-spacing: 2rem; text-align: left">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
@@ -95,7 +95,7 @@ function formatApproved(d) {
 		'</table>';
 }
 function formatUnapproved(d) {
-	return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
+	return '<table style="border-spacing: 2rem; text-align: left">' +
 		'<tr>' +
 		'<td>Owner Name:</td>' +
 		'<td>' + d.person_name + '</td>' +
@@ -111,7 +111,7 @@ function formatUnapproved(d) {
 		'</table>';
 }
 function formatActivated(d) {
-	return '<table style="border-collapse: separate; border-spacing: 1rem;">' +
+	return '<table style="border-spacing: 2rem; text-align: left">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
 		'<td>' + d.approved_merchant_id + '</td>' +
