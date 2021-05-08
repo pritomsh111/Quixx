@@ -784,7 +784,7 @@ var onGoingDeliveries = () => {
 			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
 			{
-				"targets": 5, "data": "assign_delivery_man", render: function (data, type, row) {
+				"targets": 5, "data": "update", render: function (data, type, row) {
 
 					return `${row.assign_delivery_man_name}`;
 				}
