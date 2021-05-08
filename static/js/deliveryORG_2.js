@@ -317,7 +317,7 @@ function formatUnassigned(d) {
 	//Product Info
 
 
-	return '<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
+	return '<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
@@ -343,7 +343,7 @@ function formatUnassigned(d) {
 		'<td>' + receiver_address + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
+		'<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
@@ -373,7 +373,7 @@ function formatUnassigned(d) {
 		'<td>' + delivery_note + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
+		'<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
@@ -399,7 +399,7 @@ function formatUnassigned(d) {
 		'<td>' + delivery_city_criteria + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
+		'<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +

@@ -1495,6 +1495,14 @@ select[name^="dtBasic"] {
   padding: 10px 29px;
 }
 
+.dataTables_paginate.paging_simple_numbers .btn {
+  padding: 9px 23px;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: #0066b3;
+}
+
 .btn-outline-secondary {
   color: #6c757d;
   background-color: transparent;
