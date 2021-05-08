@@ -783,12 +783,7 @@ var onGoingDeliveries = () => {
 			},
 			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
-			{
-				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
-
-					return row.assign_delivery_man_name + "<br>" + row.assign_delivery_man_phone;
-				}
-			},
+			{ "targets": 3, "data": "assign_delivery_man_name" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
@@ -1429,7 +1424,6 @@ $('.btn-okReassign').click(function () {
 					console.log(data);
 					var table2 = $("#dtBasicExampleNewg").DataTable();
 					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_name);
-					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_phone);
 
 					$("#sureReassign").html("Please wait!");
 					setTimeout(function () {
