@@ -584,11 +584,11 @@ var unassignedDeliveries = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFA' });
 	$('.d').show();
 	$('#dtBasicExampled').show();
 
@@ -724,11 +724,11 @@ var assignedDeliveries = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('#dtBasicExampleNew').show();
 	$('.e').show();
@@ -963,11 +963,11 @@ var onHoldDeliveries = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('#dtBasicExampleNewf').show();
 	$('.f').show();
@@ -1215,11 +1215,11 @@ var onGoingDeliveries = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('#dtBasicExampleNewg').show();
 	$('.g').show();
@@ -1462,11 +1462,11 @@ var completedDeliveries = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('#dtBasicExampleNewh').show();
 	$('.h').show();
@@ -1719,11 +1719,11 @@ var canceledDeliveries = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('#dtBasicExampleNewi').show();
 	$('.i').show();
@@ -1970,11 +1970,11 @@ var returnedDeliveries = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('#dtBasicExampleNewj').show();
 	$('.j').show();
@@ -3489,11 +3489,11 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFA' });
 
 	$('#modalAssignAll').prop("disabled", true)
 	$('#myModalAuto').modal('show');

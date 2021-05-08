@@ -150,11 +150,11 @@ var thisInvoice = (id) => {
 
 // 	$('.dataTables_filter input[type="search"]').
 // 		attr('class', 'btn btn-round').
-// 		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+// 		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 // 	$('.dataTables_length select').
 // 		attr('class', 'btn btn-round').
-// 		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+// 		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
 // 	$('#dtBasicExample').show();
 // 	$('.a').show();
 // };
@@ -248,11 +248,11 @@ var approvedDeliveryMan = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
 	$('#dtBasicExample').show();
 	$('.a').show();
 }
@@ -352,11 +352,11 @@ var unApprovedDeliveryMan = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
 	$('#dtBasicExample2').show();
 	$('.b').show();
 };
@@ -462,11 +462,11 @@ var activatedd = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
 	$('#dtBasicExampleActivate').show();
 	$('.c').show();
 };
@@ -566,11 +566,11 @@ var disableddd = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
 	$('#dtBasicExampleDisable').show();
 	$('.d').show();
 };

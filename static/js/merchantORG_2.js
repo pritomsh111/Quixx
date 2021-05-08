@@ -48,11 +48,11 @@ function merchantOrgDatatableStyle() {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#fff' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#fff' });
 }
 var invoice = (id) => {
 	$.ajax
