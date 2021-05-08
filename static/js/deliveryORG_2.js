@@ -330,7 +330,7 @@ function formatUnassigned(d) {
 
 	//Product Info
 
-	return '<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
+	return '<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:2rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
@@ -386,7 +386,7 @@ function formatUnassigned(d) {
 		'<td>' + delivery_note + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
+		'<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:2rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
@@ -682,8 +682,13 @@ var assignedDeliveries = () => {
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
 			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 5, "data": "assign_delivery_man_name" },
-			{ "targets": 6, "data": "assign_delivery_man_phone" },
+			{ "targets": 1, "data": "delivery_status" },
+			{
+				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
+
+					return row.assign_delivery_man_name + "<br>" + row.assign_delivery_man_phone;
+				}
+			},
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
