@@ -779,7 +779,8 @@ var onGoingDeliveries = () => {
 				"class": 'details-control',
 				"orderable": false,
 				"data": null,
-				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>",
+				"width": "15px"
 			},
 			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
@@ -871,81 +872,24 @@ var completedDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
-			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_by_name" },
-			{ "targets": 2, "data": "delivery_created_by_role" },
-			{ "targets": 3, "data": "delivery_created_date" },
-			{ "targets": 4, "data": "delivery_status" },
-			{ "targets": 5, "data": "delivery_complete_date" },
-			{ "targets": 6, "data": "assign_delivery_man_name" },
-			{ "targets": 6, "data": "assign_delivery_man_phone" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
 			{
-				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
-					let a = row.delivery_city;
-					return a ? row.delivery_city : "";
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>",
+				"width": "2%"
+			},
+			{ "targets": 0, "data": "delivery_Id" },
+			{ "targets": 5, "data": "delivery_complete_date" },
+			{
+				"targets": 7, "data": "assign_delivery_man_phone", render: function (data, type, row) {
+
+					return `${row.assign_delivery_man_name} ${row.assign_delivery_man_phone}`;
 				}
 			},
-			{ "targets": 12, "data": "delivery_area" },
-			{ "targets": 13, "data": "receiver_address" },
-			{ "targets": 14, "data": "delivery_type" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
-			{
-				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
-					let a = row.delivery_product_type;
-					if (a) {
-						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
-					let a = row.delivery_weight;
-					if (a) {
-						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
-					let a = row.delivery_day_type;
-					if (a) {
-						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
-					let a = row.delivery_distance;
-					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
-					let a = row.delivery_city_criteria;
-					if (a) {
-						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
@@ -960,6 +904,24 @@ var completedDeliveries = () => {
 		var json = table.ajax.json();
 		document.getElementById('eightb').innerHTML = 'Completed Deliveries: ' + json.recordsTotal;
 		document.getElementById('body').style.pointerEvents = "auto";
+	});
+	$('#dtBasicExampleNewh tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleNewh tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleNewh').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatUnassigned(row.data())).show();
+			tr.addClass('shown');
+			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+		}
 	});
 	table.clear().draw();
 	dataTableStyle();
@@ -1426,13 +1388,11 @@ $('.btn-okReassign').click(function () {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					console.log(data);
 					var table = $("#dtBasicExampleNewg").DataTable();
 					let datapp = table.row($t.closest('tr')).data();
-					console.log(datapp);
+					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_phone);
 					table.rows().every(function (index, element) {
 						var row = $(this.node());
-						console.log(row.find('td').eq(3)[0].innerHTML);
 						if (row.find('td').eq(3)[0].innerHTML === `${datapp.assign_delivery_man_name} ${datapp.assign_delivery_man_phone}`) {
 							row.find('td').eq(3)[0].innerHTML = `${data.assign_delivery_man_name} ${data.assign_delivery_man_phone}`;
 						}
