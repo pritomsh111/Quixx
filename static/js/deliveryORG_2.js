@@ -783,7 +783,12 @@ var onGoingDeliveries = () => {
 			},
 			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
-			{ "targets": 3, "data": "assign_delivery_man_name" },
+			{
+				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
+
+					return `${row.assign_delivery_man_name} ${row.assign_delivery_man_phone}`;
+				}
+			},
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
@@ -1422,8 +1427,16 @@ $('.btn-okReassign').click(function () {
 				},
 				success: function (data) {
 					console.log(data);
-					var table2 = $("#dtBasicExampleNewg").DataTable();
-					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_name);
+					var table = $("#dtBasicExampleNewg").DataTable();
+					let datapp = table.row($t.closest('tr')).data();
+					console.log(datapp);
+					table.rows().every(function (index, element) {
+						var row = $(this.node());
+						console.log(row.find('td').eq(3)[0].innerHTML);
+						if (row.find('td').eq(3)[0].innerHTML === `${datapp.assign_delivery_man_name} ${datapp.assign_delivery_man_phone}`) {
+							row.find('td').eq(3)[0].innerHTML = `${data.assign_delivery_man_name} ${data.assign_delivery_man_phone}`;
+						}
+					});
 
 					$("#sureReassign").html("Please wait!");
 					setTimeout(function () {
