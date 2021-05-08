@@ -293,7 +293,6 @@ document.querySelector("#login").addEventListener("click", function () {
         localStorage.setItem('wh-user', document.location.pathname);
         $.ajax
             ({
-                async: true,
                 type: "POST",
                 url: api + "login",
                 headers:
