@@ -314,6 +314,9 @@ function formatUnassigned(d) {
 	let delivery_distance = checkCriteria(d.delivery_distance, "delivery_distance_na");
 	let delivery_city_criteria = checkCriteria(d.delivery_city_criteria, "delivery_city_criteria_na");
 
+	//Product Info
+
+
 	return '<table style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:3rem;margin-bottom:1rem;">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
@@ -669,92 +672,24 @@ var assignedDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+			},
 			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_date" },
-			{ "targets": 2, "data": "delivery_status" },
-			{ "targets": 3, "data": "delivery_created_by_name" },
-			{ "targets": 4, "data": "delivery_created_by_role" },
 			{ "targets": 5, "data": "assign_delivery_man_name" },
 			{ "targets": 6, "data": "assign_delivery_man_phone" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
-			{
-				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
-					let a = row.delivery_city;
-					return a ? row.delivery_city : "";
-				}
-			},
-			{ "targets": 12, "data": "delivery_area" },
-			{ "targets": 13, "data": "receiver_address" },
-			{ "targets": 14, "data": "delivery_type" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
-			{
-				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
-					let a = row.delivery_product_type;
-					if (a) {
-						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
-					let a = row.delivery_weight;
-					if (a) {
-						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
-					let a = row.delivery_day_type;
-					if (a) {
-						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
-					let a = row.delivery_distance;
-					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
-					let a = row.delivery_city_criteria;
-					if (a) {
-						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
 				"targets": 20, "data": "invoice", render: function (data, type, row) {
 
 					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoice(this)" style="font-size:14.5px">Invoice</button>'
-				}
-			},
-			{
-				"targets": 21, "data": "re-assign", render: function (data, type, row) {
-
-					return '<button id="' + row.delivery_Id + '" class="btn-round btn-outline btn reassignIt" style="font-size:14.5px">Re-Assign</button>'
 				}
 			}
 		]
@@ -765,65 +700,24 @@ var assignedDeliveries = () => {
 		document.getElementById('twob').innerHTML = 'Assigned Deliveries: ' + json.recordsTotal;
 	});
 	table.clear().draw();
-	/*$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		url: urlForAll + "delivery/assigned/" + org_ID,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		beforeSend: function()
-		{
-			document.getElementById("dtBasicExampleNew_processing").style.display = "block";	
-		},
-		success: function(data) 
-		{
-			document.getElementById('twob').innerHTML = 'Assigned Deliveries: ' + data.data.length;
-			console.log(data);
-			/*var trHTML = '';
-			$.each(data.data, function (i, item) {
-			var table_rows = 
-			'<tr><td>'+data.data[i].delivery_Id+'</td><td>'
-			+data.data[i].delivery_created_date+'</td><td>'
-			+data.data[i].delivery_status+'</td><td>'
-			+data.data[i].delivery_created_by_name+'</td><td>'
-			+data.data[i].delivery_created_by_role+'</td><td>'
-			+data.data[i].assign_delivery_man_name+'</td><td>'
-			+data.data[i].assign_delivery_man_phone+'</td><td>'
-			+data.data[i].sender_name+'</td><td>'
-			+data.data[i].sender_phone_number+'</td><td>'
-			+data.data[i].sender_address+'</td><td>'
-			+data.data[i].receiver_name+'</td><td>'
-			+data.data[i].receiver_phone_number+'</td><td>'
-			+data.data[i].delivery_area+'</td><td>'
-			+data.data[i].receiver_address+'</td><td>'
-			+data.data[i].delivery_type+'</td><td>'
-			+data.data[i].product_name+'</td><td>'
-			+data.data[i].product_qty+'</td><td>'
-			+data.data[i].product_cost+'</td><td>'
-			+data.data[i].delivery_charge+'</td><td>'
-			+data.data[i].payment_method+'</td><td>'
-			//+data.data[i].track_id+'</td><td>'
-			+'<button id="' + org_ID + '" name="' + data.data[i].delivery_Id + '" class="btn-round btn-outline btn" onclick=invoice(this)>Invoice</button>'+'</td></tr>';
-
-			table.rows.add($(table_rows)).draw();
-			});
-			
-			//document.getElementById("modifyButton").disabled = document.getElementById("modifyButton").value;
-		},
-		complete:function(data){
-			document.getElementById("dtBasicExampleNew_processing").style.display = "none";	
+	$('#dtBasicExampleNew tbody').off('click', 'td.details-control');
+	$('#dtBasicExampleNew tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampleNew').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
 		}
-	});*/
-
+		else {
+			// Open this row
+			row.child(formatUnassigned(row.data())).show();
+			tr.addClass('shown');
+			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+		}
+	});
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
 		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });

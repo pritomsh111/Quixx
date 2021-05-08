@@ -1161,6 +1161,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg>select.form-
 .btn.disabled, .btn:disabled {
   opacity: 0.75;
   box-shadow: none;
+  cursor: not-allowed;
 }
 
 .btn:not(:disabled):not(.disabled) {
@@ -2600,7 +2601,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .btn {
   position: relative;
-  padding: 12px 30px;
+  padding: 9px 23px;
   margin: 0.3125rem 1px;
   font-size: .79rem;
   font-weight: 400;
