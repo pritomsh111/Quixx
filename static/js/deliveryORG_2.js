@@ -330,7 +330,10 @@ function formatUnassigned(d) {
 
 	//Product Info
 
-	return '<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:2rem;margin-bottom:1rem;">' +
+	//Payment Info
+	let payment_method = d.payment_method || "";
+
+	return '<table id="innerRowTable">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
@@ -356,7 +359,7 @@ function formatUnassigned(d) {
 		'<td>' + receiver_address + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
+		'<table id="innerRowTable">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
@@ -364,6 +367,10 @@ function formatUnassigned(d) {
 		'<tr>' +
 		'<td>Delivery Status:</td>' +
 		'<td>' + delivery_status + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Payment Method:</td>' +
+		'<td>' + payment_method + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Delivery Creation Date and Time:</td>' +
@@ -386,7 +393,7 @@ function formatUnassigned(d) {
 		'<td>' + delivery_note + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:2rem;margin-bottom:1rem;">' +
+		'<table id="innerRowTable">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
@@ -412,7 +419,7 @@ function formatUnassigned(d) {
 		'<td>' + delivery_city_criteria + '</td>' +
 		'</tr>' +
 		'</table>' +
-		'<table id="innerRowTable" style="vertical-align: top;display: inline-block;border-right: 1px solid #0066b3;margin-right:0rem;margin-bottom:1rem;">' +
+		'<table id="innerRowTable">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +
@@ -817,8 +824,12 @@ var onHoldDeliveries = () => {
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
 			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 5, "data": "assign_delivery_man_name" },
-			{ "targets": 6, "data": "assign_delivery_man_phone" },
+			{
+				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
+
+					return row.assign_delivery_man_name + "<br>" + row.assign_delivery_man_phone;
+				}
+			},
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
@@ -935,81 +946,17 @@ var onGoingDeliveries = () => {
 		},
 		"columns": [
 			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_date" },
 			{ "targets": 2, "data": "delivery_status" },
-			{ "targets": 3, "data": "delivery_created_by_name" },
-			{ "targets": 4, "data": "delivery_created_by_role" },
-			{ "targets": 5, "data": "assign_delivery_man_name" },
-			{ "targets": 6, "data": "assign_delivery_man_phone" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
-			{ "targets": 12, "data": "delivery_area" },
 			{
-				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
-					let a = row.delivery_city;
-					return a ? row.delivery_city : "";
+				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
+
+					return row.assign_delivery_man_name + "<br>" + row.assign_delivery_man_phone;
 				}
 			},
-			{ "targets": 13, "data": "receiver_address" },
-			{ "targets": 14, "data": "delivery_type" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
-			{
-				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
-					let a = row.delivery_product_type;
-					if (a) {
-						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
-					let a = row.delivery_weight;
-					if (a) {
-						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
-					let a = row.delivery_day_type;
-					if (a) {
-						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
-					let a = row.delivery_distance;
-					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
-					let a = row.delivery_city_criteria;
-					if (a) {
-						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
 			{ "targets": 18, "data": "delivery_charge" },
-			{ "targets": 19, "data": "payment_method" },
 			{
 				"targets": 20, "data": "invoice", render: function (data, type, row) {
 
@@ -1757,6 +1704,7 @@ $('.btn-okReassign').click(function () {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
+					console.log(data);
 					var table2 = $(`${tablexxx}`).DataTable();
 					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 5 }).data(data.assign_delivery_man_name);
 					table2.cell({ row: table2.row($t.closest('tr')).index(), column: 6 }).data(data.assign_delivery_man_phone);
