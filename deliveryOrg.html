@@ -26,6 +26,9 @@ td[colspan] table tr td{
     padding: 15px 0px;
     width: 13rem;
 }
+.col-md-4 button{
+    padding: 14px 1rem;
+}
 </style>
 <link rel="stylesheet" href="static/css/deliveryORG.css">
 <script src="static/js/deliveryORG_00.js"></script>
@@ -84,7 +87,7 @@ td[colspan] table tr td{
                     id="sixb"
                     style="width:100%;font-size: 13px"
                     onclick="onHoldDeliveries()"
-                >History of On Hold Deliveries</button>
+                >On-Hold Deliveries</button>
             </div>
             <div class="col-md-4">
                 <button
@@ -599,53 +602,15 @@ td[colspan] table tr td{
                 >
                     <thead>
                         <tr>
+                            <th class="th-sm">Detailed Information</th>
                             <th class="th-sm">
                                 Delivery ID
-                            </th>
-                            <th class="th-sm">
-                                Delivery Creation Date and Time
-                            </th>
-                            <th class="th-sm">
-                                Delivery Status
-                            </th>
-                            <th class="th-sm">
-                                Company Name
-                            </th>
-                            <th class="th-sm">
-                                Designation
                             </th>
                             <th class="th-sm">
                                 Assigned Delivery Man
                             </th>
                             <th class="th-sm">
                                 Assigned Delivery Man's Phone
-                            </th>
-                            <th class="th-sm">
-                                Sender's Name
-                            </th>
-                            <th class="th-sm">
-                                Sender's Phone Number
-                            </th>
-                            <th class="th-sm">
-                                Sender's Address
-                            </th>
-                            <th class="th-sm">
-                                Receiver's Name
-                            </th>
-                            <th class="th-sm">
-                                Receiver's Phone Number
-                            </th>
-                            <th class="th-sm">
-                                Receiver's City
-                            </th>
-                            <th class="th-sm">
-                                Receiver's Area
-                            </th>
-                            <th class="th-sm">
-                                Receiver's Address
-                            </th>
-                            <th class="th-sm">
-                                Delivery Type
                             </th>
                             <th class="th-sm">
                                 Product Details
@@ -657,28 +622,10 @@ td[colspan] table tr td{
                                 Per Product Cost [BDT]
                             </th>
                             <th class="th-sm">
-                                Product Type
-                            </th>
-                            <th class="th-sm">
-                                Product Weight [KG]
-                            </th>
-                            <th class="th-sm">
-                                Day Type
-                            </th>
-                            <th class="th-sm">
-                                Distance Type [KM]
-                            </th>
-                            <th class="th-sm">
-                                City Type
-                            </th>
-                            <th class="th-sm">
                                 Delivery Charge [BDT]
                             </th>
                             <th class="th-sm">
                                 Payment Mathod
-                            </th>
-                            <th class="th-sm">
-                                Delivery Note
                             </th>
                         </tr>
                     </thead>
