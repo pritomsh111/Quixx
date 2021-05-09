@@ -28,9 +28,7 @@ var incompleteDeliveries = () => {
 	$('#dtBasicExampleNew').hide();
 	//$('.b').hide();
 	$('.c').hide();
-	$('.d').hide();
 	$('.e').hide();
-	$('#dtBasicExampled').hide();
 
 
 	var table = $('#dtBasicExampled').DataTable({
@@ -60,6 +58,9 @@ var incompleteDeliveries = () => {
 		"oSearch": { "bSmart": false, "bRegex": true }
 	});
 	table.clear().draw();
+	table.columns.adjust().responsive.recalc();
+
+	table.responsive.recalc();
 	$.ajax
 		({
 			type: "GET",
@@ -107,9 +108,15 @@ var incompleteDeliveries = () => {
 						+ '</td></tr>';
 
 					table.rows.add($(table_rows)).draw();
+					table.columns.adjust().responsive.recalc();
+
+					table.responsive.recalc();
 				});
 			},
 			complete: function (data) {
+				table.columns.adjust().responsive.recalc();
+
+				table.responsive.recalc();
 				document.getElementById('body').style.pointerEvents = "auto";
 				document.getElementById("dtBasicExampled_processing").style.display = "none";
 			}
@@ -174,6 +181,9 @@ var completeDeliveries = () => {
 		"oSearch": { "bSmart": false, "bRegex": true }
 	});
 	table.clear().draw();
+	table.columns.adjust().responsive.recalc();
+
+	table.responsive.recalc();
 	$.ajax
 		({
 			type: "GET",
@@ -225,13 +235,13 @@ var completeDeliveries = () => {
 						+ deliveryIDz + '</td><td>'
 						+ '<button id="' + keys[0] + '" name="' + i + '" class="btn-round btn-outline btn" onclick="show2(this)">Details</button>'
 						+ '</td></tr>';
-
 					table.rows.add($(table_rows)).draw();
 				});
 
 				//document.getElementById("modifyButton").disabled = document.getElementById("modifyButton").value;
 			},
 			complete: function (data) {
+				table.columns.adjust().responsive.recalc();
 				document.getElementById('body').style.pointerEvents = "auto";
 				document.getElementById("dtBasicExampleNew_processing").style.display = "none";
 			}
@@ -329,6 +339,9 @@ var show = (id) => {
 		//+data.data[i].track_id+'</td><td>'
 		table.rows.add($(table_rows)).draw();
 	});
+	table.columns.adjust().responsive.recalc();
+
+	table.responsive.recalc();
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
@@ -348,37 +361,60 @@ var show2 = (id) => {
 	var date = id.id;
 	var index = id.name;
 	var table = $('#dtBasicExampled123').DataTable({
+		responsive: {
+			details: {
+				renderer: function (api, rowIdx, columns) {
+					var data = $.map(columns, function (col, i) {
+						return col.hidden ?
+							'<tr style="text-align:left" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+							'<td><strong>' + col.title + ':' + '</strong></td> ' +
+							'<td>' + col.data + '</td>' +
+							'</tr>' :
+							'';
+					}).join('');
+					return data ?
+						$('<table/>').append(data) :
+						false;
+				}
+			}
+		},
 		"processing": true,
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true }
 	});
 	table.clear().draw();
 
-	var trHTML = '';
-	//console.log(dataCom[index][date]);
-
-	var trHTML = '';
-
 	$.each(dataCom[index][date], function (i, item) {
+		let delivery_product_type = checkCriteria(dataIncom[index][date][i].delivery_product_type, "delivery_product_type_na");
+		let delivery_weight = checkCriteria(dataIncom[index][date][i].delivery_weight, "delivery_weight_na", " KG");
+		let delivery_day_type = checkCriteria(dataIncom[index][date][i].delivery_day_type, "delivery_day_type_na");
+		let delivery_distance = checkCriteria(dataIncom[index][date][i].delivery_distance, "delivery_distance_na", " KM");
+		let delivery_city_criteria = checkCriteria(dataIncom[index][date][i].delivery_city_criteria, "delivery_city_criteria_na");
+		let delivery_city = dataIncom[index][date][i].delivery_city || "";
+
 		var table_rows =
-			'<tr><td>' + dataCom[index][date][i].delivery_Id + '</td><td>'
-			+ dataCom[index][date][i].delivery_created_date + '</td><td>'
-			+ dataCom[index][date][i].delivery_status + '</td><td>'
-			//+data.data[i].assigned_delivery_man_name+'</td><td>'
-			+ dataCom[index][date][i].delivery_complete_date + '</td><td>'
-			+ dataCom[index][date][i].sender_name + '</td><td>'
-			+ dataCom[index][date][i].sender_phone_number + '</td><td>'
-			+ dataCom[index][date][i].sender_address + '</td><td>'
-			+ dataCom[index][date][i].receiver_name + '</td><td>'
-			+ dataCom[index][date][i].receiver_phone_number + '</td><td>'
-			+ dataCom[index][date][i].receiver_address + '</td><td>'
-			+ dataCom[index][date][i].product_name + '</td><td>'
-			+ dataCom[index][date][i].product_qty + '</td><td>'
-			+ dataCom[index][date][i].product_cost + '</td><td>'
-			+ dataCom[index][date][i].delivery_charge + '</td><td>'
-			+ dataCom[index][date][i].payment_method + '</td><td>'
-			+ dataCom[index][date][i].delivery_type + '</td><td>'
-			+ dataCom[index][date][i].delivery_note + '</td></tr>';
+			'<tr><td>' + dataIncom[index][date][i].delivery_Id + '</td><td>'
+			+ dataIncom[index][date][i].delivery_status + '</td><td>'
+			+ dataIncom[index][date][i].product_name + '</td><td>'
+			+ dataIncom[index][date][i].product_qty + '</td><td>'
+			+ dataIncom[index][date][i].product_cost + '</td><td>'
+			+ dataIncom[index][date][i].delivery_charge + '</td><td>'
+			+ dataIncom[index][date][i].payment_method + '</td><td>'
+			+ dataIncom[index][date][i].receiver_name + '</td><td>'
+			+ dataIncom[index][date][i].receiver_phone_number + '</td><td>'
+			+ delivery_city + '</td><td>'
+			+ dataIncom[index][date][i].delivery_area + '</td><td>'
+			+ dataIncom[index][date][i].receiver_address + '</td><td>'
+			+ delivery_product_type + '</td><td>'
+			+ delivery_weight + '</td><td>'
+			+ delivery_day_type + '</td><td>'
+			+ delivery_distance + '</td><td>'
+			+ delivery_city_criteria + '</td><td>'
+			+ dataIncom[index][date][i].delivery_type + '</td><td>'
+			+ dataIncom[index][date][i].delivery_note + '</td><td>'
+			+ dataIncom[index][date][i].sender_name + '</td><td>'
+			+ dataIncom[index][date][i].sender_phone_number + '</td><td>'
+			+ dataIncom[index][date][i].sender_address + '</td></tr>';
 
 		table.rows.add($(table_rows)).draw();
 	});
