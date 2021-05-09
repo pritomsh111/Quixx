@@ -8,6 +8,7 @@
     transform: rotate(360deg);
   }
 }
+
 @-webkit-keyframes timer-loader {
   0% {
     -webkit-transform: rotate(0deg);
@@ -18,6 +19,7 @@
     transform: rotate(360deg);
   }
 }
+
 @keyframes timer-loader {
   0% {
     -moz-transform: rotate(0deg);
@@ -32,7 +34,9 @@
     transform: rotate(360deg);
   }
 }
+
 /* :not(:required) hides this rule from IE9 and below */
+
 .timer-loader:not(:required) {
   border: 2px solid #0066b3;
   -moz-border-radius: 24px;
@@ -48,6 +52,7 @@
   width: 53px;
   height: 53px;
 }
+
 .timer-loader:not(:required)::before {
   -moz-animation: timer-loader 1250ms infinite linear;
   -webkit-animation: timer-loader 1250ms infinite linear;
@@ -68,6 +73,7 @@
   left: 21px;
   top: 21px;
 }
+
 .timer-loader:not(:required)::after {
   -moz-animation: timer-loader 15000ms infinite linear;
   -webkit-animation: timer-loader 15000ms infinite linear;
@@ -88,12 +94,40 @@
   left: 21px;
   top: 21px;
 }
+
 .dataTables_wrapper .dataTables_processing {
-    position: absolute;
-    top: 35%;
-    width: 123%;
-    height: 70%;
-    text-align: center;
-    font-size: 1.2em;
-    background-color: white;
+  position: absolute;
+  top: 35%;
+  width: 123%;
+  height: 70%;
+  text-align: center;
+  font-size: 1.2em;
+  background-color: white;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+  top: 50%;
+  left: 5px;
+  height: 1em;
+  width: 1em;
+  margin-top: -9px;
+  display: block;
+  position: absolute;
+  color: #0066b3;
+  border: .15em solid white;
+  border-radius: 1em;
+  box-shadow: 0 0 0.2em #444;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: "FontAwesome";
+  line-height: 1em;
+  content: "\f054";
+  background-color: #fff;
+  transition: 250ms ease-in;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
+  background-color: #fff;
+  transform: rotate(45deg);
 }
