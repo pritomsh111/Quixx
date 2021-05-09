@@ -715,14 +715,14 @@ function modalFormBeforeSuccess() {
 	$("#sureForm").show();
 }
 
-var arr, id_merchant_update;
+var arr, id_merchant_update, rowNumber;
 $('#dtBasicExample').on('click', '.updateIT', function () {
 	merId = $(this).attr('id');
 	id_merchant_update = $(this).attr('id');
 
 	arr = merId.split('$$');
-
 	$t = $(this);
+	rowNumber = $(this).closest('tr').index();
 
 	document.getElementById('org_name2').value = arr[1];
 	document.getElementById('person_name2').value = arr[2];
@@ -868,21 +868,24 @@ $('.btn-ok-update').click(function () {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					// var newArr;
-					// newArr = [
-					// 	data.data.merchant_id,
-					// 	data.data.org_name,
-					// 	data.data.person_name,
-					// 	data.data.email,
-					// 	data.data.phone_number,
-					// 	data.data.business_filed,
-					// 	data.data.per_delivery_cost,
-					// 	data.data.cod_percentage,
-					// 	'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
-					// ];
+					var newArr;
+					newArr = [
+						data.data.merchant_id,
+						data.data.org_name,
+						data.data.person_name,
+						data.data.email,
+						data.data.phone_number,
+						data.data.business_filed,
+						data.data.per_delivery_cost,
+						data.data.cod_percentage,
+						'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
+					];
 					var table = $('#dtBasicExample').DataTable();
 					try {
-						table.row($t.closest('tr')).data(data.data);
+						table.row(rowNumber).data(
+							newArr
+						).draw(false);
+						// table.row($t.closest('tr')).data(data.data);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
