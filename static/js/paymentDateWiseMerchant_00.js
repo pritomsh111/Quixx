@@ -130,7 +130,22 @@ function mainFunc() {
 					document.getElementById("dtBasicExampled_processing").style.display = "none";
 				}
 			});
+		modalStyle();
 		$('.d').show();
 		$('#dtBasicExampled').show();
 	}, 3700);
+}
+
+function modalStyle() {
+	$('.dataTables_filter input[type="search"]').
+		attr('placeholder', 'Search anything!').
+		css({ 'width': '200px', 'display': 'inline-block', 'background': 'white' });
+
+	$('.dataTables_filter input[type="search"]').
+		attr('class', 'btn btn-round').
+		css({ 'width': '200px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+
+	$('.dataTables_length select').
+		attr('class', 'btn btn-round').
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
 }

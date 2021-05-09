@@ -110,29 +110,11 @@ var incompleteDeliveries = () => {
 			},
 			complete: function (data) {
 				table.columns.adjust().responsive.recalc();
-				setTimeout(() => {
-					$($.fn.dataTable.tables(true)).DataTable()
-						.columns.adjust()
-						.responsive.recalc();
-					var tablex = $('#dtBasicExampled').DataTable();
-					tablex.columns.adjust().responsive.recalc();
-					tablex.responsive.recalc();
-				}, 1000);
 				document.getElementById('body').style.pointerEvents = "auto";
 				document.getElementById("dtBasicExampled_processing").style.display = "none";
 			}
 		});
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '250px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '250px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+	modalStyle();
 	$('.d').show();
 	$('#dtBasicExampled').show();
 }
@@ -190,7 +172,7 @@ var completeDeliveries = () => {
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true }
 	});
-	table.responsive.recalc();
+	table.clear().draw();
 	$.ajax
 		({
 			type: "GET",
@@ -253,19 +235,7 @@ var completeDeliveries = () => {
 				document.getElementById("dtBasicExampleNew_processing").style.display = "none";
 			}
 		});
-
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-
+	modalStyle();
 	$('#dtBasicExampleNew').show();
 	$('.e').show();
 }
@@ -274,6 +244,14 @@ var save = (id) => {
 	localStorage.setItem("'Accept': 'application/jsonN'", id.name);
 	window.open('addDeliverToDeliveryMan.html', '_blank');
 };
+function checkCriteria(val, msg, ex = "") {
+	let a = val;
+	if (a) {
+		a = a?.includes(`${msg}`) ? "NOT_SELECTED" : a + ex;
+		return a;
+	}
+	return "---";
+}
 var show = (id) => {
 	var date = id.id;
 	var index = id.name;
@@ -304,14 +282,7 @@ var show = (id) => {
 	var trHTML = '';
 	//console.log(dataIncom[index][date]);
 	var trHTML = '';
-	function checkCriteria(val, msg, ex = "") {
-		let a = val;
-		if (a) {
-			a = a?.includes(`${msg}`) ? "NOT_SELECTED" : a + ex;
-			return a;
-		}
-		return "---";
-	}
+
 	$.each(dataIncom[index][date], function (i, item) {
 
 		let delivery_product_type = checkCriteria(dataIncom[index][date][i].delivery_product_type, "delivery_product_type_na");
@@ -346,22 +317,7 @@ var show = (id) => {
 		//+data.data[i].track_id+'</td><td>'
 		table.rows.add($(table_rows)).draw();
 	});
-	table.columns.adjust().responsive.recalc();
-
-	table.responsive.recalc();
-
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-
+	modalStyle();
 	$("#myModal").modal('show');
 }
 var show2 = (id) => {
@@ -392,51 +348,39 @@ var show2 = (id) => {
 	table.clear().draw();
 
 	$.each(dataCom[index][date], function (i, item) {
-		let delivery_product_type = checkCriteria(dataIncom[index][date][i].delivery_product_type, "delivery_product_type_na");
-		let delivery_weight = checkCriteria(dataIncom[index][date][i].delivery_weight, "delivery_weight_na", " KG");
-		let delivery_day_type = checkCriteria(dataIncom[index][date][i].delivery_day_type, "delivery_day_type_na");
-		let delivery_distance = checkCriteria(dataIncom[index][date][i].delivery_distance, "delivery_distance_na", " KM");
-		let delivery_city_criteria = checkCriteria(dataIncom[index][date][i].delivery_city_criteria, "delivery_city_criteria_na");
-		let delivery_city = dataIncom[index][date][i].delivery_city || "";
+		let delivery_product_type = checkCriteria(dataCom[index][date][i].delivery_product_type, "delivery_product_type_na");
+		let delivery_weight = checkCriteria(dataCom[index][date][i].delivery_weight, "delivery_weight_na", " KG");
+		let delivery_day_type = checkCriteria(dataCom[index][date][i].delivery_day_type, "delivery_day_type_na");
+		let delivery_distance = checkCriteria(dataCom[index][date][i].delivery_distance, "delivery_distance_na", " KM");
+		let delivery_city_criteria = checkCriteria(dataCom[index][date][i].delivery_city_criteria, "delivery_city_criteria_na");
+		let delivery_city = dataCom[index][date][i].delivery_city || "";
 
 		var table_rows =
-			'<tr><td>' + dataIncom[index][date][i].delivery_Id + '</td><td>'
-			+ dataIncom[index][date][i].delivery_status + '</td><td>'
-			+ dataIncom[index][date][i].product_name + '</td><td>'
-			+ dataIncom[index][date][i].product_qty + '</td><td>'
-			+ dataIncom[index][date][i].product_cost + '</td><td>'
-			+ dataIncom[index][date][i].delivery_charge + '</td><td>'
-			+ dataIncom[index][date][i].payment_method + '</td><td>'
-			+ dataIncom[index][date][i].receiver_name + '</td><td>'
-			+ dataIncom[index][date][i].receiver_phone_number + '</td><td>'
+			'<tr><td>' + dataCom[index][date][i].delivery_Id + '</td><td>'
+			+ dataCom[index][date][i].delivery_status + '</td><td>'
+			+ dataCom[index][date][i].product_name + '</td><td>'
+			+ dataCom[index][date][i].product_qty + '</td><td>'
+			+ dataCom[index][date][i].product_cost + '</td><td>'
+			+ dataCom[index][date][i].delivery_charge + '</td><td>'
+			+ dataCom[index][date][i].payment_method + '</td><td>'
+			+ dataCom[index][date][i].receiver_name + '</td><td>'
+			+ dataCom[index][date][i].receiver_phone_number + '</td><td>'
 			+ delivery_city + '</td><td>'
-			+ dataIncom[index][date][i].delivery_area + '</td><td>'
-			+ dataIncom[index][date][i].receiver_address + '</td><td>'
+			+ dataCom[index][date][i].delivery_area + '</td><td>'
+			+ dataCom[index][date][i].receiver_address + '</td><td>'
 			+ delivery_product_type + '</td><td>'
 			+ delivery_weight + '</td><td>'
 			+ delivery_day_type + '</td><td>'
 			+ delivery_distance + '</td><td>'
 			+ delivery_city_criteria + '</td><td>'
-			+ dataIncom[index][date][i].delivery_type + '</td><td>'
-			+ dataIncom[index][date][i].delivery_note + '</td><td>'
-			+ dataIncom[index][date][i].sender_name + '</td><td>'
-			+ dataIncom[index][date][i].sender_phone_number + '</td><td>'
-			+ dataIncom[index][date][i].sender_address + '</td></tr>';
+			+ dataCom[index][date][i].delivery_type + '</td><td>'
+			+ dataCom[index][date][i].delivery_note + '</td><td>'
+			+ dataCom[index][date][i].sender_name + '</td><td>'
+			+ dataCom[index][date][i].sender_phone_number + '</td><td>'
+			+ dataCom[index][date][i].sender_address + '</td></tr>';
 
 		table.rows.add($(table_rows)).draw();
 	});
-
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
-
+	modalStyle();
 	$("#myModal12").modal('show');
 }
