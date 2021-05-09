@@ -99,7 +99,6 @@ var incompleteDeliveries = () => {
 						'<tr><td>' + keys[0] + '</td><td>'
 						//+data.data[i].assigned_delivery_man_name+'</td><td>'
 						+ data.data[i][keys[0]].length + '</td><td>'
-						+ data.data[i][keys[0]].length + '</td><td>'
 						+ sum2 + '</td><td>'
 						+ `${percentage}%` + '</td><td>'
 						+ sum3 + '</td><td>'
@@ -149,6 +148,23 @@ var completeDeliveries = () => {
 	$('#dtBasicExampled').hide();
 
 	var table = $('#dtBasicExampleNew').DataTable({
+		responsive: {
+			details: {
+				renderer: function (api, rowIdx, columns) {
+					var data = $.map(columns, function (col, i) {
+						return col.hidden ?
+							'<tr style="text-align:left" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+							'<td><strong>' + col.title + ':' + '</strong></td> ' +
+							'<td>' + col.data + '</td>' +
+							'</tr>' :
+							'';
+					}).join('');
+					return data ?
+						$('<table/>').append(data) :
+						false;
+				}
+			}
+		},
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -174,8 +190,6 @@ var completeDeliveries = () => {
 			success: function (data) {
 				dataCom = data.data;
 				document.getElementById('twoa').innerHTML = 'Due From Completed Deliveries: ' + data.data.length;
-
-
 				var trHTML = '';
 				$.each(data.data, function (i, item) {
 					var keys = Object.keys(item);
@@ -201,9 +215,7 @@ var completeDeliveries = () => {
 						}
 					}
 					var table_rows =
-
-						'<tr><td>' + "" + '</td><td>'
-						+ '<tr><td>' + keys[0] + '</td><td>'
+						'<tr><td>' + keys[0] + '</td><td>'
 						//+data.data[i].assigned_delivery_man_name+'</td><td>'
 						+ data.data[i][keys[0]].length + '</td><td>'
 						+ sum2 + '</td><td>'
@@ -257,28 +269,42 @@ var show = (id) => {
 
 	var trHTML = '';
 	//console.log(dataIncom[index][date]);
-
 	var trHTML = '';
-
+	function checkCriteria(val, msg, ex = "") {
+		let a = val;
+		if (a) {
+			a = a?.includes(`${msg}`) ? "NOT_SELECTED" : a + ex;
+			return a;
+		}
+		return "---";
+	}
 	$.each(dataIncom[index][date], function (i, item) {
+
+		let delivery_product_type = checkCriteria(dataIncom[index][date][i].delivery_product_type, "delivery_product_type_na");
+		let delivery_weight = checkCriteria(dataIncom[index][date][i].delivery_weight, "delivery_weight_na", " KG");
+		let delivery_day_type = checkCriteria(dataIncom[index][date][i].delivery_day_type, "delivery_day_type_na");
+		let delivery_distance = checkCriteria(dataIncom[index][date][i].delivery_distance, "delivery_distance_na", " KM");
+		let delivery_city_criteria = checkCriteria(dataIncom[index][date][i].delivery_city_criteria, "delivery_city_criteria_na");
+		let delivery_city = dataIncom[index][date][i].delivery_city || "";
 		var table_rows =
 			'<tr><td>' + dataIncom[index][date][i].delivery_Id + '</td><td>'
 			+ dataIncom[index][date][i].delivery_status + '</td><td>'
-			//+data.data[i].assigned_delivery_man_name+'</td><td>'
 			+ dataIncom[index][date][i].pickup_time + '</td><td>'
-			+ dataIncom[index][date][i].sender_name + '</td><td>'
-			+ dataIncom[index][date][i].sender_phone_number + '</td><td>'
-			+ dataIncom[index][date][i].sender_address + '</td><td>'
-			+ dataIncom[index][date][i].receiver_name + '</td><td>'
-			+ dataIncom[index][date][i].receiver_phone_number + '</td><td>'
-			+ dataIncom[index][date][i].receiver_address + '</td><td>'
 			+ dataIncom[index][date][i].product_name + '</td><td>'
 			+ dataIncom[index][date][i].product_qty + '</td><td>'
 			+ dataIncom[index][date][i].product_cost + '</td><td>'
 			+ dataIncom[index][date][i].delivery_charge + '</td><td>'
 			+ dataIncom[index][date][i].payment_method + '</td><td>'
+			+ dataIncom[index][date][i].receiver_name + '</td><td>'
+			+ dataIncom[index][date][i].receiver_phone_number + '</td><td>'
+			+ delivery_city + '</td><td>'
+			+ dataIncom[index][date][i].delivery_area + '</td><td>'
+			+ dataIncom[index][date][i].receiver_address + '</td><td>'
 			+ dataIncom[index][date][i].delivery_type + '</td><td>'
-			+ dataIncom[index][date][i].delivery_note + '</td></tr>';
+			+ dataIncom[index][date][i].delivery_note + '</td></tr>'
+			+ dataIncom[index][date][i].sender_name + '</td><td>'
+			+ dataIncom[index][date][i].sender_phone_number + '</td><td>'
+			+ dataIncom[index][date][i].sender_address + '</td><td>';
 		//+data.data[i].track_id+'</td><td>'
 
 		table.rows.add($(table_rows)).draw();

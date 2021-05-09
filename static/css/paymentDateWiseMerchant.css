@@ -8,6 +8,7 @@
     transform: rotate(360deg);
   }
 }
+
 @-webkit-keyframes timer-loader {
   0% {
     -webkit-transform: rotate(0deg);
@@ -18,6 +19,7 @@
     transform: rotate(360deg);
   }
 }
+
 @keyframes timer-loader {
   0% {
     -moz-transform: rotate(0deg);
@@ -32,7 +34,9 @@
     transform: rotate(360deg);
   }
 }
+
 /* :not(:required) hides this rule from IE9 and below */
+
 .timer-loader:not(:required) {
   border: 2px solid #0066b3;
   -moz-border-radius: 24px;
@@ -48,6 +52,7 @@
   width: 53px;
   height: 53px;
 }
+
 .timer-loader:not(:required)::before {
   -moz-animation: timer-loader 1250ms infinite linear;
   -webkit-animation: timer-loader 1250ms infinite linear;
@@ -68,6 +73,7 @@
   left: 21px;
   top: 21px;
 }
+
 .timer-loader:not(:required)::after {
   -moz-animation: timer-loader 15000ms infinite linear;
   -webkit-animation: timer-loader 15000ms infinite linear;
@@ -88,42 +94,71 @@
   left: 21px;
   top: 21px;
 }
+
 .dataTables_wrapper .dataTables_processing {
-    position: absolute;
-    top: 32%;
-    width: 100%;
-    height: 56%;
-    text-align: center;
-    font-size: 1.2em;
-    background-color: white;
-}
-table#dtBasicExample.dataTable tbody tr:hover {
-	background-color: #FFFFEA;
-    border-color: #0066b3;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  height: 60%;
+  text-align: center;
+  font-size: 1.2em;
+  background-color: white;
 }
 
-table#dtBasicExample.dataTable tbody tr:hover > .sorting_1 {
-	background-color: #FFFFEA;
-    border-color: #0066b3;
-}
-table#dtBasicExampleAp.dataTable tbody tr:hover {
-	background-color: #FFFFEA;
-    border-color: #0066b3;
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+  top: 48%;
+  left: 5px;
+  height: 1.45rem;
+  width: 1.45rem;
+  margin-top: -9px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  color: #0066b3;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: "FontAwesome";
+  line-height: 1em;
+  content: "\f054";
+  background-color: unset;
+  transition: transform 250ms ease-in;
 }
 
-table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
-	background-color: #FFFFEA;
-    border-color: #0066b3;
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
+  background-color: unset;
+  content: "\f054";
+  transform: rotate(90deg);
 }
-.naV{
- background:#ffcf5c;
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control {
+  position: relative;
+  padding-left: 40px;
+  cursor: pointer;
 }
+
+table.dataTable.responsive tbody tr.odd, table.dataTable.display tbody tr.odd, table.dataTable.responsive tbody tr.even, table.dataTable.display tbody tr.even {
+  transition: background-color 150ms ease-in;
+}
+
+table.dataTable.responsive tbody tr.odd.parent, table.dataTable.display tbody tr.odd.parent, table.dataTable.responsive tbody tr.even.parent, table.dataTable.display tbody tr.even.parent {
+  background-color: #ffcf5c;
+}
+
+.naV {
+  background: #ffcf5c;
+}
+
 .row {
   display: flex;
 }
+
 #aRow:hover {
   background-color: red;
 }
+
 .modal-lg {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
