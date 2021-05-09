@@ -146,19 +146,24 @@ var onGoingDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{ "targets": 100, "data": null },
 			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_date" },
 			{ "targets": 2, "data": "delivery_status" },
-			{ "targets": 5, "data": "pickup_time" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
-			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{ "targets": 18, "data": "delivery_charge" },
+			{ "targets": 19, "data": "payment_method" },
+			{ "targets": 10, "data": "receiver_name" },
+			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
+			{ "targets": 123, "data": "delivery_area" },
+			{ "targets": 13, "data": "receiver_address" },
 			{
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
@@ -209,10 +214,13 @@ var onGoingDeliveries = () => {
 					return "---";
 				}
 			},
-			{ "targets": 18, "data": "delivery_charge" },
-			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 14, "data": "delivery_type" },
-			{ "targets": 20, "data": "delivery_note" }
+			{ "targets": 5, "data": "pickup_time" },
+			{ "targets": 1, "data": "delivery_created_date" },
+			{ "targets": 20, "data": "delivery_note" },
+			{ "targets": 7, "data": "sender_name" },
+			{ "targets": 8, "data": "sender_phone_number" },
+			{ "targets": 9, "data": "sender_address" },
 		]
 	});
 	table.on('xhr', function () {
@@ -315,6 +323,24 @@ var completeDeliveries = () => {
 	$("#deliveryCreate").hide();
 
 	var table = $('#dtBasicExampleNew').DataTable({
+		responsive: {
+			details: {
+				renderer: function (api, rowIdx, columns) {
+					var data = $.map(columns, function (col, i) {
+						return col.hidden ?
+							'<tr style="text-align:left" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+							'<td><strong>' + col.title + ':' + '</strong></td> ' +
+							'<td>' + col.data + '</td>' +
+							'</tr>' :
+							'';
+					}).join('');
+
+					return data ?
+						$('<table/>').append(data) :
+						false;
+				}
+			}
+		},
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -342,19 +368,24 @@ var completeDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{ "targets": 100, "data": null, "defaultContent": "" },
 			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_date" },
 			{ "targets": 2, "data": "delivery_status" },
-			{ "targets": 5, "data": "delivery_complete_date" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
-			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{ "targets": 18, "data": "delivery_charge" },
+			{ "targets": 19, "data": "payment_method" },
+			{ "targets": 10, "data": "receiver_name" },
+			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
+			{ "targets": 123, "data": "delivery_area" },
+			{ "targets": 13, "data": "receiver_address" },
 			{
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
@@ -405,10 +436,14 @@ var completeDeliveries = () => {
 					return "---";
 				}
 			},
-			{ "targets": 18, "data": "delivery_charge" },
-			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 14, "data": "delivery_type" },
-			{ "targets": 20, "data": "delivery_note" }
+			{ "targets": 5, "data": "pickup_time" },
+			{ "targets": 1, "data": "delivery_created_date" },
+			{ "targets": 52, "data": "delivery_complete_date" },
+			{ "targets": 20, "data": "delivery_note" },
+			{ "targets": 7, "data": "sender_name" },
+			{ "targets": 8, "data": "sender_phone_number" },
+			{ "targets": 9, "data": "sender_address" },
 		]
 	});
 	table.on('xhr', function () {
