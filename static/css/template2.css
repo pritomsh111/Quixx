@@ -31,9 +31,9 @@
 
 .dataTables_wrapper .dataTables_processing {
     position: absolute;
-    top: 46%;
+    top: 40%;
     width: 100%;
-    height: 47%;
+    height: 50%;
     text-align: center;
     font-size: 1.2em;
     background-color: white;

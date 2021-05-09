@@ -3061,14 +3061,13 @@ var wrongKeteDao = () => {
 var l = 0, modalCostPerMerchant = 0, rowNumber = null;
 $('#dtBasicExampled').on('click', '.updateCh', function () {
 	id_delivery_update = $(this).attr('id');
-	rowNumber = $(this).closest('tr').index();
-	console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
+	// rowNumber = $(this).closest('tr').index();
+	// console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
 	arr = id_delivery_update.split('$$');
-	if ($(this).closest('tr').hasClass("shown")) {
-		$(this).closest('tr').removeClass("shown");
-		var table = $('#dtBasicExampled').DataTable();
-		table.row(rowNumber + 1).delete();
-	}
+	// if ($(this).closest('tr').hasClass("shown")) {
+	// 	document.querySelector(`#dtBasicExampled tbody tr:nth-child(${rowNumber})`).classList.remove("shown");
+	// 	document.querySelector(`#dtBasicExampled tbody tr:nth-child(${rowNumber})`).remove();
+	// }
 	del_id = arr[0];
 	creator_ID = arr[1];
 	thikKoro(arr[8], arr[11], arr[26]);

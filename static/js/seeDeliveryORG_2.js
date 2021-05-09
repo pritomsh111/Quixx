@@ -99,6 +99,20 @@ var dataa;
 
 ];*/
 
+
+function formatApproved(d) {
+	return '<table id="innerRowTable" style="border-spacing: 5rem; text-align: left">' +
+		'<tr>' +
+		'<td>Delivery Man\'s ID:</td > ' +
+		'<td>' + d.delivery_man_id + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Delivery Area:</td>' +
+		'<td>' + d.delivery_area.replace(/,/g, ", ") + '</td>' +
+		'</tr>' +
+		'</table>';
+}
+
 function setMarkers(map) {
 
 	var infowindow = new google.maps.InfoWindow();
@@ -215,9 +229,14 @@ var seeDateWise = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+			},
 			{ "targets": 0, "data": "name" },
 			{ "targets": 1, "data": "phone_number" },
-			{ "targets": 2, "data": "delivery_area" },
 			{
 				"targets": 3, "data": "date1", render: function (data, type, row) {
 
@@ -243,6 +262,23 @@ var seeDateWise = () => {
 		document.getElementById('threec').innerHTML = 'Delivery Information [Date-wise]: ' + json.data.length;
 	});
 	table.clear().draw();
+	$('#dtBasicExample2 tbody').off('click', 'td.details-control');
+	$('#dtBasicExample2 tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExample2').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatApproved(row.data())).show();
+			tr.addClass('shown');
+		}
+	});
 	/*$.ajax
 	({
 		async: true,
