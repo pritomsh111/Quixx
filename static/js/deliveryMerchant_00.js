@@ -35,7 +35,7 @@ function three3() {
 		// $('.d').hide();
 		// $('.e').hide();
 		// $('#dtBasicExampled').hide();
-		$('#bulkD').hide();
+		$('#bulkDelivery').hide();
 		$("#deliveryCreate").show();
 	}, 3700);
 }
