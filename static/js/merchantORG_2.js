@@ -149,6 +149,7 @@ var approvedMer = () => {
 	document.getElementById('two').style.fontSize = '14.5px';
 
 	var table = $('#dtBasicExample').DataTable({
+		responsive: true,
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -180,7 +181,7 @@ var approvedMer = () => {
 			{ "targets": 7, "data": "per_delivery_cost" },
 			{ "targets": 8, "data": "cod_percentage" },
 			{
-				"orderable": false, "targets": 9, "data": "update", render: function (data, type, row) {
+				"orderable": false, "targets": 9, "data": "merchant_id", render: function (data, type, row) {
 
 					return '<button id="' + row.merchant_id + '$$' + row.org_name + '$$' + row.person_name + '$$' + row.email + '$$' + row.phone_number + '$$' + row.business_filed + '$$' + row.per_delivery_cost + '$$' + row.cod_percentage + '" class="btn-round btn-outline btn updateIT" style="font-size:13px">Update</button>'
 				}
@@ -198,23 +199,23 @@ var approvedMer = () => {
 	$('#dtBasicExample').show();
 	$('.a').show();
 
-	$('#dtBasicExample tbody').off('click', 'td.details-control');
-	$('#dtBasicExample tbody').on('click', 'td.details-control', function (e) {
-		e.preventDefault();
-		var tr = $(this).parents('tr');
-		var table = $('#dtBasicExample').DataTable();
-		var row = table.row(tr);
-		if (row.child.isShown()) {
-			// This row is already open - close it
-			row.child.hide();
-			tr.removeClass('shown');
-		}
-		else {
-			// Open this row
-			row.child(formatApproved(row.data())).show();
-			tr.addClass('shown');
-		}
-	});
+	// $('#dtBasicExample tbody').off('click', 'td.details-control');
+	// $('#dtBasicExample tbody').on('click', 'td.details-control', function (e) {
+	// 	e.preventDefault();
+	// 	var tr = $(this).parents('tr');
+	// 	var table = $('#dtBasicExample').DataTable();
+	// 	var row = table.row(tr);
+	// 	if (row.child.isShown()) {
+	// 		// This row is already open - close it
+	// 		row.child.hide();
+	// 		tr.removeClass('shown');
+	// 	}
+	// 	else {
+	// 		// Open this row
+	// 		row.child(formatApproved(row.data())).show();
+	// 		tr.addClass('shown');
+	// 	}
+	// });
 }
 
 var unApprovedMer = () => {

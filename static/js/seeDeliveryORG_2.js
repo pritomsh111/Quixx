@@ -255,7 +255,8 @@ var seeDateWise = () => {
 					return '<button class="btn-round btn-outline btn" id="' + row.delivery_man_id + '" onclick="hudai(this)">Submit</button>'
 				}
 			}
-		]
+		],
+		"order": [[1, 'asc']]
 	});
 	table.on('xhr', function () {
 		var json = table.ajax.json();
