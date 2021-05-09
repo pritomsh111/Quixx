@@ -322,13 +322,12 @@ var show = (id) => {
 			+ delivery_distance + '</td><td>'
 			+ delivery_city_criteria + '</td><td>'
 			+ dataIncom[index][date][i].delivery_type + '</td><td>'
-			+ dataIncom[index][date][i].delivery_note + '</td></tr>'
+			+ dataIncom[index][date][i].delivery_note + '</td><td>'
 			+ dataIncom[index][date][i].sender_name + '</td><td>'
 			+ dataIncom[index][date][i].sender_phone_number + '</td><td>'
-			+ dataIncom[index][date][i].sender_address + '</td><td>';
+			+ dataIncom[index][date][i].sender_address + '</td></tr>';
 		//+data.data[i].track_id+'</td><td>'
-		console.log(table_rows);
-		//table.rows.add($(table_rows)).draw();
+		table.rows.add($(table_rows)).draw();
 	});
 
 	$('.dataTables_filter input[type="search"]').
