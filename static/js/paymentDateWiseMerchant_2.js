@@ -261,6 +261,23 @@ var show = (id) => {
 	var date = id.id;
 	var index = id.name;
 	var table = $('#dtBasicExampled12').DataTable({
+		responsive: {
+			details: {
+				renderer: function (api, rowIdx, columns) {
+					var data = $.map(columns, function (col, i) {
+						return col.hidden ?
+							'<tr style="text-align:left" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+							'<td><strong>' + col.title + ':' + '</strong></td> ' +
+							'<td>' + col.data + '</td>' +
+							'</tr>' :
+							'';
+					}).join('');
+					return data ?
+						$('<table/>').append(data) :
+						false;
+				}
+			}
+		},
 		"processing": true,
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true }
@@ -289,7 +306,6 @@ var show = (id) => {
 		var table_rows =
 			'<tr><td>' + dataIncom[index][date][i].delivery_Id + '</td><td>'
 			+ dataIncom[index][date][i].delivery_status + '</td><td>'
-			+ dataIncom[index][date][i].pickup_time + '</td><td>'
 			+ dataIncom[index][date][i].product_name + '</td><td>'
 			+ dataIncom[index][date][i].product_qty + '</td><td>'
 			+ dataIncom[index][date][i].product_cost + '</td><td>'
@@ -300,14 +316,19 @@ var show = (id) => {
 			+ delivery_city + '</td><td>'
 			+ dataIncom[index][date][i].delivery_area + '</td><td>'
 			+ dataIncom[index][date][i].receiver_address + '</td><td>'
+			+ delivery_product_type + '</td><td>'
+			+ delivery_weight + '</td><td>'
+			+ delivery_day_type + '</td><td>'
+			+ delivery_distance + '</td><td>'
+			+ delivery_city_criteria + '</td><td>'
 			+ dataIncom[index][date][i].delivery_type + '</td><td>'
 			+ dataIncom[index][date][i].delivery_note + '</td></tr>'
 			+ dataIncom[index][date][i].sender_name + '</td><td>'
 			+ dataIncom[index][date][i].sender_phone_number + '</td><td>'
 			+ dataIncom[index][date][i].sender_address + '</td><td>';
 		//+data.data[i].track_id+'</td><td>'
-
-		table.rows.add($(table_rows)).draw();
+		console.log(table_rows);
+		//table.rows.add($(table_rows)).draw();
 	});
 
 	$('.dataTables_filter input[type="search"]').
