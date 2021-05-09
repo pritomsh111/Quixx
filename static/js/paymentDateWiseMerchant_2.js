@@ -58,9 +58,13 @@ var incompleteDeliveries = () => {
 		"oSearch": { "bSmart": false, "bRegex": true }
 	});
 	table.clear().draw();
-	table.columns.adjust().responsive.recalc();
 
-	table.responsive.recalc();
+	$($.fn.dataTable.tables(true)).DataTable()
+		.columns.adjust()
+		.responsive.recalc();
+	var tablex = $('#dtBasicExampled').DataTable();
+	tablex.columns.adjust().responsive.recalc();
+	tablex.responsive.recalc();
 	$.ajax
 		({
 			type: "GET",
@@ -108,26 +112,21 @@ var incompleteDeliveries = () => {
 						+ '</td></tr>';
 
 					table.rows.add($(table_rows)).draw();
-					table.columns.adjust().responsive.recalc();
-
-					table.responsive.recalc();
 				});
 			},
 			complete: function (data) {
 				table.columns.adjust().responsive.recalc();
-
-				table.responsive.recalc();
 				document.getElementById('body').style.pointerEvents = "auto";
 				document.getElementById("dtBasicExampled_processing").style.display = "none";
 			}
 		});
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+		css({ 'width': '250px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '250px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
@@ -135,6 +134,15 @@ var incompleteDeliveries = () => {
 	$('.d').show();
 	$('#dtBasicExampled').show();
 }
+
+$('#myModal').on('shown.bs.modal', function () {
+	var table = $('#dtBasicExampled12').DataTable();
+	table.columns.adjust();
+});
+$('#myModal12').on('shown.bs.modal', function () {
+	var table = $('#dtBasicExampled123').DataTable();
+	table.columns.adjust();
+});
 //New
 var completeDeliveries = () => {
 	document.getElementById('body').style.pointerEvents = "none";
@@ -180,9 +188,6 @@ var completeDeliveries = () => {
 		"destroy": true,
 		"oSearch": { "bSmart": false, "bRegex": true }
 	});
-	table.clear().draw();
-	table.columns.adjust().responsive.recalc();
-
 	table.responsive.recalc();
 	$.ajax
 		({
