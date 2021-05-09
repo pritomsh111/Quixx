@@ -3,28 +3,44 @@ var dataInfo, excelData, flag = false;
 var createDelivery = () => {
 	document.getElementById('three').disabled = true;
 	document.getElementById('two').disabled = false;
-	document.getElementById('one').disabled = false;
 	document.getElementById('three').style.fontSize = '14.5px';
 	document.getElementById('two').style.fontSize = '13px';
-	document.getElementById('one').style.fontSize = '13px';
 
-	document.getElementById('one').innerHTML = 'Ongoing Deliveries';
-	document.getElementById('two').innerHTML = 'Completed Deliveries';
+	document.getElementById('three').innerHTML = 'Create Single Delivery';
+	document.getElementById('two').innerHTML = 'Create Multiple Deliveries [Excel]';
 
-	document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
-	document.getElementById('six').style.fontSize = '13px';
-	document.getElementById('six').disabled = false;
-
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExampleAp').hide();
-	$('#dtBasicExampleNew').hide();
-	$('.b').hide();
-	$('.c').show();
-	$('.d').hide();
-	$('.e').hide();
-	$('#dtBasicExampled').hide();
+	$('#bulkDelivery').hide();
+	// $('#dtBasicExample').hide();
+	// $('.a').hide();
+	// $('#dtBasicExampleAp').hide();
+	// $('#dtBasicExampleNew').hide();
+	// $('.b').hide();
+	// $('.c').show();
+	// $('.d').hide();
+	// $('.e').hide();
+	// $('#dtBasicExampled').hide();
 	$("#deliveryCreate").show();
+}
+var createBulkDeliveries = () => {
+	document.getElementById('three').disabled = false;
+	document.getElementById('two').disabled = true;
+	document.getElementById('three').style.fontSize = '13px';
+	document.getElementById('two').style.fontSize = '14.5px';
+
+	document.getElementById('three').innerHTML = 'Create Single Delivery';
+	document.getElementById('two').innerHTML = 'Create Multiple Deliveries [Excel]';
+
+	$("#deliveryCreate").hide();
+	$('#bulkDelivery').show();
+	// $('#dtBasicExample').hide();
+	// $('.a').hide();
+	// $('#dtBasicExampleAp').hide();
+	// $('#dtBasicExampleNew').hide();
+	// $('.b').hide();
+	// $('.c').show();
+	// $('.d').hide();
+	// $('.e').hide();
+	// $('#dtBasicExampled').hide();
 }
 var goToDelivery = () => {
 	window.open('addDeliverToDeliveryMan.html', '_blank');

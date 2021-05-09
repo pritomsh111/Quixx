@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="static/css/datatable.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
         <link rel="stylesheet" type="text/css" href="static/css/buttons.bootstrap4.min.css">
         <link href="static/css/quixx_sqdn298DJjw1.css" rel="stylesheet">
         <link href="static/css/demo.css" rel="stylesheet">
@@ -19,6 +20,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
         <script src="static/js/jquery-datatable.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
         <script src="static/js/loader-file.js"></script>
         <script src="static/js/responsive.js"></script>
         <script src="static/js/jszip.js"></script>
@@ -110,6 +112,12 @@
                         <div id="merchant">
                             <div id="alreadySetMer">
                                 <li class="nav-item manager">
+                                    <a class="nav-link" href="#selection">
+                                        <i class="material-icons">add_task</i>
+                                        <p>Selection</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
                                     <a class="nav-link" href="#dashboardMer">
                                         <i class="material-icons">dashboard</i>
                                         <p>Dashboard</p>
@@ -118,7 +126,13 @@
                                 <li class="nav-item manager">
                                     <a class="nav-link" href="#deliveryMerchant">
                                         <i class="material-icons">local_shipping</i>
-                                        <p>Delivery</p>
+                                        <p>Create Delivery</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#deliveryDetails">
+                                        <i class="material-icons">all_inbox</i>
+                                        <p>Delivery Details</p>
                                     </a>
                                 </li>
                                 <li class="nav-item manager">
