@@ -119,6 +119,24 @@ var onGoingDeliveries = () => {
 
 
 	var table = $('#dtBasicExampled').DataTable({
+		responsive: {
+			details: {
+				renderer: function (api, rowIdx, columns) {
+					var data = $.map(columns, function (col, i) {
+						return col.hidden ?
+							'<tr style="text-align:left" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+							'<td><strong>' + col.title + ':' + '</strong></td> ' +
+							'<td>' + col.data + '</td>' +
+							'</tr>' :
+							'';
+					}).join('');
+
+					return data ?
+						$('<table/>').append(data) :
+						false;
+				}
+			}
+		},
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -146,7 +164,7 @@ var onGoingDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
-			{ "targets": 100, "data": null },
+			{ "targets": 100, "data": null, "defaultContent": "" },
 			{ "targets": 0, "data": "delivery_Id" },
 			{ "targets": 2, "data": "delivery_status" },
 			{ "targets": 15, "data": "product_name" },
@@ -231,57 +249,6 @@ var onGoingDeliveries = () => {
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
-	/*$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		url: urlForAll + "merchant/incompleted/delivery/details/" + merchant_ID,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		beforeSend: function()
-		{
-			document.getElementById("dtBasicExampled_processing").style.display = "block";	
-		},
-		success: function(data) 
-		{
-			document.getElementById('one').innerHTML = 'Ongoing Deliveries: ' + data.data.length;
-			
-			var trHTML = '';
-			$.each(data.data, function (i, item) {
-			var table_rows = 
-			'<tr><td>'+data.data[i].delivery_Id+'</td><td>'
-			+data.data[i].delivery_created_date+'</td><td>'
-			+data.data[i].delivery_status+'</td><td>'
-			//+data.data[i].assigned_delivery_man_name+'</td><td>'
-			+data.data[i].pickup_time+'</td><td>'
-			+data.data[i].sender_name+'</td><td>'
-			+data.data[i].sender_phone_number+'</td><td>'
-			+data.data[i].sender_address+'</td><td>'
-			+data.data[i].receiver_name+'</td><td>'
-			+data.data[i].receiver_phone_number+'</td><td>'
-			+data.data[i].receiver_address+'</td><td>'
-			+data.data[i].product_name+'</td><td>'
-			+data.data[i].product_qty+'</td><td>'
-			+data.data[i].product_cost+'</td><td>'
-			+data.data[i].delivery_charge+'</td><td>'
-			+data.data[i].payment_method+'</td><td>'
-			+data.data[i].delivery_type+'</td><td>'
-			+data.data[i].delivery_note+'</td></tr>';
-			table.rows.add($(table_rows)).draw();
-			});
-		},
-		complete:function(data){
-			document.getElementById("dtBasicExampled_processing").style.display = "none";	
-		}
-	});*/
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
 		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
@@ -334,7 +301,6 @@ var completeDeliveries = () => {
 							'</tr>' :
 							'';
 					}).join('');
-
 					return data ?
 						$('<table/>').append(data) :
 						false;
@@ -454,61 +420,6 @@ var completeDeliveries = () => {
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
-	/*$.ajax
-	({
-		async: true,
-		type: "GET",
-		cors: true,
-		contentType:'application/json',
-		secure: true,
-		crossDomain: true,
-		url: urlForAll + "merchant/completed/delivery/details/" + merchant_ID,
-		headers: 
-		{
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		  "Authorization": 'Bearer ' + localStorage.getItem('token')
-		},
-		beforeSend: function()
-		{
-			document.getElementById("dtBasicExampleNew_processing").style.display = "block";	
-		},
-		success: function(data) 
-		{
-			document.getElementById('two').innerHTML = 'Completed Deliveries: ' + data.data.length;
-			var trHTML = '';
-			$.each(data.data, function (i, item) {
-			var table_rows = 
-			
-			'<tr><td>'+data.data[i].delivery_Id+'</td><td>'
-			+data.data[i].delivery_created_date+'</td><td>'
-			+data.data[i].delivery_status+'</td><td>'
-			//+data.data[i].assigned_delivery_man_name+'</td><td>'
-			+data.data[i].delivery_complete_date+'</td><td>'
-			+data.data[i].sender_name+'</td><td>'
-			+data.data[i].sender_phone_number+'</td><td>'
-			+data.data[i].sender_address+'</td><td>'
-			+data.data[i].receiver_name+'</td><td>'
-			+data.data[i].receiver_phone_number+'</td><td>'
-			+data.data[i].receiver_address+'</td><td>'
-			+data.data[i].product_name+'</td><td>'
-			+data.data[i].product_qty+'</td><td>'
-			+data.data[i].product_cost+'</td><td>'
-			+data.data[i].delivery_charge+'</td><td>'
-			+data.data[i].payment_method+'</td><td>'
-			+data.data[i].delivery_type+'</td><td>'
-			+data.data[i].delivery_note+'</td></tr>';
-
-			table.rows.add($(table_rows)).draw();
-			});
-			
-			//document.getElementById("modifyButton").disabled = document.getElementById("modifyButton").value;
-		},
-		complete:function(data){
-			document.getElementById("dtBasicExampleNew_processing").style.display = "none";	
-		}
-	});*/
-
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
 		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
@@ -552,6 +463,24 @@ var onHoldDeliveries = () => {
 
 
 	var table2 = $('#dtBasicExampled').DataTable({
+		responsive: {
+			details: {
+				renderer: function (api, rowIdx, columns) {
+					var data = $.map(columns, function (col, i) {
+						return col.hidden ?
+							'<tr style="text-align:left" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+							'<td><strong>' + col.title + ':' + '</strong></td> ' +
+							'<td>' + col.data + '</td>' +
+							'</tr>' :
+							'';
+					}).join('');
+
+					return data ?
+						$('<table/>').append(data) :
+						false;
+				}
+			}
+		},
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -579,19 +508,24 @@ var onHoldDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{ "targets": 100, "data": null, "defaultContent": "" },
 			{ "targets": 0, "data": "delivery_Id" },
-			{ "targets": 1, "data": "delivery_created_date" },
 			{ "targets": 2, "data": "delivery_status" },
-			{ "targets": 5, "data": "pickup_time" },
-			{ "targets": 7, "data": "sender_name" },
-			{ "targets": 8, "data": "sender_phone_number" },
-			{ "targets": 9, "data": "sender_address" },
-			{ "targets": 10, "data": "receiver_name" },
-			{ "targets": 11, "data": "receiver_phone_number" },
-			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
+			{ "targets": 18, "data": "delivery_charge" },
+			{ "targets": 19, "data": "payment_method" },
+			{ "targets": 10, "data": "receiver_name" },
+			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
+			{ "targets": 123, "data": "delivery_area" },
+			{ "targets": 13, "data": "receiver_address" },
 			{
 				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 					let a = row.delivery_product_type;
@@ -642,10 +576,13 @@ var onHoldDeliveries = () => {
 					return "---";
 				}
 			},
-			{ "targets": 18, "data": "delivery_charge" },
-			{ "targets": 19, "data": "payment_method" },
 			{ "targets": 14, "data": "delivery_type" },
-			{ "targets": 20, "data": "delivery_note" }
+			{ "targets": 5, "data": "pickup_time" },
+			{ "targets": 1, "data": "delivery_created_date" },
+			{ "targets": 20, "data": "delivery_note" },
+			{ "targets": 7, "data": "sender_name" },
+			{ "targets": 8, "data": "sender_phone_number" },
+			{ "targets": 9, "data": "sender_address" }
 		]
 	});
 	table2.on('xhr', function () {

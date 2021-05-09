@@ -106,8 +106,8 @@
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
-  top: calc(50% - .25rem);
-  left: 5px;
+  top: 48%;
+  left: 42%;
   height: 1.45rem;
   width: 1.45rem;
   margin-top: -9px;
