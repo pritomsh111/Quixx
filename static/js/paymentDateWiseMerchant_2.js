@@ -59,12 +59,6 @@ var incompleteDeliveries = () => {
 	});
 	table.clear().draw();
 
-	$($.fn.dataTable.tables(true)).DataTable()
-		.columns.adjust()
-		.responsive.recalc();
-	var tablex = $('#dtBasicExampled').DataTable();
-	tablex.columns.adjust().responsive.recalc();
-	tablex.responsive.recalc();
 	$.ajax
 		({
 			type: "GET",
@@ -116,6 +110,14 @@ var incompleteDeliveries = () => {
 			},
 			complete: function (data) {
 				table.columns.adjust().responsive.recalc();
+				setTimeout(() => {
+					$($.fn.dataTable.tables(true)).DataTable()
+						.columns.adjust()
+						.responsive.recalc();
+					var tablex = $('#dtBasicExampled').DataTable();
+					tablex.columns.adjust().responsive.recalc();
+					tablex.responsive.recalc();
+				}, 1000);
 				document.getElementById('body').style.pointerEvents = "auto";
 				document.getElementById("dtBasicExampled_processing").style.display = "none";
 			}
