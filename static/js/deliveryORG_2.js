@@ -3062,8 +3062,13 @@ var l = 0, modalCostPerMerchant = 0, rowNumber = null;
 $('#dtBasicExampled').on('click', '.updateCh', function () {
 	id_delivery_update = $(this).attr('id');
 	rowNumber = $(this).closest('tr').index();
+	console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
 	arr = id_delivery_update.split('$$');
-
+	if ($(this).closest('tr').hasClass("shown")) {
+		$(this).closest('tr').removeClass("shown");
+		var table = $('#dtBasicExampled').DataTable();
+		table.row(rowNumber + 1).delete();
+	}
 	del_id = arr[0];
 	creator_ID = arr[1];
 	thikKoro(arr[8], arr[11], arr[26]);
@@ -3446,7 +3451,6 @@ $('.btn-ok-updateDC').click(function () {
 						//table.cell({ row: table.row($t.closest('tr')).index(), column: 5 }).data(data.data.delivery_charge);
 						//table.cell({ row: table.row($t.closest('tr')).index(), column: 6 }).data(data.data.payment_method);
 						table.row($t.closest('tr')).data(data.data);
-						console.log(table.row(rowNumber).next());
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
 						//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
 						//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
