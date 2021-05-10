@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="static/css/deliveryMerchant.css">
-<style></style>
+<style>
+.card-body.table-responsive.blur span{
+    margin-right: 10px;
+    vertical-align: middle;
+}
+</style>
 <div class="card naV">
     <div class="card-body table-responsive">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body table-responsive blur">
-                        <button class="btn btn-outline btn-primary">Create Delivery</button>
+                        <button onclick="()=>{location.hash = 'deliveryMerchant'}" class="btn btn-outline btn-primary">
+                            <span class="material-icons">
+                                local_shipping
+                            </span>
+                            Create Delivery
+                        </button>
                     </div>
                     <div class="card-body table-responsive blur">
-                        <button class="btn btn-outline btn-primary" style="padding: 12px 40px;">Dashboard</button>
+                        <button class="btn btn-outline btn-primary" style="padding: 12px 44px;">
+                            <span class="material-icons">
+                                analytics
+                            </span>
+                            Dashboard
+                        </button>
                     </div>
                     <div class="card-body table-responsive blur">
-                        <button class="btn btn-outline btn-primary">Payment Details</button>
+                        <button class="btn btn-outline btn-primary">
+                            <span class="material-icons">
+                                account_balance_wallet
+                            </span>
+                            Payment Details
+                        </button>
                     </div>
                 </div>
             </div>
