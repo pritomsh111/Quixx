@@ -79,7 +79,7 @@
           },
           success: function (data) {
             if (data.data == true) {
-              a = '#dashboardMer';
+              a = '#selection';
               $('#settingsMer').hide();
               $('#alreadySetMer').show();
             }

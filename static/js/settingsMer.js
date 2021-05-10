@@ -273,7 +273,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 							$("#cod").hide();
 							$("#settingsMer").hide();
 							$("#alreadySetMer").show();
-							location.hash = "#dashboardMer";
+							location.hash = "#selection";
 						}, 5000);
 					}
 				},
