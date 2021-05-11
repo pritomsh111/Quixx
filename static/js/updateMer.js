@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
 	$("#settingsMer").hide();
 });
 
@@ -25,7 +25,7 @@ function passUpdateMer() {
 }
 
 var buttonUpdate = document.getElementById('modalUpdateAA');
-$(".toggle-password").click(function () {
+$(".toggle-password").on("click", function () {
 	$(this).toggleClass("fa-eye fa-eye-slash");
 	var input = $($(this).attr("toggle"));
 	if (input.attr("type") == "password") {
@@ -83,7 +83,7 @@ $('#password-field3').on('keyup', function () {
 	}
 });
 
-$('.btn-ok1k').click(function () {
+$('.btn-ok1k').on("click", function () {
 	if (document.getElementById('password-field1').value < 8 || document.getElementById('password-field2').value < 8) {
 		$('#msg').html('Password Fields Must Be Filled Properly!').css('color', 'red');
 		return;

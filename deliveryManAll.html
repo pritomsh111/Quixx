@@ -631,7 +631,7 @@
         setTimeout(function () {
           $("#myModal").modal("hide");
           var table = $("#dtBasicExampleAp").DataTable();
-          table.row($t.parents("tr")).remove().draw();
+          table.row($t.parents("tr")).remove().draw(false);
           document.getElementById("threec").innerHTML =
             "Unapproved Delivery Man: " + table.column(0).data().length;
 

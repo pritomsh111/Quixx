@@ -44,7 +44,7 @@ async function getKeys() {
 	return result.data;
 }
 
-$(document).ready(async function () {
+$(async function () {
 	$('#settings').hide();
 	$('#hideUpdate').hide();
 	$('.container').hide();

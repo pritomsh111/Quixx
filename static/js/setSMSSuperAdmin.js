@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
     $("#settings").hide();
     var orgID;
     btnC.disabled = btnD.disabled = btnETD.disabled = btnETP.disabled = btnJC.disabled = btnOH.disabled = btnPU.disabled = btnR.disabled = true;

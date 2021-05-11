@@ -487,7 +487,7 @@ $(document).ready(function() {
 					table
 					.row($t.parents('tr'))
 					.remove()
-					.draw();
+					.draw(false);
 					document.getElementById('threea').innerHTML = 'Unapproved Merchants: ' + table
 																								.column( 0 )
 																								.data()

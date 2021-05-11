@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
 
 	$('#settings').hide();
 	$('#dtBasicExample').hide();

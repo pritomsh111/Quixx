@@ -1290,7 +1290,7 @@
           $("#myModal").modal("hide");
           var table = $("#dtBasicExampleAp").DataTable();
 
-          table.row($t.parents("tr")).remove().draw();
+          table.row($t.parents("tr")).remove().draw(false);
           document.getElementById("three").innerHTML =
             "Unapproved Organization: " + table.column(0).data().length;
 
@@ -1427,7 +1427,7 @@
             $("#myModalDeliveryCostUpdate").modal("hide");
             document.getElementById("delivery_cost_update").value = "";
             var table = $("#dtBasicExample").DataTable();
-            table.row($t.parents("tr")).data(newArr).draw();
+            table.row($t.parents("tr")).data(newArr).draw(false);
             //console.log(table.row($t.parents('tr')).data());
 
             $(".btn-ok-updateDC").attr("disabled", false);
@@ -1485,7 +1485,7 @@
         setTimeout(function () {
           $("#myModalMerActivate").modal("hide");
           var table = $("#dtBasicExampleActivate").DataTable();
-          table.row($t.parents("tr")).remove().draw();
+          table.row($t.parents("tr")).remove().draw(false);
           document.getElementById("four").innerHTML =
             "Activated Organizations: " + table.column(0).data().length;
 
@@ -1540,7 +1540,7 @@
         setTimeout(function () {
           $("#myModalMerDisable").modal("hide");
           var table = $("#dtBasicExampleDisable").DataTable();
-          table.row($t.parents("tr")).remove().draw();
+          table.row($t.parents("tr")).remove().draw(false);
           document.getElementById("five").innerHTML =
             "Disabled Organizations: " + table.column(0).data().length;
 

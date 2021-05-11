@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
     $("#settings").hide();
 
     var label = document.querySelectorAll("label:not(.form-check-label)");

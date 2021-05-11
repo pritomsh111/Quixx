@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
 	$("#settings").hide();
 });
 
@@ -24,7 +24,7 @@ function passUpdate() {
 }
 
 var buttonUpdate = document.getElementById('modalUpdateAA');
-$(".toggle-password").click(function () {
+$(".toggle-password").on("click", function () {
 	$(this).toggleClass("fa-eye fa-eye-slash");
 	var input = $($(this).attr("toggle"));
 	if (input.attr("type") == "password") {
@@ -82,7 +82,7 @@ $('#password-field3').on('keyup', function () {
 	}
 });
 
-$('.btn-ok1k').click(function () {
+$('.btn-ok1k').on("click", function () {
 	$("#myModalFor").modal('show');
 	document.getElementById('modalCancelA').disabled = true;
 	document.getElementById('modalUpdateAA').disabled = true;

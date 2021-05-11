@@ -1,5 +1,5 @@
 var org_ID = localStorage.getItem('userID');
-$(document).ready(function () {
+$(function () {
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 	var value;
 	$("#ccDate").hide();

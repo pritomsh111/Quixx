@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
 	$("#alreadySet").hide();
 
 	// const productType = () => {

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
 	md.initDashboardPageCharts();
 });
 function dashio() {
