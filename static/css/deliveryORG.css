@@ -47,7 +47,22 @@ td[colspan] table:nth-child(2n) {
   margin-right: 0rem;
 }
 
-@media (max-width:1093px) {
+@media (max-width:1293px) {
+  td[colspan] table tr td {
+    padding: 15px 5px;
+    width: 13rem;
+  }
+  td[colspan] table {
+    display: block;
+    border-right: 1px solid #0066b3;
+    margin-bottom: 1rem;
+  }
+  td[colspan] table:nth-child(n) {
+    margin-right: 0rem;
+  }
+}
+
+@media (max-width:693px) {
   td[colspan] table tr td {
     padding: 15px 5px;
     width: 3rem;

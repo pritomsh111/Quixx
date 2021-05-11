@@ -569,7 +569,18 @@ var unassignedDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+			if (window.innerWidth < 1293 && window.innerWidth > 1093) {
+				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "6");
+			}
+			else if (window.innerWidth <= 800) {
+				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "4");
+			}
+			else if (window.innerWidth <= 600) {
+				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "4");
+			}
+			else {
+				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+			}
 		}
 	});
 	dataTableStyle();
