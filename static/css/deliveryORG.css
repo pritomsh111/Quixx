@@ -47,7 +47,7 @@ td[colspan] table:nth-child(2n) {
   margin-right: 0rem;
 }
 
-@media (max-width:1293px) {
+@media (max-width:1293px) and (min-width:1093px) {
   td[colspan] table tr td {
     padding: 15px 5px;
     width: 15rem;
@@ -62,7 +62,22 @@ td[colspan] table:nth-child(2n) {
   }
 }
 
-@media (max-width:693px) {
+@media (max-width:1092px) and (min-width: 693px) {
+  td[colspan] table tr td {
+    padding: 15px 5px;
+    width: 10rem;
+  }
+  td[colspan] table {
+    display: block;
+    border-right: 1px solid #0066b3;
+    margin-bottom: 1rem;
+  }
+  td[colspan] table:nth-child(n) {
+    margin-right: 0rem;
+  }
+}
+
+@media (max-width:692px) {
   td[colspan] table tr td {
     padding: 15px 5px;
     width: 3rem;
