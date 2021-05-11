@@ -456,6 +456,20 @@ function formatUnassigned(d) {
 		'</table>';
 }
 
+function tdColspan() {
+	if (window.innerWidth < 1293 && window.innerWidth > 1193) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "8");
+	}
+	else if (window.innerWidth <= 600) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "3");
+	}
+	else if (window.innerWidth <= 1193) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "5");
+	}
+	else {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+	}
+}
 var unassignedDeliveries = () => {
 	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
@@ -569,18 +583,7 @@ var unassignedDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			if (window.innerWidth < 1293 && window.innerWidth > 1193) {
-				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "8");
-			}
-			else if (window.innerWidth <= 1193) {
-				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "6");
-			}
-			else if (window.innerWidth <= 600) {
-				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "4");
-			}
-			else {
-				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
-			}
+			tdColspan();
 		}
 	});
 	dataTableStyle();
@@ -671,7 +674,8 @@ var assignedDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+			tdColspan();
+
 		}
 	});
 	dataTableStyle();
@@ -753,7 +757,8 @@ var onHoldDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+			tdColspan();
+
 		}
 	});
 	dataTableStyle();
@@ -851,7 +856,7 @@ var onGoingDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+			tdColspan();
 		}
 	});
 	dataTableStyle();
@@ -941,7 +946,8 @@ var completedDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+			tdColspan();
+
 		}
 	});
 	table.clear().draw();
@@ -1030,7 +1036,8 @@ var canceledDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+			tdColspan();
+
 		}
 	});
 	dataTableStyle();
@@ -1113,7 +1120,8 @@ var returnedDeliveries = () => {
 			// Open this row
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
-			Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+			tdColspan();
+
 		}
 	});
 	dataTableStyle();
