@@ -2546,91 +2546,34 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 		},
 		"columns": [
 			{
-				"targets": 15, "data": "select",
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+			},
+			{
+
+				"orderable": false, "targets": 15, "data": "select",
 				"render": function (data, type, row, meta) {
 					return `<input class="checks" type="checkbox" name="mycheckboxesAuto" value=${row.delivery_Id}>`;
 				}
 			},
 			{ "targets": 16, "data": "delivery_Id" },
 			{
-				"targets": 1, "data": "update",
+
+				"orderable": false, "targets": 1, "data": "update",
 				"render": function (data, type, row, meta) {
 					return `<select class='browser-default custom-select2' id=auto${row.delivery_Id} style='text-align-last:center;' data-col=${meta.col}>
 							${getSelectOptions(row.assign_delivery_man_id)}</select>`;
 				}
 			},
-			{ "targets": 2, "data": "delivery_created_by_name" },
-			{ "targets": 3, "data": "delivery_created_by_role" },
-			{ "targets": 4, "data": "sender_name" },
-			{ "targets": 5, "data": "sender_phone_number" },
-			{ "targets": 6, "data": "sender_address" },
-			{ "targets": 7, "data": "receiver_name" },
-			{ "targets": 8, "data": "receiver_phone_number" },
-			{
-				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
-					let a = row.delivery_city;
-					return a ? row.delivery_city : "";
-				}
-			},
-			{ "targets": 9, "data": "delivery_area" },
-			{ "targets": 10, "data": "receiver_address" },
 			{ "targets": 11, "data": "product_name" },
 			{ "targets": 12, "data": "product_qty" },
 			{ "targets": 13, "data": "product_cost" },
-			{
-				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
-					let a = row.delivery_product_type;
-					if (a) {
-						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
-					let a = row.delivery_weight;
-					if (a) {
-						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
-					let a = row.delivery_day_type;
-					if (a) {
-						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
-					let a = row.delivery_distance;
-					if (a) {
-						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
-						return a;
-					}
-					return "---";
-				}
-			},
-			{
-				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
-					let a = row.delivery_city_criteria;
-					if (a) {
-						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
-						return a;
-					}
-					return "---";
-				}
-			},
-
 			{ "targets": 14, "data": "delivery_charge" },
-			{ "targets": 15, "data": "payment_method" },
-		]
+			{ "targets": 15, "data": "payment_method" }
+		],
+		"order": [[2, 'asc']]
 	});
 	tableForAuto.on('xhr', function () {
 		//var json = table.ajax.json();
@@ -2638,6 +2581,24 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 		//document.getElementById('body').style.pointerEvents = "auto";
 	});
 	tableForAuto.clear().draw();
+	$('#dtBasicExampledAuto tbody').off('click', 'td.details-control');
+	$('#dtBasicExampledAuto tbody').on('click', 'td.details-control', function (e) {
+		e.preventDefault();
+		var tr = $(this).parents('tr');
+		var table = $('#dtBasicExampledAuto').DataTable();
+		var row = table.row(tr);
+		if (row.child.isShown()) {
+			// This row is already open - close it
+			row.child.hide();
+			tr.removeClass('shown');
+		}
+		else {
+			// Open this row
+			row.child(formatUnassigned(row.data())).show();
+			tr.addClass('shown');
+			tdColspan();
+		}
+	});
 	dataTableStyle();
 	$('#modalAssignAll').prop("disabled", true)
 	$('#myModalAuto').modal('show');

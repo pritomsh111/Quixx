@@ -74,6 +74,20 @@ td[colspan] table:nth-child(2n) {
   }
 }
 
+@media (max-width:492px) {
+  td[colspan] table tr td {
+    padding: 15px 5px;
+    width: 5rem;
+  }
+  td[colspan] table {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  td[colspan] table:nth-child(n) {
+    margin-right: 0rem;
+  }
+}
+
 .col-md-4 button {
   padding: 14px 1rem;
 }
