@@ -224,62 +224,6 @@ var unApprovedMer = () => {
 	document.getElementById('three').disabled = true;
 	document.getElementById('three').style.fontSize = '14.5px';
 
-	// var table = $('#dtBasicExample2').DataTable({
-	// 	"processing": true,
-	// 	'language': {
-	// 		'loadingRecords': '&nbsp;',
-	// 		'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
-	// 	},
-	// 	"destroy": true,
-	// 	"oSearch": { "bSmart": false, "bRegex": true },
-	// 	"columns": [
-	// 		{ title: "Merchant ID" },
-	// 		{ title: "Company Name" },
-	// 		{ title: "Owner Name" },
-	// 		{ title: "Email" },
-	// 		{ title: "Phone Number" },
-	// 		{ title: "Business Field" },
-	// 		{ title: "Per Delivery Cost" },
-	// 		{
-	// 			orderable: false, title: "Approve Merchant?"
-	// 		}
-	// 	],
-	// });
-	// table.clear().draw();
-	// $.ajax
-	// 	({
-	// 		type: "GET",
-	// 		url: urlForAll + "orgHead/merchant/unapproved/details/" + org_ID,
-	// 		headers:
-	// 		{
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-	// 		},
-	// 		beforeSend: function () {
-	// 			document.getElementById("dtBasicExample2_processing").style.display = "block";
-	// 		},
-	// 		success: function (data) {
-	// 			document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + data.data.length;
-
-	// 			$.each(data.data, function (i, item) {
-	// 				var table_rows = '<tr><td>'
-	// 					+ data.data[i].merchant_id + '</td><td>'
-	// 					+ data.data[i].org_name + '</td><td>'
-	// 					+ data.data[i].person_name + '</td><td>'
-	// 					+ data.data[i].email + '</td><td>'
-	// 					+ data.data[i].phone_number + '</td><td>'
-	// 					+ data.data[i].business_filed + '</td><td>'
-	// 					+ data.data[i].per_delivery_cost + '</td><td>'
-	// 					+ '<button id="' + data.data[i].merchant_id + '" name="' + data.data[i].user_id + '" class="btn-round btn-outline btn approveIT">Approve</button></td></tr>';;
-
-	// 				table.rows.add($(table_rows)).draw();
-	// 			});
-	// 		},
-	// 		complete: function (data) {
-	// 			document.getElementById("dtBasicExample2_processing").style.display = "none";
-	// 		}
-	// 	});
 	var table = $('#dtBasicExample2').DataTable({
 		"processing": true,
 		'language': {
