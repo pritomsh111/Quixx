@@ -762,7 +762,7 @@ $('.btn-ok').click(function () {
 					table
 						.row($t.parents('tr'))
 						.remove()
-						.draw();
+						.draw(false);
 					document.getElementById('threea').innerHTML = 'Unapproved Delivery Man: ' + table
 						.column(0)
 						.data()
@@ -827,7 +827,7 @@ $('.btn-okActivate').click(function () {
 					table
 						.row($t.parents('tr'))
 						.remove()
-						.draw();
+						.draw(false);
 					document.getElementById('foura').innerHTML = 'Activated Delivery Man: ' + table
 						.column(0)
 						.data()
@@ -891,7 +891,7 @@ $('.btn-okDisable').click(function () {
 					table
 						.row($t.parents('tr'))
 						.remove()
-						.draw();
+						.draw(false);
 					document.getElementById('fivea').innerHTML = 'Disabled Delivery Man: ' + table
 						.column(0)
 						.data()

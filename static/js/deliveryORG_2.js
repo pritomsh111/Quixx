@@ -570,10 +570,10 @@ var unassignedDeliveries = () => {
 			row.child(formatUnassigned(row.data())).show();
 			tr.addClass('shown');
 			if (window.innerWidth < 1293 && window.innerWidth > 1093) {
-				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "6");
+				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "8");
 			}
-			else if (window.innerWidth <= 800) {
-				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "4");
+			else if (window.innerWidth <= 1093) {
+				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "6");
 			}
 			else if (window.innerWidth <= 600) {
 				Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "4");

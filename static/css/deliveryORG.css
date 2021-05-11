@@ -50,7 +50,7 @@ td[colspan] table:nth-child(2n) {
 @media (max-width:1293px) {
   td[colspan] table tr td {
     padding: 15px 5px;
-    width: 13rem;
+    width: 15rem;
   }
   td[colspan] table {
     display: block;

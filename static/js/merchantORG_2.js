@@ -1168,7 +1168,7 @@ $('.btn-okActivate').on("click", function (e) {
 					table
 						.row($t.parents('tr'))
 						.remove()
-						.draw();
+						.draw(false);
 					document.getElementById('four').innerHTML = 'Activated Merchant: ' + table
 						.column(0)
 						.data()
@@ -1223,7 +1223,7 @@ $('.btn-okDisable').on("click", function (e) {
 					table
 						.row($t.parents('tr'))
 						.remove()
-						.draw();
+						.draw(false);
 					document.getElementById('five').innerHTML = 'Disabled Merchant: ' + table
 						.column(0)
 						.data()
@@ -1277,7 +1277,7 @@ $('.btn-ok').on("click", function (e) {
 					table
 						.row($t.parents('tr'))
 						.remove()
-						.draw();
+						.draw(false);
 					document.getElementById('three').innerHTML = 'Unapproved Merchant: ' + table
 						.column(0)
 						.data()
