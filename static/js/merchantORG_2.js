@@ -819,7 +819,7 @@ $('.btn-ok-update').on("click", function (e) {
 						data.data.cod_percentage,
 						'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
 					];
-					console.log(table.row($t.closest('tr')).data());
+					table.ajax.reload();
 					// table.row(2).data(
 					// 	['Garrett Winters (upt)',
 					// 		'Director (upt)',
