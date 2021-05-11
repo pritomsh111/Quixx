@@ -39,6 +39,14 @@ table.dataTable.stripe tbody tr.odd.shown, table.dataTable.display tbody tr.odd.
   z-index: 100;
 }
 
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+  background-color: #fff;
+}
+
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+  background-color: #fff;
+}
+
 .logo>a {
   display: block;
   width: 130px;

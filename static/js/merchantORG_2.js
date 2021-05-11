@@ -149,7 +149,6 @@ var approvedMer = () => {
 	document.getElementById('two').style.fontSize = '14.5px';
 
 	var table = $('#dtBasicExample').DataTable({
-		responsive: true,
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -170,6 +169,12 @@ var approvedMer = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+			},
 			{ "targets": 1, "data": "org_name" },
 			{ "targets": 5, "data": "phone_number" },
 			{ "targets": 7, "data": "per_delivery_cost" },
@@ -807,37 +812,29 @@ $('.btn-ok-update').on("click", function (e) {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					var newArr;
+					// var newArr;
+					// newArr = [
+					// 	data.data.merchant_id,
+					// 	data.data.org_name,
+					// 	data.data.person_name,
+					// 	data.data.email,
+					// 	data.data.phone_number,
+					// 	data.data.business_filed,
+					// 	data.data.per_delivery_cost,
+					// 	data.data.cod_percentage,
+					// 	'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
+					// ];
 					var table = $('#dtBasicExample').DataTable();
-					newArr = [
-						data.data.org_name,
-						data.data.person_name,
-						data.data.email,
-						data.data.phone_number,
-						data.data.business_filed,
-						data.data.per_delivery_cost,
-						data.data.cod_percentage,
-						'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
-					];
-					table.ajax.reload();
-					// table.row(2).data(
-					// 	['Garrett Winters (upt)',
-					// 		'Director (upt)',
-					// 		'Edinburgh (upt)',
-					// 		99,
-					// 		'2020/01/12'
-					// 	]
-					// ).draw(false);
-					// try {
-					// 	table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
-					// 	table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
-					// 	table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
-					// 	table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.cod_percentage);
-					// 	document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
-					// }
-					// catch (e) {
-					// 	console.log(e);
-					// }
+					try {
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
+						table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.cod_percentage);
+						document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
+					}
+					catch (e) {
+						console.log(e);
+					}
 					setTimeout(function () {
 						$(".circle-loader").addClass("load-complete");
 
