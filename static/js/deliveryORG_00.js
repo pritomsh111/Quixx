@@ -37,6 +37,7 @@ function three3() {
 		$('.h').hide();
 		$('.i').hide();
 		$('.j').hide();
+		$("#bulkD").hide();
 		$("#deliveryCreate").show();
 		$.ajax
 			({

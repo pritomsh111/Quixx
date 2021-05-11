@@ -2,6 +2,7 @@ $(document).ready(async function () {
 	var dhakaIndex, url;
 	document.getElementById("fileName").innerHTML = "";
 	$('#settings').hide();
+	$("#bulkD").hide();
 	$("#deliveryCreate").hide();
 	$("#cod").hide();
 	$(".container").hide();

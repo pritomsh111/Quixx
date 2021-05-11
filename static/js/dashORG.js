@@ -472,7 +472,7 @@ var ten = () => {
 			{ "targets": 0, "data": "merchant_name" },
 			{ "targets": 1, "data": "total_product_cost", render: $.fn.dataTable.render.number(',', '.', 0, '<sup>&#2547;</sup>') },
 			{
-				"targets": 2, "data": "null", render: function (data, type, row) {
+				"orderable": false, "targets": 2, "data": "null", render: function (data, type, row) {
 					myMap[row.merchant_id] = row;
 					return '<button id="' + row.merchant_id + '" class="btn-round btn-outline btn" onclick="show(this)">Details</button>'
 				}
@@ -523,7 +523,7 @@ var eleven = () => {
 			{ "targets": 0, "data": "merchant_name" },
 			{ "targets": 1, "data": "total_product_cost", render: $.fn.dataTable.render.number(',', '.', 0, '<sup>&#2547;</sup>') },
 			{
-				"targets": 2, "data": "null", render: function (data, type, row) {
+				"orderable": false, "targets": 2, "data": "null", render: function (data, type, row) {
 					myMap2[row.merchant_id] = row;
 					return '<button id="' + row.merchant_id + '" class="btn-round btn-outline btn" onclick="show2(this)">Details</button>'
 				}

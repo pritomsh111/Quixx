@@ -3,6 +3,12 @@ var dataInfo, excelData, flag = false;
 var this_select_content = "";
 var criteriaEnabledDelivery = false;
 
+var createBulkDelivery = () => {
+	buttonActive();
+	document.getElementById('bulkX').disabled = true;
+	document.getElementById('bulkX').style.fontSize = '14.5px';
+	$("#bulkD").show();
+}
 var createDelivery = () => {
 	buttonActive();
 	document.getElementById('threeb').disabled = true;
@@ -21,6 +27,8 @@ function buttonActive() {
 	document.getElementById('threeb').disabled = false;
 	document.getElementById('threeb').style.fontSize = '13px';
 
+	document.getElementById('bulkX').disabled = false;
+	document.getElementById('bulkX').style.fontSize = '13px';
 	document.getElementById('sixb').disabled = false;
 	document.getElementById('sixb').innerHTML = 'On Hold Deliveries';
 	document.getElementById('sixb').style.fontSize = '13px';
@@ -54,6 +62,7 @@ function buttonActive() {
 	$('.f').hide();
 	$('.g').hide();
 	$('.h').hide();
+	$("#bulkD").hide();
 	$('#dtBasicExampleNewi').hide();
 	$('.i').hide();
 	$('#dtBasicExampleNewj').hide();

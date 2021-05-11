@@ -31,7 +31,7 @@ div.hideKoro3{
     </script>
     <div class="card-body table-responsive">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="threeb"
@@ -39,7 +39,15 @@ div.hideKoro3{
                     onclick="createDelivery()"
                 >Create Delivery</button>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="bulkX"
+                    style="width:100%;font-size: 13px"
+                    onclick="createBulkDelivery()"
+                >Create Bulk Deliveries [Excel]</button>
+            </div>
+            <div class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="oneb"
@@ -47,13 +55,29 @@ div.hideKoro3{
                     onclick="unassignedDeliveries()"
                 >Unassigned Deliveries</button>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="twob"
                     style="width:100%;font-size: 13px"
                     onclick="assignedDeliveries()"
                 >Assigned Deliveries</button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="sevenb"
+                    style="width:100%;font-size: 13px"
+                    onclick="onGoingDeliveries()"
+                >Ongoing Deliveries</button>
+            </div>
+            <div class="col-md-6">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="eightb"
+                    style="width:100%;font-size: 13px"
+                    onclick="completedDeliveries()"
+                >Completed Deliveries</button>
             </div>
             <div class="col-md-4">
                 <button
@@ -66,28 +90,12 @@ div.hideKoro3{
             <div class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
-                    id="sevenb"
-                    style="width:100%;font-size: 13px"
-                    onclick="onGoingDeliveries()"
-                >Ongoing Deliveries</button>
-            </div>
-            <div class="col-md-4">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="eightb"
-                    style="width:100%;font-size: 13px"
-                    onclick="completedDeliveries()"
-                >Completed Deliveries</button>
-            </div>
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
                     id="nineb"
                     style="width:100%;font-size: 13px"
                     onclick="canceledDeliveries()"
                 >Canceled Deliveries</button>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="tenb"
@@ -97,82 +105,6 @@ div.hideKoro3{
             </div>
         </div>
         <div id="deliveryCreate">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body table-responsive blur">
-                            <form class="p-5">
-                                <div style="font-size:18.5px;margin-top:-15px;color:#0D324D;">Create Multiple Deliveries Using Excel File [Use Template Excel]:</div>
-                                <br>
-                                <h5 style="text-align:center;color:#0066b3">Sender List [Select one]:</h5>
-                                <select class="browser-default custom-select col-lg-12 btn" id="senderListExcel" style="text-align-last:center;width:80%;height: 46px;"></select>
-                                <div style="text-align:center;margin-top:15px;">
-                                    <h5 id="senderInfo"></h5>
-                                    <h4 id="senLatLong" style="margin-top:5px"></h4>
-                                    <a
-                                        href="DeliveryTemplate.xlsx"
-                                        class="fa fa-download btn btn-outline"
-                                        style="color:#0066b3;"
-                                        download
-                                    >
-                                        <file src="DeliveryTemplate.xlsx" alt="Template"></file>
-                                    </a>
-                                    &nbsp;&nbsp;Download Template Excel
-                                    <br>
-                                    <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top:15px;font-size:13px;">
-                                        <i class="fa fa-upload fa-x" aria-hidden="true"></i>
-                                        <input
-                                            type="file"
-                                            id="upload"
-                                            name="files[]"
-                                            style="display: none;color:#0066b3;"
-                                        >
-                                        &nbsp;&nbsp;Upload Excel
-                                        <h4 id="fileName" style="margin-top:8px;"></h4>
-                                    </label>
-                                    <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top:15px;;font-size:13px;">
-                                        <i class="fa fa-times fa-x" aria-hidden="true"></i>
-                                        <button id="cancelUpload" style="display: none;color:#0066b3;"></button>
-                                        &nbsp;&nbsp;Cancel Excel
-                                        <h4 id="fileNamex" style="margin-top:8px;"></h4>
-                                    </label>
-                                    <br>
-                                    <button
-                                        class="btn btn-outline btn-round"
-                                        onclick="mapxx()"
-                                        style="background:#fff;margin-top:10px;"
-                                        type="button"
-                                    >
-                                        <i class="fa fa-map-marker fa-x" aria-hidden="true"></i>
-                                        Receiver's Location Finder
-                                    </button>
-                                    <br>
-                                    <h5 style="text-align:center;color:#0066b3;margin-top: 1.5rem;">Auto Assign Delivery To Delivery Man?</h5>
-                                    <select class="browser-default custom-select col-lg-12 btn" id="autoAss2" style="text-align-last:center;height: 46px;width:80%;">
-                                        <option value="" selected>Select One</option>
-                                        <option value="yes">Yes</option>
-                                        <option value="no">No</option>
-                                    </select>
-                                    <br>
-                                    <br>
-                                    <button
-                                        class="btn btn-outline btn-round"
-                                        style="background:#fbfcfd;margin-top:10px;"
-                                        type="button"
-                                        id="createDeliverywithExcel"
-                                    >
-                                        Create Delivery
-                                    </button>
-                                    <br>
-                                </div>
-                                <hr>
-                                <hr>
-                                <hr>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -393,6 +325,84 @@ div.hideKoro3{
                             >
                                 Create Delivery
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bulkD">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body table-responsive blur">
+                            <form class="p-5">
+                                <div style="font-size:18.5px;margin-top:-15px;color:#0D324D;">Create Multiple Deliveries Using Excel File [Use Template Excel]:</div>
+                                <br>
+                                <h5 style="text-align:center;color:#0066b3">Sender List [Select one]:</h5>
+                                <select class="browser-default custom-select col-lg-12 btn" id="senderListExcel" style="text-align-last:center;width:80%;height: 46px;"></select>
+                                <div style="text-align:center;margin-top:15px;">
+                                    <h5 id="senderInfo"></h5>
+                                    <h4 id="senLatLong" style="margin-top:5px"></h4>
+                                    <a
+                                        href="DeliveryTemplate.xlsx"
+                                        class="fa fa-download btn btn-outline"
+                                        style="color:#0066b3;"
+                                        download
+                                    >
+                                        <file src="DeliveryTemplate.xlsx" alt="Template"></file>
+                                    </a>
+                                    &nbsp;&nbsp;Download Template Excel
+                                    <br>
+                                    <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top:15px;font-size:13px;">
+                                        <i class="fa fa-upload fa-x" aria-hidden="true"></i>
+                                        <input
+                                            type="file"
+                                            id="upload"
+                                            name="files[]"
+                                            style="display: none;color:#0066b3;"
+                                        >
+                                        &nbsp;&nbsp;Upload Excel
+                                        <h4 id="fileName" style="margin-top:8px;"></h4>
+                                    </label>
+                                    <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top:15px;;font-size:13px;">
+                                        <i class="fa fa-times fa-x" aria-hidden="true"></i>
+                                        <button id="cancelUpload" style="display: none;color:#0066b3;"></button>
+                                        &nbsp;&nbsp;Cancel Excel
+                                        <h4 id="fileNamex" style="margin-top:8px;"></h4>
+                                    </label>
+                                    <br>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        onclick="mapxx()"
+                                        style="background:#fff;margin-top:10px;"
+                                        type="button"
+                                    >
+                                        <i class="fa fa-map-marker fa-x" aria-hidden="true"></i>
+                                        Receiver's Location Finder
+                                    </button>
+                                    <br>
+                                    <h5 style="text-align:center;color:#0066b3;margin-top: 1.5rem;">Auto Assign Delivery To Delivery Man?</h5>
+                                    <select class="browser-default custom-select col-lg-12 btn" id="autoAss2" style="text-align-last:center;height: 46px;width:80%;">
+                                        <option value="" selected>Select One</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background:#fbfcfd;margin-top:10px;"
+                                        type="button"
+                                        id="createDeliverywithExcel"
+                                    >
+                                        Create Delivery
+                                    </button>
+                                    <br>
+                                </div>
+                                <hr>
+                                <hr>
+                                <hr>
+                            </form>
                         </div>
                     </div>
                 </div>
