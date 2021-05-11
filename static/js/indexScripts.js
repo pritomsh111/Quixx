@@ -8,6 +8,7 @@
 	}
 
 	if (user === 'SUPER_ADMIN') {
+		$('.selectbtnMer').hide();
 		$('.logo>a>label').hide();
 		$('.logo>a>input').hide();
 		document.querySelector(".logo>a>div").style.height = "130px";
@@ -21,6 +22,7 @@
 		document.getElementById("dashName").innerHTML = "Super Admin's Panel";
 	}
 	else if (user === 'ORGANIZATIONAL_ADMIN') {
+		$('.selectbtnMer').hide();
 		let isLogo = true;
 		await $.ajax
 			({
@@ -118,8 +120,13 @@
 		myNode.remove();
 	}
 	else if (user === 'MERCHANT') {
+		$('.selectbtnMer').show();
 		$('.logo>a>label').hide();
 		$('.logo>a>input').hide();
+		document.querySelector(".selectbtnMer").addEventListener("click", function (e) {
+			e.preventDefault();
+			location.hash = "selection";
+		});
 		document.querySelector(".logo>a>div").style.height = "130px";
 		$.ajax
 			({

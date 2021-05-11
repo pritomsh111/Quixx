@@ -137,37 +137,7 @@ var four = () => {
 			}
 		});
 }
-
 var five = () => {
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "otp/enable/all/" + org_ID,
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			beforeSend: function () {
-				document.getElementById("complete").innerHTML = "<div class=loader5></div>";
-			},
-			success: function (data) {
-				if (data.data > 0) {
-					document.getElementById("complete").innerHTML = data.data;
-				}
-				else {
-					document.getElementById("complete").innerHTML = "0";
-				}
-				fiveeee();
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-				//alert("Please wait, we are working!");
-			}
-		})
-}
-var fiveeee = () => {
 
 	$.ajax
 		({
