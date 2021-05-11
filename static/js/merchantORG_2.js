@@ -149,6 +149,7 @@ var approvedMer = () => {
 	document.getElementById('two').style.fontSize = '14.5px';
 
 	var table = $('#dtBasicExample').DataTable({
+		responsive: true,
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -169,12 +170,6 @@ var approvedMer = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
-			{
-				"class": 'details-control',
-				"orderable": false,
-				"data": null,
-				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
-			},
 			{ "targets": 1, "data": "org_name" },
 			{ "targets": 5, "data": "phone_number" },
 			{ "targets": 7, "data": "per_delivery_cost" },
@@ -692,8 +687,8 @@ function modalErrorShowForCreateUpdateMerchant(message, focusWehere) {
 	$('#myModalError').modal('show');
 	document.getElementById(focusWehere).focus();
 }
-$('.btn-ok-update').click(function () {
-
+$('.btn-ok-update').on("click", function (e) {
+	e.preventDefault();
 	var org_name = document.getElementById('org_name2').value;
 	var person_name = document.getElementById('person_name2').value;
 	var phone_number = document.getElementById('phone_number2').value;
@@ -812,29 +807,37 @@ $('.btn-ok-update').click(function () {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					// var newArr;
-					// newArr = [
-					// 	data.data.merchant_id,
-					// 	data.data.org_name,
-					// 	data.data.person_name,
-					// 	data.data.email,
-					// 	data.data.phone_number,
-					// 	data.data.business_filed,
-					// 	data.data.per_delivery_cost,
-					// 	data.data.cod_percentage,
-					// 	'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
-					// ];
+					var newArr;
 					var table = $('#dtBasicExample').DataTable();
-					try {
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.cod_percentage);
-						document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
-					}
-					catch (e) {
-						console.log(e);
-					}
+					newArr = [
+						data.data.org_name,
+						data.data.person_name,
+						data.data.email,
+						data.data.phone_number,
+						data.data.business_filed,
+						data.data.per_delivery_cost,
+						data.data.cod_percentage,
+						'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
+					];
+					console.log(table.row($t.closest('tr')).data());
+					// table.row(2).data(
+					// 	['Garrett Winters (upt)',
+					// 		'Director (upt)',
+					// 		'Edinburgh (upt)',
+					// 		99,
+					// 		'2020/01/12'
+					// 	]
+					// ).draw(false);
+					// try {
+					// 	table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
+					// 	table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
+					// 	table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
+					// 	table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.cod_percentage);
+					// 	document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
+					// }
+					// catch (e) {
+					// 	console.log(e);
+					// }
 					setTimeout(function () {
 						$(".circle-loader").addClass("load-complete");
 
@@ -1144,8 +1147,8 @@ $('#dtBasicExampleActivate').on('click', '.btn-Disable', function () {
 	modalStart();
 
 });
-$('.btn-okActivate').click(function () {
-
+$('.btn-okActivate').on("click", function (e) {
+	e.preventDefault();
 	$("#sure").html("Please wait!");
 	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalApprove1Activate').disabled = true;
@@ -1198,8 +1201,8 @@ $('#dtBasicExampleDisable').on('click', '.btn-Activate', function () {
 
 	modalStart();
 });
-$('.btn-okDisable').click(function () {
-
+$('.btn-okDisable').on("click", function (e) {
+	e.preventDefault();
 	$("#sureDisable").html("Please wait!");
 	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalApprove1Disable').disabled = true;
@@ -1252,8 +1255,8 @@ $('#dtBasicExample2').on('click', '.approveIT', function () {
 
 	modalStart();
 });
-$('.btn-ok').click(function () {
-
+$('.btn-ok').on("click", function (e) {
+	e.preventDefault();
 	$("#sure").html("Please wait!");
 	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalApprove1').disabled = true;
@@ -1309,8 +1312,8 @@ $('#dtBasicExampleActivate').on('click', '.btn-taka', function () {
 
 	modalStart();
 });
-$('.btn-okPayment').click(function () {
-
+$('.btn-okPayment').on("click", function (e) {
+	e.preventDefault();
 	$("#sure").html("Please wait!");
 	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalYesButton').disabled = true;
@@ -1349,7 +1352,8 @@ $('#dtBasicExampleActivate').on('click', '.btn-DisableOTP', function () {
 
 	modalStart();
 });
-$('.btn-okActivate2').click(function () {
+$('.btn-okActivate2').on("click", function (e) {
+	e.preventDefault();
 	$("#sure").html("Please wait!");
 	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalApprove1Activate2').disabled = true;
@@ -1394,8 +1398,8 @@ $('#dtBasicExampleActivate').on('click', '.btn-EnableOTP', function () {
 
 	modalStart();
 });
-$('.btn-okActivate3').click(function () {
-
+$('.btn-okActivate3').on("click", function (e) {
+	e.preventDefault();
 	$("#sureActivate").html("Please wait!");
 	document.getElementById('modalCancelButton').disabled = true;
 	document.getElementById('modalApprove1Activate3').disabled = true;
