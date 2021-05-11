@@ -730,7 +730,7 @@ $('#dtBasicExample2').on('click', '.approveIT', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-ok').click(function () {
+$('.btn-ok').on("click", function () {
 
 	$("#sure2").html("Please wait!");
 	document.getElementById('modalCancelX').disabled = true;
@@ -795,7 +795,7 @@ $('#dtBasicExampleActivate').on('click', '.btn-Disable', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okActivate').click(function () {
+$('.btn-okActivate').on("click", function () {
 
 	$("#sureActivate").html("Please wait!");
 	document.getElementById('modalCancel1Activate').disabled = true;
@@ -859,7 +859,7 @@ $('#dtBasicExampleDisable').on('click', '.btn-Activate', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okDisable').click(function () {
+$('.btn-okDisable').on("click", function () {
 
 	$("#sureDisable").html("Please wait!");
 	document.getElementById('modalCancel1Disable').disabled = true;

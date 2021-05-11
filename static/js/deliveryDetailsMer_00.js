@@ -21,8 +21,7 @@ function three3() {
         onGoingDeliveries();
     }, 3700);
 }
-
-$(document).ready(function () {
+$(function () {
     $('#settingsMer').hide();
     $("#cod").hide();
     $('#dtBasicExample').hide();

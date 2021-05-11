@@ -444,7 +444,7 @@ function confirmTaka() {
 }
 
 
-$('.btn-ok').click(function () {
+$('.btn-ok').on("click", function () {
 
 	$("#sure22").html("Please wait!");
 	document.getElementById('modalCancel').disabled = true;

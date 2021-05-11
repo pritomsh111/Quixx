@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
 	$('#settingsMer').hide();
 	$("#cod").hide();
 	$("#deliveryCreate").hide();

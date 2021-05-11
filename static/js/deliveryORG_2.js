@@ -1144,7 +1144,7 @@ $('#dtBasicExampled').on('click', '.assignIt', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-ok').click(function () {
+$('.btn-ok').on("click", function () {
 
 	$("#sure").html("Please wait!");
 	document.getElementById('modalCancelG').disabled = true;
@@ -1178,7 +1178,7 @@ $('.btn-ok').click(function () {
 						table
 							.row($t.parents('tr'))
 							.remove()
-							.draw();
+							.draw(false);
 						document.getElementById('oneb').innerHTML = 'Unassigned Deliveries: ' + table
 							.column(0)
 							.data()
@@ -1298,7 +1298,7 @@ $('#dtBasicExampleNewg').on('click', '.reassignIt', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okReassign').click(function () {
+$('.btn-okReassign').on("click", function () {
 
 	$("#dml").hide();
 	$("#deliveryManList2").hide();
@@ -1425,7 +1425,7 @@ $('#dtBasicExampleNewi').on('click', '.recreateIt', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okRD').click(function () {
+$('.btn-okRD').on("click", function () {
 
 	$("#sureRD").html("Please wait!");
 	document.getElementById('modalCancelV').disabled = true;
@@ -1459,7 +1459,7 @@ $('.btn-okRD').click(function () {
 					table
 						.row($t.parents('tr'))
 						.remove()
-						.draw();
+						.draw(false);
 					document.getElementById('nineb').innerHTML = 'Canceled Deliveries: ' + table
 						.column(0)
 						.data()
@@ -1498,7 +1498,7 @@ $('#dtBasicExampleNewi').on('click', '.deleteIt', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okRD2').click(function () {
+$('.btn-okRD2').on("click", function () {
 
 	$("#sureRD").html("Please wait!");
 	document.getElementById('modalCancelV').disabled = true;
@@ -1531,7 +1531,7 @@ $('.btn-okRD2').click(function () {
 					table
 						.row($t.parents('tr'))
 						.remove()
-						.draw();
+						.draw(false);
 					document.getElementById('nineb').innerHTML = 'Canceled Deliveries: ' + table
 						.column(0)
 						.data()
@@ -3142,7 +3142,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-ok-updateDC').click(function () {
+$('.btn-ok-updateDC').on("click", function () {
 	wrongKeteDao();
 	var delivery_cost_update = document.getElementById('delivery_cost_update').value;
 	var pickup_time = document.getElementById('timeU').value;
@@ -3520,7 +3520,7 @@ $('.btn-ok-updateDC').click(function () {
 						//table
 						//.row($t.parents('tr'))
 						//.data(newArr)
-						//.draw();
+						//.draw(false);
 						//console.log(table.row($t.parents('tr')).data());
 
 						$('.btn-ok-updateDC').attr('disabled', false);
@@ -3576,7 +3576,7 @@ $('#dtBasicExampleNewj').on('click', '.returnIt', function () {
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
-$('.btn-okReturn').click(function () {
+$('.btn-okReturn').on("click", function () {
 	wrongKeteDao2();
 
 	var delivery_cost_update = document.getElementById('delivery_cost_updateR').value;
@@ -3714,7 +3714,7 @@ $('.btn-okReturn').click(function () {
 						table
 							.row($t.parents('tr'))
 							.remove()
-							.draw();
+							.draw(false);
 						document.getElementById('tenb').innerHTML = 'Returned Deliveries: ' + table
 							.column(0)
 							.data()

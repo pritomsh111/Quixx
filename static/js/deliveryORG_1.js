@@ -1,4 +1,4 @@
-$(document).ready(async function () {
+$(async function () {
 	var dhakaIndex, url;
 	document.getElementById("fileName").innerHTML = "";
 	$('#settings').hide();

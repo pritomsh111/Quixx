@@ -1,6 +1,6 @@
 var org_ID = localStorage.getItem('userID');
 var org_Email = localStorage.getItem('userEmail');
-$(document).ready(function () {
+$(function () {
 
 	$('#settings').hide();
 	$('.container').hide();
