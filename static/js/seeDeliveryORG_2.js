@@ -197,7 +197,7 @@ var seeDateWise = () => {
 	document.getElementById('twoc').disabled = false;
 	document.getElementById('twoc').style.fontSize = '13px';
 	document.getElementById('onec').style.fontSize = '13px';
-	document.getElementById('onec').innerHTML = 'Details of Delivery and Delivery Man';
+	document.getElementById('onec').innerHTML = 'Details of Delivery Man';
 	document.getElementById('threec').disabled = true;
 	document.getElementById('threec').style.fontSize = '14.5px';
 	$('#dtBasicExample').hide();
@@ -238,19 +238,22 @@ var seeDateWise = () => {
 			{ "targets": 0, "data": "name" },
 			{ "targets": 1, "data": "phone_number" },
 			{
-				"targets": 3, "data": "date1", render: function (data, type, row) {
 
-					return '<input class="btn-round btn-outline btn" type="date" id="s' + row.delivery_man_id + '">'
+				"orderable": false, "targets": 3, "data": null, render: function (data, type, row) {
+
+					return '<input class="btn-round btn-outline btn" style="padding: 6px 8px;" type="date" id="s' + row.delivery_man_id + '">'
 				}
 			},
 			{
-				"targets": 4, "data": "date2", render: function (data, type, row) {
 
-					return '<input class="btn-round btn-outline btn" type="date" id="e' + row.delivery_man_id + '">'
+				"orderable": false, "targets": 4, "data": null, render: function (data, type, row) {
+
+					return '<input class="btn-round btn-outline btn" style="padding: 6px 8px;" type="date" id="e' + row.delivery_man_id + '">'
 				}
 			},
 			{
-				"targets": 5, "data": "button", render: function (data, type, row) {
+
+				"orderable": false, "targets": 5, "data": null, render: function (data, type, row) {
 
 					return '<button class="btn-round btn-outline btn" id="' + row.delivery_man_id + '" onclick="hudai(this)">Submit</button>'
 				}
@@ -322,11 +325,11 @@ var seeDateWise = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+		css({ 'width': '230px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '230px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
@@ -341,7 +344,7 @@ var deliveryManOnMap = () => {
 	document.getElementById('twoc').disabled = true;
 	document.getElementById('twoc').style.fontSize = '14.5px';
 	document.getElementById('onec').style.fontSize = '13px';
-	document.getElementById('onec').innerHTML = 'Details of Delivery and Delivery Man';
+	document.getElementById('onec').innerHTML = 'Details of Delivery Man';
 	document.getElementById('threec').disabled = false;
 	document.getElementById('threec').style.fontSize = '13px';
 	document.getElementById('threec').innerHTML = 'Delivery Information [Date-wise]';
@@ -366,6 +369,24 @@ var deliveryManWithProduct = () => {
 	$('#dtBasicExample2').hide();
 	$('.b').hide();
 	var table = $('#dtBasicExample').DataTable({
+		responsive: {
+			details: {
+				renderer: function (api, rowIdx, columns) {
+					var data = $.map(columns, function (col, i) {
+						return col.hidden ?
+							'<tr style="text-align:left" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+							'<td><strong>' + col.title + ':' + '</strong></td> ' +
+							'<td>' + col.data + '</td>' +
+							'</tr>' :
+							'';
+					}).join('');
+
+					return data ?
+						$('<table/>').append(data) :
+						false;
+				}
+			}
+		},
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -389,21 +410,24 @@ var deliveryManWithProduct = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{ "targets": 100, "data": null, "defaultContent": "", orderable: false },
 			{ "targets": 2, "data": "delivery_man_id" },
 			{ "targets": 0, "data": "name" },
 			{ "targets": 0, "data": "email" },
 			{ "targets": 1, "data": "phone_number" },
 			{
-				"targets": 3, "data": "button", render: function (data, type, row) {
+
+				"orderable": false, "targets": 3, "data": null, render: function (data, type, row) {
 
 					return '<button id="' + row.delivery_man_id + '" class="btn-round btn-outline btn" onclick=detailDelivery(this)>Details</button>'
 				}
 			}
-		]
+		],
+		"order": [[1, 'asc']]
 	});
 	table.on('xhr', function () {
 		var json = table.ajax.json();
-		document.getElementById('onec').innerHTML = 'Details of Delivery and Delivery Man: ' + json.data.length;
+		document.getElementById('onec').innerHTML = 'Details of Delivery Man: ' + json.data.length;
 	});
 	table.clear().draw();
 	/*$.ajax
@@ -437,7 +461,7 @@ var deliveryManWithProduct = () => {
 			+data.data[i].email+'</td><td>'
 			+data.data[i].phone_number+'</td><td>'
 			+'<button id="' + data.data[i].delivery_man_id + '" class="btn-round btn-outline btn" onclick=detailDelivery(this)>Details</button></td></tr>';
-
+	
 			table.rows.add($(table_rows)).draw();
 			});
 		},
@@ -448,11 +472,11 @@ var deliveryManWithProduct = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+		css({ 'width': '230px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '230px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').

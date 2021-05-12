@@ -5,6 +5,13 @@
   }
 </style>
 <link rel="stylesheet" href="static/css/seeDeliveryORG.css">
+<link rel="stylesheet" href="static/css/deliveryMer.css">
+<style>
+    
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+    left: 5px;
+  }
+</style>
 <script src="static/js/seeDeliveryORG_00.js"></script>
 <div id="loaderMama4" style="margin-top: 8%">
     <div class="multi-spinner-container" style="color: #fff">
@@ -56,7 +63,7 @@
                         style="width: 100%; font-size: 13px"
                         onclick="deliveryManWithProduct()"
                     >
-                        Details of Deliveries and Delivery Man
+                        Details of Delivery Man
                     </button>
                 </div>
                 <div class="col-md-4">
@@ -75,13 +82,14 @@
             <div class="card-body table-responsive a">
                 <table
                     id="dtBasicExample"
-                    class="stripe hover"
+                    class="stripe hover display"
                     style="color: #0066b3"
                     cellspacing="0"
                     width="100%"
                 >
                     <thead>
                         <tr>
+                            <th class="th-sm"></th>
                             <th class="th-sm">ID</th>
                             <th class="th-sm">Delivery Man's Name</th>
                             <th class="th-sm">Delivery Man's Email</th>
@@ -97,7 +105,7 @@
             <div class="card-body table-responsive b">
                 <table
                     id="dtBasicExample2"
-                    class="stripe hover"
+                    class="stripe hover display"
                     style="color: #0066b3"
                     cellspacing="0"
                     width="100%"
