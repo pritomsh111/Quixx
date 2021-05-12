@@ -40,6 +40,17 @@ var createMer = () => {
 	document.getElementById('one').style.fontSize = '14.5px';
 	$('#merchantCreate').show();
 };
+function tdColspan() {
+	if (window.innerWidth <= 500) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "2");
+	}
+	else if (window.innerWidth <= 800) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "4");
+	}
+	else {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+	}
+}
 
 function merchantOrgDatatableStyle() {
 	$('.dataTables_filter input[type="search"]').
@@ -213,6 +224,7 @@ var approvedMer = () => {
 			// Open this row
 			row.child(formatApproved(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 }
@@ -286,6 +298,7 @@ var unApprovedMer = () => {
 			// Open this row
 			row.child(formatUnapproved(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 };
@@ -409,6 +422,7 @@ var activated = () => {
 			// Open this row
 			row.child(formatActivated(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 
@@ -483,6 +497,7 @@ var disabledd = () => {
 			// Open this row
 			row.child(formatApproved(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 	merchantOrgDatatableStyle();

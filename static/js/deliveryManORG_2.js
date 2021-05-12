@@ -158,6 +158,17 @@ var thisInvoice = (id) => {
 // 	$('#dtBasicExample').show();
 // 	$('.a').show();
 // };
+function tdColspan() {
+	if (window.innerWidth <= 500) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "2");
+	}
+	else if (window.innerWidth <= 800) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "4");
+	}
+	else {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+	}
+}
 var approvedDeliveryMan = () => {
 	document.getElementById('twoa').disabled = true;
 	document.getElementById('onea').disabled = false;
@@ -239,6 +250,7 @@ var approvedDeliveryMan = () => {
 			// Open this row
 			row.child(formatApproved(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 
@@ -343,6 +355,7 @@ var unApprovedDeliveryMan = () => {
 			// Open this row
 			row.child(formatApproved(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 
@@ -453,6 +466,7 @@ var activatedd = () => {
 			// Open this row
 			row.child(formatApproved(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 
@@ -557,6 +571,7 @@ var disableddd = () => {
 			// Open this row
 			row.child(formatApproved(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 

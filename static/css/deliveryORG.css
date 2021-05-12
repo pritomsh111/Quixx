@@ -55,6 +55,10 @@ td[colspan] table:nth-child(n) {
   margin-right: 3rem;
 }
 
+#dtBasicExampledAuto td[colspan] table:nth-child(n) {
+  margin-right: 1rem;
+}
+
 td[colspan] table:nth-child(2n) {
   margin-right: 0rem;
 }
