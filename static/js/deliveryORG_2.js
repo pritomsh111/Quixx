@@ -648,7 +648,7 @@ var assignedDeliveries = () => {
 			{
 				"targets": 20, "data": "invoice", render: function (data, type, row) {
 
-					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoice(this)" style="font-size:14.5px">Invoice</button>'
+					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoice(this)" style="font-size:13px">Invoice</button>'
 				}
 			}
 		]
@@ -823,13 +823,13 @@ var onGoingDeliveries = () => {
 			{
 				"targets": 20, "data": "invoice", render: function (data, type, row) {
 
-					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoice(this)" style="font-size:14.5px">Invoice</button>'
+					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoice(this)" style="font-size:13px">Invoice</button>'
 				}
 			},
 			{
 				"targets": 21, "data": "re-assign", render: function (data, type, row) {
 
-					return '<button id="' + row.delivery_Id + '" class="btn-round btn-outline btn reassignIt" style="font-size:14.5px">Re-Assign</button>'
+					return '<button id="' + row.delivery_Id + '" class="btn-round btn-outline btn reassignIt" style="font-size:13px">Re-Assign</button>'
 				}
 			}
 		]
@@ -1004,13 +1004,13 @@ var canceledDeliveries = () => {
 			{ "targets": 19, "data": "payment_method" },
 			{
 				"targets": 20, "data": "recreate", render: function (data, type, row) {
-					return '<button id="' + row.creator_id + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn recreateIt" style="font-size:14.5px">Recreate Delivery</button>'
+					return '<button id="' + row.creator_id + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn recreateIt" style="font-size:13px">Recreate Delivery</button>'
 				}
 			},
 			{
 				"targets": 21, "data": "delete", render: function (data, type, row) {
 
-					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn deleteIt" style="font-size:14.5px">Delete Delivery</button>'
+					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn deleteIt" style="font-size:13px">Delete Delivery</button>'
 				}
 			}
 		]
@@ -1094,7 +1094,7 @@ var returnedDeliveries = () => {
 			{ "targets": 19, "data": "payment_method" },
 			{
 				"targets": 20, "data": "update_d", render: function (data, type, row) {
-					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.product_cost + '" class="btn-round btn-outline btn returnIt" style="font-size:14.5px">Update Delivery</button>'
+					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.product_cost + '" class="btn-round btn-outline btn returnIt" style="font-size:13px">Update Delivery</button>'
 				}
 			}
 		]

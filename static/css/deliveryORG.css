@@ -17,6 +17,19 @@ table.dataTable.no-footer {
 
 table.dataTable tbody th, table.dataTable tbody td {
   padding: 15px 15px;
+  font-size: 0.8rem;
+}
+
+@media(min-width: 1600px) {
+  table.dataTable tbody th, table.dataTable tbody td {
+    font-size: 1.1rem;
+  }
+}
+
+@media(max-width: 1599px) {
+  table.dataTable tbody th, table.dataTable tbody td {
+    font-size: 0.8rem;
+  }
 }
 
 #dtBasicExampledAuto tbody td, #dtBasicExampledAuto_wrapper thead td {
