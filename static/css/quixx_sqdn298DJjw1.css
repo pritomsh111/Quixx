@@ -47,6 +47,16 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
   background-color: #fff;
 }
 
+.btn.btn-outline.btn-primary.selectbtnMer {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .btn.btn-outline.btn-primary.selectbtnMer {
+    display: inline-block;
+  }
+}
+
 .logo>a {
   display: block;
   width: 130px;

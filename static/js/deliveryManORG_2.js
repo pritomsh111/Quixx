@@ -146,11 +146,11 @@ var thisInvoice = (id) => {
 
 // 	$('.dataTables_filter input[type="search"]').
 // 		attr('placeholder', 'Search anything!').
-// 		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+// 		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
 // 	$('.dataTables_filter input[type="search"]').
 // 		attr('class', 'btn btn-round').
-// 		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
+// 		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 // 	$('.dataTables_length select').
 // 		attr('class', 'btn btn-round').
@@ -244,11 +244,11 @@ var approvedDeliveryMan = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
+		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
@@ -348,11 +348,11 @@ var unApprovedDeliveryMan = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
+		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
@@ -458,11 +458,11 @@ var activatedd = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
+		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
@@ -562,11 +562,11 @@ var disableddd = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
+		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').

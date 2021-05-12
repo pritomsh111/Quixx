@@ -22,6 +22,7 @@
 		document.getElementById("dashName").innerHTML = "Super Admin's Panel";
 	}
 	else if (user === 'ORGANIZATIONAL_ADMIN') {
+		$('.selectbtnMer').hide();
 		document.querySelector(".selectbtnMer").remove();
 		let isLogo = true;
 		await $.ajax
