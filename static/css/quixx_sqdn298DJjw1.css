@@ -1507,7 +1507,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 table[id^="dtBasic"] .btn {
-  padding: 6px ​16px;
+  padding: 6px 16px;
 }
 
 select[name^="dtBasic"] {

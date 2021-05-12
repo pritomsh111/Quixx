@@ -59,7 +59,7 @@ td[colspan] table:nth-child(2n) {
   margin-right: 0rem;
 }
 
-@media (max-width:1493px) and (min-width:693px) {
+@media (max-width:1340px) and (min-width:693px) {
   td[colspan] table tr td {
     padding: 15px 5px;
     width: 15rem;
