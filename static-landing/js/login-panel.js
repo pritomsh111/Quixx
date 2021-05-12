@@ -381,12 +381,12 @@
         let deliveries = document.querySelector("#deliveries").value;
         let business = document.querySelector("#business").value;
         let v1 = () => {
-            if (parseInt(deliveries) <= 0 || deliveries.charAt(0) == 0) {
-                createError("Delivery Range must be greater than 0!", "deliveries");
+            if (parseInt(deliveries) < 0) {
+                createError("Delivery Cost must be greater than or equal to 0!", "deliveries");
                 return 0;
             }
             else if (isNaN(deliveries) === true || deliveries === "" || !/\D/.test(deliveries) === false) {
-                createError("Delivery Range must be a number!", "deliveries");
+                createError("Delivery Cost must be a number!", "deliveries");
                 return 0;
             }
             else if (!/\D/.test(deliveries) === true) {
@@ -459,17 +459,17 @@
             clearError();
             body.style.pointerEvents = "none";
             modalSignupFunc();
-            let data = JSON.stringify
-                ({
-                    "encrypted_user_id": encKey,
-                    "org_name": org,
-                    "person_name": owner,
-                    "phone_number": contact,
-                    "email": email,
-                    "business_filed": business,
-                    "per_delivery_cost": deliveries
-                });
-            console.log(data);
+            // let data = JSON.stringify
+            //     ({
+            //         "encrypted_user_id": encKey,
+            //         "org_name": org,
+            //         "person_name": owner,
+            //         "phone_number": contact,
+            //         "email": email,
+            //         "business_filed": business,
+            //         "per_delivery_cost": deliveries
+            //     });
+            // console.log(data);
             $.ajax
                 ({
                     type: "PUT",

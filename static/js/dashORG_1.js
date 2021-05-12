@@ -16,7 +16,7 @@ function MakeBarChart() {
 				dates = Object.keys(timeseries);
 				deliveries = Object.values(timeseries);
 
-				console.log(timeseries, length, dates, deliveries);
+				//console.log(timeseries, length, dates, deliveries);
 				var xValue = dates;
 
 				var yValue = deliveries;

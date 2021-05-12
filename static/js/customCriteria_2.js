@@ -253,7 +253,7 @@ function getData() {
                         Array.from(Object.keys(data.data[item]).map(itemKeys => {
 
                             document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
-                            console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+                            ////console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
                         }));
                     }
@@ -262,16 +262,16 @@ function getData() {
 
 
                     //         document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).disabled = true : null;
-                    //         console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+                    //         ////console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
                     //     }));
                     // }
 
                     // if (data.data[item]) {
 
                     //     Array.from(Object.keys(data.data[item]).map(itemKeys => {
-                    //         console.log(itemKeys);
-                    //         console.log("");
-                    //         console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+                    //         ////console.log(itemKeys);
+                    //         ////console.log("");
+                    //         ////console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 
                     //         document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
                     //     }));
@@ -300,11 +300,11 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
     document.getElementById('modalCriteriaSetConfirm').disabled = true;
     let array = [], flagger = 1;
     for (const [index, item] of Object.keys(fillData).entries()) {
-        console.log(index, item);
+        //console.log(index, item);
         let obj = {};
         for (const i of fillData[item]) {
             if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value) {
-                console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
+                //console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
                 let testingNumber = /^\d+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
                 if (!testingNumber) {
                     let modalErr = document.querySelector('#myModalWrongDManCreate p');
@@ -340,12 +340,12 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
         }
         array.push(obj);
     }
-    console.log(array);
+    //console.log(array);
     // Object.keys(fillData).map((item, index) => {
     //     let obj = {};
-    //     console.log(item, fillData[item]);
+    //     //console.log(item, fillData[item]);
     //     fillData[item].map(i => {
-    //         console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
+    //         //console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
     //         let testingNumber = /^\D+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
     //         if (!testingNumber) {
     //             let modalErr = document.querySelector('#myModalWrongDManCreate p');
@@ -366,11 +366,11 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
     //         //     obj[i] = document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value ? document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value : 0;
 
     //         // }
-    //         // console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
+    //         // //console.log(i, document.querySelector(`input[class*='${i.replace(/ /g, "")}']`));
     //     });
     //     array.push(obj);
     // });
-    // console.log(array);
+    // //console.log(array);
     if (flagger) {
         $.ajax
             ({
@@ -390,7 +390,7 @@ document.querySelector("#modalCriteriaSetConfirm").addEventListener("click", fun
                     "productCityMap": array[4]
                 }),
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $("#sureActivateConfirm").html("Please wait!");
                     setTimeout(function () {
                         $(".circle-loader").addClass("load-complete");

@@ -181,7 +181,7 @@ async function criteriaInfo(value) {
 			criteriaEnabled = data.data;
 		}
 	});
-	console.log(criteriaEnabled);
+	//console.log(criteriaEnabled);
 	if (criteriaEnabled) {
 		$('.criteria')
 			.show();
@@ -218,12 +218,12 @@ async function criteriaInfo(value) {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					if (criteriaMap.size) {
 						criteriaMap.clear();
 					}
 					Object.keys(data.data).map((types, index) => {
-						console.log(types);
+						//console.log(types);
 						let mapObj = {};
 						if (types !== "userId") {
 							let typ = naValuesType.indexOf(types);
@@ -241,9 +241,9 @@ async function criteriaInfo(value) {
 							mapObj = { [naValues[typ]]: "", ...data.data[types] };
 							criteriaMap.set(types, mapObj);
 
-							console.log(mapObj, criteriaMap);
+							//console.log(mapObj, criteriaMap);
 
-							console.log(data.data[types]);
+							//console.log(data.data[types]);
 						}
 					});
 					// document.getElementById('managers').selectedIndex = dhakaIndex;
@@ -387,7 +387,7 @@ function initMap() {
 		var bounds = new google.maps.LatLngBounds();
 		places.forEach(function (place) {
 			if (!place.geometry) {
-				//console.log("Returned place contains no geometry");
+				////console.log("Returned place contains no geometry");
 				return;
 			}
 			// Create a marker for each place.
@@ -632,7 +632,7 @@ function initAutocomplete() {
 		var bounds = new google.maps.LatLngBounds();
 		places.forEach(function (place) {
 			if (!place.geometry) {
-				//console.log("Returned place contains no geometry");
+				////console.log("Returned place contains no geometry");
 				return;
 			}
 			// Create a marker for each place.

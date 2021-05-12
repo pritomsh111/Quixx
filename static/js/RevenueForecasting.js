@@ -8,7 +8,7 @@ function SalesOnlyModule(orgName) {
         type: "GET",
         url: server + appdir + "/" + encodeURIComponent(org),
     }).done(function (data) {
-        console.log(data);
+        // console.log(data);
         timeseries = data["data"]["delivery_charge"];
         change_point = data["change_point"];
         length = Object.getOwnPropertyNames(timeseries).length;

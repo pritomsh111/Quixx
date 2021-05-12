@@ -11,12 +11,12 @@ async function MakeBarChart(id, url) {
 			Object.keys(timeseries[item]).map(date => {
 				dates.push(date);
 				deliveries.push(timeseries[item][date]);
-				console.log(date);
+				//console.log(date);
 			});
 		}
 		);
 
-		console.log(timeseries, length, dates, deliveries);
+		//console.log(timeseries, length, dates, deliveries);
 
 		var xValue = dates;
 

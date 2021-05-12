@@ -65,13 +65,13 @@ var ExcelToJSON = function () {
 				var excelAsJson = JSON.parse(json_object);
 				flag = true;
 				excelData = excelAsJson;
-				//console.log(excelAsJson[0].Sender_Name);
+				////console.log(excelAsJson[0].Sender_Name);
 				//jQuery( '#xlx_json' ).val( json_object );
 			})
 		};
 
 		reader.onerror = function (ex) {
-			//console.log(ex);
+			////console.log(ex);
 		};
 
 		reader.readAsBinaryString(file);
@@ -347,7 +347,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	}
 	var vDC = () => {
 		let en = document.getElementById('delivery_charge').disabled;
-		// console.log(en);
+		// //console.log(en);
 		if (!en) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
 			$('#myModalWrongDeliveryCreate').modal('show');
@@ -358,16 +358,16 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		Array.from(document.querySelectorAll(".criteria select")).map(item => {
 			if (item.childElementCount) {
 				for (let prop in criteriaMap.get(item.id)) {
-					console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
+					//console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
 					if (criteriaMap.get(item.id)[prop] == delivery_charge) {
 						fl = true;
-						console.log("MIllaaaagese");
+						//console.log("MIllaaaagese");
 						break;
 					}
 				}
 			}
 		});
-		console.log(fl, delivery_charge, merchantPerDeliveryCost);
+		//console.log(fl, delivery_charge, merchantPerDeliveryCost);
 		if (!fl) {
 			if (+delivery_charge !== merchantPerDeliveryCost) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
@@ -439,7 +439,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					$('#tickD2').hide();
 					$(".circle-loader").removeClass("load-complete");
 					$("#sureD2").html("");
@@ -465,8 +465,8 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				},
 				error: function (data) {
 					document.getElementById('createDelivery').disabled = false;
-					//console.log(data.responseJSON.errorMessage);
-					//console.log(data);
+					////console.log(data.responseJSON.errorMessage);
+					////console.log(data);
 					var ob = Object.keys(data);
 					$("#myModalCreateD1").modal('show');
 					if (ob[17] == "responseJSON") {
@@ -845,7 +845,7 @@ function doIt(i, lengx) {
 					"delivery_distance": "delivery_distance_na",
 					"delivery_city_criteria": "delivery_city_criteria_na"
 				});
-			//console.log(datap);
+			////console.log(datap);
 			$.ajax
 				({
 					async: true,
@@ -903,8 +903,8 @@ function doIt(i, lengx) {
 						document.getElementById('body').style.pointerEvents = "auto";
 						document.getElementById('createDeliverywithExcel').disabled = false;
 						document.getElementById('CLOSEIT').disabled = false;
-						//console.log(data.responseJSON.errorMessage);
-						//console.log(data);
+						////console.log(data.responseJSON.errorMessage);
+						////console.log(data);
 						var ob = Object.keys(data);
 						if (ob[17] == "responseJSON") {
 

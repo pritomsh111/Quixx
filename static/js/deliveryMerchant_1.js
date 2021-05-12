@@ -117,7 +117,7 @@ async function criteriaInfo(value) {
 			criteriaEnabled = data.data;
 		}
 	});
-	console.log(criteriaEnabled);
+	//console.log(criteriaEnabled);
 	if (criteriaEnabled) {
 		$('.criteria')
 			.show();
@@ -154,12 +154,12 @@ async function criteriaInfo(value) {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					if (criteriaMap.size) {
 						criteriaMap.clear();
 					}
 					Object.keys(data.data).map((types, index) => {
-						console.log(types);
+						//console.log(types);
 						let mapObj = {};
 						if (types !== "userId") {
 							let typ = naValuesType.indexOf(types);
@@ -177,9 +177,9 @@ async function criteriaInfo(value) {
 							mapObj = { [naValues[typ]]: "", ...data.data[types] };
 							criteriaMap.set(types, mapObj);
 
-							console.log(mapObj, criteriaMap);
+							//console.log(mapObj, criteriaMap);
 
-							console.log(data.data[types]);
+							//console.log(data.data[types]);
 						}
 					});
 					// document.getElementById('managers').selectedIndex = dhakaIndex;
@@ -209,7 +209,7 @@ naValuesType.map(item => {
 	document.querySelector(`select#${item}`).addEventListener('change', function (e) {
 		if (item !== "dayType" && item !== "productCity") {
 			let obj = criteriaMap.get(item);
-			// console.log(obj[e.target.value]);
+			// //console.log(obj[e.target.value]);
 			if (/^\d+$/.test(obj[e.target.value])) {
 				document.getElementById('delivery_charge').value = obj[e.target.value];
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
@@ -220,17 +220,17 @@ naValuesType.map(item => {
 			}
 		}
 		else {
-			console.log("Hello");
+			//console.log("Hello");
 			let objDayType = criteriaMap.get("dayType");
 			let objProductCity = criteriaMap.get("productCity");
 			let dayType = document.querySelector(`select#dayType`).value;
 			let productCity = document.querySelector(`select#productCity`).value;
-			console.log(dayType, productCity);
+			//console.log(dayType, productCity);
 
-			console.log(objDayType?.[dayType], objProductCity?.[productCity]);
+			//console.log(objDayType?.[dayType], objProductCity?.[productCity]);
 
-			console.log((/^\d+$/.test(objDayType?.[dayType])));
-			console.log((/^\d+$/.test(objProductCity?.[productCity])));
+			//console.log((/^\d+$/.test(objDayType?.[dayType])));
+			//console.log((/^\d+$/.test(objProductCity?.[productCity])));
 
 			if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
@@ -403,7 +403,7 @@ function initAutocomplete() {
 		var bounds = new google.maps.LatLngBounds();
 		places.forEach(function (place) {
 			if (!place.geometry) {
-				//console.log("Returned place contains no geometry");
+				////console.log("Returned place contains no geometry");
 				return;
 			}
 			// Create a marker for each place.

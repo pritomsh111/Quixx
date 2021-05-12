@@ -239,7 +239,7 @@
       });
       table.on("xhr", function () {
         var json = table.ajax.json();
-        console.log(json);
+        //console.log(json);
         document.getElementById("fourX").innerHTML =
           "Unanswered Messages: " + json.data.length;
       });
@@ -381,7 +381,7 @@
     });
     table.on("xhr", function () {
       var json = table.ajax.json();
-      console.log(json);
+      //console.log(json);
       document.getElementById("fourX").innerHTML =
         "Unanswered Messages: " + json.data.length;
     });
@@ -486,7 +486,7 @@
     });
     table.on("xhr", function () {
       var json = table.ajax.json();
-      console.log(json);
+      //console.log(json);
       document.getElementById("fiveX").innerHTML =
         "Answered Messages: " + json.data.length;
     });

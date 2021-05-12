@@ -192,6 +192,18 @@ var hudai = (id) => {
 	}
 }
 
+function tdColspan() {
+	if (window.innerWidth <= 500) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "2");
+	}
+	else if (window.innerWidth <= 800) {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "4");
+	}
+	else {
+		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
+	}
+}
+
 var seeDateWise = () => {
 	document.getElementById('onec').disabled = false;
 	document.getElementById('twoc').disabled = false;
@@ -281,6 +293,7 @@ var seeDateWise = () => {
 			// Open this row
 			row.child(formatApproved(row.data())).show();
 			tr.addClass('shown');
+			tdColspan();
 		}
 	});
 	/*$.ajax

@@ -89,13 +89,13 @@ var ExcelToJSON = function () {
 				var excelAsJson = JSON.parse(json_object);
 				flag = true;
 				excelData = excelAsJson;
-				//console.log(excelAsJson[0].Sender_Name);
+				////console.log(excelAsJson[0].Sender_Name);
 				//jQuery( '#xlx_json' ).val( json_object );
 			})
 		};
 
 		reader.onerror = function (ex) {
-			//console.log(ex);
+			////console.log(ex);
 		};
 
 		reader.readAsBinaryString(file);
@@ -130,7 +130,7 @@ naValuesType.map(item => {
 	document.querySelector(`select#${item}`).addEventListener('change', function (e) {
 		if (item !== "dayType" && item !== "productCity") {
 			let obj = criteriaMap.get(item);
-			// console.log(obj[e.target.value]);
+			// //console.log(obj[e.target.value]);
 			if (/^\d+$/.test(obj[e.target.value])) {
 				document.getElementById('delivery_charge').value = obj[e.target.value];
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
@@ -143,17 +143,17 @@ naValuesType.map(item => {
 			}
 		}
 		else {
-			console.log("Hello");
+			//console.log("Hello");
 			let objDayType = criteriaMap.get("dayType");
 			let objProductCity = criteriaMap.get("productCity");
 			let dayType = document.querySelector(`select#dayType`).value;
 			let productCity = document.querySelector(`select#productCity`).value;
-			console.log(dayType, productCity);
+			//console.log(dayType, productCity);
 
-			console.log(objDayType?.[dayType], objProductCity?.[productCity]);
+			//console.log(objDayType?.[dayType], objProductCity?.[productCity]);
 
-			console.log((/^\d+$/.test(objDayType?.[dayType])));
-			console.log((/^\d+$/.test(objProductCity?.[productCity])));
+			//console.log((/^\d+$/.test(objDayType?.[dayType])));
+			//console.log((/^\d+$/.test(objProductCity?.[productCity])));
 
 			if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
@@ -1197,7 +1197,7 @@ $('.btn-ok').on("click", function () {
 					}, 2000);
 				},
 				error: function (data) {
-					//console.log(data);
+					////console.log(data);
 					document.getElementById('modalCancelG').disabled = false;
 					document.getElementById('modalApproveG').disabled = false;
 					var ob = Object.keys(data);
@@ -1859,7 +1859,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"delivery_distance": distance ? distance : "delivery_distance_na",
 				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 			});
-		console.log(datap);
+		//console.log(datap);
 		$('#tickD2').hide();
 		$(".circle-loader").show();
 		$(".circle-loader").removeClass("load-complete");
@@ -1883,7 +1883,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 					$("#myModalCreateD1").modal('show');
 					$("#sureD2").html("Please wait!");
 					if (data.status == 'OK') {
-						console.log(data);
+						//console.log(data);
 						setTimeout(function () {
 							removeMarkers2();
 							$(".circle-loader").addClass("load-complete");
@@ -1917,7 +1917,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				},
 				error: function (data) {
 					document.getElementById('createDelivery').disabled = false;
-					//console.log(data.responseJSON.errorMessage);
+					////console.log(data.responseJSON.errorMessage);
 					//$('#myModal2').modal('show');
 					var ob = Object.keys(data);
 
@@ -1988,10 +1988,10 @@ function convertTime24to12(time24) {
 		},
 		success: function(data) 
 		{
-			console.log(`${del_idx} assigned!`);
+			//console.log(`${del_idx} assigned!`);
 		},
 		error: function(data) {
-			console.log("Error: " + data);
+			//console.log("Error: " + data);
 		}
 	});
 }*/
@@ -2353,7 +2353,7 @@ function doIt(i, lengx) {
 					"delivery_distance": "delivery_distance_na",
 					"delivery_city_criteria": "delivery_city_criteria_na"
 				});
-			// console.log(datap);
+			// //console.log(datap);
 			$.ajax
 				({
 					async: true,
@@ -2427,8 +2427,8 @@ function doIt(i, lengx) {
 						document.getElementById('body').style.pointerEvents = "auto";
 						document.getElementById('createDeliverywithExcel').disabled = false;
 						document.getElementById('CLOSEIT').disabled = false;
-						//console.log(data.responseJSON.errorMessage);
-						//console.log(data);
+						////console.log(data.responseJSON.errorMessage);
+						////console.log(data);
 						var ob = Object.keys(data);
 						if (ob[17] == "responseJSON") {
 
@@ -2911,7 +2911,7 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 						criteriaMapForDeliveryUpdate.clear();
 					}
 					Object.keys(data.data).map((types, index) => {
-						console.log(types);
+						//console.log(types);
 						let mapObj = {};
 						// $(`#${types}1U`).show();
 						// $(`#${types}U`)
@@ -2923,7 +2923,7 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 						// 		j = ind;
 						// 		j++;
 						// 	}
-						// 	console.log(value, typeList[index]);
+						// 	//console.log(value, typeList[index]);
 						// 	var option = new Option(value, value);
 						// 	$(option).html(value);
 						// 	$(`#${types}U`).append(option);
@@ -2938,7 +2938,7 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 								;
 							j = 0;
 							Object.keys(data.data[types]).map((value, ind) => {
-								console.log(value, typeList[typ]);
+								//console.log(value, typeList[typ]);
 								if (value === typeList[typ]) {
 									j = ind;
 									document.getElementById('delivery_cost_update').disabled = true;
@@ -2952,7 +2952,7 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 							mapObj = { [naValues[typ]]: "", ...data.data[types] };
 							criteriaMapForDeliveryUpdate.set(types, mapObj);
 
-							console.log(mapObj, criteriaMapForDeliveryUpdate);
+							//console.log(mapObj, criteriaMapForDeliveryUpdate);
 							document.getElementById(`${types}U`).selectedIndex = j;
 						}
 					});
@@ -2982,7 +2982,7 @@ function setDynSelecChangeForUpdate() {
 		document.querySelector(`select#${item}U`).addEventListener('change', function (e) {
 			if (item !== "dayType" && item !== "productCity") {
 				let obj = criteriaMapForDeliveryUpdate.get(item);
-				console.log(obj[e.target.value]);
+				//console.log(obj[e.target.value]);
 				if (/^\d+$/.test(obj[e.target.value])) {
 					document.getElementById('delivery_cost_update').value = obj[e.target.value];
 					document.getElementById('delivery_cost_update').disabled = true;
@@ -2995,17 +2995,17 @@ function setDynSelecChangeForUpdate() {
 				}
 			}
 			else {
-				console.log("Hello");
+				//console.log("Hello");
 				let objDayType = criteriaMapForDeliveryUpdate.get("dayType");
 				let objProductCity = criteriaMapForDeliveryUpdate.get("productCity");
 				let dayType = document.querySelector(`select#dayTypeU`).value;
 				let productCity = document.querySelector(`select#productCityU`).value;
-				console.log(dayType, productCity);
+				//console.log(dayType, productCity);
 
-				console.log(objDayType?.[dayType], objProductCity?.[productCity]);
+				//console.log(objDayType?.[dayType], objProductCity?.[productCity]);
 
-				console.log((/^\d+$/.test(objDayType?.[dayType])));
-				console.log((/^\d+$/.test(objProductCity?.[productCity])));
+				//console.log((/^\d+$/.test(objDayType?.[dayType])));
+				//console.log((/^\d+$/.test(objProductCity?.[productCity])));
 
 				if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
 					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
@@ -3051,7 +3051,7 @@ var l = 0, modalCostPerMerchant = 0, rowNumber = null;
 $('#dtBasicExampled').on('click', '.updateCh', function () {
 	id_delivery_update = $(this).attr('id');
 	// rowNumber = $(this).closest('tr').index();
-	// console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
+	// //console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
 	arr = id_delivery_update.split('$$');
 	// if ($(this).closest('tr').hasClass("shown")) {
 	// 	document.querySelector(`#dtBasicExampled tbody tr:nth-child(${rowNumber})`).classList.remove("shown");
@@ -3063,7 +3063,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
 	document.getElementById('delivery_cost_update').disabled = false;
 	thikKoroCriteria(creator_ID, arr[29], arr[27], arr[28], arr[30], arr[31]);
-	//console.log(arr);
+	////console.log(arr);
 	modalCostPerMerchant = arr[2];
 	setDynSelecChangeForUpdate();
 	document.getElementById('delivery_cost_update').value = arr[2];
@@ -3358,7 +3358,7 @@ $('.btn-ok-updateDC').on("click", function () {
 			"delivery_distance": distance ? distance : "delivery_distance_na",
 			"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 		});
-	console.log(datap);
+	//console.log(datap);
 	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v0() == 1 && v4() == 1 && v12() == 1) {
 
 		document.getElementById('modalApproveDC').disabled = true;
@@ -3415,7 +3415,7 @@ $('.btn-ok-updateDC').on("click", function () {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					var table = $('#dtBasicExampled').DataTable();
 					try {
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
@@ -3472,7 +3472,7 @@ $('.btn-ok-updateDC').on("click", function () {
 
 					}
 					catch (e) {
-						console.log(e);
+						//console.log(e);
 					}
 
 					setTimeout(function () {
@@ -3490,7 +3490,7 @@ $('.btn-ok-updateDC').on("click", function () {
 						//.row($t.parents('tr'))
 						//.data(newArr)
 						//.draw(false);
-						//console.log(table.row($t.parents('tr')).data());
+						////console.log(table.row($t.parents('tr')).data());
 
 						$('.btn-ok-updateDC').attr('disabled', false);
 						$('.cancelModDC').prop('disabled', false);
@@ -3498,7 +3498,7 @@ $('.btn-ok-updateDC').on("click", function () {
 				},
 				error: function (data) {
 
-					//console.log(data.responseJSON.errorMessage);
+					////console.log(data.responseJSON.errorMessage);
 					setTimeout(function () {
 
 						$('.btn-ok-updateDC').attr('disabled', false);
@@ -3529,7 +3529,7 @@ $('#dtBasicExampleNewj').on('click', '.returnIt', function () {
 
 	del_id = arr[0];
 	creator_ID = arr[1];
-	//console.log(arr);
+	////console.log(arr);
 	document.getElementById('product_nameUR').value = arr[3];
 	document.getElementById('product_qtyUR').value = arr[4];
 	document.getElementById('product_costUR').value = arr[5];
@@ -3618,7 +3618,7 @@ $('.btn-okReturn').on("click", function () {
 	var datap;
 	if (v1() == 1 && v2() == 1 && v3() == 1 && v4() == 1) {
 		//pickup_time = convertTime24to12(pickup_time);
-		//console.log(pickup_time);
+		////console.log(pickup_time);
 		/*data= JSON.stringify
 			({
 				"collection_name": collection_name,
@@ -3647,7 +3647,7 @@ $('.btn-okReturn').on("click", function () {
 				"delivery_created_by_role": created_by_role,
 				"delivery_status": delivery_statusx
 			});
-			console.log(data);*/
+			//console.log(data);*/
 		document.getElementById('modalApproveGReturn').disabled = true;
 		document.getElementById('modalCancelGReturn').disabled = true;
 		$('.btn-okReturn').attr('disabled', true);
@@ -3693,7 +3693,7 @@ $('.btn-okReturn').on("click", function () {
 						//.row($t.parents('tr'))
 						//.data(newArr)
 						//.draw();
-						//console.log(table.row($t.parents('tr')).data());
+						////console.log(table.row($t.parents('tr')).data());
 
 						$('.btn-okReturn').attr('disabled', false);
 						$('.btn-cancel-Return').prop('disabled', false);
@@ -3701,7 +3701,7 @@ $('.btn-okReturn').on("click", function () {
 				},
 				error: function (data) {
 
-					//console.log(data.responseJSON.errorMessage);
+					////console.log(data.responseJSON.errorMessage);
 					setTimeout(function () {
 
 						$('.btn-okReturn').attr('disabled', false);

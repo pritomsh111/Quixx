@@ -848,7 +848,7 @@ $('.btn-ok-update').on("click", function (e) {
 						document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
 					}
 					catch (e) {
-						console.log(e);
+						//console.log(e);
 					}
 					setTimeout(function () {
 						$(".circle-loader").addClass("load-complete");
@@ -996,7 +996,7 @@ function getData() {
 						Array.from(Object.keys(data.data[item]).map(itemKeys => {
 
 							document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`) ? document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`).value = data.data[item][itemKeys] : null;
-							console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
+							//console.log(document.querySelector(`.${item}${itemKeys.replace(/ /g, "")}`), `.${item}${itemKeys}`, `.${item}${itemKeys.replace(/ /g, "")}`);
 						}));
 					}
 				});
@@ -1011,11 +1011,11 @@ function fillupFields() {
 		let typesArray = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
 		let array = [], flagger = 1;
 		for (const [index, item] of Object.keys(fillData).entries()) {
-			console.log(index, item);
+			//console.log(index, item);
 			let obj = {};
 			for (const i of fillData[item]) {
 				if (document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value) {
-					console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
+					//console.log(i, typesArray[index] + i.replace(/ /g, ""), item, index, document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`));
 					let testingNumber = /^\d+$/.test(document.querySelector(`input[class$='${typesArray[index] + i.replace(/ /g, "")}']`).value);
 					if (!testingNumber) {
 						$('.btn-ok-updateCriteria').attr('disabled', false);
@@ -1058,7 +1058,7 @@ function fillupFields() {
 		// 	});
 		// 	array.push(obj);
 		// });
-		console.log(array);
+		// console.log(array);
 		if (flagger) {
 			modalFormBeforeSuccess();
 			$.ajax
@@ -1079,7 +1079,7 @@ function fillupFields() {
 						"productCityMap": array[4]
 					}),
 					success: function (data) {
-						console.log(data);
+						// console.log(data);
 						setTimeout(function () {
 							$(".circle-loader").addClass("load-complete");
 

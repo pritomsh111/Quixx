@@ -8,6 +8,7 @@
 	}
 
 	if (user === 'SUPER_ADMIN') {
+		$('.selectbtnMer').hide();
 		document.querySelector(".selectbtnMer").remove();
 		$('.logo>a>label').hide();
 		$('.logo>a>input').hide();
@@ -36,7 +37,7 @@
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					if (data.data.image_str == "") {
 						isLogo = false;
 					}
@@ -65,7 +66,7 @@
 						method = "PUT";
 						url = urlForAll + "approved/update/logo";
 					}
-					console.log(isLogo);
+					//console.log(isLogo);
 					if (e.target.result.includes("data:image")) {
 						changeFavicon(e.target.result);
 						$.ajax
@@ -222,7 +223,7 @@
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					console.log(data);
+					//console.log(data);
 					if (data.data.image_str == "") {
 						$('#two2').hide();
 						isLogo = false;
@@ -251,7 +252,7 @@
 						url = urlForAll + "approved/insert/logo";
 						method = "POST";
 					}
-					console.log(isLogo);
+					//console.log(isLogo);
 					if (e.target.result.includes("data:image")) {
 						$.ajax
 							({
@@ -269,7 +270,7 @@
 									"Authorization": 'Bearer ' + localStorage.getItem('token')
 								},
 								success: function (data) {
-									console.log(data);
+									//console.log(data);
 									changeFavicon(e.target.result);
 									preview.setAttribute('src', e.target.result);
 								}
@@ -318,7 +319,7 @@
 		// 						preview.setAttribute('src', e.target.result);
 		// 					}
 		// 				});
-		// 			//console.log(e.target.result);
+		// 			////console.log(e.target.result);
 		// 		}
 
 		// 		reader.readAsDataURL(input2.files[0]);
