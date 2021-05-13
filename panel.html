@@ -108,6 +108,11 @@
                     },
                 },
             });
+            function changeIT(){
+                document.querySelector(".sidebar").classList.toggle("sidebar-smol");
+                document.querySelector(".main-panel").classList.toggle("sidebar-smol");
+                console.log('dsaju');
+            }
         </script>
     </head>
     <body id="body">
@@ -116,7 +121,6 @@
                 <img src="static/img/panel-loader.gif" alt="Preloader">
             </div>
         </div>
-        <button onclick="function changeIT(){console.log('dsaju');}">Click Meh!</button>
         <div class="wrapper">
             <div
                 class="sidebar"
@@ -315,6 +319,7 @@
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top" id="navigation-example">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
+                            <button class="btn btn-outline" onclick="changeIT()">Click Meh!</button>
                             <a class="navbar-brand" id="dashName">Dashboard</a>
                             <button class="btn btn-outline btn-primary selectbtnMer" style="padding: 0.4rem;">Home</button>
                         </div>
