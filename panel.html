@@ -110,8 +110,10 @@
             });
             function changeIT(){
                 document.querySelector(".sidebar").classList.toggle("sidebar-smol");
+                document.querySelector(".sidebar-wrapper").classList.toggle("sidebar-smol");
+                document.querySelector(".logo").classList.toggle("sidebar-smol");
                 document.querySelector(".main-panel").classList.toggle("sidebar-smol");
-                console.log('dsaju');
+                document.querySelector("#namee").classList.toggle("sidebar-smol");
             }
         </script>
     </head>
@@ -134,9 +136,7 @@
                         <label for="filetag">Change</label>
                         <input type="file" id="filetag" style="display: none;">
                     </a>
-                    <span id="namee" style="
-                    display: inline-block;
-                    margin-top: 1rem;"></span>
+                    <span id="namee"></span>
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
