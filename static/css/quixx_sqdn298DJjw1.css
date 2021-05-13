@@ -4831,6 +4831,11 @@ h2.title {
 
 .changeWidth i {
   font-size: 1rem;
+  transition: transform 350ms ease-in;
+}
+
+.main-panel.sidebar-smol .changeWidth i {
+  transform: rotate(180deg);
 }
 
 @media (max-width:991px) {
