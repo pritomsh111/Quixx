@@ -154,7 +154,7 @@ option {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -162,7 +162,7 @@ option {
 }
 
 ::-moz-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 
 ::-moz-scrollbar-thumb {
