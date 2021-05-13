@@ -4816,11 +4816,32 @@ h2.title {
 
 .sidebar.sidebar-smol .nav li a, .sidebar .nav li .dropdown-menu a {
   padding: 10px 8px;
+  position: relative;
+}
+
+/* .sidebar.sidebar-smol .nav li a[title]:hover::after, .sidebar .nav li .dropdown-menu a[title]:hover::after {
+  content: attr(title);
+} */
+
+.changeWidth {
+  padding: 0.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.changeWidth i {
+  font-size: 1rem;
+}
+
+@media (max-width:991px) {
+  .changeWidth {
+    display: none;
+  }
 }
 
 .sidebar .nav li a p, .sidebar .nav li .dropdown-menu a p {
   visibility: visible;
-  transition: visibility 350ms ease-in;
+  transition: visibility 1ms ease-in;
 }
 
 .sidebar.sidebar-smol .nav li a p, .sidebar .nav li .dropdown-menu a p {
@@ -4837,7 +4858,7 @@ h2.title {
 }
 
 .main-panel.sidebar-smol {
-  width: calc(100% - 52px);
+  width: calc(100% - 70px);
 }
 
 .sidebar .caret {
