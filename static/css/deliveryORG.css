@@ -105,6 +105,14 @@ td[colspan] table:nth-child(2n) {
   }
 }
 
+div[id^="DID"] {
+  display: none;
+}
+
+.showBtn div[id^="DID"] {
+  display: block;
+}
+
 .col-md-4 button {
   padding: 14px 1rem;
 }

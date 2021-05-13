@@ -47,7 +47,15 @@ div.hideKoro3{
                     onclick="createBulkDelivery()"
                 >Create Bulk Deliveries [Excel]</button>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="show-toggle"
+                    style="width:100%;font-size: 13px"
+                    onclick="showBtnToggle()"
+                >Show Detailed Deliveries</button>
+            </div>
+            <div id="DID" class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="oneb"
@@ -55,7 +63,7 @@ div.hideKoro3{
                     onclick="unassignedDeliveries()"
                 >Unassigned Deliveries</button>
             </div>
-            <div class="col-md-6">
+            <div id="DID2" class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="twob"
@@ -63,7 +71,7 @@ div.hideKoro3{
                     onclick="assignedDeliveries()"
                 >Assigned Deliveries</button>
             </div>
-            <div class="col-md-6">
+            <div id="DID3" class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="sevenb"
@@ -71,7 +79,7 @@ div.hideKoro3{
                     onclick="onGoingDeliveries()"
                 >Ongoing Deliveries</button>
             </div>
-            <div class="col-md-6">
+            <div id="DID4" class="col-md-6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="eightb"
@@ -79,7 +87,7 @@ div.hideKoro3{
                     onclick="completedDeliveries()"
                 >Completed Deliveries</button>
             </div>
-            <div class="col-md-4">
+            <div id="DID5" class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="sixb"
@@ -87,7 +95,7 @@ div.hideKoro3{
                     onclick="onHoldDeliveries()"
                 >On-Hold Deliveries</button>
             </div>
-            <div class="col-md-4">
+            <div id="DID6" class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="nineb"
@@ -95,7 +103,7 @@ div.hideKoro3{
                     onclick="canceledDeliveries()"
                 >Canceled Deliveries</button>
             </div>
-            <div class="col-md-4">
+            <div id="DID7" class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="tenb"
