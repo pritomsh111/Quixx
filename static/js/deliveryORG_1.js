@@ -269,6 +269,10 @@ async function criteriaInfo(value) {
 	}
 }
 
+function showBtnToggle() {
+	document.querySelector("#bh").classList.toggle("showBtn");;
+}
+
 function initialize() {
 	initAutocomplete();
 	initMap();

@@ -4854,18 +4854,12 @@ h2.title {
 }
 
 #namee {
-  opacity: 1;
   display: inline-block;
-  visibility: visible;
-  transform: translateX(0);
   margin-top: 1rem;
-  transition: transform 350ms ease-in, opacity 350ms ease-in, visibility 350ms ease-in;
 }
 
 #namee.sidebar-smol {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-200%);
+  display: none;
 }
 
 .main-panel.sidebar-smol {
