@@ -4823,23 +4823,27 @@ h2.title {
   content: attr(title);
 } */
 
-.changeWidth {
-  padding: 0.5rem;
+#changeWidth {
+  padding: 7rem 0.01em;
+  top: 0;
+  right: 0;
+  height: 100%;
+  position: absolute;
   display: grid;
   place-items: center;
 }
 
-.changeWidth i {
+#changeWidth i {
   font-size: 1rem;
   transition: transform 350ms ease-in;
 }
 
-.main-panel.sidebar-smol .changeWidth i {
+.main-panel.sidebar-smol #changeWidth i {
   transform: rotate(180deg);
 }
 
 @media (max-width:991px) {
-  .changeWidth {
+  #changeWidth {
     display: none;
   }
 }
