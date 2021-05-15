@@ -294,14 +294,14 @@ input {
   font-size: 1.1rem;
 }
 
-#senderList, #managers, #managers_2 {
+#senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
   padding: 0.3rem;
   text-align-last: left;
   height: 40px;
 }
 
 @media (max-width:400px) {
-  #senderList, #managers, #managers_2 {
+  #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
     padding: 0.2rem;
     text-align-last: left;
     height: 40px;
