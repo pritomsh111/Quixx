@@ -509,17 +509,17 @@ var recall1 = (saveIT) => {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				var map = new google.maps.Map(document.getElementById('map'), {
-					center: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
-					zoom: 13,
-					mapTypeId: 'roadmap',
-					mapTypeControl: false,
-					fullscreenControl: false
-				});
-				myMarker = new google.maps.Marker({
-					position: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
-					map: map
-				});
+				// var map = new google.maps.Map(document.getElementById('map'), {
+				// 	center: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
+				// 	zoom: 13,
+				// 	mapTypeId: 'roadmap',
+				// 	mapTypeControl: false,
+				// 	fullscreenControl: false
+				// });
+				// myMarker = new google.maps.Marker({
+				// 	position: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
+				// 	map: map
+				// });
 				document.getElementById('pac-input').value = data.data.sender_address;
 				document.getElementById('s_name').value = data.data.sender_name;
 				document.getElementById('s_number').value = data.data.sender_phone_number;

@@ -270,10 +270,10 @@ input {
 }
 
 #formD>div:not(:first-child) {
-  margin: 3rem 0 2rem;
+  margin: 5rem 0 3rem;
 }
 
-.sender_information {
+.sender_information, .receiver_information {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -285,7 +285,7 @@ input {
   position: relative;
 }
 
-.sender_information::before {
+.sender_information::before, .receiver_information::before {
   position: absolute;
   content: attr(data-title)":";
   top: -4rem;
@@ -297,6 +297,18 @@ input {
   padding: 0.1rem;
   text-align-last: center;
   height: 40px;
+}
+
+@media (max-width:400px) {
+  #senderList {
+    padding: 0.2rem;
+    text-align-last: left;
+    height: 40px;
+    width: 130px;
+  }
+  .sender_information {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
 }
 
 ::selection {
