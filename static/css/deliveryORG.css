@@ -273,7 +273,7 @@ input {
   margin: 5rem 0 3rem;
 }
 
-.sender_information, .receiver_information, .product_information {
+.sender_information, .receiver_information, .product_information, .delivery_information {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -285,7 +285,7 @@ input {
   position: relative;
 }
 
-.sender_information::before, .receiver_information::before, .product_information::before {
+.sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before {
   position: absolute;
   content: attr(data-title)":";
   top: -4rem;
@@ -307,7 +307,7 @@ input {
     height: 40px;
     width: 130px;
   }
-  .sender_information, .receiver_information, .product_information {
+  .sender_information, .receiver_information, .product_information, .delivery_information {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
 }

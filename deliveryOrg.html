@@ -149,6 +149,14 @@ div.hideKoro3{
                                 </div>
                                 <div class="receiver_information" style="padding-bottom:15rem;" data-title="Receiver's Information">
                                     <div>
+                                        Receiver's District
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers" style="color:#0066b3;height: 46px;background:#fbfcfd;"></select>
+                                    </div>
+                                    <div>
+                                        Receiver's Area:
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers_2" style="color:#0066b3;height: 46px;background:#fbfcfd;"></select>
+                                    </div>
+                                    <div>
                                         Receiver's Name:
                                         <input
                                             type="text"
@@ -177,14 +185,6 @@ div.hideKoro3{
                                             class="form-control"
                                             placeholder=""
                                         >
-                                    </div>
-                                    <div>
-                                        District
-                                        <select class="browser-default custom-select col-lg-12 btn" id="managers" style="color:#0066b3;height: 46px;background:#fbfcfd;"></select>
-                                    </div>
-                                    <div>
-                                        Receiver's Area:
-                                        <select class="browser-default custom-select col-lg-12 btn" id="managers_2" style="color:#0066b3;height: 46px;background:#fbfcfd;"></select>
                                     </div>
                                     <div style="position:relative;margin-top:1rem;grid-column:1/-1;">
                                         Give Receiver's Exact Location On Map (Optional):
@@ -258,19 +258,33 @@ div.hideKoro3{
                                             <br>
                                         </div>
                                     </div>
+                                    <div>
+                                        <div id="D_charge"></div>
+                                        <input
+                                            type="text"
+                                            style="color:#0066b3"
+                                            id="delivery_charge"
+                                            class="form-control"
+                                            placeholder="1000"
+                                        >
+                                    </div>
+                                    <div>
+                                        Payment Method:
+                                        <select class="custom-select col-lg-12 btn" id="managers2" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                    </div>
+                                    <div>
+                                        Auto Assign Delivery To Delivery Man?
+                                        <select class="browser-default custom-select col-lg-12 btn" id="autoAss" style="text-align-last:center;height: 46px;background:#fbfcfd">
+                                            <option value="yes">Yes</option>
+                                            <option value="no" selected>No</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div id="D_charge"></div>
-                                <input
-                                    type="text"
-                                    style="color:#0066b3"
-                                    id="delivery_charge"
-                                    class="form-control"
-                                    placeholder="1000"
-                                >
-                                <br>
-                                Payment Method:
-                                <select class="custom-select col-lg-12 btn" id="managers2" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                <br>
+                                <h5 style="text-align:center;color:#0066b3">Delivery Type:</h5>
+                                <select class="custom-select col-lg-12 btn" id="deliveryType" style="height: 46px;color:#0066b3;text-align-last:center;background:#fbfcfd">
+                                    <!--<option>WAREHOUSE</option>-->
+                                    <option>CUSTOMER</option>
+                                </select>
                                 Delivery Note [Optional]:
                                 <input
                                     type="text"
@@ -279,23 +293,6 @@ div.hideKoro3{
                                     class="form-control"
                                     placeholder=""
                                 >
-                                <br>
-                                <h5 style="text-align:center;color:#0066b3">Delivery Type:</h5>
-                                <select class="custom-select col-lg-12 btn" id="deliveryType" style="height: 46px;color:#0066b3;text-align-last:center">
-                                    <!--<option>WAREHOUSE</option>-->
-                                    <option>CUSTOMER</option>
-                                </select>
-                                <br>
-                                <br>
-                                <input type="hidden" id="lat" name="lat">
-                                <input type="hidden" id="longi" name="longi">
-                                <input type="hidden" id="des_lat" name="des_lat">
-                                <input type="hidden" id="des_longi" name="des_longi">
-                                <h5 style="text-align:center;color:#0066b3">Auto Assign Delivery To Delivery Man?</h5>
-                                <select class="browser-default custom-select col-lg-12 btn" id="autoAss" style="text-align-last:center;height: 46px;">
-                                    <option value="yes">Yes</option>
-                                    <option value="no" selected>No</option>
-                                </select>
                                 Pickup Time:
                                 <input
                                     type="text"
@@ -304,6 +301,10 @@ div.hideKoro3{
                                     class="form-control mb-4"
                                     placeholder="09:00 AM"
                                 >
+                                <input type="hidden" id="lat" name="lat">
+                                <input type="hidden" id="longi" name="longi">
+                                <input type="hidden" id="des_lat" name="des_lat">
+                                <input type="hidden" id="des_longi" name="des_longi">
                                 <h5 style="text-align:center;color:#0066b3;display:none;">Sender's Address:</h5>
                                 <input
                                     id="pac-input"
