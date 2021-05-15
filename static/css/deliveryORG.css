@@ -268,7 +268,21 @@ input {
 .sender_information {
   display: grid;
   flex-wrap: wrap;
-  grid-template-columns: repeat(auto-fit, 400px);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   column-gap: 2rem;
   row-gap: 2rem;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+#senderList {
+  padding: 0.1rem;
+  text-align-last: center;
+  height: 40px;
+}
+
+::selection {
+  color: #ffcf5c;
+  background-color: #0066b3;
 }
