@@ -251,7 +251,7 @@ input {
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #0066b3;
-  opacity: 1;
+  opacity: 0.8;
   /* Firefox */
 }
 
@@ -263,4 +263,12 @@ input {
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: #0066b3;
+}
+
+.sender_information {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, 400px);
+  column-gap: 2rem;
+  row-gap: 2rem;
 }
