@@ -265,6 +265,14 @@ input {
   color: #0066b3;
 }
 
+#formD>div:first-child {
+  margin-bottom: 2rem;
+}
+
+#formD>div:not(:first-child) {
+  margin: 3rem 0 2rem;
+}
+
 .sender_information {
   display: grid;
   flex-wrap: wrap;
@@ -273,6 +281,15 @@ input {
   row-gap: 2rem;
   border: 1px solid #eee;
   border-radius: 5px;
+  padding: 1rem;
+  position: relative;
+}
+
+.sender_information::before {
+  position: absolute;
+  content: attr(data-title)":";
+  top: -4rem;
+  left: 0;
   padding: 1rem;
 }
 
