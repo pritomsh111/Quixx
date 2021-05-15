@@ -266,7 +266,7 @@ input {
 }
 
 #formD>div:first-child {
-  margin-bottom: 2rem;
+  margin-bottom: 0.1rem;
 }
 
 #formD>div:not(:first-child) {
@@ -291,22 +291,23 @@ input {
   top: -4rem;
   left: 0;
   padding: 1rem;
+  font-size: 1.1rem;
 }
 
-#senderList {
+#senderList, #managers, #managers_2 {
   padding: 0.1rem;
   text-align-last: center;
   height: 40px;
 }
 
 @media (max-width:400px) {
-  #senderList {
+  #senderList, #managers, #managers_2 {
     padding: 0.2rem;
     text-align-last: left;
     height: 40px;
     width: 130px;
   }
-  .sender_information {
+  .sender_information, .receiver_information {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
 }
