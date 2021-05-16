@@ -3358,7 +3358,7 @@ $('.btn-ok-updateDC').on("click", function () {
 			"delivery_distance": distance ? distance : "delivery_distance_na",
 			"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 		});
-	//console.log(datap);
+	console.log(datap);
 	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v0() == 1 && v4() == 1 && v12() == 1) {
 
 		document.getElementById('modalApproveDC').disabled = true;
