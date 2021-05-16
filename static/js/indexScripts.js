@@ -128,6 +128,7 @@
 			e.preventDefault();
 			location.hash = "selection";
 		});
+		document.querySelector("#merchant a[href='#selection']").remove();
 		document.querySelector(".logo>a>div").style.height = "130px";
 		$.ajax
 			({
