@@ -4840,7 +4840,7 @@ h2.title {
 }
 
 @media (max-width:991px) {
-  .changeWidth {
+  #changeWidth {
     display: none;
   }
 }

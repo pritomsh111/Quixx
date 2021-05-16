@@ -114,6 +114,14 @@
                 document.querySelector(".logo").classList.toggle("sidebar-smol");
                 document.querySelector(".main-panel").classList.toggle("sidebar-smol");
                 document.querySelector("#namee").classList.toggle("sidebar-smol");
+                if(localStorage.getItem("user")==="MERCHANT" || localStorage.getItem("user")==="SUPER_ADMIN"){
+                    if(document.querySelector(".logo>a>div").style.height==="75px"){
+                        document.querySelector(".logo>a>div").style.height = "130px";
+                    }
+                    else{
+                        document.querySelector(".logo>a>div").style.height = "75px";
+                    }
+                }
             }
         </script>
     </head>
