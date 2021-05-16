@@ -463,7 +463,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 		}
 	}
 	if (isOK) {
-		console.log(json);
+		// console.log(json);
 		$.ajax
 			({
 				type: "PUT",
@@ -482,7 +482,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 					$("#myModalCreateDD1").modal('show');
 					$("#sureDD2").html("Please wait!");
 					if (data.status == 'OK') {
-						console.log(data);
+						// console.log(data);
 						setTimeout(function () {
 							$(".circle-loader").addClass("load-complete");
 

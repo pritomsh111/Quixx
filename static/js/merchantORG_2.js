@@ -390,7 +390,7 @@ var activated = () => {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (dataOTP) {
-					console.log(dataOTP);
+					//console.log(dataOTP);
 					table.rows().every(function (index, element) {
 
 						var row = $(this.node());
