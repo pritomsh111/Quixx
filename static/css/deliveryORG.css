@@ -300,27 +300,48 @@ input {
   height: 40px;
 }
 
-@media (max-width:400px) {
+.criteria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-column: span 2;
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+
+#productType1, #productWeight1, #dayType1, #productDistance1, #productCity1 {
+  display: grid;
+}
+
+@media (max-width:450px) {
   #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
     padding: 0.2rem;
     text-align-last: left;
     height: 40px;
     width: 130px;
   }
-  .sender_information, .receiver_information, .product_information, .delivery_information {
+  .sender_information, .receiver_information, .product_information {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+  .delivery_information {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+  .criteria {
+    display: block;
+    grid-template-columns: unset;
+    grid-column: unset;
+    column-gap: 0rem;
+    row-gap: 0rem;
+  }
+  #productType1, #productWeight1, #dayType1, #productDistance1, #productCity1 {
+    display: block;
+  }
+  #D_charge {
+    margin-top: -1rem;
   }
 }
 
 ::selection {
   color: #0066b3;
   background-color: #ffcf5c;
-}
-
-.criteria {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column: span 2;
-  column-gap: 1rem;
-  row-gap: 1rem;
 }
