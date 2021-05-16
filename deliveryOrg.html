@@ -118,7 +118,9 @@ div.hideKoro3{
                     <div class="card">
                         <div class="card-body table-responsive blur">
                             <form class="p-5" style="color:#0066b3;text-align:left;" id="formD">
-                                <div></div>
+                                <div style="font-size:18.5px;margin-top:-15px;margin-bottom:2rem;color:#0D324D;text-align:center">
+                                    <strong>Input Fields Must Be Filled In English</strong>
+                                </div>
                                 <div class="sender_information" data-title="Sender's Information">
                                     <div>
                                         Select Sender:
@@ -286,18 +288,6 @@ div.hideKoro3{
                                             <option>CUSTOMER</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        Delivery Note [Optional]:
-                                        <input
-                                            type="text"
-                                            style="color:#0066b3"
-                                            id="DELIVERY_NOTE"
-                                            class="form-control"
-                                            placeholder=""
-                                        >
-                                    </div>
                                     <div>
                                         Pickup Time:
                                         <input
@@ -306,6 +296,16 @@ div.hideKoro3{
                                             id="timepicker-12-hr"
                                             class="form-control mb-4"
                                             placeholder="09:00 AM"
+                                        >
+                                    </div>
+                                    <div>
+                                        Delivery Note [Optional]:
+                                        <input
+                                            type="text"
+                                            style="color:#0066b3"
+                                            id="DELIVERY_NOTE"
+                                            class="form-control"
+                                            placeholder=""
                                         >
                                     </div>
                                 </div>
@@ -326,7 +326,7 @@ div.hideKoro3{
                             </form>
                             <button
                                 class="btn btn-outline btn-round"
-                                style="background:#ffffd4;margin-top:-9px;"
+                                style="background:#ffffd4;margin-top:-7rem;"
                                 type="button"
                                 id="createDelivery"
                             >
@@ -343,9 +343,11 @@ div.hideKoro3{
                     <div class="card">
                         <div class="card-body table-responsive blur">
                             <form class="p-5">
-                                <div style="font-size:18.5px;margin-top:-15px;color:#0D324D;">Create Multiple Deliveries Using Excel File [Use Template Excel]:</div>
+                                <div style="font-size:18.5px;margin-top:-15px;color:#0D324D;text-align:center">
+                                    <strong>Input Fields In Excel Must Be Filled In English</strong>
+                                </div>
                                 <br>
-                                <h5 style="text-align:center;color:#0066b3">Sender List [Select one]:</h5>
+                                <h5 style="text-align:center;color:#0066b3">Select Sender:</h5>
                                 <select class="browser-default custom-select col-lg-12 btn" id="senderListExcel" style="text-align-last:center;width:80%;height: 46px;"></select>
                                 <div style="text-align:center;margin-top:15px;">
                                     <h5 id="senderInfo"></h5>

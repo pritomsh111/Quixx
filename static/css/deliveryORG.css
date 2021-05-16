@@ -279,7 +279,7 @@ input {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   column-gap: 2rem;
   row-gap: 2rem;
-  border: 1px solid #eee;
+  border: 1px solid rgb(221, 221, 221);
   border-radius: 5px;
   padding: 1rem;
   position: relative;
@@ -291,6 +291,7 @@ input {
   top: -4rem;
   left: 0;
   padding: 1rem;
+  color: #000;
   font-size: 1.1rem;
 }
 
