@@ -8,11 +8,11 @@
 
 table.dataTable thead th, table.dataTable thead td {
   padding: 10px 18px;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #0066b3;
 }
 
 table.dataTable.no-footer {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #0066b3;
 }
 
 table.dataTable tbody th, table.dataTable tbody td {
@@ -183,7 +183,7 @@ input {
   margin: auto;
   width: 100%;
   max-width: 280px;
-  color: #000;
+  color: #0066b3;
 }
 
 .inp .label {
@@ -191,7 +191,7 @@ input {
   top: 16px;
   left: 0;
   font-size: 16px;
-  color: #000;
+  color: #0066b3;
   font-weight: 500;
   transform-origin: 0 0;
   transition: all 0.2s ease;
@@ -250,19 +250,19 @@ input {
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #000;
+  color: #0066b3;
   opacity: 0.8;
   /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #000;
+  color: #0066b3;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #000;
+  color: #0066b3;
 }
 
 #formD>div:first-child {
@@ -313,6 +313,14 @@ input {
 }
 
 ::selection {
-  color: #ffcf5c;
-  background-color: #0066b3;
+  color: #0066b3;
+  background-color: #ffcf5c;
+}
+
+.criteria {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: span 2;
+  column-gap: 1rem;
+  row-gap: 1rem;
 }
