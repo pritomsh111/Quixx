@@ -247,6 +247,10 @@ async function criteriaInfo(value) {
 							//console.log(data.data[types]);
 						}
 					});
+					if (Object.keys(data.data).length === 1) {
+						$('.criteria')
+							.hide();
+					}
 					// document.getElementById('managers').selectedIndex = dhakaIndex;
 				}
 			});

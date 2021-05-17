@@ -324,21 +324,16 @@ input {
   transition: padding 250ms ease-in;
 }
 
-@media (max-width:1300px) {
-  .receiver_information {
-    padding-bottom: 0rem;
-  }
-}
-
 .showMap {
   transform: scaleY(0);
   opacity: 0;
+  height: 0;
   transform-origin: 0% 100%;
   transition: transform 250ms ease-in;
 }
 
 .receiver_information.vis-map {
-  padding-bottom: 15rem;
+  padding-bottom: 15.15rem;
 }
 
 .receiver_information.vis-map .smp {
@@ -348,6 +343,7 @@ input {
 .receiver_information.vis-map .smp .showMap {
   transform: scaleY(1);
   opacity: 1;
+  height: 100%;
 }
 
 @media (max-width:450px) {

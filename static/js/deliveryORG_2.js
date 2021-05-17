@@ -1574,7 +1574,6 @@ function recall() {
 	document.getElementById('des_longi').value = "";
 	document.getElementById('product_name').value = "";
 	document.getElementById('product_qty').value = "";
-	document.getElementById('autoAss').value = "";
 	$.ajax
 		({
 			async: true,
@@ -2417,7 +2416,6 @@ function doIt(i, lengx) {
 								setTimeout(function () {
 
 									document.getElementById('createDeliverywithExcel').disabled = false;
-									document.getElementById('autoAss2').value = "";
 									//$("#myModalCreateD1").modal('hide');
 								}, 3000);
 								document.getElementById('CLOSEIT').disabled = false;
