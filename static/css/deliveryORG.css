@@ -316,10 +316,24 @@ input {
 
 .receiver_information {
   padding-bottom: 0rem;
+  transition: padding 250ms ease-in;
 }
 
 .showMap {
   transform: scale(0);
+  transition: transform 250ms ease-in;
+}
+
+.receiver_information.vis-map {
+  padding-bottom: 15rem;
+}
+
+.receiver_information.vis-map .smp {
+  grid-column: 1/-1;
+}
+
+.receiver_information.vis-map .smp .showMap {
+  transform: scale(1);
 }
 
 @media (max-width:450px) {
