@@ -158,7 +158,7 @@
     });
 
     // For Forget Pass
-    phone_number.addEventListener("keyup", function (event) {
+    phone_number.addEventListener("keypress", function (event) {
         if (event.target.value.match(/\d/g).length === 11) {
             modalNextButton.disabled = false;
         }
@@ -166,7 +166,7 @@
             modalNextButton.disabled = true;
         }
     });
-    fp_restore.addEventListener("keyup", function (event) {
+    fp_restore.addEventListener("keypress", function (event) {
         if (event.target.value.match(/\d/g).length === 4) {
             modalDoneButton.disabled = false;
         }
