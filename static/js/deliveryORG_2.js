@@ -259,7 +259,7 @@ $("#senderList").change(async function () {
 						}
 						else {
 							merchantPerDeliveryCost = 0;
-							$("#delivery_charge").attr('placeholder', "1000");
+							$("#delivery_charge").attr('placeholder', "80");
 							document.getElementById('delivery_charge').value = "";
 							document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
 						}

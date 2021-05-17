@@ -152,7 +152,7 @@ $(async function () {
 				$('#senderListExcel')
 					.append('<option value="' + org_ID + '">Organization Head</option>')
 					;
-				$("#delivery_charge").attr('placeholder', "1000");
+				$("#delivery_charge").attr('placeholder', "80");
 				document.getElementById('delivery_charge').value = "";
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
 				//recall1(saveIT);
@@ -545,7 +545,7 @@ var recall1 = (saveIT) => {
 					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
 				}
 				else {
-					$("#delivery_charge").attr('placeholder', "1000");
+					$("#delivery_charge").attr('placeholder', "80");
 					document.getElementById('delivery_charge').value = "";
 					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
 				}
