@@ -236,27 +236,22 @@ div.hideKoro3{
                                         <div id="productType1">
                                             Product Type Criteria:
                                             <select class="browser-default custom-select col-lg-12 btn" id="productType" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                            <br>
                                         </div>
                                         <div id="productWeight1">
                                             Product Weight Criteria [KG]:
                                             <select class="browser-default custom-select col-lg-12 btn" id="productWeight" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                            <br>
                                         </div>
                                         <div id="dayType1">
                                             Delivery Day Criteria:
                                             <select class="browser-default custom-select col-lg-12 btn" id="dayType" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                            <br>
                                         </div>
                                         <div id="productDistance1">
                                             Deilvery Distance Criteria [KM]:
                                             <select class="browser-default custom-select col-lg-12 btn" id="productDistance" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                            <br>
                                         </div>
                                         <div id="productCity1">
                                             Delivery City Criteria:
                                             <select class="browser-default custom-select col-lg-12 btn" id="productCity" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                            <br>
                                         </div>
                                     </div>
                                     <div>
@@ -1146,7 +1141,7 @@ div.hideKoro3{
                         <input type="hidden" id="des_latU" name="des_latU">
                         <input type="hidden" id="des_longiU" name="des_longiU">
                     </div>
-                    <div class="product_information" data-title="Product Information">
+                    <div class="product_informationU" data-title="Product Information">
                         <div>
                             Product Details:
                             <input
@@ -1161,7 +1156,7 @@ div.hideKoro3{
                             Product Quantity [Pieces]:
                             <input
                                 type="text"
-                                id="product_qtyU>"
+                                id="product_qtyU"
                                 class="form-control"
                                 placeholder="20"
                             >
@@ -1173,66 +1168,48 @@ div.hideKoro3{
                                 type="text"
                                 id="product_costU"
                                 class="form-control"
-                                placeholder="1000"
+                                placeholder="80"
                             >
                             <h6 type="hidden" id="wrongpercost" style="color:red"></h6>
                         </div>
                     </div>
-                    <div class="delivery_information" data-title="Delivery Information">
-                        <div class="criteria">
-                            <div id="productType1">
+                    <div class="delivery_informationU" data-title="Delivery Information">
+                        <div class="criteriaU">
+                            <div id="productType1U">
                                 Product Type Criteria:
-                                <select class="browser-default custom-select col-lg-12 btn" id="productType" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                <br>
+                                <select class="browser-default custom-select col-lg-12 btn" id="productTypeU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                             </div>
-                            <div id="productWeight1">
+                            <div id="productWeight1U">
                                 Product Weight Criteria [KG]:
-                                <select class="browser-default custom-select col-lg-12 btn" id="productWeight" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                <br>
+                                <select class="browser-default custom-select col-lg-12 btn" id="productWeightU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                             </div>
-                            <div id="dayType1">
+                            <div id="dayType1U">
                                 Delivery Day Criteria:
-                                <select class="browser-default custom-select col-lg-12 btn" id="dayType" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                <br>
+                                <select class="browser-default custom-select col-lg-12 btn" id="dayTypeU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                             </div>
-                            <div id="productDistance1">
+                            <div id="productDistance1U">
                                 Deilvery Distance Criteria [KM]:
-                                <select class="browser-default custom-select col-lg-12 btn" id="productDistance" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                <br>
+                                <select class="browser-default custom-select col-lg-12 btn" id="productDistanceU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                             </div>
-                            <div id="productCity1">
+                            <div id="productCity1U">
                                 Delivery City Criteria:
-                                <select class="browser-default custom-select col-lg-12 btn" id="productCity" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
-                                <br>
+                                <select class="browser-default custom-select col-lg-12 btn" id="productCityU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                             </div>
                         </div>
                         <div>
-                            <div id="D_charge"></div>
+                            <div id="chargeUpdate"></div>
                             <input
                                 type="text"
                                 style="color:#0066b3"
-                                id="delivery_charge"
+                                id="delivery_cost_update"
                                 class="form-control"
                                 placeholder="1000"
                             >
+                            <h6 type="hidden" id="wrongdcost" style="color:red"></h6>
                         </div>
                         <div>
                             Payment Method:
-                            <select class="custom-select col-lg-12 btn" id="managers2" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
-                        </div>
-                        <div>
-                            Auto Assign?
-                            <select class="browser-default custom-select col-lg-12 btn" id="autoAss" style="color:#000;text-align-last:left;background:#ffcf5c;">
-                                <option value="yes">Yes</option>
-                                <option value="no" selected>No</option>
-                            </select>
-                        </div>
-                        <div style="display:none;">
-                            Delivery Type:
-                            <select class="custom-select col-lg-12 btn browser-default" id="deliveryType" style="color:#000;text-align-last:left;background:#ffcf5c;">
-                                <!--<option>WAREHOUSE</option>-->
-                                <option>CUSTOMER</option>
-                            </select>
+                            <select class="custom-select col-lg-12 btn" id="managers2U" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
                         </div>
                         <div>
                             Pickup Time [Optional]:
@@ -1254,46 +1231,6 @@ div.hideKoro3{
                             >
                         </div>
                     </div>
-                    <div class="criteriaU">
-                        <div id="productType1U">
-                            <h5 style="margin-top:9px;">Product Type Criteria:</h5>
-                            <select class="custom-select col-lg-12 btn" id="productTypeU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
-                            <br>
-                        </div>
-                        <div id="productWeight1U">
-                            <h5 style="margin-top:9px;">Product Weight Criteria [KG]:</h5>
-                            <select class="custom-select col-lg-12 btn" id="productWeightU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
-                            <br>
-                        </div>
-                        <div id="dayType1U">
-                            <h5 style="margin-top:9px;">Delivery Day Criteria:</h5>
-                            <select class="custom-select col-lg-12 btn" id="dayTypeU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
-                            <br>
-                        </div>
-                        <div id="productDistance1U">
-                            <h5 style="margin-top:9px;">Delivery Distance Criteria [KM]:</h5>
-                            <select class="custom-select col-lg-12 btn" id="productDistanceU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
-                            <br>
-                        </div>
-                        <div id="productCity1U">
-                            <h5 style="margin-top:9px;">Delivery City Criteria:</h5>
-                            <select class="custom-select col-lg-12 btn" id="productCityU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
-                            <br>
-                        </div>
-                    </div>
-                    <h5 style="margin-top:9px;">Payment Method:</h5>
-                    <select class="custom-select col-lg-12 btn" id="managers2U" style="color:#0066b3;background:#ffcf5c;text-align-last:center;text-align:center;width:50%;margin:0 auto 2rem;">
-                        <h6 type="hidden" id="wrongrmethod" style="color:red"></h6>
-                    </select>
-                    <h5 style="margin-top:9px;" id="chargeUpdate">Delivery Charge [BDT]:</h5>
-                    <input
-                        type="text"
-                        style="color:#0066b3;text-align:center;width:50%;margin:0 auto;"
-                        id="delivery_cost_update"
-                        class="form-control"
-                        placeholder=""
-                    >
-                    <h6 type="hidden" id="wrongdcost" style="color:red"></h6>
                 </form>
                 <div class="circle-loader" style="text-align:center" id="circleLoad3DC">
                     <div class="checkmark draw" id="tick3DC"></div>

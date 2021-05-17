@@ -278,7 +278,7 @@ input {
   margin: 5rem 0 3rem;
 }
 
-.sender_information, .receiver_information, .receiver_informationU, .product_information, .delivery_information {
+.sender_information, .receiver_information, .receiver_informationU, .product_information, .product_informationU, .delivery_information, .delivery_informationU {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -291,11 +291,7 @@ input {
   position: relative;
 }
 
-.receiver_informationU {
-  margin-top: 2rem;
-}
-
-.sender_information::before, .receiver_information::before, .receiver_informationU::before, .product_information::before, .delivery_information::before {
+.sender_information::before, .receiver_information::before, .receiver_informationU::before, .product_information::before, .product_informationU::before, .delivery_information::before, .delivery_informationU::before {
   position: absolute;
   content: attr(data-title)":";
   top: -4rem;
@@ -305,13 +301,13 @@ input {
   font-size: 1.1rem;
 }
 
-#senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
+#productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
   padding: 0.3rem;
   text-align-last: left;
   height: 40px;
 }
 
-.criteria {
+.criteria, .criteriaU {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-column: span 2;
@@ -319,7 +315,7 @@ input {
   row-gap: 1rem;
 }
 
-#productType1, #productWeight1, #dayType1, #productDistance1, #productCity1 {
+#productType1, #productWeight1, #dayType1, #productDistance1, #productCity1, #productType1U, #productWeight1U, #dayType1U, #productDistance1U, #productCity1U {
   display: grid;
 }
 
@@ -352,36 +348,42 @@ input {
 
 #formUpdateDC {
   font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+#formUpdateDC>div:not(:last-child) {
+  margin: 4rem 0 5rem;
+}
+
+.modal-lg {
+  max-width: 90%;
 }
 
 @media (max-width:450px) {
-  #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
+  #productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
     padding: 0.2rem;
     text-align-last: left;
     height: 40px;
     width: 130px;
   }
-  .sender_information, .receiver_information, .product_information {
+  .sender_information, .receiver_information, .product_information, .receiver_informationU, .product_informationU {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
-  .delivery_information {
+  .delivery_information, .delivery_informationU {
     grid-template-columns: 1fr;
     row-gap: 2rem;
   }
-  .criteria {
+  .criteria, .criteriaU {
     display: block;
     grid-template-columns: unset;
     grid-column: unset;
     column-gap: 0rem;
     row-gap: 0rem;
   }
-  #productType1, #productWeight1, #dayType1, #productDistance1, #productCity1 {
+  #productType1, #productWeight1, #dayType1, #productDistance1, #productCity1, #productType1U, #productWeight1U, #dayType1U, #productDistance1U, #productCity1U {
     display: block;
   }
-  #D_charge {
-    margin-top: -1rem;
-  }
-  .sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before {
+  .sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before, .receiver_informationU::before, .product_informationU::before, .delivery_informationU::before {
     top: -4.5rem;
     font-size: 1.1rem;
   }
