@@ -99,6 +99,10 @@ a label:hover {
   color: #fff;
 }
 
+div[id^="hide"] {
+  margin-top: -0.1rem;
+}
+
 @media print {
   *, *::before, *::after {
     text-shadow: none !important;
