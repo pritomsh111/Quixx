@@ -273,22 +273,24 @@ $("#senderList").change(async function () {
 		criteriaInfo(value);
 	}
 	else {
-
-		var map = new google.maps.Map(document.getElementById('map'), {
-			center: { lat: 0, lng: 0 },
-			zoom: 10,
-			mapTypeId: 'roadmap',
-			mapTypeControl: false,
-			fullscreenControl: false
-		});
+		// var map = new google.maps.Map(document.getElementById('map'), {
+		// 	center: { lat: 0, lng: 0 },
+		// 	zoom: 10,
+		// 	mapTypeId: 'roadmap',
+		// 	mapTypeControl: false,
+		// 	fullscreenControl: false
+		// });
 		document.getElementById('pac-input').value = "";
 		document.getElementById('s_name').value = "";
 		document.getElementById('s_number').value = "";
 		document.getElementById('lat').value = "";
 		document.getElementById('longi').value = "";
-		$("#delivery_charge").attr('placeholder', "1000");
+		$("#delivery_charge").attr('placeholder', "80");
 		document.getElementById('delivery_charge').value = "";
+		document.getElementById('delivery_charge').disabled = false;
 		document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+		$('.criteria')
+			.hide();
 	}
 });
 
