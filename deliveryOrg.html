@@ -1083,9 +1083,17 @@ div.hideKoro3{
                 ></button>
                 <h4 class="modal-title" style="color:#0066b3">Update Delivery?</h4>
             </div>
-            <div class="modal-body" style="text-align:center;overflow:hidden;">
-                <form class="p-1" style="color:#0066b3" id="formUpdateDC">
-                    <div class="r_i_u" title="Receiver's Information">
+            <div class="modal-body" style="overflow:hidden;">
+                <form class="p-1" style="color:#0066b3;" id="formUpdateDC">
+                    <div class="receiver_information" data-title="Receiver's Information">
+                        <div>
+                            Receiver's District
+                            <select class="browser-default custom-select col-lg-12 btn" id="delivery_cityU" style="color:#000;height: 46px;background:#ffcf5c;"></select>
+                        </div>
+                        <div>
+                            Receiver's Area:
+                            <select class="browser-default custom-select col-lg-12 btn" id="managersU" style="color:#000;height: 46px;background:#ffcf5c;"></select>
+                        </div>
                         <div>
                             Receiver's Name:
                             <input
@@ -1107,14 +1115,6 @@ div.hideKoro3{
                             <h6 type="hidden" id="wrongrphone" style="color:red"></h6>
                         </div>
                         <div>
-                            Receiver's District:
-                            <select class="custom-select col-lg-12 btn" id="delivery_cityU"></select>
-                        </div>
-                        <div>
-                            Receiver's Area:
-                            <select class="custom-select col-lg-12 btn" id="managersU"></select>
-                        </div>
-                        <div>
                             Receivers's Full Address:
                             <input
                                 type="text"
@@ -1125,19 +1125,26 @@ div.hideKoro3{
                             <h6 type="hidden" id="wrongraddress" style="color:red"></h6>
                         </div>
                         <div>
-                            <h5 style="text-align:center;color:#0066b3;margin-top:9px;">Give Exact Location On Map (Optional):</h5>
-                            <h6 type="hidden" id="wrongmaplocation" style="color:red"></h6>
-                            <input
-                                id="pac-input3"
-                                class="controls form-control pac-container"
-                                type="text"
-                                placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
-                                style="text-align:left;color:#000;background:#ffffff;border:1px solid #000;"
-                            >
-                            <div id="map3" style="overflow:hidden;height:300px;width:100%;position:relative;"></div>
-                            <input type="hidden" id="des_latU" name="des_latU">
-                            <input type="hidden" id="des_longiU" name="des_longiU">
+                            <button class="btn btn-outline btn-primary showMapBtn">
+                                Map (Optional)
+                            </button>
                         </div>
+                        <div class="smp" style="position:relative;">
+                            <div class="showMap">
+                                Give Receiver's Exact Location On Map (Optional)
+                                <h6 type="hidden" id="wrongmaplocation" style="color:red"></h6>
+                                <input
+                                    id="pac-input3"
+                                    class="controls form-control"
+                                    type="text"
+                                    placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
+                                    style="color:#000;background:#ffffff;border:1px solid #000;"
+                                >
+                                <div style="height: 230px;width: 100%;position: absolute;margin: 0 auto;" id="map3"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="des_latU" name="des_latU">
+                        <input type="hidden" id="des_longiU" name="des_longiU">
                     </div>
                     <h5 style="margin-top:9px;">Pickup Time:</h5>
                     <input
