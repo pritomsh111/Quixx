@@ -279,6 +279,11 @@ function initialize() {
 	initMap();
 }
 
+document.querySelector(".showMapBtn").addEventListener("click", function (e) {
+	e.preventDefault();
+	document.querySelector(".receiver_information").classList.toggle("vis-map");
+});
+
 var myMarker, myMarker3, infowindow, infowindow3, contentString, contentString3;
 var markers = [];
 var markers3 = [];
