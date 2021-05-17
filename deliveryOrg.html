@@ -461,24 +461,6 @@ div.hideKoro3{
         </div>
         <div class="card d">
             <div class="card-body table-responsive d">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body table-responsive blur">
-                                <form class="">
-                                    <h4 class="text-center" style="margin-top:30px;">Auto Assigning of Unassigned Deliveries</h4>
-                                    <h5 class="text-center" style="margin-top:20px;">[Delivery Man will be selected automatically based on their Selected Area, Availability and Receiver's Area! User can change it]</h5>
-                                    <button
-                                        class="btn btn-outline btn-round btn-success"
-                                        style="background:#ffffd4;display:block;margin:0 auto;margin-top: 30px;"
-                                        type="button"
-                                        id="assignAllDeliveries"
-                                    >Assign</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <h4 class="text-center" style="margin-top:15px;">Manual Assigning of Unassigned Deliveries</h4>
                 <h4 style="text-align:left;margin-top:35px;font-size:15px;">Delivery Man List [Select one]:</h4>
                 <select class="browser-default custom-select col-lg-12 btn" id="deliveryManList"></select>
@@ -524,6 +506,24 @@ div.hideKoro3{
                         </tr>
                     </thead>
                 </table>
+                <div class="row" style="margin-top: 2rem;">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body table-responsive blur">
+                                <form class="">
+                                    <h4 class="text-center" style="margin-top:30px;">Auto Assigning of Unassigned Deliveries</h4>
+                                    <h5 class="text-center" style="margin-top:20px;">[Delivery Man will be selected automatically based on their Selected Area, Availability and Receiver's Area! User can change it]</h5>
+                                    <button
+                                        class="btn btn-outline btn-round btn-success"
+                                        style="background:#ffffd4;display:block;margin:0 auto;margin-top: 30px;"
+                                        type="button"
+                                        id="assignAllDeliveries"
+                                    >Assign</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card e">
@@ -1085,6 +1085,60 @@ div.hideKoro3{
             </div>
             <div class="modal-body" style="text-align:center;overflow:hidden;">
                 <form class="p-1" style="color:#0066b3" id="formUpdateDC">
+                    <div class="r_i_u" title="Receiver's Information">
+                        <div>
+                            Receiver's Name:
+                            <input
+                                type="text"
+                                id="r_nameU"
+                                class="form-control"
+                                placeholder=""
+                            >
+                            <h6 type="hidden" id="wrongrname" style="color:red"></h6>
+                        </div>
+                        <div>
+                            Receiver's Phone Number:
+                            <input
+                                type="text"
+                                id="r_numberU"
+                                class="form-control"
+                                placeholder="01911000000"
+                            >
+                            <h6 type="hidden" id="wrongrphone" style="color:red"></h6>
+                        </div>
+                        <div>
+                            Receiver's District:
+                            <select class="custom-select col-lg-12 btn" id="delivery_cityU"></select>
+                        </div>
+                        <div>
+                            Receiver's Area:
+                            <select class="custom-select col-lg-12 btn" id="managersU"></select>
+                        </div>
+                        <div>
+                            Receivers's Full Address:
+                            <input
+                                type="text"
+                                id="rec_addressU"
+                                class="form-control"
+                                placeholder=""
+                            >
+                            <h6 type="hidden" id="wrongraddress" style="color:red"></h6>
+                        </div>
+                        <div>
+                            <h5 style="text-align:center;color:#0066b3;margin-top:9px;">Give Exact Location On Map (Optional):</h5>
+                            <h6 type="hidden" id="wrongmaplocation" style="color:red"></h6>
+                            <input
+                                id="pac-input3"
+                                class="controls form-control pac-container"
+                                type="text"
+                                placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
+                                style="text-align:left;color:#000;background:#ffffff;border:1px solid #000;"
+                            >
+                            <div id="map3" style="overflow:hidden;height:300px;width:100%;position:relative;"></div>
+                            <input type="hidden" id="des_latU" name="des_latU">
+                            <input type="hidden" id="des_longiU" name="des_longiU">
+                        </div>
+                    </div>
                     <h5 style="margin-top:9px;">Pickup Time:</h5>
                     <input
                         type="text"
@@ -1093,27 +1147,6 @@ div.hideKoro3{
                         class="form-control"
                     >
                     <h6 type="hidden" id="wrongTime" style="color:red"></h6>
-                    <br>
-                    <h5 style="margin-top:9px;">Receiver's Name:</h5>
-                    <input
-                        type="text"
-                        style="color:#0066b3;text-align:center;width:50%;margin:0 auto;"
-                        id="r_nameU"
-                        class="form-control"
-                        placeholder=""
-                    >
-                    <h6 type="hidden" id="wrongrname" style="color:red"></h6>
-                    <br>
-                    <h5 style="margin-top:9px;">Receiver's Phone Number:</h5>
-                    <input
-                        type="text"
-                        style="color:#0066b3;text-align:center;width:50%;margin:0 auto;"
-                        id="r_numberU"
-                        class="form-control"
-                        placeholder="01911000000"
-                    >
-                    <h6 type="hidden" id="wrongrphone" style="color:red"></h6>
-                    <br>
                     <h5 style="margin-top:9px;">Product Details:</h5>
                     <input
                         type="text"
@@ -1175,7 +1208,6 @@ div.hideKoro3{
                     <select class="custom-select col-lg-12 btn" id="managers2U" style="color:#0066b3;background:#ffcf5c;text-align-last:center;text-align:center;width:50%;margin:0 auto 2rem;">
                         <h6 type="hidden" id="wrongrmethod" style="color:red"></h6>
                     </select>
-                    <br>
                     <h5 style="margin-top:9px;" id="chargeUpdate">Delivery Charge [BDT]:</h5>
                     <input
                         type="text"
@@ -1185,7 +1217,6 @@ div.hideKoro3{
                         placeholder=""
                     >
                     <h6 type="hidden" id="wrongdcost" style="color:red"></h6>
-                    <br>
                     <h5 style="margin-top:9px;">Delivery Note: [Optional]</h5>
                     <input
                         type="text"
@@ -1194,37 +1225,6 @@ div.hideKoro3{
                         class="form-control"
                         placeholder=""
                     >
-                    <br>
-                    <h5 style="text-align:center;color:#0066b3;margin-top:9px;">Receiver's City:</h5>
-                    <select class="custom-select col-lg-12 btn" id="delivery_cityU" style="color:#0066b3;text-align-last:center;text-align:center;width:50%;margin:0 auto;"></select>
-                    <br>
-                    <br>
-                    <h5 style="text-align:center;color:#0066b3;margin-top:9px;">Receiver's Area:</h5>
-                    <select class="custom-select col-lg-12 btn" id="managersU" style="color:#0066b3;text-align-last:center;text-align:center;width:50%;margin:0 auto;"></select>
-                    <input type="hidden" id="des_latU" name="des_latU">
-                    <input type="hidden" id="des_longiU" name="des_longiU">
-                    <br>
-                    <br>
-                    <h5 style="text-align:center;color:#0066b3;margin-top:9px;">Receivers's Full Address:</h5>
-                    <input
-                        type="text"
-                        style="color:#0066b3;text-align:center;width:50%;margin:0 auto;"
-                        id="rec_addressU"
-                        class="form-control"
-                        placeholder=""
-                    >
-                    <h6 type="hidden" id="wrongraddress" style="color:red"></h6>
-                    <br>
-                    <h5 style="text-align:center;color:#0066b3;margin-top:9px;">Give Exact Location On Map (Optional):</h5>
-                    <h6 type="hidden" id="wrongmaplocation" style="color:red"></h6>
-                    <input
-                        id="pac-input3"
-                        class="controls form-control pac-container"
-                        type="text"
-                        placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
-                        style="text-align:center;color:#0066b3;background:#ffffff;border:2px solid #ffcf5c;"
-                    >
-                    <div id="map3" style="overflow:hidden;height:300px;width:100%;position:relative;"></div>
                 </form>
                 <div class="circle-loader" style="text-align:center" id="circleLoad3DC">
                     <div class="checkmark draw" id="tick3DC"></div>

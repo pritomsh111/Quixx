@@ -278,7 +278,7 @@ input {
   margin: 5rem 0 3rem;
 }
 
-.sender_information, .receiver_information, .product_information, .delivery_information {
+.r_i_u, .sender_information, .receiver_information, .product_information, .delivery_information {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -291,7 +291,7 @@ input {
   position: relative;
 }
 
-.sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before {
+.r_i_u::before, .sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before {
   position: absolute;
   content: attr(data-title)":";
   top: -4rem;
