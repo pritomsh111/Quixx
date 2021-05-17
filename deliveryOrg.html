@@ -124,13 +124,12 @@ div.hideKoro3{
                                 <div class="sender_information" data-title="Sender's Information">
                                     <div>
                                         Select Sender:
-                                        <select class="browser-default custom-select col-lg-12 btn sL" style="height:46px;background:#fbfcfd;" id="senderList"></select>
+                                        <select class="browser-default custom-select col-lg-12 btn sL" style="height:46px;background:#ffcf5c;color:#000;" id="senderList"></select>
                                     </div>
                                     <div>
                                         Sender's Name:
                                         <input
                                             type="text"
-                                            style="color:#0066b3"
                                             id="s_name"
                                             class="form-control"
                                             placeholder=""
@@ -141,7 +140,6 @@ div.hideKoro3{
                                         Sender's Phone Number:
                                         <input
                                             type="text"
-                                            style="color:#0066b3"
                                             id="s_number"
                                             class="form-control mb-4"
                                             placeholder="01711000000"
@@ -149,20 +147,19 @@ div.hideKoro3{
                                         >
                                     </div>
                                 </div>
-                                <div class="receiver_information" style="padding-bottom:15rem;" data-title="Receiver's Information">
+                                <div class="receiver_information" data-title="Receiver's Information">
                                     <div>
                                         Receiver's District
-                                        <select class="browser-default custom-select col-lg-12 btn" id="managers" style="color:#0066b3;height: 46px;background:#fbfcfd;"></select>
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers" style="color:#000;height: 46px;background:#ffcf5c;"></select>
                                     </div>
                                     <div>
                                         Receiver's Area:
-                                        <select class="browser-default custom-select col-lg-12 btn" id="managers_2" style="color:#0066b3;height: 46px;background:#fbfcfd;"></select>
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers_2" style="color:#000;height: 46px;background:#ffcf5c;"></select>
                                     </div>
                                     <div>
                                         Receiver's Name:
                                         <input
                                             type="text"
-                                            style="color:#0066b3"
                                             id="r_name"
                                             class="form-control"
                                             placeholder=""
@@ -172,7 +169,6 @@ div.hideKoro3{
                                         Receiver's Phone Number:
                                         <input
                                             type="text"
-                                            style="color:#0066b3"
                                             id="r_number"
                                             class="form-control"
                                             placeholder="01911000000"
@@ -182,22 +178,26 @@ div.hideKoro3{
                                         Receivers's Full Address:
                                         <input
                                             type="text"
-                                            style="color:#0066b3;"
                                             id="rec_address"
                                             class="form-control"
                                             placeholder=""
                                         >
                                     </div>
-                                    <div style="position:relative;margin-top:1rem;grid-column:1/-1;">
-                                        Give Receiver's Exact Location On Map (Optional):
-                                        <input
-                                            id="pac-input2"
-                                            class="controls form-control"
-                                            type="text"
-                                            placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
-                                            style="color:#0066b3;background:#ffffff;border:1px solid #0066b3;"
-                                        >
-                                        <div style="height: 230px;width: 100%;position: absolute;margin: 0 auto;" id="map2"></div>
+                                    <div style="position:relative;grid-column:1/-1;">
+                                        <button class="btn btn-outline btn-primary showMapBtn">
+                                            Map (Optional)
+                                        </button>
+                                        <div class="showMap">
+                                            Give Receiver's Exact Location On Map (Optional)
+                                            <input
+                                                id="pac-input2"
+                                                class="controls form-control"
+                                                type="text"
+                                                placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
+                                                style="color:#000;background:#ffffff;border:1px solid #000;"
+                                            >
+                                            <div style="height: 230px;width: 100%;position: absolute;margin: 0 auto;" id="map2"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="product_information" data-title="Product Information">
@@ -205,7 +205,6 @@ div.hideKoro3{
                                         Product Details:
                                         <input
                                             type="text"
-                                            style="color:#0066b3;"
                                             id="product_name"
                                             class="form-control"
                                             placeholder=""
@@ -215,7 +214,6 @@ div.hideKoro3{
                                         Product Quantity [Pieces]:
                                         <input
                                             type="text"
-                                            style="color:#0066b3"
                                             id="product_qty"
                                             class="form-control"
                                             placeholder="20"
@@ -225,7 +223,6 @@ div.hideKoro3{
                                         Per Product Cost [BDT]:
                                         <input
                                             type="text"
-                                            style="color:#0066b3"
                                             id="product_cost"
                                             class="form-control"
                                             placeholder="1000"
@@ -236,27 +233,27 @@ div.hideKoro3{
                                     <div class="criteria">
                                         <div id="productType1">
                                             Product Type Criteria:
-                                            <select class="browser-default custom-select col-lg-12 btn" id="productType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productType" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                             <br>
                                         </div>
                                         <div id="productWeight1">
                                             Product Weight Criteria [KG]:
-                                            <select class="browser-default custom-select col-lg-12 btn" id="productWeight" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productWeight" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                             <br>
                                         </div>
                                         <div id="dayType1">
                                             Delivery Day Criteria:
-                                            <select class="browser-default custom-select col-lg-12 btn" id="dayType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                            <select class="browser-default custom-select col-lg-12 btn" id="dayType" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                             <br>
                                         </div>
                                         <div id="productDistance1">
                                             Deilvery Distance Criteria [KM]:
-                                            <select class="browser-default custom-select col-lg-12 btn" id="productDistance" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productDistance" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                             <br>
                                         </div>
                                         <div id="productCity1">
                                             Delivery City Criteria:
-                                            <select class="browser-default custom-select col-lg-12 btn" id="productCity" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productCity" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                             <br>
                                         </div>
                                     </div>
@@ -272,27 +269,26 @@ div.hideKoro3{
                                     </div>
                                     <div>
                                         Payment Method:
-                                        <select class="custom-select col-lg-12 btn" id="managers2" style="color:#0066b3;background:#fbfcfd;text-align-last:left;"></select>
+                                        <select class="custom-select col-lg-12 btn" id="managers2" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
                                     </div>
                                     <div>
                                         Auto Assign?
-                                        <select class="browser-default custom-select col-lg-12 btn" id="autoAss" style="text-align-last:left;background:#fbfcfd;">
+                                        <select class="browser-default custom-select col-lg-12 btn" id="autoAss" style="color:#000;text-align-last:left;background:#ffcf5c;">
                                             <option value="yes">Yes</option>
                                             <option value="no" selected>No</option>
                                         </select>
                                     </div>
-                                    <div>
+                                    <div style="display:none;">
                                         Delivery Type:
-                                        <select class="custom-select col-lg-12 btn browser-default" id="deliveryType" style="color:#0066b3;text-align-last:left;background:#fbfcfd;">
+                                        <select class="custom-select col-lg-12 btn browser-default" id="deliveryType" style="color:#000;text-align-last:left;background:#ffcf5c;">
                                             <!--<option>WAREHOUSE</option>-->
                                             <option>CUSTOMER</option>
                                         </select>
                                     </div>
                                     <div>
-                                        Pickup Time:
+                                        Pickup Time [Optional]:
                                         <input
                                             type="text"
-                                            style="color:#0066b3"
                                             id="timepicker-12-hr"
                                             class="form-control mb-4"
                                             placeholder="09:00 AM"
@@ -302,7 +298,6 @@ div.hideKoro3{
                                         Delivery Note [Optional]:
                                         <input
                                             type="text"
-                                            style="color:#0066b3"
                                             id="DELIVERY_NOTE"
                                             class="form-control"
                                             placeholder=""
@@ -313,24 +308,24 @@ div.hideKoro3{
                                 <input type="hidden" id="longi" name="longi">
                                 <input type="hidden" id="des_lat" name="des_lat">
                                 <input type="hidden" id="des_longi" name="des_longi">
-                                <h5 style="text-align:center;color:#0066b3;display:none;">Sender's Address:</h5>
+                                <h5 style="text-align:center;color:#000;display:none;">Sender's Address:</h5>
                                 <input
                                     id="pac-input"
                                     class="controls form-control"
                                     type="text"
                                     placeholder="Search Your Address and Then Drag The Marker To Exact Location"
-                                    style="display:none;text-align:center;color:#0066b3;background:#ffffff;border:2px solid #ffcf5c;font-size:15px;"
+                                    style="display:none;text-align:center;color:#000;background:#ffffff;border:2px solid #000;font-size:15px;"
                                     disabled
                                 >
                                 <div style="margin-top:0px;height:11%;display:none;" id="map"></div>
                             </form>
                             <button
                                 class="btn btn-outline btn-round"
-                                style="background:#ffffd4;margin-top:-7rem;"
+                                style="background:#ffffd3;margin-top:-7rem;"
                                 type="button"
                                 id="createDelivery"
                             >
-                                Create Delivery
+                                Create
                             </button>
                         </div>
                     </div>
@@ -392,9 +387,8 @@ div.hideKoro3{
                                     <br>
                                     <h5 style="text-align:center;color:#0066b3;margin-top: 1.5rem;">Auto Assign Delivery To Delivery Man?</h5>
                                     <select class="browser-default custom-select col-lg-12 btn" id="autoAss2" style="text-align-last:center;height: 46px;width:80%;">
-                                        <option value="" selected>Select One</option>
                                         <option value="yes">Yes</option>
-                                        <option value="no">No</option>
+                                        <option value="no" selected>No</option>
                                     </select>
                                     <br>
                                     <br>
@@ -1151,32 +1145,32 @@ div.hideKoro3{
                     <div class="criteriaU">
                         <div id="productType1U">
                             <h5 style="margin-top:9px;">Product Type Criteria:</h5>
-                            <select class="custom-select col-lg-12 btn" id="productTypeU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
+                            <select class="custom-select col-lg-12 btn" id="productTypeU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
                             <br>
                         </div>
                         <div id="productWeight1U">
                             <h5 style="margin-top:9px;">Product Weight Criteria [KG]:</h5>
-                            <select class="custom-select col-lg-12 btn" id="productWeightU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
+                            <select class="custom-select col-lg-12 btn" id="productWeightU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
                             <br>
                         </div>
                         <div id="dayType1U">
                             <h5 style="margin-top:9px;">Delivery Day Criteria:</h5>
-                            <select class="custom-select col-lg-12 btn" id="dayTypeU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
+                            <select class="custom-select col-lg-12 btn" id="dayTypeU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
                             <br>
                         </div>
                         <div id="productDistance1U">
                             <h5 style="margin-top:9px;">Delivery Distance Criteria [KM]:</h5>
-                            <select class="custom-select col-lg-12 btn" id="productDistanceU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
+                            <select class="custom-select col-lg-12 btn" id="productDistanceU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
                             <br>
                         </div>
                         <div id="productCity1U">
                             <h5 style="margin-top:9px;">Delivery City Criteria:</h5>
-                            <select class="custom-select col-lg-12 btn" id="productCityU" style="color:#0066b3;background:#fbfcfd;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
+                            <select class="custom-select col-lg-12 btn" id="productCityU" style="color:#0066b3;background:#ffcf5c;text-align-last:center;width:50%;margin:0 auto;margin-bottom:2rem"></select>
                             <br>
                         </div>
                     </div>
                     <h5 style="margin-top:9px;">Payment Method:</h5>
-                    <select class="custom-select col-lg-12 btn" id="managers2U" style="color:#0066b3;background:#fbfcfd;text-align-last:center;text-align:center;width:50%;margin:0 auto 2rem;">
+                    <select class="custom-select col-lg-12 btn" id="managers2U" style="color:#0066b3;background:#ffcf5c;text-align-last:center;text-align:center;width:50%;margin:0 auto 2rem;">
                         <h6 type="hidden" id="wrongrmethod" style="color:red"></h6>
                     </select>
                     <br>

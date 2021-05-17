@@ -104,58 +104,64 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body table-responsive blur">
-                    <form class="text-center p-5" style="color: #0066b3">
-                        <div style="font-size:18.5px;margin:-15px 0 2rem;color:#0D324D;text-align:center">
-                            <strong>Input Fields Must Be Filled In English</strong>
-                        </div>
-                        <div class="form-row mb-4">
-                            <div class="col" style="text-align: left">
+                    <div style="font-size:18.5px;margin:2rem 0;color:#0D324D;text-align:center">
+                        <strong>Input Fields Must Be Filled In English</strong>
+                    </div>
+                    <form class="p-5" style="text-align: left;">
+                        <div class="dmc-1">
+                            <div>
                                 Delivery Man's Name:
                                 <input
                                     type="text"
                                     id="deliveryManName"
-                                    style="color: #0066b3"
-                                    class="form-control"
+                                    class="form-control mb-4"
                                     placeholder=""
                                 >
                             </div>
+                            <div>
+                                Delivery Man's E-mail:
+                                <input
+                                    type="email"
+                                    id="deliveryManEmail"
+                                    class="form-control mb-4"
+                                    placeholder=""
+                                >
+                            </div>
+                            <div style="text-align: left">
+                                Delivery Man's Phone No:
+                                <input
+                                    type="text"
+                                    id="deliveryManPhone"
+                                    class="form-control mb-4"
+                                    placeholder=""
+                                >
+                            </div>
+                            <div>
+                                <label style="text-align: none;">
+                                    Reporting Boss:
+                                </label>
+                                <select class="browser-default custom-select col-lg-12 btn" id="managers"></select>
+                            </div>
                         </div>
-                        <div style="text-align: left">Delivery Man's E-mail:</div>
-                        <input
-                            type="email"
-                            id="deliveryManEmail"
-                            style="color: #0066b3"
-                            class="form-control mb-4"
-                            placeholder=""
-                        >
-                        <div style="text-align: left">Delivery Man's Phone No:</div>
-                        <input
-                            type="text"
-                            id="deliveryManPhone"
-                            style="color: #0066b3"
-                            class="form-control mb-4"
-                            placeholder=""
-                        >
-                        <label style="text-align: none; color: #0066b3">
-                            Reporting Boss:
-                        </label>
-                        <select class="browser-default custom-select col-lg-12 btn" style="text-align:center" id="managers"></select>
-                        <label style="text-align: none; color: #0066b3;margin-top:1rem">
-                            District:
-                        </label>
-                        <select class="custom-select col-lg-12 btn" id="district" style="color:#0066b3;text-align-last:center;height: 46px;"></select>
-                        <label style="text-align:center;color:#0066b3;margin-top:1rem">
-                            Delivery Area:
-                        </label>
-                        <div class="deliveryArea"></div>
-                        <br>
-                        <div>
-                            <button id="btn" class="btn btn-outline">
-                                Check / Uncheck All
-                            </button>
-                            <br>
+                        <div class="dmc-2">
+                            <div style="grid-column: 1/-1;">
+                                <label>
+                                    District:
+                                </label>
+                                <select class="custom-select col-lg-12 btn" id="district" style="color:#0066b3;"></select>
+                            </div>
+                            <div>
+                                <button id="btn" style="padding:1rem;" class="btn btn-outline">
+                                    Check / Uncheck All
+                                </button>
+                            </div>
+                            <div style="grid-column: 1/-1;">
+                                <label>
+                                    Delivery Area:
+                                </label>
+                                <div class="deliveryArea"></div>
+                            </div>
                         </div>
-                        <br>
                     </form>
                     <button
                         class="btn btn-round btn-outline"
@@ -164,7 +170,7 @@
                         id="DeliveryMan_CREATION"
                         onclick="addDeliveryMan()"
                     >
-                        Create Delivery Man
+                        Create
                     </button>
                 </div>
             </div>

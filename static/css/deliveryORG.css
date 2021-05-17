@@ -183,7 +183,7 @@ input {
   margin: auto;
   width: 100%;
   max-width: 280px;
-  color: #0066b3;
+  color: #000;
 }
 
 .inp .label {
@@ -191,7 +191,7 @@ input {
   top: 16px;
   left: 0;
   font-size: 16px;
-  color: #0066b3;
+  color: #000;
   font-weight: 500;
   transform-origin: 0 0;
   transition: all 0.2s ease;
@@ -203,7 +203,7 @@ input {
   left: 0;
   height: 2px;
   width: 100%;
-  background: #0066b3;
+  background: #000;
   transform: scaleX(0);
   transform-origin: 0 0;
   transition: all 0.15s ease;
@@ -250,19 +250,19 @@ input {
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #0066b3;
+  color: #000;
   opacity: 0.8;
   /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #0066b3;
+  color: #000;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #0066b3;
+  color: #000;
 }
 
 #formD>div:first-child {
@@ -279,6 +279,7 @@ input {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   column-gap: 2rem;
   row-gap: 2rem;
+  color: #000;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 5px;
   padding: 1rem;
@@ -291,7 +292,7 @@ input {
   top: -4rem;
   left: 0;
   padding: 1rem;
-  color: #000;
+  color: #0066b3;
   font-size: 1.1rem;
 }
 
@@ -311,6 +312,14 @@ input {
 
 #productType1, #productWeight1, #dayType1, #productDistance1, #productCity1 {
   display: grid;
+}
+
+.receiver_information {
+  padding-bottom: 0rem;
+}
+
+.showMap {
+  transform: scale(0);
 }
 
 @media (max-width:450px) {

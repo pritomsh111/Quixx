@@ -22,10 +22,9 @@
 }
 
 .deliveryArea {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  place-items: flex-start;
 }
 
 .deliveryArea>div {
@@ -48,5 +47,58 @@ input[type="checkbox"]+label {
 }
 
 .deliveryArea>div:nth-of-type(n) {
-  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+#deliveryManCreate .dmc-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  border-radius: 5px;
+  color: #000;
+  border: 1px solid rgb(221, 221, 221);
+  padding: 2rem;
+}
+
+#deliveryManCreate .dmc-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  border-radius: 5px;
+  color: #000;
+  border: 1px solid rgb(221, 221, 221);
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+@media (max-width: 450px) {
+  #deliveryManCreate .dmc-1 {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  #deliveryManCreate .dmc-2 {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+#senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
+  padding: 0.3rem;
+  text-align-last: left;
+  height: 40px;
+}
+
+@media (max-width:450px) {
+  #senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
+    padding: 0.2rem;
+    text-align-last: left;
+    height: 40px;
+    width: 130px;
+  }
+  #managers {
+    width: 150px;
+  }
 }

@@ -102,74 +102,79 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body table-responsive blur">
-                    <form class="p-5" style="color: #0066b3; text-align: left">
-                        <div style="font-size:18.5px;margin-top:-15px;margin-bottom:2rem;color:#0D324D;text-align:center">
-                            <strong>Input Fields Must Be Filled In English</strong>
+                    <div style="font-size:18.5px;margin:2rem 0;color:#0D324D;text-align:center">
+                        <strong>Input Fields Must Be Filled In English</strong>
+                    </div>
+                    <form class="p-5" style="text-align: left">
+                        <div>
+                            Company Name:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
+                                id="org_name"
+                                class="form-control"
+                                placeholder=""
+                            >
                         </div>
-                        <div class="form-row mb-4">
-                            <div class="col">
-                                Company Name:
-                                <input
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="org_name"
-                                    class="form-control"
-                                    placeholder=""
-                                >
-                            </div>
+                        <div>
+                            Owner Name:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
+                                id="person_name"
+                                class="form-control"
+                                placeholder=""
+                            >
                         </div>
-                        Owner Name:
-                        <input
-                            type="text"
-                            style="color: #0066b3"
-                            id="person_name"
-                            class="form-control"
-                            placeholder=""
-                        >
-                        <br>
-                        E-mail Address:
-                        <input
-                            type="email"
-                            style="color: #0066b3"
-                            id="email"
-                            class="form-control mb-4"
-                            placeholder="quixx@gmail.com"
-                        >
-                        Phone No:
-                        <input
-                            type="text"
-                            style="color: #0066b3"
-                            id="phone_number"
-                            class="form-control"
-                            placeholder="01711000000"
-                        >
-                        <br>
-                        Business Field:
-                        <input
-                            type="text"
-                            style="color: #0066b3"
-                            id="business_filed"
-                            class="form-control"
-                            placeholder=""
-                        >
-                        <br>
-                        Per Delivery Cost:
-                        <input
-                            type="text"
-                            style="color: #0066b3"
-                            id="per_delivery_cost"
-                            class="form-control"
-                            placeholder=""
-                        >
+                        <div>
+                            E-mail Address:
+                            <input
+                                type="email"
+                                style="color: #0066b3"
+                                id="email"
+                                class="form-control mb-4"
+                                placeholder="quixx@gmail.com"
+                            >
+                        </div>
+                        <div>
+                            Phone No:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
+                                id="phone_number"
+                                class="form-control"
+                                placeholder="01711000000"
+                            >
+                        </div>
+                        <div>
+                            Business Field:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
+                                id="business_filed"
+                                class="form-control"
+                                placeholder=""
+                            >
+                        </div>
+                        <div>
+                            Per Delivery Cost [BDT]:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
+                                id="per_delivery_cost"
+                                class="form-control"
+                                placeholder=""
+                            >
+                        </div>
                     </form>
                     <button
                         class="btn btn-outline btn-round btn-primary"
-                        style="background: #ffffd0; margin-top: -20px"
+                        style="background: #ffffd0;"
                         type="submit"
                         id="MERCHANT_CREATION"
                         onclick="addMerchant()"
                     >
-                        Create Merchant
+                        Create
                     </button>
                 </div>
             </div>

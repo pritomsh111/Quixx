@@ -110,6 +110,7 @@ $(async function () {
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#managers2").append(option);
+					document.querySelector("#managers2").selectedIndex = 2;
 				}
 			}
 		});

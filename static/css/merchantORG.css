@@ -8,25 +8,25 @@
   background-color: white;
 }
 
+#merchantCreate form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  row-gap: 2rem;
+  column-gap: 2rem;
+  color: #000;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 5px;
+}
+
+@media (max-width:400px) {
+  #merchantCreate form {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
 input {
   text-align: left;
 }
-
-/* 
-table#dtBasicExample.dataTable tbody tr:hover {
-  background-color: #FFFFEA;
-  border-color: #0066b3;
-}
-
-table#dtBasicExampleAp.dataTable tbody tr:hover {
-  background-color: #FFFFEA;
-  border-color: #0066b3;
-}
-
-table#dtBasicExampleAp.dataTable tbody tr:hover>.sorting_1 {
-  background-color: #FFFFEA;
-  border-color: #0066b3;
-} */
 
 .naV {
   background: #ffcf5c;

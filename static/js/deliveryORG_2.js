@@ -1636,15 +1636,16 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v1 = () => {
-		if (pickup_time == "" || pickup_time == null) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give a Pickup Time!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("timepicker-12-hr").focus();
-			return 0;
-		}
-		else {
-			return 1;
-		}
+		// if (pickup_time == "" || pickup_time == null) {
+		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give a Pickup Time!";
+		// 	$('#myModalWrongDeliveryCreate').modal('show');
+		// 	document.getElementById("timepicker-12-hr").focus();
+		// 	return 0;
+		// }
+		// else {
+		// 	return 1;
+		// }
+		return 1;
 	}
 	var v2 = () => {
 		if (s_name == "" || s_name == null) {
@@ -2032,19 +2033,20 @@ function doIt(i, lengx) {
 		var delivery_charge = excelData[i].Delivery_Charge;
 		var delivery_note = excelData[i].Delivery_Note;
 		var v1 = () => {
-			if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else {
-				return 1;
-			}
+			// if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else {
+			// 	return 1;
+			// }
+			return 1;
 		}
 		var v2 = () => {
 			if (s_name == "" || s_name == null || s_name == undefined) {
@@ -2324,6 +2326,9 @@ function doIt(i, lengx) {
 			if (delivery_lat == undefined) {
 				delivery_lat = "";
 				delivery_longi = "";
+			}
+			if (pickup_time == undefined) {
+				pickup_time = "";
 			}
 			datap = JSON.stringify
 				({
@@ -3162,15 +3167,16 @@ $('.btn-ok-updateDC').on("click", function () {
 		}
 	}
 	var v1 = () => {
-		if (pickup_time == "" || pickup_time == null) {
-			document.getElementById('wrongTime').innerHTML = "Please give a Pickup Time!";
-			$('#wrongTime').show();
-			document.getElementById("timeU").focus();
-			return 0;
-		}
-		else {
-			return 1;
-		}
+		// if (pickup_time == "" || pickup_time == null) {
+		// 	document.getElementById('wrongTime').innerHTML = "Please give a Pickup Time!";
+		// 	$('#wrongTime').show();
+		// 	document.getElementById("timeU").focus();
+		// 	return 0;
+		// }
+		// else {
+		// 	return 1;
+		// }
+		return 1;
 	}
 	var v2 = () => {
 		if (s_name == "" || s_name == null) {
