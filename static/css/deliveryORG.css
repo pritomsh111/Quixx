@@ -278,7 +278,7 @@ input {
   margin: 5rem 0 3rem;
 }
 
-.sender_information, .receiver_information, .product_information, .delivery_information {
+.sender_information, .receiver_information, .receiver_informationU, .product_information, .delivery_information {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -291,7 +291,11 @@ input {
   position: relative;
 }
 
-.sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before {
+.receiver_informationU {
+  margin-top: 2rem;
+}
+
+.sender_information::before, .receiver_information::before, .receiver_informationU::before, .product_information::before, .delivery_information::before {
   position: absolute;
   content: attr(data-title)":";
   top: -4rem;
@@ -319,12 +323,12 @@ input {
   display: grid;
 }
 
-.receiver_information {
+.receiver_information, .receiver_informationU {
   padding-bottom: 1rem;
   transition: padding 250ms ease-in;
 }
 
-.showMap {
+.showMap, .showMapU {
   transform: scaleY(0);
   opacity: 0;
   height: 0;
@@ -332,15 +336,15 @@ input {
   transition: transform 250ms ease-in;
 }
 
-.receiver_information.vis-map {
+.receiver_information.vis-map, .receiver_informationU.vis-map {
   padding-bottom: 15.15rem;
 }
 
-.receiver_information.vis-map .smp {
+.receiver_information.vis-map .smp, .receiver_informationU.vis-map .smpU {
   grid-column: 1/-1;
 }
 
-.receiver_information.vis-map .smp .showMap {
+.receiver_information.vis-map .smp .showMap, .receiver_informationU.vis-map .smpU .showMapU {
   transform: scaleY(1);
   opacity: 1;
   height: 100%;

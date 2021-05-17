@@ -158,16 +158,16 @@
     });
 
     // For Forget Pass
-    phone_number.addEventListener("keypress", function (event) {
-        if (event.target.value.match(/\d/g).length === 11) {
+    phone_number.addEventListener("keyup", function (event) {
+        if (/^\d{11}$/.test(event.target.value) && event.target.value.match(/\d/g).length === 11) {
             modalNextButton.disabled = false;
         }
         else {
             modalNextButton.disabled = true;
         }
     });
-    fp_restore.addEventListener("keypress", function (event) {
-        if (event.target.value.match(/\d/g).length === 4) {
+    fp_restore.addEventListener("keyup", function (event) {
+        if (/^\d{4}$/.test(event.target.value) && event.target.value.match(/\d/g).length === 4) {
             modalDoneButton.disabled = false;
         }
         else {

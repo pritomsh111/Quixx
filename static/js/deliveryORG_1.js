@@ -288,6 +288,11 @@ document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	document.querySelector(".receiver_information").classList.toggle("vis-map");
 });
 
+document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
+	e.preventDefault();
+	document.querySelector(".receiver_informationU").classList.toggle("vis-map");
+});
+
 var myMarker, myMarker3, infowindow, infowindow3, contentString, contentString3;
 var markers = [];
 var markers3 = [];
