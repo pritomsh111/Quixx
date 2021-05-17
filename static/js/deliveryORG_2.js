@@ -2961,6 +2961,10 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 							document.getElementById(`${types}U`).selectedIndex = j;
 						}
 					});
+					if (Object.keys(data.data).length === 1) {
+						$('.criteriaU')
+							.hide();
+					}
 				}
 			});
 	}
