@@ -286,11 +286,13 @@ function initialize() {
 document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_information").classList.toggle("vis-map");
+	google.maps.event.trigger(map2, "resize");
 });
 
 document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_informationU").classList.toggle("vis-map");
+	google.maps.event.trigger(map3, "resize");
 });
 
 var myMarker, myMarker3, infowindow, infowindow3, contentString, contentString3;
@@ -556,11 +558,11 @@ var recall1 = (saveIT) => {
 var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
 var markers = [];
 var markers2 = [];
-
+var map2;
 
 function initAutocomplete() {
 
-	var map2 = new google.maps.Map(document.getElementById('map2'), {
+	map2 = new google.maps.Map(document.getElementById('map2'), {
 		center: { lat: 23.8103, lng: 90.4125 },
 		zoom: 13,
 		mapTypeId: 'roadmap',
