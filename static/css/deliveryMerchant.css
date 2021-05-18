@@ -41,13 +41,23 @@ table#dtBasicExampleAp.dataTable tbody tr:hover>.sorting_1 {
 	text-align: left;
 }
 
-#formDD div:nth-child(3) {
+.mapper {
 	grid-column: 1/-1;
 	position: relative;
 }
 
 #map {
 	height: 250px;
-	width: 100%;
+	width: 100% !important;
 	margin-top: 0;
+	overflow: hidden;
+}
+
+#passFormMer .form-horizontal {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+#msg {
+	grid-column: 1/-1;
 }

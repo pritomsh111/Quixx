@@ -88,7 +88,7 @@
                                     placeholder=""
                                 >
                             </div>
-                            <div>
+                            <div class="mapper">
                                 Search on Map and Show The Exact Location Using
                                 <strong>Draggable Marker:</strong>
                                 <input
@@ -127,63 +127,46 @@
                 <div class="card">
                     <div class="card-body table-responsive blur">
                         <form class="form-horizontal">
-                            <br>
-                            <div class="form-group">
-                                <label class="col-md-12 control-label" style="color: #0066b3">
-                                    New Password:
-                                </label>
-                                <div class="col-md-12">
-                                    <input
-                                        id="password-field2"
-                                        type="password"
-                                        class="form-control"
-                                        name="password"
-                                        style="text-align: center"
-                                        placeholder="Atleast 8 characters"
-                                        value=""
-                                    >
-                                    <span toggle="#password-field2" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
-                                </div>
+                            <div class="col-md-12">
+                                New Password:
+                                <input
+                                    id="password-field2"
+                                    type="password"
+                                    class="form-control"
+                                    name="password"
+                                    style="text-align: center"
+                                    placeholder="Atleast 8 characters"
+                                    value=""
+                                >
+                                <span toggle="#password-field2" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
                             </div>
-                            <br>
-                            <div class="form-group">
-                                <label class="col-md-12 control-label" style="color: #0066b3">
-                                    Confirm New Password:
-                                </label>
-                                <div class="col-md-12">
-                                    <input
-                                        id="password-field3"
-                                        type="password"
-                                        class="form-control"
-                                        name="password"
-                                        placeholder="Atleast 8 characters"
-                                        style="text-align: center"
-                                        value=""
-                                    >
-                                    <span toggle="#password-field3" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
-                                </div>
+                            <div class="col-md-12">
+                                Confirm New Password:
+                                <input
+                                    id="password-field3"
+                                    type="password"
+                                    class="form-control"
+                                    name="password"
+                                    placeholder="Atleast 8 characters"
+                                    style="text-align: center"
+                                    value=""
+                                >
+                                <span toggle="#password-field3" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
                             </div>
-                            <h4 id="msg" style="margin-top: 10px;font-size: 16px;text-align: center;"></h4>
-                            <br>
-                            <br>
-                            <div class="form-group">
-                                <label class="col-md-12 control-label" style="color: #0066b3">
-                                    Previous Password: (For Security Purpose)
-                                </label>
-                                <div class="col-md-12">
-                                    <input
-                                        id="password-field1"
-                                        type="password"
-                                        class="form-control"
-                                        name="password"
-                                        style="text-align: center"
-                                        onkeyup="milse(this)"
-                                        value=""
-                                    >
-                                    <span toggle="#password-field1" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
-                                </div>
+                            <h5 id="msg" style="margin-top: 10px;font-size: 16px;text-align: center;"></h5>
+                            <div class="col-md-12">
+                                Previous Password: (For Security Purpose)
+                                <input
+                                    id="password-field1"
+                                    type="password"
+                                    class="form-control"
+                                    name="password"
+                                    style="text-align: center"
+                                    onkeyup="milse(this)"
+                                    value=""
+                                >
+                                <span toggle="#password-field1" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
                             </div>
-                            <br>
                             <button
                                 type="button"
                                 style="color: #0066b3;background: #ffffd4;"
