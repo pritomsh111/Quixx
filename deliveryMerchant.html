@@ -45,24 +45,34 @@
     </script>
     <div class="card-body table-responsive">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="forx"
+                    style="width: 100%; font-size: 13px"
+                    onclick="createDelivery()"
+                >
+                    Quick Delivery
+                </button>
+            </div>
+            <div class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="three"
                     style="width: 100%; font-size: 13px"
                     onclick="createDelivery()"
                 >
-                    Create Single Delivery
+                    Detailed Delivery
                 </button>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="two"
                     style="width: 100%; font-size: 13px"
                     onclick="createBulkDeliveries()"
                 >
-                    Create Multiple Deliveries [Excel]
+                    Multiple Deliveries [Excel]
                 </button>
             </div>
         </div>
@@ -71,293 +81,283 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body table-responsive blur">
-                            <form class="p-5" style="color: #0066b3; text-align: left" id="formD">
-                                <div style="font-size: 18.5px; color: #0d324d; text-align: center">
-                                    Create Single Delivery Using The Fields Below
+                            <form class="p-5" style="color:#0066b3;text-align:left;" id="formD">
+                                <div id="ifmbe">
+                                    <strong>Input Fields Must Be Filled In English</strong>
                                 </div>
-                                <br>
-                                <div class="form-row mb-4">
-                                    <div class="col">
-                                        Pickup Time:
+                                <div class="sender_information" style="display:none" data-title="Sender's Information">
+                                    <div>
+                                        Select Sender:
+                                        <select class="browser-default custom-select col-lg-12 btn sL" style="height:46px;background:#ffcf5c;color:#000;" id="senderList"></select>
+                                    </div>
+                                    <div>
+                                        Sender's Name:
                                         <input
                                             type="text"
-                                            style="color: #0066b3"
-                                            id="timepicker-12-hr"
+                                            id="s_name"
                                             class="form-control"
-                                            placeholder="09:00 AM"
+                                            placeholder=""
+                                            disabled
+                                        >
+                                    </div>
+                                    <div>
+                                        Sender's Phone Number:
+                                        <input
+                                            type="text"
+                                            id="s_number"
+                                            class="form-control mb-4"
+                                            placeholder="01711000000"
+                                            disabled
                                         >
                                     </div>
                                 </div>
-                                <!-- Sender's Name: -->
-                                <input
-                                    type="text"
-                                    style="display: none; color: #0066b3"
-                                    id="s_name"
-                                    class="form-control"
-                                    placeholder=""
-                                    disabled
-                                >
-                                <!-- Sender's Phone Number: -->
-                                <input
-                                    type="text"
-                                    style="display: none; color: #0066b3"
-                                    id="s_number"
-                                    class="form-control mb-4"
-                                    placeholder=""
-                                    disabled
-                                >
-                                Receiver's Name:
-                                <input
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="r_name"
-                                    class="form-control"
-                                    placeholder=""
-                                >
-                                <br>
-                                Receiver's Phone Number:
-                                <input
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="r_number"
-                                    class="form-control"
-                                    placeholder="01711000000"
-                                >
-                                <br>
-                                Product Name:
-                                <input
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="product_name"
-                                    class="form-control"
-                                    placeholder=""
-                                >
-                                <br>
-                                Product Quantity [Pieces]:
-                                <input
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="product_qty"
-                                    class="form-control"
-                                    placeholder="50"
-                                >
-                                <br>
-                                Payment Method:
-                                <select class="custom-select col-lg-12 btn" id="managers2" style="
-                    color: #0066b3;
-                    background: #fbfcfd;
-                    text-align-last: left;
-                  "></select>
-                                <br>
-                                <br>
-                                Per Product Cost [BDT]:
-                                <input
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="product_cost"
-                                    class="form-control"
-                                    placeholder="1000"
-                                >
-                                <br>
-                                <div class="criteria">
-                                    <div id="productType1">
-                                        Product Type Criteria:
-                                        <select class="custom-select col-lg-12 btn" id="productType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                        <br>
+                                <div class="receiver_information" data-title="Receiver's Information">
+                                    <div>
+                                        Receiver's District
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers" style="color:#000;height: 46px;background:#ffcf5c;"></select>
                                     </div>
-                                    <div id="productWeight1">
-                                        Product Weight Criteria [KG]:
-                                        <select class="custom-select col-lg-12 btn" id="productWeight" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                        <br>
+                                    <div>
+                                        Receiver's Area:
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers_2" style="color:#000;height: 46px;background:#ffcf5c;"></select>
                                     </div>
-                                    <div id="dayType1">
-                                        Delivery Day Criteria:
-                                        <select class="custom-select col-lg-12 btn" id="dayType" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                        <br>
+                                    <div>
+                                        Receiver's Name:
+                                        <input
+                                            type="text"
+                                            id="r_name"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
                                     </div>
-                                    <div id="productDistance1">
-                                        Deilvery Distance Criteria [KM]:
-                                        <select class="custom-select col-lg-12 btn" id="productDistance" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                        <br>
+                                    <div>
+                                        Receiver's Phone Number:
+                                        <input
+                                            type="text"
+                                            id="r_number"
+                                            class="form-control"
+                                            placeholder="01911000000"
+                                        >
                                     </div>
-                                    <div id="productCity1">
-                                        Delivery City Criteria:
-                                        <select class="custom-select col-lg-12 btn" id="productCity" style="color:#0066b3;background:#fbfcfd;text-align-last:left;margin-bottom:2rem"></select>
-                                        <br>
+                                    <div>
+                                        Receivers's Full Address:
+                                        <input
+                                            type="text"
+                                            id="rec_address"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline btn-primary showMapBtn">
+                                            Map (Optional)
+                                        </button>
+                                    </div>
+                                    <div class="smp" style="position:relative;">
+                                        <div class="showMap">
+                                            Give Receiver's Exact Location On Map (Recommended)
+                                            <input
+                                                id="pac-input2"
+                                                class="controls form-control"
+                                                type="text"
+                                                placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
+                                                style="color:#000;background:#ffffff;border:1px solid #000;"
+                                            >
+                                            <div style="height: 230px;width: 100%;position: absolute;margin: 0 auto;" id="map2"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="D_charge">Delivery Charge [BDT]:</div>
-                                <input
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="delivery_charge"
-                                    class="form-control"
-                                    placeholder=""
-                                    disabled
-                                >
-                                <br>
-                                Delivery Note: [Optional]
-                                <input
-                                    type="text"
-                                    style="color: #0066b3"
-                                    id="DELIVERY_NOTE"
-                                    class="form-control"
-                                    placeholder=""
-                                >
-                                <br>
-                                <h5 style="text-align: center; color: #0066b3">
-                                    Delivery Type:
-                                </h5>
-                                <select class="custom-select col-lg-12 btn" id="deliveryType" style="color: #0066b3; text-align-last: center">
-                                    <!--<option>WAREHOUSE</option>-->
-                                    <option>CUSTOMER</option>
-                                </select>
-                                <br>
-                                <br>
-                                <!-- <h5 style="text-align:center;color:#0066b3">Sender's Address:</h5> -->
-                                <input
-                                    id="pac-input"
-                                    class="controls form-control"
-                                    type="text"
-                                    placeholder=""
-                                    style="
-                    display: none;
-                    text-align: center;
-                    color: #0066b3;
-                    background: #ffffff;
-                    border: 2px solid #ffcf5c;
-                    font-size: 15px;
-                  "
-                                    disabled
-                                >
-                                <div style="display: none; height: 13%; margin-top: 0px" id="map"></div>
+                                <div class="product_information" data-title="Product Information">
+                                    <div>
+                                        Product Details:
+                                        <input
+                                            type="text"
+                                            id="product_name"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div>
+                                        Product Quantity [Pieces]:
+                                        <input
+                                            type="text"
+                                            id="product_qty"
+                                            class="form-control"
+                                            placeholder="20"
+                                        >
+                                    </div>
+                                    <div>
+                                        Per Product Cost [BDT]:
+                                        <input
+                                            type="text"
+                                            id="product_cost"
+                                            class="form-control"
+                                            placeholder="1000"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="delivery_information" data-title="Delivery Information">
+                                    <div class="criteria">
+                                        <div id="productType1">
+                                            Product Type Criteria:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productType" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                        <div id="productWeight1">
+                                            Product Weight Criteria [KG]:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productWeight" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                        <div id="dayType1">
+                                            Delivery Day Criteria:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="dayType" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                        <div id="productDistance1">
+                                            Deilvery Distance Criteria [KM]:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productDistance" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                        <div id="productCity1">
+                                            Delivery City Criteria:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productCity" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="D_charge"></div>
+                                        <input
+                                            type="text"
+                                            style="color:#0066b3"
+                                            id="delivery_charge"
+                                            class="form-control"
+                                            placeholder="80"
+                                            disabled
+                                        >
+                                    </div>
+                                    <div>
+                                        Payment Method:
+                                        <select class="custom-select col-lg-12 btn" id="managers2" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
+                                    </div>
+                                    <div style="display:none;">
+                                        Delivery Type:
+                                        <select class="custom-select col-lg-12 btn browser-default" id="deliveryType" style="color:#000;text-align-last:left;background:#ffcf5c;">
+                                            <!--<option>WAREHOUSE</option>-->
+                                            <option>CUSTOMER</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        Pickup Time [Optional]:
+                                        <input
+                                            type="text"
+                                            id="timepicker-12-hr"
+                                            class="form-control mb-4"
+                                            placeholder="09:00 AM"
+                                        >
+                                    </div>
+                                    <div>
+                                        Delivery Note [Optional]:
+                                        <input
+                                            type="text"
+                                            id="DELIVERY_NOTE"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                </div>
                                 <input type="hidden" id="lat" name="lat">
                                 <input type="hidden" id="longi" name="longi">
                                 <input type="hidden" id="des_lat" name="des_lat">
                                 <input type="hidden" id="des_longi" name="des_longi">
-                                <h5 style="text-align:center;color:#0066b3;margin-top:1.3rempx;">District</h5>
-                                <select class="custom-select col-lg-12 btn" id="managers" style="color:#0066b3;text-align-last:center;height: 46px;"></select>
-                                <h5 style="text-align:center;color:#0066b3;margin-top:35px;">Receiver's Area: Make Sure You Give The Correct Area Otherwise Your Delivery Will Not Count</h5>
-                                <select class="custom-select col-lg-12 btn" id="managers_2" style="color:#0066b3;text-align-last:center;height: 46px;"></select>
-                                <br>
-                                <br>
-                                <h5 style="text-align: center; color: #0066b3">
-                                    Receivers's Full Address:
-                                </h5>
+                                <h5 style="text-align:center;color:#000;display:none;">Sender's Address:</h5>
                                 <input
-                                    type="text"
-                                    style="color: #0066b3; text-align: center"
-                                    id="rec_address"
-                                    class="form-control"
-                                    placeholder=""
-                                >
-                                <br>
-                                <h5 style="text-align: center; color: #0066b3">
-                                    Give Exact Location On Map (Optional):
-                                </h5>
-                                <input
-                                    id="pac-input2"
+                                    id="pac-input"
                                     class="controls form-control"
                                     type="text"
-                                    placeholder="Search according to Receiver's Area and drag the market to exact location"
-                                    style="
-                    text-align: center;
-                    color: #0066b3;
-                    background: #ffffff;
-                    border: 2px solid #ffcf5c;
-                    font-size: 15px;
-                  "
+                                    placeholder="Search Your Address and Then Drag The Marker To Exact Location"
+                                    style="display:none;text-align:center;color:#000;background:#ffffff;border:2px solid #000;font-size:15px;"
+                                    disabled
                                 >
-                                <div style="margin-top: 0px" id="map2"></div>
+                                <div style="margin-top:0px;height:11%;display:none;" id="map"></div>
                             </form>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
                             <button
                                 class="btn btn-outline btn-round"
-                                style="background: #ffffd4;"
+                                style="background:#ffffd3;margin-top:-7rem;"
                                 type="button"
                                 id="createDelivery"
                             >
-                                Create Delivery
+                                Create
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" id="bulkDelivery">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body table-responsive blur">
-                        <form class="p-5">
-                            <div style="font-size: 18.5px; margin-top: -15px; color: #0d324d">
-                                Create Multiple Deliveries Using Excel File [Use Template Excel]:
-                            </div>
-                            <br>
-                            <h5 style="text-align: center; color: #0066b3">
-                                Your Information For Excel:
-                            </h5>
-                            <div style="text-align: center; margin-top: 15px">
-                                <h4 id="senLatLong"></h4>
+        <div id="bulkDelivery">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body table-responsive blur">
+                            <form class="p-5">
+                                <div style="font-size:18.5px;margin-top:-15px;color:#0D324D;text-align:center">
+                                    <strong>Input Fields In Excel Must Be Filled In English</strong>
+                                </div>
                                 <br>
-                                <a
-                                    href="DeliveryTemplate.xlsx"
-                                    class="fa fa-download btn btn-outline"
-                                    style="font-size: 13px; color: #0066b3"
-                                    download
-                                >
-                                    <file src="DeliveryTemplate.xlsx" alt="Template"></file>
-                                </a>
-                                &nbsp;&nbsp;Download Template Excel
-                                <br>
-                                <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top: 15px; font-size: 13px">
-                                    <i class="fa fa-upload fa-x" aria-hidden="true"></i>
-                                    <input
-                                        type="file"
-                                        id="upload"
-                                        name="files[]"
-                                        style="display: none; color: #0066b3"
+                                <h5 style="text-align:center;color:#0066b3">Select Sender:</h5>
+                                <select class="browser-default custom-select col-lg-12 btn" id="senderListExcel" style="text-align-last:center;width:80%;height: 46px;"></select>
+                                <div style="text-align:center;margin-top:15px;">
+                                    <h5 id="senderInfo"></h5>
+                                    <h4 id="senLatLong" style="margin-top:5px"></h4>
+                                    <a
+                                        href="DeliveryTemplate.xlsx"
+                                        class="fa fa-download btn btn-outline"
+                                        style="color:#0066b3;"
+                                        download
                                     >
-                                    &nbsp;&nbsp;Upload Excel
-                                    <h4 id="fileName" style="margin-top: 8px"></h4>
-                                </label>
-                                <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top: 15px; font-size: 13px">
-                                    <i class="fa fa-times fa-x" aria-hidden="true"></i>
-                                    <button id="cancelUpload" style="display: none; color: #0066b3"></button>
-                                    &nbsp;&nbsp;Cancel Excel
-                                    <h4 id="fileNamex" style="margin-top: 8px"></h4>
-                                </label>
-                                <br>
-                                <button
-                                    class="btn btn-outline btn-round"
-                                    onclick="mapxx()"
-                                    style="background: #fff; margin-top: 10px"
-                                    type="button"
-                                >
-                                    <i class="fa fa-map-marker fa-x" aria-hidden="true"></i>
-                                    Receiver's Location Finder
-                                </button>
-                                <br>
-                                <button
-                                    class="btn btn-outline btn-round"
-                                    style="background: #fbfcfd; margin-top: 10px"
-                                    type="button"
-                                    id="createDeliverywithExcel"
-                                >
-                                    Create Delivery
-                                </button>
-                                <br>
-                            </div>
-                        </form>
+                                        <file src="DeliveryTemplate.xlsx" alt="Template"></file>
+                                    </a>
+                                    &nbsp;&nbsp;Download Template Excel
+                                    <br>
+                                    <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top:15px;font-size:13px;">
+                                        <i class="fa fa-upload fa-x" aria-hidden="true"></i>
+                                        <input
+                                            type="file"
+                                            id="upload"
+                                            name="files[]"
+                                            style="display: none;color:#0066b3;"
+                                        >
+                                        &nbsp;&nbsp;Upload Excel
+                                        <h4 id="fileName" style="margin-top:8px;"></h4>
+                                    </label>
+                                    <label class="btn btn-outline btn-sm center-block btn-file" style="margin-top:15px;;font-size:13px;">
+                                        <i class="fa fa-times fa-x" aria-hidden="true"></i>
+                                        <button id="cancelUpload" style="display: none;color:#0066b3;"></button>
+                                        &nbsp;&nbsp;Cancel Excel
+                                        <h4 id="fileNamex" style="margin-top:8px;"></h4>
+                                    </label>
+                                    <br>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        onclick="mapxx()"
+                                        style="background:#fff;margin-top:10px;"
+                                        type="button"
+                                    >
+                                        <i class="fa fa-map-marker fa-x" aria-hidden="true"></i>
+                                        Receiver's Location Finder
+                                    </button>
+                                    <br>
+                                    <h5 style="text-align:center;color:#0066b3;margin-top: 1.5rem;">Auto Assign Delivery To Delivery Man?</h5>
+                                    <select class="browser-default custom-select col-lg-12 btn" id="autoAss2" style="text-align-last:center;height: 46px;width:80%;">
+                                        <option value="yes">Yes</option>
+                                        <option value="no" selected>No</option>
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background:#fbfcfd;margin-top:10px;"
+                                        type="button"
+                                        id="createDeliverywithExcel"
+                                    >
+                                        Create Delivery
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -511,7 +511,6 @@ $('#myModalDeliveryCostUpdate').on('shown.bs.modal', function () {
 	}, 500);
 })
 
-
 function removeMarkers3() {
 	markerx[1].setMap(null);
 	for (var i = 0; i < markers3.length; i++) {

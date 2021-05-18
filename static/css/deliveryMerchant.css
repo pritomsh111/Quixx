@@ -69,3 +69,405 @@ table#dtBasicExampleAp.dataTable tbody tr:hover>.sorting_1 {
 		padding-bottom: 0rem;
 	}
 }
+
+#myModalCreateD1 hr {
+	width: 50%;
+}
+
+#myModalAuto hr {
+	width: 50%;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+	padding: 10px 18px;
+	border-bottom: 1px solid #0066b3;
+}
+
+table.dataTable.no-footer {
+	border-bottom: 1px solid #0066b3;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+	padding: 15px 15px;
+	font-size: 0.8rem;
+}
+
+@media(min-width: 1600px) {
+	table.dataTable tbody th, table.dataTable tbody td {
+		font-size: 1.1rem;
+	}
+}
+
+@media(max-width: 1599px) {
+	table.dataTable tbody th, table.dataTable tbody td {
+		font-size: 0.8rem;
+	}
+}
+
+#dtBasicExampledAuto tbody td, #dtBasicExampledAuto_wrapper thead td {
+	padding: 15px 15px;
+}
+
+td[colspan] table tr td {
+	padding: 15px 5px;
+	width: 13rem;
+}
+
+#dtBasicExampleNewf td[colspan] table tr td {
+	width: 10rem;
+}
+
+td[colspan] table {
+	vertical-align: top;
+	display: inline-block;
+	margin-bottom: 1rem;
+}
+
+td[colspan] table:nth-child(n) {
+	margin-right: 3rem;
+}
+
+#dtBasicExampledAuto td[colspan] table:nth-child(n) {
+	margin-right: 1rem;
+}
+
+td[colspan] table:nth-child(2n) {
+	margin-right: 0rem;
+}
+
+@media (max-width:1340px) and (min-width:693px) {
+	td[colspan] table tr td {
+		padding: 15px 5px;
+		width: 15rem;
+	}
+	td[colspan] table {
+		display: block;
+		margin-bottom: 1rem;
+	}
+	td[colspan] table:nth-child(n) {
+		margin-right: 0rem;
+	}
+}
+
+@media (max-width:692px) {
+	td[colspan] table tr td {
+		padding: 15px 5px;
+		width: 10rem;
+	}
+	td[colspan] table {
+		display: block;
+		margin-bottom: 1rem;
+	}
+	td[colspan] table:nth-child(n) {
+		margin-right: 0rem;
+	}
+}
+
+@media (max-width:492px) {
+	td[colspan] table tr td {
+		padding: 15px 5px;
+		width: 5rem;
+	}
+	td[colspan] table {
+		display: block;
+		margin-bottom: 1rem;
+	}
+	td[colspan] table:nth-child(n) {
+		margin-right: 0rem;
+	}
+}
+
+div[id^="DID"] {
+	display: none;
+}
+
+.showBtn div[id^="DID"] {
+	display: block;
+}
+
+.col-md-4 button {
+	padding: 14px 1rem;
+}
+
+input {
+	text-align: left;
+}
+
+.custom-select2 {
+	display: inline-block;
+	height: calc(2.4375rem + 2px);
+	padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+	line-height: 1.5;
+	color: #495057;
+	vertical-align: middle;
+	background: #ffffff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+	background-size: 8px 10px;
+	border: 1px solid #d2d2d2;
+	border-radius: 0.25rem;
+	appearance: none;
+}
+
+.dataTables_wrapper .dataTables_processing {
+	position: absolute;
+	top: 30%;
+	width: 100%;
+	height: 75%;
+	text-align: center;
+	font-size: 1.2em;
+	background-color: white;
+}
+
+.naV {
+	background: #ffcf5c;
+}
+
+.row {
+	display: flex;
+}
+
+.col-md-4 {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.cool-link {
+	display: inline-block;
+	color: #000;
+	text-decoration: none;
+}
+
+#aRow:hover {
+	background-color: red;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+.welcome_text {
+	position: relative;
+	z-index: 5;
+	margin-top: 10%
+}
+
+.inp {
+	position: relative;
+	margin: auto;
+	width: 100%;
+	max-width: 280px;
+	color: #000;
+}
+
+.inp .label {
+	position: absolute;
+	top: 16px;
+	left: 0;
+	font-size: 16px;
+	color: #000;
+	font-weight: 500;
+	transform-origin: 0 0;
+	transition: all 0.2s ease;
+}
+
+.inp .border {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 2px;
+	width: 100%;
+	background: #000;
+	transform: scaleX(0);
+	transform-origin: 0 0;
+	transition: all 0.15s ease;
+}
+
+.inp input {
+	-webkit-appearance: none;
+	width: 100%;
+	border: 0;
+	font-family: inherit;
+	padding: 12px 0;
+	height: 48px;
+	font-size: 16px;
+	font-weight: 500;
+	border-bottom: 2px solid #FDB813;
+	background: none;
+	border-radius: 0;
+	color: #0066b3;
+	transition: all 0.15s ease;
+}
+
+.inp input:hover {
+	background: rgba(0, 0, 0, 0);
+}
+
+.inp input:not(:placeholder-shown)+span {
+	color: #0066b3;
+	transform: translateY(-26px) scale(0.75);
+}
+
+.inp input:focus {
+	background: none;
+	outline: none;
+}
+
+.inp input:focus+span {
+	color: #0066b3;
+	transform: translateY(-26px) scale(0.75);
+}
+
+.inp input:focus+span+.border {
+	transform: scaleX(1);
+}
+
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #000;
+	opacity: 0.8;
+	/* Firefox */
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #000;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: #000;
+}
+
+#formD>div:first-child {
+	font-size: 18.5px;
+	margin-top: -15px;
+	margin-bottom: 2rem;
+	color: #0D324D;
+	text-align: center;
+	margin-bottom: 0.1rem;
+}
+
+#formD>div:not(:first-child) {
+	margin: 5rem 0 3rem;
+}
+
+.sender_information, .receiver_information, .receiver_informationU, .product_information, .product_informationU, .delivery_information, .delivery_informationU {
+	display: grid;
+	flex-wrap: wrap;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	column-gap: 2rem;
+	row-gap: 2rem;
+	color: #000;
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 5px;
+	padding: 1rem;
+	position: relative;
+}
+
+.sender_information::before, .receiver_information::before, .receiver_informationU::before, .product_information::before, .product_informationU::before, .delivery_information::before, .delivery_informationU::before {
+	position: absolute;
+	content: attr(data-title)":";
+	top: -4rem;
+	left: 0;
+	padding: 1rem;
+	color: #0066b3;
+	font-size: 1.1rem;
+}
+
+#productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
+	padding: 0.3rem;
+	text-align-last: left;
+	height: 40px;
+}
+
+.criteria, .criteriaU {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	grid-column: span 2;
+	column-gap: 1rem;
+	row-gap: 1rem;
+}
+
+#productType1, #productWeight1, #dayType1, #productDistance1, #productCity1, #productType1U, #productWeight1U, #dayType1U, #productDistance1U, #productCity1U {
+	display: grid;
+}
+
+.receiver_information, .receiver_informationU {
+	padding-bottom: 1rem;
+	transition: padding 250ms ease-in;
+}
+
+.showMap, .showMapU {
+	transform: scaleY(0);
+	opacity: 0;
+	height: 0;
+	transform-origin: 0% 100%;
+	transition: transform 250ms ease-in;
+}
+
+.receiver_information.vis-map, .receiver_informationU.vis-map {
+	padding-bottom: 15.15rem;
+}
+
+.receiver_information.vis-map .smp, .receiver_informationU.vis-map .smpU {
+	grid-column: 1/-1;
+}
+
+.receiver_information.vis-map .smp .showMap, .receiver_informationU.vis-map .smpU .showMapU {
+	transform: scaleY(1);
+	opacity: 1;
+	height: 100%;
+}
+
+#formUpdateDC {
+	font-size: 0.9rem;
+	margin-bottom: 0;
+}
+
+#formUpdateDC>div:not(:last-child) {
+	margin: 4rem 0 5rem;
+}
+
+.modal-lg {
+	max-width: 90%;
+}
+
+@media (max-width:450px) {
+	#productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
+		padding: 0.2rem;
+		text-align-last: left;
+		height: 40px;
+		width: 130px;
+	}
+	.sender_information, .receiver_information, .product_information, .receiver_informationU, .product_informationU {
+		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+	}
+	.delivery_information, .delivery_informationU {
+		grid-template-columns: 1fr;
+		row-gap: 2rem;
+	}
+	.criteria, .criteriaU {
+		display: block;
+		grid-template-columns: unset;
+		grid-column: unset;
+		column-gap: 0rem;
+		row-gap: 0rem;
+	}
+	#productType1, #productWeight1, #dayType1, #productDistance1, #productCity1, #productType1U, #productWeight1U, #dayType1U, #productDistance1U, #productCity1U {
+		display: block;
+	}
+	.sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before, .receiver_informationU::before, .product_informationU::before, .delivery_informationU::before {
+		top: -4.5rem;
+		font-size: 1.1rem;
+	}
+	#formD>div:first-child {
+		font-size: 1rem;
+		margin-top: 1rem;
+		margin-bottom: 2.2rem;
+		padding-bottom: 1rem;
+	}
+}
+
+::selection {
+	color: #0066b3;
+	background-color: #ffcf5c;
+}

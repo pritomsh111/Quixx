@@ -95,8 +95,19 @@ $.ajax
 				$(option).html(data.data[i]);
 				$("#managers2").append(option);
 			}
+			document.querySelector("#managers2").selectedIndex = 2;
 		}
 	});
+
+
+document.querySelector(".showMapBtn").addEventListener("click", function (e) {
+	e.preventDefault();
+	document.querySelector(".receiver_information").classList.toggle("vis-map");
+	setTimeout(() => {
+		google.maps.event.trigger(map2, "resize");
+	}, 500);
+	google.maps.event.trigger(map2, "resize");
+});
 var merchantPerDeliveryCost = 0;
 var criteriaMap = new Map();
 var naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
@@ -182,6 +193,10 @@ async function criteriaInfo(value) {
 							//console.log(data.data[types]);
 						}
 					});
+					if (Object.keys(data.data).length === 1) {
+						$('.criteria')
+							.hide();
+					}
 					// document.getElementById('managers').selectedIndex = dhakaIndex;
 				}
 			});
@@ -215,7 +230,7 @@ naValuesType.map(item => {
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
 			}
 			else {
-				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
+				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
 				document.getElementById('delivery_charge').value = merchantPerDeliveryCost;
 			}
 		}
@@ -293,6 +308,7 @@ function initAutocomplete() {
 					document.getElementById('s_number').value = data.data.sender_phone_number;
 					document.getElementById('lat').value = data.data.sender_lat;
 					document.getElementById('longi').value = data.data.sender_longi;
+					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
 					document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
 					merchantPerDeliveryCost = data.data.per_delivery_cost;
 
