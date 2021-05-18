@@ -40,16 +40,6 @@ var createBulkDeliveries = () => {
 	$('#bulkDelivery').show();
 }
 
-
-function checkCriteria(val, msg, ex = "") {
-	let a = val;
-	if (a) {
-		a = a?.includes(`${msg}`) ? "NOT_SELECTED" : a + ex;
-		return a;
-	}
-	return "---";
-}
-
 function dataTableStyle() {
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
@@ -62,147 +52,6 @@ function dataTableStyle() {
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
 		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
-}
-
-function formatUnassigned(d) {
-	//Delivery Info
-	let delivery_created_date = d.delivery_created_date || "";
-	let pickup_time = d.pickup_time || "";
-	let delivery_status = d.delivery_status || "";
-	// let delivery_created_by_name = d.delivery_created_by_name || "";
-	// let delivery_created_by_role = d.delivery_created_by_role || "";
-	let delivery_created_by_name_role = d.delivery_created_by_name + ", " + d.delivery_created_by_role;
-	let delivery_type = d.delivery_type || "";
-	let delivery_note = d.delivery_note || "";
-
-	//Sender's Info
-	let sender_name = d.sender_name || "";
-	let sender_phone_number = d.sender_phone_number || "";
-	let sender_address = d.sender_address || "";
-
-	//Receiver's Info
-	let receiver_name = d.receiver_name || "";
-	let receiver_phone_number = d.receiver_phone_number || "";
-	let delivery_city = d.delivery_city || "";
-	let delivery_area = d.delivery_area || "";
-	let receiver_address = d.receiver_address || "";
-
-	//Criteria Info
-	let delivery_product_type = checkCriteria(d.delivery_product_type, "delivery_product_type_na");
-	let delivery_weight = checkCriteria(d.delivery_weight, "delivery_weight_na", " KG");
-	let delivery_day_type = checkCriteria(d.delivery_day_type, "delivery_day_type_na");
-	let delivery_distance = checkCriteria(d.delivery_distance, "delivery_distance_na", " KM");
-	let delivery_city_criteria = checkCriteria(d.delivery_city_criteria, "delivery_city_criteria_na");
-
-	//Product Info
-
-	//Payment Info
-	let payment_method = d.payment_method || "";
-
-	return '<table id="innerRowTable">' +
-		'<thead>' +
-		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
-		"</tr ></thead >" +
-		'<tr>' +
-		'<td>Receiver\'s Name:</td>' +
-		'<td>' + receiver_name + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Receiver\'s Phone Number:</td>' +
-		'<td>' + receiver_phone_number + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Receiver\'s City:</td>' +
-		'<td>' + delivery_city + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Receiver\'s Area:</td>' +
-		'<td>' + delivery_area + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Receiver\'s Address:</td>' +
-		'<td>' + receiver_address + '</td>' +
-		'</tr>' +
-		'</table>' +
-		'<table id="innerRowTable">' +
-		'<thead>' +
-		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Delivery Info</th>" +
-		"</tr ></thead >" +
-		'<tr>' +
-		'<td>Delivery Status:</td>' +
-		'<td>' + delivery_status + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Payment Method:</td>' +
-		'<td>' + payment_method + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Delivery Creation Date and Time:</td>' +
-		'<td>' + delivery_created_date + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Pickup Time:</td>' +
-		'<td>' + pickup_time + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Company Name &amp Designation:</td>' +
-		'<td>' + delivery_created_by_name_role + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Delivery Type:</td>' +
-		'<td>' + delivery_type + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Delivery Note:</td>' +
-		'<td>' + delivery_note + '</td>' +
-		'</tr>' +
-		'</table>' +
-		'<table id="innerRowTable">' +
-		'<thead>' +
-		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Criteria Info</th>" +
-		"</tr ></thead >" +
-		'<tr>' +
-		'<td>Product Type:</td>' +
-		'<td>' + delivery_product_type + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Product Weight [KG]</td>' +
-		'<td>' + delivery_weight + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Day Type:</td>' +
-		'<td>' + delivery_day_type + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Distance Type [KM]:</td>' +
-		'<td>' + delivery_distance + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>City Type:</td>' +
-		'<td>' + delivery_city_criteria + '</td>' +
-		'</tr>' +
-		'</table>' +
-		'<table id="innerRowTable">' +
-		'<thead>' +
-		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +
-		"</tr ></thead >" +
-		'<tr>' +
-		'<td>Sender\'s Name:</td>' +
-		'<td>' + sender_name + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Sender\'s Phone Number:</td>' +
-		'<td>' + sender_phone_number + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Sender\'s Address:</td>' +
-		'<td>' + sender_address + '</td>' +
-		'</tr>' +
-		'</table>';
 }
 
 function tdColspan() {
@@ -220,37 +69,12 @@ function tdColspan() {
 	}
 }
 var unassignedDeliveries = () => {
-	buttonActive();
+	// buttonActive();
+	btnHandler();
 	document.getElementById('body').style.pointerEvents = "none";
-	document.getElementById('oneb').disabled = true;
-	document.getElementById('oneb').style.fontSize = '14.5px';
+	document.getElementById('twox').disabled = true;
+	document.getElementById('twox').style.fontSize = '14.5px';
 	this_select_content = "";
-	$.ajax
-		({
-			url: urlForAll + "deliveryMan/approved/" + org_ID,
-			type: "GET",
-
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-
-			success: function (data) {
-				$('#deliveryManList')
-					.empty()
-					.append('<option selected="selected" value="">Delivery Man List</option>')
-					;
-				for (var i = 0; i < data.data.length; i++) {
-					var option = new Option(data.data[i].delivery_man_id, data.data[i].delivery_man_id);
-					$(option).html(data.data[i].name);
-					$("#deliveryManList").append(option);
-					this_select_content += '<option value="' + data.data[i].delivery_man_id + '">' + data.data[i].name + '</option>';
-				}
-			}
-		});
-
 	var table = $('#dtBasicExampled').DataTable({
 		responsive: {
 			details: {
@@ -286,7 +110,7 @@ var unassignedDeliveries = () => {
 		"destroy": true,
 		"ajax":
 		{
-			"url": urlForAll + "manager/all/unAssign/delivery/" + org_ID,
+			"url": urlForAll + "manager/all/unAssign/delivery/" + merchant_ID,
 			"type": "GET",
 			"headers":
 			{
@@ -297,34 +121,85 @@ var unassignedDeliveries = () => {
 			"dataSrc": "data"
 		},
 		"columns": [
+			{ "targets": 1, "data": null, "defaultContent": "" },
 			{
-				"data": null,
-				"defaultContent": ""
+				"targets": 21, "data": null, render: function (data, type, row) {
+
+					return row.delivery_Id + "<br>" + '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '$$' + row.delivery_product_type + '$$' + row.delivery_weight + '$$' + row.delivery_day_type + '$$' + row.delivery_distance + "$$" + row.delivery_city_criteria + '" class="btn-round btn-outline btn updateCh" style="font-size:13px;">Update</button>'
+				}
 			},
-			{ "targets": 0, "data": "delivery_Id" },
+			{ "targets": 2, "data": "delivery_status" },
+			{ "targets": 10, "data": "receiver_name" },
+			{ "targets": 11, "data": "receiver_phone_number" },
+			{
+				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+					let a = row.delivery_city;
+					return a ? row.delivery_city : "";
+				}
+			},
+			{ "targets": 123, "data": "delivery_area" },
+			{ "targets": 13, "data": "receiver_address" },
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
-				"targets": 20, "data": "assign", render: function (data, type, row) {
-
-					return '<button id="' + row.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:13px;">Assign</button>'
+				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+					let a = row.delivery_product_type;
+					if (a) {
+						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
 				}
 			},
 			{
-				"targets": 21, "data": "update", render: function (data, type, row) {
-
-					return '<button id="' + row.delivery_Id + '$$' + row.creator_id + '$$' + row.delivery_charge + '$$' + row.pickup_time + '$$' + row.receiver_name + '$$' + row.receiver_phone_number + '$$' + row.product_name + '$$' + row.product_qty + '$$' + row.payment_method + '$$' + row.product_cost + '$$' + row.delivery_note + '$$' + row.delivery_area + '$$' + row.receiver_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.sender_name + '$$' + row.sender_phone_number + '$$' + row.sender_address + '$$' + row.delivery_type + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.delivery_created_date + '$$' + row.delivery_created_by_name + '$$' + row.delivery_created_by_role + '$$' + row.collection_name + '$$' + row.delivery_status + '$$' + row.delivery_city + '$$' + row.delivery_product_type + '$$' + row.delivery_weight + '$$' + row.delivery_day_type + '$$' + row.delivery_distance + "$$" + row.delivery_city_criteria + '" class="btn-round btn-outline btn updateCh" style="font-size:13px;">Update</button>'
+				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+					let a = row.delivery_weight;
+					if (a) {
+						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
+						return a;
+					}
+					return "---";
 				}
 			},
 			{
-				"targets": 22, "data": "invoice", render: function (data, type, row) {
-
-					return '<button id="' + org_ID + '" name="' + row.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)"; style="font-size: 13px">Invoice</button>'
+				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+					let a = row.delivery_day_type;
+					if (a) {
+						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
 				}
-			}
+			},
+			{
+				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+					let a = row.delivery_distance;
+					if (a) {
+						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
+						return a;
+					}
+					return "---";
+				}
+			},
+			{
+				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+					let a = row.delivery_city_criteria;
+					if (a) {
+						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
+						return a;
+					}
+					return "---";
+				}
+			},
+			{ "targets": 5, "data": "pickup_time" },
+			{ "targets": 20, "data": "delivery_note" },
+			{ "targets": 1, "data": "delivery_created_date" },
+			{ "targets": 7, "data": "sender_name" },
+			{ "targets": 8, "data": "sender_phone_number" },
+			{ "targets": 9, "data": "sender_address" }
 		]
 	});
 	table.on('xhr', function () {

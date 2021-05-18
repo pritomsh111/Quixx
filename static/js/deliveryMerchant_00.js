@@ -31,13 +31,6 @@ function three3() {
 		document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
 		$('#dtBasicExampled').hide();
 		$('.d').hide();
-		// $('.a').hide();
-		// $('#dtBasicExampleAp').hide();
-		// $('#dtBasicExampleNew').hide();
-		// $('.b').hide();
-		// $('.c').show();
-		// $('.e').hide();
-		// $('#dtBasicExampled').hide();
 		$("#deliveryCreateQ").show();
 		$('#bulkDelivery').hide();
 		$("#deliveryCreate").hide();
