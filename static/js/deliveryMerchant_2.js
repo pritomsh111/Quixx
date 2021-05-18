@@ -285,7 +285,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	// }
 	var v9 = () => {
 		if (product_name == "" || product_name == null) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Name cannot be empty!";
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Details cannot be empty!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_nameQ").focus();
 			return 0;
@@ -668,7 +668,7 @@ function doIt(i, lengx) {
 		}
 		var v9 = () => {
 			if (product_name == "" || product_name == null || product_name == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Name cannot be empty!`;
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Details cannot be empty!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
 				hello();

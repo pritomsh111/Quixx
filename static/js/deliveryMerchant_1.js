@@ -279,7 +279,7 @@ naValuesType.map(item => {
 var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
 var markers = [];
 var markers2 = [];
-
+var s_name, s_number, s_address;
 
 function initAutocomplete() {
 
@@ -308,7 +308,9 @@ function initAutocomplete() {
 					// 	position: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
 					// 	map: map
 					// });
-
+					s_name = data.data.sender_name;
+					s_number = data.data.sender_phone_number;
+					s_address = data.data.sender_address;
 					document.getElementById('pac-input').value = data.data.sender_address;
 					document.getElementById('s_name').value = data.data.sender_name;
 					document.getElementById('s_number').value = data.data.sender_phone_number;
@@ -319,7 +321,6 @@ function initAutocomplete() {
 					document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
 					document.getElementById('delivery_chargeQ').value = data.data.per_delivery_cost;
 					merchantPerDeliveryCost = data.data.per_delivery_cost;
-
 					document.getElementById('senLatLong').innerHTML =
 						`Sender's Address: ${data.data.sender_address}<br>
 						Sender's Name: ${data.data.sender_name}<br>
