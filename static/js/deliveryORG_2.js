@@ -186,7 +186,6 @@ $("#senderListExcel").change(function () {
 	if (value) {
 		$.ajax
 			({
-				async: true,
 				type: "GET",
 				url: urlForAll + "profile/get/profile/" + value,
 				headers:
@@ -224,7 +223,7 @@ $("#senderList").change(async function () {
 	if (value) {
 		await $.ajax
 			({
-				async: true,
+
 				type: "GET",
 				url: urlForAll + "profile/get/profile/" + value,
 				headers:
@@ -1162,7 +1161,7 @@ $('.btn-ok').on("click", function () {
 	if (deliveryManId) {
 		$.ajax
 			({
-				async: true,
+
 				type: "PUT",
 				url: urlForAll + "delivery/assign/" + org_ID + "/" + orgid + "/" + deliveryManId,
 
@@ -1322,7 +1321,7 @@ $('.btn-okReassign').on("click", function () {
 	if (deliveryManId) {
 		$.ajax
 			({
-				async: true,
+
 				type: "PUT",
 				url: urlForAll + "delivery/assign/" + org_ID + "/" + orgid + "/" + deliveryManId,
 
@@ -1443,7 +1442,7 @@ $('.btn-okRD').on("click", function () {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "PUT",
 			url: urlForAll + "orgHead/approve/cancel/delivery/" + org_ID + "/" + orgid + "/" + deliveryId + "/" + "yes",
 
@@ -1515,7 +1514,7 @@ $('.btn-okRD2').on("click", function () {
 	document.getElementById('modalRecDelV2').disabled = true;
 	$.ajax
 		({
-			async: true,
+
 			type: "PUT",
 			url: urlForAll + "orgHead/approve/cancel/delivery/" + org_ID + "/" + orgid + "/" + deliveryId + "/" + "no",
 
@@ -1576,7 +1575,7 @@ function recall() {
 	document.getElementById('product_qty').value = "";
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "profile/get/profile/" + senderGuy,
 			headers:
@@ -2362,7 +2361,7 @@ function doIt(i, lengx) {
 			// //console.log(datap);
 			$.ajax
 				({
-					async: true,
+
 					type: "POST",
 					url: urlForAll + "delivery/create/" + senderGuyExcel + '/' + autoAssDExcel,
 					data: datap,
@@ -2684,7 +2683,7 @@ function autoAssignDeliveryManUnassingedTable(ddeliveryAutoIterator) {
 	setTimeout(function () {
 		$.ajax
 			({
-				async: true,
+
 				type: "PUT",
 				url: urlForAll + "delivery/assign/" + org_ID + "/" + deliveryAutoID[ddeliveryAutoIterator] + "/" + deliveryAutoDeliveryMan[ddeliveryAutoIterator],
 
@@ -3670,7 +3669,7 @@ $('.btn-okReturn').on("click", function () {
 		$("#sureReturn").show();
 		$.ajax
 			({
-				async: true,
+
 				type: "PUT",
 				url: urlForAll + "orgHead/update/return/delivery/" + del_id + "/" + creator_ID + "/" + product_cost + "/" + product_qty + "/" + product_name + "/" + delivery_cost_update,
 				headers:
