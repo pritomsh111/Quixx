@@ -286,24 +286,18 @@ function initialize() {
 document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_information").classList.toggle("vis-map");
-	google.maps.event.trigger(map2, "resize");
-	let refresh = function () {
-		let center = map2.getCenter();
-		google.maps.event.trigger(map2, "resize");
-		map2.setCenter(center);
-	}
-	setTimeout(refresh, 500);
+	setTimeout(() => {
+		google.maps.event.trigger(map2, 'resize');
+	}, 1500);
 });
 
 document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_informationU").classList.toggle("vis-map");
-	let refresh = function () {
-		let center = window.map.getCenter();
-		google.maps.event.trigger(window.map, "resize");
-		window.map.setCenter(center);
-	}
-	setTimeout(refresh, 500);
+	setTimeout(() => {
+		google.maps.event.trigger(map3, 'resize');
+		google.maps.event.trigger(window.map, 'resize');
+	}, 1500);
 });
 
 var myMarker, myMarker3, infowindow, infowindow3, contentString, contentString3;
@@ -502,8 +496,10 @@ function initMap() {
 
 	$('#myModalDeliveryCostUpdate').on('shown.bs.modal', function () {
 		//Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
-
-		google.maps.event.trigger(window.map, "resize");
+		setTimeout(() => {
+			google.maps.event.trigger(map3, 'resize');
+			google.maps.event.trigger(window.map, 'resize');
+		}, 1500);
 	})
 }
 

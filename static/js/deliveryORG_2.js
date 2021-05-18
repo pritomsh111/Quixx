@@ -1861,7 +1861,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"delivery_distance": distance ? distance : "delivery_distance_na",
 				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 			});
-		console.log(datap);
+		// console.log(datap);
 		$('#tickD2').hide();
 		$(".circle-loader").show();
 		$(".circle-loader").removeClass("load-complete");
@@ -3115,6 +3115,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	$("#circleLoad3DC").hide();
 	$("#sure3DC").hide();
 	$("#myModalDeliveryCostUpdate").modal('show');
+	google.maps.event.trigger(map3, "resize");
 	wrongKeteDao();
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
@@ -3367,7 +3368,7 @@ $('.btn-ok-updateDC').on("click", function () {
 			"delivery_distance": distance ? distance : "delivery_distance_na",
 			"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 		});
-	console.log(datap);
+	// console.log(datap);
 	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v0() == 1 && v4() == 1 && v12() == 1) {
 
 		document.getElementById('modalApproveDC').disabled = true;
