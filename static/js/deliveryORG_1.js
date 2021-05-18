@@ -287,8 +287,8 @@ document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_information").classList.toggle("vis-map");
 	setTimeout(() => {
-		google.maps.event.trigger(map2, "resize");
 		map2.setZoom(14);
+		google.maps.event.trigger(map2, "resize");
 	}, 1500);
 });
 
@@ -296,10 +296,8 @@ document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_informationU").classList.toggle("vis-map");
 	setTimeout(() => {
-		let center = window.map.getCenter();
-		google.maps.event.trigger(window.map, "resize");
-		window.map.setCenter(center);
 		window.map.setZoom(16);
+		google.maps.event.trigger(window.map, "resize");
 	}, 1500);
 });
 
