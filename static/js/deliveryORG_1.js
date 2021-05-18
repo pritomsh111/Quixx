@@ -287,24 +287,36 @@ document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_information").classList.toggle("vis-map");
 	google.maps.event.trigger(map2, "resize");
+	let refresh = function () {
+		let center = map2.getCenter();
+		google.maps.event.trigger(map2, "resize");
+		map2.setCenter(center);
+	}
+	setTimeout(refresh, 500);
 });
 
 document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_informationU").classList.toggle("vis-map");
-	google.maps.event.trigger(map3, "resize");
+	let refresh = function () {
+		let center = window.map.getCenter();
+		google.maps.event.trigger(window.map, "resize");
+		window.map.setCenter(center);
+	}
+	setTimeout(refresh, 500);
 });
 
 var myMarker, myMarker3, infowindow, infowindow3, contentString, contentString3;
 var markers = [];
 var markers3 = [];
+var map3;
 
 var markerx = [];
 window.map = undefined;
 
 function initMap() {
 
-	var map3 = new google.maps.Map(document.getElementById('map3'), {
+	map3 = new google.maps.Map(document.getElementById('map3'), {
 		center: { lat: 23.8103, lng: 90.4125 },
 		zoom: 13,
 		mapTypeId: 'roadmap',

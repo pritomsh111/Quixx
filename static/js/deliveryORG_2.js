@@ -3115,7 +3115,6 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	$("#circleLoad3DC").hide();
 	$("#sure3DC").hide();
 	$("#myModalDeliveryCostUpdate").modal('show');
-	google.maps.event.trigger(map3, "resize");
 	wrongKeteDao();
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
