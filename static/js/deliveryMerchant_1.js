@@ -77,11 +77,12 @@ document.querySelector("#managers").addEventListener("change", function () {
 });
 $('#managers2')
 	.empty();
+$('#managers2Q')
+	.empty();
 $.ajax
 	({
 		url: urlForAll + "delivery/payment/method/" + localStorage.getItem('token'),
 		type: "GET",
-
 		headers:
 		{
 			'Accept': 'application/json',
@@ -92,10 +93,14 @@ $.ajax
 		success: function (data) {
 			for (var i = 0; i < data.data.length; i++) {
 				var option = new Option(data.data[i], data.data[i]);
+				var option2 = new Option(data.data[i], data.data[i]);
 				$(option).html(data.data[i]);
+				$(option2).html(data.data[i]);
 				$("#managers2").append(option);
+				$("#managers2Q").append(option2);
 			}
 			document.querySelector("#managers2").selectedIndex = 2;
+			document.querySelector("#managers2Q").selectedIndex = 2;
 		}
 	});
 
@@ -291,17 +296,17 @@ function initAutocomplete() {
 			},
 			success: function (data) {
 				if (data.status == 'OK') {
-					var map = new google.maps.Map(document.getElementById('map'), {
-						center: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
-						zoom: 13,
-						mapTypeId: 'roadmap',
-						mapTypeControl: false,
-						fullscreenControl: false
-					});
-					myMarker = new google.maps.Marker({
-						position: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
-						map: map
-					});
+					// var map = new google.maps.Map(document.getElementById('map'), {
+					// 	center: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
+					// 	zoom: 13,
+					// 	mapTypeId: 'roadmap',
+					// 	mapTypeControl: false,
+					// 	fullscreenControl: false
+					// });
+					// myMarker = new google.maps.Marker({
+					// 	position: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
+					// 	map: map
+					// });
 
 					document.getElementById('pac-input').value = data.data.sender_address;
 					document.getElementById('s_name').value = data.data.sender_name;
@@ -309,7 +314,9 @@ function initAutocomplete() {
 					document.getElementById('lat').value = data.data.sender_lat;
 					document.getElementById('longi').value = data.data.sender_longi;
 					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+					document.getElementById('D_chargeQ').innerHTML = "Delivery Charge [BDT]:";
 					document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
+					document.getElementById('delivery_chargeQ').value = data.data.per_delivery_cost;
 					merchantPerDeliveryCost = data.data.per_delivery_cost;
 
 					document.getElementById('senLatLong').innerHTML =
