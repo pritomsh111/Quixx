@@ -50,7 +50,7 @@
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="threeQ"
                     style="width: 100%; font-size: 13px"
-                    onclick="createDeliveryQuicc()"
+                    onclick="createDeliveryQ()"
                 >
                     Quick Delivery
                 </button>
@@ -73,6 +73,16 @@
                     onclick="createBulkDeliveries()"
                 >
                     Multiple Deliveries [Excel]
+                </button>
+            </div>
+            <div class="col-md-12">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="twox"
+                    style="width: 100%; font-size: 13px"
+                    onclick="unAssignedDeliveries()"
+                >
+                    Created Deliveries
                 </button>
             </div>
         </div>
@@ -125,7 +135,7 @@
                                         >
                                     </div>
                                     <div>
-                                        Per Product Cost [BDT]:
+                                        Total Amount [BDT]:
                                         <input
                                             type="text"
                                             id="product_costQ"
@@ -386,8 +396,6 @@
                                     <strong>Input Fields In Excel Must Be Filled In English</strong>
                                 </div>
                                 <br>
-                                <h5 style="text-align:center;color:#0066b3">Select Sender:</h5>
-                                <select class="browser-default custom-select col-lg-12 btn" id="senderListExcel" style="text-align-last:center;width:80%;height: 46px;"></select>
                                 <div style="text-align:center;margin-top:15px;">
                                     <h5 id="senderInfo"></h5>
                                     <h4 id="senLatLong" style="margin-top:5px"></h4>
@@ -429,16 +437,10 @@
                                         Receiver's Location Finder
                                     </button>
                                     <br>
-                                    <h5 style="text-align:center;color:#0066b3;margin-top: 1.5rem;">Auto Assign Delivery To Delivery Man?</h5>
-                                    <select class="browser-default custom-select col-lg-12 btn" id="autoAss2" style="text-align-last:center;height: 46px;width:80%;">
-                                        <option value="yes">Yes</option>
-                                        <option value="no" selected>No</option>
-                                    </select>
-                                    <br>
                                     <br>
                                     <button
                                         class="btn btn-outline btn-round"
-                                        style="background:#fbfcfd;margin-top:10px;"
+                                        style="background:#ffffd3;margin-top:10px;"
                                         type="button"
                                         id="createDeliverywithExcel"
                                     >

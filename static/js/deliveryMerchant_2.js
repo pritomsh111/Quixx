@@ -1,51 +1,41 @@
 var merchant_ID = localStorage.getItem('userID');
 var dataInfo, excelData, flag = false;
-var createDelivery = () => {
-	document.getElementById('three').disabled = true;
+
+function btnHandler() {
+	document.getElementById('three').disabled = false;
 	document.getElementById('two').disabled = false;
-	document.getElementById('three').style.fontSize = '14.5px';
+	document.getElementById('threeQ').disabled = false;
+	document.getElementById('three').style.fontSize = '13px';
 	document.getElementById('two').style.fontSize = '13px';
 	document.getElementById('threeQ').style.fontSize = '13px';
-
 	document.getElementById('threeQ').innerHTML = 'Quick Delivery';
 	document.getElementById('three').innerHTML = 'Detailed Delivery';
 	document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
+}
 
+var createDeliveryQ = () => {
+	btnHandler();
+	document.getElementById('threeQ').disabled = true;
+	document.getElementById('threeQ').style.fontSize = '14.5px';
 	$('#bulkDelivery').hide();
-	// $('#dtBasicExample').hide();
-	// $('.a').hide();
-	// $('#dtBasicExampleAp').hide();
-	// $('#dtBasicExampleNew').hide();
-	// $('.b').hide();
-	// $('.c').show();
-	// $('.d').hide();
-	// $('.e').hide();
-	// $('#dtBasicExampled').hide();
+	$("#deliveryCreate").hide();
+	$("#deliveryCreateQ").show();
+}
+var createDelivery = () => {
+	btnHandler();
+	document.getElementById('three').disabled = true;
+	document.getElementById('three').style.fontSize = '14.5px';
+	$('#bulkDelivery').hide();
+	$("#deliveryCreateQ").hide();
 	$("#deliveryCreate").show();
 }
 var createBulkDeliveries = () => {
-	document.getElementById('three').disabled = false;
+	btnHandler();
 	document.getElementById('two').disabled = true;
-	document.getElementById('three').style.fontSize = '13px';
 	document.getElementById('two').style.fontSize = '14.5px';
-
-	document.getElementById('threeQ').style.fontSize = '13px';
-
-	document.getElementById('threeQ').innerHTML = 'Quick Delivery';
-	document.getElementById('three').innerHTML = 'Detailed Delivery';
-	document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
-
+	$("#deliveryCreateQ").hide();
 	$("#deliveryCreate").hide();
 	$('#bulkDelivery').show();
-	// $('#dtBasicExample').hide();
-	// $('.a').hide();
-	// $('#dtBasicExampleAp').hide();
-	// $('#dtBasicExampleNew').hide();
-	// $('.b').hide();
-	// $('.c').show();
-	// $('.d').hide();
-	// $('.e').hide();
-	// $('#dtBasicExampled').hide();
 }
 var goToDelivery = () => {
 	window.open('addDeliverToDeliveryMan.html', '_blank');
@@ -54,7 +44,6 @@ var mapxx = () => {
 	window.open("locationFinder.html", "_blank");
 };
 var ExcelToJSON = function () {
-
 	this.parseExcel = function (file) {
 		var reader = new FileReader();
 

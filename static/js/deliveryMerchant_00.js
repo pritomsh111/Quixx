@@ -19,7 +19,8 @@ function three3() {
 		// document.getElementById('two').innerHTML = 'Completed Deliveries';
 		// document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
 
-		document.getElementById('three').disabled = true;
+		document.getElementById('three').disabled = false;
+		document.getElementById('threeQ').disabled = true;
 		document.getElementById('two').disabled = false;
 		document.getElementById('three').style.fontSize = '13px';
 		document.getElementById('threeQ').style.fontSize = '14.5px';
@@ -37,7 +38,8 @@ function three3() {
 		// $('.d').hide();
 		// $('.e').hide();
 		// $('#dtBasicExampled').hide();
+		$("#deliveryCreateQ").show();
 		$('#bulkDelivery').hide();
-		$("#deliveryCreate").show();
+		$("#deliveryCreate").hide();
 	}, 3700);
 }

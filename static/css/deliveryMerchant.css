@@ -456,7 +456,7 @@ input {
 		display: block;
 	}
 	.sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before, .receiver_informationQ::before, .product_informationQ::before, .delivery_informationQ::before {
-		top: -4.5rem;
+		top: -5rem;
 		font-size: 1.1rem;
 	}
 	#formD>div:first-child, #formDQ>div:first-child {

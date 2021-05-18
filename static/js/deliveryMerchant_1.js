@@ -2,6 +2,7 @@ $(function () {
 	$('#settingsMer').hide();
 	$("#cod").hide();
 	$("#deliveryCreate").hide();
+	$("#deliveryCreateQ").hide();
 	$(".container").hide();
 	$('#bulkDelivery').hide();
 	$('.criteria')
