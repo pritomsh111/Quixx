@@ -135,9 +135,9 @@ function recall() {
 	document.getElementById('des_longi').value = "";
 	document.getElementById('product_name').value = "";
 	document.getElementById('product_qty').value = "";
+	removeMarkers2();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
 			url: urlForAll + "profile/get/profile/" + localStorage.getItem('userID'),
 			headers:
@@ -156,89 +156,89 @@ function recall() {
 		})
 }
 
-document.getElementById("createDelivery").addEventListener("click", function (event) {
-	var pickup_time = document.getElementById('timepicker-12-hr').value;
-	var s_name = document.getElementById('s_name').value;
-	var s_number = document.getElementById('s_number').value;
-	var s_address = document.getElementById('pac-input').value;
-	var r_name = document.getElementById('r_name').value;
-	var r_number = document.getElementById('r_number').value;
-	var r_address = document.getElementById('pac-input2').value;
-	var rec_address = document.getElementById('rec_address').value;
-	var payment_method = document.getElementById('managers2').value;
-	var delivery_note = document.getElementById('DELIVERY_NOTE').value;
-	var delivery_type = document.getElementById('deliveryType').value;
-	var area = String(document.getElementById('managers_2').value);
-	var pickup_lat = String(document.getElementById('lat').value);
-	var pickup_longi = String(document.getElementById('longi').value);
-	var delivery_lat = String(document.getElementById('des_lat').value);
-	var delivery_longi = String(document.getElementById('des_longi').value);
-	var product_name = String(document.getElementById('product_name').value);
-	var product_qty = String(document.getElementById('product_qty').value);
-	var product_cost = document.getElementById('product_cost').value;
-	var delivery_charge = document.getElementById('delivery_charge').value;
-	var deliveryCity = String(document.getElementById('managers').value);
-	var dayType = document.getElementById('dayType').value;
-	var productType = document.getElementById('productType').value;
-	var distance = document.getElementById('productDistance')?.value;
-	var weight = document.getElementById('productWeight').value;
-	var cityType = document.getElementById('productCity').value;
-	var v1 = () => {
-		if (pickup_time == "" || pickup_time == null) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give a Pickup Time!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("timepicker-12-hr").focus();
-			return 0;
-		}
-		else {
-			return 1;
-		}
-	}
-	var v2 = () => {
-		if (s_name == "" || s_name == null) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender Name cannot be empty!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			return 0;
-		}
-		else {
-			return 1;
-		}
-	}
-	var v3 = () => {
-		if (s_number == "" || s_number == null) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number cannot be empty!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			return 0;
-		}
-		else if ((s_number.length < 11 || s_number.length > 11) && !/\D/.test(s_number) == true) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number must be of 11 digits!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			return 0;
-		}
-		else if (s_number.match(/\d/g).length === 11 && !/\D/.test(s_number) == true) {
-			return 1;
-		}
-		else {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number not valid!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			return 0;
-		}
-	}
-	var v4 = () => {
-		if (s_address == "" || s_address == null) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Address cannot be empty!!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			return 0;
-		}
-		else {
-			return 1;
-		}
-	}
+document.getElementById("createDeliveryQ").addEventListener("click", function (event) {
+	// var pickup_time = document.getElementById('timepicker-12-hr').value;
+	// var s_name = document.getElementById('s_name').value;
+	// var s_number = document.getElementById('s_number').value;
+	// var s_address = document.getElementById('pac-input').value;
+	var r_name = document.getElementById('r_nameQ').value;
+	var r_number = document.getElementById('r_numberQ').value;
+	// var r_address = document.getElementById('pac-input2').value;
+	var rec_address = document.getElementById('rec_addressQ').value;
+	var payment_method = document.getElementById('managers2Q').value;
+	// var delivery_note = document.getElementById('DELIVERY_NOTE').value;
+	// var delivery_type = document.getElementById('deliveryType').value;
+	// var area = String(document.getElementById('managers_2').value);
+	// var pickup_lat = String(document.getElementById('lat').value);
+	// var pickup_longi = String(document.getElementById('longi').value);
+	// var delivery_lat = String(document.getElementById('des_lat').value);
+	// var delivery_longi = String(document.getElementById('des_longi').value);
+	var product_name = String(document.getElementById('product_nameQ').value);
+	// var product_qty = String(document.getElementById('product_qty').value);
+	var product_cost = document.getElementById('product_costQ').value;
+	var delivery_charge = document.getElementById('delivery_chargeQ').value;
+	// var deliveryCity = String(document.getElementById('managers').value);
+	// var dayType = document.getElementById('dayType').value;
+	// var productType = document.getElementById('productType').value;
+	// var distance = document.getElementById('productDistance')?.value;
+	// var weight = document.getElementById('productWeight').value;
+	// var cityType = document.getElementById('productCity').value;
+	// var v1 = () => {
+	// 	if (pickup_time == "" || pickup_time == null) {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give a Pickup Time!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		document.getElementById("timepicker-12-hr").focus();
+	// 		return 0;
+	// 	}
+	// 	else {
+	// 		return 1;
+	// 	}
+	// }
+	// var v2 = () => {
+	// 	if (s_name == "" || s_name == null) {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender Name cannot be empty!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		return 0;
+	// 	}
+	// 	else {
+	// 		return 1;
+	// 	}
+	// }
+	// var v3 = () => {
+	// 	if (s_number == "" || s_number == null) {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number cannot be empty!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		return 0;
+	// 	}
+	// 	else if ((s_number.length < 11 || s_number.length > 11) && !/\D/.test(s_number) == true) {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number must be of 11 digits!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		return 0;
+	// 	}
+	// 	else if (s_number.match(/\d/g).length === 11 && !/\D/.test(s_number) == true) {
+	// 		return 1;
+	// 	}
+	// 	else {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number not valid!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		return 0;
+	// 	}
+	// }
+	// var v4 = () => {
+	// 	if (s_address == "" || s_address == null) {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Address cannot be empty!!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		return 0;
+	// 	}
+	// 	else {
+	// 		return 1;
+	// 	}
+	// }
 	var v5 = () => {
 		if (r_name == "" || r_name == null) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Name cannot be empty!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("r_name").focus();
+			document.getElementById("r_nameQ").focus();
 			return 0;
 		}
 		else {
@@ -249,13 +249,13 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		if (r_number == "" || r_number == null) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Phone Number cannot be empty!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("r_number").focus();
+			document.getElementById("r_numberQ").focus();
 			return 0;
 		}
 		else if ((r_number.length < 11 || r_number.length > 11) && !/\D/.test(r_number) == true) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Phone Number must be of 11 digits!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("r_number").focus();
+			document.getElementById("r_numberQ").focus();
 			return 0;
 		}
 		else if (r_number.match(/\d/g).length === 11 && !/\D/.test(r_number) == true) {
@@ -264,81 +264,81 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		else {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Phone Number not valid!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("r_number").focus();
+			document.getElementById("r_numberQ").focus();
 			return 0;
 		}
 	}
-	var v7 = () => {
-		if (r_address == "" || r_address == null) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Address cannot be empty on map!!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("pac-input2").focus();
-			return 0;
-		}
-		else {
-			return 1;
-		}
-	}
+	// var v7 = () => {
+	// 	if (r_address == "" || r_address == null) {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Address cannot be empty on map!!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		document.getElementById("pac-input2").focus();
+	// 		return 0;
+	// 	}
+	// 	else {
+	// 		return 1;
+	// 	}
+	// }
 	var v9 = () => {
 		if (product_name == "" || product_name == null) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Name cannot be empty!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("product_name").focus();
+			document.getElementById("product_nameQ").focus();
 			return 0;
 		}
 		else {
 			return 1;
 		}
 	}
-	var v10 = () => {
-		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be greater than 0!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("product_qty").focus();
-			return 0;
-		}
-		else if (isNaN(product_qty) == true || product_qty == "" || !/\D/.test(product_qty) == false) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be a number!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("product_qty").focus();
-			return 0;
-		}
-		else if (!/\D/.test(product_qty) == true) {
-			return 1;
-		}
-	}
+	// var v10 = () => {
+	// 	if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be greater than 0!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		document.getElementById("product_qty").focus();
+	// 		return 0;
+	// 	}
+	// 	else if (isNaN(product_qty) == true || product_qty == "" || !/\D/.test(product_qty) == false) {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be a number!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		document.getElementById("product_qty").focus();
+	// 		return 0;
+	// 	}
+	// 	else if (!/\D/.test(product_qty) == true) {
+	// 		return 1;
+	// 	}
+	// }
 	var v11 = () => {
 		if (parseInt(product_cost) < 0) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("product_cost").focus();
+			document.getElementById("product_costQ").focus();
 			return 0;
 		}
 		else if (isNaN(product_cost) == true || product_cost == "" || !/\D/.test(product_cost) == false) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be a number!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("product_cost").focus();
+			document.getElementById("product_costQ").focus();
 			return 0;
 		}
 		else if (!/\D/.test(product_cost) == true) {
 			return 1;
 		}
 	}
-	var v13 = () => {
-		if (delivery_lat == "" || delivery_longi == "") {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please select Receiver's Address on map!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			return 0;
-		}
-		else {
-			return 1;
-		}
-	}
+	// var v13 = () => {
+	// 	if (delivery_lat == "" || delivery_longi == "") {
+	// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please select Receiver's Address on map!";
+	// 		$('#myModalWrongDeliveryCreate').modal('show');
+	// 		return 0;
+	// 	}
+	// 	else {
+	// 		return 1;
+	// 	}
+	// }
 	var v12 = () => {
 		if (rec_address == "" || rec_address == null) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give Receiver's Address!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("rec_address").focus();
+			document.getElementById("rec_addressQ").focus();
 			return 0;
 		}
 		else {
@@ -346,35 +346,19 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var vDC = () => {
-		let en = document.getElementById('delivery_charge').disabled;
+		let en = document.getElementById('delivery_chargeQ').disabled;
 		// //console.log(en);
 		if (!en) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("delivery_charge").focus();
+			document.getElementById("delivery_chargeQ").focus();
 			return 0;
 		}
-		let fl = false;
-		Array.from(document.querySelectorAll(".criteria select")).map(item => {
-			if (item.childElementCount) {
-				for (let prop in criteriaMap.get(item.id)) {
-					//console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
-					if (criteriaMap.get(item.id)[prop] == delivery_charge) {
-						fl = true;
-						//console.log("MIllaaaagese");
-						break;
-					}
-				}
-			}
-		});
-		//console.log(fl, delivery_charge, merchantPerDeliveryCost);
-		if (!fl) {
-			if (+delivery_charge !== merchantPerDeliveryCost) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById("delivery_charge").focus();
-				return 0;
-			}
+		else if (+delivery_charge !== merchantPerDeliveryCost) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("delivery_chargeQ").focus();
+			return 0;
 		}
 		// if (parseInt(delivery_charge) <= 0 || delivery_charge.charAt(0) == 0) {
 		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than 0!";
@@ -386,7 +370,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		if (isNaN(delivery_charge) == true || delivery_charge == "" || !/\D/.test(delivery_charge) == false) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be a number!";
 			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("delivery_charge").focus();
+			document.getElementById("delivery_chargeQ").focus();
 			return 0;
 		}
 		else if (!/\D/.test(delivery_charge) == true) {
@@ -395,37 +379,37 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	}
 	var datap;
 
-	if (vDC() == 1 && v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && vDC() == 1 && v4() == 1 && v12() == 1) {
-		document.getElementById('createDelivery').disabled = true;
+	if (v5() == 1 && v6() == 1 && v9() == 1 && v11() == 1 && v12() == 1 && vDC() == 1) {
+		document.getElementById('createDeliveryQ').disabled = true;
 		$(".circle-loader").show();
 		datap = JSON.stringify
 			({
 				"delivery_status": "",
-				"delivery_type": delivery_type,
-				"sender_address": s_address,
-				"receiver_address": rec_address,
-				"sender_phone_number": s_number,
-				"receiver_phone_number": r_number,
+				"delivery_type": "CUSTOMER",
 				"sender_name": s_name,
+				"sender_phone_number": s_number,
+				"sender_address": s_address,
 				"receiver_name": r_name,
+				"receiver_phone_number": r_number,
+				"receiver_address": rec_address,
 				"payment_method": payment_method,
-				"product_cost": product_cost,
-				"sender_lat": pickup_lat,
-				"sender_longi": pickup_longi,
-				"receiver_lat": delivery_lat,
-				"receiver_longi": delivery_longi,
+				"sender_lat": "",
+				"sender_longi": "",
+				"receiver_lat": "",
+				"receiver_longi": "",
 				"product_name": product_name,
-				"product_qty": product_qty,
-				"pickup_time": pickup_time,
-				"delivery_note": delivery_note,
-				"delivery_area": area,
+				"product_qty": "NA",
+				"product_cost": product_cost,
+				"pickup_time": "",
+				"delivery_note": "",
+				"delivery_area": "",
 				"delivery_charge": delivery_charge,
-				"delivery_city": deliveryCity,
-				"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
-				"delivery_product_type": productType ? productType : "delivery_product_type_na",
-				"delivery_weight": weight ? weight : "delivery_weight_na",
-				"delivery_distance": distance ? distance : "delivery_distance_na",
-				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
+				"delivery_city": "",
+				"delivery_day_type": "delivery_day_type_na",
+				"delivery_product_type": "delivery_product_type_na",
+				"delivery_weight": "delivery_weight_na",
+				"delivery_distance": "delivery_distance_na",
+				"delivery_city_criteria": "delivery_city_criteria_na"
 			});
 		$.ajax
 			({
@@ -460,7 +444,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 						}, 2000);
 
 						document.getElementById('timepicker-12-hr').value = pickup_time;
-						recall();
+						recallQ();
 					}
 				},
 				error: function (data) {
