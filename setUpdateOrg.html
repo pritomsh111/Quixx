@@ -126,7 +126,19 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body table-responsive blur">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" style="text-align:left;">
+                            <div class="col-md-12">
+                                Previous Password: (For Security Purpose)
+                                <input
+                                    id="password-field1"
+                                    type="password"
+                                    class="form-control"
+                                    name="password"
+                                    onkeyup="milse(this)"
+                                    value=""
+                                >
+                                <span toggle="#password-field1" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
+                            </div>
                             <div class="col-md-12">
                                 New Password:
                                 <input
@@ -134,7 +146,6 @@
                                     type="password"
                                     class="form-control"
                                     name="password"
-                                    style="text-align: center"
                                     placeholder="Atleast 8 characters"
                                     value=""
                                 >
@@ -148,35 +159,21 @@
                                     class="form-control"
                                     name="password"
                                     placeholder="Atleast 8 characters"
-                                    style="text-align: center"
                                     value=""
                                 >
                                 <span toggle="#password-field3" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
                             </div>
-                            <h5 id="msg" style="margin-top: 10px;font-size: 16px;text-align: center;"></h5>
-                            <div class="col-md-12">
-                                Previous Password: (For Security Purpose)
-                                <input
-                                    id="password-field1"
-                                    type="password"
-                                    class="form-control"
-                                    name="password"
-                                    style="text-align: center"
-                                    onkeyup="milse(this)"
-                                    value=""
-                                >
-                                <span toggle="#password-field1" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
-                            </div>
-                            <button
-                                type="button"
-                                style="color: #0066b3;background: #ffffd4;"
-                                class="btn btn-outline btn-default btn-ok1k btn-primary"
-                                id="modalUpdateAA"
-                                disabled
-                            >
-                                Change
-                            </button>
+                            <h5 id="msg" style="margin: 1rem 0;text-align: center;"></h5>
                         </form>
+                        <button
+                            type="button"
+                            style="color: #0066b3;background: #ffffd4;"
+                            class="btn btn-outline btn-default btn-ok1k btn-primary"
+                            id="modalUpdateAA"
+                            disabled
+                        >
+                            Change
+                        </button>
                     </div>
                 </div>
             </div>
