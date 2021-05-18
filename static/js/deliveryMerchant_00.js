@@ -21,11 +21,13 @@ function three3() {
 
 		document.getElementById('three').disabled = true;
 		document.getElementById('two').disabled = false;
-		document.getElementById('three').style.fontSize = '14.5px';
+		document.getElementById('three').style.fontSize = '13px';
+		document.getElementById('threeQ').style.fontSize = '14.5px';
 		document.getElementById('two').style.fontSize = '13px';
 
-		document.getElementById('three').innerHTML = 'Create Single Delivery';
-		document.getElementById('two').innerHTML = 'Create Multiple Deliveries [Excel]';
+		document.getElementById('threeQ').innerHTML = 'Quick Delivery';
+		document.getElementById('three').innerHTML = 'Detailed Delivery';
+		document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
 		// $('#dtBasicExample').hide();
 		// $('.a').hide();
 		// $('#dtBasicExampleAp').hide();

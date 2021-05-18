@@ -5,9 +5,11 @@ var createDelivery = () => {
 	document.getElementById('two').disabled = false;
 	document.getElementById('three').style.fontSize = '14.5px';
 	document.getElementById('two').style.fontSize = '13px';
+	document.getElementById('threeQ').style.fontSize = '13px';
 
-	document.getElementById('three').innerHTML = 'Create Single Delivery';
-	document.getElementById('two').innerHTML = 'Create Multiple Deliveries [Excel]';
+	document.getElementById('threeQ').innerHTML = 'Quick Delivery';
+	document.getElementById('three').innerHTML = 'Detailed Delivery';
+	document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
 
 	$('#bulkDelivery').hide();
 	// $('#dtBasicExample').hide();
@@ -27,8 +29,11 @@ var createBulkDeliveries = () => {
 	document.getElementById('three').style.fontSize = '13px';
 	document.getElementById('two').style.fontSize = '14.5px';
 
-	document.getElementById('three').innerHTML = 'Create Single Delivery';
-	document.getElementById('two').innerHTML = 'Create Multiple Deliveries [Excel]';
+	document.getElementById('threeQ').style.fontSize = '13px';
+
+	document.getElementById('threeQ').innerHTML = 'Quick Delivery';
+	document.getElementById('three').innerHTML = 'Detailed Delivery';
+	document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
 
 	$("#deliveryCreate").hide();
 	$('#bulkDelivery').show();
@@ -124,6 +129,14 @@ $("#managers2").change(function () {
 	}
 });
 
+function recallQ() {
+	document.getElementById('r_name').value = "";
+	document.getElementById('r_number').value = "";
+	document.getElementById('rec_address').value = "";
+	document.getElementById('product_costQ').value = "";
+	document.getElementById('product_nameQ').value = "";
+	document.getElementById('product_qtyQ').value = "";
+}
 function recall() {
 	document.getElementById('r_name').value = "";
 	document.getElementById('r_number').value = "";
