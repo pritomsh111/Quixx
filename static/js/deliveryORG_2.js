@@ -3106,7 +3106,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	});
 
 	const center = new google.maps.LatLng(arr[13], arr[14]);
-	window.map.setZoom(13);
+	window.map.setZoom(16);
 	window.map.panTo(center);
 
 	$t = $(this);
@@ -3116,6 +3116,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	$("#sure3DC").hide();
 	$("#myModalDeliveryCostUpdate").modal('show');
 	google.maps.event.trigger(map3, "resize");
+	google.maps.event.trigger(window.map, "resize");
 	wrongKeteDao();
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
