@@ -337,7 +337,7 @@ input {
 	color: #000;
 }
 
-#formD>div:first-child {
+#formD>div:first-child, #formDQ>div:first-child {
 	font-size: 18.5px;
 	margin-top: -15px;
 	margin-bottom: 2rem;
@@ -346,7 +346,7 @@ input {
 	margin-bottom: 0.1rem;
 }
 
-#formD>div:not(:first-child) {
+#formD>div:not(:first-child), #formDQ>div:not(:first-child) {
 	margin: 5rem 0 3rem;
 }
 
@@ -445,7 +445,7 @@ input {
 		grid-template-columns: 1fr;
 		row-gap: 2rem;
 	}
-	.criteria, .criteriaU {
+	.criteria, .criteriaU, .criteriaQ {
 		display: block;
 		grid-template-columns: unset;
 		grid-column: unset;
@@ -459,7 +459,7 @@ input {
 		top: -4.5rem;
 		font-size: 1.1rem;
 	}
-	#formD>div:first-child {
+	#formD>div:first-child, #formDQ>div:first-child {
 		font-size: 1rem;
 		margin-top: 1rem;
 		margin-bottom: 2.2rem;
