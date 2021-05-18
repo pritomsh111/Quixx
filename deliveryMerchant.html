@@ -507,6 +507,203 @@
 </div>
 <div
     class="modal fade"
+    id="myModalDeliveryCostUpdate"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color:#0066b3">Update Delivery?</h4>
+            </div>
+            <div class="modal-body" style="overflow:hidden;">
+                <form class="p-1" style="color:#0066b3;" id="formUpdateDC">
+                    <div class="receiver_informationU" data-title="Receiver's Information">
+                        <div>
+                            Receiver's District
+                            <select class="browser-default custom-select col-lg-12 btn" id="delivery_cityU" style="color:#000;height: 46px;background:#ffcf5c;"></select>
+                        </div>
+                        <div>
+                            Receiver's Area:
+                            <select class="browser-default custom-select col-lg-12 btn" id="managersU" style="color:#000;height: 46px;background:#ffcf5c;"></select>
+                        </div>
+                        <div>
+                            Receiver's Name:
+                            <input
+                                type="text"
+                                id="r_nameU"
+                                class="form-control"
+                                placeholder=""
+                            >
+                            <h6 type="hidden" id="wrongrname" style="color:red"></h6>
+                        </div>
+                        <div>
+                            Receiver's Phone Number:
+                            <input
+                                type="text"
+                                id="r_numberU"
+                                class="form-control"
+                                placeholder="01911000000"
+                            >
+                            <h6 type="hidden" id="wrongrphone" style="color:red"></h6>
+                        </div>
+                        <div>
+                            Receivers's Full Address:
+                            <input
+                                type="text"
+                                id="rec_addressU"
+                                class="form-control"
+                                placeholder=""
+                            >
+                            <h6 type="hidden" id="wrongraddress" style="color:red"></h6>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline btn-primary showMapBtnU">
+                                Map (Optional)
+                            </button>
+                        </div>
+                        <div class="smpU" style="position:relative;">
+                            <div class="showMapU">
+                                Give Receiver's Exact Location On Map (Recommended)
+                                <h6 type="hidden" id="wrongmaplocation" style="color:red"></h6>
+                                <input
+                                    id="pac-input3"
+                                    class="controls form-control"
+                                    type="text"
+                                    placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
+                                    style="color:#000;background:#ffffff;border:1px solid #000;"
+                                >
+                                <div style="height: 230px;width: 100%;position: absolute;margin: 0 auto;" id="map3"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="des_latU" name="des_latU">
+                        <input type="hidden" id="des_longiU" name="des_longiU">
+                    </div>
+                    <div class="product_informationU" data-title="Product Information">
+                        <div>
+                            Product Details:
+                            <input
+                                type="text"
+                                id="product_nameU"
+                                class="form-control"
+                                placeholder=""
+                            >
+                            <h6 type="hidden" id="wrongpname" style="color:red"></h6>
+                        </div>
+                        <div>
+                            Product Quantity [Pieces]:
+                            <input
+                                type="text"
+                                id="product_qtyU"
+                                class="form-control"
+                                placeholder="20"
+                            >
+                            <h6 type="hidden" id="wrongrpqty" style="color:red"></h6>
+                        </div>
+                        <div>
+                            Per Product Cost [BDT]:
+                            <input
+                                type="text"
+                                id="product_costU"
+                                class="form-control"
+                                placeholder="80"
+                            >
+                            <h6 type="hidden" id="wrongpercost" style="color:red"></h6>
+                        </div>
+                    </div>
+                    <div class="delivery_informationU" data-title="Delivery Information">
+                        <div class="criteriaU">
+                            <div id="productType1U">
+                                Product Type Criteria:
+                                <select class="browser-default custom-select col-lg-12 btn" id="productTypeU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                            </div>
+                            <div id="productWeight1U">
+                                Product Weight Criteria [KG]:
+                                <select class="browser-default custom-select col-lg-12 btn" id="productWeightU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                            </div>
+                            <div id="dayType1U">
+                                Delivery Day Criteria:
+                                <select class="browser-default custom-select col-lg-12 btn" id="dayTypeU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                            </div>
+                            <div id="productDistance1U">
+                                Deilvery Distance Criteria [KM]:
+                                <select class="browser-default custom-select col-lg-12 btn" id="productDistanceU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                            </div>
+                            <div id="productCity1U">
+                                Delivery City Criteria:
+                                <select class="browser-default custom-select col-lg-12 btn" id="productCityU" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                            </div>
+                        </div>
+                        <div>
+                            <div id="chargeUpdate"></div>
+                            <input
+                                type="text"
+                                style="color:#0066b3"
+                                id="delivery_cost_update"
+                                class="form-control"
+                                placeholder="1000"
+                            >
+                            <h6 type="hidden" id="wrongdcost" style="color:red"></h6>
+                        </div>
+                        <div>
+                            Payment Method:
+                            <select class="custom-select col-lg-12 btn" id="managers2U" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
+                        </div>
+                        <div>
+                            Pickup Time [Optional]:
+                            <input
+                                type="text"
+                                id="timeU"
+                                class="form-control mb-4"
+                                placeholder="09:00 AM"
+                            >
+                            <h6 type="hidden" id="wrongTime" style="color:red"></h6>
+                        </div>
+                        <div>
+                            Delivery Note [Optional]:
+                            <input
+                                type="text"
+                                id="DELIVERY_NOTEU"
+                                class="form-control"
+                                placeholder=""
+                            >
+                        </div>
+                    </div>
+                </form>
+                <div class="circle-loader" style="text-align:center; display:block;margin-left:auto;margin-right:auto;" id="circleLoad3DC">
+                    <div class="checkmark draw" id="tick3DC"></div>
+                </div>
+                <h4 id="sure3DC" style="color:#0066b3;text-align:center;"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color:#0066b3"
+                    class="btn btn-outline btn-default cancelModDC"
+                    id="modalCancelDC"
+                    data-dismiss="modal"
+                >Cancel</button>
+                <button
+                    type="button"
+                    style="color:#0066b3"
+                    class="btn btn-outline btn-danger btn-ok-updateDC"
+                    id="modalApproveDC"
+                >Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
     id="myModalCreateD1"
     tabindex="-1"
     role="dialog"
@@ -617,4 +814,4 @@
 </div>
 <script src="static/js/deliveryMerchant_1.js"></script>
 <script src="static/js/deliveryMerchant_2.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&libraries=places&callback=initialize" async defer></script>

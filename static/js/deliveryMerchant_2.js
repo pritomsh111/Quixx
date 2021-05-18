@@ -1,5 +1,5 @@
 var merchant_ID = localStorage.getItem('userID');
-var dataInfo, excelData, flag = false;
+var dataInfo, excelData, flag = false, org_ID;
 
 function btnHandler() {
 	document.getElementById('three').disabled = false;
@@ -13,6 +13,9 @@ function btnHandler() {
 	document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
 	$('#dtBasicExampled').hide();
 	$('.d').hide();
+	$("#deliveryCreateQ").hide();
+	$('#bulkDelivery').hide();
+	$("#deliveryCreate").hide();
 }
 
 var createDeliveryQ = () => {
@@ -53,23 +56,7 @@ function dataTableStyle() {
 		attr('class', 'btn btn-round').
 		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
 }
-
-function tdColspan() {
-	if (window.innerWidth < 1293 && window.innerWidth > 1193) {
-		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "8");
-	}
-	else if (window.innerWidth <= 600) {
-		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "3");
-	}
-	else if (window.innerWidth <= 1193) {
-		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "5");
-	}
-	else {
-		Array.from(document.querySelectorAll('td[colspan]')).map(item => item.colSpan = "10");
-	}
-}
 var unassignedDeliveries = () => {
-	// buttonActive();
 	btnHandler();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('twox').disabled = true;
@@ -204,7 +191,7 @@ var unassignedDeliveries = () => {
 	});
 	table.on('xhr', function () {
 		var json = table.ajax.json();
-		document.getElementById('twox').innerHTML = 'Unassigned Deliveries: ' + json.recordsTotal;
+		document.getElementById('twox').innerHTML = 'Delivery List: ' + json.recordsTotal;
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
@@ -249,12 +236,6 @@ var ExcelToJSON = function () {
 };
 
 function handleFileSelect(evt) {
-	//preventDefault***************************
-	//preventDefault***************************
-	//preventDefault***************************
-	//preventDefault***************************
-	//preventDefault***************************
-	//preventDefault***************************
 	evt.preventDefault();
 	if (evt.target.files[0].type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
 		document.getElementById("fileName").innerHTML = evt.target.files[0].name;
@@ -263,7 +244,6 @@ function handleFileSelect(evt) {
 		xl2json.parseExcel(files[0]);
 	}
 	else {
-
 		document.getElementById('wrongThisUpload').innerHTML = "Invalid File";
 		$('#myModalWrongUpload').modal('show');
 	}
@@ -686,19 +666,20 @@ function doIt(i, lengx) {
 		var delivery_charge = excelData[i].Delivery_Charge;
 		var delivery_note = excelData[i].Delivery_Note;
 		var v1 = () => {
-			if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else {
-				return 1;
-			}
+			// if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else {
+			// 	return 1;
+			// }
+			return 1;
 		}
 		var v2 = () => {
 			if (s_name == "" || s_name == null || s_name == undefined) {
@@ -979,6 +960,9 @@ function doIt(i, lengx) {
 				delivery_lat = "";
 				delivery_longi = "";
 			}
+			if (pickup_time == undefined) {
+				pickup_time = "";
+			}
 			datap = JSON.stringify
 				({
 					"delivery_status": "",
@@ -1113,4 +1097,791 @@ document.getElementById("createDeliverywithExcel").addEventListener("click", fun
 		$('#myModalWrongUpload2').modal('show');
 	}
 
+});
+
+
+var criteriaEnabledDelivery = false;
+
+var arr;
+var id_delivery_update, del_id, creator_ID;
+
+$("#delivery_cityU").change(function () {
+	var value = $(this).val();
+	url = urlForAll + "approved/delivery/upazila/" + value;
+	if (value === "Dhaka") {
+		url = urlForAll + "approved/delivery/thana/Dhaka";
+	}
+	if (value === "Cox's Bazar") {
+		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
+	}
+	thanaUpazilla(url);
+});
+
+async function thanaUpazilla(url, areaa = null) {
+	$('#managersU')
+		.empty();
+	await $.ajax
+		({
+			url: url,
+			type: "GET",
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				var j = 0;
+				for (var i = 0; i < data.data.length; i++) {
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					if (areaa == data.data[i]) {
+						j = i;
+					}
+					$("#managersU").append(option);
+				}
+				document.getElementById('managersU').selectedIndex = j; //area
+			}
+		});
+}
+
+async function cityChange(cityy, areaa) {
+	var cityIndex;
+	url = urlForAll + "approved/delivery/upazila/" + cityy;
+	if (cityy === "Dhaka") {
+		url = urlForAll + "approved/delivery/thana/Dhaka";
+	}
+	if (cityy === "Cox's Bazar") {
+		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
+	}
+	if (cityy === "undefined") {
+		url = urlForAll + "approved/delivery/thana/Dhaka";
+		cityIndex = 13;
+	}
+	await $.ajax
+		({
+			url: urlForAll + "approved/delivery/district",
+			type: "GET",
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				for (var i = 0; i < data.data.length; i++) {
+					if (data.data[i] === cityy) {
+						cityIndex = i;
+					}
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					$("#delivery_cityU").append(option);
+				}
+				document.getElementById('delivery_cityU').selectedIndex = cityIndex;
+			}
+		});
+	await thanaUpazilla(url, areaa);
+}
+
+
+var thikKoro = async (method, areaa, cityy) => {
+
+	$('#delivery_cityU')
+		.empty();
+	await cityChange(cityy, areaa);
+
+	$('#managers2U')
+		.empty();
+	$.ajax
+		({
+			url: urlForAll + "delivery/payment/method/" + localStorage.getItem('token'),
+			type: "GET",
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				var k;
+				for (var i = 0; i < data.data.length; i++) {
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					if (method == data.data[i]) {
+						k = i;
+					}
+					$("#managers2U").append(option);
+				}
+				document.getElementById('managers2U').selectedIndex = k; //area
+			}
+		});
+}
+var criteriaMapForDeliveryUpdate = new Map();
+
+var thikKoroCriteria = async (creator_ID, ...typeList) => {
+	await $.ajax({
+		url: urlForAll + "delivery/criteria/enable/" + creator_ID,
+		type: "GET",
+		headers:
+		{
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization": 'Bearer ' + localStorage.getItem('token')
+		},
+		success: function (data) {
+			criteriaEnabledDelivery = data.data;
+		}
+	});
+	if (criteriaEnabledDelivery) {
+		$('.criteriaU')
+			.show();
+		$('#dayType1U')
+			.hide();
+		$('#productType1U')
+			.hide();
+		$('#productWeight1U')
+			.hide();
+		$('#productDistance1U')
+			.hide();
+		$('#productCity1U')
+			.hide();
+
+		$('#dayTypeU')
+			.empty();
+		$('#productTypeU')
+			.empty();
+		$('#productWeightU')
+			.empty();
+		$('#productDistanceU')
+			.empty();
+		$('#productCityU')
+			.empty();
+		$.ajax
+			({
+				url: urlForAll + "delivery/criteria/active/" + creator_ID,
+				type: "GET",
+
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					let naValuesType = ["dayType", "productType", "productWeight", "productDistance", "productCity"];
+					let naValues = ["delivery_day_type_na", "delivery_product_type_na", "delivery_weight_na", "delivery_distance_na", "delivery_city_criteria_na"];
+					if (criteriaMapForDeliveryUpdate.size) {
+						criteriaMapForDeliveryUpdate.clear();
+					}
+					Object.keys(data.data).map((types, index) => {
+						//console.log(types);
+						let mapObj = {};
+						// $(`#${types}1U`).show();
+						// $(`#${types}U`)
+						// 	.append('<option value="' + naValues[index] + '">---</option>')
+						// 	;
+						// j = 0;
+						// data.data[types].map((value, ind) => {
+						// 	if (value === typeList[index]) {
+						// 		j = ind;
+						// 		j++;
+						// 	}
+						// 	//console.log(value, typeList[index]);
+						// 	var option = new Option(value, value);
+						// 	$(option).html(value);
+						// 	$(`#${types}U`).append(option);
+						// });
+
+						if (types !== "userId") {
+							let typ = naValuesType.indexOf(types);
+							$(`#${types}1U`).show();
+							$(`#${types}U`)
+								.empty()
+								.append('<option value="' + naValues[typ] + '">---</option>')
+								;
+							j = 0;
+							Object.keys(data.data[types]).map((value, ind) => {
+								//console.log(value, typeList[typ]);
+								if (value === typeList[typ]) {
+									j = ind;
+									document.getElementById('delivery_cost_update').disabled = true;
+									j++;
+								}
+								var option = new Option(value, value);
+								$(option).html(value);
+								$(`#${types}U`).append(option);
+							});
+
+							mapObj = { [naValues[typ]]: "", ...data.data[types] };
+							criteriaMapForDeliveryUpdate.set(types, mapObj);
+
+							//console.log(mapObj, criteriaMapForDeliveryUpdate);
+							document.getElementById(`${types}U`).selectedIndex = j;
+						}
+					});
+					if (Object.keys(data.data).length === 1) {
+						$('.criteriaU')
+							.hide();
+					}
+				}
+			});
+	}
+	else {
+		$('.criteriaU')
+			.hide();
+		document.getElementById('delivery_cost_update').disabled = true;
+
+		$('#dayTypeU')
+			.empty();
+		$('#productTypeU')
+			.empty();
+		$('#productWeightU')
+			.empty();
+		$('#productDistanceU')
+			.empty();
+		$('#productCityU')
+			.empty();
+	}
+}
+
+function setDynSelecChangeForUpdate() {
+	naValuesType.map(item => {
+		document.querySelector(`select#${item}U`).addEventListener('change', function (e) {
+			if (item !== "dayType" && item !== "productCity") {
+				let obj = criteriaMapForDeliveryUpdate.get(item);
+				//console.log(obj[e.target.value]);
+				if (/^\d+$/.test(obj[e.target.value])) {
+					document.getElementById('delivery_cost_update').value = obj[e.target.value];
+					document.getElementById('delivery_cost_update').disabled = true;
+					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+				}
+				else {
+					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
+					document.getElementById('delivery_cost_update').disabled = true;
+					document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
+				}
+			}
+			else {
+				//console.log("Hello");
+				let objDayType = criteriaMapForDeliveryUpdate.get("dayType");
+				let objProductCity = criteriaMapForDeliveryUpdate.get("productCity");
+				let dayType = document.querySelector(`select#dayTypeU`).value;
+				let productCity = document.querySelector(`select#productCityU`).value;
+				//console.log(dayType, productCity);
+
+				//console.log(objDayType?.[dayType], objProductCity?.[productCity]);
+
+				//console.log((/^\d+$/.test(objDayType?.[dayType])));
+				//console.log((/^\d+$/.test(objProductCity?.[productCity])));
+
+				if (/^\d+$/.test(objDayType?.[dayType]) && /^\d+$/.test(objProductCity?.[productCity])) {
+					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+					document.getElementById('delivery_cost_update').disabled = true;
+					document.getElementById('delivery_cost_update').value = Math.max(objDayType?.[dayType], objProductCity?.[productCity]);
+				}
+				else {
+					if (objDayType?.[dayType] || objDayType?.[dayType] === 0) {
+						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+						document.getElementById('delivery_cost_update').value = objDayType[dayType];
+						document.getElementById('delivery_cost_update').disabled = true;
+					}
+					else if (objProductCity?.[productCity] || objProductCity?.[productCity] === 0) {
+						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]: (Based on Criteria)";
+						document.getElementById('delivery_cost_update').value = objProductCity[productCity];
+						document.getElementById('delivery_cost_update').disabled = true;
+					}
+					else {
+						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
+						document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
+						document.getElementById('delivery_cost_update').disabled = true;
+					}
+				}
+			}
+		});
+	});
+}
+
+var wrongKeteDao = () => {
+	$('#wrongmaplocation').hide();
+	$('#wrongpercost').hide();
+	$('#wrongrpqty').hide();
+	$('#wrongpname').hide();
+	$('#wrongmaplocation').hide();
+	$('#wrongrphone').hide();
+	$('#wrongrname').hide();
+	$('#wrongTime').hide();
+	$('#wrongdcost').hide();
+	$('#wrongraddress').hide();
+}
+
+var l = 0, modalCostPerMerchant = 0, rowNumber = null;
+$('#dtBasicExampled').on('click', '.updateCh', function () {
+	id_delivery_update = $(this).attr('id');
+	// rowNumber = $(this).closest('tr').index();
+	// //console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
+	arr = id_delivery_update.split('$$');
+	// if ($(this).closest('tr').hasClass("shown")) {
+	// 	document.querySelector(`#dtBasicExampled tbody tr:nth-child(${rowNumber})`).classList.remove("shown");
+	// 	document.querySelector(`#dtBasicExampled tbody tr:nth-child(${rowNumber})`).remove();
+	// }
+	del_id = arr[0];
+	creator_ID = arr[1];
+	thikKoro(arr[8], arr[11], arr[26]);
+	document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
+	document.getElementById('delivery_cost_update').disabled = true;
+	thikKoroCriteria(creator_ID, arr[29], arr[27], arr[28], arr[30], arr[31]);
+	////console.log(arr);
+	modalCostPerMerchant = arr[2];
+	setDynSelecChangeForUpdate();
+	document.getElementById('delivery_cost_update').value = arr[2];
+	document.getElementById('timeU').value = arr[3];
+	document.getElementById('r_nameU').value = arr[4];
+	document.getElementById('r_numberU').value = arr[5];
+	document.getElementById('product_nameU').value = arr[6];
+	document.getElementById('product_qtyU').value = arr[7];
+	document.getElementById('managers2U').value = arr[8]; //payment method
+	document.getElementById('product_costU').value = arr[9];
+	document.getElementById('DELIVERY_NOTEU').value = arr[10];
+	document.getElementById('managersU').value = arr[11]; //area
+	document.getElementById('pac-input3').value = arr[12];
+	document.getElementById('rec_addressU').value = arr[12];
+	document.getElementById('des_latU').value = arr[13];
+	document.getElementById('des_longiU').value = arr[14];
+	document.getElementById('delivery_cityU').value = arr[26];
+	document.getElementById('productTypeU').value = arr[27];
+	document.getElementById('productWeightU').value = arr[28];
+	document.getElementById('dayTypeU').value = arr[29];
+	document.getElementById('productDistanceU').value = arr[30];
+	document.getElementById('productCityU').value = arr[31];
+
+	if (markerx.length > 0) {
+		removeMarkers3();
+		markerx[1].setMap(null);
+	}
+	markerx[1] = new google.maps.Marker({
+		position: new google.maps.LatLng(arr[13], arr[14]),
+		map: window.map,
+	});
+
+	const center = new google.maps.LatLng(arr[13], arr[14]);
+	window.map.setZoom(16);
+	window.map.panTo(center);
+
+	$t = $(this);
+	$("#formUpdateDC").show();
+	$('#tick3DC').hide();
+	$("#circleLoad3DC").hide();
+	$("#sure3DC").hide();
+	$("#myModalDeliveryCostUpdate").modal('show');
+	google.maps.event.trigger(map3, "resize");
+	google.maps.event.trigger(window.map, "resize");
+	wrongKeteDao();
+	//$(".container").show();
+	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+});
+$('.btn-ok-updateDC').on("click", function () {
+	wrongKeteDao();
+	var delivery_cost_update = document.getElementById('delivery_cost_update').value;
+	var pickup_time = document.getElementById('timeU').value;
+	var s_name = arr[15];
+	var s_number = arr[16];
+	var s_address = arr[17];
+	var r_name = document.getElementById('r_nameU').value;
+	var r_number = document.getElementById('r_numberU').value;
+	var r_address = document.getElementById('pac-input3').value;
+	var rec_address = document.getElementById('rec_addressU').value;
+	var payment_method = document.getElementById('managers2U').value;
+	var delivery_note = document.getElementById('DELIVERY_NOTEU').value;
+	var delivery_type = arr[18];
+	var area = String(document.getElementById('managersU').value);
+	var deliveryCity = String(document.getElementById('delivery_cityU').value);
+	var pickup_lat = String(arr[19]);
+	var pickup_longi = String(arr[20]);
+	var delivery_lat = String(document.getElementById('des_latU').value);
+	var delivery_longi = String(document.getElementById('des_longiU').value);
+	var product_name = String(document.getElementById('product_nameU').value);
+	var product_qty = String(document.getElementById('product_qtyU').value);
+	var product_cost = document.getElementById('product_costU').value;
+	var created_date = arr[21];
+	var created_by_name = arr[22];
+	var created_by_role = arr[23];
+	var collection_name = arr[24];
+	var delivery_statusx = arr[25];
+	var dayType = document.getElementById('dayTypeU').value;
+	var productType = document.getElementById('productTypeU').value;
+	var distance = document.getElementById('productDistanceU')?.value;
+	var weight = document.getElementById('productWeightU').value;
+	var cityType = document.getElementById('productCityU').value;
+	var v0 = () => {
+		if (parseInt(delivery_cost_update) < 0) {
+			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than or equal to 0!";
+			$('#wrongdcost').show();
+			document.getElementById("delivery_cost_update").focus();
+			return 0;
+		}
+		else if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
+			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be a number!";
+			$('#wrongdcost').show();
+			document.getElementById("delivery_cost_update").focus();
+			return 0;
+		}
+		else if (!/\D/.test(delivery_cost_update) == true) {
+			return 1;
+		}
+	}
+	var v1 = () => {
+		// if (pickup_time == "" || pickup_time == null) {
+		// 	document.getElementById('wrongTime').innerHTML = "Please give a Pickup Time!";
+		// 	$('#wrongTime').show();
+		// 	document.getElementById("timeU").focus();
+		// 	return 0;
+		// }
+		// else {
+		// 	return 1;
+		// }
+		return 1;
+	}
+	var v2 = () => {
+		if (s_name == "" || s_name == null) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender Name cannot be empty!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var v3 = () => {
+		if (s_number == "" || s_number == null) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number cannot be empty!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else if ((s_number.length < 11 || s_number.length > 11) && !/\D/.test(s_number) == true) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number must be of 11 digits!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else if (s_number.match(/\d/g).length === 11 && !/\D/.test(s_number) == true) {
+			return 1;
+		}
+		else {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number not valid!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+	}
+	var v4 = () => {
+		if (s_address == "" || s_address == null) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Address cannot be empty!!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var v5 = () => {
+		if (r_name == "" || r_name == null) {
+			document.getElementById('wrongrname').innerHTML = "Receiver's Name cannot be empty!";
+			$('#wrongrname').show();
+			document.getElementById("r_nameU").focus();
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var v6 = () => {
+		if (r_number == "" || r_number == null) {
+			document.getElementById('wrongrphone').innerHTML = "Receiver's Phone Number cannot be empty!";
+			$('#wrongrphone').show();
+			document.getElementById("r_numberU").focus();
+			return 0;
+		}
+		else if ((r_number.length < 11 || r_number.length > 11) && !/\D/.test(r_number) == true) {
+			document.getElementById('wrongrphone').innerHTML = "Receiver's Phone Number must be of 11 digits!";
+			$('#wrongrphone').show();
+			document.getElementById("r_numberU").focus();
+			return 0;
+		}
+		else if (r_number.match(/\d/g).length === 11 && !/\D/.test(r_number) == true) {
+			return 1;
+		}
+		else {
+			document.getElementById('wrongrphone').innerHTML = "Receiver's Phone Number not valid!";
+			$('#wrongrphone').show();
+			document.getElementById("r_numberU").focus();
+			return 0;
+		}
+	}
+	var v7 = () => {
+		if (r_address == "" || r_address == null) {
+			document.getElementById('wrongmaplocation').innerHTML = "Receiver's Address on map cannot be empty!";
+			$('#wrongmaplocation').show();
+			document.getElementById("pac-input3").focus();
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var v9 = () => {
+		if (product_name == "" || product_name == null) {
+			document.getElementById('wrongpname').innerHTML = "Product Details cannot be empty!";
+			$('#wrongpname').show();
+			document.getElementById("product_nameU").focus();
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var v10 = () => {
+		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+			document.getElementById('wrongrpqty').innerHTML = "Product Quantity must be greater than 0!";
+			$('#wrongrpqty').show();
+			document.getElementById("product_qtyU").focus();
+			return 0;
+		}
+		else if (isNaN(product_qty) == true || product_qty == "" || !/\D/.test(product_qty) == false) {
+			document.getElementById('wrongrpqty').innerHTML = "Product Quantity must be a number!";
+			$('#wrongrpqty').show();
+			document.getElementById("product_qtyU").focus();
+			return 0;
+		}
+		else if (!/\D/.test(product_qty) == true) {
+			return 1;
+		}
+	}
+	var v11 = () => {
+		if (parseInt(product_cost) < 0) {
+			document.getElementById('wrongpercost').innerHTML = "Product Cost must be greater than or equal to 0!";
+			$('#wrongpercost').show();
+			document.getElementById("product_costU").focus();
+			return 0;
+		}
+		else if (isNaN(product_cost) == true || product_cost == "" || !/\D/.test(product_cost) == false) {
+			document.getElementById('wrongpercost').innerHTML = "Product Cost must be a number!";
+			$('#wrongpercost').show();
+			document.getElementById("product_costU").focus();
+			return 0;
+		}
+		else if (!/\D/.test(product_cost) == true) {
+			return 1;
+		}
+	}
+	var v13 = () => {
+		if (delivery_lat == "" || delivery_longi == "") {
+			document.getElementById('wrongmaplocation').innerHTML = "Please select Receiver's Address on map!";
+			$('#wrongmaplocation').show();
+			document.getElementById("pac-input3").focus();
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var v12 = () => {
+		if (rec_address == "" || rec_address == null) {
+			document.getElementById('wrongraddress').innerHTML = "Please give Receiver's Address!";
+			$('#wrongraddress').show();
+			document.getElementById("rec_addressU").focus();
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var datap = JSON.stringify
+		({
+			"collection_name": collection_name,
+			"creator_id": creator_ID,
+			"delivery_charge": delivery_cost_update,
+			"delivery_type": delivery_type,
+			"sender_address": s_address,
+			"receiver_address": rec_address,
+			"sender_phone_number": s_number,
+			"receiver_phone_number": r_number,
+			"sender_name": s_name,
+			"receiver_name": r_name,
+			"payment_method": payment_method,
+			"product_cost": product_cost,
+			"sender_lat": pickup_lat,
+			"sender_longi": pickup_longi,
+			"receiver_lat": delivery_lat,
+			"receiver_longi": delivery_longi,
+			"product_name": product_name,
+			"product_qty": product_qty,
+			"pickup_time": pickup_time,
+			"delivery_note": delivery_note,
+			"delivery_area": area,
+			"delivery_created_date": created_date,
+			"delivery_created_by_name": created_by_name,
+			"delivery_created_by_role": created_by_role,
+			"delivery_status": delivery_statusx,
+			"delivery_city": deliveryCity,
+			"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+			"delivery_product_type": productType ? productType : "delivery_product_type_na",
+			"delivery_weight": weight ? weight : "delivery_weight_na",
+			"delivery_distance": distance ? distance : "delivery_distance_na",
+			"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
+		});
+	// console.log(datap);
+	if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v0() == 1 && v4() == 1 && v12() == 1) {
+
+		document.getElementById('modalApproveDC').disabled = true;
+		document.getElementById('modalCancelDC').disabled = true;
+		$('.btn-ok-updateDC').attr('disabled', true);
+		$('.cancelModDC').prop('disabled', true);
+		$("#formUpdateDC").hide();
+		$(".circle-loader").removeClass("load-complete");
+		$(".circle-loader").show();
+		$("#sure3DC").html("Please wait!");
+		$("#sure3DC").show();
+		$.ajax
+			({
+				type: "PUT",
+				url: urlForAll + "delivery/update/full/" + org_ID + "/" + creator_ID + "/" + del_id,
+				data: JSON.stringify
+					({
+						"collection_name": collection_name,
+						"creator_id": creator_ID,
+						"delivery_charge": delivery_cost_update,
+						"delivery_type": delivery_type,
+						"sender_address": s_address,
+						"receiver_address": rec_address,
+						"sender_phone_number": s_number,
+						"receiver_phone_number": r_number,
+						"sender_name": s_name,
+						"receiver_name": r_name,
+						"payment_method": payment_method,
+						"product_cost": product_cost,
+						"sender_lat": pickup_lat,
+						"sender_longi": pickup_longi,
+						"receiver_lat": delivery_lat,
+						"receiver_longi": delivery_longi,
+						"product_name": product_name,
+						"product_qty": product_qty,
+						"pickup_time": pickup_time,
+						"delivery_note": delivery_note,
+						"delivery_area": area,
+						"delivery_city": deliveryCity,
+						"delivery_created_date": created_date,
+						"delivery_created_by_name": created_by_name,
+						"delivery_created_by_role": created_by_role,
+						"delivery_status": delivery_statusx,
+						"delivery_day_type": dayType ? dayType : "delivery_day_type_na",
+						"delivery_product_type": productType ? productType : "delivery_product_type_na",
+						"delivery_weight": weight ? weight : "delivery_weight_na",
+						"delivery_distance": distance ? distance : "delivery_distance_na",
+						"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
+					}),
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					//console.log(data);
+					var table = $('#dtBasicExampled').DataTable();
+					try {
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(data.data.receiver_name);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(data.data.receiver_phone_number);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 10 }).data(data.data.delivery_city);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.delivery_area);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 12 }).data(data.data.receiver_address);
+						//table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.product_name);
+						//table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.product_qty);
+						//table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.product_cost);
+
+						// if (criteriaEnabledDelivery) {
+						// 	data.data.delivery_product_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type) : null;
+						// 	data.data.delivery_weight ? table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight) : null;
+						// 	data.data.delivery_day_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type) : null;
+						// 	data.data.delivery_distance ? table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance) : null;
+						// 	data.data.delivery_city_criteria ? table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_city_criteria) : null;
+						// }
+
+						//table.cell({ row: table.row($t.closest('tr')).index(), column: 5 }).data(data.data.delivery_charge);
+						//table.cell({ row: table.row($t.closest('tr')).index(), column: 6 }).data(data.data.payment_method);
+						table.row($t.closest('tr')).data(data.data);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
+						//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
+						//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
+						//table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
+						//document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_city + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance + '$$' + data.data.delivery_city_criteria;
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 8 }).data(data.data.receiver_name);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 9 }).data(data.data.receiver_phone_number);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 10 }).data(data.data.delivery_city);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 11 }).data(data.data.delivery_area);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 12 }).data(data.data.receiver_address);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 14 }).data(data.data.product_name);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 15 }).data(data.data.product_qty);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 16 }).data(data.data.product_cost);
+
+						// if (criteriaEnabledDelivery) {
+						// 	data.data.delivery_product_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 17 }).data(data.data.delivery_product_type) : null;
+						// 	data.data.delivery_weight ? table.cell({ row: table.row($t.closest('tr')).index(), column: 18 }).data(data.data.delivery_weight) : null;
+						// 	data.data.delivery_day_type ? table.cell({ row: table.row($t.closest('tr')).index(), column: 19 }).data(data.data.delivery_day_type) : null;
+						// 	data.data.delivery_distance ? table.cell({ row: table.row($t.closest('tr')).index(), column: 20 }).data(data.data.delivery_distance) : null;
+						// 	data.data.delivery_city_criteria ? table.cell({ row: table.row($t.closest('tr')).index(), column: 21 }).data(data.data.delivery_city_criteria) : null;
+						// }
+
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 22 }).data(data.data.delivery_charge);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 23 }).data(data.data.payment_method);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
+						// //table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
+						// //table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
+						// //table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
+						// document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_city + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance + '$$' + data.data.delivery_city_criteria;
+
+					}
+					catch (e) {
+						//console.log(e);
+					}
+
+					setTimeout(function () {
+						$(".circle-loader").addClass("load-complete");
+
+						$('#tick3DC').show();
+
+						$("#sure3DC").html("Delivery Updated!");
+					}, 1500);
+
+					setTimeout(function () {
+						$("#myModalDeliveryCostUpdate").modal('hide');
+
+						//table
+						//.row($t.parents('tr'))
+						//.data(newArr)
+						//.draw(false);
+						////console.log(table.row($t.parents('tr')).data());
+
+						$('.btn-ok-updateDC').attr('disabled', false);
+						$('.cancelModDC').prop('disabled', false);
+					}, 3000);
+				},
+				error: function (data) {
+
+					////console.log(data.responseJSON.errorMessage);
+					setTimeout(function () {
+
+						$('.btn-ok-updateDC').attr('disabled', false);
+						$('.cancelModDC').prop('disabled', false);
+					}, 900);
+					$('#myModalDeliveryCostUpdate').modal('hide');
+					$('#myModal2').modal('show');
+				}
+			});
+	}
 });
