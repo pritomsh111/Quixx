@@ -76,25 +76,25 @@
                 </button>
             </div>
         </div>
-        <div id="deliveryCreate">
+        <div id="deliveryCreateQ">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body table-responsive blur">
-                            <form class="p-5" style="color:#0066b3;text-align:left;" id="formD">
-                                <div id="ifmbe">
+                            <form class="p-5" style="color:#0066b3;text-align:left;" id="formDQ">
+                                <div id="ifmbeQ">
                                     <strong>Input Fields Must Be Filled In English</strong>
                                 </div>
                                 <div class="sender_information" style="display:none" data-title="Sender's Information">
                                     <div>
                                         Select Sender:
-                                        <select class="browser-default custom-select col-lg-12 btn sL" style="height:46px;background:#ffcf5c;color:#000;" id="senderList"></select>
+                                        <select class="browser-default custom-select col-lg-12 btn sL" style="height:46px;background:#ffcf5c;color:#000;" id="senderListQ"></select>
                                     </div>
                                     <div>
                                         Sender's Name:
                                         <input
                                             type="text"
-                                            id="s_name"
+                                            id="s_nameQ"
                                             class="form-control"
                                             placeholder=""
                                             disabled
@@ -104,7 +104,7 @@
                                         Sender's Phone Number:
                                         <input
                                             type="text"
-                                            id="s_number"
+                                            id="s_numberQ"
                                             class="form-control mb-4"
                                             placeholder="01711000000"
                                             disabled
@@ -112,13 +112,13 @@
                                     </div>
                                 </div>
                                 <div class="receiver_information" data-title="Receiver's Information">
-                                    <div>
+                                    <div style="display:none;">
                                         Receiver's District
-                                        <select class="browser-default custom-select col-lg-12 btn" id="managers" style="display:none;color:#000;height: 46px;background:#ffcf5c;"></select>
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managersQ" style="display:none;color:#000;height: 46px;background:#ffcf5c;"></select>
                                     </div>
-                                    <div>
+                                    <div style="display:none;">
                                         Receiver's Area:
-                                        <select class="browser-default custom-select col-lg-12 btn" id="managers_2" style="display:none;color:#000;height: 46px;background:#ffcf5c;"></select>
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers_2Q" style="display:none;color:#000;height: 46px;background:#ffcf5c;"></select>
                                     </div>
                                     <div>
                                         Receiver's Name:
@@ -156,13 +156,13 @@
                                         <div class="showMap">
                                             Give Receiver's Exact Location On Map (Recommended)
                                             <input
-                                                id="pac-input2"
+                                                id="pac-input2Q"
                                                 class="controls form-control"
                                                 type="text"
                                                 placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
                                                 style="color:#000;background:#ffffff;border:1px solid #000;"
                                             >
-                                            <div style="height: 230px;width: 100%;position: absolute;margin: 0 auto;" id="map2"></div>
+                                            <div style="height: 230px;width: 100%;position: absolute;margin: 0 auto;" id="map2Q"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -197,33 +197,33 @@
                                 </div>
                                 <div style="display: none;" class="delivery_information" data-title="Delivery Information">
                                     <div style="display:none;" class="criteria">
-                                        <div id="productType1">
+                                        <div id="productType1Q">
                                             Product Type Criteria:
                                             <select class="browser-default custom-select col-lg-12 btn" id="productTypeQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                         </div>
-                                        <div id="productWeight1">
+                                        <div id="productWeight1Q">
                                             Product Weight Criteria [KG]:
                                             <select class="browser-default custom-select col-lg-12 btn" id="productWeightQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                         </div>
-                                        <div id="dayType1">
+                                        <div id="dayType1Q">
                                             Delivery Day Criteria:
                                             <select class="browser-default custom-select col-lg-12 btn" id="dayTypeQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                         </div>
-                                        <div id="productDistance1">
+                                        <div id="productDistance1Q">
                                             Deilvery Distance Criteria [KM]:
                                             <select class="browser-default custom-select col-lg-12 btn" id="productDistanceQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                         </div>
-                                        <div id="productCity1">
+                                        <div id="productCity1Q">
                                             Delivery City Criteria:
                                             <select class="browser-default custom-select col-lg-12 btn" id="productCityQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
                                         </div>
                                     </div>
                                     <div>
-                                        <div id="D_charge"></div>
+                                        <div id="D_chargeQ"></div>
                                         <input
                                             type="text"
                                             style="color:#0066b3"
-                                            id="delivery_charge"
+                                            id="delivery_chargeQ"
                                             class="form-control"
                                             placeholder="80"
                                             disabled
@@ -231,11 +231,11 @@
                                     </div>
                                     <div>
                                         Payment Method:
-                                        <select class="custom-select col-lg-12 btn" id="managers2" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
+                                        <select class="custom-select col-lg-12 btn" id="managers2Q" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
                                     </div>
                                     <div style="display:none;">
                                         Delivery Type:
-                                        <select class="custom-select col-lg-12 btn browser-default" id="deliveryType" style="color:#000;text-align-last:left;background:#ffcf5c;">
+                                        <select class="custom-select col-lg-12 btn browser-default" id="deliveryTypeQ" style="color:#000;text-align-last:left;background:#ffcf5c;">
                                             <!--<option>WAREHOUSE</option>-->
                                             <option>CUSTOMER</option>
                                         </select>
@@ -244,7 +244,7 @@
                                         Pickup Time [Optional]:
                                         <input
                                             type="text"
-                                            id="timepicker-12-hr"
+                                            id="timepicker-12-hrQ"
                                             class="form-control mb-4"
                                             placeholder="09:00 AM"
                                         >
@@ -259,10 +259,10 @@
                                         >
                                     </div>
                                 </div>
-                                <input type="hidden" id="lat" name="latQ">
-                                <input type="hidden" id="longi" name="longiQ">
-                                <input type="hidden" id="des_lat" name="des_latQ">
-                                <input type="hidden" id="des_longi" name="des_longiQ">
+                                <input type="hidden" id="latQ" name="latQ">
+                                <input type="hidden" id="longiQ" name="longiQ">
+                                <input type="hidden" id="des_latQ" name="des_latQ">
+                                <input type="hidden" id="des_longiQ" name="des_longiQ">
                                 <h5 style="text-align:center;color:#000;display:none;">Sender's Address:</h5>
                                 <input
                                     id="pac-inputQ"
@@ -272,13 +272,13 @@
                                     style="display:none;text-align:center;color:#000;background:#ffffff;border:2px solid #000;font-size:15px;"
                                     disabled
                                 >
-                                <div style="margin-top:0px;height:11%;display:none;" id="map"></div>
+                                <div style="margin-top:0px;height:11%;display:none;" id="mapQ"></div>
                             </form>
                             <button
                                 class="btn btn-outline btn-round"
                                 style="background:#ffffd3;margin-top:-7rem;"
                                 type="button"
-                                id="createDeliveryQuixx"
+                                id="createDeliveryQ"
                             >
                                 Create
                             </button>
