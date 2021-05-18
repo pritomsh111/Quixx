@@ -33,3 +33,21 @@ table#dtBasicExampleAp.dataTable tbody tr:hover>.sorting_1 {
 .naV {
 	background: #ffcf5c;
 }
+
+#formDD {
+	display: grid;
+	padding: 1rem;
+	color: #0066b3;
+	text-align: left;
+}
+
+#formDD div:nth-child(3) {
+	grid-column: 1/-1;
+	position: relative;
+}
+
+#map {
+	height: 250px;
+	width: 100%;
+	margin-top: 0;
+}

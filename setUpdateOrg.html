@@ -51,7 +51,7 @@
                     onclick="addressUpdate()"
                     style="width: 100%; font-size: 13px"
                 >
-                    Update Address/Operational Manager
+                    Address/Operational Manager
                 </button>
             </div>
             <div class="col-md-6">
@@ -61,7 +61,7 @@
                     onclick="passUpdate()"
                     style="width: 100%; font-size: 13px"
                 >
-                    Change Password
+                    Password
                 </button>
             </div>
         </div>
@@ -69,55 +69,52 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body table-responsive blur">
-                        <form class="p-5" style="color: #0066b3; text-align: left" id="formDD">
-                            Operation Manager Number: [If Organization Head doesn't want to receive any messages]:
-                            <input
-                                type="text"
-                                style="color: #0066b3"
-                                id="operations_manager_number"
-                                class="form-control mb-4"
-                                placeholder=""
-                            >
-                            <br>
-                            Sender's Address:
-                            <input
-                                type="text"
-                                style="color: #0066b3"
-                                id="sender_address"
-                                class="form-control mb-4"
-                                placeholder=""
-                            >
-                            <br>
-                            <h5 style="text-align: center; color: #0066b3; font-size: 18px">
+                        <form class="p-5" id="formDD">
+                            <div>
+                                Operation Manager Number: [If Organization Head doesn't want to receive any messages]:
+                                <input
+                                    type="text"
+                                    id="operations_manager_number"
+                                    class="form-control mb-4"
+                                    placeholder=""
+                                >
+                            </div>
+                            <div>
+                                Sender's Address:
+                                <input
+                                    type="text"
+                                    id="sender_address"
+                                    class="form-control mb-4"
+                                    placeholder=""
+                                >
+                            </div>
+                            <div>
                                 Search on Map and Show The Exact Location Using
-                                <br>
-                                <b>Draggable Marker:</b>
-                                <br>
-                            </h5>
-                            <input
-                                id="pac-input"
-                                class="controls form-control"
-                                type="text"
-                                placeholder="Search Your Address and Then Drag The Marker to The Exact Location"
-                                style="
-                                    text-align: center;
-                                    color: #0066b3;
-                                    background: #ffffff;
-                                    border: 2px solid #ffcf5c;
-                                    font-size: 16px;
-                                "
-                            >
-                            <div style="margin-top: 0px; height: 40%; position: absolute" id="map"></div>
+                                <strong>Draggable Marker:</strong>
+                                <input
+                                    id="pac-input"
+                                    class="controls form-control"
+                                    type="text"
+                                    placeholder="Search Your Address and Then Drag The Marker to The Exact Location"
+                                    style="
+                                        text-align: left;
+                                        background: #ffffff;
+                                        border: 1px solid #000;
+                                        font-size: 16px;
+                                    "
+                                >
+                                <div style="margin-top: 0px; position: absolute" id="map"></div>
+                            </div>
                             <input type="hidden" id="lat" name="lat">
                             <input type="hidden" id="longi" name="longi">
-                            <div style="text-align: center; margin-top: 20rem">
+                            <div style="text-align: center; margin-top: 17rem">
                                 <button
                                     class="btn btn-outline btn-round"
                                     style="background: #ffffd4"
                                     type="button"
                                     id="updateMerchant"
                                 >
-                                    Update Settings
+                                    Update
                                 </button>
                             </div>
                         </form>
@@ -305,21 +302,4 @@
     </div>
 </div>
 <script src="static/js/updateOrg.js"></script>
-<script>
-  mq = window.matchMedia("(min-width: 730px)");
-
-  if (mq.matches) {
-    var daynight = document.getElementById("map");
-    var daynight2 = document.getElementById("updateMerchant");
-    daynight.style.width = "86.4%";
-    daynight2.style.marginTop = "60px";
-    // window width is at least 500px //730
-  } else {
-    var daynight = document.getElementById("map");
-    var daynight2 = document.getElementById("updateMerchant");
-    daynight.style.width = "70%";
-    daynight2.style.marginTop = "100px";
-    // window width is less than 500px
-  }
-</script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&libraries=places&callback=initAutocomplete" async defer></script>
