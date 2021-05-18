@@ -50,7 +50,7 @@
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="forx"
                     style="width: 100%; font-size: 13px"
-                    onclick="createDelivery()"
+                    onclick="createDeliveryQuicc()"
                 >
                     Quick Delivery
                 </button>
@@ -74,6 +74,217 @@
                 >
                     Multiple Deliveries [Excel]
                 </button>
+            </div>
+        </div>
+        <div id="deliveryCreate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body table-responsive blur">
+                            <form class="p-5" style="color:#0066b3;text-align:left;" id="formD">
+                                <div id="ifmbe">
+                                    <strong>Input Fields Must Be Filled In English</strong>
+                                </div>
+                                <div class="sender_information" style="display:none" data-title="Sender's Information">
+                                    <div>
+                                        Select Sender:
+                                        <select class="browser-default custom-select col-lg-12 btn sL" style="height:46px;background:#ffcf5c;color:#000;" id="senderList"></select>
+                                    </div>
+                                    <div>
+                                        Sender's Name:
+                                        <input
+                                            type="text"
+                                            id="s_name"
+                                            class="form-control"
+                                            placeholder=""
+                                            disabled
+                                        >
+                                    </div>
+                                    <div>
+                                        Sender's Phone Number:
+                                        <input
+                                            type="text"
+                                            id="s_number"
+                                            class="form-control mb-4"
+                                            placeholder="01711000000"
+                                            disabled
+                                        >
+                                    </div>
+                                </div>
+                                <div class="receiver_information" data-title="Receiver's Information">
+                                    <div>
+                                        Receiver's District
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers" style="display:none;color:#000;height: 46px;background:#ffcf5c;"></select>
+                                    </div>
+                                    <div>
+                                        Receiver's Area:
+                                        <select class="browser-default custom-select col-lg-12 btn" id="managers_2" style="display:none;color:#000;height: 46px;background:#ffcf5c;"></select>
+                                    </div>
+                                    <div>
+                                        Receiver's Name:
+                                        <input
+                                            type="text"
+                                            id="r_nameQ"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div>
+                                        Receiver's Phone Number:
+                                        <input
+                                            type="text"
+                                            id="r_numberQ"
+                                            class="form-control"
+                                            placeholder="01911000000"
+                                        >
+                                    </div>
+                                    <div>
+                                        Receivers's Full Address:
+                                        <input
+                                            type="text"
+                                            id="rec_addressQ"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div style="display:none;">
+                                        <button class="btn btn-outline btn-primary showMapBtn">
+                                            Map (Optional)
+                                        </button>
+                                    </div>
+                                    <div class="smp" style="display:none;position:relative;">
+                                        <div class="showMap">
+                                            Give Receiver's Exact Location On Map (Recommended)
+                                            <input
+                                                id="pac-input2"
+                                                class="controls form-control"
+                                                type="text"
+                                                placeholder="Search According to Receiver's Area and Address and Then Drag The Marker To Exact Location"
+                                                style="color:#000;background:#ffffff;border:1px solid #000;"
+                                            >
+                                            <div style="height: 230px;width: 100%;position: absolute;margin: 0 auto;" id="map2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_information" data-title="Product Information">
+                                    <div>
+                                        Product Details:
+                                        <input
+                                            type="text"
+                                            id="product_nameQ"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div>
+                                        Product Quantity [Pieces]:
+                                        <input
+                                            type="text"
+                                            id="product_qtyQ"
+                                            class="form-control"
+                                            placeholder="5"
+                                        >
+                                    </div>
+                                    <div>
+                                        Per Product Cost [BDT]:
+                                        <input
+                                            type="text"
+                                            id="product_costQ"
+                                            class="form-control"
+                                            placeholder="80"
+                                        >
+                                    </div>
+                                </div>
+                                <div style="display: none;" class="delivery_information" data-title="Delivery Information">
+                                    <div style="display:none;" class="criteria">
+                                        <div id="productType1">
+                                            Product Type Criteria:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productTypeQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                        <div id="productWeight1">
+                                            Product Weight Criteria [KG]:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productWeightQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                        <div id="dayType1">
+                                            Delivery Day Criteria:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="dayTypeQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                        <div id="productDistance1">
+                                            Deilvery Distance Criteria [KM]:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productDistanceQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                        <div id="productCity1">
+                                            Delivery City Criteria:
+                                            <select class="browser-default custom-select col-lg-12 btn" id="productCityQ" style="color:#000;background:#ffcf5c;text-align-last:left;margin-bottom:2rem"></select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="D_charge"></div>
+                                        <input
+                                            type="text"
+                                            style="color:#0066b3"
+                                            id="delivery_charge"
+                                            class="form-control"
+                                            placeholder="80"
+                                            disabled
+                                        >
+                                    </div>
+                                    <div>
+                                        Payment Method:
+                                        <select class="custom-select col-lg-12 btn" id="managers2" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
+                                    </div>
+                                    <div style="display:none;">
+                                        Delivery Type:
+                                        <select class="custom-select col-lg-12 btn browser-default" id="deliveryType" style="color:#000;text-align-last:left;background:#ffcf5c;">
+                                            <!--<option>WAREHOUSE</option>-->
+                                            <option>CUSTOMER</option>
+                                        </select>
+                                    </div>
+                                    <div style="display:none;">
+                                        Pickup Time [Optional]:
+                                        <input
+                                            type="text"
+                                            id="timepicker-12-hr"
+                                            class="form-control mb-4"
+                                            placeholder="09:00 AM"
+                                        >
+                                    </div>
+                                    <div style="display:none;">
+                                        Delivery Note [Optional]:
+                                        <input
+                                            type="text"
+                                            id="DELIVERY_NOTEQ"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                </div>
+                                <input type="hidden" id="lat" name="latQ">
+                                <input type="hidden" id="longi" name="longiQ">
+                                <input type="hidden" id="des_lat" name="des_latQ">
+                                <input type="hidden" id="des_longi" name="des_longiQ">
+                                <h5 style="text-align:center;color:#000;display:none;">Sender's Address:</h5>
+                                <input
+                                    id="pac-inputQ"
+                                    class="controls form-control"
+                                    type="text"
+                                    placeholder="Search Your Address and Then Drag The Marker To Exact Location"
+                                    style="display:none;text-align:center;color:#000;background:#ffffff;border:2px solid #000;font-size:15px;"
+                                    disabled
+                                >
+                                <div style="margin-top:0px;height:11%;display:none;" id="map"></div>
+                            </form>
+                            <button
+                                class="btn btn-outline btn-round"
+                                style="background:#ffffd3;margin-top:-7rem;"
+                                type="button"
+                                id="createDeliveryQuixx"
+                            >
+                                Create
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="deliveryCreate">
