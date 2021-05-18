@@ -11,6 +11,8 @@ function btnHandler() {
 	document.getElementById('threeQ').innerHTML = 'Quick Delivery';
 	document.getElementById('three').innerHTML = 'Detailed Delivery';
 	document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
+	$('#dtBasicExampled').hide();
+	$('.d').hide();
 }
 
 var createDeliveryQ = () => {

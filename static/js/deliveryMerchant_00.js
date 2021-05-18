@@ -29,13 +29,13 @@ function three3() {
 		document.getElementById('threeQ').innerHTML = 'Quick Delivery';
 		document.getElementById('three').innerHTML = 'Detailed Delivery';
 		document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
-		// $('#dtBasicExample').hide();
+		$('#dtBasicExampled').hide();
+		$('.d').hide();
 		// $('.a').hide();
 		// $('#dtBasicExampleAp').hide();
 		// $('#dtBasicExampleNew').hide();
 		// $('.b').hide();
 		// $('.c').show();
-		// $('.d').hide();
 		// $('.e').hide();
 		// $('#dtBasicExampled').hide();
 		$("#deliveryCreateQ").show();
