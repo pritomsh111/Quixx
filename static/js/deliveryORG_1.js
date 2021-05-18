@@ -279,26 +279,31 @@ function showBtnToggle() {
 }
 
 function initialize() {
-	initAutocomplete();
-	initMap();
+	setTimeout(() => {
+		initAutocomplete();
+		initMap();
+	}, 500);
 }
 
 document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_information").classList.toggle("vis-map");
 	setTimeout(() => {
-		map2.setZoom(14);
 		google.maps.event.trigger(map2, "resize");
-	}, 1500);
+	}, 500);
+	google.maps.event.trigger(map2, "resize");
 });
 
 document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
 	e.preventDefault();
 	document.querySelector(".receiver_informationU").classList.toggle("vis-map");
 	setTimeout(() => {
-		window.map.setZoom(16);
+		window.map.setZoom(15);
 		google.maps.event.trigger(window.map, "resize");
-	}, 1500);
+		google.maps.event.trigger(map3, "resize");
+	}, 500);
+	google.maps.event.trigger(window.map, "resize");
+	google.maps.event.trigger(map3, "resize");
 });
 
 var myMarker, myMarker3, infowindow, infowindow3, contentString, contentString3;
@@ -495,14 +500,16 @@ function initMap() {
 		window.map.fitBounds(bounds);
 	});
 
-	$('#myModalDeliveryCostUpdate').on('shown.bs.modal', function () {
-		//Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
-		setTimeout(() => {
-			google.maps.event.trigger(map3, 'resize');
-			google.maps.event.trigger(window.map, 'resize');
-		}, 1500);
-	})
+	google.maps.event.trigger(map3, "resize");
+	google.maps.event.trigger(window.map, 'resize');
 }
+$('#myModalDeliveryCostUpdate').on('shown.bs.modal', function () {
+	//Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
+	setTimeout(() => {
+		google.maps.event.trigger(map3, 'resize');
+		google.maps.event.trigger(window.map, 'resize');
+	}, 500);
+})
 
 
 function removeMarkers3() {
@@ -741,7 +748,7 @@ function initAutocomplete() {
 		});
 		map2.fitBounds(bounds);
 	});
-
+	google.maps.event.trigger(map2, "resize");
 }
 
 function removeMarkers2() {
