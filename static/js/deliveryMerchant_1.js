@@ -5,7 +5,7 @@ $(function () {
 	$("#deliveryCreateQ").hide();
 	$(".container").hide();
 	$('#bulkDelivery').hide();
-	$('#d').hide();
+	$('.d').hide();
 	$('#dtBasicExampled').hide();
 	$('.criteria').hide();
 	document.getElementById('body').style.pointerEvents = "auto";
