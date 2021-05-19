@@ -1120,6 +1120,8 @@ $("#delivery_cityU").change(function () {
 async function thanaUpazilla(url, areaa = null) {
 	$('#managersU')
 		.empty();
+	$("#managersU")
+		.append('<option value="">---</option>');
 	await $.ajax
 		({
 			url: url,
@@ -1148,7 +1150,9 @@ async function thanaUpazilla(url, areaa = null) {
 }
 
 async function cityChange(cityy, areaa) {
-	var cityIndex;
+	var cityIndex = 0;
+	$("#delivery_cityU")
+		.append('<option value="">---</option>');
 	url = urlForAll + "approved/delivery/upazila/" + cityy;
 	if (cityy === "Dhaka") {
 		url = urlForAll + "approved/delivery/thana/Dhaka";
@@ -1171,7 +1175,6 @@ async function cityChange(cityy, areaa) {
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-
 			success: function (data) {
 				for (var i = 0; i < data.data.length; i++) {
 					if (data.data[i] === cityy) {
@@ -1209,7 +1212,7 @@ var thikKoro = async (method, areaa, cityy) => {
 			},
 
 			success: function (data) {
-				var k;
+				var k = 0;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
