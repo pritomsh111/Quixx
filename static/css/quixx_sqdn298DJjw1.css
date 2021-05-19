@@ -2467,7 +2467,7 @@ button.close {
 
 @media (max-width: 540px) {
   .p-5 {
-    padding: 1.2rem !important;
+    padding: 0.2rem !important;
   }
 }
 
