@@ -1432,12 +1432,10 @@ document.getElementById("createDeliverywithExcel").addEventListener("click", fun
 
 });
 
-
 var criteriaEnabledDelivery = false;
 
 var arr;
 var id_delivery_update, del_id, creator_ID;
-
 $("#delivery_cityU").change(function () {
 	var value = $(this).val();
 	url = urlForAll + "approved/delivery/upazila/" + value;
@@ -1862,6 +1860,54 @@ $('.btn-ok-updateDC').on("click", function () {
 			return 0;
 		}
 		else if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
+			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be a number!";
+			$('#wrongdcost').show();
+			document.getElementById("delivery_cost_update").focus();
+			return 0;
+		}
+		else if (!/\D/.test(delivery_cost_update) == true) {
+			return 1;
+		}
+
+
+		let en = document.getElementById('delivery_cost_update').disabled;
+		// //console.log(en);
+		if (!en) {
+			document.getElementById('wrongdcost').innerHTML = "You have edited delivery charge! Don't do that!";
+			$('#wrongdcost').show();
+			document.getElementById("delivery_cost_update").focus();
+			return 0;
+		}
+		let fl = false;
+		Array.from(document.querySelectorAll(".criteria select")).map(item => {
+			if (item.childElementCount) {
+				for (let prop in criteriaMap.get(item.id)) {
+					//console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
+					if (criteriaMap.get(item.id)[prop] == delivery_cost_update) {
+						fl = true;
+						//console.log("MIllaaaagese");
+						break;
+					}
+				}
+			}
+		});
+		//console.log(fl, delivery_charge, merchantPerDeliveryCost);
+		if (!fl) {
+			if (+delivery_cost_update !== merchantPerDeliveryCost) {
+				document.getElementById('wrongdcost').innerHTML = "You have edited delivery charge! Don't do that!";
+				$('#wrongdcost').show();
+				document.getElementById("delivery_cost_update").focus();
+				return 0;
+			}
+		}
+		// if (parseInt(delivery_charge) <= 0 || delivery_charge.charAt(0) == 0) {
+		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than 0!";
+		// 	$('#myModalWrongDeliveryCreate').modal('show');
+		// 	document.getElementById("delivery_charge").focus();
+		// 	return 0;
+		// }
+		// else
+		if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
 			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be a number!";
 			$('#wrongdcost').show();
 			document.getElementById("delivery_cost_update").focus();
