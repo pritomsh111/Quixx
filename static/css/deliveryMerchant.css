@@ -221,6 +221,24 @@ input {
 	background: #ffcf5c;
 }
 
+.table-responsive {
+	overflow-x: unset;
+}
+
+.row.navBtn {
+	position: absolute;
+	top: -4px;
+	overflow-x: unset;
+	width: 100%;
+	z-index: 1;
+	justify-content: center;
+	align-items: center;
+}
+
+.row.navBtn>button {
+	padding: 0.6rem;
+}
+
 .row {
 	display: flex;
 }

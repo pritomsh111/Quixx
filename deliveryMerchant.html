@@ -44,47 +44,39 @@
     three3();
     </script>
     <div class="card-body table-responsive">
-        <div class="row">
-            <div class="col-md-4">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="threeQ"
-                    style="width: 100%; font-size: 13px"
-                    onclick="createDeliveryQ()"
-                >
-                    Quick Delivery
-                </button>
-            </div>
-            <div class="col-md-4">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="three"
-                    style="width: 100%; font-size: 13px"
-                    onclick="createDelivery()"
-                >
-                    Detailed Delivery
-                </button>
-            </div>
-            <div class="col-md-4">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="two"
-                    style="width: 100%; font-size: 13px"
-                    onclick="createBulkDeliveries()"
-                >
-                    Multiple Deliveries [Excel]
-                </button>
-            </div>
-            <div class="col-md-12">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="twox"
-                    style="width: 100%; font-size: 13px"
-                    onclick="unassignedDeliveries()"
-                >
-                    Delivery List
-                </button>
-            </div>
+        <div class="row navBtn">
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="threeQ"
+                style="font-size: 13px"
+                onclick="createDeliveryQ()"
+            >
+                Quick Delivery
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="three"
+                style="font-size: 13px"
+                onclick="createDelivery()"
+            >
+                Detailed Delivery
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="two"
+                style="font-size: 13px"
+                onclick="createBulkDeliveries()"
+            >
+                Multiple Deliveries [Excel]
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="twox"
+                style="font-size: 13px"
+                onclick="unassignedDeliveries()"
+            >
+                Delivery List
+            </button>
         </div>
         <div id="deliveryCreateQ">
             <div class="row">

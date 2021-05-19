@@ -100,7 +100,7 @@ a label:hover {
 }
 
 div[id^="hide"] {
-  margin-top: -0.1rem;
+  margin-top: -1rem;
 }
 
 @media print {
@@ -5012,12 +5012,16 @@ h2.title {
 .sidebar .nav li a, .sidebar .nav li .dropdown-menu a {
   margin: 10px 15px 0;
   border-radius: 3px;
-  color: #0066b3;
+  color: #000;
   padding-left: 10px;
   padding-right: 10px;
   text-transform: capitalize;
   font-size: 13px;
   padding: 10px 15px;
+}
+
+div[id^="hide"]>div>div>div[class*="col-md"]>button {
+  width: unset;
 }
 
 .sidebar .sidebar-background {
