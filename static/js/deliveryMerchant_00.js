@@ -22,13 +22,16 @@ function three3() {
 		document.getElementById('three').disabled = false;
 		document.getElementById('threeQ').disabled = true;
 		document.getElementById('two').disabled = false;
+		document.getElementById('twox').disabled = false;
 		document.getElementById('three').style.fontSize = '13px';
 		document.getElementById('threeQ').style.fontSize = '14.5px';
 		document.getElementById('two').style.fontSize = '13px';
+		document.getElementById('twox').style.fontSize = '13px';
 
 		document.getElementById('threeQ').innerHTML = 'Quick Delivery';
 		document.getElementById('three').innerHTML = 'Detailed Delivery';
 		document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
+		document.getElementById('twox').innerHTML = 'Delivery List';
 		$('#dtBasicExampled').hide();
 		$('.d').hide();
 		$("#deliveryCreateQ").show();

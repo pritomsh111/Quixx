@@ -4,13 +4,16 @@ var dataInfo, excelData, flag = false, org_ID;
 function btnHandler() {
 	document.getElementById('three').disabled = false;
 	document.getElementById('two').disabled = false;
+	document.getElementById('twox').disabled = false;
 	document.getElementById('threeQ').disabled = false;
 	document.getElementById('three').style.fontSize = '13px';
 	document.getElementById('two').style.fontSize = '13px';
+	document.getElementById('twox').style.fontSize = '13px';
 	document.getElementById('threeQ').style.fontSize = '13px';
 	document.getElementById('threeQ').innerHTML = 'Quick Delivery';
 	document.getElementById('three').innerHTML = 'Detailed Delivery';
 	document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
+	document.getElementById('twox').innerHTML = 'Delivery List';
 	$('#dtBasicExampled').hide();
 	$('.d').hide();
 	$("#deliveryCreateQ").hide();
@@ -1144,7 +1147,7 @@ async function thanaUpazilla(url, areaa = null) {
 					}
 					$("#managersU").append(option);
 				}
-				document.getElementById('managersU').selectedIndex = j; //area
+				document.getElementById('managersU').selectedIndex = j + 1; //area
 			}
 		});
 }
@@ -1184,7 +1187,7 @@ async function cityChange(cityy, areaa) {
 					$(option).html(data.data[i]);
 					$("#delivery_cityU").append(option);
 				}
-				document.getElementById('delivery_cityU').selectedIndex = cityIndex;
+				document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1;
 			}
 		});
 	await thanaUpazilla(url, areaa);
@@ -1221,7 +1224,7 @@ var thikKoro = async (method, areaa, cityy) => {
 					}
 					$("#managers2U").append(option);
 				}
-				document.getElementById('managers2U').selectedIndex = k; //area
+				document.getElementById('managers2U').selectedIndex = k;
 			}
 		});
 }

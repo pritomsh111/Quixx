@@ -97,12 +97,13 @@
 
 .dataTables_wrapper .dataTables_processing {
   position: absolute;
-  top: 35%;
+  top: 5%;
   width: 123%;
-  height: 80%;
+  height: 100%;
   text-align: center;
   font-size: 1.2em;
   background-color: white;
+  z-index: 1555 !important;
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
