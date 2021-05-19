@@ -95,6 +95,10 @@
   top: 21px;
 }
 
+.table-responsive {
+  overflow-x: hidden;
+}
+
 .dataTables_wrapper .dataTables_processing {
   position: absolute;
   top: 5%;

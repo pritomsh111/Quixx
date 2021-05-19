@@ -5,8 +5,9 @@ $(function () {
 	$("#deliveryCreateQ").hide();
 	$(".container").hide();
 	$('#bulkDelivery').hide();
-	$('.criteria')
-		.hide();
+	$('#d').hide();
+	$('#dtBasicExampled').hide();
+	$('.criteria').hide();
 	document.getElementById('body').style.pointerEvents = "auto";
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 });

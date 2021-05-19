@@ -6,19 +6,6 @@ function two2() {
 }
 function three3() {
 	setTimeout(function () {
-		// document.getElementById('three').disabled = true;
-		// document.getElementById('two').disabled = false;
-		// document.getElementById('one').disabled = false;
-		// document.getElementById('six').disabled = false;
-		// document.getElementById('three').style.fontSize = '14.5px';
-		// document.getElementById('two').style.fontSize = '13px';
-		// document.getElementById('one').style.fontSize = '13px';
-		// document.getElementById('six').style.fontSize = '13px';
-
-		// document.getElementById('one').innerHTML = 'Ongoing Deliveries';
-		// document.getElementById('two').innerHTML = 'Completed Deliveries';
-		// document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
-
 		document.getElementById('three').disabled = false;
 		document.getElementById('threeQ').disabled = true;
 		document.getElementById('two').disabled = false;
