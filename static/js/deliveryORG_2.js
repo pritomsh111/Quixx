@@ -251,7 +251,7 @@ $("#senderList").change(async function () {
 						document.getElementById('s_number').value = data.data.sender_phone_number;
 						document.getElementById('lat').value = data.data.sender_lat;
 						document.getElementById('longi').value = data.data.sender_longi;
-						if (data.data.per_delivery_cost > 0) {
+						if (data.data.per_delivery_cost >= 0) {
 							merchantPerDeliveryCost = data.data.per_delivery_cost;
 							document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
 							document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
@@ -3154,13 +3154,37 @@ $('.btn-ok-updateDC').on("click", function () {
 	var weight = document.getElementById('productWeightU').value;
 	var cityType = document.getElementById('productCityU').value;
 	var v0 = () => {
-		if (parseInt(delivery_cost_update) < 0) {
-			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than or equal to 0!";
+		let en = document.getElementById('delivery_cost_update').disabled;
+		// //console.log(en);
+		if (!en) {
+			document.getElementById('wrongdcost').innerHTML = "You have edited delivery charge! Don't do that!";
 			$('#wrongdcost').show();
 			document.getElementById("delivery_cost_update").focus();
 			return 0;
 		}
-		else if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
+		let fl = false;
+		Array.from(document.querySelectorAll(".criteriaU select")).map(item => {
+			if (item.childElementCount) {
+				for (let prop in criteriaMap.get(item.id)) {
+					//console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
+					if (criteriaMap.get(item.id)[prop] == delivery_cost_update) {
+						fl = true;
+						//console.log("MIllaaaagese");
+						break;
+					}
+				}
+			}
+		});
+		//console.log(fl, delivery_charge, merchantPerDeliveryCost);
+		if (!fl) {
+			if (+delivery_cost_update !== merchantPerDeliveryCost) {
+				document.getElementById('wrongdcost').innerHTML = "You have edited delivery charge! Don't do that!";
+				$('#wrongdcost').show();
+				document.getElementById("delivery_cost_update").focus();
+				return 0;
+			}
+		}
+		if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
 			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be a number!";
 			$('#wrongdcost').show();
 			document.getElementById("delivery_cost_update").focus();

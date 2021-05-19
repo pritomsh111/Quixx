@@ -1853,23 +1853,21 @@ $('.btn-ok-updateDC').on("click", function () {
 	var weight = document.getElementById('productWeightU').value;
 	var cityType = document.getElementById('productCityU').value;
 	var v0 = () => {
-		if (parseInt(delivery_cost_update) < 0) {
-			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than or equal to 0!";
-			$('#wrongdcost').show();
-			document.getElementById("delivery_cost_update").focus();
-			return 0;
-		}
-		else if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
-			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be a number!";
-			$('#wrongdcost').show();
-			document.getElementById("delivery_cost_update").focus();
-			return 0;
-		}
-		else if (!/\D/.test(delivery_cost_update) == true) {
-			return 1;
-		}
-
-
+		// if (parseInt(delivery_cost_update) < 0) {
+		// 	document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than or equal to 0!";
+		// 	$('#wrongdcost').show();
+		// 	document.getElementById("delivery_cost_update").focus();
+		// 	return 0;
+		// }
+		// else if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
+		// 	document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be a number!";
+		// 	$('#wrongdcost').show();
+		// 	document.getElementById("delivery_cost_update").focus();
+		// 	return 0;
+		// }
+		// else if (!/\D/.test(delivery_cost_update) == true) {
+		// 	return 1;
+		// }
 		let en = document.getElementById('delivery_cost_update').disabled;
 		// //console.log(en);
 		if (!en) {
@@ -1879,7 +1877,7 @@ $('.btn-ok-updateDC').on("click", function () {
 			return 0;
 		}
 		let fl = false;
-		Array.from(document.querySelectorAll(".criteria select")).map(item => {
+		Array.from(document.querySelectorAll(".criteriaU select")).map(item => {
 			if (item.childElementCount) {
 				for (let prop in criteriaMap.get(item.id)) {
 					//console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
