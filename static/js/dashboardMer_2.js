@@ -546,19 +546,19 @@ function showModal(type) {
 
 	$("#myModalz").modal('show');
 }
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
+// var today = new Date();
+// var dd = String(today.getDate()).padStart(2, '0');
+// var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+// var yyyy = today.getFullYear();
 
-today = dd + '/' + mm + '/' + yyyy;
-document.getElementById("date4").innerHTML = today;
-document.getElementById("date5").innerHTML = today;
-document.getElementById("date6").innerHTML = today;
-document.getElementById("date64").innerHTML = today;
-document.getElementById("date65").innerHTML = today;
-document.getElementById("date66").innerHTML = today;
-document.getElementById("date9").innerHTML = today;
-document.getElementById("date10").innerHTML = today;
-document.getElementById("date11").innerHTML = today;
-document.getElementById("date12").innerHTML = today;
+// today = dd + '/' + mm + '/' + yyyy;
+// document.getElementById("date4").innerHTML = today;
+// document.getElementById("date5").innerHTML = today;
+// document.getElementById("date6").innerHTML = today;
+// document.getElementById("date64").innerHTML = today;
+// document.getElementById("date65").innerHTML = today;
+// document.getElementById("date66").innerHTML = today;
+// document.getElementById("date9").innerHTML = today;
+// document.getElementById("date10").innerHTML = today;
+// document.getElementById("date11").innerHTML = today;
+// document.getElementById("date12").innerHTML = today;
