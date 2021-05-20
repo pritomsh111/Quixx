@@ -3165,9 +3165,9 @@ $('.btn-ok-updateDC').on("click", function () {
 		let fl = false;
 		Array.from(document.querySelectorAll(".criteriaU select")).map(item => {
 			if (item.childElementCount) {
-				for (let prop in criteriaMap.get(item.id)) {
+				for (let prop in criteriaMap.get(`${item.id.substring(0, item.id.length - 1)}`)) {
 					//console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
-					if (criteriaMap.get(item.id)[prop] == delivery_cost_update) {
+					if (criteriaMap.get(`${item.id.substring(0, item.id.length - 1)}`)[prop] == delivery_cost_update) {
 						fl = true;
 						//console.log("MIllaaaagese");
 						break;

@@ -1688,6 +1688,7 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 function setDynSelecChangeForUpdate() {
 	naValuesType.map(item => {
 		document.querySelector(`select#${item}U`).addEventListener('change', function (e) {
+			wrongKeteDao();
 			if (item !== "dayType" && item !== "productCity") {
 				let obj = criteriaMapForDeliveryUpdate.get(item);
 				//console.log(obj[e.target.value]);
@@ -1699,7 +1700,7 @@ function setDynSelecChangeForUpdate() {
 				else {
 					document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
 					document.getElementById('delivery_cost_update').disabled = true;
-					document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
+					document.getElementById('delivery_cost_update').value = merchantPerDeliveryCost;
 				}
 			}
 			else {
@@ -1733,7 +1734,7 @@ function setDynSelecChangeForUpdate() {
 					}
 					else {
 						document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";
-						document.getElementById('delivery_cost_update').value = modalCostPerMerchant;
+						document.getElementById('delivery_cost_update').value = merchantPerDeliveryCost;
 						document.getElementById('delivery_cost_update').disabled = true;
 					}
 				}
@@ -1880,9 +1881,8 @@ $('.btn-ok-updateDC').on("click", function () {
 		let fl = false;
 		Array.from(document.querySelectorAll(".criteriaU select")).map(item => {
 			if (item.childElementCount) {
-				for (let prop in criteriaMap.get(item.id)) {
-					//console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
-					if (criteriaMap.get(item.id)[prop] == delivery_cost_update) {
+				for (let prop in criteriaMap.get(`${item.id.substring(0, item.id.length - 1)}`)) {
+					if (criteriaMap.get(`${item.id.substring(0, item.id.length - 1)}`)[prop] == delivery_cost_update) {
 						fl = true;
 						//console.log("MIllaaaagese");
 						break;
