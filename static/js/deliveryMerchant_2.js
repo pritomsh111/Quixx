@@ -1451,8 +1451,7 @@ $("#delivery_cityU").change(function () {
 
 async function thanaUpazilla(url, areaa = null) {
 	$('#managersU')
-		.empty();
-	$("#managersU")
+		.empty()
 		.append('<option value="">---</option>');
 	console.log("ds"
 	);
@@ -1486,6 +1485,9 @@ async function thanaUpazilla(url, areaa = null) {
 async function cityChange(cityy, areaa) {
 	var cityIndex = 0;
 	$("#delivery_cityU")
+		.empty()
+		.append('<option value="">---</option>');
+	$('#managersU')
 		.empty()
 		.append('<option value="">---</option>');
 	cityy ? url = urlForAll + "approved/delivery/upazila/" + cityy : null;
@@ -1522,7 +1524,7 @@ async function cityChange(cityy, areaa) {
 				cityy ? document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1 : null;
 			}
 		});
-	await thanaUpazilla(url, areaa);
+	cityy ? await thanaUpazilla(url, areaa) : null;
 }
 
 
@@ -1763,6 +1765,7 @@ var l = 0, modalCostPerMerchant = 0, rowNumber = null;
 $('#dtBasicExampled').on('click', '.updateCh', function () {
 	id_delivery_update = $(this).attr('id');
 	arr = [];
+	url = "";
 	// rowNumber = $(this).closest('tr').index();
 	// //console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
 	arr = id_delivery_update.split('$$');
