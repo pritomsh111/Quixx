@@ -100,7 +100,7 @@ a label:hover {
 }
 
 div[id^="hide"] {
-  margin-top: -1rem;
+  margin-top: -2rem;
 }
 
 @media print {
@@ -4354,7 +4354,7 @@ textarea {
 .navbar.navbar-absolute {
   position: absolute;
   width: 100%;
-  padding-top: 10px;
+  padding-top: 1px;
   z-index: 1029;
 }
 
@@ -7145,7 +7145,17 @@ a .material-icons {
 }
 
 @media (max-width:450px) {
-  *:not(p[id*="date"]) {
-    font-size: 0.9rem;
+  .card [class*="card-header-"].XX .card-icon, .card [class*="card-header-"].XX .card-text {
+    padding: 5px;
+  }
+  .card-stats .card-header.card-header-icon i {
+    font-size: 1.7rem;
+  }
+  .card-stats .card-header.card-header-icon.XX i {
+    font-size: 1.7rem;
+  }
+  h4, .h4 {
+    font-size: 1rem;
+    line-height: 1.5em;
   }
 }

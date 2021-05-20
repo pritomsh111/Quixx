@@ -2028,7 +2028,10 @@ $('.btn-ok-updateDC').on("click", function () {
 		}
 	}
 	var v10 = () => {
-		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+		if (product_qty === "NA") {
+			return 1;
+		}
+		else if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
 			document.getElementById('wrongrpqty').innerHTML = "Product Quantity must be greater than 0!";
 			$('#wrongrpqty').show();
 			document.getElementById("product_qtyU").focus();

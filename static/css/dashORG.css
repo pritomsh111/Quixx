@@ -49,6 +49,25 @@ sup {
   border-width: 0px;
 }
 
+@media (max-width:450px) {
+  .card-stats .card-header.card-header-icon .card-title[id*=mer], .card-stats .card-header.card-header-icon .card-title[id*=complete], .card-stats .card-header.card-header-icon .card-title[id*=assign], .card-stats .card-header.card-header-icon .card-title[id*=total] {
+    color: #0066b3;
+    margin: 0.8rem 0;
+  }
+  .btn.btn-round.btn-outline.paypay {
+    padding: 0.3rem;
+    margin: 0rem 0 0.8rem auto;
+  }
+  .btn.btnDash {
+    margin: 0rem 0 0.8rem auto;
+    background: #0d324d;
+    color: #fff;
+    padding: 0.3rem;
+    border-radius: 5px;
+    border-width: 0px;
+  }
+}
+
 @keyframes loader5 {
   from {
     transform: rotate(0deg);

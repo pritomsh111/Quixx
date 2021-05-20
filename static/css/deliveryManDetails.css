@@ -37,30 +37,20 @@ table#dtBasicExampleC.dataTable tbody tr:hover>.sorting_1 {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 3px;
   background: #fff;
 }
 
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: #fff;
-}
-
 ::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: #fff;
   background: #1d2b42;
 }
 
 ::-moz-scrollbar {
-  width: 6px;
+  width: 3px;
   background: #fff;
 }
 
-::-moz-scrollbar-track {
-  -webkit-box-shadow: #fff;
-}
-
 ::-moz-scrollbar-thumb {
-  -webkit-box-shadow: #fff;
   background: #1d2b42;
 }
 

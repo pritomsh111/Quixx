@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.row:first-of-type {
+  margin-top: -2.5rem;
+}
+
 .col-md-4 {
   flex-grow: 1;
   text-align: center;
