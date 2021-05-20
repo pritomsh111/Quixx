@@ -3058,6 +3058,7 @@ var wrongKeteDao = () => {
 var l = 0, modalCostPerMerchant = 0, rowNumber = null;
 $('#dtBasicExampled').on('click', '.updateCh', function () {
 	id_delivery_update = $(this).attr('id');
+	arr = [];
 	// rowNumber = $(this).closest('tr').index();
 	// //console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
 	arr = id_delivery_update.split('$$');

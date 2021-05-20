@@ -1454,7 +1454,9 @@ async function thanaUpazilla(url, areaa = null) {
 		.empty();
 	$("#managersU")
 		.append('<option value="">---</option>');
-	await $.ajax
+	console.log("ds"
+	);
+	url ? await $.ajax
 		({
 			url: url,
 			type: "GET",
@@ -1478,14 +1480,15 @@ async function thanaUpazilla(url, areaa = null) {
 				}
 				document.getElementById('managersU').selectedIndex = j + 1; //area
 			}
-		});
+		}) : null;
 }
 
 async function cityChange(cityy, areaa) {
 	var cityIndex = 0;
 	$("#delivery_cityU")
+		.empty()
 		.append('<option value="">---</option>');
-	url = urlForAll + "approved/delivery/upazila/" + cityy;
+	cityy ? url = urlForAll + "approved/delivery/upazila/" + cityy : null;
 	if (cityy === "Dhaka") {
 		url = urlForAll + "approved/delivery/thana/Dhaka";
 	}
@@ -1516,7 +1519,7 @@ async function cityChange(cityy, areaa) {
 					$(option).html(data.data[i]);
 					$("#delivery_cityU").append(option);
 				}
-				document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1;
+				cityy ? document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1 : null;
 			}
 		});
 	await thanaUpazilla(url, areaa);
@@ -1759,6 +1762,7 @@ var wrongKeteDao = () => {
 var l = 0, modalCostPerMerchant = 0, rowNumber = null;
 $('#dtBasicExampled').on('click', '.updateCh', function () {
 	id_delivery_update = $(this).attr('id');
+	arr = [];
 	// rowNumber = $(this).closest('tr').index();
 	// //console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
 	arr = id_delivery_update.split('$$');
