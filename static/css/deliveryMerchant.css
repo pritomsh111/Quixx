@@ -58,7 +58,7 @@ table#dtBasicExampleAp.dataTable tbody tr:hover>.sorting_1 {
 	display: grid;
 	row-gap: 2rem;
 	column-gap: 2rem;
-	padding: 2rem;
+	padding: 2rem 1rem;
 	padding-bottom: 0rem;
 }
 
@@ -225,7 +225,7 @@ input {
 	overflow-x: hidden;
 }
 
-#bulkDelivery, #deliveryCreateQ, #deliveryCreate, #formDD {
+#bulkDelivery, #deliveryCreateQ, #deliveryCreate, #mapFormMer, #passFormMer, #passForm {
 	margin-top: -1.5rem;
 }
 
@@ -234,7 +234,7 @@ input {
 }
 
 .searcher {
-	margin-top: -1.9rem;
+	margin-top: -1.2rem;
 }
 
 .card.aaa {
