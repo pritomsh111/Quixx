@@ -534,11 +534,11 @@ function showModal(type) {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('placeholder', 'Search anything!').
-		css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').

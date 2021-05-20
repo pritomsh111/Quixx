@@ -2741,6 +2741,9 @@ var arr;
 var id_delivery_update, del_id, creator_ID;
 
 $("#delivery_cityU").change(function () {
+	$('#managersU')
+		.empty()
+		.append('<option value="">---</option>');
 	var value = $(this).val();
 	url = urlForAll + "approved/delivery/upazila/" + value;
 	if (value === "Dhaka") {
@@ -2749,12 +2752,13 @@ $("#delivery_cityU").change(function () {
 	if (value === "Cox's Bazar") {
 		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
 	}
-	thanaUpazilla(url);
+	value ? thanaUpazilla(url) : null;
 });
 
 async function thanaUpazilla(url, areaa = null) {
 	$('#managersU')
-		.empty();
+		.empty()
+		.append('<option value="">---</option>');
 	await $.ajax
 		({
 			url: url,
@@ -2766,7 +2770,6 @@ async function thanaUpazilla(url, areaa = null) {
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-
 			success: function (data) {
 				var j = 0;
 				for (var i = 0; i < data.data.length; i++) {
@@ -2777,23 +2780,25 @@ async function thanaUpazilla(url, areaa = null) {
 					}
 					$("#managersU").append(option);
 				}
-				document.getElementById('managersU').selectedIndex = j; //area
+				document.getElementById('managersU').selectedIndex = j + 1; //area
 			}
 		});
 }
 
 async function cityChange(cityy, areaa) {
 	var cityIndex;
-	url = urlForAll + "approved/delivery/upazila/" + cityy;
+	$("#delivery_cityU")
+		.empty()
+		.append('<option value="">---</option>');
+	$('#managersU')
+		.empty()
+		.append('<option value="">---</option>');
+	cityy ? url = urlForAll + "approved/delivery/upazila/" + cityy : null;
 	if (cityy === "Dhaka") {
 		url = urlForAll + "approved/delivery/thana/Dhaka";
 	}
 	if (cityy === "Cox's Bazar") {
 		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
-	}
-	if (cityy === "undefined") {
-		url = urlForAll + "approved/delivery/thana/Dhaka";
-		cityIndex = 13;
 	}
 	await $.ajax
 		({
@@ -2816,10 +2821,10 @@ async function cityChange(cityy, areaa) {
 					$(option).html(data.data[i]);
 					$("#delivery_cityU").append(option);
 				}
-				document.getElementById('delivery_cityU').selectedIndex = cityIndex;
+				cityy ? document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1 : null;
 			}
 		});
-	await thanaUpazilla(url, areaa);
+	cityy ? await thanaUpazilla(url, areaa) : null;
 }
 
 
@@ -2988,6 +2993,7 @@ var thikKoroCriteria = async (creator_ID, ...typeList) => {
 function setDynSelecChangeForUpdate() {
 	naValuesType.map(item => {
 		document.querySelector(`select#${item}U`).addEventListener('change', function (e) {
+			wrongKeteDao();
 			if (item !== "dayType" && item !== "productCity") {
 				let obj = criteriaMapForDeliveryUpdate.get(item);
 				//console.log(obj[e.target.value]);
@@ -3059,6 +3065,7 @@ var l = 0, modalCostPerMerchant = 0, rowNumber = null;
 $('#dtBasicExampled').on('click', '.updateCh', function () {
 	id_delivery_update = $(this).attr('id');
 	arr = [];
+	url = "";
 	// rowNumber = $(this).closest('tr').index();
 	// //console.log($(this).closest('tr').index(), $(this).closest('tr'), $(this).closest('tr').data(), $(this).closest('tr').hasClass("shown"));
 	arr = id_delivery_update.split('$$');

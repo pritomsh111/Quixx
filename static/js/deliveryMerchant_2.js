@@ -1438,6 +1438,9 @@ var criteriaEnabledDelivery = false;
 var arr;
 var id_delivery_update, del_id, creator_ID;
 $("#delivery_cityU").change(function () {
+	$('#managersU')
+		.empty()
+		.append('<option value="">---</option>');
 	var value = $(this).val();
 	url = urlForAll + "approved/delivery/upazila/" + value;
 	if (value === "Dhaka") {
@@ -1464,7 +1467,6 @@ async function thanaUpazilla(url, areaa = null) {
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-
 			success: function (data) {
 				var j = 0;
 				for (var i = 0; i < data.data.length; i++) {
