@@ -225,12 +225,20 @@ input {
 	overflow-x: hidden;
 }
 
-#bulkDelivery, #deliveryCreateQ, #deliveryCreate {
+#bulkDelivery, #deliveryCreateQ, #deliveryCreate, #formDD {
 	margin-top: -1.5rem;
 }
 
 .card.d, .card.e {
 	margin-top: -.0rem;
+}
+
+.searcher {
+	margin-top: -1.9rem;
+}
+
+.card.aaa {
+	margin-top: -1rem;
 }
 
 @media (max-width: 500px) {
@@ -243,14 +251,15 @@ input {
 	position: relative;
 	overflow-x: unset;
 	width: 100%;
-	padding-left: 1rem;
+	padding-left: 0.9rem;
 	align-items: center;
 	gap: 0.2rem;
 	z-index: 1;
+	margin-bottom: 0.2rem;
 }
 
 .row.navBtn>button {
-	padding: 0.3rem;
+	padding: 0.32rem;
 }
 
 .row {

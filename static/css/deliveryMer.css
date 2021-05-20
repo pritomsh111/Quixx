@@ -101,7 +101,7 @@
 
 .dataTables_wrapper .dataTables_processing {
   position: absolute;
-  top: 0%;
+  top: 3%;
   width: 110%;
   height: 100%;
   text-align: center;
