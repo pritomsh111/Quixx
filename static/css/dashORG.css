@@ -21,6 +21,18 @@ sup {
   margin-top: 1.2rem;
 }
 
+.btn.btn-round.btn-outline.paypay {
+  float: right;
+  margin-left: auto;
+  background: #0d324d;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.btn.btn-round.btn-outline.paypay:hover {
+  color: #0066b3;
+}
+
 .btn.btnDash {
   margin: 1rem 0 1rem auto;
   background: #0d324d;
