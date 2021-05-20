@@ -58,13 +58,13 @@ table#dtBasicExampleAp.dataTable tbody tr:hover>.sorting_1 {
 	display: grid;
 	row-gap: 2rem;
 	column-gap: 2rem;
-	padding: 2rem 1rem;
+	padding: 2rem;
 	padding-bottom: 0rem;
 }
 
 @media (max-width:500px) {
 	#passFormMer .form-horizontal, #passForm .form-horizontal {
-		padding: 1rem;
+		padding: 0rem;
 		grid-template-columns: 1fr;
 		padding-bottom: 0rem;
 	}

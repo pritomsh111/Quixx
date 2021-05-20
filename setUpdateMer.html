@@ -4,7 +4,6 @@ div.hideKoro3{
 	display:none;
 }
 </style>
-<link rel="stylesheet" href="static/css/deliveryMerchant.css">
 <script src="static/js/updateMer_00.js"></script>
 <div id="loaderMama3" style="margin-top:8%;">
     <div class="multi-spinner-container" style="color:#fff">
@@ -77,7 +76,7 @@ div.hideKoro3{
                                         font-size: 16px;
                                     "
                                 >
-                                <div style="margin-top: 0px; position: absolute" id="map"></div>
+                                <div style="margin-top: 11px; position: absolute" id="map"></div>
                             </div>
                             <input type="hidden" id="lat" name="lat">
                             <input type="hidden" id="longi" name="longi">
@@ -101,8 +100,8 @@ div.hideKoro3{
                 <div class="card">
                     <div class="card-body table-responsive blur">
                         <form class="form-horizontal" style="text-align:left;color:#0066b3;">
-                            <div class="col-md-12">
-                                Previous Password: (For Security Purpose)
+                            <div>
+                                Previous Password:
                                 <input
                                     id="password-field1"
                                     type="password"
@@ -110,10 +109,12 @@ div.hideKoro3{
                                     name="password"
                                     onkeyup="milse(this)"
                                     value=""
+                                    autocomplete=""
+                                    autofocus
                                 >
                                 <span toggle="#password-field1" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
                             </div>
-                            <div class="col-md-12">
+                            <div>
                                 New Password:
                                 <input
                                     id="password-field2"
@@ -122,10 +123,11 @@ div.hideKoro3{
                                     name="password"
                                     placeholder="Atleast 8 characters"
                                     value=""
+                                    autocomplete=""
                                 >
                                 <span toggle="#password-field2" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
                             </div>
-                            <div class="col-md-12">
+                            <div>
                                 Confirm New Password:
                                 <input
                                     id="password-field3"
@@ -134,6 +136,7 @@ div.hideKoro3{
                                     name="password"
                                     placeholder="Atleast 8 characters"
                                     value=""
+                                    autocomplete=""
                                 >
                                 <span toggle="#password-field3" class="fa fa-lg fa-eye-slash field-icon toggle-password"></span>
                             </div>
