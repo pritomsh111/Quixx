@@ -279,7 +279,6 @@ function recallQ() {
 	document.getElementById('rec_address').value = "";
 	document.getElementById('product_costQ').value = "";
 	document.getElementById('product_nameQ').value = "";
-	document.getElementById('product_qtyQ').value = "";
 }
 function recall() {
 	document.getElementById('r_name').value = "";
