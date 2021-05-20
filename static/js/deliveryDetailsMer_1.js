@@ -1,5 +1,6 @@
 var onGoingDeliveries = () => {
     $('#onh').html("");
+    $('#onh').hide();
     document.getElementById('body').style.pointerEvents = "none";
     document.getElementById('one').disabled = true;
     document.getElementById('two').disabled = false;
@@ -10,7 +11,7 @@ var onGoingDeliveries = () => {
     document.getElementById('six').disabled = false;
 
     document.getElementById('two').innerHTML = 'Completed Deliveries';
-    document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+    document.getElementById('six').innerHTML = 'On-Hold Deliveries';
     $('#dtBasicExample').hide();
     $('.a').hide();
     $('#dtBasicExampleAp').hide();
@@ -148,7 +149,7 @@ var onGoingDeliveries = () => {
         var json = table.ajax.json();
         document.getElementById('one').innerHTML = 'Ongoing Deliveries: ' + json.recordsTotal;
         document.getElementById('two').innerHTML = 'Completed Deliveries';
-        document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+        document.getElementById('six').innerHTML = 'On-Hold Deliveries';
         document.getElementById('body').style.pointerEvents = "auto";
     });
     table.clear().draw();
@@ -178,7 +179,7 @@ var completeDeliveries = () => {
     document.getElementById('six').style.fontSize = '13px';
     document.getElementById('six').disabled = false;
     document.getElementById('one').innerHTML = 'Ongoing Deliveries';
-    document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+    document.getElementById('six').innerHTML = 'On-Hold Deliveries';
     $('#dtBasicExample').hide();
     $('.a').hide();
     $('#dtBasicExampleAp').hide();
@@ -315,7 +316,7 @@ var completeDeliveries = () => {
     table.on('xhr', function () {
         var json = table.ajax.json();
         document.getElementById('two').innerHTML = 'Completed Deliveries: ' + json.recordsTotal;
-        document.getElementById('six').innerHTML = 'History of On Hold Deliveries';
+        document.getElementById('six').innerHTML = 'On-Hold Deliveries';
         document.getElementById('one').innerHTML = 'Ongoing Deliveries';
         document.getElementById('body').style.pointerEvents = "auto";
     });
@@ -337,6 +338,7 @@ var completeDeliveries = () => {
 }
 
 var onHoldDeliveries = () => {
+    $('#onh').show();
     $('#onh').html("This table will let you know which of your deliveries were On-Hold!");
     document.getElementById('body').style.pointerEvents = "none";
     document.getElementById('one').disabled = false;
@@ -483,7 +485,7 @@ var onHoldDeliveries = () => {
     });
     table2.on('xhr', function () {
         var json = table2.ajax.json();
-        document.getElementById('six').innerHTML = 'History of On Hold Deliveries: ' + json.recordsTotal;
+        document.getElementById('six').innerHTML = 'On-Hold Deliveries: ' + json.recordsTotal;
         document.getElementById('two').innerHTML = 'Completed Deliveries';
         document.getElementById('one').innerHTML = 'Ongoing Deliveries';
         document.getElementById('body').style.pointerEvents = "auto";
@@ -510,7 +512,7 @@ var onHoldDeliveries = () => {
         },
         success: function(data) 
         {
-            document.getElementById('six').innerHTML = 'On Hold Deliveries: ' + data.data.length;
+            document.getElementById('six').innerHTML = 'On-Hold Deliveries: ' + data.data.length;
             var trHTML = '';
             $.each(data.data, function (i, item) {
             var table_rows = 

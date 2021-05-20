@@ -7127,3 +7127,9 @@ a .material-icons {
     display: none !important;
   }
 }
+
+@media (max-width:450px) {
+  *:not(p[id*="date"]) {
+    font-size: 0.9rem;
+  }
+}

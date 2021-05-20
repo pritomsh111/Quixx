@@ -47,37 +47,31 @@
     three3();
     </script>
     <div class="card-body table-responsive">
-        <div class="row">
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="one"
-                    style="width: 100%; font-size: 13px"
-                    onclick="onGoingDeliveries()"
-                >
-                    Ongoing Deliveries
-                </button>
-            </div>
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="six"
-                    style="width: 100%; font-size: 13px"
-                    onclick="onHoldDeliveries()"
-                >
-                    History of On Hold Deliveries
-                </button>
-            </div>
-            <div class="col-md-12">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="two"
-                    style="width: 100%; font-size: 13px"
-                    onclick="completeDeliveries()"
-                >
-                    Completed Deliveries
-                </button>
-            </div>
+        <div class="row navBtn">
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="one"
+                style="font-size: 13px"
+                onclick="onGoingDeliveries()"
+            >
+                Ongoing Deliveries
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="six"
+                style="font-size: 13px"
+                onclick="onHoldDeliveries()"
+            >
+                On-Hold Deliveries
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="two"
+                style="font-size: 13px"
+                onclick="completeDeliveries()"
+            >
+                Completed Deliveries
+            </button>
         </div>
         <div class="card d">
             <div class="card-body table-responsive d">
