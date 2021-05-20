@@ -13,7 +13,7 @@ function btnHandler() {
 	document.getElementById('threeQ').innerHTML = 'Quick Delivery';
 	document.getElementById('three').innerHTML = 'Detailed Delivery';
 	document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
-	document.getElementById('twox').innerHTML = 'Delivery List';
+	document.getElementById('twox').innerHTML = 'Unassigned Deliveries';
 	$('#dtBasicExampled').hide();
 	$('.d').hide();
 	$("#deliveryCreateQ").hide();
@@ -190,7 +190,7 @@ var unassignedDeliveries = () => {
 	});
 	table.on('xhr', function () {
 		var json = table.ajax.json();
-		document.getElementById('twox').innerHTML = 'Delivery List: ' + json.recordsTotal;
+		document.getElementById('twox').innerHTML = 'Unassigned Deliveries: ' + json.recordsTotal;
 		document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();

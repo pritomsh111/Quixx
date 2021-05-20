@@ -18,7 +18,7 @@ function three3() {
 		document.getElementById('threeQ').innerHTML = 'Quick Delivery';
 		document.getElementById('three').innerHTML = 'Detailed Delivery';
 		document.getElementById('two').innerHTML = 'Multiple Deliveries [Excel]';
-		document.getElementById('twox').innerHTML = 'Delivery List';
+		document.getElementById('twox').innerHTML = 'Unassigned Deliveries';
 		$('#dtBasicExampled').hide();
 		$('.d').hide();
 		$("#deliveryCreateQ").show();

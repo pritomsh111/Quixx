@@ -1181,7 +1181,15 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg>select.form-
   box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
 }
 
-.btn.disabled, .btn:disabled {
+.btn.btn.disabled:not([aria-controls]), .btn.btn:disabled:not([aria-controls]) {
+  opacity: 0.75;
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+  border: 1px solid #46708fce;
+}
+
+.btn.btn.disabled[aria-controls], .btn.btn:disabled[aria-controls] {
   opacity: 0.75;
   box-shadow: none;
   cursor: not-allowed;
@@ -5987,6 +5995,10 @@ a .material-icons {
   float: left;
 }
 
+.card [class*="card-header-"].XX .card-icon, .card [class*="card-header-"].XX .card-text {
+  padding: 15px;
+}
+
 .card [class*="card-header-"] .card-text {
   float: none;
   display: inline-block;
@@ -6101,6 +6113,10 @@ a .material-icons {
   width: 56px;
   height: 56px;
   text-align: center;
+}
+
+.card-stats .card-header.card-header-icon.XX i {
+  font-size: 2.3rem;
 }
 
 .card-stats .card-body {
