@@ -280,7 +280,7 @@ naValuesType.map(item => {
 var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
 var markers = [];
 var markers2 = [];
-var s_name, s_number, s_address;
+var s_name, s_number, s_address, s_lat, s_longi;
 
 
 var myMarker3, infowindow3, contentString3;
@@ -319,6 +319,8 @@ function initAutocomplete() {
 					s_number = data.data.sender_phone_number;
 					s_address = data.data.sender_address;
 					org_ID = data.data.user_id;
+					s_lat = data.data.sender_lat;
+					s_longi = data.data.sender_longi;
 					document.getElementById('pac-input').value = data.data.sender_address;
 					document.getElementById('s_name').value = data.data.sender_name;
 					document.getElementById('s_number').value = data.data.sender_phone_number;

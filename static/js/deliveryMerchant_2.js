@@ -274,9 +274,9 @@ $("#managers2").change(function () {
 });
 
 function recallQ() {
-	document.getElementById('r_name').value = "";
-	document.getElementById('r_number').value = "";
-	document.getElementById('rec_address').value = "";
+	document.getElementById('r_nameQ').value = "";
+	document.getElementById('r_numberQ').value = "";
+	document.getElementById('rec_addressQ').value = "";
 	document.getElementById('product_costQ').value = "";
 	document.getElementById('product_nameQ').value = "";
 }
@@ -585,6 +585,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"delivery_distance": distance ? distance : "delivery_distance_na",
 				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 			});
+		console.log(datap);
 		$.ajax
 			({
 				type: "POST",
@@ -597,7 +598,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					//console.log(data);
+					console.log(data);
 					$('#tickD2').hide();
 					$(".circle-loader").removeClass("load-complete");
 					$("#sureD2").html("");
@@ -881,21 +882,21 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 				"sender_name": s_name,
 				"sender_phone_number": s_number,
 				"sender_address": s_address,
+				"sender_lat": s_lat,
+				"sender_longi": s_longi,
 				"receiver_name": r_name,
 				"receiver_phone_number": r_number,
 				"receiver_address": rec_address,
-				"payment_method": payment_method,
-				"sender_lat": "",
-				"sender_longi": "",
-				"receiver_lat": "",
-				"receiver_longi": "",
 				"product_name": product_name,
 				"product_qty": "NA",
 				"product_cost": product_cost,
+				"payment_method": payment_method,
+				"delivery_charge": delivery_charge,
+				"receiver_lat": "",
+				"receiver_longi": "",
 				"pickup_time": "",
 				"delivery_note": "",
 				"delivery_area": "",
-				"delivery_charge": delivery_charge,
 				"delivery_city": "",
 				"delivery_day_type": "delivery_day_type_na",
 				"delivery_product_type": "delivery_product_type_na",
@@ -903,6 +904,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 				"delivery_distance": "delivery_distance_na",
 				"delivery_city_criteria": "delivery_city_criteria_na"
 			});
+		console.log(datap);
 		$.ajax
 			({
 				type: "POST",
@@ -915,7 +917,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					//console.log(data);
+					console.log(data);
 					$('#tickD2').hide();
 					$(".circle-loader").removeClass("load-complete");
 					$("#sureD2").html("");
