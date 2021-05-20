@@ -1446,16 +1446,14 @@ $("#delivery_cityU").change(function () {
 	if (value === "Cox's Bazar") {
 		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
 	}
-	thanaUpazilla(url);
+	value ? thanaUpazilla(url) : null;
 });
 
 async function thanaUpazilla(url, areaa = null) {
 	$('#managersU')
 		.empty()
 		.append('<option value="">---</option>');
-	console.log("ds"
-	);
-	url ? await $.ajax
+	await $.ajax
 		({
 			url: url,
 			type: "GET",
@@ -1479,7 +1477,7 @@ async function thanaUpazilla(url, areaa = null) {
 				}
 				document.getElementById('managersU').selectedIndex = j + 1; //area
 			}
-		}) : null;
+		});
 }
 
 async function cityChange(cityy, areaa) {
@@ -1496,10 +1494,6 @@ async function cityChange(cityy, areaa) {
 	}
 	if (cityy === "Cox's Bazar") {
 		url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
-	}
-	if (cityy === "undefined") {
-		url = urlForAll + "approved/delivery/thana/Dhaka";
-		cityIndex = 13;
 	}
 	await $.ajax
 		({
