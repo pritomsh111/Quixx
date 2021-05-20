@@ -3311,6 +3311,9 @@ $('.btn-ok-updateDC').on("click", function () {
 		}
 	}
 	var v10 = () => {
+		if (product_qty === "NA") {
+			return 1;
+		}
 		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
 			document.getElementById('wrongrpqty').innerHTML = "Product Quantity must be greater than 0!";
 			$('#wrongrpqty').show();
