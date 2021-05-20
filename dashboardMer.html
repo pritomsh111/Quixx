@@ -24,7 +24,7 @@
             margin-left: auto;
             background: #0d324d;
             width: 200px;
-            border-radius: 0px;
+            border-radius: 5px;
           "
                     type="submit"
                     id="confirm"
@@ -39,7 +39,7 @@
             margin-left: auto;
             background: #0d324d;
             width: 100px;
-            border-radius: 0px;
+            border-radius: 5px;
           "
                     type="submit"
                     id="invoice"
@@ -47,12 +47,6 @@
                 >
                     <div style="color: #fff">Invoice</div>
                 </button>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date12"></p>
-                </div>
             </div>
         </div>
     </div>
@@ -65,28 +59,9 @@
                 <h4 class="card-title">Due From Completed Deliveries</h4>
                 <h6 class="card-title">[Cash on Delivery]</h6>
                 <h4 class="card-title" style="color: #0066b3" id="mer1"></h4>
+                <button class="btn btn-round btn-outline btnDash" type="submit" onclick="showModal(1)">Details</button>
             </div>
             <!--<button class="btn btn-round btn-outline" style="margin-left:auto;background:#0D324D;width:150px;border-radius:0px;" type="submit" id="update" onclick="updateTaka()"><div style="color:#fff;">Update Transaction</div></button>-->
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date9"></p>
-                </div>
-                <button
-                    class="btn btn-round btn-outline"
-                    style="
-                        margin-left: auto;
-                        background: #0d324d;
-                        width: 60px;
-                        color:#fff;
-                        border-radius: 0px;
-                        padding:0.3rem;
-                        border-radius: 5px;
-                    "
-                    type="submit"
-                    onclick="showModal(1)"
-                >Details</button>
-            </div>
         </div>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
@@ -98,26 +73,7 @@
                 <h4 class="card-title">Transaction Completed</h4>
                 <h6 class="card-title">[Cash on Delivery]</h6>
                 <h4 class="card-title" style="color: #0066b3" id="mer2"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date10"></p>
-                </div>
-                <button
-                    class="btn btn-round btn-outline"
-                    style="
-                    margin-left: auto;
-                    background: #0d324d;
-                    width: 60px;
-                    color:#fff;
-                    border-radius: 0px;
-                    padding:0.3rem;
-                    border-radius: 5px;
-                "
-                    type="submit"
-                    onclick="showModal(2)"
-                >Details</button>
+                <button class="btn btn-round btn-outline btnDash" type="submit" onclick="showModal(2)">Details</button>
             </div>
         </div>
     </div>
@@ -130,26 +86,7 @@
                 <h4 class="card-title">Due From Incomplete Deliveries</h4>
                 <h6 class="card-title">[Cash on Delivery]</h6>
                 <h4 class="card-title" style="color: #0066b3" id="mer3"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date11"></p>
-                </div>
-                <button
-                    class="btn btn-round btn-outline"
-                    style="
-                        margin-left: auto;
-                        background: #0d324d;
-                        width: 60px;
-                        color:#fff;
-                        border-radius: 0px;
-                        padding:0.3rem;
-                        border-radius: 5px;
-                    "
-                    type="submit"
-                    onclick="showModal(3)"
-                >Details</button>
+                <button class="btn btn-round btn-outline btnDash" type="submit" onclick="showModal(3)">Details</button>
             </div>
         </div>
     </div>

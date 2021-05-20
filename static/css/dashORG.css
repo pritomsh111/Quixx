@@ -21,6 +21,15 @@ sup {
   margin-top: 1.2rem;
 }
 
+.btn.btnDash {
+  margin: 1rem 0 1rem auto;
+  background: #0d324d;
+  color: #fff;
+  padding: 0.3rem;
+  border-radius: 5px;
+  border-width: 0px;
+}
+
 @keyframes loader5 {
   from {
     transform: rotate(0deg);
