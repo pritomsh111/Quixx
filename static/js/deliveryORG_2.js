@@ -2641,7 +2641,6 @@ document.getElementById('product_qtyUR').addEventListener("keyup", function (e) 
 	}
 });
 
-
 var abtn = document.querySelector('#btnAuto');
 abtn.onclick = checkAll;
 
