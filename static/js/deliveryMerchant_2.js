@@ -313,6 +313,25 @@ function recall() {
 }
 
 
+document.getElementById('product_qty').addEventListener("keyup", function (e) {
+	if (e.target.value.toUpperCase() === "NA") {
+		document.querySelector("#product_cost").offsetParent.childNodes[5].firstChild.textContent = "Total Amount: [BDT]";
+	}
+	else {
+		document.querySelector("#product_cost").offsetParent.childNodes[5].firstChild.textContent = "Per Product Cost: [BDT]";
+	}
+});
+
+document.getElementById('product_qtyU').addEventListener("keyup", function (e) {
+	if (e.target.value.toUpperCase() === "NA") {
+		document.querySelector("#product_costU").offsetParent.childNodes[5].firstChild.textContent = "Total Amount: [BDT]";
+	}
+	else {
+		document.querySelector("#product_costU").offsetParent.childNodes[5].firstChild.textContent = "Per Product Cost: [BDT]";
+	}
+});
+
+
 document.getElementById("createDelivery").addEventListener("click", function (event) {
 	var pickup_time = document.getElementById('timepicker-12-hr').value;
 	var s_name = document.getElementById('s_name').value;
@@ -988,14 +1007,16 @@ function doIt(i, lengx) {
 		var r_number = excelData[i].Receiver_Phone_Number;
 		var area = excelData[i].Receiver_Area;
 		var rec_address = excelData[i].Receiver_Address;
-		var delivery_lat = excelData[i].Receiver_Lattitude;
-		var delivery_longi = excelData[i].Receiver_Longitude;
+		// var delivery_lat = excelData[i].Receiver_Lattitude;
+		// var delivery_longi = excelData[i].Receiver_Longitude;
 
-		var payment_method = excelData[i].Payment_Method;
 		var product_name = excelData[i].Product_Name;
 		var product_qty = excelData[i].Product_Quantity_Pieces;
 		var product_cost = excelData[i].Product_Cost;
+
 		var delivery_charge = excelData[i].Delivery_Charge;
+		var payment_method = excelData[i].Payment_Method;
+
 
 		//Optional
 		var delivery_note = excelData[i].Delivery_Note;

@@ -331,12 +331,6 @@ function initAutocomplete() {
 					document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
 					document.getElementById('delivery_chargeQ').value = data.data.per_delivery_cost;
 					merchantPerDeliveryCost = data.data.per_delivery_cost;
-					document.getElementById('senLatLong').innerHTML =
-						`Sender's Address: ${data.data.sender_address}<br>
-						Sender's Name: ${data.data.sender_name}<br>
-						Sender's Phone Number: ${data.data.sender_phone_number}<br>
-						Sender's Lattitude: ${data.data.sender_lat}<br>
-						Sender's Longitude: ${data.data.sender_longi}<br>`;
 				}
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
