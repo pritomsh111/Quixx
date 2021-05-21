@@ -1,3 +1,4 @@
+var merset, orgset;
 (function () {
   let count = '';
   function getContent(fragmentId, callback) {
@@ -50,10 +51,12 @@
           success: function (data) {
             if (data.data == true) {
               a = '#dashboardOrg';
+              orgset = 1;
               $('#settings').hide();
               $('#alreadySet').show();
             }
             else {
+              orgset = 0;
               $('#alreadySet').hide();
               $('#settings').show();
               a = '#settingsOrg';
@@ -80,10 +83,12 @@
           success: function (data) {
             if (data.data == true) {
               a = '#selection';
+              merset = 1;
               $('#settingsMer').hide();
               $('#alreadySetMer').show();
             }
             else {
+              merset = 0;
               $('#alreadySetMer').hide();
               $('#settingsMer').show();
               a = '#settingsMer';

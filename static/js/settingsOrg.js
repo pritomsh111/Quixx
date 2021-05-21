@@ -259,11 +259,11 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 							$('#tickDD2').show();
 
 							$("#sureDD2").html("Organization Set!");
-						}, 2000);
+						}, 1000);
 						setTimeout(function () {
 
 							$("#myModalCreateDD1").modal('hide');
-						}, 4000);
+						}, 2000);
 
 
 						setTimeout(function () {
@@ -273,7 +273,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 							$("#settings").hide();
 							$("#alreadySet").show();
 							location.hash = "#dashboardOrg";
-						}, 5000);
+						}, 3500);
 
 					}
 				},

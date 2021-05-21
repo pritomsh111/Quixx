@@ -2,11 +2,9 @@ $(function () {
 	$("#alreadySetMer").hide();
 });
 
-
 var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
 var markers = [];
 var markers2 = [];
-
 
 function initAutocomplete() {
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -16,8 +14,6 @@ function initAutocomplete() {
 		mapTypeControl: false,
 		fullscreenControl: false
 	});
-
-
 	// Try HTML5 geolocation.
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (position) {
@@ -260,11 +256,11 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 							$('#tickDD2').show();
 
 							$("#sureDD2").html("Merchant Set!");
-						}, 2000);
+						}, 1000);
 						setTimeout(function () {
 
 							$("#myModalCreateDD1").modal('hide');
-						}, 4000);
+						}, 2000);
 
 
 						setTimeout(function () {
@@ -274,7 +270,7 @@ document.getElementById("updateMerchant").addEventListener("click", function (ev
 							$("#settingsMer").hide();
 							$("#alreadySetMer").show();
 							location.hash = "#selection";
-						}, 5000);
+						}, 3500);
 					}
 				},
 				error: function (data) {

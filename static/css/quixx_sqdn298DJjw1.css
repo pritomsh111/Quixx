@@ -2475,7 +2475,7 @@ button.close {
 
 @media (max-width: 540px) {
   .p-5 {
-    padding: 0.2rem !important;
+    padding: 0.3rem !important;
   }
 }
 
@@ -7146,7 +7146,7 @@ a .material-icons {
 
 @media (max-width:450px) {
   *, *::after, *::before {
-    font-size: 0.95rem;
+    font-size: 0.93rem;
   }
   .card [class*="card-header-"].XX .card-icon, .card [class*="card-header-"].XX .card-text {
     padding: 5px;
