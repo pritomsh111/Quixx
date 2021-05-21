@@ -230,7 +230,7 @@ input {
 }
 
 .card.d, .card.e {
-	margin-top: -.0rem;
+	margin-top: -0.0rem;
 }
 
 .searcher {
@@ -482,6 +482,9 @@ input {
 }
 
 @media (max-width:450px) {
+	.card.d, .card.e {
+		margin-top: -0.0rem;
+	}
 	#managers2Q, #productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
 		padding: 0.2rem;
 		text-align-last: left;

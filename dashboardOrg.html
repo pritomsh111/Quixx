@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="static/css/deliveryManORG.css">
 <link rel="stylesheet" href="static/css/dashORG.css">
+<link rel="stylesheet" href="static/css/deliveryMerchant.css">
 <div class="row">
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
@@ -9,13 +10,7 @@
                     <i class="material-icons">fact_check</i>
                 </div>
                 <h4 class="card-title">Package Name</h4>
-                <h4 class="card-title" id="packageName"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">update</i>
-                    <p id="date7Package"></p>
-                </div>
+                <h4 class="card-title" style="color: #0066b3" id="packageName"></h4>
             </div>
         </div>
     </div>
@@ -26,13 +21,7 @@
                     <i class="material-icons">sms</i>
                 </div>
                 <h4 class="card-title">Total SMS Count</h4>
-                <h4 class="card-title" id="messageCount"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">update</i>
-                    <p id="date7"></p>
-                </div>
+                <h4 class="card-title" style="color: #0066b3" id="messageCount"></h4>
             </div>
         </div>
     </div>
@@ -44,26 +33,14 @@
                 </div>
                 <h4 class="card-title">Total Income From Deliveries</h4>
                 <h4 class="card-title" id="deliveryTotalIncome"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats" style="margin-top:1rem;">
-                    <i class="material-icons">access_time</i>
-                    <p id="date67"></p>
-                </div>
                 <button
-                    class="btn btn-round btn-outline"
-                    style="
-                        margin-left: auto;
-                        background: #0d324d;
-                        width: 60px;
-                        color:#fff;
-                        border-radius: 0px;
-                        padding:0.3rem;
-                        border-radius: 5px;
-                    "
+                    class="btn btn-round btn-outline paypay"
                     type="submit"
+                    id="confirm"
                     onclick="invoiceForTotalIncome()"
-                >Details</button>
+                >
+                    <div>Details</div>
+                </button>
             </div>
         </div>
     </div>
