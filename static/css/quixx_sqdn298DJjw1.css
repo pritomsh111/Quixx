@@ -7145,6 +7145,9 @@ a .material-icons {
 }
 
 @media (max-width:450px) {
+  *, *::after, *::before {
+    font-size: 0.9rem;
+  }
   .card [class*="card-header-"].XX .card-icon, .card [class*="card-header-"].XX .card-text {
     padding: 5px;
   }
