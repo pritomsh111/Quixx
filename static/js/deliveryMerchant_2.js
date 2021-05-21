@@ -331,7 +331,6 @@ document.getElementById('product_qtyU').addEventListener("keyup", function (e) {
 	}
 });
 
-
 document.getElementById("createDelivery").addEventListener("click", function (event) {
 	var pickup_time = document.getElementById('timepicker-12-hr').value;
 	var s_name = document.getElementById('s_name').value;
@@ -468,7 +467,10 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v10 = () => {
-		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+		if (product_qty === "NA") {
+			return 1;
+		}
+		if (parseInt(product_qty) <= 0) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be greater than 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_qty").focus();
@@ -1196,7 +1198,10 @@ function doIt(i, lengx) {
 			}
 		}
 		var v10 = () => {
-			if (parseInt(product_qty) <= 0 || String(product_qty).charAt(0) == 0) {
+			if (product_qty === "NA") {
+				return 1;
+			}
+			else if (parseInt(product_qty) <= 0) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Quantity must be greater than 0!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
@@ -2056,7 +2061,7 @@ $('.btn-ok-updateDC').on("click", function () {
 		if (product_qty === "NA") {
 			return 1;
 		}
-		else if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+		else if (parseInt(product_qty) <= 0) {
 			document.getElementById('wrongrpqty').innerHTML = "Product Quantity must be greater than 0!";
 			$('#wrongrpqty').show();
 			document.getElementById("product_qtyU").focus();

@@ -1762,7 +1762,10 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v10 = () => {
-		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+		if (product_qty === "NA") {
+			return 1;
+		}
+		else if (parseInt(product_qty) <= 0) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Quantity must be greater than 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_qty").focus();
@@ -2204,7 +2207,10 @@ function doIt(i, lengx) {
 			}
 		}
 		var v10 = () => {
-			if (parseInt(product_qty) <= 0 || String(product_qty).charAt(0) == 0) {
+			if (product_qty === "NA") {
+				return 1;
+			}
+			else if (parseInt(product_qty) <= 0) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Quantity must be greater than 0!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
@@ -2606,6 +2612,33 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 	dataTableStyle();
 	$('#modalAssignAll').prop("disabled", true)
 	$('#myModalAuto').modal('show');
+});
+
+
+document.getElementById('product_qty').addEventListener("keyup", function (e) {
+	if (e.target.value.toUpperCase() === "NA") {
+		document.querySelector("#product_cost").offsetParent.childNodes[5].firstChild.textContent = "Total Amount: [BDT]";
+	}
+	else {
+		document.querySelector("#product_cost").offsetParent.childNodes[5].firstChild.textContent = "Per Product Cost: [BDT]";
+	}
+});
+
+document.getElementById('product_qtyU').addEventListener("keyup", function (e) {
+	if (e.target.value.toUpperCase() === "NA") {
+		document.querySelector("#product_costU").offsetParent.childNodes[5].firstChild.textContent = "Total Amount: [BDT]";
+	}
+	else {
+		document.querySelector("#product_costU").offsetParent.childNodes[5].firstChild.textContent = "Per Product Cost: [BDT]";
+	}
+});
+document.getElementById('product_qtyUR').addEventListener("keyup", function (e) {
+	if (e.target.value.toUpperCase() === "NA") {
+		document.querySelector(".pqp").textContent = "Total Amount: [BDT]";
+	}
+	else {
+		document.querySelector(".pqp").textContent = "Per Product Cost: [BDT]";
+	}
 });
 
 
@@ -3314,7 +3347,7 @@ $('.btn-ok-updateDC').on("click", function () {
 		if (product_qty === "NA") {
 			return 1;
 		}
-		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+		if (parseInt(product_qty) <= 0) {
 			document.getElementById('wrongrpqty').innerHTML = "Product Quantity must be greater than 0!";
 			$('#wrongrpqty').show();
 			document.getElementById("product_qtyU").focus();
@@ -3627,7 +3660,10 @@ $('.btn-okReturn').on("click", function () {
 		}
 	}
 	var v3 = () => {
-		if (parseInt(product_qty) <= 0 || product_qty.charAt(0) == 0) {
+		if (product_qty === "NA") {
+			return 1;
+		}
+		else if (parseInt(product_qty) <= 0) {
 			document.getElementById('wrongrpqtyR').innerHTML = "Product Quantity must be greater than 0!";
 			$('#wrongrpqtyR').show();
 			document.getElementById("product_qtyUR").focus();
