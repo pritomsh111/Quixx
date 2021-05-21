@@ -5,9 +5,69 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Testing Quixx</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
+        <script src="https://jsuites.net/v4/jsuites.js"></script>
+        <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css">
+        <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div id="spreadsheet2"></div>
         <script src="app.js"></script>
     </body>
 </html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Testing Quixx</title>
+        <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
+        <script src="https://jsuites.net/v4/jsuites.js"></script>
+        <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css">
+        <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="spreadsheet"></div>
+        <p>
+            <button onclick="mySpreadsheet.download();">Export my spreadsheet as CSV</button>
+        </p>
+        <script>
+            mySpreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
+                csv: 'DeliveryTemplate.csv',
+                tableOverflow: true,
+                columns: [
+                    { type: 'text', width: '50px' },
+                    { type: 'text', width: '80px' },
+                    { type: 'dropdown', width: '120px', source: ['England','Wales','Northern Ireland','Scotland'] },
+                    { type: 'text', width: '120px' },
+                    { type: 'text', width: '120px'},
+                ],
+                license: 'NDc4ZDc3NWJiNjIzNzU4MTVmNjA4MjdlYjk1MjlmZDZiYzk4MWM3ZmM2OTdiZDczOWQ2MGRkZjdhNTc4ODExNmMyMDZkZDIwNzExYzJmM2EwOTBiYWUxM2M0NGY1YzNiZmVmZTY1OGY5OWI2ZDg2NDMyNjgwOTFhZGQ2MzVlYmEsZXlKdVlXMWxJam9pY0dGMWJDNW9iMlJsYkNJc0ltUmhkR1VpT2pFMk5EY3pPRGc0TURBc0ltUnZiV0ZwYmlJNld5SnFjMmhsYkd3dWJtVjBJaXdpWTI5a1pYTmhibVJpYjNndVkyOXRJaXdpYW5Od2NtVmhaSE5vWldWMExtTnZiU0lzSW1OellpNWhjSEFpTENKalpIQnVMbWx2SWl3aWJHOWpZV3hvYjNOMElsMHNJbkJzWVc0aU9pSXlJbjA9',
+            });
+        </script>
+        <!-- <script>
+            var data = [
+            ['Jazz', 'Honda', '2019-02-12', '', true, '$ 2.000,00', '#777700'],
+            ['Civic', 'Honda', '2018-07-11', '', true, '$ 4.000,01', '#007777'],
+        ];
+        
+        jspreadsheet(document.getElementById('spreadsheet'), {
+            data:data,
+            columns: [
+                { type: 'text', title:'Car', width:120 },
+                { type: 'dropdown', title:'Make', width:200, source:[ "Alfa Romeo", "Audi", "Bmw" ] },
+                { type: 'calendar', title:'Available', width:200 },
+                { type: 'image', title:'Photo', width:120 },
+                { type: 'checkbox', title:'Stock', width:80 },
+                { type: 'numeric', title:'Price', width:100, mask:'৳ #', decimal:',' },
+                { type: 'color', width:100, render:'square', }
+             ]
+        }); 
+    </script>
+    </body>
+    </html>
+     -->

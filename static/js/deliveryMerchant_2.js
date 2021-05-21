@@ -974,18 +974,16 @@ var keysx = [];
 var extrax1 = [];
 var extrax2 = [];
 var deliveryList = [];
-var assignedDeliveryMan = [];
-var assignedDeliveryManPhone = [];
 function doIt(i, lengx) {
 	setTimeout(function () {
+		var delivery_type = "Customer";
 
-		var pickup_time = excelData[i].Pickup_Time;
-		var delivery_type = excelData[i].Delivery_Type;
-		var s_name = excelData[i].Sender_Name;
-		var s_number = excelData[i].Sender_Phone_Number;
-		var s_address = excelData[i].Sender_Address;
-		var pickup_lat = excelData[i].Sender_Lattitude;
-		var pickup_longi = excelData[i].Sender_Longitude;
+		var s_name = s_name;
+		var s_number = s_number;
+		var s_address = s_address;
+		var pickup_lat = s_lat;
+		var pickup_longi = s_longi;
+
 		var r_name = excelData[i].Receiver_Name;
 		var r_number = excelData[i].Receiver_Phone_Number;
 		var area = excelData[i].Receiver_Area;
@@ -998,7 +996,10 @@ function doIt(i, lengx) {
 		var product_qty = excelData[i].Product_Quantity_Pieces;
 		var product_cost = excelData[i].Product_Cost;
 		var delivery_charge = excelData[i].Delivery_Charge;
+
+		//Optional
 		var delivery_note = excelData[i].Delivery_Note;
+		var pickup_time = excelData[i].Pickup_Time;
 		var v1 = () => {
 			// if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
 			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;
@@ -1016,69 +1017,72 @@ function doIt(i, lengx) {
 			return 1;
 		}
 		var v2 = () => {
-			if (s_name == "" || s_name == null || s_name == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender Name cannot be empty!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else {
-				return 1;
-			}
+			// if (s_name == "" || s_name == null || s_name == undefined) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender Name cannot be empty!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else {
+			// 	return 1;
+			// }
+			return 1;
 		}
 		var v3 = () => {
-			if (s_number == "" || s_number == null || s_number == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender's Phone Number cannot be empty!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else if ((s_number.length < 11 || s_number.length > 11) && !/\D/.test(s_number) == true) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender's Phone Number must be of 11 digits!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else if (s_number.match(/\d/g).length === 11 && !/\D/.test(s_number) == true) {
-				return 1;
-			}
-			else {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender's Phone Number not valid!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
+			// if (s_number == "" || s_number == null || s_number == undefined) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender's Phone Number cannot be empty!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else if ((s_number.length < 11 || s_number.length > 11) && !/\D/.test(s_number) == true) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender's Phone Number must be of 11 digits!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else if (s_number.match(/\d/g).length === 11 && !/\D/.test(s_number) == true) {
+			// 	return 1;
+			// }
+			// else {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender's Phone Number not valid!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			return 1;
 		}
 		var v4 = () => {
-			if (s_address == "" || s_address == null || s_address == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender's Address cannot be empty!!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else {
-				return 1;
-			}
+			// if (s_address == "" || s_address == null || s_address == undefined) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Sender's Address cannot be empty!!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else {
+			// 	return 1;
+			// }
+			return 1;
 		}
 		var v5 = () => {
 			if (r_name == "" || r_name == null || r_name == undefined) {
