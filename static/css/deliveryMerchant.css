@@ -209,9 +209,9 @@ input {
 
 .dataTables_wrapper .dataTables_processing {
 	position: absolute;
-	top: -5rem;
+	top: 10%;
 	width: 100%;
-	height: 100%;
+	height: 75%;
 	text-align: center;
 	font-size: 1.2em;
 	background-color: white;
@@ -230,7 +230,7 @@ input {
 }
 
 .card.d, .card.e {
-	margin-top: -0.0rem;
+	margin-top: 0.65rem;
 }
 
 .searcher {
@@ -482,9 +482,6 @@ input {
 }
 
 @media (max-width:450px) {
-	.card.d, .card.e {
-		margin-top: -0.0rem;
-	}
 	#managers2Q, #productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
 		padding: 0.2rem;
 		text-align-last: left;

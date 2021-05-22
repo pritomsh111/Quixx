@@ -5,28 +5,6 @@
 <div class="row">
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
-            <div class="card-header card-header-black7 card-header-icon">
-                <div class="card-icon">
-                    <i class="material-icons">fact_check</i>
-                </div>
-                <h4 class="card-title">Package Name</h4>
-                <h4 class="card-title" style="color: #0066b3" id="packageName"></h4>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-            <div class="card-header card-header-black10 card-header-icon">
-                <div class="card-icon">
-                    <i class="material-icons">sms</i>
-                </div>
-                <h4 class="card-title">Total SMS Count</h4>
-                <h4 class="card-title" style="color: #0066b3" id="messageCount"></h4>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
             <div class="card-header card-header-black20 card-header-icon">
                 <div class="card-icon">
                     <i class="material-icons">price_change</i>
@@ -59,32 +37,15 @@
                     style="margin-top:1rem;"
                 >
                 <h4 class="card-title" id="perDayIncome"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats" style="margin-top:1rem;">
-                    <i class="material-icons">access_time</i>
-                    <p id="date68"></p>
-                </div>
-                <button
-                    class="btn btn-round btn-outline"
-                    style="
-                        margin-left: auto;
-                        background: #0d324d;
-                        width: 60px;
-                        color:#fff;
-                        border-radius: 0px;
-                        padding:0.3rem;
-                        border-radius: 5px;
-                    "
-                    type="submit"
-                    onclick="invoiceForDailyIncome()"
-                >Details</button>
+                <button class="btn btn-round btn-outline paypay" type="submit" onclick="invoiceForDailyIncome()">
+                    <div>Details</div>
+                </button>
             </div>
         </div>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
-            <div class="card-header card-header-black12 card-header-icon">
+            <div class="card-header card-header-black7 card-header-icon">
                 <div class="card-icon">
                     <i class="material-icons">request_quote</i>
                 </div>
@@ -97,77 +58,20 @@
                     style="margin-top:1rem;"
                 >
                 <h4 class="card-title" style="color:#0066b3" id="perMonthIncome"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats" style="margin-top:1rem;">
-                    <i class="material-icons">access_time</i>
-                    <p id="date69"></p>
-                </div>
-                <button
-                    class="btn btn-round btn-outline"
-                    style="
-                        margin-left: auto;
-                        background: #0d324d;
-                        width: 60px;
-                        color:#fff;
-                        border-radius: 0px;
-                        padding:0.3rem;
-                        border-radius: 5px;
-                    "
-                    type="submit"
-                    onclick="invoiceForMonthlyIncome()"
-                >Details</button>
+                <button class="btn btn-round btn-outline paypay" type="submit" onclick="invoiceForMonthlyIncome()">
+                    <div>Details</div>
+                </button>
             </div>
         </div>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
-            <div class="card-header card-header-success card-header-icon">
+            <div class="card-header card-header-black10 card-header-icon">
                 <div class="card-icon">
-                    <i class="material-icons">how_to_reg</i>
+                    <i class="material-icons">sms</i>
                 </div>
-                <h4 class="card-title">Total Approved Delivery Man</h4>
-                <h4 class="card-title" id="totalDeliveryMan"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">update</i>
-                    <p id="date1"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-            <div class="card-header card-header-black19 card-header-icon">
-                <div class="card-icon">
-                    <i class="material-icons">how_to_reg</i>
-                </div>
-                <h4 class="card-title">Total Approved Merchant</h4>
-                <h4 class="card-title" id="approvedMer"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">update</i>
-                    <p id="date3"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-            <div class="card-header card-header-black13 card-header-icon">
-                <div class="card-icon">
-                    <i class="material-icons">person</i>
-                </div>
-                <h4 class="card-title">Total Unapproved Merchant</h4>
-                <h4 class="card-title" id="unApprovedMer"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">update</i>
-                    <p id="date4"></p>
-                </div>
+                <h4 class="card-title">SMS Available</h4>
+                <h4 class="card-title" id="messageCount"></h4>
             </div>
         </div>
     </div>
@@ -180,12 +84,6 @@
                 <h4 class="card-title">Total Completed Deliveries</h4>
                 <h4 class="card-title" id="totalCompletedDeliveries"></h4>
             </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date5"></p>
-                </div>
-            </div>
         </div>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
@@ -196,12 +94,6 @@
                 </div>
                 <h4 class="card-title">Total Incomplete Deliveries</h4>
                 <h4 class="card-title" id="totalIncompleteDeliveries"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date6"></p>
-                </div>
             </div>
         </div>
     </div>
@@ -214,12 +106,6 @@
                 <h4 class="card-title">Total On-Hold Deliveries</h4>
                 <h4 class="card-title" id="totalOnHoldDeliveries"></h4>
             </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date65"></p>
-                </div>
-            </div>
         </div>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
@@ -230,12 +116,6 @@
                 </div>
                 <h4 class="card-title">Total Returned Deliveries</h4>
                 <h4 class="card-title" id="totalReturnedDeliveries"></h4>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date64"></p>
-                </div>
             </div>
         </div>
     </div>
@@ -248,11 +128,49 @@
                 <h4 class="card-title">Total Cancelled Deliveries</h4>
                 <h4 class="card-title" id="totalCancelledDeliveries"></h4>
             </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">access_time</i>
-                    <p id="date66"></p>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">how_to_reg</i>
                 </div>
+                <h4 class="card-title">Total Approved Delivery Man</h4>
+                <h4 class="card-title" id="totalDeliveryMan"></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black19 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">how_to_reg</i>
+                </div>
+                <h4 class="card-title">Total Approved Merchant</h4>
+                <h4 class="card-title" id="approvedMer"></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black13 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">person</i>
+                </div>
+                <h4 class="card-title">Total Unapproved Merchant</h4>
+                <h4 class="card-title" id="unApprovedMer"></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-black12 card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">fact_check</i>
+                </div>
+                <h4 class="card-title">Package Name</h4>
+                <h4 class="card-title" id="packageName"></h4>
             </div>
         </div>
     </div>

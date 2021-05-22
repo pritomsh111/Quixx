@@ -16,7 +16,7 @@ sup {
   font-size: 12px;
 }
 
-.card-stats .card-header.card-header-icon .card-title[id*=mer], .card-stats .card-header.card-header-icon .card-title[id*=complete], .card-stats .card-header.card-header-icon .card-title[id*=assign], .card-stats .card-header.card-header-icon .card-title[id*=total] {
+.card-stats .card-header.card-header-icon .card-title[id*=mer], .card-stats .card-header.card-header-icon .card-title[id*=complete], .card-stats .card-header.card-header-icon .card-title[id*=assign], .card-stats .card-header.card-header-icon .card-title[id*=total], .card-stats .card-header.card-header-icon .card-title[id*=package], .card-stats .card-header.card-header-icon .card-title[id*=message], .card-stats .card-header.card-header-icon .card-title[id*=Income], .card-stats .card-header.card-header-icon .card-title[id*=total], .card-stats .card-header.card-header-icon .card-title[id*=pproved] {
   color: #0066b3;
   margin: 1.2rem 0;
 }
