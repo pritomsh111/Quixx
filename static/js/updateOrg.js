@@ -8,7 +8,7 @@ var markers2 = [];
 
 function addressUpdate() {
 	document.getElementById('uporg1').disabled = true;
-	document.getElementById('uporg1').style.fontSize = '14.5px';
+	document.getElementById('uporg1').style.fontSize = '13px';
 	document.getElementById('uporg2').disabled = false;
 	document.getElementById('uporg2').style.fontSize = '13px';
 	$('#mapForm').show();
@@ -16,7 +16,7 @@ function addressUpdate() {
 }
 function passUpdate() {
 	document.getElementById('uporg2').disabled = true;
-	document.getElementById('uporg2').style.fontSize = '14.5px';
+	document.getElementById('uporg2').style.fontSize = '13px';
 	document.getElementById('uporg1').disabled = false;
 	document.getElementById('uporg1').style.fontSize = '13px';
 	$('#mapForm').hide();
