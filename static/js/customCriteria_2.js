@@ -141,7 +141,7 @@ async function setUpdateCriteria() {
     document.getElementById('two-cc').disabled = true;
     document.getElementById('two-cc').style.fontSize = '13px';
     document.getElementById('one-cc').style.fontSize = '13px';
-    document.getElementById('setCriteriaDetails').style.display = "block";
+    document.getElementById('setCriteriaDetails').style.display = "grid";
     document.getElementById('createCriteria').style.display = "none";
     if (flag) {
         Array.from(document.querySelectorAll("#setCriteriaDetails .flexIt2")).map(item => item.remove());
@@ -164,12 +164,12 @@ var fillInputDetails = (types, values = undefined) => {
 
     let identifier = document.createElement("span");
     identifier.innerHTML = values !== undefined ? `${values.replace(/ /g, "")}:` : "";
-    identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 20%;";
+    identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 50%;";
 
     let input = document.createElement("input");
     input.type = "text";
     // identidier.value = values !== undefined ? values : "";
-    // input.style.cssText = "color: #0066b3;";
+    input.style.cssText = "width: 50%;";
     input.placeholder = placeHolder;
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
     input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));

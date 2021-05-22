@@ -9,13 +9,21 @@
 #createCriteria, #setCriteriaDetails {
   margin-top: -2.8rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   place-items: center;
+}
+
+.form-control {
+  display: block;
+  width: 70%;
 }
 
 @media (max-width: 450px) {
   #createCriteria {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
+  }
+  #setCriteriaDetails {
+    grid-template-columns: 1fr;
   }
 }
 
