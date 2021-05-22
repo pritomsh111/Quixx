@@ -6,8 +6,27 @@
 
   @media (max-width: 500px) {
     .p-5 {
-      padding: 2rem !important;
+      padding: 0.3rem !important;
     }
+  }
+  
+.card.a, .card.b, .card.c, .card.d {
+    margin-top: -0.3rem;
+  }
+  
+  .row.navBtn {
+    position: relative;
+    overflow-x: unset;
+    width: 100%;
+    padding-left: 0.9rem;
+    align-items: center;
+    gap: 0.2rem;
+    z-index: 1;
+    margin-bottom: 0.2rem;
+  }
+  
+  .row.navBtn>button {
+    padding: 0.4rem;
   }
 </style>
 <link rel="stylesheet" href="static/css/deliveryMerchant.css">
@@ -43,27 +62,23 @@
     three3x();
     </script>
     <div class="card-body table-responsive">
-        <div class="row">
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="uporg1"
-                    onclick="addressUpdate()"
-                    style="width: 100%; font-size: 13px"
-                >
-                    Address/Operational Manager
-                </button>
-            </div>
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="uporg2"
-                    onclick="passUpdate()"
-                    style="width: 100%; font-size: 13px"
-                >
-                    Password
-                </button>
-            </div>
+        <div class="row navBtn">
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="uporg1"
+                onclick="addressUpdate()"
+                style="font-size: 13px"
+            >
+                Address/Operational Manager
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="uporg2"
+                onclick="passUpdate()"
+                style="font-size: 13px"
+            >
+                Password
+            </button>
         </div>
         <div class="row" id="mapForm">
             <div class="col-lg-12">
@@ -107,7 +122,7 @@
                             </div>
                             <input type="hidden" id="lat" name="lat">
                             <input type="hidden" id="longi" name="longi">
-                            <div style="text-align: center; margin-top: 17rem">
+                            <div style="text-align: center; margin-top: 19rem">
                                 <button
                                     class="btn btn-outline btn-round"
                                     style="background: #ffffd4"

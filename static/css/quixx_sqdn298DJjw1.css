@@ -4902,7 +4902,7 @@ h2.title {
   overflow-y: scroll;
   width: 260px;
   z-index: 4;
-  padding-bottom: 100%;
+  padding-bottom: 30%;
 }
 
 .sidebar .sidebar-wrapper .dropdown .dropdown-backdrop {
