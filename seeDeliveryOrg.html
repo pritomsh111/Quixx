@@ -8,6 +8,29 @@
 <link rel="stylesheet" href="static/css/deliveryMer.css">
 <style>
     
+  .card.a, .card.b, .card.c, .card.d {
+    margin-top: -0.9rem;
+  }
+  
+  .row.navBtn {
+    position: relative;
+    overflow-x: unset;
+    width: 100%;
+    padding-left: 0.9rem;
+    align-items: center;
+    gap: 0.2rem;
+    z-index: 1;
+    margin-bottom: 0.2rem;
+  }
+  
+  .row.navBtn>button {
+    padding: 0.4rem;
+  }
+  
+.table-responsive {
+    overflow-x: scroll;
+  }
+  
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
     left: 5px;
   }
@@ -45,37 +68,31 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataT
     </script>
     <div class="card naV">
         <div class="card-body table-responsive">
-            <div class="row">
-                <div class="col-md-4">
-                    <button
-                        class="btn-outline btn-round btn-default btn btn-info"
-                        id="twoc"
-                        style="width: 100%; font-size: 13px"
-                        onclick="deliveryManOnMap()"
-                    >
-                        Delivery Man on Map
-                    </button>
-                </div>
-                <div class="col-md-4">
-                    <button
-                        class="btn-outline btn-round btn-default btn btn-info"
-                        id="onec"
-                        style="width: 100%; font-size: 13px"
-                        onclick="deliveryManWithProduct()"
-                    >
-                        Details of Delivery Man
-                    </button>
-                </div>
-                <div class="col-md-4">
-                    <button
-                        class="btn-outline btn-round btn-default btn btn-info"
-                        id="threec"
-                        style="width: 100%; font-size: 13px"
-                        onclick="seeDateWise()"
-                    >
-                        Delivery Information [Date-wise]
-                    </button>
-                </div>
+            <div class="row navBtn">
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="twoc"
+                    style="font-size: 13px"
+                    onclick="deliveryManOnMap()"
+                >
+                    Delivery Man on Map
+                </button>
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="onec"
+                    style="font-size: 13px"
+                    onclick="deliveryManWithProduct()"
+                >
+                    Details of Delivery Man
+                </button>
+                <button
+                    class="btn-outline btn-round btn-default btn btn-info"
+                    id="threec"
+                    style="font-size: 13px"
+                    onclick="seeDateWise()"
+                >
+                    Delivery Information [Date-wise]
+                </button>
             </div>
         </div>
         <div class="card a">
@@ -125,7 +142,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataT
             </div>
         </div>
     </div>
-    <div id="map" style="border: 2px solid #ffcf5c"></div>
+    <div id="map" style="margin-top:-1rem;border: 2px solid #ffcf5c"></div>
 </div>
 <div id="myModalWrongDeliveryCreate" class="modal fade">
     <div class="modal-dialog modal-confirm">
