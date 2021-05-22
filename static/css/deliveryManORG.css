@@ -87,7 +87,6 @@ input[type="checkbox"] {
 input[type="checkbox"]+label {
   margin-right: 0.2rem;
   margin-bottom: 0;
-  font-size: 1.05rem;
 }
 
 .deliveryArea>div:nth-of-type(n) {

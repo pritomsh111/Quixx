@@ -11,21 +11,21 @@ $(function () {
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 	beforeOne();
 
-	today = dd + '/' + mm + '/' + yyyy;
-	document.getElementById("date1").innerHTML = today;
-	//document.getElementById("date2").innerHTML = today;
-	document.getElementById("date3").innerHTML = today;
-	document.getElementById("date4").innerHTML = today;
-	document.getElementById("date5").innerHTML = today;
-	document.getElementById("date6").innerHTML = today;
-	document.getElementById("date64").innerHTML = today;
-	document.getElementById("date65").innerHTML = today;
-	document.getElementById("date66").innerHTML = today;
-	document.getElementById("date67").innerHTML = today;
-	document.getElementById("date68").innerHTML = today;
-	document.getElementById("date69").innerHTML = today;
-	document.getElementById("date7").innerHTML = today;
-	document.getElementById("date7Package").innerHTML = today;
+	// today = dd + '/' + mm + '/' + yyyy;
+	// document.getElementById("date1").innerHTML = today;
+	// //document.getElementById("date2").innerHTML = today;
+	// document.getElementById("date3").innerHTML = today;
+	// document.getElementById("date4").innerHTML = today;
+	// document.getElementById("date5").innerHTML = today;
+	// document.getElementById("date6").innerHTML = today;
+	// document.getElementById("date64").innerHTML = today;
+	// document.getElementById("date65").innerHTML = today;
+	// document.getElementById("date66").innerHTML = today;
+	// document.getElementById("date67").innerHTML = today;
+	// document.getElementById("date68").innerHTML = today;
+	// document.getElementById("date69").innerHTML = today;
+	// document.getElementById("date7").innerHTML = today;
+	// document.getElementById("date7Package").innerHTML = today;
 });
 
 document.querySelector("#datewiseIncome").addEventListener("change", function () {

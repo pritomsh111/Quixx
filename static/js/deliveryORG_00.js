@@ -68,7 +68,7 @@ function three3() {
 					$('#senderList')
 						.append('<option value="' + org_ID + '">Organization Head</option>')
 						;
-					$("#delivery_charge").attr('placeholder', "1000");
+					$("#delivery_charge").attr('placeholder', "80");
 					document.getElementById('delivery_charge').value = "";
 					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
 				}
