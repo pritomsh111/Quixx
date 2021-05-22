@@ -23,7 +23,7 @@ var createField = (types, values = undefined) => {
     let input = document.createElement("input");
     input.type = "text";
     input.value = values !== undefined ? values : "";
-    input.style.cssText = "color: #0066b3; margin-top:0.4rem; width: 100%;";
+    input.style.cssText = "margin-top:0.4rem; width: 100%;";
     input.className = `form-control`;
     input.placeholder = placeHolder;
 
@@ -169,7 +169,7 @@ var fillInputDetails = (types, values = undefined) => {
     let input = document.createElement("input");
     input.type = "text";
     // identidier.value = values !== undefined ? values : "";
-    input.style.cssText = "color: #0066b3;";
+    // input.style.cssText = "color: #0066b3;";
     input.placeholder = placeHolder;
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
     input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));

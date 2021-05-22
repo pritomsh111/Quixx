@@ -6,8 +6,11 @@
   display: flex;
 }
 
-#deliveryManCreate {
-  margin-top: -2.2rem;
+#createCriteria {
+  margin-top: -2.8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  place-items: center;
 }
 
 .card.a, .card.b, .card.c, .card.d {
