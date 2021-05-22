@@ -486,11 +486,11 @@ function showTickSuccessModal(data, button, error) {
             $('#tickDDD2').show();
 
             error ? $("#sureDDD2").html("Deleted!") : $("#sureDDD2").html("Please Wait For Approval!<br><br>You Will Be Notified Through An Email!");
-        }, 1500);
+        }, 500);
         setTimeout(function () {
 
             $("#myModalCreateDDD1").modal('hide');
-        }, 3500);
+        }, 1500);
     }
 }
 
