@@ -7145,7 +7145,7 @@ a .material-icons {
 }
 
 @media (max-width:450px) {
-  *, *::after, *::before {
+  *:not(.btn.btn-round.btn-outline.paypay), *::after, *::before {
     font-size: 0.93rem;
   }
   .card [class*="card-header-"].XX .card-icon, .card [class*="card-header-"].XX .card-text {

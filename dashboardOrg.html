@@ -29,14 +29,16 @@
                     <i class="material-icons">price_check</i>
                 </div>
                 <h4 class="card-title">Datewise Income From Deliveries</h4>
-                <input
-                    type="date"
-                    id="datewiseIncome"
-                    min="2020-01-01"
-                    max="2030-12-31"
-                    style="margin-top:1rem;"
-                >
-                <h4 class="card-title" id="perDayIncome"></h4>
+                <div>
+                    <input
+                        type="date"
+                        id="datewiseIncome"
+                        min="2020-01-01"
+                        max="2030-12-31"
+                        style="margin-top:1rem;"
+                    >
+                    <h4 class="card-title" id="perDayIncome"></h4>
+                </div>
                 <button class="btn btn-round btn-outline paypay" type="submit" onclick="invoiceForDailyIncome()">
                     <div>Details</div>
                 </button>
@@ -81,7 +83,7 @@
                 <div class="card-icon">
                     <i class="material-icons">check_circle</i>
                 </div>
-                <h4 class="card-title">Total Completed Deliveries</h4>
+                <h4 class="card-title">Completed Deliveries</h4>
                 <h4 class="card-title" id="totalCompletedDeliveries"></h4>
             </div>
         </div>
@@ -92,7 +94,7 @@
                 <div class="card-icon">
                     <i class="material-icons">announcement</i>
                 </div>
-                <h4 class="card-title">Total Incomplete Deliveries</h4>
+                <h4 class="card-title">Incomplete Deliveries</h4>
                 <h4 class="card-title" id="totalIncompleteDeliveries"></h4>
             </div>
         </div>
@@ -103,7 +105,7 @@
                 <div class="card-icon">
                     <i class="material-icons">hourglass_bottom</i>
                 </div>
-                <h4 class="card-title">Total On-Hold Deliveries</h4>
+                <h4 class="card-title">On-Hold Deliveries</h4>
                 <h4 class="card-title" id="totalOnHoldDeliveries"></h4>
             </div>
         </div>
@@ -114,7 +116,7 @@
                 <div class="card-icon">
                     <i class="material-icons">sync_problem</i>
                 </div>
-                <h4 class="card-title">Total Returned Deliveries</h4>
+                <h4 class="card-title">Returned Deliveries</h4>
                 <h4 class="card-title" id="totalReturnedDeliveries"></h4>
             </div>
         </div>
@@ -125,7 +127,7 @@
                 <div class="card-icon">
                     <i class="material-icons">cancel</i>
                 </div>
-                <h4 class="card-title">Total Cancelled Deliveries</h4>
+                <h4 class="card-title">Cancelled Deliveries</h4>
                 <h4 class="card-title" id="totalCancelledDeliveries"></h4>
             </div>
         </div>
@@ -136,7 +138,7 @@
                 <div class="card-icon">
                     <i class="material-icons">how_to_reg</i>
                 </div>
-                <h4 class="card-title">Total Approved Delivery Man</h4>
+                <h4 class="card-title"> Approved Delivery Man</h4>
                 <h4 class="card-title" id="totalDeliveryMan"></h4>
             </div>
         </div>
@@ -147,7 +149,7 @@
                 <div class="card-icon">
                     <i class="material-icons">how_to_reg</i>
                 </div>
-                <h4 class="card-title">Total Approved Merchant</h4>
+                <h4 class="card-title">Approved Merchant</h4>
                 <h4 class="card-title" id="approvedMer"></h4>
             </div>
         </div>
@@ -158,7 +160,7 @@
                 <div class="card-icon">
                     <i class="material-icons">person</i>
                 </div>
-                <h4 class="card-title">Total Unapproved Merchant</h4>
+                <h4 class="card-title">Unapproved Merchant</h4>
                 <h4 class="card-title" id="unApprovedMer"></h4>
             </div>
         </div>
@@ -250,7 +252,7 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="#profile" data-toggle="tab">
                                     <i class="material-icons">task_alt</i>
-                                    Total Completed Deliveries
+                                    Completed Deliveries
                                     <div class="ripple-container"></div>
                                 </a>
                             </li>
