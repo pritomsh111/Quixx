@@ -12,7 +12,6 @@
 
   .grid{
       display: grid;
-      row-gap: 2.5rem;
   }
 
   .flex-all{
@@ -66,6 +65,7 @@
       text-align: center;
       font-size: 1.2rem;
       margin-bottom: 2.5rem;
+      color: #0066b3;
   }
 
   .card .form-check{
@@ -114,712 +114,722 @@
     <div class="card-body table-responsive">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body table-responsive blur">
-                        <form class="p-5" style="color: #0066b3; text-align: left" id="formDD">
-                            <div class="grid">
+                <form style="color: #0066b3; text-align: left" id="formDD">
+                    <div class="grid">
+                        <div class="card">
+                            <h3 class="center-tx">State: Assigned To a Delivery Man</h3>
+                            <div class="flex-all">
                                 <div>
-                                    <h3 class="center-tx">State: Assigned To a Delivery Man</h3>
-                                    <div class="flex-all">
-                                        <div>
-                                            <label for="just_created">Organiztion:</label>
-                                            <textarea
-                                                type="text"
-                                                style="color: #0066b3"
-                                                id="Org_JC"
-                                                class=""
-                                                placeholder="If Not Needed, Then Select No SMS"
-                                            ></textarea>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input
-                                                        type="checkbox"
-                                                        class="form-check-input"
-                                                        name="Org_JCC"
-                                                        id="Org_JCC"
-                                                        value="checkedValue"
-                                                    >
-                                                    No SMS
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label for="just_created">Merchant:</label>
-                                            <textarea
-                                                type="text"
-                                                style="color: #0066b3"
-                                                id="Mer_JC"
-                                                class=""
-                                                placeholder="If Not Needed, Then Select No SMS"
-                                            ></textarea>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input
-                                                        type="checkbox"
-                                                        class="form-check-input"
-                                                        name="Mer_JCC"
-                                                        id="Mer_JCC"
-                                                        value="checkedValue"
-                                                    >
-                                                    No SMS
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label for="just_created">Receiver:</label>
-                                            <textarea
-                                                type="text"
-                                                style="color: #0066b3"
-                                                id="Receiver_JC"
-                                                class=""
-                                                placeholder="If Not Needed, Then Select No SMS"
-                                            ></textarea>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input
-                                                        type="checkbox"
-                                                        class="form-check-input"
-                                                        name="Receiver_JCC"
-                                                        id="Receiver_JCC"
-                                                        value="checkedValue"
-                                                    >
-                                                    No SMS
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="all-button">
-                                            <button
-                                                class="btn btn-outline btn-round"
-                                                style="background: #ffffd4;text-align:center;"
-                                                type="button"
-                                                id="setSMSBtnJC"
+                                    <label for="just_created">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_JC"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Org_JCC"
+                                                id="Org_JCC"
+                                                value="checkedValue"
                                             >
-                                                Set Just Created
-                                            </button>
-                                            <button
-                                                class="btn btn-outline btn-round"
-                                                style="background: #ffffd4;text-align:center;"
-                                                type="button"
-                                                id="setSMSBtnJCDelete"
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="just_created">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_JC"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Mer_JCC"
+                                                id="Mer_JCC"
+                                                value="checkedValue"
                                             >
-                                                Delete
-                                            </button>
-                                        </div>
+                                            No SMS
+                                        </label>
                                     </div>
                                 </div>
-                                <h3 class="center-tx">State: Enroute To Pickup</h3>
-                                <div class="flex-all">
-                                    <div>
-                                        <label for="enroute_to_pickup">Organiztion:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Org_ETP"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Org_ETPC"
-                                                    id="Org_ETPC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="enroute_to_pickup">Merchant:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Mer_ETP"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Mer_ETPC"
-                                                    id="Mer_ETPC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="enroute_to_pickup">Receiver:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Receiver_ETP"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Receiver_ETPC"
-                                                    id="Receiver_ETPC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="all-button">
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnETP"
-                                        >
-                                            Set Enroute To Pickup
-                                        </button>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnETPDelete"
-                                        >
-                                            Delete
-                                        </button>
+                                <div>
+                                    <label for="just_created">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_JC"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Receiver_JCC"
+                                                id="Receiver_JCC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
                                     </div>
                                 </div>
-                                <h3 class="center-tx">State: Picked Up</h3>
-                                <div class="flex-all">
-                                    <div>
-                                        <label for="picked_up">Organiztion:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Org_PU"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Org_PUC"
-                                                    id="Org_PUC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="picked_up">Merchant:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Mer_PU"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Mer_PUC"
-                                                    id="Mer_PUC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="picked_up">Receiver:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Receiver_PU"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Receiver_PUC"
-                                                    id="Receiver_PUC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="all-button">
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnPU"
-                                        >
-                                            Set Picked Up
-                                        </button>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnPUDelete"
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                                <h3 class="center-tx">State: Enroute To Delivery</h3>
-                                <div class="flex-all">
-                                    <div>
-                                        <label for="enroute_to_delivery">Organiztion:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Org_ETD"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Org_ETDC"
-                                                    id="Org_ETDC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="enroute_to_delivery">Merchant:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Mer_ETD"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Mer_ETDC"
-                                                    id="Mer_ETDC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="enroute_to_delivery">Receiver:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Receiver_ETD"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Receiver_ETDC"
-                                                    id="Receiver_ETDC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="all-button">
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnETD"
-                                        >
-                                            Set Enroute To Delivery
-                                        </button>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnETDDelete"
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                                <h3 class="center-tx">State: Delivered</h3>
-                                <div class="flex-all">
-                                    <div>
-                                        <label for="delivered">Organiztion:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Org_D"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Org_DC"
-                                                    id="Org_DC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="delivered">Merchant:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Mer_D"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Mer_DC"
-                                                    id="Mer_DC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="delivered">Receiver:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Receiver_D"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Receiver_DC"
-                                                    id="Receiver_DC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="all-button">
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnD"
-                                        >
-                                            Set Delivered
-                                        </button>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnDDelete"
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                                <h3 class="center-tx">State: On Hold</h3>
-                                <div class="flex-all">
-                                    <div>
-                                        <label for="onHold">Organiztion:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Org_OH"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Org_OHC"
-                                                    id="Org_OHC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="onHold">Merchant:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Mer_OH"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Mer_OHC"
-                                                    id="Mer_OHC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="onHold">Receiver:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Receiver_OH"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Receiver_OHC"
-                                                    id="Receiver_OHC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="all-button">
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnOH"
-                                        >
-                                            Set On Hold
-                                        </button>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnOHDelete"
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                                <h3 class="center-tx">State: Returned</h3>
-                                <div class="flex-all">
-                                    <div>
-                                        <label for="returned">Organiztion:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Org_R"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Org_RC"
-                                                    id="Org_RC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="returned">Merchant:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Mer_R"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Mer_RC"
-                                                    id="Mer_RC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="returned">Receiver:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Receiver_R"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Receiver_RC"
-                                                    id="Receiver_RC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="all-button">
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnR"
-                                        >
-                                            Set Returned
-                                        </button>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnRDelete"
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                                <h3 class="center-tx">State: Cancelled</h3>
-                                <div class="flex-all">
-                                    <div>
-                                        <label for="cancelled">Organiztion:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Org_C"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Org_CC"
-                                                    id="Org_CC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="cancelled">Merchant:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Mer_C"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Mer_CC"
-                                                    id="Mer_CC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="cancelled">Receiver:</label>
-                                        <textarea
-                                            type="text"
-                                            style="color: #0066b3"
-                                            id="Receiver_C"
-                                            class=""
-                                            placeholder="If Not Needed, Then Select No SMS"
-                                        ></textarea>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check-input"
-                                                    name="Receiver_CC"
-                                                    id="Receiver_CC"
-                                                    value="checkedValue"
-                                                >
-                                                No SMS
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="all-button">
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnC"
-                                        >
-                                            Set Cancelled
-                                        </button>
-                                        <button
-                                            class="btn btn-outline btn-round"
-                                            style="background: #ffffd4;text-align:center;"
-                                            type="button"
-                                            id="setSMSBtnCDelete"
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
+                                <div class="all-button">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnJC"
+                                    >
+                                        Set Just Created
+                                    </button>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnJCDelete"
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+                        <div class="card">
+                            <h3 class="center-tx">State: Enroute To Pickup</h3>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="enroute_to_pickup">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_ETP"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Org_ETPC"
+                                                id="Org_ETPC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="enroute_to_pickup">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_ETP"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Mer_ETPC"
+                                                id="Mer_ETPC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="enroute_to_pickup">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_ETP"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Receiver_ETPC"
+                                                id="Receiver_ETPC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="all-button">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnETP"
+                                    >
+                                        Set Enroute To Pickup
+                                    </button>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnETPDelete"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="center-tx">State: Picked Up</h3>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="picked_up">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_PU"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Org_PUC"
+                                                id="Org_PUC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="picked_up">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_PU"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Mer_PUC"
+                                                id="Mer_PUC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="picked_up">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_PU"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Receiver_PUC"
+                                                id="Receiver_PUC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="all-button">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnPU"
+                                    >
+                                        Set Picked Up
+                                    </button>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnPUDelete"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="center-tx">State: Enroute To Delivery</h3>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="enroute_to_delivery">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_ETD"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Org_ETDC"
+                                                id="Org_ETDC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="enroute_to_delivery">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_ETD"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Mer_ETDC"
+                                                id="Mer_ETDC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="enroute_to_delivery">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_ETD"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Receiver_ETDC"
+                                                id="Receiver_ETDC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="all-button">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnETD"
+                                    >
+                                        Set Enroute To Delivery
+                                    </button>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnETDDelete"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="center-tx">State: Delivered</h3>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="delivered">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_D"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Org_DC"
+                                                id="Org_DC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="delivered">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_D"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Mer_DC"
+                                                id="Mer_DC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="delivered">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_D"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Receiver_DC"
+                                                id="Receiver_DC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="all-button">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnD"
+                                    >
+                                        Set Delivered
+                                    </button>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnDDelete"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="center-tx">State: On Hold</h3>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="onHold">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_OH"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Org_OHC"
+                                                id="Org_OHC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="onHold">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_OH"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Mer_OHC"
+                                                id="Mer_OHC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="onHold">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_OH"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Receiver_OHC"
+                                                id="Receiver_OHC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="all-button">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnOH"
+                                    >
+                                        Set On Hold
+                                    </button>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnOHDelete"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="center-tx">State: Returned</h3>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="returned">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_R"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Org_RC"
+                                                id="Org_RC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="returned">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_R"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Mer_RC"
+                                                id="Mer_RC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="returned">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_R"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Receiver_RC"
+                                                id="Receiver_RC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="all-button">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnR"
+                                    >
+                                        Set Returned
+                                    </button>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnRDelete"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="center-tx">State: Cancelled</h3>
+                            <div class="flex-all">
+                                <div>
+                                    <label for="cancelled">Organiztion:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Org_C"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Org_CC"
+                                                id="Org_CC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="cancelled">Merchant:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Mer_C"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Mer_CC"
+                                                id="Mer_CC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="cancelled">Receiver:</label>
+                                    <textarea
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="Receiver_C"
+                                        class=""
+                                        placeholder="If Not Needed, Then Select No SMS"
+                                    ></textarea>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Receiver_CC"
+                                                id="Receiver_CC"
+                                                value="checkedValue"
+                                            >
+                                            No SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="all-button">
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnC"
+                                    >
+                                        Set Cancelled
+                                    </button>
+                                    <button
+                                        class="btn btn-outline btn-round"
+                                        style="background: #ffffd4;text-align:center;"
+                                        type="button"
+                                        id="setSMSBtnCDelete"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
