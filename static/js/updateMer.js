@@ -9,7 +9,7 @@ var markers2 = [];
 
 function addressUpdateMer() {
 	document.getElementById('uporg1').disabled = true;
-	document.getElementById('uporg1').style.fontSize = '14.5px';
+	document.getElementById('uporg1').style.fontSize = '13px';
 	document.getElementById('uporg2').disabled = false;
 	document.getElementById('uporg2').style.fontSize = '13px';
 	$('#mapFormMer').show();
@@ -17,7 +17,7 @@ function addressUpdateMer() {
 }
 function passUpdateMer() {
 	document.getElementById('uporg2').disabled = true;
-	document.getElementById('uporg2').style.fontSize = '14.5px';
+	document.getElementById('uporg2').style.fontSize = '13px';
 	document.getElementById('uporg1').disabled = false;
 	document.getElementById('uporg1').style.fontSize = '13px';
 	$('#mapFormMer').hide();

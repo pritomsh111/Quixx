@@ -4,7 +4,7 @@ var onGoingDeliveries = () => {
     document.getElementById('body').style.pointerEvents = "none";
     document.getElementById('one').disabled = true;
     document.getElementById('two').disabled = false;
-    document.getElementById('one').style.fontSize = '14.5px';
+    document.getElementById('one').style.fontSize = '13px';
     document.getElementById('two').style.fontSize = '13px';
 
     document.getElementById('six').style.fontSize = '13px';
@@ -173,7 +173,7 @@ var completeDeliveries = () => {
     document.getElementById('body').style.pointerEvents = "none";
     document.getElementById('two').disabled = true;
     document.getElementById('one').disabled = false;
-    document.getElementById('two').style.fontSize = '14.5px';
+    document.getElementById('two').style.fontSize = '13px';
     document.getElementById('one').style.fontSize = '13px';
 
     document.getElementById('six').style.fontSize = '13px';
@@ -346,7 +346,7 @@ var onHoldDeliveries = () => {
     document.getElementById('one').style.fontSize = '13px';
     document.getElementById('two').style.fontSize = '13px';
 
-    document.getElementById('six').style.fontSize = '14.5px';
+    document.getElementById('six').style.fontSize = '13px';
     document.getElementById('six').disabled = true;
     document.getElementById('one').innerHTML = 'Ongoing Deliveries';
     document.getElementById('two').innerHTML = 'Completed Deliveries';

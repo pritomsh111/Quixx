@@ -8,7 +8,7 @@ function three3() {
 	setTimeout(function () {
 		document.getElementById('onec').disabled = false;
 		document.getElementById('twoc').disabled = true;
-		document.getElementById('twoc').style.fontSize = '14.5px';
+		document.getElementById('twoc').style.fontSize = '13px';
 		document.getElementById('onec').style.fontSize = '13px';
 		document.getElementById('onec').innerHTML = 'Details of Delivery Man';
 		$('#dtBasicExample').hide();

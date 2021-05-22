@@ -6,13 +6,13 @@ var criteriaEnabledDelivery = false;
 var createBulkDelivery = () => {
 	buttonActive();
 	document.getElementById('bulkX').disabled = true;
-	document.getElementById('bulkX').style.fontSize = '14.5px';
+	document.getElementById('bulkX').style.fontSize = '13px';
 	$("#bulkD").show();
 }
 var createDelivery = () => {
 	buttonActive();
 	document.getElementById('threeb').disabled = true;
-	document.getElementById('threeb').style.fontSize = '14.5px';
+	document.getElementById('threeb').style.fontSize = '13px';
 	$('.c').show();
 	$("#deliveryCreate").show();
 }
@@ -475,7 +475,7 @@ var unassignedDeliveries = () => {
 	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('oneb').disabled = true;
-	document.getElementById('oneb').style.fontSize = '14.5px';
+	document.getElementById('oneb').style.fontSize = '13px';
 	this_select_content = "";
 	$.ajax
 		({
@@ -597,7 +597,7 @@ var assignedDeliveries = () => {
 	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('twob').disabled = true;
-	document.getElementById('twob').style.fontSize = '14.5px';
+	document.getElementById('twob').style.fontSize = '13px';
 
 	var table = $('#dtBasicExampleNew').DataTable({
 		"processing": true,
@@ -687,7 +687,7 @@ var assignedDeliveries = () => {
 var onHoldDeliveries = () => {
 	buttonActive();
 	document.getElementById('sixb').disabled = true;
-	document.getElementById('sixb').style.fontSize = '14.5px';
+	document.getElementById('sixb').style.fontSize = '13px';
 
 	var table = $('#dtBasicExampleNewf').DataTable({
 		"processing": true,
@@ -772,7 +772,7 @@ var onGoingDeliveries = () => {
 	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('sevenb').disabled = true;
-	document.getElementById('sevenb').style.fontSize = '14.5px';
+	document.getElementById('sevenb').style.fontSize = '13px';
 	var table = $('#dtBasicExampleNewg').DataTable({
 		"processing": true,
 		'language': {
@@ -869,7 +869,7 @@ var completedDeliveries = () => {
 	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('eightb').disabled = true;
-	document.getElementById('eightb').style.fontSize = '14.5px';
+	document.getElementById('eightb').style.fontSize = '13px';
 
 	var table = $('#dtBasicExampleNewh').DataTable({
 		"processing": true,
@@ -961,7 +961,7 @@ var canceledDeliveries = () => {
 	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('nineb').disabled = true;
-	document.getElementById('nineb').style.fontSize = '14.5px';
+	document.getElementById('nineb').style.fontSize = '13px';
 	var table = $('#dtBasicExampleNewi').DataTable({
 		"processing": true,
 		'language': {
@@ -1050,8 +1050,7 @@ var returnedDeliveries = () => {
 	buttonActive();
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('tenb').disabled = true;
-	document.getElementById('tenb').style.fontSize = '14.5px';
-
+	document.getElementById('tenb').style.fontSize = '13px';
 	var table = $('#dtBasicExampleNewj').DataTable({
 		"processing": true,
 		'language': {
@@ -3517,8 +3516,8 @@ $('.btn-ok-updateDC').on("click", function () {
 						//table.cell({ row: table.row($t.closest('tr')).index(), column: 6 }).data(data.data.payment_method);
 						table.row($t.closest('tr')).data(data.data);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
-						//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
-						//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
+						//table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:13px">Assign</button>');
+						//table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:13px">Update Delivery</button>');
 						//table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
 						//document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_city + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance + '$$' + data.data.delivery_city_criteria;
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.pickup_time);
@@ -3542,8 +3541,8 @@ $('.btn-ok-updateDC').on("click", function () {
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 22 }).data(data.data.delivery_charge);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 23 }).data(data.data.payment_method);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 24 }).data(data.data.delivery_note);
-						// //table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:14.5px">Assign</button>');
-						// //table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:14.5px">Update Delivery</button>');
+						// //table.cell({row:table.row($t.closest('tr')).index(), column:19}).data('<button id="' + data.data.delivery_Id + '" class="btn-round btn-outline btn assignIt" style="font-size:13px">Assign</button>');
+						// //table.cell({row:table.row($t.closest('tr')).index(), column:20}).data('<button id="' + data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi+  '$$' + data.data.delivery_created_date+  '$$' + data.data.delivery_created_by_name+  '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '" class="btn-round btn-outline btn updateCh" style="font-size:13px">Update Delivery</button>');
 						// //table.cell({row:table.row($t.closest('tr')).index(), column:21}).data('<button id="' + org_ID + '" name="' + data.data.delivery_Id + '" class="btn-round btn-outline btn" onclick="invoiceUnass(this)">Invoice</button>');
 						// document.getElementById(`${id_delivery_update}`).id = data.data.delivery_Id + '$$' + data.data.creator_id + '$$' + data.data.delivery_charge + '$$' + data.data.pickup_time + '$$' + data.data.receiver_name + '$$' + data.data.receiver_phone_number + '$$' + data.data.product_name + '$$' + data.data.product_qty + '$$' + data.data.payment_method + '$$' + data.data.product_cost + '$$' + data.data.delivery_note + '$$' + data.data.delivery_area + '$$' + data.data.receiver_address + '$$' + data.data.receiver_lat + '$$' + data.data.receiver_longi + '$$' + data.data.sender_name + '$$' + data.data.sender_phone_number + '$$' + data.data.sender_address + '$$' + data.data.delivery_type + '$$' + data.data.sender_lat + '$$' + data.data.sender_longi + '$$' + data.data.delivery_created_date + '$$' + data.data.delivery_created_by_name + '$$' + data.data.delivery_created_by_role + '$$' + data.data.collection_name + '$$' + data.data.delivery_status + '$$' + data.data.delivery_city + '$$' + data.data.delivery_product_type + '$$' + data.data.delivery_weight + '$$' + data.data.delivery_day_type + '$$' + data.data.delivery_distance + '$$' + data.data.delivery_city_criteria;
 

@@ -9,7 +9,7 @@ function three3() {
 		document.getElementById('one').disabled = true;
 		document.getElementById('two').disabled = false;
 		document.getElementById('three').disabled = false;
-		document.getElementById('one').style.fontSize = '14.5px';
+		document.getElementById('one').style.fontSize = '13px';
 		document.getElementById('two').style.fontSize = '13px';
 		document.getElementById('three').style.fontSize = '13px';
 		document.getElementById('three').innerHTML = 'Unapproved Merchant';

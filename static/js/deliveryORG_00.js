@@ -10,7 +10,7 @@ function three3() {
 		document.getElementById('threeb').disabled = true;
 		document.getElementById('twob').disabled = false;
 		document.getElementById('oneb').disabled = false;
-		document.getElementById('threeb').style.fontSize = '14.5px';
+		document.getElementById('threeb').style.fontSize = '13px';
 		document.getElementById('twob').style.fontSize = '13px';
 		document.getElementById('oneb').style.fontSize = '13px';
 

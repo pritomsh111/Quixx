@@ -11,7 +11,7 @@ function three3() {
 		document.getElementById('two').disabled = false;
 		document.getElementById('twox').disabled = false;
 		document.getElementById('three').style.fontSize = '13px';
-		document.getElementById('threeQ').style.fontSize = '14.5px';
+		document.getElementById('threeQ').style.fontSize = '13px';
 		document.getElementById('two').style.fontSize = '13px';
 		document.getElementById('twox').style.fontSize = '13px';
 

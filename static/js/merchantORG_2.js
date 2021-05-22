@@ -37,7 +37,7 @@ var createMer = () => {
 	merchantOrgTableHide();
 	merchantOrgButtonActive();
 	document.getElementById('one').disabled = true;
-	document.getElementById('one').style.fontSize = '14.5px';
+	document.getElementById('one').style.fontSize = '13px';
 	$('#merchantCreate').show();
 };
 function tdColspan() {
@@ -157,7 +157,7 @@ var approvedMer = () => {
 	merchantOrgButtonActive();
 	merchantOrgTableHide();
 	document.getElementById('two').disabled = true;
-	document.getElementById('two').style.fontSize = '14.5px';
+	document.getElementById('two').style.fontSize = '13px';
 
 	var table = $('#dtBasicExample').DataTable({
 		"processing": true,
@@ -234,7 +234,7 @@ var unApprovedMer = () => {
 	merchantOrgTableHide();
 
 	document.getElementById('three').disabled = true;
-	document.getElementById('three').style.fontSize = '14.5px';
+	document.getElementById('three').style.fontSize = '13px';
 
 	var table = $('#dtBasicExample2').DataTable({
 		"processing": true,
@@ -307,7 +307,7 @@ var activated = () => {
 
 	merchantOrgButtonActive();
 	merchantOrgTableHide();
-	document.getElementById('four').style.fontSize = '14.5px';
+	document.getElementById('four').style.fontSize = '13px';
 	document.getElementById('four').disabled = true;
 
 	var table = $('#dtBasicExampleActivate').DataTable({
@@ -435,7 +435,7 @@ var disabledd = () => {
 	merchantOrgButtonActive();
 	merchantOrgTableHide();
 
-	document.getElementById('five').style.fontSize = '14.5px';
+	document.getElementById('five').style.fontSize = '13px';
 	document.getElementById('five').disabled = true;
 
 	var table = $('#dtBasicExampleDisable').DataTable({

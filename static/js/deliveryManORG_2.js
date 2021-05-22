@@ -7,7 +7,7 @@ var createDeliveryMan = () => {
 	document.getElementById('twoa').disabled = false;
 	document.getElementById('threea').disabled = false;
 	document.getElementById('onea').disabled = false;
-	document.getElementById('four').style.fontSize = '14.5px';
+	document.getElementById('four').style.fontSize = '13px';
 	document.getElementById('twoa').style.fontSize = '13px';
 	document.getElementById('threea').style.fontSize = '13px';
 	document.getElementById('onea').style.fontSize = '13px';
@@ -77,7 +77,7 @@ var thisInvoice = (id) => {
 // 	document.getElementById('twoa').disabled = false;
 // 	document.getElementById('threea').disabled = false;
 // 	document.getElementById('four').disabled = false;
-// 	document.getElementById('onea').style.fontSize = '14.5px';
+// 	document.getElementById('onea').style.fontSize = '13px';
 // 	document.getElementById('twoa').style.fontSize = '13px';
 // 	document.getElementById('threea').style.fontSize = '13px';
 // 	document.getElementById('four').style.fontSize = '13px';
@@ -174,7 +174,7 @@ var approvedDeliveryMan = () => {
 	document.getElementById('onea').disabled = false;
 	document.getElementById('threea').disabled = false;
 	document.getElementById('four').disabled = false;
-	document.getElementById('twoa').style.fontSize = '14.5px';
+	document.getElementById('twoa').style.fontSize = '13px';
 	document.getElementById('onea').style.fontSize = '13px';
 	document.getElementById('threea').style.fontSize = '13px';
 	document.getElementById('four').style.fontSize = '13px';
@@ -274,7 +274,7 @@ var unApprovedDeliveryMan = () => {
 	document.getElementById('twoa').disabled = false;
 	document.getElementById('onea').disabled = false;
 	document.getElementById('four').disabled = false;
-	document.getElementById('threea').style.fontSize = '14.5px';
+	document.getElementById('threea').style.fontSize = '13px';
 	document.getElementById('twoa').style.fontSize = '13px';
 	document.getElementById('onea').style.fontSize = '13px';
 	document.getElementById('four').style.fontSize = '13px';
@@ -387,7 +387,7 @@ var activatedd = () => {
 	document.getElementById('four').style.fontSize = '13px';
 	document.getElementById('onea').innerHTML = 'Registered Delivery Man';
 	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
-	document.getElementById('foura').style.fontSize = '14.5px';
+	document.getElementById('foura').style.fontSize = '13px';
 	document.getElementById('fivea').style.fontSize = '13px';
 	document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
 
@@ -499,7 +499,7 @@ var disableddd = () => {
 	document.getElementById('onea').innerHTML = 'Registered Delivery Man';
 	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
 	document.getElementById('foura').style.fontSize = '13px';
-	document.getElementById('fivea').style.fontSize = '14.5px';
+	document.getElementById('fivea').style.fontSize = '13px';
 	document.getElementById('foura').innerHTML = 'Activated Delivery Man';
 	document.getElementById('foura').disabled = false;
 	document.getElementById('fivea').disabled = true;

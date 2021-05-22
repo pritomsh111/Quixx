@@ -19,7 +19,7 @@ var incompleteDeliveries = () => {
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('onea').disabled = true;
 	document.getElementById('twoa').disabled = false;
-	document.getElementById('onea').style.fontSize = '14.5px';
+	document.getElementById('onea').style.fontSize = '13px';
 	document.getElementById('twoa').style.fontSize = '13px';
 	document.getElementById('twoa').innerHTML = 'Due From Completed Deliveries';
 	$('#dtBasicExample').hide();
@@ -132,7 +132,7 @@ var completeDeliveries = () => {
 	document.getElementById('body').style.pointerEvents = "none";
 	document.getElementById('twoa').disabled = true;
 	document.getElementById('onea').disabled = false;
-	document.getElementById('twoa').style.fontSize = '14.5px';
+	document.getElementById('twoa').style.fontSize = '13px';
 	document.getElementById('onea').style.fontSize = '13px';
 	document.getElementById('onea').innerHTML = 'Due From Incomplete Deliveries';
 

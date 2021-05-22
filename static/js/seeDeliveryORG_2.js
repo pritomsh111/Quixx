@@ -211,7 +211,7 @@ var seeDateWise = () => {
 	document.getElementById('onec').style.fontSize = '13px';
 	document.getElementById('onec').innerHTML = 'Details of Delivery Man';
 	document.getElementById('threec').disabled = true;
-	document.getElementById('threec').style.fontSize = '14.5px';
+	document.getElementById('threec').style.fontSize = '13px';
 	$('#dtBasicExample').hide();
 	$('.a').hide();
 	$('#dtBasicExample2').hide();
@@ -355,7 +355,7 @@ var seeDateWise = () => {
 var deliveryManOnMap = () => {
 	document.getElementById('onec').disabled = false;
 	document.getElementById('twoc').disabled = true;
-	document.getElementById('twoc').style.fontSize = '14.5px';
+	document.getElementById('twoc').style.fontSize = '13px';
 	document.getElementById('onec').style.fontSize = '13px';
 	document.getElementById('onec').innerHTML = 'Details of Delivery Man';
 	document.getElementById('threec').disabled = false;
@@ -371,7 +371,7 @@ var deliveryManOnMap = () => {
 var deliveryManWithProduct = () => {
 	document.getElementById('twoc').disabled = false;
 	document.getElementById('onec').disabled = true;
-	document.getElementById('onec').style.fontSize = '14.5px';
+	document.getElementById('onec').style.fontSize = '13px';
 	document.getElementById('twoc').style.fontSize = '13px';
 	document.getElementById('threec').disabled = false;
 	document.getElementById('threec').style.fontSize = '13px';

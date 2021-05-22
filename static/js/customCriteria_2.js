@@ -4,7 +4,7 @@ var createCriteria = () => {
     document.getElementById('one-cc').disabled = true;
     document.getElementById('two-cc').disabled = false;
     document.getElementById('two-cc').style.fontSize = '13px';
-    document.getElementById('one-cc').style.fontSize = '14.5px';
+    document.getElementById('one-cc').style.fontSize = '13px';
     document.getElementById('setCriteriaDetails').style.display = "none";
     $('#createCriteria').show();
 };
@@ -139,7 +139,7 @@ document.querySelector("#modalCriteriaSet").addEventListener("click", function (
 async function setUpdateCriteria() {
     document.getElementById('one-cc').disabled = false;
     document.getElementById('two-cc').disabled = true;
-    document.getElementById('two-cc').style.fontSize = '14.5px';
+    document.getElementById('two-cc').style.fontSize = '13px';
     document.getElementById('one-cc').style.fontSize = '13px';
     document.getElementById('setCriteriaDetails').style.display = "block";
     document.getElementById('createCriteria').style.display = "none";
