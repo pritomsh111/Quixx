@@ -30,84 +30,78 @@ div.hideKoro3{
 		three3();
     </script>
     <div class="card-body table-responsive" id="bh">
-        <div class="row">
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="threeb"
-                    style="width:100%;font-size: 13px"
-                    onclick="createDelivery()"
-                >Partial Delivery</button>
-            </div>
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="bulkX"
-                    style="width:100%;font-size: 13px"
-                    onclick="createBulkDelivery()"
-                >Bulk Deliveries [Excel]</button>
-            </div>
-            <div class="col-md-12">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="show-toggle"
-                    style="width:100%;font-size: 13px"
-                    onclick="showBtnToggle()"
-                >Show Detailed Deliveries</button>
-            </div>
-            <div id="DID" class="col-md-6">
+        <div class="row navBtn">
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="threeb"
+                style="font-size: 13px"
+                onclick="createDelivery()"
+            >Partial Delivery</button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="bulkX"
+                style="font-size: 13px"
+                onclick="createBulkDelivery()"
+            >Bulk Deliveries [Excel]</button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="show-toggle"
+                style="font-size: 13px"
+                onclick="showBtnToggle()"
+            >Show Detailed Deliveries</button>
+            <div id="DID">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="oneb"
-                    style="width:100%;font-size: 13px"
+                    style="font-size: 13px"
                     onclick="unassignedDeliveries()"
                 >Unassigned Deliveries</button>
             </div>
-            <div id="DID2" class="col-md-6">
+            <div id="DID2">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="twob"
-                    style="width:100%;font-size: 13px"
+                    style="font-size: 13px"
                     onclick="assignedDeliveries()"
                 >Assigned Deliveries</button>
             </div>
-            <div id="DID3" class="col-md-6">
+            <div id="DID3">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="sevenb"
-                    style="width:100%;font-size: 13px"
+                    style="font-size: 13px"
                     onclick="onGoingDeliveries()"
                 >Ongoing Deliveries</button>
             </div>
-            <div id="DID4" class="col-md-6">
+            <div id="DID4">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="eightb"
-                    style="width:100%;font-size: 13px"
+                    style="font-size: 13px"
                     onclick="completedDeliveries()"
                 >Completed Deliveries</button>
             </div>
-            <div id="DID5" class="col-md-4">
+            <div id="DID5">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="sixb"
-                    style="width:100%;font-size: 13px"
+                    style="font-size: 13px"
                     onclick="onHoldDeliveries()"
                 >On-Hold Deliveries</button>
             </div>
-            <div id="DID6" class="col-md-4">
+            <div id="DID6">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="nineb"
-                    style="width:100%;font-size: 13px"
+                    style="font-size: 13px"
                     onclick="canceledDeliveries()"
                 >Canceled Deliveries</button>
             </div>
-            <div id="DID7" class="col-md-4">
+            <div id="DID7">
                 <button
                     class="btn-outline btn-round btn-default btn btn-info"
                     id="tenb"
-                    style="width:100%;font-size: 13px"
+                    style="font-size: 13px"
                     onclick="returnedDeliveries()"
                 >Returned Deliveries</button>
             </div>

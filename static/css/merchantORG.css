@@ -52,11 +52,11 @@ input {
 }
 
 #merchantCreate {
-  margin-top: -1.5rem;
+  margin-top: -2.2rem;
 }
 
 .card.a, .card.b, .card.c, .card.d {
-  margin-top: 0.3rem;
+  margin-top: -0.3rem;
 }
 
 .row.navBtn {
