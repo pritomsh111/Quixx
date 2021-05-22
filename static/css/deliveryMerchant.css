@@ -466,6 +466,21 @@ input {
 	max-width: 90%;
 }
 
+.row.navBtn {
+	position: relative;
+	overflow-x: unset;
+	width: 100%;
+	padding-left: 0.9rem;
+	align-items: center;
+	gap: 0.2rem;
+	z-index: 1;
+	margin-bottom: 0.2rem;
+}
+
+.row.navBtn>button {
+	padding: 0.4rem;
+}
+
 @media (max-width:450px) {
 	#managers2Q, #productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
 		padding: 0.2rem;

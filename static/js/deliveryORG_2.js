@@ -2613,30 +2613,29 @@ document.getElementById("assignAllDeliveries").addEventListener("click", functio
 	$('#myModalAuto').modal('show');
 });
 
-
 document.getElementById('product_qty').addEventListener("keyup", function (e) {
 	if (e.target.value.toUpperCase() === "NA") {
-		document.querySelector("#product_cost").offsetParent.childNodes[5].firstChild.textContent = "Total Amount: [BDT]";
+		document.querySelector("#product_cost").offsetParent.childNodes[5].firstChild.textContent = "Total Amount [BDT]:";
 	}
 	else {
-		document.querySelector("#product_cost").offsetParent.childNodes[5].firstChild.textContent = "Per Product Cost: [BDT]";
+		document.querySelector("#product_cost").offsetParent.childNodes[5].firstChild.textContent = "Per Product Cost [BDT]:";
 	}
 });
 
 document.getElementById('product_qtyU').addEventListener("keyup", function (e) {
 	if (e.target.value.toUpperCase() === "NA") {
-		document.querySelector("#product_costU").offsetParent.childNodes[5].firstChild.textContent = "Total Amount: [BDT]";
+		document.querySelector("#product_costU").offsetParent.childNodes[5].firstChild.textContent = "Total Amount [BDT]:";
 	}
 	else {
-		document.querySelector("#product_costU").offsetParent.childNodes[5].firstChild.textContent = "Per Product Cost: [BDT]";
+		document.querySelector("#product_costU").offsetParent.childNodes[5].firstChild.textContent = "Per Product Cost [BDT]:";
 	}
 });
 document.getElementById('product_qtyUR').addEventListener("keyup", function (e) {
 	if (e.target.value.toUpperCase() === "NA") {
-		document.querySelector(".pqp").textContent = "Total Amount: [BDT]";
+		document.querySelector(".pqp").textContent = "Total Amount [BDT]:";
 	}
 	else {
-		document.querySelector(".pqp").textContent = "Per Product Cost: [BDT]";
+		document.querySelector(".pqp").textContent = "Per Product Cost [BDT]:";
 	}
 });
 
