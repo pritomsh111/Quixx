@@ -248,7 +248,7 @@ $("#senderList").change(async function () {
 						document.getElementById('s_number').value = data.data.sender_phone_number;
 						document.getElementById('lat').value = data.data.sender_lat;
 						document.getElementById('longi').value = data.data.sender_longi;
-						if (data.data.per_delivery_cost >= 0) {
+						if (data.data.per_delivery_cost > 0) {
 							merchantPerDeliveryCost = data.data.per_delivery_cost;
 							document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
 							document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
@@ -310,13 +310,11 @@ $("#quiccSender").change(async function () {
 						document.getElementById('s_numberQ').value = data.data.sender_phone_number;
 						document.getElementById('latQ').value = data.data.sender_lat;
 						document.getElementById('longiQ').value = data.data.sender_longi;
-						if (data.data.per_delivery_cost >= 0) {
-							merchantPerDeliveryCost = data.data.per_delivery_cost;
+						if (data.data.per_delivery_cost > 0) {
 							document.getElementById('delivery_chargeQ').value = data.data.per_delivery_cost;
 							document.getElementById('D_chargeQ').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
 						}
 						else {
-							merchantPerDeliveryCost = 0;
 							$("#delivery_chargeQ").attr('placeholder', "80");
 							document.getElementById('delivery_chargeQ').value = "";
 							document.getElementById('D_chargeQ').innerHTML = "Delivery Charge [BDT]:";
@@ -344,7 +342,6 @@ $("#quiccSender").change(async function () {
 		document.getElementById('longiQ').value = "";
 		$("#delivery_chargeQ").attr('placeholder', "80");
 		document.getElementById('delivery_chargeQ').value = "";
-		document.getElementById('delivery_chargeQ').disabled = false;
 		document.getElementById('D_chargeQ').innerHTML = "Delivery Charge [BDT]:";
 	}
 });
@@ -1648,6 +1645,13 @@ function recall() {
 			}
 		})
 }
+function recallQ() {
+	document.getElementById('r_nameQ').value = "";
+	document.getElementById('r_numberQ').value = "";
+	document.getElementById('rec_addressQ').value = "";
+	document.getElementById('product_costQ').value = "";
+	document.getElementById('product_nameQ').value = "";
+}
 
 document.getElementById("createDeliveryQ").addEventListener("click", function (event) {
 	// var pickup_time = document.getElementById('timepicker-12-hr').value;
@@ -1844,36 +1848,22 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 		}
 	}
 	var vDC = () => {
-		let en = document.getElementById('delivery_chargeQ').disabled;
-		// //console.log(en);
-		if (!en) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
+		if (parseInt(delivery_charge) < 0) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("delivery_chargeQ").focus();
 			return 0;
 		}
-		else if (+delivery_charge !== merchantPerDeliveryCost) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "You have edited delivery charge! Don't do that!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("delivery_chargeQ").focus();
-			return 0;
-		}
-		// if (parseInt(delivery_charge) <= 0 || delivery_charge.charAt(0) == 0) {
-		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than 0!";
-		// 	$('#myModalWrongDeliveryCreate').modal('show');
-		// 	document.getElementById("delivery_charge").focus();
-		// 	return 0;
-		// }
-		// else
-		if (isNaN(delivery_charge) == true || delivery_charge == "" || !/\D/.test(delivery_charge) == false) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be a number!";
-			$('#myModalWrongDeliveryCreate').modal('show');
-			document.getElementById("delivery_chargeQ").focus();
-			return 0;
-		}
-		else if (!/\D/.test(delivery_charge) == true) {
-			return 1;
-		}
+		else
+			if (isNaN(delivery_charge) == true || delivery_charge == "" || !/\D/.test(delivery_charge) == false) {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be a number!";
+				$('#myModalWrongDeliveryCreate').modal('show');
+				document.getElementById("delivery_chargeQ").focus();
+				return 0;
+			}
+			else if (!/\D/.test(delivery_charge) == true) {
+				return 1;
+			}
 	}
 	var datap;
 

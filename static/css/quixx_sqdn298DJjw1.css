@@ -7148,6 +7148,9 @@ a .material-icons {
   *, *::after, *::before {
     font-size: 0.85rem;
   }
+  .btn {
+    font-size: 0.8rem !important;
+  }
   .btn.btn-round.btn-outline.paypay>div {
     font-size: 0.8rem;
   }
