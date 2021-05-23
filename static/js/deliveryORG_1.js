@@ -4,6 +4,7 @@ $(async function () {
 	$('#settings').hide();
 	$("#bulkD").hide();
 	$("#deliveryCreate").hide();
+	$("#deliveryCreateQ").hide();
 	$("#cod").hide();
 	$(".container").hide();
 	$('#dtBasicExample').hide();
@@ -93,6 +94,8 @@ $(async function () {
 	});
 	$('#managers2')
 		.empty();
+	$('#managers2Q')
+		.empty();
 	$.ajax
 		({
 			url: urlForAll + "delivery/payment/method/" + localStorage.getItem('token'),
@@ -110,7 +113,9 @@ $(async function () {
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#managers2").append(option);
+					$("#managers2Q").append(option);
 					document.querySelector("#managers2").selectedIndex = 2;
+					document.querySelector("#managers2Q").selectedIndex = 2;
 				}
 			}
 		});
@@ -137,6 +142,10 @@ $(async function () {
 					.empty()
 					.append('<option selected="selected" value="">Choose Sender</option>')
 					;
+				$('#quiccSender')
+					.empty()
+					.append('<option selected="selected" value="">Choose Sender</option>')
+					;
 				for (var i = 0; i < data.data.merchants_info.length; i++) {
 					if (i == 0) {
 						saveIT = data.data.merchants_info[i].profileDto.user_id;
@@ -145,8 +154,12 @@ $(async function () {
 					$(option).html(data.data.merchants_info[i].merchantName);
 					$("#senderList").append(option);
 					$("#senderListExcel").append(option);
+					$("#quiccSender").append(option);
 				}
 				$('#senderList')
+					.append('<option value="' + org_ID + '">Organization Head</option>')
+					;
+				$('#quiccSender')
 					.append('<option value="' + org_ID + '">Organization Head</option>')
 					;
 				$('#senderListExcel')
