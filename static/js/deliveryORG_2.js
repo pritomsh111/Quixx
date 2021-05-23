@@ -1854,16 +1854,15 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 			document.getElementById("delivery_chargeQ").focus();
 			return 0;
 		}
-		else
-			if (isNaN(delivery_charge) == true || delivery_charge == "" || !/\D/.test(delivery_charge) == false) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be a number!";
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById("delivery_chargeQ").focus();
-				return 0;
-			}
-			else if (!/\D/.test(delivery_charge) == true) {
-				return 1;
-			}
+		else if (isNaN(delivery_charge) == true || delivery_charge == "" || !/\D/.test(delivery_charge) == false) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be a number!";
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById("delivery_chargeQ").focus();
+			return 0;
+		}
+		else if (!/\D/.test(delivery_charge) == true) {
+			return 1;
+		}
 	}
 	var datap;
 
@@ -3569,37 +3568,13 @@ $('.btn-ok-updateDC').on("click", function () {
 	var weight = document.getElementById('productWeightU').value;
 	var cityType = document.getElementById('productCityU').value;
 	var v0 = () => {
-		let en = document.getElementById('delivery_cost_update').disabled;
-		// //console.log(en);
-		if (!en) {
-			document.getElementById('wrongdcost').innerHTML = "You have edited delivery charge! Don't do that!";
+		if (parseInt(delivery_charge) < 0) {
+			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than or equal to 0!";
 			$('#wrongdcost').show();
-			document.getElementById("delivery_cost_update").focus();
+			document.getElementById("delivery_chargeQ").focus();
 			return 0;
 		}
-		let fl = false;
-		Array.from(document.querySelectorAll(".criteriaU select")).map(item => {
-			if (item.childElementCount) {
-				for (let prop in criteriaMap.get(`${item.id.substring(0, item.id.length - 1)}`)) {
-					//console.log("before condition: ", criteriaMap.get(item.id)[prop], delivery_charge);
-					if (criteriaMap.get(`${item.id.substring(0, item.id.length - 1)}`)[prop] == delivery_cost_update) {
-						fl = true;
-						//console.log("MIllaaaagese");
-						break;
-					}
-				}
-			}
-		});
-		//console.log(fl, delivery_charge, merchantPerDeliveryCost);
-		if (!fl) {
-			if (+delivery_cost_update !== merchantPerDeliveryCost) {
-				document.getElementById('wrongdcost').innerHTML = "You have edited delivery charge! Don't do that!";
-				$('#wrongdcost').show();
-				document.getElementById("delivery_cost_update").focus();
-				return 0;
-			}
-		}
-		if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
+		else if (isNaN(delivery_cost_update) == true || delivery_cost_update == "" || !/\D/.test(delivery_cost_update) == false) {
 			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be a number!";
 			$('#wrongdcost').show();
 			document.getElementById("delivery_cost_update").focus();

@@ -1814,6 +1814,14 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	document.getElementById('r_numberU').value = arr[5];
 	document.getElementById('product_nameU').value = arr[6];
 	document.getElementById('product_qtyU').value = arr[7];
+
+	if (arr[7].toUpperCase() === "NA") {
+		document.querySelector("#product_costU").parentElement.childNodes[0].textContent = "Total Amount [BDT]:";
+	}
+	else {
+		document.querySelector("#product_costU").parentElement.childNodes[0].textContent = "Per Product Cost [BDT]:";
+	}
+
 	document.getElementById('managers2U').value = arr[8]; //payment method
 	document.getElementById('product_costU').value = arr[9];
 	document.getElementById('DELIVERY_NOTEU').value = arr[10];
