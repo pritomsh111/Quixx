@@ -929,7 +929,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 		$.ajax
 			({
 				type: "POST",
-				url: urlForAll + "delivery/create/" + merchant_ID + "/no",
+				url: urlForAll + "delivery/create/quick/" + merchant_ID + "/no",
 				data: datap,
 				headers:
 				{

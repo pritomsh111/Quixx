@@ -7146,7 +7146,7 @@ a .material-icons {
 
 @media (max-width:450px) {
   *, *::after, *::before {
-    font-size: 0.93rem;
+    font-size: 0.85rem;
   }
   .btn.btn-round.btn-outline.paypay>div {
     font-size: 0.8rem;

@@ -1862,7 +1862,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 				"delivery_distance": distance ? distance : "delivery_distance_na",
 				"delivery_city_criteria": cityType ? cityType : "delivery_city_criteria_na"
 			});
-		// console.log(datap);
+		console.log(datap);
 		$('#tickD2').hide();
 		$(".circle-loader").show();
 		$(".circle-loader").removeClass("load-complete");
