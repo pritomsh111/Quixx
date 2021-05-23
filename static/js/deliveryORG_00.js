@@ -41,39 +41,5 @@ function three3() {
 		$("#bulkD").hide();
 		$("#deliveryCreate").hide();
 		$("#deliveryCreateQ").show();
-		$.ajax
-			({
-				url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
-				type: "GET",
-				async: true,
-				headers:
-				{
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					"Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-
-				success: function (data) {
-					dataInfo = data;
-					$('#senderList')
-						.empty()
-						.append('<option selected="selected" value="">Choose Sender</option>')
-						;
-					for (var i = 0; i < data.data.merchants_info.length; i++) {
-						if (i == 0) {
-							saveIT = data.data.merchants_info[i].profileDto.user_id;
-						}
-						var option = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
-						$(option).html(data.data.merchants_info[i].merchantName);
-						$("#senderList").append(option);
-					}
-					$('#senderList')
-						.append('<option value="' + org_ID + '">Organization Head</option>')
-						;
-					$("#delivery_charge").attr('placeholder', "80");
-					document.getElementById('delivery_charge').value = "";
-					document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
-				}
-			});
 	}, 3700);
 }

@@ -243,18 +243,6 @@ $("#senderList").change(async function () {
 				},
 				success: function (data) {
 					if (data.status == 'OK') {
-						var map = new google.maps.Map(document.getElementById('map'), {
-							center: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
-							zoom: 13,
-							mapTypeId: 'roadmap',
-							mapTypeControl: false,
-							fullscreenControl: false
-						});
-						var myMarker = new google.maps.Marker({
-							position: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
-							map: map
-						});
-
 						document.getElementById('pac-input').value = data.data.sender_address;
 						document.getElementById('s_name').value = data.data.sender_name;
 						document.getElementById('s_number').value = data.data.sender_phone_number;
@@ -317,33 +305,21 @@ $("#quiccSender").change(async function () {
 				},
 				success: function (data) {
 					if (data.status == 'OK') {
-						var map = new google.maps.Map(document.getElementById('map'), {
-							center: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
-							zoom: 13,
-							mapTypeId: 'roadmap',
-							mapTypeControl: false,
-							fullscreenControl: false
-						});
-						var myMarker = new google.maps.Marker({
-							position: { lat: parseFloat(data.data.sender_lat), lng: parseFloat(data.data.sender_longi) },
-							map: map
-						});
-
-						document.getElementById('pac-input').value = data.data.sender_address;
-						document.getElementById('s_name').value = data.data.sender_name;
-						document.getElementById('s_number').value = data.data.sender_phone_number;
-						document.getElementById('lat').value = data.data.sender_lat;
-						document.getElementById('longi').value = data.data.sender_longi;
+						document.getElementById('addQ').value = data.data.sender_address;
+						document.getElementById('s_nameQ').value = data.data.sender_name;
+						document.getElementById('s_numberQ').value = data.data.sender_phone_number;
+						document.getElementById('latQ').value = data.data.sender_lat;
+						document.getElementById('longiQ').value = data.data.sender_longi;
 						if (data.data.per_delivery_cost >= 0) {
 							merchantPerDeliveryCost = data.data.per_delivery_cost;
-							document.getElementById('delivery_charge').value = data.data.per_delivery_cost;
-							document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
+							document.getElementById('delivery_chargeQ').value = data.data.per_delivery_cost;
+							document.getElementById('D_chargeQ').innerHTML = "Delivery Charge [BDT]: (This is Merchant's delivery charge. It can be modified)";
 						}
 						else {
 							merchantPerDeliveryCost = 0;
-							$("#delivery_charge").attr('placeholder', "80");
-							document.getElementById('delivery_charge').value = "";
-							document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+							$("#delivery_chargeQ").attr('placeholder', "80");
+							document.getElementById('delivery_chargeQ').value = "";
+							document.getElementById('D_chargeQ').innerHTML = "Delivery Charge [BDT]:";
 						}
 					}
 				},
@@ -352,7 +328,6 @@ $("#quiccSender").change(async function () {
 					$('#myModal2').modal('show');
 				}
 			})
-		criteriaInfo(value);
 	}
 	else {
 		// var map = new google.maps.Map(document.getElementById('map'), {
@@ -362,17 +337,15 @@ $("#quiccSender").change(async function () {
 		// 	mapTypeControl: false,
 		// 	fullscreenControl: false
 		// });
-		document.getElementById('pac-input').value = "";
-		document.getElementById('s_name').value = "";
-		document.getElementById('s_number').value = "";
-		document.getElementById('lat').value = "";
-		document.getElementById('longi').value = "";
-		$("#delivery_charge").attr('placeholder', "80");
-		document.getElementById('delivery_charge').value = "";
-		document.getElementById('delivery_charge').disabled = false;
-		document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
-		$('.criteria')
-			.hide();
+		document.getElementById('addQ').value = "";
+		document.getElementById('s_nameQ').value = "";
+		document.getElementById('s_numberQ').value = "";
+		document.getElementById('latQ').value = "";
+		document.getElementById('longiQ').value = "";
+		$("#delivery_chargeQ").attr('placeholder', "80");
+		document.getElementById('delivery_chargeQ').value = "";
+		document.getElementById('delivery_chargeQ').disabled = false;
+		document.getElementById('D_chargeQ').innerHTML = "Delivery Charge [BDT]:";
 	}
 });
 

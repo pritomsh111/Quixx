@@ -112,8 +112,10 @@ $(async function () {
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
+					var option2 = new Option(data.data[i], data.data[i]);
+					$(option2).html(data.data[i]);
 					$("#managers2").append(option);
-					$("#managers2Q").append(option);
+					$("#managers2Q").append(option2);
 					document.querySelector("#managers2").selectedIndex = 2;
 					document.querySelector("#managers2Q").selectedIndex = 2;
 				}
@@ -147,14 +149,15 @@ $(async function () {
 					.append('<option selected="selected" value="">Choose Sender</option>')
 					;
 				for (var i = 0; i < data.data.merchants_info.length; i++) {
-					if (i == 0) {
-						saveIT = data.data.merchants_info[i].profileDto.user_id;
-					}
 					var option = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
+					var option2 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
+					var option3 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
 					$(option).html(data.data.merchants_info[i].merchantName);
+					$(option2).html(data.data.merchants_info[i].merchantName);
+					$(option3).html(data.data.merchants_info[i].merchantName);
 					$("#senderList").append(option);
-					$("#senderListExcel").append(option);
-					$("#quiccSender").append(option);
+					$("#senderListExcel").append(option2);
+					$("#quiccSender").append(option3);
 				}
 				$('#senderList')
 					.append('<option value="' + org_ID + '">Organization Head</option>')
