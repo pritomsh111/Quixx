@@ -171,6 +171,9 @@ $(async function () {
 				$("#delivery_charge").attr('placeholder', "80");
 				document.getElementById('delivery_charge').value = "";
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";
+				$("#delivery_chargeQ").attr('placeholder', "80");
+				document.getElementById('delivery_chargeQ').value = "";
+				document.getElementById('D_chargeQ').innerHTML = "Delivery Charge [BDT]:";
 				//recall1(saveIT);
 			}
 		});
