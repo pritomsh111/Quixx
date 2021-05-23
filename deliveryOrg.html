@@ -33,6 +33,12 @@ div.hideKoro3{
         <div class="row navBtn">
             <button
                 class="btn-outline btn-round btn-default btn btn-info"
+                id="quiccD"
+                style="font-size: 13px"
+                onclick="createDeliveryQ()"
+            >Quick Delivery</button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
                 id="threeb"
                 style="font-size: 13px"
                 onclick="createDelivery()"
@@ -104,6 +110,123 @@ div.hideKoro3{
                     style="font-size: 13px"
                     onclick="returnedDeliveries()"
                 >Returned Deliveries</button>
+            </div>
+        </div>
+        <div id="deliveryCreateQ">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body table-responsive blur">
+                            <form class="p-5" style="color:#0066b3;text-align:left;" id="formDQ">
+                                <div id="ifmbeQ">
+                                    <strong>Input Fields Must Be Filled In English</strong>
+                                </div>
+                                <div class="sender_informationU" data-title="Sender's Information">
+                                    <div>
+                                        Select Sender:
+                                        <select class="browser-default custom-select col-lg-12 btn sL" style="height:46px;background:#ffcf5c;color:#000;" id="quiccSender"></select>
+                                    </div>
+                                    <div>
+                                        Sender's Name:
+                                        <input
+                                            type="text"
+                                            id="s_nameU"
+                                            class="form-control"
+                                            placeholder=""
+                                            disabled
+                                        >
+                                    </div>
+                                    <div>
+                                        Sender's Phone Number:
+                                        <input
+                                            type="text"
+                                            id="s_numberU"
+                                            class="form-control mb-4"
+                                            placeholder="01711000000"
+                                            disabled
+                                        >
+                                    </div>
+                                    <input type="hidden" id="latQ" name="latQ">
+                                    <input type="hidden" id="longiQ" name="longiQ">
+                                </div>
+                                <div class="receiver_informationQ" data-title="Receiver's Information">
+                                    <div>
+                                        Receiver's Name:
+                                        <input
+                                            type="text"
+                                            id="r_nameQ"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div>
+                                        Receiver's Phone Number:
+                                        <input
+                                            type="text"
+                                            id="r_numberQ"
+                                            class="form-control"
+                                            placeholder="01911000000"
+                                        >
+                                    </div>
+                                    <div>
+                                        Receivers's Full Address:
+                                        <input
+                                            type="text"
+                                            id="rec_addressQ"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                </div>
+                                <div class="product_informationQ" data-title="Product Information">
+                                    <div>
+                                        Product Details:
+                                        <input
+                                            type="text"
+                                            id="product_nameQ"
+                                            class="form-control"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div>
+                                        Total Amount [BDT]:
+                                        <input
+                                            type="text"
+                                            id="product_costQ"
+                                            class="form-control"
+                                            placeholder="80"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="delivery_informationQ" data-title="Delivery Information">
+                                    <div>
+                                        <div id="D_chargeQ"></div>
+                                        <input
+                                            type="text"
+                                            style="color:#0066b3"
+                                            id="delivery_chargeQ"
+                                            class="form-control"
+                                            placeholder="80"
+                                            disabled
+                                        >
+                                    </div>
+                                    <div>
+                                        Payment Method:
+                                        <select class="custom-select col-lg-12 btn" id="managers2Q" style="color:#000;background:#ffcf5c;text-align-last:left;"></select>
+                                    </div>
+                                </div>
+                            </form>
+                            <button
+                                class="btn btn-outline btn-round"
+                                style="background:#ffffd3;margin-top:-5rem;"
+                                type="button"
+                                id="createDeliveryQ"
+                            >
+                                Create
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="deliveryCreate">

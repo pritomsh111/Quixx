@@ -7,7 +7,8 @@ function two2() {
 function three3() {
 	setTimeout(function () {
 
-		document.getElementById('threeb').disabled = true;
+		document.getElementById('quiccD').disabled = true;
+		document.getElementById('threeb').disabled = false;
 		document.getElementById('twob').disabled = false;
 		document.getElementById('oneb').disabled = false;
 		document.getElementById('threeb').style.fontSize = '13px';
@@ -22,7 +23,7 @@ function three3() {
 		$('#dtBasicExampleAp').hide();
 		$('#dtBasicExampleNew').hide();
 		$('.b').hide();
-		$('.c').show();
+		$('.c').hide();
 		$('.d').hide();
 		$('.e').hide();
 		$('#dtBasicExampled').hide();
@@ -38,7 +39,8 @@ function three3() {
 		$('.i').hide();
 		$('.j').hide();
 		$("#bulkD").hide();
-		$("#deliveryCreate").show();
+		$("#deliveryCreate").hide();
+		$("#deliveryCreateQ").show();
 		$.ajax
 			({
 				url: urlForAll + "orgHead/get/merchants/info/" + org_ID,

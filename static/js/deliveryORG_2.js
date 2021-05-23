@@ -16,6 +16,12 @@ var createDelivery = () => {
 	$('.c').show();
 	$("#deliveryCreate").show();
 }
+var createDeliveryQ = () => {
+	buttonActive();
+	document.getElementById('quiccD').disabled = true;
+	document.getElementById('quiccD').style.fontSize = '13px';
+	$("#deliveryCreateQ").show();
+}
 
 function buttonActive() {
 	document.getElementById('oneb').disabled = false;
@@ -27,6 +33,8 @@ function buttonActive() {
 	document.getElementById('threeb').disabled = false;
 	document.getElementById('threeb').style.fontSize = '13px';
 
+	document.getElementById('quiccD').disabled = false;
+	document.getElementById('quiccD').style.fontSize = '13px';
 	document.getElementById('bulkX').disabled = false;
 	document.getElementById('bulkX').style.fontSize = '13px';
 	document.getElementById('sixb').disabled = false;
@@ -68,6 +76,7 @@ function buttonActive() {
 	$('#dtBasicExampleNewj').hide();
 	$('.j').hide();
 	$("#deliveryCreate").hide();
+	$("#deliveryCreateQ").hide();
 }
 
 var goToDelivery = () => {

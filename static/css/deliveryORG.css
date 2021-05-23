@@ -265,7 +265,7 @@ input {
   color: #000;
 }
 
-#formD>div:first-child {
+#formD>div:first-child, #formDQ>div:first-child {
   font-size: 18.5px;
   margin-top: -15px;
   margin-bottom: 2rem;
@@ -274,11 +274,11 @@ input {
   margin-bottom: 0.1rem;
 }
 
-#formD>div:not(:first-child) {
+#formD>div:not(:first-child), #formDQ>div:not(:first-child) {
   margin: 5rem 0 3rem;
 }
 
-.sender_information, .receiver_information, .receiver_informationU, .product_information, .product_informationU, .delivery_information, .delivery_informationU {
+.sender_information, .sender_informationQ, .receiver_information, .receiver_informationQ, .receiver_informationU, .product_information, .product_informationQ, .product_informationU, .delivery_information, .delivery_informationU, .delivery_informationQ {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
