@@ -1651,10 +1651,16 @@ function recall() {
 
 document.getElementById("createDeliveryQ").addEventListener("click", function (event) {
 	// var pickup_time = document.getElementById('timepicker-12-hr').value;
-	// var s_name = document.getElementById('s_name').value;
-	// var s_number = document.getElementById('s_number').value;
-	// var s_address = document.getElementById('pac-input').value;
+
+	var s_name = document.getElementById('s_nameQ').value;
+	var s_number = document.getElementById('s_numberQ').value;
+	var s_address = document.getElementById('addQ').value;
+
+	var pickup_lat = String(document.getElementById('latQ').value);
+	var pickup_longi = String(document.getElementById('longiQ').value);
+
 	var quiccSender = document.getElementById('quiccSender').value;
+
 	var r_name = document.getElementById('r_nameQ').value;
 	var r_number = document.getElementById('r_numberQ').value;
 	// var r_address = document.getElementById('pac-input2').value;
@@ -1663,8 +1669,6 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	// var delivery_note = document.getElementById('DELIVERY_NOTE').value;
 	// var delivery_type = document.getElementById('deliveryType').value;
 	// var area = String(document.getElementById('managers_2').value);
-	// var pickup_lat = String(document.getElementById('lat').value);
-	// var pickup_longi = String(document.getElementById('longi').value);
 	// var delivery_lat = String(document.getElementById('des_lat').value);
 	// var delivery_longi = String(document.getElementById('des_longi').value);
 	var product_name = String(document.getElementById('product_nameQ').value);
@@ -1883,8 +1887,8 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 				"sender_name": s_name,
 				"sender_phone_number": s_number,
 				"sender_address": s_address,
-				"sender_lat": s_lat,
-				"sender_longi": s_longi,
+				"sender_lat": pickup_lat,
+				"sender_longi": pickup_longi,
 				"receiver_name": r_name,
 				"receiver_phone_number": r_number,
 				"receiver_address": rec_address,
