@@ -395,7 +395,7 @@
         }
         let v2 = () => {
             if (business === "") {
-                createError("Business Field cannot be empty!", "business");
+                createError("Business Category cannot be empty!", "business");
                 return 0;
             }
             else {

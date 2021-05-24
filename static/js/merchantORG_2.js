@@ -568,7 +568,7 @@ var addMerchant = () => {
 	}
 	var v5 = () => {
 		if (business == "" || business == null) {
-			modalErrorShowForCreateUpdateMerchant("Business Field cannot be empty!", "business_filed");
+			modalErrorShowForCreateUpdateMerchant("Business Category cannot be empty!", "business_filed");
 			return 0;
 		}
 		else {
@@ -835,7 +835,7 @@ $('.btn-ok-update').on("click", function (e) {
 	}
 	var v5 = () => {
 		if (business_filed == "" || business_filed == null) {
-			modalErrorShowForCreateUpdateMerchant("Business Field cannot be empty!", "business_filed2");
+			modalErrorShowForCreateUpdateMerchant("Business Category cannot be empty!", "business_filed2");
 			return 0;
 		}
 		else {
