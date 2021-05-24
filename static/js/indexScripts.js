@@ -12,7 +12,7 @@
 		document.querySelector(".selectbtnMer").remove();
 		$('.logo>a>label').hide();
 		$('.logo>a>input').hide();
-		document.querySelector(".logo>a>div").style.height = "130px";
+		document.querySelector(".logo>a>div").style.height = "115px";
 		document.title = "Super Admin";
 		myNode = document.getElementById("merchant");
 		myNode.remove();
@@ -101,7 +101,6 @@
 		}
 		$.ajax
 			({
-
 				type: "GET",
 				url: urlForAll + "orgHead/get/org/name/" + localStorage.getItem('userID'),
 				headers:
@@ -129,7 +128,7 @@
 			location.hash = "selection";
 		});
 		document.querySelector("#merchant a[href='#selection']").remove();
-		document.querySelector(".logo>a>div").style.height = "130px";
+		document.querySelector(".logo>a>div").style.height = "115px";
 		$.ajax
 			({
 				type: "GET",

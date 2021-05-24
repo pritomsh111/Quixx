@@ -59,8 +59,8 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 
 .logo>a {
   display: block;
-  width: 130px;
-  height: 130px;
+  width: 115px;
+  height: 115px;
   border-radius: 6%;
   cursor: pointer;
   margin: 0 auto;
@@ -71,7 +71,7 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 }
 
 .logo>a>div {
-  height: 107px;
+  height: 93px;
   cursor: pointer;
   background: url("../img/company_logo.png") no-repeat center/cover;
   transition: background 250ms ease-in;
@@ -4819,11 +4819,15 @@ h2.title {
 
 .logo.sidebar-smol>a {
   width: 50px;
-  height: 75px;
+  height: 70px;
 }
 
 .logo.sidebar-smol>a>div {
   height: 50px;
+}
+
+.logo.sidebar-smol>a>label {
+  height: 1.1rem;
 }
 
 .sidebar.sidebar-smol .nav li a, .sidebar .nav li .dropdown-menu a {
@@ -4876,7 +4880,7 @@ h2.title {
 }
 
 .main-panel.sidebar-smol {
-  width: calc(100% - 70px);
+  width: calc(100% - 60px);
 }
 
 .sidebar .caret {
@@ -4896,7 +4900,7 @@ h2.title {
 }
 
 .sidebar .sidebar-wrapper {
-  padding-top: 20px;
+  padding-top: 12px;
   position: relative;
   height: 75%;
   overflow-y: scroll;
