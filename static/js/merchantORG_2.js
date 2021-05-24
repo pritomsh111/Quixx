@@ -512,6 +512,8 @@ var addMerchant = () => {
 	var phone = document.getElementById('phone_number').value;
 	var business = document.getElementById('business_filed').value;
 	var per_delivery_cost = document.getElementById('per_delivery_cost').value;
+	var mbank = document.querySelector("#mobileBank").checked;
+	var bbank = document.querySelector("#phyBank").checked;
 	var v1 = () => {
 		if (name == "" || name == null) {
 			modalErrorShowForCreateUpdateMerchant("Owner Name cannot be empty!", "person_name");
@@ -584,6 +586,45 @@ var addMerchant = () => {
 		}
 		else if (!/\D/.test(per_delivery_cost) == true) {
 			return 1;
+		}
+	}
+	var mselect, minput;
+	var v7 = () => {
+		if (mbank) {
+			mselect = document.querySelector("#brb");
+			minput = document.querySelector("#brbInput");
+			if (minput == "" || minput == null) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput");
+				return 0;
+			}
+			else if ((minput.length < 11 || minput.length > 11) && !/\D/.test(minput) == true) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "brbInput");
+				return 0;
+			}
+			else if (minput.match(/\d/g).length === 11 && !/\D/.test(minput) == true) {
+				return 1;
+			}
+			else {
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number not valid!`, "brbInput");
+				return 0;
+			}
+		}
+		else {
+			mselect = "";
+			minput = "";
+			return 1;
+		}
+	}
+	var bselect, bName, branchName, accountNo;
+	var v8 = () => {
+		if (mbank) {
+			mselect = document.querySelector("#brb");
+			minput = document.querySelector("#brbInput");
+
+		}
+		else {
+			bselect = "no";
+			bName = branchName = accountN = "";
 		}
 	}
 	if (v2() == 1 && v1() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1) {
