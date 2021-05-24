@@ -85,3 +85,10 @@ $(async function () {
 			}
 		});
 });
+
+document.querySelector("#mobileBank").addEventListener("click", function (e) {
+	document.querySelector("#merchantCreate form:nth-last-of-type(1)").classList.toggle("paddForm2");
+});
+document.querySelector("#phyBank").addEventListener("click", function (e) {
+	document.querySelector("#merchantCreate form:nth-last-of-type(1)").classList.toggle("paddForm2BankPhy");
+});

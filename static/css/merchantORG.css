@@ -72,10 +72,48 @@ input {
   padding: 0.6rem 1rem;
 }
 
+#merchantCreate form:nth-last-of-type(1) {
+  transition: padding 250ms ease-in;
+}
+
+.paddForm2 {
+  padding-bottom: 9rem !important;
+}
+
+.paddForm2BankPhy {
+  padding-bottom: 9rem !important;
+}
+
+#mobileBank:checked+.mba {
+  visibility: visible;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+#phyBank:checked+.bba {
+  visibility: visible;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
 .bank {
   margin-top: 0.7rem;
   display: grid;
   row-gap: 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: visibility 250ms ease-in, opacity 250ms ease-in, transform 250ms ease-in;
+}
+
+.mobilebank, .bankbank {
+  position: relative;
+}
+
+.mba, .bba {
+  position: absolute;
+  width: 100%;
 }
 
 #brb {
