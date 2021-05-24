@@ -196,7 +196,7 @@ body {
   line-height: 1.5em;
   color: #212529;
   text-align: left;
-  background-color: #fafafa;
+  background-color: hsla(60, 36.4%, 95.7%, 1);
 }
 
 .fa::before {
@@ -5284,6 +5284,13 @@ div[id^="hide"]>div>div>div[class*="col-md"]>button {
   .form-control {
     height: 1.5rem;
     font-size: 0.8rem;
+  }
+  .sidebar .nav p {
+    line-height: 30px;
+    font-size: 12px;
+  }
+  .sidebar .nav i {
+    font-size: 18px;
   }
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */

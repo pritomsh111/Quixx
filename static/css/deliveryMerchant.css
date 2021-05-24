@@ -522,7 +522,10 @@ input {
 		margin-bottom: 0.1rem;
 	}
 	.row.navBtn>button {
-		padding: 0.3rem;
+		padding: 0.2rem;
+	}
+	#createDelivery, #createDeliveryQ {
+		padding: 0.6rem 1rem;
 	}
 }
 
