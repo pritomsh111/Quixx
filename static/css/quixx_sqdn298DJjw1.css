@@ -2344,6 +2344,19 @@ button.close {
   border-top: 1px solid #e9ecef;
 }
 
+@media (max-width: 450px) {
+  .modal-header, .modal-footer {
+    padding: 0.6rem;
+  }
+  .modal-footer>.btn.btn-outline {
+    padding: 0.4rem;
+    border-width: 1px;
+  }
+  .btn {
+    border-width: 1px !important;
+  }
+}
+
 .modal-footer> :not(:first-child) {
   margin-left: .25rem;
 }
@@ -2471,11 +2484,13 @@ button.close {
 
 .p-5 {
   padding: 2rem !important;
+  padding-bottom: 0 !important;
 }
 
 @media (max-width: 540px) {
   .p-5 {
     padding: 0.5rem !important;
+    padding-bottom: 0.6rem !important;
   }
 }
 

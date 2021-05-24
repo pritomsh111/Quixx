@@ -358,6 +358,10 @@ input {
   margin: 4rem 0;
 }
 
+#formUpdateDC>div:first-child {
+  margin: 2.5rem 0;
+}
+
 .modal-lg {
   max-width: 90%;
 }
@@ -394,10 +398,11 @@ input {
   }
   .sender_information, .sender_informationQ, .receiver_information, .product_information, .receiver_informationU, .product_informationU, .receiver_informationQ, .product_informationQ {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    row-gap: 1.5rem;
   }
   .delivery_information, .delivery_informationU, .delivery_informationQ {
     grid-template-columns: 1fr;
-    row-gap: 2rem;
+    row-gap: 1.7rem;
   }
   .criteria, .criteriaU {
     display: block;
@@ -410,7 +415,7 @@ input {
     display: block;
   }
   .sender_information::before, .sender_informationQ::before, .receiver_information::before, .product_information::before, .delivery_information::before, .receiver_informationU::before, .product_informationU::before, .delivery_informationU::before, .receiver_informationQ::before, .product_informationQ::before, .delivery_informationQ::before {
-    top: -4.5rem;
+    top: -3rem;
     font-size: 1.1rem;
   }
   #formD>div:first-child, #formDQ>div:first-child {
@@ -422,6 +427,13 @@ input {
   .row.navBtn>button {
     padding: 0.2rem;
   }
+  #formUpdateDC>div:first-child {
+    margin: 2rem 0 4rem;
+  }
+}
+
+#createDelivery, #createDeliveryQ, #createDeliverywithExcel {
+  padding: 0.6rem 1rem;
 }
 
 ::selection {

@@ -490,6 +490,7 @@ input {
 	}
 	.sender_information, .receiver_information, .product_information, .receiver_informationQ, .product_informationQ, .receiver_informationU, .product_informationU {
 		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+		row-gap: 1.4rem;
 	}
 	.delivery_information, .delivery_informationQ, .delivery_informationU {
 		grid-template-columns: 1fr;
@@ -506,7 +507,7 @@ input {
 		display: block;
 	}
 	.sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before, .receiver_informationQ::before, .product_informationQ::before, .delivery_informationQ::before, .receiver_informationU::before, .product_informationU::before, .delivery_informationU::before {
-		top: -4rem;
+		top: -3rem;
 		font-size: 1.1rem;
 	}
 	#formD>div:first-child, #formDQ>div:first-child {
@@ -524,9 +525,10 @@ input {
 	.row.navBtn>button {
 		padding: 0.2rem;
 	}
-	#createDelivery, #createDeliveryQ {
-		padding: 0.6rem 1rem;
-	}
+}
+
+#createDelivery, #createDeliveryQ {
+	padding: 0.6rem 1rem;
 }
 
 ::selection {
