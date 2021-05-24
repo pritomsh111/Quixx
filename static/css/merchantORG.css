@@ -72,6 +72,16 @@ input {
   padding: 0.6rem 1rem;
 }
 
+.bank {
+  margin-top: 0.7rem;
+  display: grid;
+  row-gap: 1rem;
+}
+
+#brb {
+  padding: 0.4rem;
+}
+
 form {
   margin-bottom: 1.125rem;
 }
