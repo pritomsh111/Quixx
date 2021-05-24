@@ -92,3 +92,10 @@ document.querySelector("#mobileBank").addEventListener("click", function (e) {
 document.querySelector("#phyBank").addEventListener("click", function (e) {
 	document.querySelector("#merchantCreate form:nth-last-of-type(1)").classList.toggle("paddForm2BankPhy");
 });
+
+document.querySelector("#mobileBank2").addEventListener("click", function (e) {
+	document.querySelector("#formUpdate").classList.toggle("paddForm2");
+});
+document.querySelector("#phyBank2").addEventListener("click", function (e) {
+	document.querySelector("#formUpdate").classList.toggle("paddForm2BankPhy");
+});
