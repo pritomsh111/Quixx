@@ -591,8 +591,8 @@ var addMerchant = () => {
 	var mselect, minput;
 	var v7 = () => {
 		if (mbank) {
-			mselect = document.querySelector("#brb");
-			minput = document.querySelector("#brbInput");
+			mselect = document.querySelector("#brb").value;
+			minput = document.querySelector("#brbInput").value;
 			if (minput == "" || minput == null) {
 				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput");
 				return 0;
@@ -617,17 +617,34 @@ var addMerchant = () => {
 	}
 	var bselect, bName, branchName, accountNo;
 	var v8 = () => {
-		if (mbank) {
-			mselect = document.querySelector("#brb");
-			minput = document.querySelector("#brbInput");
-
+		if (bbank) {
+			bselect = "yes";
+			bName = document.querySelector("#bName").value;
+			branchName = document.querySelector("#branchName").value;
+			accountNo = document.querySelector("#accountNo").value;
+			if (bName == "" || bName == null) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>Bank Name</strong> cannot be empty!`, "bName");
+				return 0;
+			}
+			else if (branchName == "" || branchName == null) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>Branch Name</strong> cannot be empty!`, "branchName");
+				return 0;
+			}
+			else if (accountNo == "" || accountNo == null) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>Account No</strong> cannot be empty!`, "accountNo");
+				return 0;
+			}
+			else {
+				return 1
+			}
 		}
 		else {
 			bselect = "no";
-			bName = branchName = accountN = "";
+			bName = branchName = accountNo = "";
+			return 1;
 		}
 	}
-	if (v2() == 1 && v1() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1) {
+	if (v2() == 1 && v1() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1 && v7() == 1 && v8() == 1) {
 		document.getElementById('MERCHANT_CREATION').disabled = true;
 		$.ajax
 			({
@@ -641,7 +658,13 @@ var addMerchant = () => {
 						"phone_number": phone,
 						"email": email,
 						"business_filed": business,
-						"per_delivery_cost": per_delivery_cost
+						"per_delivery_cost": per_delivery_cost,
+						"payment_method_bank": mselect,
+						"payment_method_mobile": minput,
+						"payment_method_mobile_number": bselect,
+						"payment_method_bank_name": bName,
+						"payment_method_bank_branch": branchName,
+						"payment_method_bank_account": accountNo
 					}),
 				headers:
 				{
