@@ -4358,6 +4358,12 @@ textarea {
   z-index: 1029;
 }
 
+@media (max-width:991px) {
+  .navbar.navbar-absolute {
+    padding-top: 10px;
+  }
+}
+
 .navbar .navbar-wrapper {
   display: inline-flex;
   align-items: center;
@@ -4880,7 +4886,7 @@ h2.title {
 }
 
 .main-panel.sidebar-smol {
-  width: calc(100% - 60px);
+  width: calc(100% - 80px);
 }
 
 .sidebar .caret {
@@ -5245,7 +5251,7 @@ div[id^="hide"]>div>div>div[class*="col-md"]>button {
 .main-panel {
   position: relative;
   float: right;
-  width: calc(100% - 250px);
+  width: calc(100% - 240px);
 }
 
 .main-panel>.content {
