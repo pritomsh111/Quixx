@@ -5271,7 +5271,7 @@ div[id^="hide"]>div>div>div[class*="col-md"]>button {
 
 .main-panel>.content {
   margin-top: 12px;
-  padding: 30px 10px;
+  padding: 30px 10px 10px;
   min-height: calc(100vh - 123px);
 }
 
@@ -5296,7 +5296,7 @@ div[id^="hide"]>div>div>div[class*="col-md"]>button {
 
 @media (max-width: 991px) {
   .main-panel>.content {
-    padding: 60px 10px;
+    padding: 60px 10px 10px;
   }
   #dashName {
     display: block;
