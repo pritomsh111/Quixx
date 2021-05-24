@@ -435,10 +435,6 @@ input {
 	padding-bottom: 0rem !important;
 }
 
-form {
-	margin-bottom: 1.125rem;
-}
-
 .showMap, .showMapU {
 	transform: scaleY(0);
 	opacity: 0;
@@ -540,7 +536,7 @@ form {
 	}
 }
 
-#createDelivery, #createDeliveryQ {
+#createDelivery, #createDeliveryQ, #criterionSubmit {
 	padding: 0.6rem 1rem;
 }
 

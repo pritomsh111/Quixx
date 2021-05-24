@@ -432,7 +432,7 @@ input {
   }
 }
 
-#createDelivery, #createDeliveryQ, #createDeliverywithExcel {
+#createDelivery, #createDeliveryQ, #createDeliverywithExcel, #assignAllDeliveries {
   padding: 0.6rem 1rem;
 }
 

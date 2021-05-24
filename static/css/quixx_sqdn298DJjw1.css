@@ -1486,7 +1486,11 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn.btn-outline.btn-round.current {
   border: 1px solid #0066b3;
-  padding: 9px 23px;
+  padding: 9px 18px;
+}
+
+.dataTables_paginate.paging_simple_numbers .btn.btn-outline {
+  padding: 9px 15px;
 }
 
 .btn-outline-primary:hover {
@@ -1527,7 +1531,7 @@ select[name^="dtBasic"] {
 }
 
 .dataTables_paginate.paging_simple_numbers .btn {
-  padding: 9px 23px;
+  padding: 9px 18px;
 }
 
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
@@ -2314,7 +2318,7 @@ button.close {
   text-align: center;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.9rem;
   border-bottom: 1px solid #e9ecef;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
@@ -2340,8 +2344,12 @@ button.close {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 0.9rem;
   border-top: 1px solid #e9ecef;
+}
+
+.modal-footer>.btn.btn-outline {
+  padding: 0.8rem;
 }
 
 @media (max-width: 450px) {
