@@ -4412,7 +4412,8 @@ textarea {
 
 .navbar .collapse .navbar-nav .nav-item .nav-link {
   position: relative;
-  padding: 10px 15px;
+  padding: 0;
+  right: -0.9rem;
   font-weight: 400;
   font-size: 12px;
   text-transform: uppercase;
@@ -4850,11 +4851,21 @@ h2.title {
   display: grid;
   place-items: center;
   border-width: 0;
+  position: relative;
+  left: -2rem;
+  top: -.1rem;
+  border: 0;
+  background: #fffeff;
+  box-shadow: none;
 }
 
 #changeWidth i {
   font-size: 1rem;
   transition: transform 350ms ease-in;
+}
+
+.main-panel.sidebar-smol #changeWidth {
+  left: -1.5rem;
 }
 
 .main-panel.sidebar-smol #changeWidth i {
@@ -5251,12 +5262,12 @@ div[id^="hide"]>div>div>div[class*="col-md"]>button {
 .main-panel {
   position: relative;
   float: right;
-  width: calc(100% - 240px);
+  width: calc(100% - 230px);
 }
 
 .main-panel>.content {
-  margin-top: 70px;
-  padding: 30px 15px;
+  margin-top: 12px;
+  padding: 30px 10px;
   min-height: calc(100vh - 123px);
 }
 
