@@ -63,4 +63,25 @@ $(async function () {
 	if (flag) {
 		fillInput();
 	}
+	$('#brb')
+		.empty();
+	$.ajax
+		({
+			url: urlForAll + "delivery/payment/method/" + localStorage.getItem('token'),
+			type: "GET",
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				for (var i = 0; i < data.data.length - 1; i++) {
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					$("#brb").append(option);
+				}
+				document.querySelector("#brb").selectedIndex = 0;
+			}
+		});
 });

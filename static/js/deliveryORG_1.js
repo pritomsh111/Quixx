@@ -304,6 +304,20 @@ function initialize() {
 	}, 500);
 }
 
+document.querySelector("#pac-input2").addEventListener("keydown", function (e) {
+	if (e.keyCode === 13) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+});
+
+document.querySelector("#pac-input3").addEventListener("keydown", function (e) {
+	if (e.keyCode === 13) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+});
+
 document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
 	this.blur();
