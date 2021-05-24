@@ -334,7 +334,7 @@
     data-backdrop="static"
 >
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content modal-lg">
             <div class="modal-header">
                 <button
                     type="button"
@@ -346,111 +346,133 @@
             </div>
             <div class="modal-body" style="text-align: center; overflow-y: scroll">
                 <form class="p-1" style="color: #0066b3" id="formUpdate">
-                    <div id="hideUpdate">
-                        <h5>Company Name:</h5>
-                        <input
-                            type="text"
-                            style="
-                color: #0066b3;
-                text-align: center;
-                width: 50%;
-                margin: 0 auto;
-                margin-top: -22px;
-              "
-                            id="org_name2"
-                            class="form-control"
-                            placeholder=""
-                        >
-                        <h5 style="margin-top: 9px">Owner Name:</h5>
-                        <input
-                            type="text"
-                            style="
-                color: #0066b3;
-                text-align: center;
-                margin-top: -22px;
-                width: 50%;
-                margin: 0 auto;
-                margin-top: -22px;
-              "
-                            id="person_name2"
-                            class="form-control"
-                            placeholder=""
-                        >
-                        <h5 style="margin-top: 9px">E-mail Address:</h5>
-                        <input
-                            type="email"
-                            style="
-                color: #0066b3;
-                text-align: center;
-                margin-top: -22px;
-                width: 50%;
-                margin: 0 auto;
-                margin-top: -22px;
-              "
-                            id="email2"
-                            class="form-control"
-                            placeholder=""
-                            disabled
-                        >
-                        <div style="margin-top: -18px">
-                            <h5>Phone No:</h5>
+                    <form class="p-1 merchantUpdate" style="text-align: left">
+                        <div style="display:none">
+                            Company Name:
                             <input
                                 type="text"
-                                style="
-                  color: #0066b3;
-                  text-align: center;
-                  margin-top: -22px;
-                  width: 50%;
-                  margin: 0 auto;
-                  margin-top: -22px;
-                "
-                                id="phone_number2"
+                                style="color: #0066b3"
+                                id="org_name2"
                                 class="form-control"
                                 placeholder=""
                             >
-                            <h5 style="margin-top: 9px">Business Field:</h5>
+                        </div>
+                        <div style="display:none">
+                            Owner Name:
                             <input
                                 type="text"
-                                style="
-                  color: #0066b3;
-                  text-align: center;
-                  margin-top: -22px;
-                  width: 50%;
-                  margin: 0 auto;
-                  margin-top: -22px;
-                "
+                                style="color: #0066b3"
+                                id="person_name2"
+                                class="form-control"
+                                placeholder=""
+                            >
+                        </div>
+                        <div style="display:none">
+                            E-mail Address:
+                            <input
+                                type="email"
+                                style="color: #0066b3"
+                                id="email2"
+                                class="form-control"
+                                placeholder="quixx@gmail.com"
+                            >
+                        </div>
+                        <div style="display:none">
+                            Phone No:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
+                                id="phone_number2"
+                                class="form-control"
+                                placeholder="01711000000"
+                            >
+                        </div>
+                        <div style="display:none">
+                            Business Field:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
                                 id="business_filed2"
                                 class="form-control"
                                 placeholder=""
                             >
                         </div>
-                    </div>
-                    <h5 style="margin-top: 9px">Per Delivery Cost:</h5>
-                    <input
-                        type="text"
-                        style="
-              text-align: center;
-              margin-top: -12px;
-              width: 50%;
-              margin: 0 auto;
-            "
-                        id="per_cost"
-                        class="form-control"
-                        placeholder=""
-                    >
-                    <h5 style="margin-top: 20px">COD Percentage:</h5>
-                    <input
-                        type="text"
-                        style="
-              text-align: center;
-              margin-top: -12px;
-              width: 50%;
-              margin: 0 auto;
-            "
-                        id="cod_per"
-                        class="form-control"
-                        placeholder=""
-                    >
+                        <div>
+                            Per Delivery Cost [BDT]:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
+                                id="per_cost"
+                                class="form-control"
+                                placeholder=""
+                            >
+                        </div>
+                        <div>
+                            COD Percentage:
+                            <input
+                                type="text"
+                                style="color: #0066b3"
+                                id="cod_per"
+                                class="form-control"
+                                placeholder=""
+                            >
+                        </div>
+                    </form>
+                    <form class="p-1 bankUpdate" style="text-align: left">
+                        <div class="mobilebank2">
+                            Mobile Banking:
+                            <input type="checkbox" style="color: #0066b3" id="mobileBank2">
+                            <div class="bank2 mba2">
+                                <select class="browser-default custom-select col-lg-12 btn" id="brb2"></select>
+                                <div>
+                                    Phone Number:
+                                    <input
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="brbInput2"
+                                        class="form-control"
+                                        placeholder=""
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bankbank2">
+                            Bank:
+                            <input type="checkbox" style="color: #0066b3" id="phyBank2">
+                            <div class="bank2 bba">
+                                <div>
+                                    Bank Name:
+                                    <input
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="bName2"
+                                        class="form-control"
+                                        placeholder=""
+                                    >
+                                </div>
+                                <div>
+                                    Bank Branch:
+                                    <input
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="branchName2"
+                                        class="form-control"
+                                        placeholder=""
+                                    >
+                                </div>
+                                <div>
+                                    Account No:
+                                    <input
+                                        type="text"
+                                        style="color: #0066b3"
+                                        id="accountNo2"
+                                        class="form-control"
+                                        placeholder=""
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </form>
                 <form class="p-1" style="color: #0066b3" id="formUpdateCriteria">
                     <div id="hideUpdateCriteria">

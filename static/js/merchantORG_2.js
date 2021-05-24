@@ -659,9 +659,9 @@ var addMerchant = () => {
 						"email": email,
 						"business_filed": business,
 						"per_delivery_cost": per_delivery_cost,
-						"payment_method_bank": mselect,
-						"payment_method_mobile": minput,
-						"payment_method_mobile_number": bselect,
+						"payment_method_mobile_number": minput,
+						"payment_method_mobile": mselect,
+						"payment_method_bank": bselect,
 						"payment_method_bank_name": bName,
 						"payment_method_bank_branch": branchName,
 						"payment_method_bank_account": accountNo
