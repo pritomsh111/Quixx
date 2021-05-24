@@ -65,6 +65,8 @@ $(async function () {
 	}
 	$('#brb')
 		.empty();
+	$('#brb2')
+		.empty();
 	$.ajax
 		({
 			url: urlForAll + "delivery/payment/method/" + localStorage.getItem('token'),
@@ -78,8 +80,11 @@ $(async function () {
 			success: function (data) {
 				for (var i = 0; i < data.data.length - 1; i++) {
 					var option = new Option(data.data[i], data.data[i]);
+					var option2 = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
+					$(option2).html(data.data[i]);
 					$("#brb").append(option);
+					$("#brb2").append(option);
 				}
 				document.querySelector("#brb").selectedIndex = 0;
 			}
@@ -94,8 +99,8 @@ document.querySelector("#phyBank").addEventListener("click", function (e) {
 });
 
 document.querySelector("#mobileBank2").addEventListener("click", function (e) {
-	document.querySelector("#formUpdate").classList.toggle("paddForm2");
+	document.querySelector(".bankUpdate").classList.toggle("paddForm2");
 });
 document.querySelector("#phyBank2").addEventListener("click", function (e) {
-	document.querySelector("#formUpdate").classList.toggle("paddForm2BankPhy");
+	document.querySelector(".bankUpdate").classList.toggle("paddForm2BankPhy");
 });
