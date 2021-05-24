@@ -95,9 +95,23 @@ input {
   padding-bottom: 9rem !important;
 }
 
+.paddForm22 {
+  padding-bottom: 3rem !important;
+}
+
 .paddForm2BankPhy {
   padding-bottom: 15rem !important;
 }
+
+.paddForm2BankPhy3 {
+  padding-bottom: 5rem !important;
+}
+
+.paddForm2 .mobilebank+.bankbank {
+  transition: padding 250ms ease-in;
+}
+
+@media (max-width: 667px) {}
 
 #phyBank:checked+.bba, #phyBank2:checked+.bba2, #mobileBank:checked+.mba, #mobileBank2:checked+.mba2 {
   visibility: visible;

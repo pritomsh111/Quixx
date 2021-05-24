@@ -797,12 +797,19 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	document.getElementById('per_cost').value = arr[6];
 	document.getElementById('cod_per').value = arr[7];
 
-	document.querySelector("#brb2").value;
-	document.querySelector("#brbInput2").value;
-
-	document.querySelector("#bName22").value;
-	document.querySelector("#branchName22").value;
-	document.querySelector("#accountNo22").value;
+	if (arr[8] != "undefined") {
+		document.querySelector("#mobileBank2").checked = true;
+		document.querySelector("#brb2").selectedIndex = arr[8].toUpperCase() === "BKASH" ? 0 : 1;
+		document.querySelector("#brbInput2").value = arr[9];
+		document.querySelector(".bankUpdate2").classList.toggle("paddForm2");
+	}
+	if (arr[10] != "undefined") {
+		document.querySelector("#phyBank2").checked = arr[10] === "yes" ? true : false;
+		document.querySelector("#bName2").value = arr[11];
+		document.querySelector("#branchName2").value = arr[12];
+		document.querySelector("#accountNo2").value = arr[13];
+		document.querySelector(".bankUpdate2").classList.toggle("paddForm2BankPhy");
+	}
 
 	modalForm();
 	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant?";
@@ -831,6 +838,9 @@ $('.btn-ok-update').on("click", function (e) {
 	var cod_per = document.getElementById('cod_per').value;
 	var bselect, bName, branchName, accountNo;
 	var mselect, minput;
+	var mbank = document.querySelector("#mobileBank2").checked;
+	var bbank = document.querySelector("#phyBank2").checked;
+
 	var v1 = () => {
 		if (org_name == "" || org_name == null) {
 			modalErrorShowForCreateUpdateMerchant("Company Name cannot be empty!", "org_name2");
@@ -920,18 +930,18 @@ $('.btn-ok-update').on("click", function (e) {
 			mselect = document.querySelector("#brb2").value;
 			minput = document.querySelector("#brbInput2").value;
 			if (minput == "" || minput == null) {
-				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput");
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput2");
 				return 0;
 			}
 			else if ((minput.length < 11 || minput.length > 11) && !/\D/.test(minput) == true) {
-				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "brbInput");
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "brbInput2");
 				return 0;
 			}
 			else if (minput.match(/\d/g).length === 11 && !/\D/.test(minput) == true) {
 				return 1;
 			}
 			else {
-				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number not valid!`, "brbInput");
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number not valid!`, "brbInput2");
 				return 0;
 			}
 		}
@@ -944,19 +954,19 @@ $('.btn-ok-update').on("click", function (e) {
 	var v9 = () => {
 		if (bbank) {
 			bselect = "yes";
-			bName = document.querySelector("#bName22").value;
-			branchName = document.querySelector("#branchName22").value;
-			accountNo = document.querySelector("#accountNo22").value;
+			bName = document.querySelector("#bName2").value;
+			branchName = document.querySelector("#branchName2").value;
+			accountNo = document.querySelector("#accountNo2").value;
 			if (bName == "" || bName == null) {
-				modalErrorShowForCreateUpdateMerchant(`<strong>Bank Name</strong> cannot be empty!`, "bName");
+				modalErrorShowForCreateUpdateMerchant(`<strong>Bank Name</strong> cannot be empty!`, "bName2");
 				return 0;
 			}
 			else if (branchName == "" || branchName == null) {
-				modalErrorShowForCreateUpdateMerchant(`<strong>Branch Name</strong> cannot be empty!`, "branchName");
+				modalErrorShowForCreateUpdateMerchant(`<strong>Branch Name</strong> cannot be empty!`, "branchName2");
 				return 0;
 			}
 			else if (accountNo == "" || accountNo == null) {
-				modalErrorShowForCreateUpdateMerchant(`<strong>Account No</strong> cannot be empty!`, "accountNo");
+				modalErrorShowForCreateUpdateMerchant(`<strong>Account No</strong> cannot be empty!`, "accountNo2");
 				return 0;
 			}
 			else {
