@@ -763,6 +763,7 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 
 	$("#formUpdate").show();
 	$("#modalApproveForm").show();
+	document.querySelector("#myModalForm .modal-body").style.paddingBottom = "10rem";
 });
 
 function modalErrorShowForCreateUpdateMerchant(message, focusWehere) {

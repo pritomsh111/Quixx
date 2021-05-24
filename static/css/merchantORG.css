@@ -8,7 +8,7 @@
   background-color: white;
 }
 
-#merchantCreate form {
+#merchantCreate form, .merchantUpdate {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   row-gap: 2rem;
@@ -43,6 +43,11 @@ input {
 
 #aRow:hover {
   background-color: red;
+}
+
+.modal-lg {
+  max-width: 90%;
+  max-height: 90%;
 }
 
 #merchantCreate {
