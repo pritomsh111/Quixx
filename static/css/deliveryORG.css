@@ -436,6 +436,19 @@ input {
   padding: 0.6rem 1rem;
 }
 
+#createDelivery, #createDeliveryQ, #createDeliverywithExcel {
+  margin-top: -5rem;
+}
+
+.p-5 {
+  padding-bottom: 0rem !important;
+}
+
+#showMapBtn, #showMapBtnU {
+  padding: 0.6rem;
+  border-width: 0;
+}
+
 ::selection {
   color: #0066b3;
   background-color: #ffcf5c;

@@ -2484,7 +2484,7 @@ button.close {
 
 .p-5 {
   padding: 2rem !important;
-  padding-bottom: 0 !important;
+  /* padding-bottom: 1rem !important; */
 }
 
 @media (max-width: 540px) {
@@ -4034,7 +4034,7 @@ fieldset[disabled][disabled] .btn.btn-raised, .btn.btn-raised.disabled, .btn.btn
 }
 
 form {
-  margin-bottom: 1.125rem;
+  /* margin-bottom: 1.125rem; */
 }
 
 .navbar form {
@@ -7210,6 +7210,9 @@ a .material-icons {
 }
 
 @media (max-width:450px) {
+  .form-check, label {
+    font-size: 12px;
+  }
   *, *::after, *::before {
     font-size: 0.85rem;
   }

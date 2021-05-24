@@ -89,6 +89,10 @@ input[type="checkbox"]+label {
   margin-bottom: 0.5rem;
 }
 
+#btn.btn.btn-outline.chkkk {
+  padding: 0.8rem;
+}
+
 #deliveryManCreate .dmc-1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -131,7 +135,14 @@ input[type="checkbox"]+label {
   height: 40px;
 }
 
+form {
+  margin-bottom: 1.125rem;
+}
+
 @media (max-width:450px) {
+  #btn.btn.btn-outline.chkkk {
+    padding: 0.4rem;
+  }
   #senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
     padding: 0.2rem;
     text-align-last: left;
@@ -140,5 +151,10 @@ input[type="checkbox"]+label {
   }
   #managers {
     width: 150px;
+  }
+  .deliveryArea {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    place-items: flex-start;
   }
 }

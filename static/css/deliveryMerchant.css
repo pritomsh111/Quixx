@@ -431,12 +431,25 @@ input {
 	transition: padding 250ms ease-in;
 }
 
+.p-5 {
+	padding-bottom: 0rem !important;
+}
+
+form {
+	margin-bottom: 1.125rem;
+}
+
 .showMap, .showMapU {
 	transform: scaleY(0);
 	opacity: 0;
 	height: 0;
 	transform-origin: 0% 100%;
 	transition: transform 250ms ease-in;
+}
+
+#showMapBtn, #showMapBtnU {
+	padding: 0.6rem;
+	border-width: 0;
 }
 
 .receiver_information.vis-map, .receiver_informationU.vis-map {

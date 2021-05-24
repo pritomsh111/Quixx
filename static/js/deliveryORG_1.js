@@ -306,6 +306,7 @@ function initialize() {
 
 document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
+	this.blur();
 	document.querySelector(".receiver_information").classList.toggle("vis-map");
 	setTimeout(() => {
 		google.maps.event.trigger(map2, "resize");
@@ -315,6 +316,7 @@ document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 
 document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
 	e.preventDefault();
+	this.blur();
 	document.querySelector(".receiver_informationU").classList.toggle("vis-map");
 	setTimeout(() => {
 		window.map.setZoom(15);
