@@ -13,11 +13,6 @@
   place-items: center;
 }
 
-.form-control {
-  display: block;
-  width: 70%;
-}
-
 @media (max-width: 450px) {
   #createCriteria {
     grid-template-columns: 1fr;
@@ -121,10 +116,12 @@ input[type="checkbox"]+label {
   #deliveryManCreate .dmc-1 {
     grid-template-columns: 1fr;
     padding: 1rem;
+    row-gap: 1.5rem;
   }
   #deliveryManCreate .dmc-2 {
     grid-template-columns: 1fr;
     padding: 1rem;
+    row-gap: 1.5rem;
   }
 }
 
