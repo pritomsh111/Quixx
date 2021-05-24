@@ -96,11 +96,35 @@ function formatApproved(d) {
 		'<td>' + d.person_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
+		'<td>Business Category:</td>' +
+		'<td>' + d.business_filed + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Mobile Banking:</td>' +
+		'<td>' + d.payment_method_mobile + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>' + d.payment_method_mobile + ' Number:</td>' +
+		'<td>' + d.payment_method_mobile_number + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Name:</td>' +
+		'<td>' + d.payment_method_bank_name + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Branch:</td>' +
+		'<td>' + d.payment_method_bank_branch + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Account No:</td>' +
+		'<td>' + d.payment_method_bank_account + '</td>' +
+		'</tr>' +
+		'<tr>' +
 		'<td>Email:</td>' +
 		'<td>' + d.email + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Busienss Field:</td>' +
+		'<td>Business Category:</td>' +
 		'<td>' + d.business_filed + '</td>' +
 		'</tr>' +
 		'</table>';
@@ -116,7 +140,7 @@ function formatUnapproved(d) {
 		'<td>' + d.email + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Busienss Field:</td>' +
+		'<td>Business Category:</td>' +
 		'<td>' + d.business_filed + '</td>' +
 		'</tr>' +
 		'</table>';
@@ -139,6 +163,25 @@ function formatActivated(d) {
 		'<td>Phone Number:</td>' +
 		'<td>' + d.phone_number + '</td>' +
 		'</tr>' +
+		'<td>Mobile Banking:</td>' +
+		'<td>' + d.payment_method_mobile + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>' + d.payment_method_mobile + ' Number:</td>' +
+		'<td>' + d.payment_method_mobile_number + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Name:</td>' +
+		'<td>' + d.payment_method_bank_name + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Branch:</td>' +
+		'<td>' + d.payment_method_bank_branch + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Account No:</td>' +
+		'<td>' + d.payment_method_bank_account + '</td>' +
+		'</tr>' +
 		'<tr>' +
 		'<td>Per Delivery Cost:</td>' +
 		'<td>' + d.per_delivery_cost + '</td>' +
@@ -148,7 +191,7 @@ function formatActivated(d) {
 		'<td>' + d.cod_percentage + "%" + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Busienss Field:</td>' +
+		'<td>Business Category:</td>' +
 		'<td>' + d.business_filed + '</td>' +
 		'</tr>' +
 		'</table>';
@@ -192,8 +235,7 @@ var approvedMer = () => {
 			{ "targets": 8, "data": "cod_percentage" },
 			{
 				"orderable": false, "targets": 9, "data": null, render: function (data, type, row) {
-
-					return '<button id="' + row.merchant_id + '$$' + row.org_name + '$$' + row.person_name + '$$' + row.email + '$$' + row.phone_number + '$$' + row.business_filed + '$$' + row.per_delivery_cost + '$$' + row.cod_percentage + '" class="btn-round btn-outline btn updateIT" style="font-size:13px">Update</button>'
+					return '<button id="' + row.merchant_id + '$$' + row.org_name + '$$' + row.person_name + '$$' + row.email + '$$' + row.phone_number + '$$' + row.business_filed + '$$' + row.per_delivery_cost + '$$' + row.cod_percentage + '$$' + row.payment_method_mobile + '$$' + row.payment_method_mobile_number + '$$' + row.payment_method_bank + '$$' + row.payment_method_bank_name + '$$' + row.payment_method_bank_branch + '$$' + row.payment_method_bank_account + '" class="btn-round btn-outline btn updateIT" style="font-size:13px">Update</button>'
 				}
 			}
 		],
@@ -755,6 +797,13 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	document.getElementById('per_cost').value = arr[6];
 	document.getElementById('cod_per').value = arr[7];
 
+	document.querySelector("#brb2").value;
+	document.querySelector("#brbInput2").value;
+
+	document.querySelector("#bName22").value;
+	document.querySelector("#branchName22").value;
+	document.querySelector("#accountNo22").value;
+
 	modalForm();
 	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant?";
 
@@ -780,6 +829,8 @@ $('.btn-ok-update').on("click", function (e) {
 	var business_filed = document.getElementById('business_filed2').value;
 	var per_delivery_cost = document.getElementById('per_cost').value;
 	var cod_per = document.getElementById('cod_per').value;
+	var bselect, bName, branchName, accountNo;
+	var mselect, minput;
 	var v1 = () => {
 		if (org_name == "" || org_name == null) {
 			modalErrorShowForCreateUpdateMerchant("Company Name cannot be empty!", "org_name2");
@@ -864,7 +915,61 @@ $('.btn-ok-update').on("click", function (e) {
 		}
 	}
 
-	if (v1() == 1 && v2() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1 && v7() == 1) {
+	var v8 = () => {
+		if (mbank) {
+			mselect = document.querySelector("#brb2").value;
+			minput = document.querySelector("#brbInput2").value;
+			if (minput == "" || minput == null) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput");
+				return 0;
+			}
+			else if ((minput.length < 11 || minput.length > 11) && !/\D/.test(minput) == true) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "brbInput");
+				return 0;
+			}
+			else if (minput.match(/\d/g).length === 11 && !/\D/.test(minput) == true) {
+				return 1;
+			}
+			else {
+				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number not valid!`, "brbInput");
+				return 0;
+			}
+		}
+		else {
+			mselect = "";
+			minput = "";
+			return 1;
+		}
+	}
+	var v9 = () => {
+		if (bbank) {
+			bselect = "yes";
+			bName = document.querySelector("#bName22").value;
+			branchName = document.querySelector("#branchName22").value;
+			accountNo = document.querySelector("#accountNo22").value;
+			if (bName == "" || bName == null) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>Bank Name</strong> cannot be empty!`, "bName");
+				return 0;
+			}
+			else if (branchName == "" || branchName == null) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>Branch Name</strong> cannot be empty!`, "branchName");
+				return 0;
+			}
+			else if (accountNo == "" || accountNo == null) {
+				modalErrorShowForCreateUpdateMerchant(`<strong>Account No</strong> cannot be empty!`, "accountNo");
+				return 0;
+			}
+			else {
+				return 1
+			}
+		}
+		else {
+			bselect = "no";
+			bName = branchName = accountNo = "";
+			return 1;
+		}
+	}
+	if (v1() == 1 && v2() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1 && v7() == 1 && v8() == 1 && v9() == 122) {
 		modalFormBeforeSuccess();
 		var trimmer = cod_per.trim();
 		trimmer = parseInt(trimmer);
@@ -882,7 +987,13 @@ $('.btn-ok-update').on("click", function (e) {
 						"email": email,
 						"business_filed": business_filed,
 						"per_delivery_cost": per_delivery_cost,
-						"cod_percentage": trimmer
+						"cod_percentage": trimmer,
+						"payment_method_mobile": mselect,
+						"payment_method_mobile_number": minput,
+						"payment_method_bank": bselect,
+						"payment_method_bank_name": bName,
+						"payment_method_bank_branch": branchName,
+						"payment_method_bank_account": accountNo
 					}),
 				headers:
 				{

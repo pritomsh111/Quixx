@@ -84,7 +84,7 @@ $(async function () {
 					$(option).html(data.data[i]);
 					$(option2).html(data.data[i]);
 					$("#brb").append(option);
-					$("#brb2").append(option);
+					$("#brb2").append(option2);
 				}
 				document.querySelector("#brb").selectedIndex = 0;
 			}
