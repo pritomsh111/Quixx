@@ -445,7 +445,7 @@ input {
 }
 
 #showMapBtn, #showMapBtnU {
-  padding: 0.6rem;
+  padding: 0.6rem 1rem;
   border-width: 0;
 }
 

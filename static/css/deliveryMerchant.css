@@ -444,7 +444,7 @@ input {
 }
 
 #showMapBtn, #showMapBtnU {
-	padding: 0.6rem;
+	padding: 0.6rem 1rem;
 	border-width: 0;
 }
 
@@ -488,6 +488,15 @@ input {
 
 .row.navBtn>button {
 	padding: 0.4rem;
+}
+
+#createDelivery, #createDeliveryQ, #criterionSubmit {
+	padding: 0.6rem 1rem;
+}
+
+#updateBtn button {
+	margin-top: 19rem;
+	padding: 0.6rem 1rem;
 }
 
 @media (max-width:450px) {
@@ -534,10 +543,10 @@ input {
 	.row.navBtn>button {
 		padding: 0.2rem;
 	}
-}
-
-#createDelivery, #createDeliveryQ, #criterionSubmit {
-	padding: 0.6rem 1rem;
+	#updateBtn button {
+		margin-top: 21rem;
+		padding: 0.6rem 1rem;
+	}
 }
 
 ::selection {

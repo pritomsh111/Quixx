@@ -169,7 +169,6 @@ var fillInputDetails = (types, values = undefined) => {
     let input = document.createElement("input");
     input.type = "text";
     // identidier.value = values !== undefined ? values : "";
-    input.style.cssText = "width: 50%;";
     input.placeholder = placeHolder;
     input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
     input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
