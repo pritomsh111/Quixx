@@ -41,56 +41,36 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body table-responsive blur">
-                        <form class="p-5" style="color: #0066b3; text-align: center" id="formDD">
+                        <form class="p-5" style="color: #0066b3; text-align: left" id="formDD">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <h5 style="text-align: center; color: #0066b3">
-                                        Select Criterion:
-                                    </h5>
-                                    <select class="browser-default custom-select col-lg-12 btn" id="criterion" style="text-align-last: center; width: 80%; height: 46px"></select>
+                                <div>
+                                    <h4>
+                                        Select Type:
+                                    </h4>
+                                    <select class="browser-default custom-select col-lg-12 btn" id="criterion"></select>
                                 </div>
-                                <div class="col-lg-6">
-                                    <h5 style="text-align: center; color: #0066b3" id="2ndCol">
+                                <div>
+                                    <h4 id="2ndCol">
                                         Input:
-                                    </h5>
+                                    </h4>
                                     <input
                                         type="text"
-                                        style="color: #000; text-align: center; margin-top: 30px"
+                                        style="margin-top: 25px"
                                         id="ccString"
                                         class="form-control mb-4"
                                         placeholder=""
                                     >
                                     <input
                                         type="date"
-                                        style="color: #000; text-align: center; margin-top: 30px"
+                                        style="margin-top: 25px"
                                         id="ccDate"
                                         class="form-control mb-4"
                                         placeholder=""
                                     >
-                                    <select class="browser-default custom-select col-lg-12 btn" id="deliveryStatus" style="
-                      text-align-last: center;
-                      width: 80%;
-                      height: 46px;
-                      color: #0066b3;
-                    "></select>
-                                    <select class="browser-default custom-select col-lg-12 btn" id="paymentMethod" style="
-                      text-align-last: center;
-                      width: 80%;
-                      height: 46px;
-                      color: #0066b3;
-                    "></select>
-                                    <select class="browser-default custom-select col-lg-12 btn" id="deliveryDistrict" style="
-                    text-align-last: center;
-                    width: 80%;
-                    height: 46px;
-                    color: #0066b3;
-                  "></select>
-                                    <select class="browser-default custom-select col-lg-12 btn" id="deliveryArea" style="
-                      text-align-last: center;
-                      width: 80%;
-                      height: 46px;
-                      color: #0066b3;
-                    "></select>
+                                    <select class="browser-default custom-select col-lg-12 btn" id="deliveryStatus"></select>
+                                    <select class="browser-default custom-select col-lg-12 btn" id="paymentMethod"></select>
+                                    <select class="browser-default custom-select col-lg-12 btn" id="deliveryDistrict"></select>
+                                    <select class="browser-default custom-select col-lg-12 btn" id="deliveryArea"></select>
                                 </div>
                             </div>
                         </form>
@@ -192,7 +172,7 @@
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
             <div class="modal-body text-center">
-                <p style="color: #0066b3">Please Select Criterion!</p>
+                <p style="color: #0066b3">Please Select Type!</p>
                 <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
                     Try Again
                 </button>

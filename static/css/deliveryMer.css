@@ -155,3 +155,23 @@ table.dataTable.responsive tbody tr.odd, table.dataTable.display tbody tr.odd, t
 table.dataTable.responsive tbody tr.odd.parent, table.dataTable.display tbody tr.odd.parent, table.dataTable.responsive tbody tr.even.parent, table.dataTable.display tbody tr.even.parent {
   background-color: #ffcf5c;
 }
+
+.p-5.sear>.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-gap: 2rem;
+  row-gap: 2rem;
+}
+
+#criterion, #deliveryManList, #deliveryStatus, #paymentMethod, #deliveryDistrict, #deliveryArea {
+  padding: 0.4rem;
+}
+
+@media(max-width:450px) {
+  .p-5.sear>.row {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  #criterion, #deliveryManList, #deliveryStatus, #paymentMethod, #deliveryDistrict, #deliveryArea {
+    padding: 0.3rem;
+  }
+}

@@ -3,7 +3,7 @@
 }
 
 .card.a, .card.b, .card.c, .card.d {
-	margin-top: -.4rem;
+	margin-top: -1.4rem;
 }
 
 .row.navBtn {
@@ -42,8 +42,7 @@ table#dtBasicExampleAp.dataTable tbody tr:hover>.sorting_1 {
 }
 
 #map {
-	margin-top: -29px;
-	height: 60%;
+	height: 70%;
 	width: 94.5%;
 	border: 2px;
 	border-radius: 10px;
@@ -58,9 +57,9 @@ table#dtBasicExampleAp.dataTable tbody tr:hover>.sorting_1 {
 	}
 }
 
-@media (max-width: 783px) {
+@media (max-width: 450px) {
 	.main-panel>.footer {
-		margin-top: 54%;
+		margin-top: 60%;
 	}
 }
 
