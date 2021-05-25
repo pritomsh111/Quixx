@@ -40,6 +40,10 @@ sup {
   background: #fff;
 }
 
+.dateBlock input[type="date"], .dateBlock input[type="month"] {
+  height: 1.2rem;
+}
+
 .btn.btnDash {
   margin: 0rem 0 1.2rem auto;
   background: #0d324d;
