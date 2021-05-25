@@ -86,6 +86,13 @@ var invoice = (id) => {
 };
 
 function formatApproved(d) {
+
+	var payment_method_mobile = d.payment_method_mobile ? d.payment_method_mobile : "";
+	var payment_method_mobile_number = d.payment_method_mobile_number ? d.payment_method_mobile_number : "";
+	var payment_method_bank_name = d.payment_method_bank_name ? d.payment_method_bank_name : "";
+	var payment_method_bank_branch = d.payment_method_bank_branch ? d.payment_method_bank_branch : "";
+	var payment_method_bank_account = d.payment_method_bank_account ? d.payment_method_bank_account : "";
+
 	return '<table id="innerRowTable" style="border-spacing: 2rem; text-align: left">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
@@ -101,23 +108,23 @@ function formatApproved(d) {
 		'</tr>' +
 		'<tr>' +
 		'<td>Mobile Banking:</td>' +
-		'<td>' + d.payment_method_mobile + '</td>' +
+		'<td>' + payment_method_mobile + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>' + d.payment_method_mobile + ' Number:</td>' +
-		'<td>' + d.payment_method_mobile_number + '</td>' +
+		'<td>' + payment_method_mobile + ' Number:</td>' +
+		'<td>' + payment_method_mobile_number + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Bank Name:</td>' +
-		'<td>' + d.payment_method_bank_name + '</td>' +
+		'<td>' + payment_method_bank_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Bank Branch:</td>' +
-		'<td>' + d.payment_method_bank_branch + '</td>' +
+		'<td>' + payment_method_bank_branch + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Bank Account No:</td>' +
-		'<td>' + d.payment_method_bank_account + '</td>' +
+		'<td>' + payment_method_bank_account + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Email:</td>' +
@@ -146,6 +153,13 @@ function formatUnapproved(d) {
 		'</table>';
 }
 function formatActivated(d) {
+
+	var payment_method_mobile = d.payment_method_mobile ? d.payment_method_mobile : "";
+	var payment_method_mobile_number = d.payment_method_mobile_number ? d.payment_method_mobile_number : "";
+	var payment_method_bank_name = d.payment_method_bank_name ? d.payment_method_bank_name : "";
+	var payment_method_bank_branch = d.payment_method_bank_branch ? d.payment_method_bank_branch : "";
+	var payment_method_bank_account = d.payment_method_bank_account ? d.payment_method_bank_account : "";
+
 	return '<table id="innerRowTable" style="border-spacing: 1rem; text-align: left">' +
 		'<tr>' +
 		'<td>Merchant ID:</td>' +
@@ -164,23 +178,23 @@ function formatActivated(d) {
 		'<td>' + d.phone_number + '</td>' +
 		'</tr>' +
 		'<td>Mobile Banking:</td>' +
-		'<td>' + d.payment_method_mobile + '</td>' +
+		'<td>' + payment_method_mobile + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>' + d.payment_method_mobile + ' Number:</td>' +
-		'<td>' + d.payment_method_mobile_number + '</td>' +
+		'<td>' + payment_method_mobile + ' Number:</td>' +
+		'<td>' + payment_method_mobile_number + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Bank Name:</td>' +
-		'<td>' + d.payment_method_bank_name + '</td>' +
+		'<td>' + payment_method_bank_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Bank Branch:</td>' +
-		'<td>' + d.payment_method_bank_branch + '</td>' +
+		'<td>' + payment_method_bank_branch + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Bank Account No:</td>' +
-		'<td>' + d.payment_method_bank_account + '</td>' +
+		'<td>' + payment_method_bank_account + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Per Delivery Cost:</td>' +

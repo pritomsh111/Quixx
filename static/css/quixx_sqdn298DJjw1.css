@@ -4393,6 +4393,9 @@ textarea {
   .navbar.navbar-absolute {
     padding-top: 0px;
   }
+  footer .container-fluid {
+    display: none;
+  }
 }
 
 .navbar .navbar-wrapper {
@@ -5298,7 +5301,7 @@ div[id^="hide"]>div>div>div[class*="col-md"]>button {
 .main-panel {
   position: relative;
   float: right;
-  width: calc(100% - 232px);
+  width: calc(100% - 234px);
 }
 
 .main-panel>.content {
