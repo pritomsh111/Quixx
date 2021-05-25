@@ -251,7 +251,7 @@ input {
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #000;
-  opacity: 0.8;
+  opacity: 0.7;
   /* Firefox */
 }
 
@@ -266,15 +266,20 @@ input {
 }
 
 #formD>div:first-child, #formDQ>div:first-child {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
 #formD>div:not(:first-child), #formDQ>div:not(:first-child) {
   margin: 5rem 0;
 }
 
-#formD>div:nth-of-type(2), #formDQ>div:nth-of-type(2) {
-  margin: 4rem 0;
+@media (max-width:540px) {
+  #formDQ>div:first-child {
+    margin: 2.5rem 0;
+  }
+  #formD>div:nth-of-type(1) {
+    margin: 2.5rem 0;
+  }
 }
 
 .sender_information, .sender_informationQ, .receiver_information, .receiver_informationQ, .receiver_informationU, .product_information, .product_informationQ, .product_informationU, .delivery_information, .delivery_informationU, .delivery_informationQ {

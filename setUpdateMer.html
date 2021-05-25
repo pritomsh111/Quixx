@@ -254,21 +254,4 @@ div.hideKoro3{
     </div>
 </div>
 <script src="static/js/updateMer.js"></script>
-<script>
-mq = window.matchMedia( "(min-width: 730px)" );
-if (mq.matches) {
-	var daynight=document.getElementById("map");
-	var daynight2=document.getElementById("updateMerchant");
-	daynight.style.width="86.4%";	
-	daynight2.style.marginTop="1px";	
-  // window width is at least 500px
-} else {
-	var daynight=document.getElementById("map");
-	var daynight2=document.getElementById("updateMerchant");
-	daynight2.style.marginTop="20px";
-	daynight.style.width="70%";
-  // window width is less than 500px
-}
-</script>
-<script></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&libraries=places&callback=initAutocomplete" async defer></script>
