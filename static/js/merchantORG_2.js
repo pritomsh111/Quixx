@@ -983,6 +983,25 @@ $('.btn-ok-update').on("click", function (e) {
 		modalFormBeforeSuccess();
 		var trimmer = cod_per.trim();
 		trimmer = parseInt(trimmer);
+		var datap = JSON.stringify
+			({
+				"merchant_id": arr[0],
+				"user_id": org_ID,
+				"org_name": org_name,
+				"person_name": person_name,
+				"phone_number": phone_number,
+				"email": email,
+				"business_filed": business_filed,
+				"per_delivery_cost": per_delivery_cost,
+				"cod_percentage": trimmer,
+				"payment_method_mobile": mselect,
+				"payment_method_mobile_number": minput,
+				"payment_method_bank": bselect,
+				"payment_method_bank_name": bName,
+				"payment_method_bank_branch": branchName,
+				"payment_method_bank_account": accountNo
+			});
+		console.log(datap);
 		$.ajax
 			({
 				type: "PUT",
