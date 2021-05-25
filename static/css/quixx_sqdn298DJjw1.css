@@ -26,6 +26,10 @@ tr.shown td.details-control i {
   transform: rotate(90deg);
 }
 
+select {
+  height: 38px !important;
+}
+
 table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd, table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
   transition: background-color 150ms ease-in;
 }
@@ -2357,6 +2361,9 @@ button.close {
 }
 
 @media (max-width: 450px) {
+  select {
+    height: 28px !important;
+  }
   .modal-header, .modal-footer {
     padding: 0.6rem;
   }
@@ -4882,12 +4889,13 @@ h2.title {
   display: grid;
   place-items: center;
   border-width: 0;
-  position: relative;
-  left: -1.3rem;
+  position: fixed;
+  left: 14rem;
   top: -.1rem;
   border: 0;
   background: #fffeff;
   box-shadow: none;
+  transition: transform 350ms ease-in, left 350ms ease-in;
 }
 
 #changeWidth i {
@@ -4896,7 +4904,7 @@ h2.title {
 }
 
 .main-panel.sidebar-smol #changeWidth {
-  left: -1.5rem;
+  left: 4.5rem;
 }
 
 .main-panel.sidebar-smol #changeWidth i {

@@ -508,11 +508,11 @@ input {
 	}
 	.sender_information, .receiver_information, .product_information, .receiver_informationQ, .product_informationQ, .receiver_informationU, .product_informationU {
 		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-		row-gap: 1.5rem;
+		row-gap: 1rem;
 	}
 	.delivery_information, .delivery_informationQ, .delivery_informationU {
 		grid-template-columns: 1fr;
-		row-gap: 1.5rem;
+		row-gap: 1rem;
 	}
 	.criteria, .criteriaU, .criteriaQ {
 		display: block;

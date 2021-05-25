@@ -163,7 +163,7 @@ form {
 @media (max-width:450px) {
   #merchantCreate form {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    row-gap: 1.5rem;
+    row-gap: 1rem;
   }
   .row.navBtn>button {
     padding: 0.2rem;

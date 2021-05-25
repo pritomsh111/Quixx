@@ -116,16 +116,25 @@ input[type="checkbox"]+label {
   padding: 2rem;
 }
 
+#DeliveryMan_CREATION {
+  margin-top: -1.8rem;
+  padding: 0.6rem 1rem;
+}
+
 @media (max-width: 450px) {
+  #DeliveryMan_CREATION {
+    margin-top: -1.9rem;
+    padding: 0.4rem;
+  }
   #deliveryManCreate .dmc-1 {
     grid-template-columns: 1fr;
     padding: 1rem;
-    row-gap: 1.5rem;
+    row-gap: 1rem;
   }
   #deliveryManCreate .dmc-2 {
     grid-template-columns: 1fr;
     padding: 1rem;
-    row-gap: 1.5rem;
+    row-gap: 1rem;
   }
 }
 

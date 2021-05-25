@@ -414,7 +414,7 @@ function formatUnassigned(d) {
 		'<td>' + receiver_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Receiver\'s Phone Number:</td>' +
+		'<td>Receiver\'s Phone:</td>' +
 		'<td>' + receiver_phone_number + '</td>' +
 		'</tr>' +
 		'<tr>' +
@@ -500,7 +500,7 @@ function formatUnassigned(d) {
 		'<td>' + sender_name + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Sender\'s Phone Number:</td>' +
+		'<td>Sender\'s Phone:</td>' +
 		'<td>' + sender_phone_number + '</td>' +
 		'</tr>' +
 		'<tr>' +
