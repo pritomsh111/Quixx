@@ -2361,9 +2361,6 @@ button.close {
 }
 
 @media (max-width: 450px) {
-  select {
-    height: 28px !important;
-  }
   .modal-header, .modal-footer {
     padding: 0.6rem;
   }
@@ -5306,7 +5303,7 @@ div[id^="hide"]>div>div>div[class*="col-md"]>button {
 
 .main-panel>.content {
   margin-top: 12px;
-  padding: 30px 10px 10px;
+  padding: 30px 0px 10px 10px;
   min-height: calc(100vh - 123px);
 }
 
@@ -6391,8 +6388,8 @@ a .material-icons {
 
 @media all and (max-width: 991px) {
   [class*="navbar-expand-"]>.container, [class*="navbar-expand-"]>.container-fluid {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1px;
+    padding-right: 2px;
   }
   .navbar .navbar-collapse .navbar-nav>li.button-container {
     padding: 15px;
@@ -7230,6 +7227,10 @@ a .material-icons {
 }
 
 @media (max-width:450px) {
+  [class*="navbar-expand-"]>.container, [class*="navbar-expand-"]>.container-fluid {
+    padding-left: 2px;
+    padding-right: 4px;
+  }
   .form-check, label {
     font-size: 12px;
   }
