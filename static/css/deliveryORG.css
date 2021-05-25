@@ -389,7 +389,32 @@ input {
   padding: 0.4rem;
 }
 
+#createDelivery, #createDeliveryQ, #createDeliverywithExcel, #assignAllDeliveries {
+  padding: 0.6rem 1rem;
+}
+
+#createDelivery, #createDeliveryQ, #createDeliverywithExcel {
+  margin-top: -5rem;
+}
+
+.p-5 {
+  padding-bottom: 0rem !important;
+}
+
+#showMapBtn, #showMapBtnU, #btnAuto {
+  padding: 0.6rem 1rem;
+}
+
+#btnAuto {
+  left: 0;
+  top: 1.1rem;
+}
+
 @media (max-width:450px) {
+  #showMapBtn, #showMapBtnU, #btnAuto {
+    padding: 0.4rem;
+    border-width: 0;
+  }
   #managers2Q, #quiccSender, #productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
     padding: 0.2rem;
     text-align-last: left;
@@ -430,23 +455,6 @@ input {
   #formUpdateDC>div:first-child {
     margin: 2rem 0 4rem;
   }
-}
-
-#createDelivery, #createDeliveryQ, #createDeliverywithExcel, #assignAllDeliveries {
-  padding: 0.6rem 1rem;
-}
-
-#createDelivery, #createDeliveryQ, #createDeliverywithExcel {
-  margin-top: -5rem;
-}
-
-.p-5 {
-  padding-bottom: 0rem !important;
-}
-
-#showMapBtn, #showMapBtnU {
-  padding: 0.6rem 1rem;
-  border-width: 0;
 }
 
 ::selection {

@@ -1923,7 +1923,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 
 							$('#tickD2').show();
 
-							$("#sureD2").html(`Delivery ID: ${data.data.delivery_Id} added! Thank You!`);
+							$("#sureD2").html(`Delivery ID: <strong>${data.data.delivery_Id}</strong> added! Thank You!`);
 						}, 500);
 						setTimeout(function () {
 
@@ -2261,12 +2261,12 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 							var keys = Object.keys(data.data);
 							$('#tickD2').show();
 							$("#sureD2").html("Delivery Created!");
-							$("#sureD22").html(`Delivery ID: ${data.data.delivery_Id}`);
+							$("#sureD22").html(`Delivery ID: <strong>${data.data.delivery_Id}</strong>`);
 							if (keys[1] == 'auto_assign_done') {
 								if (data.data.auto_assign_done) {
 									$("#sureD2Z").html("This Delivery Has Been Auto Assigned To A Delivery Man Based On Receiver's Area and Delivery Man's Selected Area and His Availability!");
-									$("#sureD2X").html(`Assigned Delivery Man Name: ${data.data.assign_delivery_man_name}`);
-									$("#sureD2Y").html(`Assigned Delivery Man Phone Number: ${data.data.assign_delivery_man_phone}`);
+									$("#sureD2X").html(`Assigned Delivery Man Name: <strong>${data.data.assign_delivery_man_name}</strong>`);
+									$("#sureD2Y").html(`Assigned Delivery Man Phone Number: <strong>${data.data.assign_delivery_man_phone}</strong>`);
 									$("#sureD2X").show();
 									$("#sureD2Y").show();
 								}
@@ -2746,10 +2746,10 @@ function doIt(i, lengx) {
 					},
 					success: function (data) {
 						if (i == 0) {
-							document.getElementById("sureD2ZZ").innerHTML = `<br>${i + 1} Delivery Created!<br>`;
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong>${i + 1}</strong> Delivery Created!<br>`;
 						}
 						else {
-							document.getElementById("sureD2ZZ").innerHTML = `<br>${i + 1} Deliveries Created!<br>`;
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong>${i + 1}</strong> Deliveries Created!<br>`;
 						}
 						keysx[i] = Object.keys(data.data);
 						extrax1[i] = data.data;
@@ -2760,24 +2760,24 @@ function doIt(i, lengx) {
 							if (extrax1[i].auto_assign_done) {
 								assignedDeliveryMan[i] = data.data.assign_delivery_man_name;
 								assignedDeliveryManPhone[i] = data.data.assign_delivery_man_phone;
-								stringx += `Delivery ID: ${deliveryList[i]}<br>`;
-								stringx += `Assigned Delivery Man Name: ${assignedDeliveryMan[i]}<br>`;
-								stringx += `Assigned Delivery Man Phone: ${assignedDeliveryManPhone[i]}<hr><br>`;
+								stringx += `Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
+								stringx += `Assigned Delivery Man Name: <strong>${assignedDeliveryMan[i]}</strong><br>`;
+								stringx += `Assigned Delivery Man Phone: <strong>${assignedDeliveryManPhone[i]}</strong><hr><br>`;
 							}
 							else {
-								stringx += `<hr>Delivery ID: ${deliveryList[i]}<br>`;
+								stringx += `<hr>Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
 								stringx += `No Delivery Man Found For Given Area!<br>`;
 							}
 						}
 						else {
-							stringx += `Delivery ID: ${deliveryList[i]}<br>`;
+							stringx += `Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
 						}
 						divElement.innerHTML += stringx;
 
 						if (data.status == 'OK') {
 							if (i == lengx - 1) {
 								setTimeout(function () {
-									$("#sureD2").html(`${i + 1} Deliveries Created!`);
+									$("#sureD2").html(`<strong>${i + 1}</strong> Deliveries Created!`);
 
 									$(".circle-loader").addClass("load-complete");
 
@@ -3093,12 +3093,12 @@ function autoAssignDeliveryManUnassingedTable(ddeliveryAutoIterator) {
 				},
 				success: function (data) {
 					if (ddeliveryAutoIterator == 0) {
-						$("#sureAssignAllAssigned").html(`${ddeliveryAutoIterator + 1} Delivery Assigned!`);
+						$("#sureAssignAllAssigned").html(`<strong>${ddeliveryAutoIterator + 1}</strong> Delivery Assigned!`);
 					}
 					else {
-						$("#sureAssignAllAssigned").html(`${ddeliveryAutoIterator + 1} Deliveries Assigned!`);
+						$("#sureAssignAllAssigned").html(`<strong>${ddeliveryAutoIterator + 1}</strong> Deliveries Assigned!`);
 					}
-					document.getElementById('sureAssignAllAssigned2').innerHTML += `Delivery ID: ${deliveryAutoID[ddeliveryAutoIterator]} Assigned<br><hr>`;
+					document.getElementById('sureAssignAllAssigned2').innerHTML += `Delivery ID: <strong>${deliveryAutoID[ddeliveryAutoIterator]}</strong> Assigned<br><hr>`;
 					if (ddeliveryAutoIterator == deliveryAutoIterator - 1) {
 
 						setTimeout(function () {

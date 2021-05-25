@@ -631,7 +631,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 
 							$('#tickD2').show();
 
-							$("#sureD2").html(`Delivery ID: ${data.data.delivery_Id} added! Thank You!`);
+							$("#sureD2").html(`Delivery ID: <strong>${data.data.delivery_Id}</strong> added! Thank You!`);
 						}, 500);
 						setTimeout(function () {
 
@@ -950,7 +950,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 
 							$('#tickD2').show();
 
-							$("#sureD2").html(`Delivery ID: ${data.data.delivery_Id} added! Thank You!`);
+							$("#sureD2").html(`Delivery ID: <strong>${data.data.delivery_Id}</strong> added! Thank You!`);
 						}, 500);
 						setTimeout(function () {
 
@@ -1370,23 +1370,23 @@ function doIt(i, lengx) {
 					},
 					success: function (data) {
 						if (i == 0) {
-							document.getElementById("sureD2ZZ").innerHTML = `<br>${i + 1} Delivery Created!<br>`;
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong>${i + 1}</strong> Delivery Created!<br>`;
 						}
 						else {
-							document.getElementById("sureD2ZZ").innerHTML = `<br>${i + 1} Deliveries Created!<br>`;
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong>${i + 1}</strong> Deliveries Created!<br>`;
 						}
 						keysx[i] = Object.keys(data.data);
 						extrax1[i] = data.data;
 						deliveryList[i] = data.data.delivery_Id;
 
 						var stringx = "";
-						stringx += `Delivery ID: ${deliveryList[i]} Created<br>`;
+						stringx += `Delivery ID: <strong>${deliveryList[i]}</strong> Created<br>`;
 						divElement.innerHTML += stringx;
 
 						if (data.status == 'OK') {
 							if (i == lengx - 1) {
 								setTimeout(function () {
-									$("#sureD2").html(`${i + 1} Deliveries Created!`);
+									$("#sureD2").html(`<strong>${i + 1}</strong> Deliveries Created!`);
 
 									$(".circle-loader").addClass("load-complete");
 
