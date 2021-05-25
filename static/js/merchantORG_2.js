@@ -812,7 +812,7 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	}
 
 	modalForm();
-	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant?";
+	document.getElementById('myModalFormHeader').innerHTML = `Merchant: <strong>${arr[1]}</strong>`;
 
 	$('.cancelMod').prop('disabled', false);
 	$('.btn-ok-update').prop('disabled', false);
@@ -1088,7 +1088,7 @@ $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 	$t = $(this);
 
 	modalForm();
-	document.getElementById('myModalFormHeader').innerHTML = "Update Merchant Criteria?";
+	document.getElementById('myModalFormHeader').innerHTML = `Update <strong>${arr[1]}</strong>'s Criteria?`;
 	Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
 		item.value = "";
 		item.disabled = false;
