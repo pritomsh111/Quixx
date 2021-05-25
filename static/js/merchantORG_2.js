@@ -1082,13 +1082,33 @@ $('.btn-ok-update').on("click", function (e) {
 	}
 });
 
+function profileGetter(id) {
+	$.ajax
+		({
+			type: "GET",
+			url: urlForAll + "profile/get/profile/" + id,
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				document.getElementById('myModalFormHeader').innerHTML = `Update <strong>${data.data.sender_name}</strong>'s Criteria?`;
+			},
+			error: function (data) {
+				document.getElementById('myModalFormHeader').innerHTML = `Update Criteria?`;
+			}
+		})
+};
+
 var criteriaMer, criteriaEnabledMer;
 $('#dtBasicExampleActivate').on('click', '.btn-EditCriteria', function () {
 	criteriaMer = $(this).attr('id');
+	profileGetter($(this).attr('id'));
 	$t = $(this);
 
 	modalForm();
-	document.getElementById('myModalFormHeader').innerHTML = `Update <strong>${arr[1]}</strong>'s Criteria?`;
 	Array.from(document.querySelectorAll(".flexIt2 input")).map(item => {
 		item.value = "";
 		item.disabled = false;
