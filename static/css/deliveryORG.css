@@ -266,11 +266,7 @@ input {
 }
 
 #formD>div:first-child, #formDQ>div:first-child {
-  font-size: 0.9rem;
-  margin-top: -20px;
-  margin-bottom: 1rem;
-  color: #0D324D;
-  text-align: center;
+  margin: 1rem 0;
 }
 
 #formD>div:not(:first-child), #formDQ>div:not(:first-child) {
@@ -442,12 +438,6 @@ input {
   .sender_information::before, .sender_informationQ::before, .receiver_information::before, .product_information::before, .delivery_information::before, .receiver_informationU::before, .product_informationU::before, .delivery_informationU::before, .receiver_informationQ::before, .product_informationQ::before, .delivery_informationQ::before {
     top: -3rem;
     font-size: 1.1rem;
-  }
-  #formD>div:first-child, #formDQ>div:first-child {
-    font-size: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
   }
   .row.navBtn>button {
     padding: 0.2rem;

@@ -99,7 +99,7 @@
   overflow-x: hidden;
 }
 
-#createDelivery, #createDeliveryQ, #criterionSubmit {
+#createDelivery, #createDeliveryQ, #criterionSubmit, #createDeliverywithExcel {
   padding: 0.6rem 1rem;
 }
 

@@ -363,22 +363,8 @@ input {
 	color: #000;
 }
 
-#formD>div:first-child, #formDQ>div:first-child {
-	font-size: 18.5px;
-	margin-top: -15px;
-	margin-bottom: 2rem;
-	color: #0D324D;
-	text-align: center;
-	margin-bottom: 0.1rem;
-}
-
-#ifmbex {
-	font-size: 18.5px;
-	margin-top: 15px;
-	margin-bottom: 0.2rem;
-	color: #0D324D;
-	text-align: center;
-	margin-bottom: 0.1rem;
+#formD>div:first-child, #formDQ>div:nth-of-type(2) {
+	margin: 1.1rem 0;
 }
 
 #formD>div:not(:first-child), #formDQ>div:not(:first-child) {
@@ -527,18 +513,6 @@ input {
 	.sender_information::before, .receiver_information::before, .product_information::before, .delivery_information::before, .receiver_informationQ::before, .product_informationQ::before, .delivery_informationQ::before, .receiver_informationU::before, .product_informationU::before, .delivery_informationU::before {
 		top: -3rem;
 		font-size: 1.1rem;
-	}
-	#formD>div:first-child, #formDQ>div:first-child {
-		font-size: 1rem;
-		margin-top: 1rem;
-		margin-bottom: 2.2rem;
-		padding-bottom: 1rem;
-	}
-	#ifmbex {
-		font-size: 1rem;
-		margin-top: 16px;
-		margin-bottom: 0.2rem;
-		margin-bottom: 0.1rem;
 	}
 	.row.navBtn>button {
 		padding: 0.2rem;
