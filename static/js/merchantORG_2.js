@@ -829,6 +829,7 @@ function modalErrorShowForCreateUpdateMerchant(message, focusWehere) {
 }
 $('.btn-ok-update').on("click", function (e) {
 	e.preventDefault();
+	console.log("HEllo");
 	var org_name = document.getElementById('org_name2').value;
 	var person_name = document.getElementById('person_name2').value;
 	var phone_number = document.getElementById('phone_number2').value;
