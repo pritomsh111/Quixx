@@ -402,7 +402,7 @@ input {
   }
   .delivery_information, .delivery_informationU, .delivery_informationQ {
     grid-template-columns: 1fr;
-    row-gap: 1.7rem;
+    row-gap: 1.5rem;
   }
   .criteria, .criteriaU {
     display: block;

@@ -1112,13 +1112,12 @@ var fillInputDetails = (types, values = undefined) => {
 
 	let identifier = document.createElement("span");
 	identifier.innerHTML = values !== undefined ? `${values.replace(/ /g, "")}:` : "";
-	identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 40%;";
+	identifier.style.cssText = "color: #0066b3; margin:1rem 0; width: 50%;";
 
 	let input = document.createElement("input");
 	input.type = "text";
 	input.placeholder = placeHolder;
 	// identidier.value = values !== undefined ? values : "";
-	input.style.cssText = "color: #0066b3;";
 	input.className = `form-control ${typeForCreate.substr(5)}${values.replace(/ /g, "")}`;
 	input.addEventListener("keyup", blockInputs.bind(this, `${typeForCreate.substr(5)}`));
 
@@ -1160,16 +1159,16 @@ function unlockAll(classNameInput) {
 	}
 }
 
-document.querySelector("#criteriaReset").addEventListener("click", function (e) {
-	e.preventDefault();
-	document.querySelectorAll(`.flexIt2`) ?
-		Array.from(document.querySelectorAll(`.flexIt2 input`))
-			.map(item => {
-				item.disabled = false;
-				item.placeholder = "";
-				item.value = "";
-			}) : null;
-});
+// document.querySelector("#criteriaReset").addEventListener("click", function (e) {
+// 	e.preventDefault();
+// 	document.querySelectorAll(`.flexIt2`) ?
+// 		Array.from(document.querySelectorAll(`.flexIt2 input`))
+// 			.map(item => {
+// 				item.disabled = false;
+// 				item.placeholder = "";
+// 				item.value = "";
+// 			}) : null;
+// });
 
 function blockInputs(classNameInput, event) {
 	if (event.key === "Backspace" || event.key === "Tab") {

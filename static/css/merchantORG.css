@@ -8,6 +8,18 @@
   background-color: white;
 }
 
+#setCriteriaDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  place-items: center;
+}
+
+@media (max-width: 450px) {
+  #setCriteriaDetails {
+    grid-template-columns: 1fr;
+  }
+}
+
 #merchantCreate form, .merchantUpdate, .bankUpdate {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -57,7 +69,6 @@ input {
 
 .modal-lg {
   max-width: 90%;
-  max-height: 90%;
 }
 
 #merchantCreate {
