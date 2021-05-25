@@ -826,6 +826,7 @@ function modalErrorShowForCreateUpdateMerchant(message, focusWehere) {
 	document.getElementById('errorButton').innerHTML = "Correct It";
 	$('#myModalError').modal('show');
 	document.getElementById(focusWehere).focus();
+	document.getElementById("myModalForm").style.overflowY = "auto";
 }
 $('.btn-ok-update').on("click", function (e) {
 	e.preventDefault();
@@ -980,7 +981,7 @@ $('.btn-ok-update').on("click", function (e) {
 			return 1;
 		}
 	}
-	if (v1() == 1 && v2() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1 && v7() == 1 && v8() == 1 && v9() == 122) {
+	if (v1() == 1 && v2() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1 && v7() == 1 && v8() == 1 && v9() == 1) {
 		modalFormBeforeSuccess();
 		var trimmer = cod_per.trim();
 		trimmer = parseInt(trimmer);
