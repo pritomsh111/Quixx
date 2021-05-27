@@ -4049,9 +4049,9 @@ fieldset[disabled][disabled] .btn.btn-raised, .btn.btn-raised.disabled, .btn.btn
   border-radius: 50%;
 }
 
-form {
-  /* margin-bottom: 1.125rem; */
-}
+/* form {
+  margin-bottom: 1.125rem;
+} */
 
 .navbar form {
   margin-bottom: 0;
@@ -7158,7 +7158,7 @@ a .material-icons {
     display: none;
   }
   .navbar-fixed-top {
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   #bodyClick {
     height: 100%;
