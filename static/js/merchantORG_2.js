@@ -811,7 +811,7 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	document.getElementById('per_cost').value = arr[6];
 	document.getElementById('cod_per').value = arr[7];
 
-	if (arr[8] && (arr[8] != "undefined" || arr[8] != "no")) {
+	if (arr[8]) {
 		document.querySelector("#mobileBank2").checked = true;
 		document.querySelector("#brb2").selectedIndex = arr[8].toUpperCase() === "BKASH" ? 0 : 1;
 		document.querySelector("#brbInput2").value = arr[9];
@@ -824,8 +824,8 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 		document.querySelector(".bankUpdate").classList.remove("paddForm2");
 	}
 
-	if (arr[10] && (arr[10] != "undefined" || arr[10] != "no")) {
-		document.querySelector("#phyBank2").checked = arr[10] === "yes" ? true : false;
+	if (arr[10] === "yes") {
+		document.querySelector("#phyBank2").checked = true;
 		document.querySelector("#bName2").value = arr[11];
 		document.querySelector("#branchName2").value = arr[12];
 		document.querySelector("#accountNo2").value = arr[13];
