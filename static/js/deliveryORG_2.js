@@ -3473,7 +3473,7 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	// }
 	del_id = arr[0];
 	document.querySelector("#updateSenId").innerHTML = `Delivery ID: <strong>${arr[0]}</strong> & Sender: <strong>${arr[15]}</strong>`;
-	document.querySelector("#updateSenId").style.fontSize = `0.9rem`;
+	document.querySelector("#updateSenId").style.fontSize = `0.95rem`;
 	creator_ID = arr[1];
 	thikKoro(arr[8], arr[11], arr[26]);
 	document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";

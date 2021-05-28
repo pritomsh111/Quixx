@@ -798,7 +798,7 @@ var arr, id_merchant_update;
 $('#dtBasicExample').on('click', '.updateIT', function () {
 	merId = $(this).attr('id');
 	id_merchant_update = $(this).attr('id');
-
+	arr = [];
 	arr = merId.split('$$');
 
 	$t = $(this);
@@ -811,18 +811,32 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	document.getElementById('per_cost').value = arr[6];
 	document.getElementById('cod_per').value = arr[7];
 
-	if (arr[8] != "undefined") {
+	if (arr[8] && (arr[8] != "undefined" || arr[8] != "no")) {
 		document.querySelector("#mobileBank2").checked = true;
 		document.querySelector("#brb2").selectedIndex = arr[8].toUpperCase() === "BKASH" ? 0 : 1;
 		document.querySelector("#brbInput2").value = arr[9];
-		document.querySelector(".bankUpdate2").classList.toggle("paddForm2");
+		document.querySelector(".bankUpdate").classList.toggle("paddForm2");
 	}
-	if (arr[10] != "undefined") {
+	else {
+		document.querySelector("#mobileBank2").checked = false;
+		document.querySelector("#brb2").selectedIndex = 0;
+		document.querySelector("#brbInput2").value = '';
+		document.querySelector(".bankUpdate").classList.remove("paddForm2");
+	}
+
+	if (arr[10] && (arr[10] != "undefined" || arr[10] != "no")) {
 		document.querySelector("#phyBank2").checked = arr[10] === "yes" ? true : false;
 		document.querySelector("#bName2").value = arr[11];
 		document.querySelector("#branchName2").value = arr[12];
 		document.querySelector("#accountNo2").value = arr[13];
-		document.querySelector(".bankUpdate2").classList.toggle("paddForm2BankPhy");
+		document.querySelector(".bankUpdate").classList.toggle("paddForm2BankPhy");
+	}
+	else {
+		document.querySelector("#phyBank2").checked = false;
+		document.querySelector("#bName2").value = "";
+		document.querySelector("#branchName2").value = "";
+		document.querySelector("#accountNo2").value = "";
+		document.querySelector(".bankUpdate").classList.remove("paddForm2BankPhy");
 	}
 
 	modalForm();
@@ -962,7 +976,7 @@ $('.btn-ok-update').on("click", function (e) {
 			}
 		}
 		else {
-			mselect = "";
+			mselect = "no";
 			minput = "";
 			return 1;
 		}
@@ -1061,11 +1075,12 @@ $('.btn-ok-update').on("click", function (e) {
 					// ];
 					var table = $('#dtBasicExample').DataTable();
 					try {
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
-						table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.cod_percentage);
-						document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
+						table.row($t.closest('tr')).data(data.data);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.cod_percentage);
+						// document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
 					}
 					catch (e) {
 						//console.log(e);
