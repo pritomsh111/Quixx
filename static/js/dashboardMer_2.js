@@ -4,7 +4,7 @@ var shouldGet = "", got = "", willGet = "";
 
 var myModalLabelzz = document.getElementById("myModalLabelzz");
 
-var one = () => {
+var one = (ax = null) => {
 	$.ajax
 		({
 			async: true,
@@ -30,7 +30,7 @@ var one = () => {
 					$('#invoice').hide();
 					$('#confirm').hide();
 				}
-				two();
+				two(ax);
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -39,7 +39,7 @@ var one = () => {
 		});
 }
 
-var two = () => {
+var two = (ax) => {
 
 	$.ajax
 		({
@@ -64,7 +64,7 @@ var two = () => {
 				else {
 					document.getElementById("mer1").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
-				three();
+				three(ax);
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -73,7 +73,7 @@ var two = () => {
 		});
 }
 
-var three = () => {
+var three = (ax) => {
 
 	$.ajax
 		({
@@ -97,7 +97,7 @@ var three = () => {
 				else {
 					document.getElementById("mer2").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
-				four();
+				four(ax);
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -105,7 +105,7 @@ var three = () => {
 			}
 		});
 }
-var four = () => {
+var four = (ax) => {
 
 	$.ajax
 		({
@@ -129,7 +129,7 @@ var four = () => {
 				else {
 					document.getElementById("mer3").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
-				five();
+				!what ? five() : null;
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -461,7 +461,7 @@ $('.btn-ok').on("click", function () {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				updateAfterSuccess2();
+				one(true);
 				$("#sure22").html("Please wait!");
 				setTimeout(function () {
 					$(".circle-loader").addClass("load-complete");
