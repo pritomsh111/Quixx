@@ -87,7 +87,7 @@ var invoice = (id) => {
 
 function formatApproved(d) {
 
-	var payment_method_mobile = d.payment_method_mobile ? d.payment_method_mobile : "";
+	var payment_method_mobile = d.payment_method_mobile && d.payment_method_mobile !== "no" ? d.payment_method_mobile : "";
 	var payment_method_mobile_number = d.payment_method_mobile_number ? d.payment_method_mobile_number : "";
 	var payment_method_bank_name = d.payment_method_bank_name ? d.payment_method_bank_name : "";
 	var payment_method_bank_branch = d.payment_method_bank_branch ? d.payment_method_bank_branch : "";
@@ -154,7 +154,7 @@ function formatUnapproved(d) {
 }
 function formatActivated(d) {
 
-	var payment_method_mobile = d.payment_method_mobile ? d.payment_method_mobile : "";
+	var payment_method_mobile = d.payment_method_mobile && d.payment_method_mobile !== "no" ? d.payment_method_mobile : "";
 	var payment_method_mobile_number = d.payment_method_mobile_number ? d.payment_method_mobile_number : "";
 	var payment_method_bank_name = d.payment_method_bank_name ? d.payment_method_bank_name : "";
 	var payment_method_bank_branch = d.payment_method_bank_branch ? d.payment_method_bank_branch : "";
@@ -811,11 +811,11 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	document.getElementById('per_cost').value = arr[6];
 	document.getElementById('cod_per').value = arr[7];
 
-	if (arr[8]) {
+	if (arr[8] && arr[8] != "no" && arr[8] !== "undefined") {
 		document.querySelector("#mobileBank2").checked = true;
 		document.querySelector("#brb2").selectedIndex = arr[8].toUpperCase() === "BKASH" ? 0 : 1;
 		document.querySelector("#brbInput2").value = arr[9];
-		document.querySelector(".bankUpdate").classList.toggle("paddForm2");
+		document.querySelector(".bankUpdate").classList.add("paddForm2");
 	}
 	else {
 		document.querySelector("#mobileBank2").checked = false;
@@ -829,7 +829,7 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 		document.querySelector("#bName2").value = arr[11];
 		document.querySelector("#branchName2").value = arr[12];
 		document.querySelector("#accountNo2").value = arr[13];
-		document.querySelector(".bankUpdate").classList.toggle("paddForm2BankPhy");
+		document.querySelector(".bankUpdate").classList.add("paddForm2BankPhy");
 	}
 	else {
 		document.querySelector("#phyBank2").checked = false;
