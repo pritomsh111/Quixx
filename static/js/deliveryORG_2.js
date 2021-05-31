@@ -34,6 +34,23 @@ var createBulkDelivery = () => {
 	// 		}
 	// 	});
 	var table = $('#dtBasicExampleMerchant').DataTable({
+		responsive: {
+			details: {
+				renderer: function (api, rowIdx, columns) {
+					var data = $.map(columns, function (col, i) {
+						return col.hidden ?
+							'<tr style="text-align:left" data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+							'<td><strong>' + col.title + ':' + '</strong></td> ' +
+							'<td>' + col.data + '</td>' +
+							'</tr>' :
+							'';
+					}).join('');
+					return data ?
+						$('<table/>').append(data) :
+						false;
+				}
+			}
+		},
 		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
@@ -55,15 +72,19 @@ var createBulkDelivery = () => {
 		},
 		"columns": [
 			{
-				"class": 'details-control',
-				"orderable": false,
-				"data": null,
-				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+				"orderable": true, "targets": 201, "data": null, render: function (data, type, row) {
+					return row.profileDto.user_id;
+				}
 			},
 			{ "targets": 0, "data": "merchantName" },
 			{
-				"targets": 20, "data": null, render: function (data, type, row) {
-					return '';
+				"targets": 202, "data": null, render: function (data, type, row) {
+					return row.profileDto.per_delivery_cost;
+				}
+			},
+			{
+				"targets": 203, "data": null, render: function (data, type, row) {
+					return row.profileDto.sender_phone_number;
 				}
 			}
 		]
@@ -74,6 +95,7 @@ var createBulkDelivery = () => {
 		// document.getElementById('body').style.pointerEvents = "auto";
 	});
 	table.clear().draw();
+	dataTableStyle();
 	$("#bulkD").show();
 }
 var createDelivery = () => {

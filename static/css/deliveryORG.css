@@ -6,6 +6,48 @@
   width: 50%;
 }
 
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+  top: 48%;
+  left: 42%;
+  height: 1.45rem;
+  width: 1.45rem;
+  margin-top: -9px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  color: #0066b3;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: "FontAwesome";
+  line-height: 1em;
+  content: "\f054";
+  background-color: unset;
+  transition: transform 250ms ease-in;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
+  background-color: unset;
+  content: "\f054";
+  transform: rotate(90deg);
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control {
+  position: relative;
+  padding-left: 40px;
+  cursor: pointer;
+}
+
+table.dataTable.responsive tbody tr.odd, table.dataTable.display tbody tr.odd, table.dataTable.responsive tbody tr.even, table.dataTable.display tbody tr.even {
+  transition: background-color 150ms ease-in;
+}
+
+table.dataTable.responsive tbody tr.odd.parent, table.dataTable.display tbody tr.odd.parent, table.dataTable.responsive tbody tr.even.parent, table.dataTable.display tbody tr.even.parent {
+  background-color: #ffcf5c;
+}
+
 table.dataTable thead th, table.dataTable thead td {
   padding: 10px 18px;
   border-bottom: 1px solid #0066b3;
