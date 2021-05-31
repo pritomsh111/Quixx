@@ -140,10 +140,10 @@ $(async function () {
 					.empty()
 					.append('<option selected="selected" value="">Choose Sender</option>')
 					;
-				$('#senderListExcel')
-					.empty()
-					.append('<option selected="selected" value="">Choose Sender</option>')
-					;
+				// $('#senderListExcel')
+				// 	.empty()
+				// 	.append('<option selected="selected" value="">Choose Sender</option>')
+				// 	;
 				$('#quiccSender')
 					.empty()
 					.append('<option selected="selected" value="">Choose Sender</option>')
@@ -153,10 +153,10 @@ $(async function () {
 					var option2 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
 					var option3 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
 					$(option).html(data.data.merchants_info[i].merchantName);
-					$(option2).html(data.data.merchants_info[i].merchantName);
+					// $(option2).html(data.data.merchants_info[i].merchantName);
 					$(option3).html(data.data.merchants_info[i].merchantName);
 					$("#senderList").append(option);
-					$("#senderListExcel").append(option2);
+					// $("#senderListExcel").append(option2);
 					$("#quiccSender").append(option3);
 				}
 				$('#senderList')
@@ -165,9 +165,9 @@ $(async function () {
 				$('#quiccSender')
 					.append('<option value="' + org_ID + '">Organization Head</option>')
 					;
-				$('#senderListExcel')
-					.append('<option value="' + org_ID + '">Organization Head</option>')
-					;
+				// $('#senderListExcel')
+				// 	.append('<option value="' + org_ID + '">Organization Head</option>')
+				// 	;
 				$("#delivery_charge").attr('placeholder', "80");
 				document.getElementById('delivery_charge').value = "";
 				document.getElementById('D_charge').innerHTML = "Delivery Charge [BDT]:";

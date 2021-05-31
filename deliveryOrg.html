@@ -445,12 +445,12 @@ div.hideKoro3{
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body table-responsive blur">
-                            <form class="p-2">
+                            <form class="p-1">
                                 <!-- <h5 style="text-align:center;color:#0066b3">Select Sender:</h5>
                                 <select class="browser-default custom-select col-lg-12 btn" id="senderListExcel" style="text-align-last:center;width:80%;height: 46px;"></select> -->
                                 <div style="text-align:center;margin-top:15px;">
-                                    <h5 id="senderInfo"></h5>
-                                    <h4 id="senLatLong" style="margin-top:5px"></h4>
+                                    <!-- <h5 id="senderInfo"></h5>
+                                    <h4 id="senLatLong" style="margin-top:5px"></h4> -->
                                     <a
                                         href="DeliveryTemplateOrg.xlsx"
                                         class="fa fa-download btn btn-outline"
@@ -489,16 +489,9 @@ div.hideKoro3{
                                         Location Finder
                                     </button>
                                     <br> -->
-                                    <h5 style="text-align:center;color:#0066b3;margin-top: 1.5rem;">Auto Assign Delivery To Delivery Man?</h5>
-                                    <select class="browser-default custom-select col-lg-12 btn" id="autoAss2" style="text-align-last:center;height: 46px;width:80%;">
-                                        <option value="yes">Yes</option>
-                                        <option value="no" selected>No</option>
-                                    </select>
-                                    <br>
-                                    <br>
                                     <button
                                         class="btn btn-outline btn-round"
-                                        style="background:#fbfcfd;margin-top:10px;"
+                                        style="background:#fff;margin-top:1rem;"
                                         type="button"
                                         id="createDeliverywithExcel"
                                     >
@@ -506,6 +499,29 @@ div.hideKoro3{
                                     </button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="card x">
+                        <div class="card-body table-responsive x">
+                            <table
+                                id="dtBasicExampleMerchant"
+                                class="stripe hover display responsive"
+                                style="color:#0066b3;"
+                                cellspacing="0"
+                                width="100%"
+                            >
+                                <thead>
+                                    <tr>
+                                        <th class="th-sm"></th>
+                                        <th class="th-sm">
+                                            Merchant ID
+                                        </th>
+                                        <th class="th-sm">
+                                            Merchant Name
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 </div>

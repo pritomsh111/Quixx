@@ -7,6 +7,73 @@ var createBulkDelivery = () => {
 	buttonActive();
 	document.getElementById('bulkX').disabled = true;
 	document.getElementById('bulkX').style.fontSize = '13px';
+	// $.ajax
+	// 	({
+	// 		url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
+	// 		type: "GET",
+	// 		headers:
+	// 		{
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json',
+	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
+	// 		},
+	// 		success: function (data) {
+	// 			dataInfo = data;
+	// 			for (var i = 0; i < data.data.merchants_info.length; i++) {
+	// 				var option = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
+	// 				var option2 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
+	// 				var option3 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
+	// 				$(option).html(data.data.merchants_info[i].merchantName);
+	// 				// $(option2).html(data.data.merchants_info[i].merchantName);
+	// 				$(option3).html(data.data.merchants_info[i].merchantName);
+	// 				$("#senderList").append(option);
+	// 				// $("#senderListExcel").append(option2);
+	// 				$("#quiccSender").append(option3);
+	// 			}
+
+	// 		}
+	// 	});
+	var table = $('#dtBasicExampleMerchant').DataTable({
+		"processing": true,
+		'language': {
+			'loadingRecords': '&nbsp;',
+			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
+		},
+		"destroy": true,
+		"oSearch": { "bSmart": false, "bRegex": true },
+		"ajax":
+		{
+			"url": urlForAll + "orgHead/get/merchants/info/" + org_ID,
+			"type": "GET",
+			"headers":
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			"dataSrc": "data.merchants_info"
+		},
+		"columns": [
+			{
+				"class": 'details-control',
+				"orderable": false,
+				"data": null,
+				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
+			},
+			{ "targets": 0, "data": "merchantName" },
+			{
+				"targets": 20, "data": null, render: function (data, type, row) {
+					return '';
+				}
+			}
+		]
+	});
+	table.on('xhr', function () {
+		// var json = table.ajax.json();
+		// document.getElementById('oneb').innerHTML = 'Unassigned Deliveries: ' + json.recordsTotal;
+		// document.getElementById('body').style.pointerEvents = "auto";
+	});
+	table.clear().draw();
 	$("#bulkD").show();
 }
 var createDelivery = () => {
@@ -190,42 +257,42 @@ naValuesType.map(item => {
 	});
 });
 
-$("#senderListExcel").change(function () {
-	var value = $(this).val();
-	if (value) {
-		$.ajax
-			({
-				type: "GET",
-				url: urlForAll + "profile/get/profile/" + value,
-				headers:
-				{
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					"Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function (data) {
-					if (data.status == 'OK') {
-						document.getElementById('senderInfo').innerHTML = "Sender's Information For Excel:";
-						document.getElementById('senLatLong').innerHTML =
-							`Sender's Address: ${data.data.sender_address}<br>
-						Sender's Name: ${data.data.sender_name}<br>
-						Sender's Phone Number: ${data.data.sender_phone_number}<br>
-						Sender's Lattitude: ${data.data.sender_lat}<br>
-						Sender's Longitude: ${data.data.sender_longi}<br>`;
+// $("#senderListExcel").change(function () {
+// 	var value = $(this).val();
+// 	if (value) {
+// 		$.ajax
+// 			({
+// 				type: "GET",
+// 				url: urlForAll + "profile/get/profile/" + value,
+// 				headers:
+// 				{
+// 					'Accept': 'application/json',
+// 					'Content-Type': 'application/json',
+// 					"Authorization": 'Bearer ' + localStorage.getItem('token')
+// 				},
+// 				success: function (data) {
+// 					if (data.status == 'OK') {
+// 						document.getElementById('senderInfo').innerHTML = "Sender's Information For Excel:";
+// 						document.getElementById('senLatLong').innerHTML =
+// 							`Sender's Address: ${data.data.sender_address}<br>
+// 						Sender's Name: ${data.data.sender_name}<br>
+// 						Sender's Phone Number: ${data.data.sender_phone_number}<br>
+// 						Sender's Lattitude: ${data.data.sender_lat}<br>
+// 						Sender's Longitude: ${data.data.sender_longi}<br>`;
 
-					}
-				},
-				error: function (XMLHttpRequest, textStatus, errorThrown) {
+// 					}
+// 				},
+// 				error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-					$('#myModal2').modal('show');
-				}
-			})
-	}
-	else {
-		document.getElementById('senLatLong').innerHTML = "";
-		document.getElementById('senderInfo').innerHTML = "";
-	}
-});
+// 					$('#myModal2').modal('show');
+// 				}
+// 			})
+// 	}
+// 	else {
+// 		document.getElementById('senLatLong').innerHTML = "";
+// 		document.getElementById('senderInfo').innerHTML = "";
+// 	}
+// });
 
 $("#senderList").change(async function () {
 	var value = $(this).val();
