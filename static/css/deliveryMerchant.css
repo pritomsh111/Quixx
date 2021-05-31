@@ -503,6 +503,12 @@ input {
 }
 
 @media (max-width:450px) {
+	a[download], .btn.btn-outline.btn-sm.center-block.btn-file {
+		padding: 0.4rem 1rem;
+	}
+	.receiver_information.vis-map, .receiver_informationU.vis-map {
+		padding-bottom: 17.7rem;
+	}
 	#managers2Q, #productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
 		padding: 0.2rem;
 		text-align-last: left;

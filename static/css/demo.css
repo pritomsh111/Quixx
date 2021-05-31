@@ -89,6 +89,12 @@
   width: 100%;
 }
 
+@media (max-width: 450px) {
+  #pac-input2 {
+    padding: 0;
+  }
+}
+
 #pac-input2:focus {
   border-color: #4d90fe;
 }

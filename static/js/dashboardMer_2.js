@@ -4,10 +4,10 @@ var shouldGet = "", got = "", willGet = "";
 
 var myModalLabelzz = document.getElementById("myModalLabelzz");
 
-var one = (ax = null) => {
+var one = (ax = false) => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "merchant/anyPaymen/available/" + localStorage.getItem('userID'),
 			headers:
@@ -43,7 +43,7 @@ var two = (ax) => {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "merchant/should/get/from/orgHead/" + localStorage.getItem('userID'),
 			headers:
@@ -77,7 +77,7 @@ var three = (ax) => {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "merchant/got/from/orgHead/" + localStorage.getItem('userID'),
 			headers:
@@ -109,7 +109,7 @@ var four = (ax) => {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "merchant/due/payment/from/orgHead/" + localStorage.getItem('userID'),
 			headers:
@@ -129,7 +129,7 @@ var four = (ax) => {
 				else {
 					document.getElementById("mer3").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
-				!what ? five() : null;
+				!ax ? five() : null;
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -141,7 +141,7 @@ var five = () => {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "merchant/completed/delivery/count/" + localStorage.getItem('userID'),
 			headers:
@@ -173,7 +173,7 @@ var six = () => {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "delivery/total/incomplete/delivery/" + localStorage.getItem('userID'),
 			headers:
@@ -205,7 +205,7 @@ var seven = () => {
 
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "merchant/unassign/delivery/" + localStorage.getItem('userID'),
 			headers:
@@ -236,7 +236,7 @@ var seven = () => {
 var eight = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/RETURNED",
 			headers:
@@ -266,7 +266,7 @@ var eight = () => {
 var nine = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/CANCELLED",
 			headers:
@@ -298,7 +298,6 @@ var ten = () => {
 
 	$.ajax
 		({
-			async: true,
 			type: "GET",
 			url: urlForAll + "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/ON_HOLD",
 			headers:
@@ -326,104 +325,104 @@ var ten = () => {
 
 }
 
-function updateAfterSuccess() {
+// function updateAfterSuccess() {
 
-	$.ajax
-		({
-			async: true,
-			type: "GET",
-			url: urlForAll + "merchant/should/get/from/orgHead/" + localStorage.getItem('userID'),
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			beforeSend: function () {
-				document.getElementById("mer1").innerHTML = "<div class=loader5></div>";
-			},
-			success: function (data) {
-				dataP = data.data;
-				if (data.data.total_product_cost > 0) {
-					document.getElementById("mer1").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
-				}
-				else {
-					document.getElementById("mer1").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
-				}
+// 	$.ajax
+// 		({
+// 			
+// 			type: "GET",
+// 			url: urlForAll + "merchant/should/get/from/orgHead/" + localStorage.getItem('userID'),
+// 			headers:
+// 			{
+// 				'Accept': 'application/json',
+// 				'Content-Type': 'application/json',
+// 				"Authorization": 'Bearer ' + localStorage.getItem('token')
+// 			},
+// 			beforeSend: function () {
+// 				document.getElementById("mer1").innerHTML = "<div class=loader5></div>";
+// 			},
+// 			success: function (data) {
+// 				dataP = data.data;
+// 				if (data.data.total_product_cost > 0) {
+// 					document.getElementById("mer1").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+// 				}
+// 				else {
+// 					document.getElementById("mer1").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+// 				}
 
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
+// 			},
+// 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-				//alert("Please wait, we are working!");
-			}
-		});
+// 				//alert("Please wait, we are working!");
+// 			}
+// 		});
 
-	$.ajax
-		({
-			async: true,
-			type: "GET",
-			url: urlForAll + "merchant/got/from/orgHead/" + localStorage.getItem('userID'),
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			beforeSend: function () {
-				document.getElementById("mer2").innerHTML = "<div class=loader5></div>";
-			},
-			success: function (data) {
-				if (data.data.total_product_cost > 0) {
-					document.getElementById("mer2").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
-				}
-				else {
-					document.getElementById("mer2").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
-				}
+// 	$.ajax
+// 		({
+// 			
+// 			type: "GET",
+// 			url: urlForAll + "merchant/got/from/orgHead/" + localStorage.getItem('userID'),
+// 			headers:
+// 			{
+// 				'Accept': 'application/json',
+// 				'Content-Type': 'application/json',
+// 				"Authorization": 'Bearer ' + localStorage.getItem('token')
+// 			},
+// 			beforeSend: function () {
+// 				document.getElementById("mer2").innerHTML = "<div class=loader5></div>";
+// 			},
+// 			success: function (data) {
+// 				if (data.data.total_product_cost > 0) {
+// 					document.getElementById("mer2").innerHTML = data.data.total_product_cost + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+// 				}
+// 				else {
+// 					document.getElementById("mer2").innerHTML = "0" + '<span style="color:#0066b3;font-size:14px;">&#2547;</span>';
+// 				}
 
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
+// 			},
+// 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-				//alert("Please wait, we are working!");
-			}
-		});
-}
+// 				//alert("Please wait, we are working!");
+// 			}
+// 		});
+// }
 
 
-function updateAfterSuccess2() {
+// function updateAfterSuccess2() {
 
-	$.ajax
-		({
-			async: true,
-			type: "GET",
-			url: urlForAll + "merchant/anyPaymen/available/" + localStorage.getItem('userID'),
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			beforeSend: function () {
-				document.getElementById("merTaka").innerHTML = "<div class=loader5></div>";
-			},
-			success: function (data) {
-				if (data.data == true) {
-					document.getElementById("merTaka").innerHTML = "Yes";
-					$('#invoice').show();
-					$('#confirm').show();
-				}
-				else {
-					document.getElementById("merTaka").innerHTML = "No";
-					$('#invoice').hide();
-					$('#confirm').hide();
-				}
-				updateAfterSuccess();
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
+// 	$.ajax
+// 		({
+// 			
+// 			type: "GET",
+// 			url: urlForAll + "merchant/anyPaymen/available/" + localStorage.getItem('userID'),
+// 			headers:
+// 			{
+// 				'Accept': 'application/json',
+// 				'Content-Type': 'application/json',
+// 				"Authorization": 'Bearer ' + localStorage.getItem('token')
+// 			},
+// 			beforeSend: function () {
+// 				document.getElementById("merTaka").innerHTML = "<div class=loader5></div>";
+// 			},
+// 			success: function (data) {
+// 				if (data.data == true) {
+// 					document.getElementById("merTaka").innerHTML = "Yes";
+// 					$('#invoice').show();
+// 					$('#confirm').show();
+// 				}
+// 				else {
+// 					document.getElementById("merTaka").innerHTML = "No";
+// 					$('#invoice').hide();
+// 					$('#confirm').hide();
+// 				}
+// 				updateAfterSuccess();
+// 			},
+// 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-				//alert("Please wait, we are working!");
-			}
-		});
-}
+// 				//alert("Please wait, we are working!");
+// 			}
+// 		});
+// }
 
 function updateTaka() {
 
@@ -451,7 +450,7 @@ $('.btn-ok').on("click", function () {
 	document.getElementById('modalApprove').disabled = true;
 	$.ajax
 		({
-			async: true,
+
 			type: "PUT",
 			url: urlForAll + "merchant/updatePaymen/" + localStorage.getItem('userID'),
 			headers:
@@ -494,7 +493,7 @@ $('.btn-ok').on("click", function () {
 var invoiceTaka = () => {
 	window.open(urlForAll + "reports/paymentFormerchant/report/" + localStorage.getItem('userID'), "_blank");
 };
-one();
+one(false);
 
 function showModal(type) {
 	let dataForModal;

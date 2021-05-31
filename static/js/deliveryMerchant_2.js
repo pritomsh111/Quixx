@@ -249,12 +249,10 @@ function handleFileSelect(evt) {
 }
 document.getElementById('upload').addEventListener('change', handleFileSelect, false);
 document.getElementById('cancelUpload').addEventListener('click', function (e) {
-
 	e.preventDefault();
 	document.getElementById("fileName").innerHTML = "";
 	document.getElementById("upload").value = "";
 	flag = false;
-
 });
 
 var save = (id) => {
@@ -332,6 +330,7 @@ document.getElementById('product_qtyU').addEventListener("keyup", function (e) {
 });
 
 document.getElementById("createDelivery").addEventListener("click", function (event) {
+	divElement.innerHTML = "";
 	var pickup_time = document.getElementById('timepicker-12-hr').value;
 	var s_name = document.getElementById('s_name').value;
 	var s_number = document.getElementById('s_number').value;
@@ -675,6 +674,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	// var s_name = document.getElementById('s_name').value;
 	// var s_number = document.getElementById('s_number').value;
 	// var s_address = document.getElementById('pac-input').value;
+	divElement.innerHTML = "";
 	var r_name = document.getElementById('r_nameQ').value;
 	var r_number = document.getElementById('r_numberQ').value;
 	// var r_address = document.getElementById('pac-input2').value;
@@ -997,32 +997,25 @@ var extrax2 = [];
 var deliveryList = [];
 function doIt(i, lengx) {
 	setTimeout(function () {
-		var delivery_type = "Customer";
-
-		var s_name = s_name;
-		var s_number = s_number;
-		var s_address = s_address;
+		var delivery_type = "CUSTOMER";
 		var pickup_lat = s_lat;
 		var pickup_longi = s_longi;
-
+		var delivery_charge = `${merchantPerDeliveryCost}`;
 		var r_name = excelData[i].Receiver_Name;
 		var r_number = excelData[i].Receiver_Phone_Number;
+		var rec_city = excelData[i].Receiver_City;
 		var area = excelData[i].Receiver_Area;
 		var rec_address = excelData[i].Receiver_Address;
-		// var delivery_lat = excelData[i].Receiver_Lattitude;
-		// var delivery_longi = excelData[i].Receiver_Longitude;
 
 		var product_name = excelData[i].Product_Name;
 		var product_qty = excelData[i].Product_Quantity_Pieces;
 		var product_cost = excelData[i].Product_Cost;
 
-		var delivery_charge = excelData[i].Delivery_Charge;
 		var payment_method = excelData[i].Payment_Method;
 
-
 		//Optional
-		var delivery_note = excelData[i].Delivery_Note;
-		var pickup_time = excelData[i].Pickup_Time;
+		var delivery_note = excelData[i].Optional_Delivery_Note;
+		// var pickup_time = excelData[i].Pickup_Time;
 		var v1 = () => {
 			// if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
 			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;
@@ -1158,29 +1151,30 @@ function doIt(i, lengx) {
 			}
 		}
 		var v8 = () => {
-			if (parseInt(delivery_charge) < 0) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be greater than or equal to 0!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else if (isNaN(delivery_charge) == true || delivery_charge == "" || delivery_charge == undefined || !/\D/.test(delivery_charge) == false) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be a number!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else if (!/\D/.test(delivery_charge) == true) {
-				return 1;
-			}
+			// if (parseInt(delivery_charge) < 0) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be greater than or equal to 0!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else if (isNaN(delivery_charge) == true || delivery_charge == "" || delivery_charge == undefined || !/\D/.test(delivery_charge) == false) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Delivery Charge must be a number!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else if (!/\D/.test(delivery_charge) == true) {
+			// 	return 1;
+			// }
+			return 1;
 		}
 		var v9 = () => {
 			if (product_name == "" || product_name == null || product_name == undefined) {
@@ -1280,9 +1274,9 @@ function doIt(i, lengx) {
 				return 1;
 			}
 		}
-		var v17 = () => {
-			if (delivery_lat == "" || delivery_longi == "" || delivery_longi == undefined || delivery_lat == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give Receiver's Lattitude/Longitude!!`;
+		var v23X = () => {
+			if (rec_city == "" || rec_city == null || rec_city == undefined) {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Receiver's City cannot be empty!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
 				hello();
@@ -1295,9 +1289,39 @@ function doIt(i, lengx) {
 				return 1;
 			}
 		}
-		var v16 = () => {
-			if (pickup_lat == "" || pickup_longi == "" || pickup_lat == undefined || pickup_longi == undefined) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give Sender's Lattitude/Longitude!!`;
+		// var v17 = () => {
+		// 	if (delivery_lat == "" || delivery_longi == "" || delivery_longi == undefined || delivery_lat == undefined) {
+		// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give Receiver's Lattitude/Longitude!!`;
+		// 		$('#myModalWrongDeliveryCreate').modal('show');
+		// 		document.getElementById('CLOSEIT').disabled = false;
+		// 		hello();
+		// 		setTimeout(function () {
+		// 			$('#myModalCreateD1').modal('hide');
+		// 		}, 2500);
+		// 		return 0;
+		// 	}
+		// 	else {
+		// 		return 1;
+		// 	}
+		// }
+		// var v16 = () => {
+		// 	if (pickup_lat == "" || pickup_longi == "" || pickup_lat == undefined || pickup_longi == undefined) {
+		// 		document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give Sender's Lattitude/Longitude!!`;
+		// 		$('#myModalWrongDeliveryCreate').modal('show');
+		// 		document.getElementById('CLOSEIT').disabled = false;
+		// 		hello();
+		// 		setTimeout(function () {
+		// 			$('#myModalCreateD1').modal('hide');
+		// 		}, 2500);
+		// 		return 0;
+		// 	}
+		// 	else {
+		// 		return 1;
+		// 	}
+		// }
+		var vXPayment = () => {
+			if (payment_method == "" || payment_method == null || payment_method == undefined) {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Payment Method cannot be empty!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
 				hello();
@@ -1312,56 +1336,73 @@ function doIt(i, lengx) {
 		}
 		var datap;
 
-		if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v8() == 1 && v4() == 1 && v22() == 1 && v12() == 1) {
+		if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v8() == 1 && v4() == 1 && v22() == 1 && v12() == 1 && v23X() == 1 && vXPayment() == 1) {
 			if (delivery_note == undefined) {
 				delivery_note = "";
-			}
-			if (pickup_lat == undefined) {
-				pickup_lat = "";
-				pickup_longi = "";
-			}
-			if (delivery_lat == undefined) {
-				delivery_lat = "";
-				delivery_longi = "";
-			}
-			if (pickup_time == undefined) {
-				pickup_time = "";
 			}
 			datap = JSON.stringify
 				({
 					"delivery_status": "",
 					"delivery_type": delivery_type,
-					"sender_address": s_address,
-					"receiver_address": rec_address,
-					"sender_phone_number": s_number,
-					"receiver_phone_number": r_number,
 					"sender_name": s_name,
-					"receiver_name": r_name,
-					"payment_method": payment_method,
-					"delivery_charge": delivery_charge,
-					"product_cost": product_cost,
+					"sender_address": s_address,
+					"sender_phone_number": s_number,
 					"sender_lat": pickup_lat,
 					"sender_longi": pickup_longi,
-					"receiver_lat": delivery_lat,
-					"receiver_longi": delivery_longi,
+					"receiver_name": r_name,
+					"receiver_phone_number": r_number,
+					"delivery_city": rec_city,
+					"delivery_area": area,
+					"receiver_address": rec_address,
 					"product_name": product_name,
 					"product_qty": product_qty,
-					"pickup_time": pickup_time,
+					"product_cost": product_cost,
+					"delivery_charge": delivery_charge,
+					"payment_method": payment_method,
 					"delivery_note": delivery_note,
-					"delivery_area": area,
+					"receiver_lat": "",
+					"receiver_longi": "",
+					"pickup_time": "",
 					"delivery_day_type": "delivery_day_type_na",
 					"delivery_product_type": "delivery_product_type_na",
 					"delivery_weight": "delivery_weight_na",
 					"delivery_distance": "delivery_distance_na",
 					"delivery_city_criteria": "delivery_city_criteria_na"
 				});
-			////console.log(datap);
+			console.log(datap);
 			$.ajax
 				({
-					async: true,
 					type: "POST",
 					url: urlForAll + "delivery/create/" + merchant_ID + '/no',
-					data: datap,
+					data: JSON.stringify
+						({
+							"delivery_status": "",
+							"delivery_type": delivery_type,
+							"sender_name": s_name,
+							"sender_address": s_address,
+							"sender_phone_number": s_number,
+							"sender_lat": pickup_lat,
+							"sender_longi": pickup_longi,
+							"receiver_name": r_name,
+							"receiver_phone_number": r_number,
+							"delivery_city": rec_city,
+							"delivery_area": area,
+							"receiver_address": rec_address,
+							"product_name": product_name,
+							"product_qty": product_qty,
+							"product_cost": product_cost,
+							"delivery_charge": delivery_charge,
+							"payment_method": payment_method,
+							"delivery_note": delivery_note,
+							"receiver_lat": "",
+							"receiver_longi": "",
+							"pickup_time": "",
+							"delivery_day_type": "delivery_day_type_na",
+							"delivery_product_type": "delivery_product_type_na",
+							"delivery_weight": "delivery_weight_na",
+							"delivery_distance": "delivery_distance_na",
+							"delivery_city_criteria": "delivery_city_criteria_na"
+						}),
 					headers:
 					{
 						'Accept': 'application/json',
@@ -1369,11 +1410,11 @@ function doIt(i, lengx) {
 						"Authorization": 'Bearer ' + localStorage.getItem('token')
 					},
 					success: function (data) {
-						if (i == 0) {
-							document.getElementById("sureD2ZZ").innerHTML = `<br><strong>${i + 1}</strong> Delivery Created!<br>`;
+						if (i === 0) {
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong style="vertical-align: text-top;">${i + 1}</strong> Delivery Created!<br>`;
 						}
 						else {
-							document.getElementById("sureD2ZZ").innerHTML = `<br><strong>${i + 1}</strong> Deliveries Created!<br>`;
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong style="vertical-align: text-top;">${i + 1}</strong> Deliveries Created!<br>`;
 						}
 						keysx[i] = Object.keys(data.data);
 						extrax1[i] = data.data;
@@ -1386,13 +1427,16 @@ function doIt(i, lengx) {
 						if (data.status == 'OK') {
 							if (i == lengx - 1) {
 								setTimeout(function () {
-									$("#sureD2").html(`<strong>${i + 1}</strong> Deliveries Created!`);
-
+									document.getElementById("sureD2ZZ").innerHTML = "";
+									if (i === 0) {
+										$("#sureD2").html(`<strong style="vertical-align: text-top;">${i + 1}</strong> Delivery Created!`);
+									}
+									else {
+										$("#sureD2").html(`<strong style="vertical-align: text-top;">${i + 1}</strong> Deliveries Created!`);
+									}
 									$(".circle-loader").addClass("load-complete");
 
 									$('#tickD2').show();
-
-									document.getElementById("sureD2ZZ").innerHTML = "";
 								}, 1000);
 								setTimeout(function () {
 
@@ -1441,6 +1485,7 @@ function doIt(i, lengx) {
 }
 document.getElementById("createDeliverywithExcel").addEventListener("click", function (event) {
 	if (flag == true) {
+		divElement.innerHTML = "";
 		$('#tickD2').hide();
 		$(".circle-loader").show();
 		$(".circle-loader").removeClass("load-complete");
@@ -1800,6 +1845,8 @@ $('#dtBasicExampled').on('click', '.updateCh', function () {
 	// 	document.querySelector(`#dtBasicExampled tbody tr:nth-child(${rowNumber})`).remove();
 	// }
 	del_id = arr[0];
+	document.querySelector("#updateSenId").innerHTML = `Delivery ID: <strong>${arr[0]}</strong> & Receiver: <strong>${arr[4]}</strong>`;
+	document.querySelector("#updateSenId").style.fontSize = `0.95rem`;
 	creator_ID = arr[1];
 	thikKoro(arr[8], arr[11], arr[26]);
 	document.getElementById('chargeUpdate').innerHTML = "Delivery Charge [BDT]:";

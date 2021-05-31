@@ -1655,7 +1655,7 @@ function recallQ() {
 
 document.getElementById("createDeliveryQ").addEventListener("click", function (event) {
 	// var pickup_time = document.getElementById('timepicker-12-hr').value;
-
+	divElement.innerHTML = "";
 	var s_name = document.getElementById('s_nameQ').value;
 	var s_number = document.getElementById('s_numberQ').value;
 	var s_address = document.getElementById('addQ').value;
@@ -1960,8 +1960,8 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	}
 });
 
-
 document.getElementById("createDelivery").addEventListener("click", function (event) {
+	divElement.innerHTML = "";
 	document.getElementById('CLOSEIT').disabled = false;
 	var pickup_time = document.getElementById('timepicker-12-hr').value;
 	var s_name = document.getElementById('s_name').value;
@@ -2745,11 +2745,11 @@ function doIt(i, lengx) {
 						"Authorization": 'Bearer ' + localStorage.getItem('token')
 					},
 					success: function (data) {
-						if (i == 0) {
-							document.getElementById("sureD2ZZ").innerHTML = `<br><strong>${i + 1}</strong> Delivery Created!<br>`;
+						if (i === 0) {
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong style="vertical-align: text-top;">${i + 1}</strong> Delivery Created!<br>`;
 						}
 						else {
-							document.getElementById("sureD2ZZ").innerHTML = `<br><strong>${i + 1}</strong> Deliveries Created!<br>`;
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong style="vertical-align: text-top;">${i + 1}</strong> Deliveries Created!<br>`;
 						}
 						keysx[i] = Object.keys(data.data);
 						extrax1[i] = data.data;
@@ -2777,13 +2777,18 @@ function doIt(i, lengx) {
 						if (data.status == 'OK') {
 							if (i == lengx - 1) {
 								setTimeout(function () {
-									$("#sureD2").html(`<strong>${i + 1}</strong> Deliveries Created!`);
+									document.getElementById("sureD2ZZ").innerHTML = "";
+									if (i === 0) {
+										$("#sureD2").html(`<strong style="vertical-align: text-top;">${i + 1}</strong> Delivery Created!`);
+									}
+									else {
+										$("#sureD2").html(`<strong style="vertical-align: text-top;">${i + 1}</strong> Deliveries Created!`);
+									}
 
 									$(".circle-loader").addClass("load-complete");
 
 									$('#tickD2').show();
 
-									document.getElementById("sureD2ZZ").innerHTML = "";
 								}, 1000);
 								setTimeout(function () {
 
@@ -2839,6 +2844,7 @@ function doIt(i, lengx) {
 document.getElementById("createDeliverywithExcel").addEventListener("click", function (event) {
 	var senderGuyExcel = document.getElementById('senderListExcel').value;
 	var autoAssDExcel = document.getElementById('autoAss2').value;
+	divElement.innerHTML = "";
 	if (!senderGuyExcel) {
 		document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please select a sender from list!";
 		$('#myModalWrongDeliveryCreate').modal('show');
