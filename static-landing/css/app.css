@@ -1473,6 +1473,10 @@ ul {
     transition: color 250ms ease-in, box-shadow 250ms ease-in;
 }
 
+.order-btn.one {
+    margin-top: 7.2rem;
+}
+
 /* .Quixx__Pricing .pricing-card:nth-child(3) .order-btn {
     background: rgba(0, 0, 0, 0.7);
     color: #fff;
@@ -2010,8 +2014,8 @@ ul {
 .Quixx__Form::after {
     position: absolute;
     content: "";
-    opacity: 0.1;
-    background: url("/static-landing/img/loginbg2.svg") left/contain no-repeat;
+    opacity: 0.01;
+    background: #000;
     left: 0;
     right: 0;
     top: 0;
@@ -2478,5 +2482,29 @@ p.error {
         grid-column: span 2;
         grid-row: span 2;
         width: 80%;
+    }
+}
+
+@media (max-width: 450px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+    li.del-c {
+        font-size: 0.8rem;
+    }
+    .pricing-card strong {
+        font-size: 0.8rem;
+    }
+    .Footer__L {
+        font-size: 0.9rem;
+    }
+    .Footer__R ul li {
+        font-size: 0.9rem !important;
     }
 }
