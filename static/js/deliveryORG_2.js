@@ -1305,31 +1305,7 @@ $('.btn-ok').on("click", function () {
 	document.getElementById('modalCancelG').disabled = true;
 	document.getElementById('modalApproveG').disabled = true;
 	if (deliveryManId) {
-		$("#sure").html("Please wait!");
-		setTimeout(function () {
-			$(".circle-loader").addClass("load-complete");
-
-			$('#tick').show();
-
-			$("#sure").html("Delivery man assigned!");
-		}, 900);
-
-		setTimeout(function () {
-			$("#myModal").modal('hide');
-			var table = $('#dtBasicExampled').DataTable();
-			table
-				.row($t.parents('tr'))
-				.remove()
-				.draw(false);
-			document.getElementById('oneb').innerHTML = 'Unassigned Deliveries: ' + table
-				.column(0)
-				.data()
-				.length;
-
-			document.getElementById('modalCancelG').disabled = false;
-			document.getElementById('modalApproveG').disabled = false;
-		}, 2000);
-		/*$.ajax
+		$.ajax
 			({
 
 				type: "PUT",
@@ -1385,7 +1361,7 @@ $('.btn-ok').on("click", function () {
 						$('#myModal2').modal();
 					}
 				}
-			});*/
+			});
 	}
 	else {
 		document.getElementById('modalCancelG').disabled = false;
@@ -2097,7 +2073,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var delivery_lat = String(document.getElementById('des_lat').value);
 	var delivery_longi = String(document.getElementById('des_longi').value);
 	var product_name = String(document.getElementById('product_name').value);
-	var product_qty = String(document.getElementById('product_qty').value);
+	var product_qty = String(document.getElementById('product_qty').value.toUpperCase());
 	var dayType = document.getElementById('dayType').value;
 	var productType = document.getElementById('productType').value;
 	var distance = document.getElementById('productDistance')?.value;
@@ -2522,7 +2498,7 @@ function doIt(i, lengx) {
 		var rec_address = excelData[i].Receiver_Address;
 
 		var product_name = excelData[i].Product_Name;
-		var product_qty = excelData[i].Product_Quantity_Pieces;
+		var product_qty = excelData[i].Product_Quantity_Pieces.toUpperCase();
 		var product_cost = excelData[i].Product_Cost;
 		var payment_method = excelData[i].Payment_Method;
 		var delivery_charge = excelData[i].Delivery_Charge;
@@ -3712,7 +3688,7 @@ $('.btn-ok-updateDC').on("click", function () {
 	var delivery_lat = String(document.getElementById('des_latU').value);
 	var delivery_longi = String(document.getElementById('des_longiU').value);
 	var product_name = String(document.getElementById('product_nameU').value);
-	var product_qty = String(document.getElementById('product_qtyU').value);
+	var product_qty = String(document.getElementById('product_qtyU').value.toUpperCase());
 	var product_cost = document.getElementById('product_costU').value;
 	var created_date = arr[21];
 	var created_by_name = arr[22];
@@ -4135,7 +4111,7 @@ $('.btn-okReturn').on("click", function () {
 
 	var delivery_cost_update = document.getElementById('delivery_cost_updateR').value;
 	var product_name = String(document.getElementById('product_nameUR').value);
-	var product_qty = String(document.getElementById('product_qtyUR').value);
+	var product_qty = String(document.getElementById('product_qtyUR').value.toUpperCase());
 	var product_cost = document.getElementById('product_costUR').value;
 
 	var v1 = () => {
