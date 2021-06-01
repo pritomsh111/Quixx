@@ -9,7 +9,7 @@ var yyyy = today.getFullYear();
 $(function () {
 	$('#settings').hide();
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
-	beforeOne();
+	totalIncome();
 
 	// today = dd + '/' + mm + '/' + yyyy;
 	// document.getElementById("date1").innerHTML = today;
@@ -58,7 +58,7 @@ var beforeOne = () => {
 				else {
 					document.getElementById("packageName").innerHTML = "None";
 				}
-				one();
+				ten();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -88,7 +88,7 @@ var one = () => {
 				else {
 					document.getElementById("messageCount").innerHTML = "0";
 				}
-				two();
+				five();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -118,7 +118,7 @@ var two = () => {
 				else {
 					document.getElementById("totalDeliveryMan").innerHTML = "0";
 				}
-				totalIncome();
+				three();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -153,7 +153,6 @@ var totalIncome = () => {
 				dailyIncome(yyyy + "-" + mm + "-" + dd);
 				document.querySelector("#monthwiseIncome").value = yyyy + "-" + mm;
 				monthlyIncome(yyyy + "-" + mm);
-				three();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 			}
@@ -225,6 +224,7 @@ var monthlyIncome = (date) => {
 				else {
 					document.getElementById("perMonthIncome").innerHTML = "0" + '<sup>&#2547;</sup>';
 				}
+				one();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 			}
@@ -284,7 +284,7 @@ var four = () => {
 				else {
 					document.getElementById("unApprovedMer").innerHTML = "0";
 				}
-				five();
+				beforeOne();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -435,7 +435,7 @@ var nine = () => {
 				else {
 					document.getElementById("totalCancelledDeliveries").innerHTML = "0";
 				}
-				ten();
+				two();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 
