@@ -466,7 +466,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v10 = () => {
-		if (product_qty === "NA") {
+		if (product_qty.toUpperCase() === "NA") {
 			return 1;
 		}
 		if (parseInt(product_qty) <= 0) {
@@ -1192,7 +1192,7 @@ function doIt(i, lengx) {
 			}
 		}
 		var v10 = () => {
-			if (product_qty === "NA") {
+			if (product_qty.toUpperCase() === "NA") {
 				return 1;
 			}
 			else if (parseInt(product_qty) <= 0) {
@@ -2113,7 +2113,7 @@ $('.btn-ok-updateDC').on("click", function () {
 		}
 	}
 	var v10 = () => {
-		if (product_qty === "NA") {
+		if (product_qty.toUpperCase() === "NA") {
 			return 1;
 		}
 		else if (parseInt(product_qty) <= 0) {

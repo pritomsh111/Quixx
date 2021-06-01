@@ -1305,7 +1305,31 @@ $('.btn-ok').on("click", function () {
 	document.getElementById('modalCancelG').disabled = true;
 	document.getElementById('modalApproveG').disabled = true;
 	if (deliveryManId) {
-		$.ajax
+		$("#sure").html("Please wait!");
+		setTimeout(function () {
+			$(".circle-loader").addClass("load-complete");
+
+			$('#tick').show();
+
+			$("#sure").html("Delivery man assigned!");
+		}, 900);
+
+		setTimeout(function () {
+			$("#myModal").modal('hide');
+			var table = $('#dtBasicExampled').DataTable();
+			table
+				.row($t.parents('tr'))
+				.remove()
+				.draw(false);
+			document.getElementById('oneb').innerHTML = 'Unassigned Deliveries: ' + table
+				.column(0)
+				.data()
+				.length;
+
+			document.getElementById('modalCancelG').disabled = false;
+			document.getElementById('modalApproveG').disabled = false;
+		}, 2000);
+		/*$.ajax
 			({
 
 				type: "PUT",
@@ -1361,7 +1385,7 @@ $('.btn-ok').on("click", function () {
 						$('#myModal2').modal();
 					}
 				}
-			});
+			});*/
 	}
 	else {
 		document.getElementById('modalCancelG').disabled = false;
@@ -2220,7 +2244,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v10 = () => {
-		if (product_qty === "NA") {
+		if (product_qty.toUpperCase() === "NA") {
 			return 1;
 		}
 		else if (parseInt(product_qty) <= 0) {
@@ -2684,7 +2708,7 @@ function doIt(i, lengx) {
 			}
 		}
 		var v10 = () => {
-			if (product_qty === "NA") {
+			if (product_qty.toUpperCase() === "NA") {
 				return 1;
 			}
 			else if (parseInt(product_qty) <= 0) {
@@ -3826,7 +3850,7 @@ $('.btn-ok-updateDC').on("click", function () {
 		}
 	}
 	var v10 = () => {
-		if (product_qty === "NA") {
+		if (product_qty.toUpperCase() === "NA") {
 			return 1;
 		}
 		if (parseInt(product_qty) <= 0) {
@@ -4143,7 +4167,7 @@ $('.btn-okReturn').on("click", function () {
 		}
 	}
 	var v3 = () => {
-		if (product_qty === "NA") {
+		if (product_qty.toUpperCase() === "NA") {
 			return 1;
 		}
 		else if (parseInt(product_qty) <= 0) {
