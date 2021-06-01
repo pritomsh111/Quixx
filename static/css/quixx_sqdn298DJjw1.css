@@ -1186,7 +1186,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg>select.form-
 }
 
 .btn.btn.disabled:not([aria-controls]), .btn.btn:disabled:not([aria-controls]) {
-  opacity: 0.75;
+  opacity: 0.5;
   box-shadow: none;
   cursor: not-allowed;
   pointer-events: none;
