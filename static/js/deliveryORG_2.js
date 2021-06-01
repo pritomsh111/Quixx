@@ -1443,7 +1443,7 @@ $('#dtBasicExampleNewg').on('click', '.reassignIt', function () {
 		});
 	orgid = $(this).attr('id'); //delivery ID
 	$t = $(this);
-	document.querySelector("#reassignID").innerHTML = table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data();;
+	document.querySelector("#reassignID").innerHTML = `Delivery ID: <strong>${orgid}</strong>`;
 	$('#tickReassign').hide();
 	$(".circle-loader").hide();
 	$("#sureReassign").hide();
