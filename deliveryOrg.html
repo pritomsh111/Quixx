@@ -1402,53 +1402,53 @@ div.hideKoro3{
                 ></button>
                 <h4 class="modal-title" style="color:#0066b3;font-size: 0.95rem;" id="returnDeliveryID"></h4>
             </div>
-            <div class="modal-body" style="text-align:center;padding: 0rem;">
-                <form style="color:#0066b3" id="formReturnUpdate">
-                    <h5 style="margin-top:9px;">Product Details:</h5>
-                    <input
-                        type="text"
-                        style="text-align:center;width:50%;margin:0 auto;"
-                        id="product_nameUR"
-                        class="form-control"
-                        placeholder=""
-                    >
-                    <h6 type="hidden" id="wrongpnameR" style="color:red"></h6>
-                    <br>
-                    <h5 style="margin-top:9px;">Product Quantity [Pieces]:</h5>
-                    <input
-                        type="text"
-                        style="text-align:center;width:50%;margin:0 auto;"
-                        id="product_qtyUR"
-                        class="form-control"
-                        placeholder="NA/4/20"
-                    >
-                    <h6 type="hidden" id="wrongrpqtyR" style="color:red"></h6>
-                    <br>
-                    <h5 style="margin-top:9px;" class="pqp">Per Product Cost [BDT]:</h5>
-                    <input
-                        type="text"
-                        style="text-align:center;width:50%;margin:0 auto;"
-                        id="product_costUR"
-                        class="form-control"
-                        placeholder=""
-                    >
-                    <h6 type="hidden" id="wrongpercostR" style="color:red"></h6>
-                    <br>
-                    <h5 style="margin-top:9px;">Delivery Charge:</h5>
-                    <input
-                        type="text"
-                        style="text-align:center;width:50%;margin:0 auto;"
-                        id="delivery_cost_updateR"
-                        class="form-control"
-                        placeholder=""
-                    >
-                    <h6 type="hidden" id="wrongdcostR" style="color:red"></h6>
-                    <br>
+            <div class="modal-body">
+                <form class="p-1" style="color:#0066b3" id="formReturnUpdate">
+                    <div>
+                        Product Details:
+                        <input
+                            type="text"
+                            id="product_nameUR"
+                            class="form-control"
+                            placeholder=""
+                        >
+                        <h6 type="hidden" id="wrongpnameR" style="color:red"></h6>
+                    </div>
+                    <div>
+                        Product Quantity [Pieces]:
+                        <input
+                            type="text"
+                            id="product_qtyUR"
+                            class="form-control"
+                            placeholder="NA/4/20"
+                        >
+                        <h6 type="hidden" id="wrongrpqtyR" style="color:red"></h6>
+                    </div>
+                    <div>
+                        Per Product Cost [BDT]:
+                        <input
+                            type="text"
+                            id="product_costUR"
+                            class="form-control"
+                            placeholder=""
+                        >
+                        <h6 type="hidden" id="wrongpercostR" style="color:red"></h6>
+                    </div>
+                    <div>
+                        Delivery Charge:
+                        <input
+                            type="text"
+                            id="delivery_cost_updateR"
+                            class="form-control"
+                            placeholder=""
+                        >
+                        <h6 type="hidden" id="wrongdcostR" style="color:red"></h6>
+                    </div>
                 </form>
-                <div class="circle-loader" style="text-align:center" id="circleLoadReturn">
+                <div class="circle-loader" style="text-align:center;display:block;margin-left:auto;margin-right:auto;" id="circleLoadReturn">
                     <div class="checkmark draw" id="tickReturn"></div>
                 </div>
-                <h4 id="sureReturn" style="color:#0066b3"></h4>
+                <h4 id="sureReturn" style="color:#0066b3;text-align:center;"></h4>
             </div>
             <div class="modal-footer">
                 <button

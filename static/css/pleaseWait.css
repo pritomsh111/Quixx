@@ -24,6 +24,7 @@
     transform: rotate(360deg);
   }
 }
+
 @keyframes rotate {
   100% {
     -webkit-transform: rotate(360deg);
@@ -36,11 +37,13 @@
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
+    border-top-color: #000;
   }
   -webkit-to {
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
+    border-top-color: #0066b3;
   }
 }
 
@@ -48,10 +51,12 @@
   from {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
+    border-top-color: #000;
   }
   to {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+    border-top-color: #0066b3;
   }
 }
 
@@ -59,9 +64,11 @@
   from {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
+    border-top-color: #000;
   }
   to {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+    border-top-color: #0066b3;
   }
 }

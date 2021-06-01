@@ -39,7 +39,7 @@ document.querySelector("#monthwiseIncome").addEventListener("change", function (
 var beforeOne = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "package/" + localStorage.getItem('userID'),
 			headers:
@@ -69,7 +69,7 @@ var beforeOne = () => {
 var one = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "orgHead/sms/count/" + localStorage.getItem('userID'),
 			headers:
@@ -99,7 +99,7 @@ var one = () => {
 var two = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "user/total/deliveryMan/" + localStorage.getItem('userID'),
 			headers:
@@ -130,7 +130,7 @@ var two = () => {
 var totalIncome = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "orgHead/total/income/" + localStorage.getItem('userID'),
 			headers:
@@ -175,7 +175,7 @@ var invoiceForMonthlyIncome = () => {
 var dailyIncome = (date) => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "orgHead/total/income/daily/" + localStorage.getItem('userID') + "?" + "date=" + date,
 			headers:
@@ -206,7 +206,7 @@ var dailyIncome = (date) => {
 var monthlyIncome = (date) => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "orgHead/total/income/monthly/" + localStorage.getItem('userID') + "?" + "year_month=" + date,
 			headers:
@@ -235,7 +235,7 @@ var monthlyIncome = (date) => {
 var three = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "orgHead/merchant/count/" + localStorage.getItem('userID'),
 			headers:
@@ -265,7 +265,7 @@ var three = () => {
 var four = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "orgHead/merchant/unapprove/count/" + localStorage.getItem('userID'),
 			headers:
@@ -294,7 +294,7 @@ var four = () => {
 var five = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "orgHead/total/complete/delivery/" + localStorage.getItem('userID'),
 			headers:
@@ -324,7 +324,7 @@ var five = () => {
 var six = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "delivery/total/incomplete/delivery/" + localStorage.getItem('userID'),
 			headers:
@@ -355,7 +355,7 @@ var six = () => {
 var seven = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/ON_HOLD",
 			headers:
@@ -386,7 +386,7 @@ var seven = () => {
 var eight = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/RETURNED",
 			headers:
@@ -416,7 +416,7 @@ var eight = () => {
 var nine = () => {
 	$.ajax
 		({
-			async: true,
+
 			type: "GET",
 			url: urlForAll + "delivery/delivery/status/count/" + localStorage.getItem('userID') + "/CANCELLED",
 			headers:

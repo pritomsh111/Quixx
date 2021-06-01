@@ -1454,7 +1454,6 @@ $('#dtBasicExampleNewg').on('click', '.reassignIt', function () {
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
 $('.btn-okReassign').on("click", function () {
-
 	$("#dml").hide();
 	$("#deliveryManList2").hide();
 	$("#sureReassign").html("Please wait!");

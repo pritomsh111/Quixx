@@ -337,6 +337,15 @@ input {
   position: relative;
 }
 
+#formReturnUpdate {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  column-gap: 2rem;
+  row-gap: 2rem;
+  font-size: 1rem;
+}
+
 .sender_information::before, .sender_informationQ::before, .receiver_information::before, .receiver_informationU::before, .receiver_informationQ::before, .product_information::before, .product_informationU::before, .product_informationQ::before, .delivery_information::before, .delivery_informationU::before, .delivery_informationQ::before {
   position: absolute;
   content: attr(data-title)":";
