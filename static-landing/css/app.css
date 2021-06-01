@@ -1945,7 +1945,6 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 4rem 5rem;
-    place-items: center;
     position: relative;
     overflow: hidden;
 }
@@ -2037,6 +2036,7 @@ ul {
     flex-direction: column;
     padding: 2rem 5rem 3rem;
     height: 470px;
+    justify-self: center;
     border-radius: 10px;
     position: relative;
     overflow: hidden;
@@ -2158,6 +2158,7 @@ ul {
 
 .Quixx__Q {
     margin-right: auto;
+    margin-top: 8rem;
 }
 
 .Quixx__Q>h1 {
@@ -2213,6 +2214,7 @@ p.error {
         display: grid;
         grid-template-columns: 1fr;
         padding: 4rem 2rem;
+        place-items: center;
     }
     .Quixx__Form::after, .Quixx__Form::before {
         background: none;
@@ -2220,6 +2222,7 @@ p.error {
     .Quixx__Form__Main {
         box-shadow: none;
         border: none;
+        justify-self: center;
     }
     .Quixx__Q {
         display: none;
