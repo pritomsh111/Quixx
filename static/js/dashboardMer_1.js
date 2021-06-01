@@ -1,7 +1,13 @@
 async function MakeBarChart(id, url) {
 	await $.ajax({
 		type: "GET",
-		url: url
+		url: url,
+		headers:
+		{
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization": 'Bearer ' + localStorage.getItem('token')
+		}
 	}).done(function (data) {
 		timeseries = data['data'];
 		length = Object.keys(timeseries).length;

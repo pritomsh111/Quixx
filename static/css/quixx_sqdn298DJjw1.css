@@ -2352,7 +2352,7 @@ button.close {
   border-top: 1px solid #e9ecef;
 }
 
-.modal-footer>.btn.btn-outline, .modal-body>.btn.btn-outline {
+.modal-footer>.btn.btn-outline, .modal-body>.btn.btn-outline, .modal-body>.btn {
   padding: 0.6rem 1rem;
 }
 
@@ -2364,7 +2364,7 @@ button.close {
   .modal-header, .modal-footer {
     padding: 0.6rem;
   }
-  .modal-footer>.btn.btn-outline, .modal-body>.btn.btn-outline {
+  .modal-footer>.btn.btn-outline, .modal-body>.btn.btn-outline, .modal-body>.btn {
     padding: 0.4rem;
     border-width: 1px;
   }

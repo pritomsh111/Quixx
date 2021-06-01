@@ -503,6 +503,9 @@ input {
 }
 
 @media (max-width:450px) {
+	#formD>div:not(:first-child), #formDQ>div:not(:first-child) {
+		margin: 4rem 0 3rem;
+	}
 	a[download], .btn.btn-outline.btn-sm.center-block.btn-file {
 		padding: 0.4rem 1rem;
 	}
