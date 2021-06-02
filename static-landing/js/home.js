@@ -191,22 +191,18 @@ let theadHeight = thead.offsetHeight;
 window.addEventListener("scroll", scrollHandler);
 window.addEventListener("resize", resizeHandler);
 
-var scrollY, lastSectionOffsetTop;
 function scrollHandler() {
-    console.log({ scrollY, lastSectionOffsetTop, tableOffsetTop, theadHeight, tableWidth });
     if (mq.matches) {
-        scrollY = window.pageYOffset;
-        lastSectionOffsetTop = lastSection.getBoundingClientRect().top;
-        if (scrollY >= tableOffsetTop) {
+        const scrollY = window.pageYOffset;
+        const lastSectionOffsetTop = lastSection.getBoundingClientRect().top;
+        if (scrollY >= tableOffsetTop + 780) {
             thead.style.width = `${tableWidth}px`;
             if (lastSectionOffsetTop > theadHeight) {
-                console.log("DHuksi");
                 body.classList.remove(sticky2Class);
                 body.classList.add(stickyClass);
                 thead.style.top = 0;
                 body.style.paddingTop = `${theadHeight}px`;
             } else {
-                console.log("Okiiii");
                 body.classList.remove(stickyClass);
                 body.classList.add(sticky2Class);
                 thead.style.top = `calc(100% - ${theadHeight}px)`;
