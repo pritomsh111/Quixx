@@ -173,20 +173,20 @@
 
 })();
 
-const body = document.body;
-const firstSection = document.querySelector(".Quixx__Panels");
-const lastSection = document.querySelector(".Quixx__Video");
-const table = document.querySelector("table");
-const thead = document.querySelector("table thead");
-const mq = window.matchMedia("(min-width: 780px)");
-const stickyClass = "sticky-table";
-const sticky2Class = "sticky2-table";
+var body = document.body;
+var firstSection = document.querySelector(".Quixx__Panels");
+var lastSection = document.querySelector(".Quixx__Video");
+var table = document.querySelector("table");
+var thead = document.querySelector("table thead");
+var mq = window.matchMedia("(min-width: 780px)");
+var stickyClass = "sticky-table";
+var sticky2Class = "sticky2-table";
 
-let tableWidth = table.offsetWidth;
+var tableWidth = table.offsetWidth;
 // let tableOffsetTop = table.getBoundingClientRect().top;
 // or
-let tableOffsetTop = table.offsetTop;
-let theadHeight = thead.offsetHeight;
+var tableOffsetTop = table.offsetTop;
+var theadHeight = thead.offsetHeight;
 
 window.addEventListener("scroll", scrollHandler);
 window.addEventListener("resize", resizeHandler);

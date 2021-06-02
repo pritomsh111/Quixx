@@ -2643,29 +2643,30 @@ function doIt(i, lengx) {
 			}
 		}
 		var v8 = () => {
-			if (parseInt(delivery_charge) < 0) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Delivery Charge must be greater than or equal to 0!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else if (isNaN(delivery_charge) == true || delivery_charge == "" || delivery_charge == undefined || !/\D/.test(delivery_charge) == false) {
-				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Delivery Charge must be a number!`;
-				$('#myModalWrongDeliveryCreate').modal('show');
-				document.getElementById('CLOSEIT').disabled = false;
-				hello();
-				setTimeout(function () {
-					$('#myModalCreateD1').modal('hide');
-				}, 2500);
-				return 0;
-			}
-			else if (!/\D/.test(delivery_charge) == true) {
-				return 1;
-			}
+			// if (parseInt(delivery_charge) < 0) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Delivery Charge must be greater than or equal to 0!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else if (isNaN(delivery_charge) == true || delivery_charge == "" || delivery_charge == undefined || !/\D/.test(delivery_charge) == false) {
+			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Delivery Charge must be a number!`;
+			// 	$('#myModalWrongDeliveryCreate').modal('show');
+			// 	document.getElementById('CLOSEIT').disabled = false;
+			// 	hello();
+			// 	setTimeout(function () {
+			// 		$('#myModalCreateD1').modal('hide');
+			// 	}, 2500);
+			// 	return 0;
+			// }
+			// else if (!/\D/.test(delivery_charge) == true) {
+			// 	return 1;
+			// }
+			return 1;
 		}
 		var v9 = () => {
 			if (product_name == "" || product_name == null || product_name == undefined) {
