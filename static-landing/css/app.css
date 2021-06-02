@@ -48,13 +48,14 @@ ul {
     /* box-shadow: inset 3px 2px 3px 1px #1d2b42, -3px -4px 1px -1px #1d2b42; */
     transition: opacity 250ms ease-in, color 250ms ease-in;
     color: #000;
+    background: transparent;
 }
 
 .Button__Quixx:hover {
     /* box-shadow: none; */
     /* transform: translateY(-10%); */
     color: rgba(255, 255, 255, 0.9);
-    opacity: 0.8;
+    opacity: 0.9;
     background-color: #1d2b42;
 }
 
@@ -64,6 +65,7 @@ ul {
 
 .Button__Quixx:disabled {
     cursor: not-allowed;
+    pointer-events: none;
     background-color: #959595;
 }
 
@@ -374,7 +376,7 @@ ul {
     color: #1d2b42;
     width: 100%;
     column-gap: 2rem;
-    margin-top: -3rem;
+    /* margin-top: -3rem; */
     position: relative;
 }
 
