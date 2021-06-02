@@ -266,7 +266,7 @@ ul {
 
 @media (max-width: 800px) {
     .Quixx__Header {
-        padding: 1rem 2rem;
+        padding: 1rem 1.3rem;
     }
     .Quixx__Navigation__Toggler {
         display: block;
@@ -703,7 +703,7 @@ ul {
 
 @media (max-width: 850px) {
     .Quixx__Mobile__Applications {
-        padding: 1rem 2rem;
+        padding: 1rem 1.3rem;
     }
     .Mobile__Left .Main__Phone__Over {
         width: 28.8%;
@@ -928,7 +928,7 @@ ul {
 
 @media (max-width: 700px) {
     .Route__Optimization {
-        padding: 1rem 2rem;
+        padding: 1rem 1.3rem;
     }
     .Route__Optimization .RO__IMG {
         height: 200px;
@@ -993,7 +993,7 @@ ul {
 
 @media (max-width: 700px) {
     .Real__SMS {
-        padding: 1rem 2rem;
+        padding: 1rem 1.3rem;
     }
     .Real__SMS .Real__IMG {
         height: 280px;
@@ -1061,7 +1061,7 @@ ul {
 
 @media (max-width: 700px) {
     .Auto__Delivery {
-        padding: 1rem 2rem;
+        padding: 1rem 1.3rem;
     }
     .Auto__Delivery .Auto__IMG {
         height: 280px;
@@ -1129,7 +1129,7 @@ ul {
 
 @media (max-width: 700px) {
     .Bulk__Delivery {
-        padding: 1rem 2rem;
+        padding: 1rem 1.3rem;
     }
     .Bulk__Delivery .Bulk__IMG {
         height: 280px;
@@ -1197,7 +1197,7 @@ ul {
 
 @media (max-width: 700px) {
     .Company__Analysis {
-        padding: 1rem 2rem;
+        padding: 1rem 1.3rem;
     }
     .Company__Analysis .Company__IMG {
         height: 280px;
@@ -1528,7 +1528,6 @@ ul {
 /* Section:9 -> Video */
 
 .Quixx__Video {
-    padding: 4rem 0;
     display: grid;
     grid-template-columns: 1fr;
     position: relative;
@@ -1540,7 +1539,7 @@ ul {
 }
 
 .Quixx__Video h1 {
-    padding: 0.5rem 2rem 3rem;
+    padding: 0.5rem 2rem;
 }
 
 .Quixx__Video h4 {
@@ -1555,6 +1554,12 @@ ul {
     background: url("/static-landing/img/bg3-mf.png") center/contain no-repeat;
     overflow: hidden;
     border-radius: 10px;
+}
+
+@media (max-width: 450px) {
+    .Quixx__Video .video {
+        height: 280px;
+    }
 }
 
 .Quixx__Video .play_button {
@@ -2524,7 +2529,7 @@ table {
 }
 
 .container {
-    max-width: 850px;
+    max-width: 950px;
     padding: 0 10px;
     margin: 0 auto;
 }
@@ -2715,17 +2720,8 @@ table svg.professional {
 }
 
 @media screen and (min-width: 780px) {
-    section:nth-child(1), section:nth-child(3) {
-        padding: 0;
-    }
-    section:nth-child(1) {
-        height: 70vh;
-    }
-    section:nth-child(3) {
-        height: 100vh;
-    }
     table th:nth-child(1) {
-        padding: 0 20px;
+        padding: 0 0px;
     }
     table td {
         padding: 20px;
@@ -2734,6 +2730,7 @@ table svg.professional {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
+        width: 930px !important;
     }
     .sticky-table table thead {
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
@@ -2741,6 +2738,7 @@ table svg.professional {
     .sticky2-table table thead {
         position: absolute;
         left: 0;
+        width: 930px !important;
     }
 }
 
