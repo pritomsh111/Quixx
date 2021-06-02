@@ -2730,7 +2730,6 @@ table svg.professional {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
-        width: 930px !important;
     }
     .sticky-table table thead {
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
@@ -2738,7 +2737,6 @@ table svg.professional {
     .sticky2-table table thead {
         position: absolute;
         left: 0;
-        width: 930px !important;
     }
 }
 

@@ -193,9 +193,16 @@ window.addEventListener("resize", resizeHandler);
 
 function scrollHandler() {
     if (mq.matches) {
+        let adder = 780;
         const scrollY = window.pageYOffset;
         const lastSectionOffsetTop = lastSection.getBoundingClientRect().top;
-        if (scrollY >= tableOffsetTop + 780) {
+        if (window.innerWidth > 1600) {
+            adder = 920;
+        }
+        if (window.innerWidth < 900) {
+            adder = 1050;
+        }
+        if (scrollY >= tableOffsetTop + adder) {
             thead.style.width = `${tableWidth}px`;
             if (lastSectionOffsetTop > theadHeight) {
                 body.classList.remove(sticky2Class);
