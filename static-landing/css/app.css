@@ -39,15 +39,15 @@ ul {
 }
 
 .Button__Quixx {
-    outline: none;
-    border: none;
-    font-family: inherit;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 20px;
+    margin-top: 10px;
     cursor: pointer;
+    font-family: inherit;
     /* box-shadow: inset 3px 2px 3px 1px #1d2b42, -3px -4px 1px -1px #1d2b42; */
     transition: opacity 250ms ease-in, color 250ms ease-in;
-    color: #fff;
-    border-radius: 5px 5px / 10px;
-    background-color: #1d2b42;
+    color: #000;
 }
 
 .Button__Quixx:hover {
@@ -55,6 +55,7 @@ ul {
     /* transform: translateY(-10%); */
     color: rgba(255, 255, 255, 0.9);
     opacity: 0.8;
+    background-color: #1d2b42;
 }
 
 .Button__Quixx:active {
@@ -373,6 +374,7 @@ ul {
     color: #1d2b42;
     width: 100%;
     column-gap: 2rem;
+    margin-top: -3rem;
     position: relative;
 }
 
@@ -391,10 +393,10 @@ ul {
     font-weight: 100;
     width: 85%;
     opacity: 0.9;
+    display: none;
 }
 
 .Home__L .Home__CTA {
-    margin-top: 3rem;
     padding: 0.7rem;
 }
 
@@ -512,9 +514,6 @@ ul {
     }
     .Home__L .Summmary__Bottom {
         display: none;
-    }
-    .Home__L .Home__CTA {
-        margin-top: 2rem;
     }
     .Home__R {
         display: none;
@@ -2077,7 +2076,7 @@ ul {
 .Quixx__Form__Main .Buttons button {
     padding: .6rem;
     width: 90px;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.1);
     border: none;
     cursor: pointer;
@@ -2103,7 +2102,7 @@ ul {
     border: 1px solid #1d2b42;
     background: transparent;
     display: block;
-    border-radius: 5px 5px / 15px;
+    border-radius: 5px;
     font-family: inherit;
     cursor: pointer;
     margin: auto;

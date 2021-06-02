@@ -51,6 +51,9 @@ $(function () {
 					.append('<option selected="selected" value="">Select One</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
+					if (data.data[i] === "ASSIGN") {
+						continue;
+					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#deliveryStatus").append(option);

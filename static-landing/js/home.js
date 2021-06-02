@@ -197,7 +197,7 @@ function scrollHandler() {
         const scrollY = window.pageYOffset;
         const lastSectionOffsetTop = lastSection.getBoundingClientRect().top;
         if (window.innerWidth > 1600) {
-            adder = 920;
+            adder = 950;
         }
         if (window.innerWidth < 900) {
             adder = 1050;
