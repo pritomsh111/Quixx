@@ -193,7 +193,7 @@ window.addEventListener("resize", resizeHandler);
 
 function scrollHandler() {
     if (mq.matches) {
-        let adder = 820;
+        let adder = 780;
         const scrollY = window.pageYOffset;
         const lastSectionOffsetTop = lastSection.getBoundingClientRect().top;
         if (window.innerWidth > 1600) {
@@ -212,7 +212,7 @@ function scrollHandler() {
             } else {
                 body.classList.remove(stickyClass);
                 body.classList.add(sticky2Class);
-                thead.style.top = `calc(100% - ${theadHeight}px)`;
+                thead.style.top = `calc(100% - ${theadHeight + 10}px)`;
             }
         } else {
             body.classList.remove(stickyClass, sticky2Class);

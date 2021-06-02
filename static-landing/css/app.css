@@ -2558,6 +2558,7 @@ table thead {
     background: var(--white);
     transition: box-shadow 0.2s;
     z-index: 1000000000 !important;
+    overflow: hidden;
 }
 
 table tr {
