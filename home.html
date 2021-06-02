@@ -180,53 +180,261 @@
 <script>
 if (document.location.host.includes("portal")) {window.location.href = "/login-panel";}
 </script>
-<div class="Quixx__Mobile" id="Quixx__Mobile">
-    <div class="Quixx__Mobile">
-        <h4>User Friendly</h4>
-        <h1>Delivery Agent's Application</h1>
+<section>
+    <div>
+        <h1>Sticky Pricing Table</h1>
+        <p>Scroll down to see the effect!</p>
     </div>
-    <div class="Quixx__Mobile__Applications">
-        <div class="Mobile__Left">
-            <img src="static-landing/img/phoneFrame.svg" class="Main__Phone" alt="Delivery Agent Application">
-            <img
-                src="static-landing/img/phone_myT.jpg"
-                class="Main__Phone__Over"
-                id="overlay1"
-                alt="Delivery Agent Application"
-            >
-            <img
-                src="static-landing/img/phone_myTest2.jpg"
-                class="Main__Phone__Over"
-                id="overlay2"
-                alt="Delivery Details"
-            >
-            <img
-                src="static-landing/img/phone_myTest3.jpg"
-                class="Main__Phone__Over"
-                id="overlay3"
-                alt="Receiver's Location on Map"
-            >
-            <img
-                src="static-landing/img/phone_myTest4.jpg"
-                class="Main__Phone__Over"
-                id="overlay4"
-                alt="Assigned Delivery List"
-            >
+</section>
+<section>
+    <div class="container">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <div>
+                                Select your plan
+                                <div class="svg-wrapper">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 17v-4h-8v-2h8v-4l6 5-6 5z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="heading">Starter</div>
+                            <div class="info">
+                                <div class="amount">$10
+                                    <span>month</span>
+                                </div>
+                                <div class="billing-msg">billed annually</div>
+                                <button type="button">Get started</button>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="heading">Essential</div>
+                            <div class="info">
+                                <div class="popular">Popular</div>
+                                <div class="amount">$22
+                                    <span>month</span>
+                                </div>
+                                <div class="billing-msg">billed annually</div>
+                                <button type="button">Get started</button>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="heading">Professional</div>
+                            <div class="info">
+                                <div class="amount">$35
+                                    <span>month</span>
+                                </div>
+                                <div class="billing-msg">billed annually</div>
+                                <button type="button">Get started</button>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Domain redirects</td>
+                        <td>
+                            <svg class="starter" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="essential" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="professional" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>30 days money back</td>
+                        <td>
+                            <svg class="starter" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="essential" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="professional" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Free domain transfer</td>
+                        <td>
+                            <svg class="starter" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="essential" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="professional" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Free website setup</td>
+                        <td>
+                            <svg class="starter" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="essential" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="professional" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Network firewall</td>
+                        <td>
+                            <svg class="starter" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="essential" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="professional" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Forms customization</td>
+                        <td>
+                            <svg class="not-included" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="essential" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="professional" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>24/7 human support</td>
+                        <td>
+                            <svg class="not-included" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="essential" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="professional" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Unlimited websites</td>
+                        <td>
+                            <svg class="not-included" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="not-included" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"/>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg class="professional" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="Mobile__Right">
-            <div class="Top__Select">
-                <img src="static-landing/img/icon/delivery-details.svg" alt="Delivery Details">
-                <p>Delivery Details</p>
+    </div>
+</section>
+<section>
+    content here
+</section>
+<footer class="page-footer">
+    <small>Made with
+        <span>❤</span> by
+        <a href="http://georgemartsoukos.com/" target="_blank">George Martsoukos</a>
+    </small>
+</footer>
+<div class="Quixx__Mobile__Merchant" id="Quixx__Mobile__Merchant">
+    <h1>Dedicated Merchant Panel Application</h1>
+    <div class="swiper-container merchant-app">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="static-landing/img/mer_2.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>Dashboard</span>
+                </div>
             </div>
-            <div class="Middle__Select">
-                <img src="static-landing/img/icon/address-location.svg" alt="Receiver's Location">
-                <p>Receiver's Location and Delivery Status</p>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="static-landing/img/mer_3.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>Delivery Statistics</span>
+                </div>
             </div>
-            <div class="Bottom__Select">
-                <img src="static-landing/img/icon/parcel-delivery.svg" alt="Assigned Deliveries">
-                <p>Assigned Deliveries</p>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="static-landing/img/mer_4.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>Delivery Creation</span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="static-landing/img/mer_5.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>Search Options</span>
+                </div>
             </div>
         </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <img class="swipper_phone" src="static-landing/img/phone8.png" alt="">
     </div>
 </div>
 <div class="Paper__Flyer__Animation">
@@ -292,47 +500,53 @@ if (document.location.host.includes("portal")) {window.location.href = "/login-p
         </p>
     </div>
 </div>
-<div class="Quixx__Mobile__Merchant" id="Quixx__Mobile__Merchant">
-    <h1>Dedicated Merchant Panel Application</h1>
-    <div class="swiper-container merchant-app">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="picture">
-                    <img src="static-landing/img/mer_2.jpg" alt="">
-                </div>
-                <div class="detail">
-                    <span>Dashboard</span>
-                </div>
+<div class="Quixx__Mobile" id="Quixx__Mobile">
+    <div class="Quixx__Mobile">
+        <h4>User Friendly</h4>
+        <h1>Delivery Agent's Application</h1>
+    </div>
+    <div class="Quixx__Mobile__Applications">
+        <div class="Mobile__Left">
+            <img src="static-landing/img/phoneFrame.svg" class="Main__Phone" alt="Delivery Agent Application">
+            <img
+                src="static-landing/img/phone_myT.jpg"
+                class="Main__Phone__Over"
+                id="overlay1"
+                alt="Delivery Agent Application"
+            >
+            <img
+                src="static-landing/img/phone_myTest2.jpg"
+                class="Main__Phone__Over"
+                id="overlay2"
+                alt="Delivery Details"
+            >
+            <img
+                src="static-landing/img/phone_myTest3.jpg"
+                class="Main__Phone__Over"
+                id="overlay3"
+                alt="Receiver's Location on Map"
+            >
+            <img
+                src="static-landing/img/phone_myTest4.jpg"
+                class="Main__Phone__Over"
+                id="overlay4"
+                alt="Assigned Delivery List"
+            >
+        </div>
+        <div class="Mobile__Right">
+            <div class="Top__Select">
+                <img src="static-landing/img/icon/delivery-details.svg" alt="Delivery Details">
+                <p>Delivery Details</p>
             </div>
-            <div class="swiper-slide">
-                <div class="picture">
-                    <img src="static-landing/img/mer_3.jpg" alt="">
-                </div>
-                <div class="detail">
-                    <span>Delivery Statistics</span>
-                </div>
+            <div class="Middle__Select">
+                <img src="static-landing/img/icon/address-location.svg" alt="Receiver's Location">
+                <p>Receiver's Location and Delivery Status</p>
             </div>
-            <div class="swiper-slide">
-                <div class="picture">
-                    <img src="static-landing/img/mer_4.jpg" alt="">
-                </div>
-                <div class="detail">
-                    <span>Delivery Creation</span>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="picture">
-                    <img src="static-landing/img/mer_5.jpg" alt="">
-                </div>
-                <div class="detail">
-                    <span>Search Options</span>
-                </div>
+            <div class="Bottom__Select">
+                <img src="static-landing/img/icon/parcel-delivery.svg" alt="Assigned Deliveries">
+                <p>Assigned Deliveries</p>
             </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <img class="swipper_phone" src="static-landing/img/phone8.png" alt="">
     </div>
 </div>
 <div class="Quixx__Application__Links">
