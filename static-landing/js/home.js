@@ -34,7 +34,7 @@
         hoverProductUL.style.backgroundColor = "#f2f1f7";
     });
 
-    let ob = document.querySelectorAll('.order-btn');
+    let ob = document.querySelectorAll('.billing-msg+button');
 
     ob.forEach(item => item.addEventListener("click", function (event) {
         localStorage.setItem("price", event.target.dataset.val);
@@ -203,12 +203,13 @@
                 adder = 1050;
             }
             if (scrollY >= tableOffsetTop + adder) {
+                console.log({ scrollY, tableOffsetTop, lastSectionOffsetTop, theadHeight });
                 thead.style.width = `${tableWidth}px`;
                 if (lastSectionOffsetTop > theadHeight) {
                     body.classList.remove(sticky2Class);
                     body.classList.add(stickyClass);
                     thead.style.top = 0;
-                    body.style.paddingTop = `${theadHeight}px`;
+                    body.style.paddingTop = `${theadHeight - 30}px`;
                 } else {
                     body.classList.remove(stickyClass);
                     body.classList.add(sticky2Class);

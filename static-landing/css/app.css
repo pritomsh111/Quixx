@@ -388,7 +388,7 @@ ul {
 }
 
 .Home__L .Headline__Top {
-    margin-bottom: 3rem;
+    margin-bottom: 1.3rem;
     font-weight: 100;
 }
 
@@ -2081,7 +2081,7 @@ ul {
     padding: .6rem;
     width: 90px;
     border-radius: 5px;
-    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.1);
     border: none;
     cursor: pointer;
     transition: color 250ms ease-in, 100ms ease-in-out, border 450ms ease-in-out, font-size 350ms ease-in-out;
@@ -2560,7 +2560,7 @@ table {
 table thead {
     background: var(--white);
     transition: box-shadow 0.2s;
-    z-index: 1000000000 !important;
+    z-index: 1000 !important;
     overflow: hidden;
 }
 
