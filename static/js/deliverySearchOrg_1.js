@@ -289,11 +289,11 @@ $('#criterionSubmit').on('click', function (eventx) {
 	else if (cri == "Payment Method") {
 		var valx = document.getElementById("paymentMethod").value;
 	}
-	else if (value == "Merchant Name") {
+	else if (cri == "Merchant Name") {
 		var valx = document.getElementById("merchantList").value;
 	}
-	else if (value == "Merchant Phone Number") {
-		var valx = document.getElementById("merchantPhoneNumberList").value.split(" - ")[1];
+	else if (cri == "Merchant Phone Number") {
+		var valx = document.getElementById("merchantPhoneNumberList").value;
 	}
 	else if (cri == "Delivery ID") {
 		var valx = document.getElementById("ccString").value;
@@ -339,6 +339,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 		var valx = document.getElementById("ccString").value;
 	}
 	if (cri != "") {
+		cri.includes("Merchant") ? cri = cri.replace("Merchant", "Sender") : null;
 		var tableX = $('#dtBasicExampledC').DataTable({
 			responsive: {
 				details: {
@@ -496,6 +497,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 				return;
 			}
 			$(".aaa").show();
+			cri.includes("Sender") ? cri = cri.replace("Sender", "Merchant") : null;
 			$("#valOfTable").html(`${cri}: ${valx} [Total Data: ${json.recordsTotal}]`);
 		});
 
