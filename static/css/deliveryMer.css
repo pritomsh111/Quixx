@@ -103,6 +103,10 @@
   padding: 0.6rem 1rem;
 }
 
+#criterionSubmit {
+  margin-top: 0.5rem;
+}
+
 .dataTables_wrapper .dataTables_processing {
   position: absolute;
   top: 3%;
@@ -170,6 +174,7 @@ table.dataTable.responsive tbody tr.odd.parent, table.dataTable.display tbody tr
 @media(max-width:450px) {
   .p-5.sear>.row {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    row-gap: 1rem;
   }
   #criterion, #deliveryManList, #deliveryStatus, #paymentMethod, #deliveryDistrict, #deliveryArea {
     padding: 0.3rem;
