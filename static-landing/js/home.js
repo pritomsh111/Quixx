@@ -170,50 +170,64 @@
             document.querySelector('.video').innerHTML = "";
         }
     });
+    window.removeEventListener("scroll", scrollHandler);
+    window.removeEventListener("resize", resizeHandler);
 
-})();
+    const body = document.body;
+    const firstSection = document.querySelector(".Quixx__Panels");
+    const lastSection = document.querySelector(".Quixx__Video");
+    const table = document.querySelector("table");
+    const thead = document.querySelector("table thead");
+    const mq = window.matchMedia("(min-width: 780px)");
+    const stickyClass = "sticky-table";
+    const sticky2Class = "sticky2-table";
 
-var body = document.body;
-var firstSection = document.querySelector(".Quixx__Panels");
-var lastSection = document.querySelector(".Quixx__Video");
-var table = document.querySelector("table");
-var thead = document.querySelector("table thead");
-var mq = window.matchMedia("(min-width: 780px)");
-var stickyClass = "sticky-table";
-var sticky2Class = "sticky2-table";
+    let tableWidth = table.offsetWidth;
+    // let tableOffsetTop = table.getBoundingClientRect().top;
+    // or
+    let tableOffsetTop = table.offsetTop;
+    let theadHeight = thead.offsetHeight;
 
-var tableWidth = table.offsetWidth;
-// let tableOffsetTop = table.getBoundingClientRect().top;
-// or
-var tableOffsetTop = table.offsetTop;
-var theadHeight = thead.offsetHeight;
+    window.addEventListener("scroll", scrollHandler);
+    window.addEventListener("resize", resizeHandler);
 
-window.addEventListener("scroll", scrollHandler);
-window.addEventListener("resize", resizeHandler);
-
-function scrollHandler() {
-    if (mq.matches) {
-        let adder = 780;
-        const scrollY = window.pageYOffset;
-        const lastSectionOffsetTop = lastSection.getBoundingClientRect().top;
-        if (window.innerWidth > 1600) {
-            adder = 950;
-        }
-        if (window.innerWidth < 900) {
-            adder = 1050;
-        }
-        if (scrollY >= tableOffsetTop + adder) {
-            thead.style.width = `${tableWidth}px`;
-            if (lastSectionOffsetTop > theadHeight) {
-                body.classList.remove(sticky2Class);
-                body.classList.add(stickyClass);
-                thead.style.top = 0;
-                body.style.paddingTop = `${theadHeight}px`;
-            } else {
-                body.classList.remove(stickyClass);
-                body.classList.add(sticky2Class);
-                thead.style.top = `calc(100% - ${theadHeight + 10}px)`;
+    function scrollHandler() {
+        if (mq.matches) {
+            let adder = 780;
+            const scrollY = window.pageYOffset;
+            const lastSectionOffsetTop = lastSection.getBoundingClientRect().top;
+            if (window.innerWidth > 1600) {
+                adder = 950;
             }
+            if (window.innerWidth < 900) {
+                adder = 1050;
+            }
+            if (scrollY >= tableOffsetTop + adder) {
+                thead.style.width = `${tableWidth}px`;
+                if (lastSectionOffsetTop > theadHeight) {
+                    body.classList.remove(sticky2Class);
+                    body.classList.add(stickyClass);
+                    thead.style.top = 0;
+                    body.style.paddingTop = `${theadHeight}px`;
+                } else {
+                    body.classList.remove(stickyClass);
+                    body.classList.add(sticky2Class);
+                    thead.style.top = `calc(100% - ${theadHeight + 10}px)`;
+                }
+            } else {
+                body.classList.remove(stickyClass, sticky2Class);
+                body.style.paddingTop = 0;
+                thead.style.width = "100%";
+                thead.style.top = "auto";
+            }
+        }
+    }
+
+    function resizeHandler() {
+        if (mq.matches) {
+            tableWidth = table.offsetWidth;
+            tableOffsetTop = firstSection.offsetHeight;
+            theadHeight = thead.offsetHeight;
         } else {
             body.classList.remove(stickyClass, sticky2Class);
             body.style.paddingTop = 0;
@@ -221,17 +235,4 @@ function scrollHandler() {
             thead.style.top = "auto";
         }
     }
-}
-
-function resizeHandler() {
-    if (mq.matches) {
-        tableWidth = table.offsetWidth;
-        tableOffsetTop = firstSection.offsetHeight;
-        theadHeight = thead.offsetHeight;
-    } else {
-        body.classList.remove(stickyClass, sticky2Class);
-        body.style.paddingTop = 0;
-        thead.style.width = "100%";
-        thead.style.top = "auto";
-    }
-}
+})();
