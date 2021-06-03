@@ -10,6 +10,8 @@ $(function () {
 	$("#paymentMethod").hide();
 	$("#deliveryDistrict").hide();
 	$("#deliveryArea").hide();
+	$("#merchantList").hide();
+	$("#merchantPhoneNumberList").hide();
 	$.ajax
 		({
 			url: urlForAll + "search/delivery/search/criteria/" + "organization",
@@ -28,6 +30,10 @@ $(function () {
 					.append('<option selected="selected" value="">Select One</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
+					let cr = data.data[i];
+					if (data.data[i].includes("Sender")) {
+						data.data[i] = data.data[i].replace("Sender", "Merchant");
+					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#criterion").append(option);
@@ -181,62 +187,53 @@ $(function () {
 		});
 });
 
+function clearAll() {
+	$("#ccString").hide();
+	$("#ccDate").hide();
+	$("#deliveryManList").hide();
+	$("#deliveryStatus").hide();
+	$("#paymentMethod").hide();
+	$("#deliveryArea").hide();
+	$("#deliveryDistrict").hide();
+	$("#merchantList").hide();
+	$("#merchantPhoneNumberList").hide();
+	$(".aaa").hide();
+}
+
 $("#criterion").change(function () {
 	$(".aaa").hide();
 	value = $(this).val();
 	if (value == "Assign Date" || value == "Delivery Created Date" || value == "Delivery Complete Date") {
+		clearAll();
 		$("#ccDate").show();
-		$("#ccString").hide();
-		$("#deliveryManList").hide();
-		$("#deliveryStatus").hide();
-		$("#paymentMethod").hide();
-		$("#deliveryArea").hide();
-		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Delivery Man") {
+		clearAll();
 		$("#deliveryManList").show();
-		$("#ccDate").hide();
-		$("#deliveryStatus").hide();
-		$("#ccString").hide();
-		$("#paymentMethod").hide();
-		$("#deliveryArea").hide();
-		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Delivery Status") {
+		clearAll();
 		$("#deliveryStatus").show();
-		$("#deliveryManList").hide();
-		$("#ccDate").hide();
-		$("#ccString").hide();
-		$("#paymentMethod").hide();
-		$("#deliveryArea").hide();
-		$("#deliveryDistrict").hide();
 	}
 	else if (value == "Payment Method") {
+		clearAll();
 		$("#paymentMethod").show();
-		$("#deliveryStatus").hide();
-		$("#deliveryManList").hide();
-		$("#ccDate").hide();
-		$("#ccString").hide();
-		$("#deliveryArea").hide();
-		$("#deliveryDistrict").hide();
 	}
 	else if (value == "District") {
-		$("#deliveryStatus").hide();
-		$("#deliveryManList").hide();
-		$("#ccDate").hide();
-		$("#ccString").hide();
-		$("#paymentMethod").hide();
-		$("#deliveryArea").show();
+		clearAll();
 		$("#deliveryDistrict").show();
 	}
+	else if (value == "Merchant Name") {
+		clearAll();
+		$("#merchantList").show();
+	}
+	else if (value == "Merchant Phone Number") {
+		clearAll();
+		$("#merchantPhoneNumberList").show();
+	}
 	else {
+		clearAll();
 		$("#ccString").show();
-		$("#deliveryManList").hide();
-		$("#deliveryStatus").hide();
-		$("#ccDate").hide();
-		$("#paymentMethod").hide();
-		$("#deliveryArea").hide();
-		$("#deliveryDistrict").hide();
 	}
 });
 
