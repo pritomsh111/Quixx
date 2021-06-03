@@ -542,6 +542,11 @@ var disableddd = () => {
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>"
 			},
 			{ "targets": 12, "data": "name" },
+			{
+				"orderable": true, "targets": 4, "data": "enable", render: function (data, type, row) {
+					return row.phone_number.substring(0, 11);
+				}
+			},
 			{ "targets": 72, "data": "reporting_boss_email" },
 			{
 				"orderable": false, "targets": 4, "data": "enable", render: function (data, type, row) {
