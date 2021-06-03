@@ -66,11 +66,11 @@ function formatApproved(d) {
 		'</table>';
 }
 
+var marker, i;
 function setMarkers(map) {
 
 	var infowindow = new google.maps.InfoWindow();
 
-	var marker, i;
 	$.ajax
 		({
 			type: "GET",
@@ -127,10 +127,6 @@ function animationMarker() {
 			}
 		});
 }
-
-
-var map = undefined;
-var marker = undefined;
 var position = [43, -89];
 var numDeltas = 100;
 var delay = 10; //milliseconds
