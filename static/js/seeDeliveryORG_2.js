@@ -66,11 +66,11 @@ function formatApproved(d) {
 		'</table>';
 }
 
-var marker, i;
 function setMarkers(map) {
 
 	var infowindow = new google.maps.InfoWindow();
 
+	var marker, i;
 	$.ajax
 		({
 			type: "GET",
@@ -105,55 +105,6 @@ function setMarkers(map) {
 			}
 		});
 }
-
-function animationMarker() {
-	$.ajax
-		({
-			type: "GET",
-			url: urlForAll + "deliveryMan/getDeliveryManByUserId/" + localStorage.getItem('userID'),
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function (data) {
-				dataa = data;
-				console.log(data);
-				for (i = 0; i < dataa.data.length; i++) {
-					var result = [dataa.data[i].current_lat, dataa.data[i].current_longi];
-					transition(result);
-				}
-			}
-		});
-}
-var position = [43, -89];
-var numDeltas = 100;
-var delay = 10; //milliseconds
-var i = 0;
-var deltaLat;
-var deltaLng;
-function transition(result) {
-	i = 0;
-	deltaLat = (result[0] - position[0]) / numDeltas;
-	deltaLng = (result[1] - position[1]) / numDeltas;
-	moveMarker();
-}
-
-function moveMarker() {
-	position[0] += deltaLat;
-	position[1] += deltaLng;
-	var latlng = new google.maps.LatLng(position[0], position[1]);
-	marker.setPosition(latlng);
-	if (i != numDeltas) {
-		i++;
-		setTimeout(moveMarker, delay);
-	}
-}
-setTimeout(() => {
-	animationMarker();
-}, 3000);
-
 
 function details(abc) {
 	var name_element = abc.id;
