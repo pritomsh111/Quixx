@@ -493,6 +493,10 @@ input {
 	padding: 0.6rem 1rem;
 }
 
+#modalUpdateAA {
+	padding: 0.6rem 1rem;
+}
+
 @media (max-width:540px) {
 	#formDQ>div:first-child {
 		margin: 2.5rem 0;
