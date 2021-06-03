@@ -18,6 +18,15 @@
   #setCriteriaDetails {
     grid-template-columns: 1fr;
   }
+  #setCriteriaDetails .card {
+    margin: 1rem 0;
+  }
+  #setCriteriaDetails .card:first-of-type {
+    margin: 2rem 0 1rem;
+  }
+  #setCriteriaDetails .card .card-body {
+    padding: 0.8rem;
+  }
 }
 
 #merchantCreate form, .merchantUpdate, .bankUpdate {
@@ -119,10 +128,10 @@ input {
     padding-bottom: 2rem !important;
   }
   .paddForm2 .mobilebank+.bankbank, .paddForm2 .mobilebank2+.bankbank2 {
-    padding-top: 7rem;
+    padding-top: 8rem;
   }
   .paddForm2BankPhy.paddForm2 .mobilebank+.bankbank, .paddForm2BankPhy.paddForm2 .mobilebank2+.bankbank2 {
-    padding-bottom: 12.5rem;
+    padding-bottom: 11.5rem;
   }
 }
 
