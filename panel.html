@@ -122,6 +122,12 @@
                         document.querySelector(".logo>a>div").style.height = "75px";
                     }
                 }
+                if (document.querySelector(".sidebar").classList.contains("sidebar-smol")) {
+                    localStorage.setItem("x-https", "1");
+                }
+                else {
+                    localStorage.setItem("x-https", "2");
+                }
             }
         </script>
     </head>

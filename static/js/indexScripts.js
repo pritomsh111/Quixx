@@ -1,4 +1,7 @@
 (async function () {
+	if (localStorage.getItem("x-https") === "1") {
+		changeIT();
+	}
 	var myNode;
 	var fileTag = document.getElementById("filetag");
 	let favicon = document.querySelector("link[rel='shortcut icon']");
