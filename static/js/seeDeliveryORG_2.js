@@ -28,53 +28,6 @@ function initMap() {
 		}
 	});
 	infoWindow = new google.maps.InfoWindow;
-
-	// Try HTML5 geolocation.
-	/*if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-		var pos = {
-		  lat: position.coords.latitude,
-		  lng: position.coords.longitude
-		};
-		
-		var geocoder = new google.maps.Geocoder;
-			geocoder.geocode({
-			'location': pos
-			}, function(results, status) {
-				if (status === 'OK') {
-					if (results[0]) {
-	
-				//This is yout formatted address
-				var marker = new google.maps.Marker({
-				position: pos,
-				map: map,
-				icon: {
-				  url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-				},
-				title: 'Your current location is : ' + results[0].formatted_address
-				});
-				
-	
-				} else {
-				window.alert('No results found');
-				}
-			} else {
-			  window.alert('Geocoder failed due to: ' + status);
-			}
-		  });
-			//infoWindow.setPosition(pos);
-			//infoWindow.setContent('Location found.');
-			//infoWindow.open(map);
-			map.setCenter(pos);
-		  }, function() {
-			handleLocationError(true, infoWindow, map.getCenter());
-		  });
-		} 
-		else {
-	  // Browser doesn't support Geolocation
-	  handleLocationError(false, infoWindow, map.getCenter());
-		}*/
-
 	setMarkers(map);
 }
 
@@ -120,7 +73,6 @@ function setMarkers(map) {
 	var marker, i;
 	$.ajax
 		({
-			async: false,
 			type: "GET",
 			url: urlForAll + "deliveryMan/getDeliveryManByUserId/" + localStorage.getItem('userID'),
 			headers:
@@ -131,27 +83,81 @@ function setMarkers(map) {
 			},
 			success: function (data) {
 				dataa = data;
+				console.log(data);
+				for (i = 0; i < dataa.data.length; i++) {
+
+					marker = new google.maps.Marker({
+						position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
+						map: map,
+						title: dataa.data[i].name
+
+					});
+					//console.log(locations[0][0]);
+
+					google.maps.event.addListener(marker, 'click', (function (marker, i) {
+						return function () {
+							infowindow.setContent('<p style="color:#0066b3;text-align:center;font-family:Didact Gothic;">Delivery Man:<br><strong>' + dataa.data[i].name + "<br><button class='content1 btn-round btn-outline btn' id=" + dataa.data[i].delivery_man_id + " style='font-family:Didact Gothic;padding: 0.6rem 1rem; margin-top: 1rem;border-width:0' onclick=detailDelivery(this);>Details</button>");
+							//infowindow.setContent('<p style="color:#0066b3;font-family:Didact Gothic;" ><b>Delivery Man</b>:<br>'+dataa.data[i].name+''+"");
+							infowindow.open(map, marker);
+						}
+					})(marker, i));
+				}
 			}
 		});
-	for (i = 0; i < dataa.data.length; i++) {
+}
 
-		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
-			map: map,
-			title: dataa.data[i].name
-
-		});
-		//console.log(locations[0][0]);
-
-		google.maps.event.addListener(marker, 'click', (function (marker, i) {
-			return function () {
-				infowindow.setContent('<p style="color:#0066b3;text-align:center;font-family:Didact Gothic;"><b>Delivery Man</b>:<br>' + dataa.data[i].name + '<br>' + "<button class='content1 btn-round btn-outline btn' id=" + dataa.data[i].delivery_man_id + " style='font-family:Didact Gothic;width:97%' onclick=detailDelivery(this);>Details</button>");
-				//infowindow.setContent('<p style="color:#0066b3;font-family:Didact Gothic;" ><b>Delivery Man</b>:<br>'+dataa.data[i].name+''+"");
-				infowindow.open(map, marker);
+function animationMarker() {
+	$.ajax
+		({
+			type: "GET",
+			url: urlForAll + "deliveryMan/getDeliveryManByUserId/" + localStorage.getItem('userID'),
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				dataa = data;
+				console.log(data);
+				for (i = 0; i < dataa.data.length; i++) {
+					var result = [dataa.data[i].current_lat, dataa.data[i].current_longi];
+					transition(result);
+				}
 			}
-		})(marker, i));
+		});
+}
+
+
+var map = undefined;
+var marker = undefined;
+var position = [43, -89];
+var numDeltas = 100;
+var delay = 10; //milliseconds
+var i = 0;
+var deltaLat;
+var deltaLng;
+function transition(result) {
+	i = 0;
+	deltaLat = (result[0] - position[0]) / numDeltas;
+	deltaLng = (result[1] - position[1]) / numDeltas;
+	moveMarker();
+}
+
+function moveMarker() {
+	position[0] += deltaLat;
+	position[1] += deltaLng;
+	var latlng = new google.maps.LatLng(position[0], position[1]);
+	marker.setPosition(latlng);
+	if (i != numDeltas) {
+		i++;
+		setTimeout(moveMarker, delay);
 	}
 }
+setTimeout(() => {
+	animationMarker();
+}, 3000);
+
 
 function details(abc) {
 	var name_element = abc.id;
