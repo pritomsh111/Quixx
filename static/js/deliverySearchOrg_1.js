@@ -185,6 +185,36 @@ $(function () {
 				}
 			}
 		});
+	$.ajax
+		({
+			url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
+			type: "GET",
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				$('#merchantList')
+					.empty()
+					.append('<option selected="selected" value="">Select One</option>')
+					;
+				$('#merchantPhoneNumberList')
+					.empty()
+					.append('<option selected="selected" value="">Select One</option>')
+					;
+				for (var i = 0; i < data.data.merchants_info.length; i++) {
+					var option = new Option(data.data.merchants_info[i].merchantName, data.data.merchants_info[i].merchantName);
+					var option2 = new Option(data.data.merchants_info[i].profileDto.sender_phone_number, data.data.merchants_info[i].profileDto.sender_phone_number);
+					$(option).html(data.data.merchants_info[i].merchantName);
+					$(option2).html(`${data.data.merchants_info[i].merchantName} - ${data.data.merchants_info[i].profileDto.sender_phone_number}`);
+					$("#merchantList").append(option);
+					$("#merchantPhoneNumberList").append(option2);
+				}
+			}
+		});
 });
 
 function clearAll() {
@@ -258,6 +288,12 @@ $('#criterionSubmit').on('click', function (eventx) {
 	}
 	else if (cri == "Payment Method") {
 		var valx = document.getElementById("paymentMethod").value;
+	}
+	else if (value == "Merchant Name") {
+		var valx = document.getElementById("merchantList").value;
+	}
+	else if (value == "Merchant Phone Number") {
+		var valx = document.getElementById("merchantPhoneNumberList").value.split(" - ")[1];
 	}
 	else if (cri == "Delivery ID") {
 		var valx = document.getElementById("ccString").value;
