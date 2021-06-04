@@ -118,15 +118,9 @@ function initMap() {
 							fullscreenControl: false
 						});
 						marker = new SlidingMarker({
-							position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
-							map: map,
-							title: dataa.data[i].name,
-							duration: 2000,
-						});
-						marker = new SlidingMarker({
 							position: new google.maps.LatLng(latVal, lngVal),
 							map: map,
-							title: dataa.data[i].name,
+							title: contentString,
 							duration: 2000,
 						});
 						marker.addListener('click', function () {
@@ -138,3 +132,8 @@ function initMap() {
 		});
 
 }
+
+setTimeout(function () {
+	marker.setPosition(new google.maps.LatLng(23.76146, 90.45941)); //Will cause smooth animation
+	//transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
+}, 7000);
