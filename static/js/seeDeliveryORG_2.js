@@ -70,23 +70,26 @@ var deliveryManMapMarker = new Map();
 
 // var position = [43, -89];
 
-var numDeltas = 50;
-var delay = 1000; //milliseconds
+var numDeltas = 10;
+var delay = 100; //milliseconds
 var i = 0;
 var deltaLat;
 var deltaLng;
 
-function transition(...position) {
+function transition(marker, ...position) {
 	deliveryManMap.get("Arif")[0] = 23.740874;
 	deliveryManMap.get("Arif")[1] = 90.402445;
 	i = 0;
-	console.log(position);
-	deltaLat = (deliveryManMap.get("Arif")[0] - position[0]) / numDeltas;
-	deltaLng = (deliveryManMap.get("Arif")[1] - position[1]) / numDeltas;
-	moveMarker(position);
+	deltaLat = ((deliveryManMap.get("Arif")[0] - position[0]) / numDeltas).toFixed(6);
+	deltaLng = ((deliveryManMap.get("Arif")[1] - position[1]) / numDeltas).toFixed(6);
+
+	deltaLat = parseFloat(deltaLat);
+	deltaLng = parseFloat(deltaLng);
+	console.log({ position, deltaLat, deltaLng });
+	moveMarker(position, marker);
 }
 
-function moveMarker(position) {
+function moveMarker(position, marker) {
 	console.log(position, { deltaLat, deltaLng });
 	position[0] += deltaLat;
 	position[1] += deltaLng;
@@ -94,13 +97,13 @@ function moveMarker(position) {
 	marker.setPosition(latlng);
 	if (i != numDeltas) {
 		i++;
-		setTimeout(moveMarker.bind(this, position), delay);
+		setTimeout(moveMarker.bind(this, position, marker), delay);
 	}
 }
 
 setTimeout(function () {
-	transition(parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
-}, 20000);
+	transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
+}, 9000);
 function setMarkers(map) {
 
 	var infowindow = new google.maps.InfoWindow();
