@@ -435,11 +435,11 @@ $('#criterionSubmit').on('click', function (eventx) {
 
 		$('.dataTables_filter input[type="search"]').
 			attr('class', 'btn btn-round').
-			css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+			css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFF' });
 
 		$('.dataTables_length select').
 			attr('class', 'btn btn-round').
-			css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+			css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFF' });
 	}
 	else {
 		$("#myModalCreateDD22").modal('show');

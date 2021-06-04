@@ -63,10 +63,9 @@ function initMap() {
 								+ dataa.data[j].pickup_locations[i] + '</td><td>'
 								+ dataa.data[j].delivery_locations[i] + '</td><td>'
 								+ dataa.data[j].delivery_status[i] + '</td><td>'
+								+ "Product: " + dataa.data[j].product_name[i] + ",<br>Product Quantity: " + dataa.data[j].product_qty[i] + '</td><td>'
 								+ dataa.data[j].created_delivery_name[i] + ", " + dataa.data[j].created_delivery_role[i] + '</td><td>'
-								+ dataa.data[j].product_name[i] + ",<br>" + dataa.data[j].product_qty[i] + '</td><td>'
-								+ dataa.data[j].sender_name[i] + ",<br>" + dataa.data[j].sender_phone[i][i] + '</td><td>'
-								+ dataa.data[j].receiver_name[i] + ",<br>" + dataa.data[j].receiver_phone[i][i] + '</td><td>'
+								+ dataa.data[j].receiver_name[i] + ",<br>" + dataa.data[j].receiver_phone[i] + '</td><td>'
 								+ '</td></tr>';
 
 							table2.rows.add($(table_rows)).draw();
@@ -89,11 +88,11 @@ function initMap() {
 
 						$('.dataTables_filter input[type="search"]').
 							attr('class', 'btn btn-round').
-							css({ 'width': '220px', 'font-size': '12px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+							css({ 'width': '220px', 'font-size': '12px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFF' });
 
 						$('.dataTables_length select').
 							attr('class', 'btn btn-round').
-							css({ 'width': '75px', 'font-size': '12px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+							css({ 'width': '75px', 'font-size': '12px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFF' });
 
 						$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 						break;
@@ -105,13 +104,10 @@ function initMap() {
 				geocoder.geocode({ 'latLng': location }, function (results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
 						var add = results[0].formatted_address;
-						//var a = evt.latLng.lat() + evt.latLng.lng();
-						//console.log(add);	
 						var contentString = add;
 
 						var infowindow = new google.maps.InfoWindow({
 							content: '<p style="color:#0066b3;font-family:Didact Gothic;">' + contentString + '</p>'
-
 						});
 
 						var map = new google.maps.Map(document.getElementById('map'), {
@@ -121,11 +117,17 @@ function initMap() {
 							mapTypeControl: false,
 							fullscreenControl: false
 						});
-
-						var marker = new google.maps.Marker({
+						marker = new SlidingMarker({
+							position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
+							map: map,
+							title: dataa.data[i].name,
+							duration: 2000,
+						});
+						marker = new SlidingMarker({
 							position: new google.maps.LatLng(latVal, lngVal),
 							map: map,
-							title: 'Delivery'
+							title: dataa.data[i].name,
+							duration: 2000,
 						});
 						marker.addListener('click', function () {
 							infowindow.open(map, marker);

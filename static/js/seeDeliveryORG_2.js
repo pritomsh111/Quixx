@@ -304,11 +304,11 @@ var seeDateWise = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFF' });
 
 	$('#dtBasicExample2').show();
 	$('.b').show();
@@ -451,11 +451,11 @@ var deliveryManWithProduct = () => {
 
 	$('.dataTables_filter input[type="search"]').
 		attr('class', 'btn btn-round').
-		css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFF' });
 
 	$('.dataTables_length select').
 		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFF' });
 	$('#dtBasicExample').show();
 	$('.a').show();
 }

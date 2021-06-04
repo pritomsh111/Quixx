@@ -155,15 +155,15 @@ var onGoingDeliveries = () => {
     table.clear().draw();
     $('.dataTables_filter input[type="search"]').
         attr('placeholder', 'Search anything!').
-        css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+        css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
     $('.dataTables_filter input[type="search"]').
         attr('class', 'btn btn-round').
-        css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+        css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFF' });
 
     $('.dataTables_length select').
         attr('class', 'btn btn-round').
-        css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+        css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFF' });
     $('.d').show();
     $('#dtBasicExampled').show();
 
@@ -323,15 +323,15 @@ var completeDeliveries = () => {
     table.clear().draw();
     $('.dataTables_filter input[type="search"]').
         attr('placeholder', 'Search anything!').
-        css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+        css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
     $('.dataTables_filter input[type="search"]').
         attr('class', 'btn btn-round').
-        css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+        css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFF' });
 
     $('.dataTables_length select').
         attr('class', 'btn btn-round').
-        css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+        css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFF' });
 
     $('#dtBasicExampleNew').show();
     $('.e').show();
@@ -543,15 +543,15 @@ var onHoldDeliveries = () => {
     });*/
     $('.dataTables_filter input[type="search"]').
         attr('placeholder', 'Search anything!').
-        css({ 'width': '300px', 'display': 'inline-block', 'background': 'white' });
+        css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
 
     $('.dataTables_filter input[type="search"]').
         attr('class', 'btn btn-round').
-        css({ 'width': '300px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFA' });
+        css({ 'width': '220px', 'display': 'inline-block', 'color': '#000000', 'background': '#FFFFFF' });
 
     $('.dataTables_length select').
         attr('class', 'btn btn-round').
-        css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFA' });
+        css({ 'width': '80px', 'background-color': 'white', 'color': '#000000', 'background': '#FFFFFF' });
     $('.d').show();
     $('#dtBasicExampled').show();
 }
