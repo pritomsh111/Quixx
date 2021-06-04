@@ -110,7 +110,7 @@ function initMap() {
 							content: '<p style="color:#0066b3;font-family:Didact Gothic;">' + contentString + '</p>'
 						});
 
-						var map = new google.maps.Map(document.getElementById('map'), {
+						map = new google.maps.Map(document.getElementById('map'), {
 							center: new google.maps.LatLng(latVal, lngVal),
 							zoom: 16,
 							mapTypeId: 'roadmap',
@@ -134,6 +134,6 @@ function initMap() {
 }
 
 setTimeout(function () {
-	marker.setPosition(new google.maps.LatLng(23.76146, 90.45941)); //Will cause smooth animation
-	//transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
+	marker.setPosition(new google.maps.LatLng(23.76146, 90.45941));
+	map.setCenter(new google.maps.LatLng(23.76146, 90.45941));
 }, 7000);
