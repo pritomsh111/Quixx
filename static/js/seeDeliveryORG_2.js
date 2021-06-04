@@ -70,30 +70,31 @@ var deliveryManMapMarker = new Map();
 
 // var position = [43, -89];
 
-var numDeltas = 10;
-var delay = 100; //milliseconds
+var numDeltas = 100;
+var delay = 10; //milliseconds
 var i = 0;
 var deltaLat;
 var deltaLng;
 
 function transition(marker, ...position) {
-	deliveryManMap.get("Arif")[0] = 23.740874;
-	deliveryManMap.get("Arif")[1] = 90.402445;
+	// console.log(position);
+	deliveryManMap.get("Arif")[0] = 23.74169;
+	deliveryManMap.get("Arif")[1] = 90.40936;
 	i = 0;
-	deltaLat = ((deliveryManMap.get("Arif")[0] - position[0]) / numDeltas).toFixed(6);
-	deltaLng = ((deliveryManMap.get("Arif")[1] - position[1]) / numDeltas).toFixed(6);
-
-	deltaLat = parseFloat(deltaLat);
-	deltaLng = parseFloat(deltaLng);
-	console.log({ position, deltaLat, deltaLng });
+	deltaLat = parseFloat(((deliveryManMap.get("Arif")[0] - position[0]) / numDeltas).toPrecision(7));
+	deltaLng = parseFloat(((deliveryManMap.get("Arif")[1] - position[1]) / numDeltas).toPrecision(7));
+	// console.log({ position, deltaLat, deltaLng });
 	moveMarker(position, marker);
 }
 
 function moveMarker(position, marker) {
-	console.log(position, { deltaLat, deltaLng });
 	position[0] += deltaLat;
 	position[1] += deltaLng;
+	position[0] = parseFloat(position[0].toPrecision(7));
+	position[1] = parseFloat(position[1].toPrecision(7));
+	console.log(position, { deltaLat, deltaLng });
 	var latlng = new google.maps.LatLng(position[0], position[1]);
+	console.dir({ lat: latlng.lat(), lng: latlng.lng() });
 	marker.setPosition(latlng);
 	if (i != numDeltas) {
 		i++;
