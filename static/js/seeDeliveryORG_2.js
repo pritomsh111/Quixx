@@ -65,7 +65,7 @@ function formatApproved(d) {
 		'</tr>' +
 		'</table>';
 }
-
+var deliveryManMap = new Map();
 function setMarkers(map) {
 
 	var infowindow = new google.maps.InfoWindow();
@@ -92,6 +92,7 @@ function setMarkers(map) {
 						title: dataa.data[i].name
 
 					});
+					deliveryManMap.set(dataa.data[i].name, [dataa.data[i].current_lat, dataa.data[i].current_longi]);
 					//console.log(locations[0][0]);
 
 					google.maps.event.addListener(marker, 'click', (function (marker, i) {
