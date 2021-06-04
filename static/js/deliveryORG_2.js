@@ -1256,7 +1256,11 @@ var returnedDeliveries = () => {
 }
 
 
-$('.mapInfos').on("click", function () { $("#myModalInfoWatch").show(); });
+$('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
+	console.log("Hello");
+	$("#myModalInfoWatch").modal();
+});
+
 
 var save = (id) => {
 	localStorage.setItem("'Accept': 'application/json'", id.id);
