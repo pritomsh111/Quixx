@@ -29,7 +29,7 @@ table#dtBasicExampleC.dataTable tbody tr:hover>.sorting_1 {
 }
 
 #map {
-  height: 50%;
+  height: 400px;
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
@@ -60,7 +60,7 @@ table#dtBasicExampleC.dataTable tbody tr:hover>.sorting_1 {
 }
 
 .card2 {
-  border-radius: 15%;
+  border-radius: 5px;
   box-shadow: -6px -3px 19px #000000, 21px 12px 23px rgba(10, 2, 20, .1);
   margin: 0 auto;
   margin-bottom: 20px;
@@ -86,7 +86,7 @@ table#dtBasicExampleC.dataTable tbody tr:hover>.sorting_1 {
 }
 
 .card2-action-button {
-  border-radius: 2px;
+  border-radius: 5px;
   color: #FFAB40;
   cursor: pointer;
   display: inline-block;
@@ -109,4 +109,13 @@ table#dtBasicExampleC.dataTable tbody tr:hover>.sorting_1 {
 
 #aRow:hover {
   background-color: red;
+}
+
+.gm-ui-hover-effect {
+  outline: none;
+}
+
+.gm-style-iw.gm-style-iw-c {
+  max-width: 500px !important;
+  padding-top: 2rem;
 }

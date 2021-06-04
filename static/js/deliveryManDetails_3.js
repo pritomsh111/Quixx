@@ -13,7 +13,6 @@ function initMap() {
 			},
 			success: function (data) {
 				dataa = data;
-
 				var url = window.location.hash;
 				url = url.substring(1);
 				for (var j = 0; j < dataa.data.length; j++) {
@@ -49,37 +48,30 @@ function initMap() {
 						table3.clear().draw();
 						var trHTML = '';
 						var table_rows = '<tr><td>'
-							+ dataa.data[j].delivery_man_id + '</td><td>'
 							+ dataa.data[j].name + '</td><td>'
-							+ dataa.data[j].email + '</td><td>'
-							+ dataa.data[j].delivery_area + '</td><td>'
 							+ dataa.data[j].phone_number + '</td><td>'
-							+ dataa.data[j].reporting_boss_email + '</td><td>'
 							+ dataa.data[j].assign_delivery_count + '</td><td>'
+							+ dataa.data[j].reporting_boss_email + '</td><td>'
 							+ '</td></tr>';
 
 						table.rows.add($(table_rows)).draw();
 
-						var trHTML = '';
 						$.each(dataa.data[j].pickup_locations, function (i, item) {
-							var table_rows = '<tr><td>'
+							var table_rows =
+								'<tr><td>'
 								+ dataa.data[j].delivery_ids[i] + '</td><td>'
+								+ dataa.data[j].pickup_locations[i] + '</td><td>'
+								+ dataa.data[j].delivery_locations[i] + '</td><td>'
 								+ dataa.data[j].delivery_status[i] + '</td><td>'
 								+ dataa.data[j].created_delivery_name[i] + ", " + dataa.data[j].created_delivery_role[i] + '</td><td>'
-								+ dataa.data[j].product_name[i] + '</td><td>'
-								+ dataa.data[j].product_qty[i] + '</td><td>'
-								+ dataa.data[j].sender_name[i] + '</td><td>'
-								+ dataa.data[j].sender_phone[i] + '</td><td>'
-								+ dataa.data[j].pickup_locations[i] + '</td><td>'
-								+ dataa.data[j].receiver_name[i] + '</td><td>'
-								+ dataa.data[j].receiver_phone[i] + '</td><td>'
-								+ dataa.data[j].delivery_locations[i] + '</td><td>'
+								+ dataa.data[j].product_name[i] + ",<br>" + dataa.data[j].product_qty[i] + '</td><td>'
+								+ dataa.data[j].sender_name[i] + ",<br>" + dataa.data[j].sender_phone[i][i] + '</td><td>'
+								+ dataa.data[j].receiver_name[i] + ",<br>" + dataa.data[j].receiver_phone[i][i] + '</td><td>'
 								+ '</td></tr>';
 
 							table2.rows.add($(table_rows)).draw();
 						});
 
-						var trHTML = '';
 						$.each(dataa.data[j].currently_working, function (i, item) {
 							var array = dataa.data[j].currently_working[i].split("#");
 							var table_rows = '<tr><td>'
@@ -91,7 +83,6 @@ function initMap() {
 
 							table3.rows.add($(table_rows)).draw();
 						});
-						//console.log(dataa.data[0].currently_working[0].split("#"));
 						$('.dataTables_filter input[type="search"]').
 							attr('placeholder', 'Search anything!').
 							css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
@@ -109,38 +100,39 @@ function initMap() {
 					}
 				}
 
+				var geocoder = new google.maps.Geocoder();
+				var location = new google.maps.LatLng(latVal, lngVal);
+				geocoder.geocode({ 'latLng': location }, function (results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						var add = results[0].formatted_address;
+						//var a = evt.latLng.lat() + evt.latLng.lng();
+						//console.log(add);	
+						var contentString = add;
+
+						var infowindow = new google.maps.InfoWindow({
+							content: '<p style="color:#0066b3;font-family:Didact Gothic;">' + contentString + '</p>'
+
+						});
+
+						var map = new google.maps.Map(document.getElementById('map'), {
+							center: new google.maps.LatLng(latVal, lngVal),
+							zoom: 16,
+							mapTypeId: 'roadmap',
+							mapTypeControl: false,
+							fullscreenControl: false
+						});
+
+						var marker = new google.maps.Marker({
+							position: new google.maps.LatLng(latVal, lngVal),
+							map: map,
+							title: 'Delivery'
+						});
+						marker.addListener('click', function () {
+							infowindow.open(map, marker);
+						});
+					}
+				});
 			}
 		});
-	var geocoder = new google.maps.Geocoder();
-	var location = new google.maps.LatLng(latVal, lngVal);
-	geocoder.geocode({ 'latLng': location }, function (results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-			var add = results[0].formatted_address;
-			//var a = evt.latLng.lat() + evt.latLng.lng();
-			//console.log(add);	
-			var contentString = add;
 
-			var infowindow = new google.maps.InfoWindow({
-				content: '<p style="color:#0066b3;font-family:Didact Gothic;">' + contentString + '</p>'
-
-			});
-
-			var map = new google.maps.Map(document.getElementById('map'), {
-				center: new google.maps.LatLng(latVal, lngVal),
-				zoom: 16,
-				mapTypeId: 'roadmap',
-				mapTypeControl: false,
-				fullscreenControl: false
-			});
-
-			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(latVal, lngVal),
-				map: map,
-				title: 'Delivery'
-			});
-			marker.addListener('click', function () {
-				infowindow.open(map, marker);
-			});
-		}
-	});
 }
