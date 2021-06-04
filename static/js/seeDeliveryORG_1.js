@@ -1,5 +1,4 @@
 $(function () {
-
 	$('#settings').hide();
 	$('#dtBasicExample').hide();
 	$('.a').hide();
