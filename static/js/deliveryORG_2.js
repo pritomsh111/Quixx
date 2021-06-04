@@ -933,7 +933,7 @@ var onGoingDeliveries = () => {
 			{
 				"targets": 5, "data": "delivery_Id", render: function (data, type, row) {
 
-					return `${row.delivery_Id}'<button id=${row.assign_delivery_man_name} class="btn-round btn-outline btn" style="font-size:13px">Watch</button>'`;
+					return `${row.delivery_Id}'<button id=${row.assign_delivery_man_name} class="btn-round btn-outline btn mapInfos" style="font-size:13px">Watch</button>'`;
 				}
 			},
 			{ "targets": 2, "data": "delivery_status" },
@@ -1255,6 +1255,8 @@ var returnedDeliveries = () => {
 	$('.j').show();
 }
 
+
+$('.mapInfos').on("click", function () { $("#myModalInfoWatch").show(); });
 
 var save = (id) => {
 	localStorage.setItem("'Accept': 'application/json'", id.id);

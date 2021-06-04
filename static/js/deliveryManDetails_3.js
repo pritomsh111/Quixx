@@ -106,7 +106,7 @@ function initMap() {
 						var add = results[0].formatted_address;
 						var contentString = add;
 
-						var infowindow = new google.maps.InfoWindow({
+						infowindow = new google.maps.InfoWindow({
 							content: '<p style="color:#0066b3;font-family:Didact Gothic;">' + contentString + '</p>'
 						});
 
@@ -134,17 +134,18 @@ function initMap() {
 }
 
 setTimeout(function () {
-	let latlng = new google.maps.LatLng(23.76146, 90.45941);
+	let latlng = new google.maps.LatLng(23.74146, 90.40941);
 	marker.setPosition(latlng);
 	map.panTo(latlng);
 
 	var geocoder = new google.maps.Geocoder();
-	var location = new google.maps.LatLng(latlng);
-	geocoder.geocode({ 'latLng': location }, function (results, status) {
+	geocoder.geocode({ 'latLng': latlng }, function (results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			var add = results[0].formatted_address;
-			marker.title = add;
+			marker.setTitle(add);
 		}
+		infowindow.setContent('<p style="color:#0066b3;font-family:Didact Gothic;">' + add + '</p>');
+		infowindow.open(map, marker);
 	});
 
 }, 7000);
