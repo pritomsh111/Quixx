@@ -66,19 +66,19 @@ function formatApproved(d) {
 		'</table>';
 }
 var deliveryManMap = new Map();
+var deliveryManMapMarker = new Map();
 
 // var position = [43, -89];
-var marker = undefined;
 
-var numDeltas = 100;
-var delay = 10; //milliseconds
+var numDeltas = 50;
+var delay = 1000; //milliseconds
 var i = 0;
 var deltaLat;
 var deltaLng;
 
 function transition(...position) {
-	deliveryManMap.get("Arif")[0] = 25.7560907;
-	deliveryManMap.get("Arif")[1] = 90.39059;
+	deliveryManMap.get("Arif")[0] = 23.740874;
+	deliveryManMap.get("Arif")[1] = 90.402445;
 	i = 0;
 	console.log(position);
 	deltaLat = (deliveryManMap.get("Arif")[0] - position[0]) / numDeltas;
@@ -99,8 +99,8 @@ function moveMarker(position) {
 }
 
 setTimeout(function () {
-	transition(parseInt(deliveryManMap.get("Arif")[0]), parseInt(deliveryManMap.get("Arif")[1]));
-}, 8000);
+	transition(parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
+}, 20000);
 function setMarkers(map) {
 
 	var infowindow = new google.maps.InfoWindow();
@@ -118,13 +118,14 @@ function setMarkers(map) {
 				dataa = data;
 				console.log(data);
 				for (i = 0; i < dataa.data.length; i++) {
-
+					let marker;
 					marker = new google.maps.Marker({
 						position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
 						map: map,
 						title: dataa.data[i].name
 
 					});
+					deliveryManMapMarker.set(dataa.data[i].name, marker);
 					deliveryManMap.set(dataa.data[i].name, [dataa.data[i].current_lat, dataa.data[i].current_longi]);
 					//console.log(locations[0][0]);
 
