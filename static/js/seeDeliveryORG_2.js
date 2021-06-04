@@ -69,46 +69,9 @@ function formatApproved(d) {
 var deliveryManMap = new Map();
 var deliveryManMapMarker = new Map();
 
-// // var position = [43, -89];
-
-// var numDeltas = 100;
-// var delay = 10; //milliseconds
-// var i = 0;
-// var deltaLat;
-// var deltaLng;
-
-// function transition(marker, ...position) {
-// 	// console.log(position);
-// 	deliveryManMap.get("Arif")[0] = 23.74146;
-// 	deliveryManMap.get("Arif")[1] = 90.40941;
-// 	i = 0;
-// 	deltaLat = (deliveryManMap.get("Arif")[0] - position[0]) / numDeltas;
-// 	deltaLng = (deliveryManMap.get("Arif")[1] - position[1]) / numDeltas;
-// 	// console.log({ position, deltaLat, deltaLng });
-// 	moveMarker(position, marker);
-// }
-
-// function moveMarker(position, marker) {
-// 	position[0] += deltaLat;
-// 	position[1] += deltaLng;
-// 	var latlng = new google.maps.LatLng(position[0], position[1]);
-// 	marker.setPosition(latlng);
-// 	if (i != numDeltas) {
-// 		i++;
-// 		setTimeout(function () {
-// 			moveMarker(position, marker);
-// 		}, delay);
-// 	}
-// 	else {
-// 		console.log(position, { deltaLat, deltaLng });
-// 		console.log({ lat: latlng.lat(), lng: latlng.lng() });
-// 	}
-// }
 var marker;
 setTimeout(function () {
-	var marker = new google.maps.Marker();
-	marker.setPosition(+23.74146, +90.40941); //Will cause smooth animation
-
+	deliveryManMapMarker.get("Arif").setPosition(new google.maps.LatLng(23.74146, 90.40941)); //Will cause smooth animation
 	//transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
 }, 9000);
 function setMarkers(map) {
@@ -129,17 +92,14 @@ function setMarkers(map) {
 				console.log(data);
 				for (i = 0; i < dataa.data.length; i++) {
 					// let marker;
-
-					marker = new SlidingMarker({
+					marker = new google.maps.Marker({
 						position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
 						map: map,
 						title: dataa.data[i].name
 
 					});
+					console.log(marker);
 					deliveryManMapMarker.set(dataa.data[i].name, marker);
-					deliveryManMap.set(dataa.data[i].name, [dataa.data[i].current_lat, dataa.data[i].current_longi]);
-					//console.log(locations[0][0]);
-
 					google.maps.event.addListener(marker, 'click', (function (marker, i) {
 						return function () {
 							infowindow.setContent('<p style="color:#0066b3;text-align:center;font-family:Didact Gothic;">Delivery Man:<br><strong>' + dataa.data[i].name + "<br><button class='content1 btn-round btn-outline btn' id=" + dataa.data[i].delivery_man_id + " style='font-family:Didact Gothic;padding: 0.6rem 1rem; margin-top: 1rem;border-width:0' onclick=detailDelivery(this);>Details</button>");
