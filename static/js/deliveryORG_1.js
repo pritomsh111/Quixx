@@ -345,13 +345,13 @@ document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
 var myMarker, myMarker3, infowindow, infowindow3, contentString, contentString3;
 var markers = [];
 var markers3 = [];
-var map3;
+var map3, mapWatch;
 
 var markerx = [];
 window.map = undefined;
 
 function initInfoMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
+	mapWatch = new google.maps.Map(document.getElementById('mapWatch'), {
 		center: { lat: 23.8103, lng: 90.4125 },
 		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
