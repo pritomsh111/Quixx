@@ -8,32 +8,6 @@ var createBulkDelivery = () => {
 	buttonActive();
 	document.getElementById('bulkX').disabled = true;
 	document.getElementById('bulkX').style.fontSize = '13px';
-	// $.ajax
-	// 	({
-	// 		url: urlForAll + "orgHead/get/merchants/info/" + org_ID,
-	// 		type: "GET",
-	// 		headers:
-	// 		{
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-	// 		},
-	// 		success: function (data) {
-	// 			dataInfo = data;
-	// 			for (var i = 0; i < data.data.merchants_info.length; i++) {
-	// 				var option = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
-	// 				var option2 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
-	// 				var option3 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
-	// 				$(option).html(data.data.merchants_info[i].merchantName);
-	// 				// $(option2).html(data.data.merchants_info[i].merchantName);
-	// 				$(option3).html(data.data.merchants_info[i].merchantName);
-	// 				$("#senderList").append(option);
-	// 				// $("#senderListExcel").append(option2);
-	// 				$("#quiccSender").append(option3);
-	// 			}
-
-	// 		}
-	// 	});
 	if (mapMerchant.size) {
 		mapMerchant.clear();
 	}
@@ -956,7 +930,12 @@ var onGoingDeliveries = () => {
 				"data": null,
 				"defaultContent": "<i class='fa fa fa-chevron-circle-right'></i>",
 			},
-			{ "targets": 1, "data": "delivery_Id" },
+			{
+				"targets": 5, "data": "delivery_Id", render: function (data, type, row) {
+
+					return `${row.delivery_Id}'<button id=${row.assign_delivery_man_name} class="btn-round btn-outline btn" style="font-size:13px">Watch</button>'`;
+				}
+			},
 			{ "targets": 2, "data": "delivery_status" },
 			{
 				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {

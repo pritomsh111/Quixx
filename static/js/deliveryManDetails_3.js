@@ -134,8 +134,17 @@ function initMap() {
 }
 
 setTimeout(function () {
-	marker.setPosition(new google.maps.LatLng(23.76146, 90.45941));
-	// map.setCenter(new google.maps.LatLng(23.76146, 90.45941));
-	map.panTo(new google.maps.LatLng(23.76146, 90.45941));
+	let latlng = new google.maps.LatLng(23.76146, 90.45941);
+	marker.setPosition(latlng);
+	map.panTo(latlng);
+
+	var geocoder = new google.maps.Geocoder();
+	var location = new google.maps.LatLng(latlng);
+	geocoder.geocode({ 'latLng': location }, function (results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			var add = results[0].formatted_address;
+			marker.title = add;
+		}
+	});
 
 }, 7000);
