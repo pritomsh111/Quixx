@@ -301,6 +301,7 @@ function initialize() {
 	setTimeout(() => {
 		initAutocomplete();
 		initMap();
+		initInfoMap();
 	}, 500);
 }
 
@@ -349,6 +350,35 @@ var map3;
 var markerx = [];
 window.map = undefined;
 
+function initInfoMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: { lat: 23.8103, lng: 90.4125 },
+		zoom: 15,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeControl: true,
+		mapTypeControlOptions: {
+			style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+			position: google.maps.ControlPosition.BOTTOM_CENTER
+		},
+		panControl: true,
+		panControlOptions: {
+			position: google.maps.ControlPosition.TOP_RIGHT
+		},
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.LARGE,
+			position: google.maps.ControlPosition.RIGHT_CENTER
+		},
+		scaleControl: true,
+		scaleControlOptions: {
+			position: google.maps.ControlPosition.TOP_LEFT
+		},
+		streetViewControl: true,
+		streetViewControlOptions: {
+			position: google.maps.ControlPosition.LEFT_TOP
+		}
+	});
+}
 function initMap() {
 
 	map3 = new google.maps.Map(document.getElementById('map3'), {
