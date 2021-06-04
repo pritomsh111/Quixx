@@ -66,11 +66,44 @@ function formatApproved(d) {
 		'</table>';
 }
 var deliveryManMap = new Map();
+
+// var position = [43, -89];
+var marker = undefined;
+
+var numDeltas = 100;
+var delay = 10; //milliseconds
+var i = 0;
+var deltaLat;
+var deltaLng;
+
+function transition(...position) {
+	deliveryManMap.get("Arif")[0] = "25.7560907";
+	deliveryManMap.get("Arif")[1] = "90.39059";
+	i = 0;
+	console.log(position);
+	deltaLat = (deliveryManMap.get("Arif")[0] - position[0]) / numDeltas;
+	deltaLng = (deliveryManMap.get("Arif")[1] - position[1]) / numDeltas;
+	moveMarker(position);
+}
+
+function moveMarker(position) {
+	console.log(position, { deltaLat, deltaLng });
+	position[0] += deltaLat;
+	position[1] += deltaLng;
+	var latlng = new google.maps.LatLng(position[0], position[1]);
+	marker.setPosition(latlng);
+	if (i != numDeltas) {
+		i++;
+		setTimeout(moveMarker.bind(this, position), delay);
+	}
+}
+
+// setTimeout(function () {
+// 	transition(deliveryManMap.get("Arif")[0], deliveryManMap.get("Arif")[1]);
+// }, 8000);
 function setMarkers(map) {
 
 	var infowindow = new google.maps.InfoWindow();
-
-	var marker, i;
 	$.ajax
 		({
 			type: "GET",
