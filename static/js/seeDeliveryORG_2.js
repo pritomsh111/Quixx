@@ -74,6 +74,10 @@ setTimeout(function () {
 	deliveryManMapMarker.get("Notun").setPosition(new google.maps.LatLng(23.75146, 90.45941)); //Will cause smooth animation
 	//transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
 }, 9000);
+setTimeout(function () {
+	deliveryManMapMarker.get("A").setPosition(new google.maps.LatLng(23.76146, 90.45941)); //Will cause smooth animation
+	//transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
+}, 7000);
 function setMarkers(map) {
 
 	var infowindow = new google.maps.InfoWindow();
@@ -92,14 +96,12 @@ function setMarkers(map) {
 				console.log(data);
 				for (i = 0; i < dataa.data.length; i++) {
 					// let marker;
-					SlidingMarker.initializeGlobally();
-					marker = new google.maps.Marker({
+					marker = new SlidingMarker({
 						position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
 						map: map,
-						title: dataa.data[i].name
-
+						title: dataa.data[i].name,
+						duration: 2000,
 					});
-					console.log(marker);
 					deliveryManMapMarker.set(dataa.data[i].name, marker);
 					google.maps.event.addListener(marker, 'click', (function (marker, i) {
 						return function () {
