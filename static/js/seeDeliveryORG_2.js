@@ -2,7 +2,7 @@ var map, infoWindow;
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: { lat: 23.8103, lng: 90.4125 },
-		zoom: 8,
+		zoom: 10,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		mapTypeControl: true,
 		mapTypeControlOptions: {
@@ -71,7 +71,7 @@ var deliveryManMapMarker = new Map();
 
 var marker;
 setTimeout(function () {
-	deliveryManMapMarker.get("Arif").setPosition(new google.maps.LatLng(23.74146, 90.40941)); //Will cause smooth animation
+	deliveryManMapMarker.get("Notun").setPosition(new google.maps.LatLng(23.75146, 90.45941)); //Will cause smooth animation
 	//transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
 }, 9000);
 function setMarkers(map) {
@@ -92,6 +92,7 @@ function setMarkers(map) {
 				console.log(data);
 				for (i = 0; i < dataa.data.length; i++) {
 					// let marker;
+					SlidingMarker.initializeGlobally();
 					marker = new google.maps.Marker({
 						position: new google.maps.LatLng(dataa.data[i].current_lat, dataa.data[i].current_longi),
 						map: map,
