@@ -258,7 +258,7 @@ naValuesType.map(item => {
 	});
 });
 
-// $("#senderListExcel").change(function () {
+// $("#senderListExcel").on("change",function () {
 // 	var value = $(this).val();
 // 	if (value) {
 // 		$.ajax
@@ -295,7 +295,7 @@ naValuesType.map(item => {
 // 	}
 // });
 
-$("#senderList").change(async function () {
+$("#senderList").on("change", async function () {
 	var value = $(this).val();
 	if (value) {
 		await $.ajax
@@ -357,7 +357,7 @@ $("#senderList").change(async function () {
 			.hide();
 	}
 });
-$("#quiccSender").change(async function () {
+$("#quiccSender").on("change", async function () {
 	var value = $(this).val();
 	if (value) {
 		await $.ajax
@@ -932,7 +932,7 @@ var onGoingDeliveries = () => {
 			},
 			{
 				"targets": 5, "data": "delivery_Id", render: function (data, type, row) {
-					return `${row.delivery_Id}'<button id=${row} class="btn-round btn-outline btn mapInfos" style="font-size:13px">Watch</button>'`;
+					return `${row.delivery_Id}` + '<button id="' + row.assign_delivery_man_name + '$$' + row.delivery_Id + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.sender_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.receiver_address + '" class="btn-round btn-outline btn mapInfos" style="font-size:13px;">Watch</button>'
 				}
 			},
 			{ "targets": 2, "data": "delivery_status" },
@@ -992,31 +992,59 @@ var onGoingDeliveries = () => {
 
 $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 	let data = $(this).attr('id');
+	console.log(data);
+	data = data.split("$$");
 	$("#myModalInfoWatch").modal();
-	document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${data.assign_delivery_man_name}</strong>, Delivery ID: <strong>${data.delivery_Id}</strong>`
+	document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${data[0]}</strong>, Delivery ID: <strong>${data[1]}</strong>`
 	mapSender = new SlidingMarker({
-		position: new google.maps.LatLng(data.sender_lat, data.sender_longi),
+		position: new google.maps.LatLng(data[2], data[3]),
 		map: mapWatch,
-		title: `${data.sender_address}`
+		title: `${data[4]}`,
+		icon: {
+			path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+			fillColor: "#0066b3",
+			fillOpacity: 0.9,
+			strokeWeight: 0,
+			rotation: 0,
+			scale: 2,
+			anchor: new google.maps.Point(15, 30),
+		}
 	});
 	if (data.receiver_lat) {
 		mapReceiver = new SlidingMarker({
-			position: new google.maps.LatLng(data.receiver_lat, data.receiver_longi),
+			position: new google.maps.LatLng(data[5], data[6]),
 			map: mapWatch,
-			title: `${data.receiver_address}`
+			title: `${data[7]}`,
+			icon: {
+				path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+				fillColor: "#ffcf5c",
+				fillOpacity: 0.9,
+				strokeWeight: 0,
+				rotation: 0,
+				scale: 2,
+				anchor: new google.maps.Point(15, 30),
+			}
 		});
 	}
+	//delivery man info
 	mapInfoMarker = new SlidingMarker({
 		position: new google.maps.LatLng(23.74146, 90.40941),
 		map: mapWatch,
-		title: data.assign_delivery_man_name,
-		duration: 2000
+		title: data[0],
+		duration: 2000,
+		icon: {
+			path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+			fillColor: "red",
+			fillOpacity: 1,
+			strokeWeight: 0,
+			rotation: 0,
+			scale: 2,
+			anchor: new google.maps.Point(15, 30),
+		}
 	});
-
 	const center = new google.maps.LatLng(23.74146, 90.40941);
 	mapWatch.setZoom(16);
 	mapWatch.panTo(center);
-
 	setTimeout(() => {
 		mapInfoMarker.setPosition(new google.maps.LatLng(23.74346, 90.41241));
 		mapWatch.panTo(new google.maps.LatLng(23.74346, 90.41241));
@@ -1559,7 +1587,7 @@ var invoice = (id) => {
 	window.open(urlForAll + "reports/individual/report/" + id.id + "/" + id.name);
 };
 
-$("#managers2").change(function () {
+$("#managers2").on("change", function () {
 	var value = $(this).val();
 	if (value == 'Cash on Delivery') {
 		$("#cod").show();
@@ -3280,7 +3308,7 @@ function autoAssignDeliveryManUnassingedTable(ddeliveryAutoIterator) {
 var arr;
 var id_delivery_update, del_id, creator_ID;
 
-$("#delivery_cityU").change(function () {
+$("#delivery_cityU").on("change", function () {
 	$('#managersU')
 		.empty()
 		.append('<option value="">---</option>');
