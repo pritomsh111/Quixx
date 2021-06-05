@@ -34,6 +34,9 @@ $(function () {
 					if (data.data[i].includes("Sender")) {
 						data.data[i] = data.data[i].replace("Sender", "Merchant");
 					}
+					if (data.data[i].includes("Date")) {
+						data.data[i] = data.data[i].replace("DateWiseDelivery", "Date-wise Delivery");
+					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#criterion").append(option);
@@ -230,13 +233,15 @@ function clearAll() {
 	$(".aaa").hide();
 }
 
-$("#criterion").change(function () {
+$("#criterion").on("change", function () {
 	$(".aaa").hide();
 	value = $(this).val();
-	if (value == "Datewise") {
+	if (value == "Date-wise Delivery") {
+		cri = "DateWiseDelivery";
 		clearAll();
-		$("#ccDate").show();
 		$("#merchantList").show();
+		$("#ccDate").show();
+		$("#deliveryStatus").show();
 	}
 	else if (value == "Delivery Man") {
 		clearAll();
@@ -274,8 +279,25 @@ $('#criterionSubmit').on('click', function (eventx) {
 	eventx.preventDefault();
 	$(".aaa").hide();
 	var cri = document.getElementById("criterion").value;
-	if (cri == "Datewise") {
-		var valx = document.getElementById("ccDate").value + "__" + document.getElementById("merchantList").value;
+	if (cri == "Datewise Delivery") {
+		if (document.getElementById("merchantList").value) {
+			valx += "__" + document.getElementById("merchantList").value;
+		}
+		else {
+			valx += "__" + "NA";
+		}
+		if (document.getElementById("ccDate").value) {
+			valx += "__" + document.getElementById("ccDate").value;
+		}
+		else {
+			valx += "__" + "NA";
+		}
+		if (document.getElementById("deliveryStatus").value) {
+			valx += "__" + document.getElementById("deliveryStatus").value;
+		}
+		else {
+			valx += "__" + "NA";
+		}
 		//console.log(valx);
 	}
 	else if (cri == "Delivery Man") {
