@@ -285,7 +285,6 @@ $('#criterionSubmit').on('click', function (eventx) {
 		var valx = document.getElementById("deliveryStatus").value;
 	}
 	else if (cri == "District") {
-		cri = "Receiver Area";
 		var valx = document.getElementById("deliveryDistrict").value;
 		var valx2 = document.getElementById("deliveryArea").value;
 	}
