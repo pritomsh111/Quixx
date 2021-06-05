@@ -932,14 +932,12 @@ var onGoingDeliveries = () => {
 			},
 			{
 				"targets": 5, "data": "delivery_Id", render: function (data, type, row) {
-
-					return `${row.delivery_Id}'<button id=${row.assign_delivery_man_name} class="btn-round btn-outline btn mapInfos" style="font-size:13px">Watch</button>'`;
+					return `${row.delivery_Id}'<button id=${row} class="btn-round btn-outline btn mapInfos" style="font-size:13px">Watch</button>'`;
 				}
 			},
 			{ "targets": 2, "data": "delivery_status" },
 			{
 				"targets": 5, "data": "assign_delivery_man_phone", render: function (data, type, row) {
-
 					return `${row.assign_delivery_man_name}, ${row.assign_delivery_man_phone}`;
 				}
 			},
@@ -990,6 +988,41 @@ var onGoingDeliveries = () => {
 	$('#dtBasicExampleNewg').show();
 	$('.g').show();
 }
+
+
+$('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
+	let data = $(this).attr('id');
+	$("#myModalInfoWatch").modal();
+	document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${data.assign_delivery_man_name}</strong>, Delivery ID: <strong>${data.delivery_Id}</strong>`
+	mapSender = new SlidingMarker({
+		position: new google.maps.LatLng(data.sender_lat, data.sender_longi),
+		map: mapWatch,
+		title: `${data.sender_address}`
+	});
+	if (data.receiver_lat) {
+		mapReceiver = new SlidingMarker({
+			position: new google.maps.LatLng(data.receiver_lat, data.receiver_longi),
+			map: mapWatch,
+			title: `${data.receiver_address}`
+		});
+	}
+	mapInfoMarker = new SlidingMarker({
+		position: new google.maps.LatLng(23.74146, 90.40941),
+		map: mapWatch,
+		title: data.assign_delivery_man_name,
+		duration: 2000
+	});
+
+	const center = new google.maps.LatLng(23.74146, 90.40941);
+	mapWatch.setZoom(16);
+	mapWatch.panTo(center);
+
+	setTimeout(() => {
+		mapInfoMarker.setPosition(new google.maps.LatLng(23.74346, 90.41241));
+		mapWatch.panTo(new google.maps.LatLng(23.74346, 90.41241));
+	}, 10000);
+});
+
 
 var completedDeliveries = () => {
 	buttonActive();
@@ -1254,27 +1287,6 @@ var returnedDeliveries = () => {
 	$('#dtBasicExampleNewj').show();
 	$('.j').show();
 }
-
-
-$('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
-	$("#myModalInfoWatch").modal();
-	mapInfoMarker = new SlidingMarker({
-		position: new google.maps.LatLng(23.74146, 90.40941),
-		map: mapWatch,
-		title: "Rahim",
-		duration: 5000
-	});
-
-	const center = new google.maps.LatLng(23.74146, 90.40941);
-	mapWatch.setZoom(16);
-	mapWatch.panTo(center);
-
-	setTimeout(() => {
-		mapInfoMarker.setPosition(new google.maps.LatLng(23.74346, 90.41241));
-		mapWatch.panTo(new google.maps.LatLng(23.74346, 90.41241));
-	}, 10000);
-});
-
 
 var save = (id) => {
 	localStorage.setItem("'Accept': 'application/json'", id.id);
