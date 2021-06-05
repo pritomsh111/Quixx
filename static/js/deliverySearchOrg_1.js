@@ -233,7 +233,7 @@ function clearAll() {
 $("#criterion").change(function () {
 	$(".aaa").hide();
 	value = $(this).val();
-	if (value == "Assign Date" || value == "Delivery Created Date" || value == "Delivery Complete Date") {
+	if (value == "Datewise") {
 		clearAll();
 		$("#ccDate").show();
 		$("#merchantList").show();
@@ -274,8 +274,8 @@ $('#criterionSubmit').on('click', function (eventx) {
 	eventx.preventDefault();
 	$(".aaa").hide();
 	var cri = document.getElementById("criterion").value;
-	if (cri == "Assign Date" || cri == "Delivery Created Date" || cri == "Delivery Complete Date") {
-		var valx = document.getElementById("ccDate").value;
+	if (cri == "Datewise") {
+		var valx = document.getElementById("ccDate").value + "__" + document.getElementById("merchantList").value;
 		//console.log(valx);
 	}
 	else if (cri == "Delivery Man") {
@@ -286,7 +286,9 @@ $('#criterionSubmit').on('click', function (eventx) {
 	}
 	else if (cri == "District") {
 		var valx = document.getElementById("deliveryDistrict").value;
-		var valx2 = document.getElementById("deliveryArea").value;
+		if (document.getElementById("deliveryArea").value) {
+			valx += "__" + document.getElementById("deliveryArea").value;
+		}
 	}
 	else if (cri == "Payment Method") {
 		var valx = document.getElementById("paymentMethod").value;
