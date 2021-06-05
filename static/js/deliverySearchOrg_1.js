@@ -251,6 +251,7 @@ $("#criterion").change(function () {
 	}
 	else if (value == "District") {
 		clearAll();
+		$("#deliveryArea").show();
 		$("#deliveryDistrict").show();
 	}
 	else if (value == "Merchant Name") {
@@ -284,7 +285,8 @@ $('#criterionSubmit').on('click', function (eventx) {
 	}
 	else if (cri == "District") {
 		cri = "Receiver Area";
-		var valx = document.getElementById("deliveryArea").value;
+		var valx = document.getElementById("deliveryDistrict").value;
+		var valx2 = document.getElementById("deliveryArea").value;
 	}
 	else if (cri == "Payment Method") {
 		var valx = document.getElementById("paymentMethod").value;
