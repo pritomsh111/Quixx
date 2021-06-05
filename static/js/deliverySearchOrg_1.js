@@ -11,6 +11,7 @@ $(function () {
 	$("#deliveryDistrict").hide();
 	$("#deliveryArea").hide();
 	$("#merchantList").hide();
+	$("#merchantListForDate").hide();
 	$("#merchantPhoneNumberList").hide();
 	$.ajax
 		({
@@ -34,9 +35,9 @@ $(function () {
 					if (data.data[i].includes("Sender")) {
 						data.data[i] = data.data[i].replace("Sender", "Merchant");
 					}
-					if (data.data[i].includes("Date")) {
-						data.data[i] = data.data[i].replace("DateWiseDelivery", "Date-wise Delivery");
-					}
+					// if (data.data[i].includes("Date")) {
+					// 	data.data[i] = data.data[i].replace("DateWiseDelivery", "Date-wise Delivery");
+					// }
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#criterion").append(option);
@@ -204,6 +205,10 @@ $(function () {
 					.empty()
 					.append('<option selected="selected" value="">Select One</option>')
 					;
+				$('#merchantListForDate')
+					.empty()
+					.append('<option selected="selected" value="">Select One</option>')
+					;
 				$('#merchantPhoneNumberList')
 					.empty()
 					.append('<option selected="selected" value="">Select One</option>')
@@ -211,10 +216,13 @@ $(function () {
 				for (var i = 0; i < data.data.merchants_info.length; i++) {
 					var option = new Option(data.data.merchants_info[i].merchantName, data.data.merchants_info[i].merchantName);
 					var option2 = new Option(data.data.merchants_info[i].profileDto.sender_phone_number, data.data.merchants_info[i].profileDto.sender_phone_number);
+					var option3 = new Option(data.data.merchants_info[i].profileDto.user_id, data.data.merchants_info[i].profileDto.user_id);
 					$(option).html(data.data.merchants_info[i].merchantName);
 					$(option2).html(`${data.data.merchants_info[i].merchantName} - ${data.data.merchants_info[i].profileDto.sender_phone_number}`);
+					$(option3).html(data.data.merchants_info[i].merchantName);
 					$("#merchantList").append(option);
 					$("#merchantPhoneNumberList").append(option2);
+					$("#merchantListForDate").append(option3);
 				}
 			}
 		});
@@ -229,6 +237,7 @@ function clearAll() {
 	$("#deliveryArea").hide();
 	$("#deliveryDistrict").hide();
 	$("#merchantList").hide();
+	$("#merchantListForDate").hide();
 	$("#merchantPhoneNumberList").hide();
 	$(".aaa").hide();
 }
@@ -236,10 +245,9 @@ function clearAll() {
 $("#criterion").on("change", function () {
 	$(".aaa").hide();
 	value = $(this).val();
-	if (value == "Date-wise Delivery") {
-		cri = "DateWiseDelivery";
+	if (value == "Date Wise Delivery") {
 		clearAll();
-		$("#merchantList").show();
+		$("#merchantListForDate").show();
 		$("#ccDate").show();
 		$("#deliveryStatus").show();
 	}
@@ -279,24 +287,38 @@ $('#criterionSubmit').on('click', function (eventx) {
 	eventx.preventDefault();
 	$(".aaa").hide();
 	var cri = document.getElementById("criterion").value;
-	if (cri == "Datewise Delivery") {
-		if (document.getElementById("merchantList").value) {
-			valx += "__" + document.getElementById("merchantList").value;
+	if (cri == "Date Wise Delivery") {
+		cri = "DateWiseDelivery";
+		var valx = "";
+		if (document.getElementById("merchantListForDate").value) {
+			valx += document.getElementById("merchantListForDate").value;
 		}
 		else {
-			valx += "__" + "NA";
+			valx += "NA";
 		}
 		if (document.getElementById("ccDate").value) {
-			valx += "__" + document.getElementById("ccDate").value;
+			if (valx) {
+				valx += "__";
+			}
+			valx += document.getElementById("ccDate").value;
 		}
 		else {
-			valx += "__" + "NA";
+			if (valx) {
+				valx += "__";
+			}
+			valx += "NA";
 		}
 		if (document.getElementById("deliveryStatus").value) {
-			valx += "__" + document.getElementById("deliveryStatus").value;
+			if (valx) {
+				valx += "__";
+			}
+			valx += document.getElementById("deliveryStatus").value;
 		}
 		else {
-			valx += "__" + "NA";
+			if (valx) {
+				valx += "__";
+			}
+			valx += "NA";
 		}
 		//console.log(valx);
 	}
