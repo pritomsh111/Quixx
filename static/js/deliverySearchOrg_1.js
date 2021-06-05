@@ -236,6 +236,7 @@ $("#criterion").change(function () {
 	if (value == "Assign Date" || value == "Delivery Created Date" || value == "Delivery Complete Date") {
 		clearAll();
 		$("#ccDate").show();
+		$("#merchantList").show();
 	}
 	else if (value == "Delivery Man") {
 		clearAll();
