@@ -1073,8 +1073,8 @@ function dynamicDyliverManChange() {
 }
 var addKorbo = 0;
 async function doItMultipleTimes(mapInfoMarker) {
-	clearT();
-	addKorbo += 0.001;
+	clearTimeout(interVal);
+	// addKorbo += 0.001;
 	await $.ajax
 		({
 			url: urlForAll + "deliveryMan/location/" + dataP[8],
@@ -1086,8 +1086,8 @@ async function doItMultipleTimes(mapInfoMarker) {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				data.data.lat = parseFloat(data.data.lat) + addKorbo;
-				data.data.longi = parseFloat(data.data.longi) + addKorbo;
+				// data.data.lat = parseFloat(data.data.lat) + addKorbo;
+				// data.data.longi = parseFloat(data.data.longi) + addKorbo;
 				latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
 				mapInfoMarker.setPosition(latlngx);
 				mapWatch.panTo(latlngx);
@@ -1101,20 +1101,13 @@ async function doItMultipleTimes(mapInfoMarker) {
 		});
 	interVal = setTimeout(function () {
 		doItMultipleTimes(mapInfoMarker);
-	}, 12000);
+	}, 60000);
 }
 
 $('#myModalInfoWatch').on('hidden.bs.modal', function () {
-	console.log("Modal closed");
-	clearTimeout(interVal); interVal = null;
-});
-
-function clearT() {
-	clearTimeout(interVal); interVal = null;
-}
-
-document.querySelector(".modalWatchCancel", function () {
-	clearT();
+	setTimeout(function () {
+		clearTimeout(interVal);
+	}, 1000);
 });
 
 var completedDeliveries = () => {
