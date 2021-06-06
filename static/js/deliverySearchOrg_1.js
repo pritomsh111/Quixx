@@ -5,6 +5,7 @@ $(function () {
 	$("#ccDate").hide();
 	$(".aaa").hide();
 	$("#settings").hide();
+	$("#ar").hide();
 	$("#deliveryManList").hide();
 	$("#deliveryStatus").hide();
 	$("#paymentMethod").hide();
@@ -13,35 +14,35 @@ $(function () {
 	$("#merchantList").hide();
 	$("#merchantListForDate").hide();
 	$("#merchantPhoneNumberList").hide();
-	$.ajax
-		({
-			url: "https://api-new.quixx.xyz/api/quixx/v1/orgHead/deliveryMan/location/4",
-			type: "GET",
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
+	// $.ajax
+	// 	({
+	// 		url: "https://api-new.quixx.xyz/api/quixx/v1/orgHead/deliveryMan/location/4",
+	// 		type: "GET",
+	// 		headers:
+	// 		{
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json',
+	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
+	// 		},
 
-			success: function (data) {
-				console.log(data);
-			}
-		});
-	$.ajax
-		({
-			url: "https://api-new.quixx.xyz/api/quixx/v1/deliveryMan/location/01982114988",
-			type: "GET",
-			headers:
-			{
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				"Authorization": 'Bearer ' + localStorage.getItem('token')
-			},
-			success: function (data) {
-				console.log(data);
-			}
-		});
+	// 		success: function (data) {
+	// 			console.log(data);
+	// 		}
+	// 	});
+	// $.ajax
+	// 	({
+	// 		url: "https://api-new.quixx.xyz/api/quixx/v1/deliveryMan/location/01982114988",
+	// 		type: "GET",
+	// 		headers:
+	// 		{
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json',
+	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
+	// 		},
+	// 		success: function (data) {
+	// 			console.log(data);
+	// 		}
+	// 	});
 	$.ajax
 		({
 			url: urlForAll + "search/delivery/search/criteria/" + "organization",
@@ -64,9 +65,9 @@ $(function () {
 					if (data.data[i].includes("Sender")) {
 						data.data[i] = data.data[i].replace("Sender", "Merchant");
 					}
-					// if (data.data[i].includes("Date")) {
-					// 	data.data[i] = data.data[i].replace("DateWiseDelivery", "Date-wise Delivery");
-					// }
+					if (data.data[i].includes("Date")) {
+						data.data[i] = data.data[i].replace("Date-wise Delivery", "Mixed Search");
+					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#criterion").append(option);
@@ -84,11 +85,10 @@ $(function () {
 				'Content-Type': 'application/json',
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
-
 			success: function (data) {
 				$('#deliveryManList')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Delivery Man</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i].delivery_man_id, data.data[i].delivery_man_id);
@@ -112,7 +112,7 @@ $(function () {
 			success: function (data) {
 				$('#deliveryStatus')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Delivery Status</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					if (data.data[i] === "ASSIGN") {
@@ -139,7 +139,7 @@ $(function () {
 			success: function (data) {
 				$('#deliveryDistrict')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select District</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
@@ -209,7 +209,7 @@ $(function () {
 			success: function (data) {
 				$('#paymentMethod')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Payment Method</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
@@ -232,15 +232,15 @@ $(function () {
 			success: function (data) {
 				$('#merchantList')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Merchant</option>')
 					;
 				$('#merchantListForDate')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Merchant</option>')
 					;
 				$('#merchantPhoneNumberList')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Phone Number</option>')
 					;
 				for (var i = 0; i < data.data.merchants_info.length; i++) {
 					var option = new Option(data.data.merchants_info[i].merchantName, data.data.merchants_info[i].merchantName);
@@ -266,6 +266,7 @@ function clearAll() {
 	$("#deliveryArea").hide();
 	$("#deliveryDistrict").hide();
 	$("#merchantList").hide();
+	$("#ar").hide();
 	$("#merchantListForDate").hide();
 	$("#merchantPhoneNumberList").hide();
 	$(".aaa").hide();
@@ -274,7 +275,16 @@ function clearAll() {
 $("#criterion").on("change", function () {
 	$(".aaa").hide();
 	value = $(this).val();
-	if (value == "Date Wise Delivery") {
+	if (value == "Mixed Search") {
+		document.getElementById("2ndCol").innerHTML = "Select Merchant/Date/Status or None";
+
+	}
+	else {
+		document.getElementById("2ndCol").innerHTML = "Input";
+
+	}
+
+	if (value == "Mixed Search") {
 		clearAll();
 		$("#merchantListForDate").show();
 		$("#ccDate").show();
@@ -294,8 +304,9 @@ $("#criterion").on("change", function () {
 	}
 	else if (value == "District") {
 		clearAll();
-		$("#deliveryArea").show();
 		$("#deliveryDistrict").show();
+		$("#ar").show();
+		$("#deliveryArea").show();
 	}
 	else if (value == "Merchant Name") {
 		clearAll();
@@ -311,12 +322,11 @@ $("#criterion").on("change", function () {
 	}
 });
 
-
 $('#criterionSubmit').on('click', function (eventx) {
 	eventx.preventDefault();
 	$(".aaa").hide();
 	var cri = document.getElementById("criterion").value;
-	if (cri == "Date Wise Delivery") {
+	if (cri == "Mixed Search") {
 		cri = "DateWiseDelivery";
 		var valx = "";
 		if (document.getElementById("merchantListForDate").value) {
