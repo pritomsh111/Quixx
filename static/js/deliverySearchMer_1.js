@@ -4,7 +4,9 @@ $(function () {
 	var value;
 	$("#ccDate").hide();
 	$(".aaa").hide();
-	$("#settingsMer").hide();
+	$("#settings").hide();
+	$("#ar").hide();
+	$("#deliveryManList").hide();
 	$("#deliveryStatus").hide();
 	$("#paymentMethod").hide();
 	$("#deliveryDistrict").hide();
@@ -27,6 +29,12 @@ $(function () {
 					.append('<option selected="selected" value="">Select One</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
+					if (data.data[i].includes("Date")) {
+						continue;
+					}
+					if (data.data[i].includes("District")) {
+						data.data[i] = data.data[i].replace("District", "Receiver City");
+					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#criterion").append(option);
@@ -48,7 +56,7 @@ $(function () {
 			success: function (data) {
 				$('#deliveryStatus')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Delivery Status</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					if (data.data[i] === "ASSIGN") {
@@ -75,7 +83,7 @@ $(function () {
 			success: function (data) {
 				$('#deliveryDistrict')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Receiver City</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
@@ -99,7 +107,7 @@ $(function () {
 		if (where === "None") {
 			$('#deliveryArea')
 				.empty()
-				.append('<option selected="selected" value="">No District Selected</option>')
+				.append('<option selected="selected" value="">No City Selected</option>')
 				;
 			return;
 		}
@@ -116,7 +124,7 @@ $(function () {
 				success: function (data) {
 					$('#deliveryArea')
 						.empty()
-						.append('<option selected="selected" value="">Select One</option>')
+						.append('<option selected="selected" value="">Select Area</option>')
 						;
 					for (var i = 0; i < data.data.length; i++) {
 						if (data.data[i]) {
@@ -145,7 +153,7 @@ $(function () {
 			success: function (data) {
 				$('#paymentMethod')
 					.empty()
-					.append('<option selected="selected" value="">Select One</option>')
+					.append('<option selected="selected" value="">Select Payment Method</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
@@ -156,56 +164,40 @@ $(function () {
 		});
 });
 
-$("#criterion").change(function () {
+
+function clearAll() {
+	$("#ccString").hide();
+	$("#ccDate").hide();
+	$("#deliveryManList").hide();
+	$("#deliveryStatus").hide();
+	$("#paymentMethod").hide();
+	$("#deliveryArea").hide();
+	$("#deliveryDistrict").hide();
+	$("#ar").hide();
+	$(".aaa").hide();
+}
+$("#criterion").on("change", function () {
 	$(".aaa").hide();
 	value = $(this).val();
-	if (value == "Assign Date" || value == "Delivery Created Date" || value == "Delivery Complete Date") {
-		$("#ccDate").show();
-		$("#ccString").hide();
-		$("#deliveryManList").hide();
-		$("#deliveryStatus").hide();
-		$("#paymentMethod").hide();
-		$("#deliveryDistrict").hide();
-		$("#deliveryArea").hide();
-	}
-	else if (value == "Delivery Status") {
+	if (value == "Delivery Status") {
+		clearAll();
 		$("#deliveryStatus").show();
-		$("#deliveryManList").hide();
-		$("#ccDate").hide();
-		$("#ccString").hide();
-		$("#paymentMethod").hide();
-		$("#deliveryDistrict").hide();
-		$("#deliveryArea").hide();
 	}
 	else if (value == "Payment Method") {
+		clearAll();
 		$("#paymentMethod").show();
-		$("#deliveryStatus").hide();
-		$("#deliveryManList").hide();
-		$("#ccDate").hide();
-		$("#ccString").hide();
-		$("#deliveryDistrict").hide();
-		$("#deliveryArea").hide();
 	}
-	else if (value == "District") {
-		$("#deliveryStatus").hide();
-		$("#deliveryManList").hide();
-		$("#ccDate").hide();
-		$("#ccString").hide();
-		$("#paymentMethod").hide();
+	else if (value == "Receiver City") {
+		clearAll();
 		$("#deliveryDistrict").show();
+		$("#ar").show();
 		$("#deliveryArea").show();
 	}
 	else {
+		clearAll();
 		$("#ccString").show();
-		$("#deliveryManList").hide();
-		$("#deliveryStatus").hide();
-		$("#ccDate").hide();
-		$("#paymentMethod").hide();
-		$("#deliveryDistrict").hide();
-		$("#deliveryArea").hide();
 	}
 });
-
 
 $('#criterionSubmit').on('click', function (eventx) {
 	eventx.preventDefault();
@@ -218,10 +210,16 @@ $('#criterionSubmit').on('click', function (eventx) {
 	else if (cri == "Delivery Status") {
 		var valx = document.getElementById("deliveryStatus").value;
 	}
-	else if (cri == "District") {
-		cri = "Receiver Area";
-		var valx = document.getElementById("deliveryDistrict").value;
-		var valx2 = document.getElementById("deliveryArea").value;
+	else if (cri == "Receiver City") {
+		cri = "District";
+		valx = document.getElementById("deliveryDistrict").value;
+		if (document.getElementById("deliveryArea").value) {
+			disch = 1;
+			valx += "__" + document.getElementById("deliveryArea").value;
+		}
+		else {
+			disch = 0;
+		}
 	}
 	else if (cri == "Payment Method") {
 		var valx = document.getElementById("paymentMethod").value;
@@ -325,6 +323,16 @@ $('#criterionSubmit').on('click', function (eventx) {
 				{ "targets": 100, "data": null, "defaultContent": "" },
 				{ "targets": 0, "data": "delivery_Id" },
 				{ "targets": 2, "data": "delivery_status" },
+				{ "targets": 10, "data": "receiver_name" },
+				{ "targets": 11, "data": "receiver_phone_number" },
+				{
+					"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+						let a = row.delivery_city;
+						return a ? row.delivery_city : "";
+					}
+				},
+				{ "targets": 123, "data": "delivery_area" },
+				{ "targets": 13, "data": "receiver_address" },
 				{
 					"targets": 5, "data": null, render: function (data, type, row) {
 
@@ -350,18 +358,8 @@ $('#criterionSubmit').on('click', function (eventx) {
 				{ "targets": 17, "data": "product_cost" },
 				{ "targets": 18, "data": "delivery_charge" },
 				{ "targets": 19, "data": "payment_method" },
-				{ "targets": 19, "data": "delivery_complete_date" },
 				{ "targets": 1, "data": "delivery_created_date" },
-				{ "targets": 10, "data": "receiver_name" },
-				{ "targets": 11, "data": "receiver_phone_number" },
-				{
-					"targets": 24, "data": "delivery_city", render: function (data, type, row) {
-						let a = row.delivery_city;
-						return a ? row.delivery_city : "";
-					}
-				},
-				{ "targets": 123, "data": "delivery_area" },
-				{ "targets": 13, "data": "receiver_address" },
+				{ "targets": 19, "data": "delivery_complete_date" },
 				{
 					"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
 						let a = row.delivery_product_type;
@@ -427,6 +425,16 @@ $('#criterionSubmit').on('click', function (eventx) {
 				return;
 			}
 			$(".aaa").show();
+			if (cri == "District") {
+				if (disch) {
+					let vv = valx.split("__");
+					$("#valOfTable").html(`Receiver City: <strong>${vv[0]}</strong>, Area: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else {
+					$("#valOfTable").html(`Receiver City: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				return;
+			}
 			$("#valOfTable").html(`${cri}: ${valx} [Total Data: ${json.recordsTotal}]`);
 		});
 
