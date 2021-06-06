@@ -183,7 +183,7 @@ $(function () {
 				success: function (data) {
 					$('#deliveryArea')
 						.empty()
-						.append('<option selected="selected" value="">Select One</option>')
+						.append('<option selected="selected" value="">Select Area</option>')
 						;
 					for (var i = 0; i < data.data.length; i++) {
 						if (data.data[i]) {
@@ -602,31 +602,42 @@ $('#criterionSubmit').on('click', function (eventx) {
 			if (cri == "DateWiseDelivery") {
 				if (dmer != "NA" && ddate != "NA" && dstat != "NA") {
 					let vv = valx.split("__");
-					$("#valOfTable").html(`Merchant ID: <strong>${vv[0]}</strong>, Date: <strong>${vv[1]}</strong>, Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+					let selected = document.querySelector(`#merchantListForDate`).selectedIndex;
+					let who = document.querySelector(`#merchantListForDate option:nth-child(${selected + 1}`).innerHTML;
+					$("#valOfTable").html(`Merchant ID: <strong>${who}</strong>, Date: <strong>${vv[1]}</strong>, Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (dmer == "NA" && ddate == "NA" && dstat == "NA") {
 					$("#valOfTable").html(`All Deliveries [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (dmer != "NA" && ddate != "NA") {
 					let vv = valx.split("__");
-					$("#valOfTable").html(`Merchant ID: <strong>${vv[0]}</strong>, Date: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+					let selected = document.querySelector(`#merchantListForDate`).selectedIndex;
+					let who = document.querySelector(`#merchantListForDate option:nth-child(${selected + 1}`).innerHTML;
+					$("#valOfTable").html(`Merchant ID: <strong>${who}</strong>, Date: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (dmer != "NA" && dstat != "NA") {
 					let vv = valx.split("__");
-					$("#valOfTable").html(`Merchant ID: <strong>${vv[0]}</strong>, Delivery Status: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+					let selected = document.querySelector(`#merchantListForDate`).selectedIndex;
+					let who = document.querySelector(`#merchantListForDate option:nth-child(${selected + 1}`).innerHTML;
+					$("#valOfTable").html(`Merchant ID: <strong>${who}</strong>, Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (ddate != "NA" && dstat != "NA") {
 					let vv = valx.split("__");
-					$("#valOfTable").html(`Date: <strong>${vv[0]}</strong>, Delivery Status: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+					$("#valOfTable").html(`Date: <strong>${vv[1]}</strong>, Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (ddate != "NA") {
-					$("#valOfTable").html(`Date: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+					let vv = valx.split("__");
+					$("#valOfTable").html(`Date: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (dstat != "NA") {
-					$("#valOfTable").html(`Delivery Status: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+					let vv = valx.split("__");
+					$("#valOfTable").html(`Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (dmer != "NA") {
-					$("#valOfTable").html(`Merchant ID: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+					let vv = valx.split("__");
+					let selected = document.querySelector(`#merchantListForDate`).selectedIndex;
+					let who = document.querySelector(`#merchantListForDate option:nth-child(${selected + 1}`).innerHTML;
+					$("#valOfTable").html(`Merchant ID: <strong>${who}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				return;
 			}
