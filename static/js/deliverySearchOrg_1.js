@@ -68,6 +68,9 @@ $(function () {
 					if (data.data[i].includes("Date")) {
 						data.data[i] = data.data[i].replace("Date-wise Delivery", "Mixed Search");
 					}
+					if (data.data[i].includes("District")) {
+						data.data[i] = data.data[i].replace("District", "Receiver City");
+					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#criterion").append(option);
@@ -283,7 +286,6 @@ $("#criterion").on("change", function () {
 		document.getElementById("2ndCol").innerHTML = "Input";
 
 	}
-
 	if (value == "Mixed Search") {
 		clearAll();
 		$("#merchantListForDate").show();
@@ -302,7 +304,7 @@ $("#criterion").on("change", function () {
 		clearAll();
 		$("#paymentMethod").show();
 	}
-	else if (value == "District") {
+	else if (value == "Receiver City") {
 		clearAll();
 		$("#deliveryDistrict").show();
 		$("#ar").show();
@@ -321,69 +323,81 @@ $("#criterion").on("change", function () {
 		$("#ccString").show();
 	}
 });
-
+var disch = 0, dmer = 0, ddate = 0, dstat = 0, valx = "";
 $('#criterionSubmit').on('click', function (eventx) {
 	eventx.preventDefault();
 	$(".aaa").hide();
+	disch = 0, dmer = 0, ddate = 0, dstat = 0;
 	var cri = document.getElementById("criterion").value;
 	if (cri == "Mixed Search") {
 		cri = "DateWiseDelivery";
-		var valx = "";
+		valx = "";
 		if (document.getElementById("merchantListForDate").value) {
 			valx += document.getElementById("merchantListForDate").value;
+			dmer = 1;
 		}
 		else {
 			valx += "NA";
+			dmer = 0;
 		}
 		if (document.getElementById("ccDate").value) {
 			if (valx) {
 				valx += "__";
 			}
 			valx += document.getElementById("ccDate").value;
+			ddate = 1;
 		}
 		else {
 			if (valx) {
 				valx += "__";
 			}
 			valx += "NA";
+			ddate = 0;
 		}
 		if (document.getElementById("deliveryStatus").value) {
 			if (valx) {
 				valx += "__";
 			}
 			valx += document.getElementById("deliveryStatus").value;
+			dstat = 1;
 		}
 		else {
 			if (valx) {
 				valx += "__";
 			}
 			valx += "NA";
+			dstat = 0;
 		}
 		//console.log(valx);
 	}
 	else if (cri == "Delivery Man") {
-		var valx = document.getElementById("deliveryManList").value;
+		valx = document.getElementById("deliveryManList").value;
 	}
 	else if (cri == "Delivery Status") {
-		var valx = document.getElementById("deliveryStatus").value;
+		valx = document.getElementById("deliveryStatus").value;
 	}
-	else if (cri == "District") {
-		var valx = document.getElementById("deliveryDistrict").value;
+	else if (cri == "Receiver City") {
+		cri = "District";
+		valx = document.getElementById("deliveryDistrict").value;
 		if (document.getElementById("deliveryArea").value) {
+			disch = 1;
 			valx += "__" + document.getElementById("deliveryArea").value;
+		}
+		else {
+			disch = 0;
 		}
 	}
 	else if (cri == "Payment Method") {
-		var valx = document.getElementById("paymentMethod").value;
+		valx = document.getElementById("paymentMethod").value;
 	}
 	else if (cri == "Merchant Name") {
-		var valx = document.getElementById("merchantList").value;
+		valx = document.getElementById("merchantList").value;
 	}
 	else if (cri == "Merchant Phone Number") {
-		var valx = document.getElementById("merchantPhoneNumberList").value;
+		valx = document.getElementById("merchantPhoneNumberList").value;
 	}
 	else if (cri == "Delivery ID") {
-		var valx = document.getElementById("ccString").value;
+		valx = document.getElementById("ccString").value;
 		if (parseInt(valx) <= 0 || valx.charAt(0) == 0) {
 			document.getElementById('wrongThisMerSetE').innerHTML = `Deliver ID must be greater than 0!`;
 			$('#myModalWrongMerSetE').modal('show');
@@ -400,7 +414,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 		}
 	}
 	else if (cri == "Receiver Phone Number") {
-		var valx = document.getElementById("ccString").value;
+		valx = document.getElementById("ccString").value;
 		if (valx == "" || valx == null) {
 			document.getElementById('wrongThisMerSetE').innerHTML = "Receiver's Phone Number cannot be empty!";
 			$('#myModalWrongMerSetE').modal('show');
@@ -423,7 +437,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 		}
 	}
 	else {
-		var valx = document.getElementById("ccString").value;
+		valx = document.getElementById("ccString").value;
 	}
 	if (cri != "") {
 		cri.includes("Merchant") ? cri = cri.replace("Merchant", "Sender") : null;
@@ -585,7 +599,23 @@ $('#criterionSubmit').on('click', function (eventx) {
 			}
 			$(".aaa").show();
 			cri.includes("Sender") ? cri = cri.replace("Sender", "Merchant") : null;
-			$("#valOfTable").html(`${cri}: ${valx} [Total Data: ${json.recordsTotal}]`);
+			// if (cri==="DateWiseDelivery") {
+			// 	valx = valx.split("__");
+			// 	if (valx[0]) {
+
+			// 	}
+			// }
+			if (cri == "District") {
+				if (disch) {
+					let vv = valx.split("__");
+					$("#valOfTable").html(`Receiver City: <strong>${vv[0]}</strong>, Area: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else {
+					$("#valOfTable").html(`Receiver City: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				return;
+			}
+			$("#valOfTable").html(`${cri}: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 		});
 
 		$('.dataTables_filter input[type="search"]').
