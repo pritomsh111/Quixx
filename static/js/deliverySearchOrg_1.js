@@ -142,7 +142,7 @@ $(function () {
 			success: function (data) {
 				$('#deliveryDistrict')
 					.empty()
-					.append('<option selected="selected" value="">Select District</option>')
+					.append('<option selected="selected" value="">Select City</option>')
 					;
 				for (var i = 0; i < data.data.length; i++) {
 					var option = new Option(data.data[i], data.data[i]);
@@ -166,7 +166,7 @@ $(function () {
 		if (where === "None") {
 			$('#deliveryArea')
 				.empty()
-				.append('<option selected="selected" value="">No District Selected</option>')
+				.append('<option selected="selected" value="">No City Selected</option>')
 				;
 			return;
 		}
@@ -323,50 +323,50 @@ $("#criterion").on("change", function () {
 		$("#ccString").show();
 	}
 });
-var disch = 0, dmer = 0, ddate = 0, dstat = 0, valx = "";
+var disch = 0, dmer = "", ddate = "", dstat = "", valx = "";
 $('#criterionSubmit').on('click', function (eventx) {
 	eventx.preventDefault();
 	$(".aaa").hide();
-	disch = 0, dmer = 0, ddate = 0, dstat = 0;
+	disch = "", dmer = "", ddate = "", dstat = 0;
 	var cri = document.getElementById("criterion").value;
 	if (cri == "Mixed Search") {
 		cri = "DateWiseDelivery";
 		valx = "";
 		if (document.getElementById("merchantListForDate").value) {
 			valx += document.getElementById("merchantListForDate").value;
-			dmer = 1;
+			dmer = "N";
 		}
 		else {
 			valx += "NA";
-			dmer = 0;
+			dmer = "NA";
 		}
 		if (document.getElementById("ccDate").value) {
 			if (valx) {
 				valx += "__";
 			}
 			valx += document.getElementById("ccDate").value;
-			ddate = 1;
+			ddate = "N";
 		}
 		else {
 			if (valx) {
 				valx += "__";
 			}
 			valx += "NA";
-			ddate = 0;
+			ddate = "NA";
 		}
 		if (document.getElementById("deliveryStatus").value) {
 			if (valx) {
 				valx += "__";
 			}
 			valx += document.getElementById("deliveryStatus").value;
-			dstat = 1;
+			dstat = "N";
 		}
 		else {
 			if (valx) {
 				valx += "__";
 			}
 			valx += "NA";
-			dstat = 0;
+			dstat = "NA";
 		}
 		//console.log(valx);
 	}
@@ -599,12 +599,37 @@ $('#criterionSubmit').on('click', function (eventx) {
 			}
 			$(".aaa").show();
 			cri.includes("Sender") ? cri = cri.replace("Sender", "Merchant") : null;
-			// if (cri==="DateWiseDelivery") {
-			// 	valx = valx.split("__");
-			// 	if (valx[0]) {
-
-			// 	}
-			// }
+			if (cri == "DateWiseDelivery") {
+				if (dmer != "NA" && ddate != "NA" && dstat != "NA") {
+					let vv = valx.split("__");
+					$("#valOfTable").html(`Merchant ID: <strong>${vv[0]}</strong>, Date: <strong>${vv[1]}</strong>, Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else if (dmer == "NA" && ddate == "NA" && dstat == "NA") {
+					$("#valOfTable").html(`All Deliveries [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else if (dmer != "NA" && ddate != "NA") {
+					let vv = valx.split("__");
+					$("#valOfTable").html(`Merchant ID: <strong>${vv[0]}</strong>, Date: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else if (dmer != "NA" && dstat != "NA") {
+					let vv = valx.split("__");
+					$("#valOfTable").html(`Merchant ID: <strong>${vv[0]}</strong>, Delivery Status: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else if (ddate != "NA" && dstat != "NA") {
+					let vv = valx.split("__");
+					$("#valOfTable").html(`Date: <strong>${vv[0]}</strong>, Delivery Status: <strong>${vv[1]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else if (ddate != "NA") {
+					$("#valOfTable").html(`Date: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else if (dstat != "NA") {
+					$("#valOfTable").html(`Delivery Status: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				else if (dmer != "NA") {
+					$("#valOfTable").html(`Merchant ID: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
+				}
+				return;
+			}
 			if (cri == "District") {
 				if (disch) {
 					let vv = valx.split("__");
