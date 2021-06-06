@@ -435,7 +435,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 				}
 				return;
 			}
-			$("#valOfTable").html(`${cri}: ${valx} [Total Data: ${json.recordsTotal}]`);
+			$("#valOfTable").html(`${cri}: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 		});
 
 		$('.dataTables_filter input[type="search"]').

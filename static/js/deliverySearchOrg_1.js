@@ -29,20 +29,6 @@ $(function () {
 	// 			console.log(data);
 	// 		}
 	// 	});
-	// $.ajax
-	// 	({
-	// 		url: "https://api-new.quixx.xyz/api/quixx/v1/deliveryMan/location/01982114988",
-	// 		type: "GET",
-	// 		headers:
-	// 		{
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-	// 		},
-	// 		success: function (data) {
-	// 			console.log(data);
-	// 		}
-	// 	});
 	$.ajax
 		({
 			url: urlForAll + "search/delivery/search/criteria/" + "organization",
