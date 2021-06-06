@@ -323,6 +323,11 @@ var unApprovedMer = () => {
 			{ "targets": 52, "data": "phone_number" },
 			{ "targets": 72, "data": "per_delivery_cost" },
 			{
+				"orderable": false, "targets": 92, "data": "update", render: function (data, type, row) {
+					return '<button id="' + row.merchant_id + '$$' + row.org_name + '$$' + row.person_name + '$$' + row.email + '$$' + row.phone_number + '$$' + row.business_filed + '$$' + row.per_delivery_cost + '$$' + row.cod_percentage + '$$' + row.payment_method_mobile + '$$' + row.payment_method_mobile_number + '$$' + row.payment_method_bank + '$$' + row.payment_method_bank_name + '$$' + row.payment_method_bank_branch + '$$' + row.payment_method_bank_account + '" class="btn-round btn-outline btn updateIT" style="font-size:13px">Update</button>'
+				}
+			},
+			{
 				"orderable": false, "targets": 92, "data": "approve", render: function (data, type, row) {
 					return '<button id="' + row.merchant_id + '" name="' + row.user_id + '" class="btn-round btn-outline btn approveIT">Approve</button>'
 				}
@@ -794,8 +799,9 @@ function modalFormBeforeSuccess() {
 	$("#sureForm").show();
 }
 
-var arr, id_merchant_update;
+var arr, id_merchant_update, whichTable;
 $('#dtBasicExample').on('click', '.updateIT', function () {
+	whichTable = "dtBasicExample";
 	merId = $(this).attr('id');
 	id_merchant_update = $(this).attr('id');
 	arr = [];
@@ -810,6 +816,61 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 	document.getElementById('business_filed2').value = arr[5];
 	document.getElementById('per_cost').value = arr[6];
 	document.getElementById('cod_per').value = arr[7];
+
+	if (arr[8] && arr[8] != "no" && arr[8] !== "undefined") {
+		document.querySelector("#mobileBank2").checked = true;
+		document.querySelector("#brb2").selectedIndex = arr[8].toUpperCase() === "BKASH" ? 0 : 1;
+		document.querySelector("#brbInput2").value = arr[9];
+		document.querySelector(".bankUpdate").classList.add("paddForm2");
+	}
+	else {
+		document.querySelector("#mobileBank2").checked = false;
+		document.querySelector("#brb2").selectedIndex = 0;
+		document.querySelector("#brbInput2").value = '';
+		document.querySelector(".bankUpdate").classList.remove("paddForm2");
+	}
+
+	if (arr[10] === "yes") {
+		document.querySelector("#phyBank2").checked = true;
+		document.querySelector("#bName2").value = arr[11];
+		document.querySelector("#branchName2").value = arr[12];
+		document.querySelector("#accountNo2").value = arr[13];
+		document.querySelector(".bankUpdate").classList.add("paddForm2BankPhy");
+	}
+	else {
+		document.querySelector("#phyBank2").checked = false;
+		document.querySelector("#bName2").value = "";
+		document.querySelector("#branchName2").value = "";
+		document.querySelector("#accountNo2").value = "";
+		document.querySelector(".bankUpdate").classList.remove("paddForm2BankPhy");
+	}
+
+	modalForm();
+	document.getElementById('myModalFormHeader').innerHTML = `Merchant: <strong>${arr[1]}</strong>`;
+
+	$('.cancelMod').prop('disabled', false);
+	$('.btn-ok-update').prop('disabled', false);
+
+	$("#formUpdate").show();
+	$("#modalApproveForm").show();
+});
+
+$('#dtBasicExample2').on('click', '.updateIT', function () {
+	whichTable = "dtBasicExample2";
+	merId = $(this).attr('id');
+	id_merchant_update = $(this).attr('id');
+	arr = [];
+	arr = merId.split('$$');
+
+	$t = $(this);
+
+	document.getElementById('org_name2').value = arr[1];
+	document.getElementById('person_name2').value = arr[2];
+	document.getElementById('email2').value = arr[3];
+	document.getElementById('phone_number2').value = arr[4];
+	document.getElementById('business_filed2').value = arr[5];
+	document.getElementById('per_cost').value = arr[6];
+	document.getElementById('cod_per').value = 0;
 
 	if (arr[8] && arr[8] != "no" && arr[8] !== "undefined") {
 		document.querySelector("#mobileBank2").checked = true;
@@ -1073,7 +1134,7 @@ $('.btn-ok-update').on("click", function (e) {
 					// 	data.data.cod_percentage,
 					// 	'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
 					// ];
-					var table = $('#dtBasicExample').DataTable();
+					var table = $(`#${whichTable}`).DataTable();
 					try {
 						table.row($t.closest('tr')).data(data.data);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
