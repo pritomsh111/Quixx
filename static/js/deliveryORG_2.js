@@ -475,6 +475,23 @@ function formatUnassigned(d) {
 	return '<table id="innerRowTable">' +
 		'<thead>' +
 		"<tr colspan='2'>" +
+		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +
+		"</tr ></thead >" +
+		'<tr>' +
+		'<td>Sender\'s Name:</td>' +
+		'<td>' + sender_name + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Sender\'s Phone:</td>' +
+		'<td>' + sender_phone_number + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Sender\'s Address:</td>' +
+		'<td>' + sender_address + '</td>' +
+		'</tr>' +
+		'</table>' + '<table id="innerRowTable">' +
+		'<thead>' +
+		"<tr colspan='2'>" +
 		"<th colspan='2' style='text-align:center;'>Receiver\'s Info</th>" +
 		"</tr ></thead >" +
 		'<tr>' +
@@ -556,24 +573,6 @@ function formatUnassigned(d) {
 		'<tr>' +
 		'<td>City Type:</td>' +
 		'<td>' + delivery_city_criteria + '</td>' +
-		'</tr>' +
-		'</table>' +
-		'<table id="innerRowTable">' +
-		'<thead>' +
-		"<tr colspan='2'>" +
-		"<th colspan='2' style='text-align:center;'>Sender\'s Info</th>" +
-		"</tr ></thead >" +
-		'<tr>' +
-		'<td>Sender\'s Name:</td>' +
-		'<td>' + sender_name + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Sender\'s Phone:</td>' +
-		'<td>' + sender_phone_number + '</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>Sender\'s Address:</td>' +
-		'<td>' + sender_address + '</td>' +
 		'</tr>' +
 		'</table>';
 }
