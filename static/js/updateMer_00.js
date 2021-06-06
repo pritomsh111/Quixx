@@ -7,6 +7,7 @@ function two2x() {
 function three3x() {
 	$('#mapFormMer').hide();
 	$('#passFormMer').hide();
+	$("#settingsMer").hide();
 	setTimeout(function () {
 		document.getElementById('uporg1').disabled = true;
 		document.getElementById('uporg1').style.fontSize = '13px';

@@ -8,14 +8,10 @@ function two2() {
 }
 function three3() {
 
+	$("#settingsMer").hide();
 	$.ajax
 		({
-			async: true,
 			type: "GET",
-			cors: true,
-			contentType: 'application/json',
-			secure: true,
-			crossDomain: true,
 			url: urlForAll + "merchant/cod/charge/" + merchant_ID,
 			headers:
 			{

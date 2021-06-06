@@ -24,5 +24,6 @@ function three3() {
 		$("#deliveryCreateQ").show();
 		$('#bulkDelivery').hide();
 		$("#deliveryCreate").hide();
+		$("#settingsMer").hide();
 	}, 3700);
 }

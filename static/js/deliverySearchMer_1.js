@@ -11,6 +11,7 @@ $(function () {
 	$("#paymentMethod").hide();
 	$("#deliveryDistrict").hide();
 	$("#deliveryArea").hide();
+	$("#settingsMer").hide();
 	$.ajax
 		({
 			url: urlForAll + "search/delivery/search/criteria/merchant",

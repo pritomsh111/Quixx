@@ -931,7 +931,7 @@ var onGoingDeliveries = () => {
 			},
 			{
 				"targets": 5, "data": "delivery_Id", render: function (data, type, row) {
-					return `${row.delivery_Id}` + '<button id="' + row.assign_delivery_man_name + '$$' + row.delivery_Id + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.sender_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.receiver_address + '" class="btn-round btn-outline btn mapInfos" style="font-size:13px;">Watch</button>'
+					return `${row.delivery_Id}` + '<button id="' + row.assign_delivery_man_name + '$$' + row.delivery_Id + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.sender_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.receiver_address + + '$$' + row.assign_delivery_man_phone + '" class="btn-round btn-outline btn mapInfos" style="font-size:13px;">Watch</button>'
 				}
 			},
 			{ "targets": 2, "data": "delivery_status" },
@@ -998,7 +998,7 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 	mapSender = new SlidingMarker({
 		position: new google.maps.LatLng(data[2], data[3]),
 		map: mapWatch,
-		title: `${data[4]}`,
+		title: `Sender's Address: <strong>${data[4]}</strong>`,
 		icon: {
 			path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
 			fillColor: "#0066b3",
@@ -1013,7 +1013,7 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 		mapReceiver = new SlidingMarker({
 			position: new google.maps.LatLng(data[5], data[6]),
 			map: mapWatch,
-			title: `${data[7]}`,
+			title: `Receivers's Address: <strong>${data[7]}</strong>`,
 			icon: {
 				path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
 				fillColor: "#ffcf5c",
@@ -1032,14 +1032,33 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 		title: data[0],
 		duration: 2000
 	});
-	const center = new google.maps.LatLng(23.74146, 90.40941);
-	mapWatch.setZoom(16);
-	mapWatch.panTo(center);
-	setTimeout(() => {
-		mapInfoMarker.setPosition(new google.maps.LatLng(23.74346, 90.41241));
-		mapWatch.panTo(new google.maps.LatLng(23.74346, 90.41241));
-	}, 10000);
+	//Dynamic korte hobe
+	dynamicDyliverManChange(mapInfoMarker, data[8]);
 });
+
+function dynamicDyliverManChange(mapInfoMarker, phone) {
+	$.ajax
+		({
+			url: urlForAll + "deliveryMan/location/" + phone,
+			type: "GET",
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				console.log(data);
+				const center = new google.maps.LatLng(23.74146, 90.40941);
+				mapWatch.setZoom(16);
+				mapWatch.panTo(center);
+				setTimeout(() => {
+					mapInfoMarker.setPosition(new google.maps.LatLng(23.74346, 90.41241));
+					mapWatch.panTo(new google.maps.LatLng(23.74346, 90.41241));
+				}, 10000);
+			}
+		});
+}
 
 
 var completedDeliveries = () => {

@@ -10,6 +10,7 @@ function two2() {
 function three3() {
     setTimeout(function () {
         $('#dtBasicExample').hide();
+        $("#settingsMer").hide();
         $('.a').hide();
         $('#dtBasicExampleAp').hide();
         $('#dtBasicExampleNew').hide();
