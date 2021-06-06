@@ -987,10 +987,11 @@ var onGoingDeliveries = () => {
 	$('#dtBasicExampleNewg').show();
 	$('.g').show();
 }
-var mapSender, mapReceiver, mapInfoMarker, latlngx, centerx;
+var mapSender, mapReceiver, mapInfoMarker, latlngx, centerx, interVal, dataP;
 
 $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 	let data = $(this).attr('id');
+	dataP = data;
 	if (mapSender) {
 		mapSender.setMap(null);
 	}
@@ -1035,10 +1036,10 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 		});
 	}
 	//Dynamic korte hobe
-	dynamicDyliverManChange(data);
+	dynamicDyliverManChange();
 });
 
-function dynamicDyliverManChange(dataP) {
+function dynamicDyliverManChange() {
 	$.ajax
 		({
 			url: urlForAll + "deliveryMan/location/" + dataP[8],
@@ -1061,10 +1062,35 @@ function dynamicDyliverManChange(dataP) {
 					title: dataP[0],
 					duration: 1000
 				});
-				setTimeout(() => {
-					mapInfoMarker.setPosition(new google.maps.LatLng(23.74346, 90.41241));
-					mapWatch.panTo(new google.maps.LatLng(23.74346, 90.41241));
+				if (interVal) {
+					clearInterval(interVal);
+				}
+				interVal = setInterval(() => {
+					console.log("Shuru hochhiii")
+					doItMultipleTimes(mapInfoMarker);
 				}, 10000);
+			}
+		});
+}
+var addKorbo = 0;
+function doItMultipleTimes(mapInfoMarker) {
+	addKorbo += 0.05;
+	$.ajax
+		({
+			url: urlForAll + "deliveryMan/location/" + dataP[8],
+			type: "GET",
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				data.data.lat = parseFloat(data.data.lat) + addKorbo;
+				data.data.longi = parseFloat(data.data.longi) + addKorbo;
+				latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
+				mapInfoMarker.setPosition(latlngx);
+				mapWatch.panTo(latlngx);
 			}
 		});
 }
