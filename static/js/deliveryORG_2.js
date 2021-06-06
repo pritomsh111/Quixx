@@ -991,7 +991,6 @@ var mapSender, mapReceiver, mapInfoMarker, latlngx, centerx, interVal, dataP;
 
 $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 	let data = $(this).attr('id');
-	dataP = data;
 	if (mapSender) {
 		mapSender.setMap(null);
 	}
@@ -1003,6 +1002,7 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 	}
 
 	data = data.split("$$");
+	dataP = data;
 	$("#myModalInfoWatch").modal();
 	document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${data[0]}</strong>, Delivery ID: <strong>${data[1]}</strong>`
 	mapSender = new SlidingMarker({
@@ -1068,13 +1068,13 @@ function dynamicDyliverManChange() {
 				interVal = setInterval(() => {
 					console.log("Shuru hochhiii")
 					doItMultipleTimes(mapInfoMarker);
-				}, 10000);
+				}, 12000);
 			}
 		});
 }
 var addKorbo = 0;
 function doItMultipleTimes(mapInfoMarker) {
-	addKorbo += 0.05;
+	addKorbo += 0.01;
 	$.ajax
 		({
 			url: urlForAll + "deliveryMan/location/" + dataP[8],
