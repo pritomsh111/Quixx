@@ -987,18 +987,27 @@ var onGoingDeliveries = () => {
 	$('#dtBasicExampleNewg').show();
 	$('.g').show();
 }
-
+var mapSender, mapReceiver, mapInfoMarker, latlngx, centerx;
 
 $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 	let data = $(this).attr('id');
-	console.log(data);
+	if (mapSender) {
+		mapSender.setMap(null);
+	}
+	if (mapReceiver) {
+		mapReceiver.setMap(null);
+	}
+	if (mapInfoMarker) {
+		mapInfoMarker.setMap(null);
+	}
+
 	data = data.split("$$");
 	$("#myModalInfoWatch").modal();
 	document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${data[0]}</strong>, Delivery ID: <strong>${data[1]}</strong>`
 	mapSender = new SlidingMarker({
 		position: new google.maps.LatLng(data[2], data[3]),
 		map: mapWatch,
-		title: `Sender's Address: <strong>${data[4]}</strong>`,
+		title: `Sender's Address: ${data[4]}`,
 		icon: {
 			path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
 			fillColor: "#0066b3",
@@ -1013,7 +1022,7 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 		mapReceiver = new SlidingMarker({
 			position: new google.maps.LatLng(data[5], data[6]),
 			map: mapWatch,
-			title: `Receivers's Address: <strong>${data[7]}</strong>`,
+			title: `Receivers's Address: ${data[7]}`,
 			icon: {
 				path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
 				fillColor: "#ffcf5c",
@@ -1026,13 +1035,13 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 		});
 	}
 	//Dynamic korte hobe
-	dynamicDyliverManChange(mapInfoMarker, data[8]);
+	dynamicDyliverManChange(data);
 });
 
-function dynamicDyliverManChange(mapInfoMarker, phone) {
+function dynamicDyliverManChange(dataP) {
 	$.ajax
 		({
-			url: urlForAll + "deliveryMan/location/" + phone,
+			url: urlForAll + "deliveryMan/location/" + dataP[8],
 			type: "GET",
 			headers:
 			{
@@ -1041,16 +1050,16 @@ function dynamicDyliverManChange(mapInfoMarker, phone) {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				const latlng = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
-				const center = latlng;
+				latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
+				centerx = latlngx;
 				mapWatch.setZoom(16);
-				mapWatch.panTo(center);
+				mapWatch.panTo(centerx);
 				//delivery man info
 				mapInfoMarker = new SlidingMarker({
-					position: latlng,
+					position: latlngx,
 					map: mapWatch,
-					title: data[0],
-					duration: 2000
+					title: dataP[0],
+					duration: 1000
 				});
 				setTimeout(() => {
 					mapInfoMarker.setPosition(new google.maps.LatLng(23.74346, 90.41241));
