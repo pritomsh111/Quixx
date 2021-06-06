@@ -1760,5 +1760,3 @@ $('.btn-okActivate3').on("click", function (e) {
 			}
 		});
 });
-
-// Abdullahpur,Adabor,Agargaon,Airport,Azimpur,Badda,Banani,Banasree,Banglamotor,Bangshal,Baridhara,Basundhara Residential Area,Bhashantek,Cantonment,Chawkbazar,Dakshin Khan,Dania,Darus-Salam,Demra,Dhanmondi,Farmgate,Gandaria,Gulistan,Gulshan,Hatirjheel,Hazaribag,Islampur,Jattrabari,Jurain,Kadamtoli,Kafrul,Kalabagan,Kallaynpur,Kalshi,Kamrangirchar,Kawran Bazar,Khilgaon,Khilkhet,Kotwali,Kuril,Lalbagh,Lalmatia,Maghbazar,Malibagh,Mirpur Model,Mohakhali,Mohammadpur,Motijheel,Mugda,New Market,Nikunja,Pallabi,Paltan Model,Ramna Model,Rampura,Rupnagar,Sabujbag,Sadarghat,Satarkul,Shah Ali,Shahbag,Shahjahanpur,Sher-E-Bangla Nagar,Shyampur,Sutrapur,Tejgaon,Tejgaon Industrial,Turag,Uttar Khan,Uttara East,Uttara West,Vatara,Wari
