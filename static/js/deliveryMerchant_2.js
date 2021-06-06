@@ -348,7 +348,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var delivery_lat = String(document.getElementById('des_lat').value);
 	var delivery_longi = String(document.getElementById('des_longi').value);
 	var product_name = String(document.getElementById('product_name').value);
-	var product_qty = String(document.getElementById('product_qty').value);
+	var product_qty = String(document.getElementById('product_qty').value.toUpperCase());
 	var product_cost = document.getElementById('product_cost').value;
 	var delivery_charge = document.getElementById('delivery_charge').value;
 	var deliveryCity = String(document.getElementById('managers').value);
@@ -1008,7 +1008,7 @@ function doIt(i, lengx) {
 		var rec_address = excelData[i].Receiver_Address;
 
 		var product_name = excelData[i].Product_Name;
-		var product_qty = excelData[i].Product_Quantity_Pieces;
+		var product_qty = excelData[i].Product_Quantity_Pieces.toUpperCase();
 		var product_cost = excelData[i].Product_Cost;
 
 		var payment_method = excelData[i].Payment_Method;
@@ -1930,7 +1930,7 @@ $('.btn-ok-updateDC').on("click", function () {
 	var delivery_lat = String(document.getElementById('des_latU').value);
 	var delivery_longi = String(document.getElementById('des_longiU').value);
 	var product_name = String(document.getElementById('product_nameU').value);
-	var product_qty = String(document.getElementById('product_qtyU').value);
+	var product_qty = String(document.getElementById('product_qtyU').value.toUpperCase());
 	var product_cost = document.getElementById('product_costU').value;
 	var created_date = arr[21];
 	var created_by_name = arr[22];
