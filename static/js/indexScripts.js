@@ -15,7 +15,12 @@
 		document.querySelector(".selectbtnMer").remove();
 		$('.logo>a>label').hide();
 		$('.logo>a>input').hide();
-		document.querySelector(".logo>a>div").style.height = "115px";
+		if (document.querySelector(".sidebar").classList.contains("sidebar-smol")) {
+			document.querySelector(".logo>a>div").style.height = "75px";
+		}
+		else {
+			document.querySelector(".logo>a>div").style.height = "115px";
+		}
 		document.title = "Super Admin";
 		myNode = document.getElementById("merchant");
 		myNode.remove();
@@ -131,7 +136,13 @@
 			location.hash = "selection";
 		});
 		document.querySelector("#merchant a[href='#selection']").remove();
-		document.querySelector(".logo>a>div").style.height = "115px";
+
+		if (document.querySelector(".sidebar").classList.contains("sidebar-smol")) {
+			document.querySelector(".logo>a>div").style.height = "75px";
+		}
+		else {
+			document.querySelector(".logo>a>div").style.height = "115px";
+		}
 		$.ajax
 			({
 				type: "GET",

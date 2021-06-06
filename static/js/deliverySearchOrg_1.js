@@ -524,8 +524,8 @@ $('#criterionSubmit').on('click', function (eventx) {
 				{ "targets": 17, "data": "product_cost" },
 				{ "targets": 18, "data": "delivery_charge" },
 				{ "targets": 19, "data": "payment_method" },
-				{ "targets": 19, "data": "delivery_complete_date" },
 				{ "targets": 1, "data": "delivery_created_date" },
+				{ "targets": 19, "data": "delivery_complete_date" },
 				{ "targets": 10, "data": "receiver_name" },
 				{ "targets": 11, "data": "receiver_phone_number" },
 				{
