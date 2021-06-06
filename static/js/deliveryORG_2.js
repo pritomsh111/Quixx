@@ -931,7 +931,7 @@ var onGoingDeliveries = () => {
 			},
 			{
 				"targets": 5, "data": "delivery_Id", render: function (data, type, row) {
-					return `${row.delivery_Id}` + '<button id="' + row.assign_delivery_man_name + '$$' + row.delivery_Id + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.sender_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.receiver_address + + '$$' + row.assign_delivery_man_phone + '" class="btn-round btn-outline btn mapInfos" style="font-size:13px;">Watch</button>'
+					return `${row.delivery_Id}` + '<button id="' + row.assign_delivery_man_name + '$$' + row.delivery_Id + '$$' + row.sender_lat + '$$' + row.sender_longi + '$$' + row.sender_address + '$$' + row.receiver_lat + '$$' + row.receiver_longi + '$$' + row.receiver_address + '$$' + row.assign_delivery_man_phone + '" class="btn-round btn-outline btn mapInfos" style="font-size:13px;">Watch</button>'
 				}
 			},
 			{ "targets": 2, "data": "delivery_status" },
@@ -1025,13 +1025,6 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 			}
 		});
 	}
-	//delivery man info
-	mapInfoMarker = new SlidingMarker({
-		position: new google.maps.LatLng(23.74146, 90.40941),
-		map: mapWatch,
-		title: data[0],
-		duration: 2000
-	});
 	//Dynamic korte hobe
 	dynamicDyliverManChange(mapInfoMarker, data[8]);
 });
@@ -1048,10 +1041,17 @@ function dynamicDyliverManChange(mapInfoMarker, phone) {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				console.log(data);
-				const center = new google.maps.LatLng(23.74146, 90.40941);
+				const latlng = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
+				const center = latlng;
 				mapWatch.setZoom(16);
 				mapWatch.panTo(center);
+				//delivery man info
+				mapInfoMarker = new SlidingMarker({
+					position: latlng,
+					map: mapWatch,
+					title: data[0],
+					duration: 2000
+				});
 				setTimeout(() => {
 					mapInfoMarker.setPosition(new google.maps.LatLng(23.74346, 90.41241));
 					mapWatch.panTo(new google.maps.LatLng(23.74346, 90.41241));
@@ -1059,7 +1059,6 @@ function dynamicDyliverManChange(mapInfoMarker, phone) {
 			}
 		});
 }
-
 
 var completedDeliveries = () => {
 	buttonActive();
