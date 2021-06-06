@@ -115,6 +115,91 @@ function setMarkers(map) {
 		});
 }
 
+
+var mapSender, mapReceiver, mapInfoMarker, latlngx, centerx, interVal, dataP, curLoc = "";
+var geocoder = new google.maps.Geocoder();
+$('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
+	let data = $(this).attr('id');
+
+	if (mapInfoMarker) {
+		mapInfoMarker.setMap(null);
+	}
+	//Dynamic korte hobe
+	dynamicDyliverManChange();
+});
+
+function dynamicDyliverManChange() {
+	$.ajax
+		({
+			url: urlForAll + "deliveryMan/location/" + dataP[8],
+			type: "GET",
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
+				centerx = latlngx;
+				mapWatch.setZoom(16);
+				mapWatch.panTo(centerx);
+				//delivery man info
+				mapInfoMarker = new SlidingMarker({
+					position: latlngx,
+					map: mapWatch,
+					title: dataP[0],
+					duration: 1000
+				});
+				geocoder.geocode({ 'latLng': latlngx }, function (results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						curLoc = results[0].formatted_address;
+						document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${dataP[0]}</strong>, Delivery ID: <strong>${dataP[1]}</strong>, Current Location: <strong>${curLoc}</strong>`;
+					}
+				});
+				doItMultipleTimes(mapInfoMarker);
+			}
+		});
+}
+var addKorbo = 0;
+async function doItMultipleTimes(mapInfoMarker) {
+	clearTimeout(interVal);
+	// addKorbo += 0.001;
+	await $.ajax
+		({
+			url: urlForAll + "deliveryMan/location/" + dataP[8],
+			type: "GET",
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				// data.data.lat = parseFloat(data.data.lat) + addKorbo;
+				// data.data.longi = parseFloat(data.data.longi) + addKorbo;
+				latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
+				mapInfoMarker.setPosition(latlngx);
+				mapWatch.panTo(latlngx);
+				geocoder.geocode({ 'latLng': latlngx }, function (results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						curLoc = results[0].formatted_address;
+						document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${dataP[0]}</strong>, Delivery ID: <strong>${dataP[1]}</strong>, Current Location: <strong>${curLoc}</strong>`;
+					}
+				});
+			}
+		});
+	interVal = setTimeout(function () {
+		doItMultipleTimes(mapInfoMarker);
+	}, 60000);
+}
+
+$('#myModalInfoWatch').on('hidden.bs.modal', function () {
+	setTimeout(function () {
+		clearTimeout(interVal);
+	}, 1000);
+});
+
 function details(abc) {
 	var name_element = abc.id;
 	var name_element2 = abc.name;
