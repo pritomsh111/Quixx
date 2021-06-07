@@ -103,7 +103,7 @@ input[type="checkbox"]+label {
   padding: 0.8rem;
 }
 
-#deliveryManCreate .dmc-1 {
+#deliveryManCreate .dmc-1, #formUpdateD .dmc-1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 2rem;
@@ -114,7 +114,7 @@ input[type="checkbox"]+label {
   padding: 2rem;
 }
 
-#deliveryManCreate .dmc-2 {
+#deliveryManCreate .dmc-2, #formUpdateD .dmc-2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 2rem;
@@ -126,9 +126,21 @@ input[type="checkbox"]+label {
   padding: 2rem;
 }
 
+#formUpdateD .dmc-1, #formUpdateD .dmc-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+  column-gap: 2rem;
+  padding: 2rem;
+}
+
 #DeliveryMan_CREATION {
   margin-top: -1.8rem;
   padding: 0.6rem 1rem;
+}
+
+.modal-lg {
+  max-width: 90%;
 }
 
 @media (max-width: 450px) {
@@ -136,19 +148,19 @@ input[type="checkbox"]+label {
     margin-top: -1.9rem;
     padding: 0.4rem;
   }
-  #deliveryManCreate .dmc-1 {
+  #deliveryManCreate .dmc-1, #formUpdateD .dmc-1 {
     grid-template-columns: 1fr;
     padding: 1rem;
     row-gap: 1rem;
   }
-  #deliveryManCreate .dmc-2 {
+  #deliveryManCreate .dmc-2, #formUpdateD .dmc-2 {
     grid-template-columns: 1fr;
     padding: 1rem;
     row-gap: 1rem;
   }
 }
 
-#senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
+#managersU, #districtU, #senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
   padding: 0.3rem;
   text-align-last: left;
   height: 40px;
@@ -162,13 +174,13 @@ form {
   #btn.btn.btn-outline.chkkk, #criteriaSubmit {
     padding: 0.4rem;
   }
-  #senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
+  #managersU, #districtU, #senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
     padding: 0.2rem;
     text-align-last: left;
     height: 40px;
     width: 130px;
   }
-  #managers {
+  #managers, #managersU {
     width: 150px;
   }
   .deliveryArea {

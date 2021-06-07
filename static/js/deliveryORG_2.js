@@ -1843,6 +1843,12 @@ function recallQ() {
 document.getElementById("createDeliveryQ").addEventListener("click", function (event) {
 	// var pickup_time = document.getElementById('timepicker-12-hr').value;
 	divElement.innerHTML = "";
+	$("#sureD2").html("");
+	$("#sureD2ZZ").html("");
+	$("#sureD22").html("");
+	$("#sureD2Z").html("");
+	$("#sureD2X").html("");
+	$("#sureD2Y").html("");
 	var s_name = document.getElementById('s_nameQ').value;
 	var s_number = document.getElementById('s_numberQ').value;
 	var s_address = document.getElementById('addQ').value;
@@ -1941,7 +1947,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 			document.getElementById("r_numberQ").focus();
 			return 0;
 		}
-		else if ((r_number.length < 11 || r_number.length > 11) && !/\D/.test(r_number) == true) {
+		else if ((r_number.length < 11 || r_number.length > 11) || /\D/.test(r_number) == true) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Phone Number must be of 11 digits!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("r_numberQ").focus();
@@ -2178,6 +2184,15 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var senderGuy = document.getElementById('senderList').value;
 	var product_cost = document.getElementById('product_cost').value;
 	var yesno = document.getElementById('autoAss').value;
+	$('#tickD2').hide();
+	$(".circle-loader").show();
+	$(".circle-loader").removeClass("load-complete");
+	$("#sureD2X").html("");
+	$("#sureD2Y").html("");
+	$("#sureD2Z").html("");
+	$("#sureD2").html("");
+	$("#sureD22").html("");
+	$("#sureD2ZZ").html("");
 	var v0 = () => {
 		if (!senderGuy) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please select a sender from list!";
@@ -2217,7 +2232,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 			$('#myModalWrongDeliveryCreate').modal('show');
 			return 0;
 		}
-		else if ((s_number.length < 11 || s_number.length > 11) && !/\D/.test(s_number) == true) {
+		else if ((s_number.length < 11 || s_number.length > 11) || /\D/.test(s_number) == true) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number must be of 11 digits!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			return 0;
@@ -2259,7 +2274,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 			document.getElementById("r_number").focus();
 			return 0;
 		}
-		else if ((r_number.length < 11 || r_number.length > 11) && !/\D/.test(r_number) == true) {
+		else if ((r_number.length < 11 || r_number.length > 11) || /\D/.test(r_number) == true) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Receiver's Phone Number must be of 11 digits!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("r_number").focus();
@@ -2715,7 +2730,7 @@ function doIt(i, lengx) {
 				}, 2500);
 				return 0;
 			}
-			else if ((r_number.length < 11 || r_number.length > 11) && !/\D/.test(r_number) == true) {
+			else if ((r_number.length < 11 || r_number.length > 11) || /\D/.test(r_number) == true) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Receiver's Phone Number must be of 11 digits!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
@@ -3080,6 +3095,12 @@ function doIt(i, lengx) {
 }
 document.getElementById("createDeliverywithExcel").addEventListener("click", function (event) {
 	divElement.innerHTML = "";
+	$("#sureD2").html("");
+	$("#sureD2ZZ").html("");
+	$("#sureD22").html("");
+	$("#sureD2Z").html("");
+	$("#sureD2X").html("");
+	$("#sureD2Y").html("");
 	if (flag == true) {
 		$('#tickD2').hide();
 		$(".circle-loader").show();
@@ -3842,7 +3863,7 @@ $('.btn-ok-updateDC').on("click", function () {
 			$('#myModalWrongDeliveryCreate').modal('show');
 			return 0;
 		}
-		else if ((s_number.length < 11 || s_number.length > 11) && !/\D/.test(s_number) == true) {
+		else if ((s_number.length < 11 || s_number.length > 11) || /\D/.test(s_number) == true) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Sender's Phone Number must be of 11 digits!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			return 0;
@@ -3884,7 +3905,7 @@ $('.btn-ok-updateDC').on("click", function () {
 			document.getElementById("r_numberU").focus();
 			return 0;
 		}
-		else if ((r_number.length < 11 || r_number.length > 11) && !/\D/.test(r_number) == true) {
+		else if ((r_number.length < 11 || r_number.length > 11) || /\D/.test(r_number) == true) {
 			document.getElementById('wrongrphone').innerHTML = "Receiver's Phone Number must be of 11 digits!";
 			$('#wrongrphone').show();
 			document.getElementById("r_numberU").focus();

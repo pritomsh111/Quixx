@@ -178,6 +178,7 @@
                         <th>Delivery Man's Name</th>
                         <th>Phone Number</th>
                         <th>Reporting Boss Email</th>
+                        <th>Update Delivery Man?</th>
                     </tr>
                 </thead>
                 <tfoot></tfoot>
@@ -199,6 +200,7 @@
                         <th>Delivery Man's Name</th>
                         <th>Phone Number</th>
                         <th>Reporting Boss Email</th>
+                        <th>Update Delivery Man?</th>
                         <th>Approve Delivery Man?</th>
                     </tr>
                 </thead>
@@ -297,6 +299,110 @@
                     id="modalApproveX"
                 >
                     Approve
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="myModalFormD"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                ></button>
+                <h4 class="modal-title" style="color: #0066b3;font-size:1rem;" id="myModalFormHeaderD"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="p-1" style="color: #0066b3;margin-bottom:0; font-size:1rem;" id="formUpdateD">
+                    <div class="dmc-1">
+                        <div>
+                            Delivery Man's Name:
+                            <input
+                                type="text"
+                                id="deliveryManNameU"
+                                class="form-control mb-4"
+                                placeholder=""
+                            >
+                        </div>
+                        <div>
+                            Delivery Man's E-mail:
+                            <input
+                                type="email"
+                                id="deliveryManEmailU"
+                                class="form-control mb-4"
+                                placeholder=""
+                            >
+                        </div>
+                        <div style="text-align: left">
+                            Delivery Man's Phone No:
+                            <input
+                                type="text"
+                                id="deliveryManPhoneU"
+                                class="form-control mb-4"
+                                placeholder=""
+                            >
+                        </div>
+                        <div>
+                            <label style="text-align: none;">
+                                Reporting Boss:
+                            </label>
+                            <select class="browser-default custom-select col-lg-12 btn" id="managersU"></select>
+                        </div>
+                    </div>
+                    <div class="dmc-2">
+                        <div style="grid-column: 1/-1;">
+                            <label>
+                                District:
+                            </label>
+                            <select class="custom-select col-lg-12 btn" id="districtU" style="color:#0066b3;"></select>
+                        </div>
+                        <div>
+                            <button id="btnU" class="btn btn-outline chkkk">
+                                Check / Uncheck All
+                            </button>
+                        </div>
+                        <div style="grid-column: 1/-1;">
+                            <label style="margin-bottom:0.7rem;">
+                                Delivery Area:
+                            </label>
+                            <div class="deliveryArea"></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="circle-loader" style="text-align:center; display:block;margin-left:auto;margin-right:auto;" id="circleLoadFormD">
+                    <div class="checkmark draw" id="tickFormD"></div>
+                </div>
+                <h4 id="sureFormD" style="color: #0066b3; text-align:center;"></h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-default cancelModD"
+                    id="modalCancelForm"
+                    data-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    style="color: #0066b3"
+                    class="btn btn-outline btn-danger btn-ok-updateD"
+                    id="modalApproveFormD"
+                >
+                    Update
                 </button>
             </div>
         </div>

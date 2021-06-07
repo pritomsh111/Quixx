@@ -615,7 +615,7 @@ var addMerchant = () => {
 			modalErrorShowForCreateUpdateMerchant("Phone Number cannot be empty!", "phone_number");
 			return 0;
 		}
-		else if ((phone.length < 11 || phone.length > 11) && !/\D/.test(phone) == true) {
+		else if ((phone.length < 11 || phone.length > 11) || /\D/.test(phone) == true) {
 			modalErrorShowForCreateUpdateMerchant("Phone Number must be of 11 digits!", "phone_number");
 			return 0;
 		}
@@ -658,7 +658,7 @@ var addMerchant = () => {
 				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput");
 				return 0;
 			}
-			else if ((minput.length < 11 || minput.length > 11) && !/\D/.test(minput) == true) {
+			else if ((minput.length < 11 || minput.length > 11) || /\D/.test(minput) == true) {
 				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "brbInput");
 				return 0;
 			}
@@ -955,7 +955,7 @@ $('.btn-ok-update').on("click", function (e) {
 			modalErrorShowForCreateUpdateMerchant("Phone Number cannot be empty!", "phone_number2");
 			return 0;
 		}
-		else if ((phone_number.length < 11 || phone_number.length > 11) && !/\D/.test(phone_number) == true) {
+		else if ((phone_number.length < 11 || phone_number.length > 11) || /\D/.test(phone_number) == true) {
 			modalErrorShowForCreateUpdateMerchant("Phone Number must be of 11 digits!", "phone_number2");
 			return 0;
 		}
@@ -1024,7 +1024,7 @@ $('.btn-ok-update').on("click", function (e) {
 				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput2");
 				return 0;
 			}
-			else if ((minput.length < 11 || minput.length > 11) && !/\D/.test(minput) == true) {
+			else if ((minput.length < 11 || minput.length > 11) || /\D/.test(minput) == true) {
 				modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "brbInput2");
 				return 0;
 			}

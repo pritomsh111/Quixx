@@ -2,35 +2,51 @@ var org_ID = localStorage.getItem('userID');
 var abtn = document.querySelector('#btn');
 abtn.onclick = checkAll;
 
-var createDeliveryMan = () => {
-	document.getElementById('four').disabled = true;
-	document.getElementById('twoa').disabled = false;
-	document.getElementById('threea').disabled = false;
-	document.getElementById('onea').disabled = false;
-	document.getElementById('four').style.fontSize = '13px';
+function btnsActive() {
 	document.getElementById('twoa').style.fontSize = '13px';
+	document.getElementById('twoa').disabled = false;
+	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
+	document.getElementById('four').style.fontSize = '13px';
+	document.getElementById('four').disabled = false;
 	document.getElementById('threea').style.fontSize = '13px';
-	document.getElementById('onea').style.fontSize = '13px';
+	document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
+	document.getElementById('threea').disabled = false;
 
 	document.getElementById('foura').style.fontSize = '13px';
-	document.getElementById('fivea').style.fontSize = '13px';
+	document.getElementById('foura').disabled = false;
 	document.getElementById('foura').innerHTML = 'Activated Delivery Man';
+	document.getElementById('fivea').style.fontSize = '13px';
+	document.getElementById('fivea').disabled = false;
 	document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
 
-	document.getElementById('foura').disabled = false;
-	document.getElementById('fivea').disabled = false;
 	$('#dtBasicExampleActivate').hide();
 	$('#dtBasicExampleDisable').hide();
-	$('.c').hide();
-	$('.d').hide();
-
-	document.getElementById('onea').innerHTML = 'Registered Delivery Man';
-	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
-	document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
 	$('#dtBasicExample').hide();
 	$('#dtBasicExample2').hide();
+	$('#deliveryManCreate').hide();
 	$('.a').hide();
 	$('.b').hide();
+	$('.c').hide();
+	$('.d').hide();
+}
+
+function dTStyle() {
+	$('.dataTables_filter input[type="search"]').
+		attr('placeholder', 'Search anything!').
+		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
+
+	$('.dataTables_filter input[type="search"]').
+		attr('class', 'btn btn-round').
+		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
+
+	$('.dataTables_length select').
+		attr('class', 'btn btn-round').
+		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
+}
+
+var createDeliveryMan = () => {
+	btnsActive();
+	document.getElementById('four').disabled = true;
 	$('#deliveryManCreate').show();
 };
 
@@ -170,32 +186,8 @@ function tdColspan() {
 	}
 }
 var approvedDeliveryMan = () => {
+	btnsActive();
 	document.getElementById('twoa').disabled = true;
-	document.getElementById('onea').disabled = false;
-	document.getElementById('threea').disabled = false;
-	document.getElementById('four').disabled = false;
-	document.getElementById('twoa').style.fontSize = '13px';
-	document.getElementById('onea').style.fontSize = '13px';
-	document.getElementById('threea').style.fontSize = '13px';
-	document.getElementById('four').style.fontSize = '13px';
-	document.getElementById('onea').innerHTML = 'Registered Delivery Man';
-	document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
-	document.getElementById('foura').style.fontSize = '13px';
-	document.getElementById('fivea').style.fontSize = '13px';
-	document.getElementById('foura').innerHTML = 'Activated Delivery Man';
-	document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
-
-	document.getElementById('foura').disabled = false;
-	document.getElementById('fivea').disabled = false;
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('#deliveryManCreate').hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
 
 	var table = $('#dtBasicExample').DataTable({
 		"processing": true,
@@ -226,7 +218,12 @@ var approvedDeliveryMan = () => {
 			},
 			{ "targets": 12, "data": "name" },
 			{ "targets": 52, "data": "phone_number" },
-			{ "targets": 72, "data": "reporting_boss_email" }
+			{ "targets": 72, "data": "reporting_boss_email" },
+			{
+				"orderable": false, "targets": 4, "data": "update", render: function (data, type, row) {
+					return '<button id="' + row + '" class="btn-round btn-outline btn updateDM">Update</button>'
+				}
+			},
 		],
 		"order": [[1, 'asc']]
 	});
@@ -253,49 +250,14 @@ var approvedDeliveryMan = () => {
 			tdColspan();
 		}
 	});
-
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
+	dTStyle();
 	$('#dtBasicExample').show();
 	$('.a').show();
 }
 
 var unApprovedDeliveryMan = () => {
+	btnsActive();
 	document.getElementById('threea').disabled = true;
-	document.getElementById('twoa').disabled = false;
-	document.getElementById('onea').disabled = false;
-	document.getElementById('four').disabled = false;
-	document.getElementById('threea').style.fontSize = '13px';
-	document.getElementById('twoa').style.fontSize = '13px';
-	document.getElementById('onea').style.fontSize = '13px';
-	document.getElementById('four').style.fontSize = '13px';
-	document.getElementById('onea').innerHTML = 'Registered Delivery Man';
-	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
-	document.getElementById('foura').style.fontSize = '13px';
-	document.getElementById('fivea').style.fontSize = '13px';
-	document.getElementById('foura').innerHTML = 'Activated Delivery Man';
-	document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
-
-	document.getElementById('foura').disabled = false;
-	document.getElementById('fivea').disabled = false;
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('#deliveryManCreate').hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
 
 	var table = $('#dtBasicExample2').DataTable({
 		"processing": true,
@@ -328,6 +290,11 @@ var unApprovedDeliveryMan = () => {
 			{ "targets": 52, "data": "phone_number" },
 			{ "targets": 72, "data": "reporting_boss_email" },
 			{
+				"orderable": false, "targets": 7, "data": "update", render: function (data, type, row) {
+					return '<button id="' + row + '" class="btn-round btn-outline btn updateDM">Update</button>'
+				}
+			},
+			{
 				"orderable": false, "targets": 4, "data": "approve", render: function (data, type, row) {
 					return '<button id="' + row.delivery_man_id + '" class="btn-round btn-outline btn approveIT">Approve</button>'
 				}
@@ -358,51 +325,15 @@ var unApprovedDeliveryMan = () => {
 			tdColspan();
 		}
 	});
-
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
+	dTStyle();
 	$('#dtBasicExample2').show();
 	$('.b').show();
 };
 
 
 var activatedd = () => {
-	document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
-	document.getElementById('threea').style.fontSize = '13px';
-	document.getElementById('threea').disabled = false;
-	document.getElementById('twoa').disabled = false;
-	document.getElementById('onea').disabled = false;
-	document.getElementById('four').disabled = false;
-	document.getElementById('twoa').style.fontSize = '13px';
-	document.getElementById('onea').style.fontSize = '13px';
-	document.getElementById('four').style.fontSize = '13px';
-	document.getElementById('onea').innerHTML = 'Registered Delivery Man';
-	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
-	document.getElementById('foura').style.fontSize = '13px';
-	document.getElementById('fivea').style.fontSize = '13px';
-	document.getElementById('fivea').innerHTML = 'Disabled Delivery Man';
-
+	btnsActive();
 	document.getElementById('foura').disabled = true;
-	document.getElementById('fivea').disabled = false;
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('#deliveryManCreate').hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
-
 	var table = $('#dtBasicExampleActivate').DataTable({
 		"processing": true,
 		'language': {
@@ -469,50 +400,15 @@ var activatedd = () => {
 			tdColspan();
 		}
 	});
-
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
+	dTStyle();
 	$('#dtBasicExampleActivate').show();
 	$('.c').show();
 };
 
 
 var disableddd = () => {
-	document.getElementById('threea').innerHTML = 'Unapproved Delivery Man';
-	document.getElementById('threea').style.fontSize = '13px';
-	document.getElementById('threea').disabled = false;
-	document.getElementById('twoa').disabled = false;
-	document.getElementById('onea').disabled = false;
-	document.getElementById('four').disabled = false;
-	document.getElementById('twoa').style.fontSize = '13px';
-	document.getElementById('onea').style.fontSize = '13px';
-	document.getElementById('four').style.fontSize = '13px';
-	document.getElementById('onea').innerHTML = 'Registered Delivery Man';
-	document.getElementById('twoa').innerHTML = 'Approved Delivery Man';
-	document.getElementById('foura').style.fontSize = '13px';
-	document.getElementById('fivea').style.fontSize = '13px';
-	document.getElementById('foura').innerHTML = 'Activated Delivery Man';
-	document.getElementById('foura').disabled = false;
+	btnsActive();
 	document.getElementById('fivea').disabled = true;
-
-	$('#dtBasicExampleActivate').hide();
-	$('#dtBasicExampleDisable').hide();
-	$('.c').hide();
-	$('.d').hide();
-	$('#deliveryManCreate').hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
 
 	var table = $('#dtBasicExampleDisable').DataTable({
 		"processing": true,
@@ -579,27 +475,12 @@ var disableddd = () => {
 			tdColspan();
 		}
 	});
-
-	$('.dataTables_filter input[type="search"]').
-		attr('placeholder', 'Search anything!').
-		css({ 'width': '220px', 'display': 'inline-block', 'background': 'white' });
-
-	$('.dataTables_filter input[type="search"]').
-		attr('class', 'btn btn-round').
-		css({ 'width': '220px', 'display': 'inline-block', 'color': '#0066b3', 'background': '#FFFFFF' });
-
-	$('.dataTables_length select').
-		attr('class', 'btn btn-round').
-		css({ 'width': '80px', 'background-color': 'white', 'color': '#0066b3', 'background': '#FFFFFF' });
+	dTStyle();
 	$('#dtBasicExampleDisable').show();
 	$('.d').show();
 };
 var addDeliveryMan = () => {
 	//$('#deliveryManCreate').hide();
-	$('#dtBasicExample').hide();
-	$('.a').hide();
-	$('#dtBasicExample2').hide();
-	$('.b').hide();
 	var deliveryManName = document.getElementById('deliveryManName').value;
 	var deliveryManEmail = document.getElementById('deliveryManEmail').value;
 	var deliveryManPhone = document.getElementById('deliveryManPhone').value;
@@ -655,7 +536,7 @@ var addDeliveryMan = () => {
 			document.getElementById("deliveryManPhone").focus();
 			return 0;
 		}
-		else if ((deliveryManPhone.length < 11 || deliveryManPhone.length > 11) && !/\D/.test(deliveryManPhone) == true) {
+		else if ((deliveryManPhone.length < 11 || deliveryManPhone.length > 11) || /\D/.test(deliveryManPhone) == true) {
 			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's Phone Number must be of 11 digits!";
 			$('#myModalWrongDManCreate').modal('show');
 			document.getElementById("deliveryManPhone").focus();
@@ -738,6 +619,17 @@ var addDeliveryMan = () => {
 	}
 };
 
+$('#dtBasicExample').on('click', '.updateDM', function () {
+	deliveryManId = $(this).attr('id');
+	$t = $(this);
+	console.log(deliveryManId);
+	$('#tickFormD').hide();
+	$(".circle-loader").removeClass("load-complete");
+	$(".circle-loader").hide();
+
+	$("#sureFormD").hide();
+	$("#myModalFormD").modal('show');
+});
 $('#dtBasicExample2').on('click', '.approveIT', function () {
 	deliveryManId = $(this).attr('id');
 	$t = $(this);
