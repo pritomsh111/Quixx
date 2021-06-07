@@ -57,6 +57,10 @@ function formatApproved(d) {
 		'<td>' + d.delivery_man_id + '</td>' +
 		'</tr>' +
 		'<tr>' +
+		'<td>Delivery Man\'s ID:</td > ' +
+		'<td>' + d.email + '</td>' +
+		'</tr>' +
+		'<tr>' +
 		'<td>Delivery Area:</td>' +
 		'<td>' + d.delivery_area.replace(/,/g, ", ") + '</td>' +
 		'</tr>' +
@@ -221,7 +225,7 @@ var approvedDeliveryMan = () => {
 			{ "targets": 72, "data": "reporting_boss_email" },
 			{
 				"orderable": false, "targets": 4, "data": "update", render: function (data, type, row) {
-					return '<button id="' + row + '" class="btn-round btn-outline btn updateDM">Update</button>'
+					return '<button id="' + row.name + '$$' + row.phone_number + '$$' + row.reporting_boss_email + '$$' + row.delivery_man_id + '$$' + row.delivery_area + '" class="btn-round btn-outline btn updateDM">Update</button>'
 				}
 			},
 		],
@@ -291,7 +295,7 @@ var unApprovedDeliveryMan = () => {
 			{ "targets": 72, "data": "reporting_boss_email" },
 			{
 				"orderable": false, "targets": 7, "data": "update", render: function (data, type, row) {
-					return '<button id="' + row + '" class="btn-round btn-outline btn updateDM">Update</button>'
+					return '<button id="' + row.delivery_man_id + '$$' + row.name + '$$' + row.phone_number + '$$' + row.email + '$$' + row.reporting_boss_email + '$$' + row.delivery_area + '" class="btn-round btn-outline btn updateDM">Update</button>'
 				}
 			},
 			{
@@ -622,7 +626,6 @@ var addDeliveryMan = () => {
 $('#dtBasicExample').on('click', '.updateDM', function () {
 	deliveryManId = $(this).attr('id');
 	$t = $(this);
-	console.log(deliveryManId);
 	$('#tickFormD').hide();
 	$(".circle-loader").removeClass("load-complete");
 	$(".circle-loader").hide();
@@ -630,6 +633,7 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 	$("#sureFormD").hide();
 	$("#myModalFormD").modal('show');
 });
+
 $('#dtBasicExample2').on('click', '.approveIT', function () {
 	deliveryManId = $(this).attr('id');
 	$t = $(this);

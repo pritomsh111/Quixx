@@ -99,8 +99,8 @@ input[type="checkbox"]+label {
   margin-bottom: 0.5rem;
 }
 
-#btn.btn.btn-outline.chkkk, #criteriaSubmit {
-  padding: 0.8rem;
+#btn.btn.btn-outline.chkkk, #btn.btn.btn-outline.chkkkD, #criteriaSubmit {
+  padding: 0.6rem 1rem;
 }
 
 #deliveryManCreate .dmc-1, #formUpdateD .dmc-1 {
@@ -171,7 +171,7 @@ form {
 }
 
 @media (max-width:450px) {
-  #btn.btn.btn-outline.chkkk, #criteriaSubmit {
+  #btn.btn.btn-outline.chkkk, #btn.btn.btn-outline.chkkkD, #criteriaSubmit {
     padding: 0.4rem;
   }
   #managersU, #districtU, #senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
