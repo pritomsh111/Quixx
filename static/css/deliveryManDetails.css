@@ -28,11 +28,15 @@ table#dtBasicExampleC.dataTable tbody tr:hover>.sorting_1 {
   border-color: #0066b3;
 }
 
+table.dataTable tbody th, table.dataTable tbody td {
+  padding: 8px 0;
+}
+
 #map {
   height: 400px;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+  width: 86%;
+  margin-left: 7%;
+  margin-right: 7%;
   position: absolute;
 }
 
@@ -116,6 +120,6 @@ table#dtBasicExampleC.dataTable tbody tr:hover>.sorting_1 {
 }
 
 .gm-style-iw.gm-style-iw-c {
-  max-width: 500px !important;
+  max-width: 300px !important;
   padding-top: 2rem;
 }

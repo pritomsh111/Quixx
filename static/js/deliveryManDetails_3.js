@@ -57,7 +57,7 @@ function initMap() {
 							+ dataa.data[j].name + '</td><td>'
 							+ dataa.data[j].phone_number + '</td><td>'
 							+ dataa.data[j].assign_delivery_count + '</td><td>'
-							+ dataa.data[j].reporting_boss_email + '</td><td>'
+							+ dataa.data[j].reporting_boss_email + ''
 							+ '</td></tr>';
 
 						table.rows.add($(table_rows)).draw();
@@ -65,8 +65,8 @@ function initMap() {
 						let delivery_district = dataa.data[j].delivery_district ? dataa.data[j].delivery_district : "";
 						var table_rows = '<tr><td>'
 							+ delivery_district + '</td><td>'
-							+ dataa.data[j].delivery_area + '</td><td>'
-							+ '</td></tr>';
+							+ dataa.data[j].delivery_area + '</td>'
+							+ '</tr>';
 						table4.rows.add($(table_rows)).draw();
 
 						$.each(dataa.data[j].pickup_locations, function (i, item) {
@@ -78,8 +78,8 @@ function initMap() {
 								+ dataa.data[j].delivery_status[i] + '</td><td>'
 								+ "Product: " + dataa.data[j].product_name[i] + ",<br>Product Quantity: " + dataa.data[j].product_qty[i] + '</td><td>'
 								+ dataa.data[j].created_delivery_name[i] + ", " + dataa.data[j].created_delivery_role[i] + '</td><td>'
-								+ dataa.data[j].receiver_name[i] + ",<br>" + dataa.data[j].receiver_phone[i] + '</td><td>'
-								+ '</td></tr>';
+								+ dataa.data[j].receiver_name[i] + ",<br>" + dataa.data[j].receiver_phone[i] + '</td>'
+								+ '</tr>';
 
 							table2.rows.add($(table_rows)).draw();
 						});
@@ -90,8 +90,8 @@ function initMap() {
 								+ array[0] + '</td><td>'
 								+ array[1] + '</td><td>'
 								+ array[2] + '</td><td>'
-								+ array[3] + '</td><td>'
-								+ '</td></tr>';
+								+ array[3] + '</td>'
+								+ '</tr>';
 
 							table3.rows.add($(table_rows)).draw();
 						});
