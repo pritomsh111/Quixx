@@ -929,7 +929,7 @@ $('.btn-ok-updateD').on("click", function (e) {
 				error: function (data) {
 					$('.btn-ok-updateD').attr('disabled', false);
 					$('.cancelModD').prop('disabled', false);
-					document.getElementById('wrong').innerHTML = data.responseJSON.errorMessage + 's';
+					document.getElementById('wrong').innerHTML = "Phone Number Exists";
 					$('#myModal2').modal('show');
 					document.getElementById("myModalFormD").style.overflowY = "auto";
 				}

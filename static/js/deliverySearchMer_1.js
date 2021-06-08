@@ -250,13 +250,13 @@ $('#criterionSubmit').on('click', function (eventx) {
 			$(".aaa").hide();
 			return 0;
 		}
-		else if ((valx.length < 11 || valx.length > 11) || /\D/.test(valx) == true) {
+		else if (/\D/.test(valx) == true) {
 			document.getElementById('wrongThisMerSetE').innerHTML = "Receiver's Phone Number must be of 11 digits!";
 			$('#myModalWrongMerSetE').modal('show');
 			$(".aaa").hide();
 			return 0;
 		}
-		else if (valx.match(/\d/g).length === 11 && !/\D/.test(valx) == true) {
+		else if (!/\D/.test(valx) == true) {
 		}
 		else {
 			document.getElementById('wrongThisMerSetE').innerHTML = "Receiver's Phone Number not valid!";

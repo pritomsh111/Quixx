@@ -14,21 +14,6 @@ $(function () {
 	$("#merchantList").hide();
 	$("#merchantListForDate").hide();
 	$("#merchantPhoneNumberList").hide();
-	// $.ajax
-	// 	({
-	// 		url: "https://api-new.quixx.xyz/api/quixx/v1/orgHead/deliveryMan/location/4",
-	// 		type: "GET",
-	// 		headers:
-	// 		{
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			"Authorization": 'Bearer ' + localStorage.getItem('token')
-	// 		},
-
-	// 		success: function (data) {
-	// 			console.log(data);
-	// 		}
-	// 	});
 	$.ajax
 		({
 			url: urlForAll + "search/delivery/search/criteria/" + "organization",
@@ -106,6 +91,9 @@ $(function () {
 				for (var i = 0; i < data.data.length; i++) {
 					if (data.data[i] === "ASSIGN") {
 						continue;
+					}
+					if (data.data[i] === "JUST_CREATED") {
+						data.data[i] = "ASSIGNED";
 					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
@@ -361,6 +349,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 	}
 	else if (cri == "Delivery Status") {
 		valx = document.getElementById("deliveryStatus").value;
+		valx = valx === "ASSIGNED" ? "JUST_CREATED" : valx;
 	}
 	else if (cri == "Receiver City") {
 		cri = "District";
@@ -407,13 +396,13 @@ $('#criterionSubmit').on('click', function (eventx) {
 			$(".aaa").hide();
 			return 0;
 		}
-		else if ((valx.length < 11 || valx.length > 11) || /\D/.test(valx) == true) {
+		else if (/\D/.test(valx) == true) {
 			document.getElementById('wrongThisMerSetE').innerHTML = "Receiver's Phone Number must be of 11 digits!";
 			$('#myModalWrongMerSetE').modal('show');
 			$(".aaa").hide();
 			return 0;
 		}
-		else if (valx.match(/\d/g).length === 11 && !/\D/.test(valx) == true) {
+		else if (!/\D/.test(valx) == true) {
 		}
 		else {
 			document.getElementById('wrongThisMerSetE').innerHTML = "Receiver's Phone Number not valid!";
@@ -636,6 +625,9 @@ $('#criterionSubmit').on('click', function (eventx) {
 					$("#valOfTable").html(`Receiver City: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				return;
+			}
+			if (cri == "Delivery Status") {
+				valx = valx === "JUST_CREATED" ? "ASSIGNED" : valx;
 			}
 			$("#valOfTable").html(`${cri}: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 		});

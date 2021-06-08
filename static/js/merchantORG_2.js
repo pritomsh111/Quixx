@@ -137,10 +137,36 @@ function formatApproved(d) {
 		'</table>';
 }
 function formatUnapproved(d) {
+
+	var payment_method_mobile = d.payment_method_mobile && d.payment_method_mobile !== "no" ? d.payment_method_mobile : "";
+	var payment_method_mobile_number = d.payment_method_mobile_number ? d.payment_method_mobile_number : "";
+	var payment_method_bank_name = d.payment_method_bank_name ? d.payment_method_bank_name : "";
+	var payment_method_bank_branch = d.payment_method_bank_branch ? d.payment_method_bank_branch : "";
+	var payment_method_bank_account = d.payment_method_bank_account ? d.payment_method_bank_account : "";
+
 	return '<table id="innerRowTable" style="border-spacing: 2rem; text-align: left">' +
 		'<tr>' +
 		'<td>Owner Name:</td>' +
 		'<td>' + d.person_name + '</td>' +
+		'</tr>' +
+		'<td>Mobile Banking:</td>' +
+		'<td>' + payment_method_mobile + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>' + payment_method_mobile + ' Number:</td>' +
+		'<td>' + payment_method_mobile_number + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Name:</td>' +
+		'<td>' + payment_method_bank_name + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Branch:</td>' +
+		'<td>' + payment_method_bank_branch + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Bank Account No:</td>' +
+		'<td>' + payment_method_bank_account + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Email:</td>' +
@@ -802,6 +828,7 @@ function modalFormBeforeSuccess() {
 var arr, id_merchant_update, whichTable;
 $('#dtBasicExample').on('click', '.updateIT', function () {
 	whichTable = "dtBasicExample";
+	$(".cod_per_w").show();
 	merId = $(this).attr('id');
 	id_merchant_update = $(this).attr('id');
 	arr = [];
@@ -857,6 +884,8 @@ $('#dtBasicExample').on('click', '.updateIT', function () {
 
 $('#dtBasicExample2').on('click', '.updateIT', function () {
 	whichTable = "dtBasicExample2";
+	$(".cod_per_w").hide();
+
 	merId = $(this).attr('id');
 	id_merchant_update = $(this).attr('id');
 	arr = [];
