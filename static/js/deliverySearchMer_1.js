@@ -215,6 +215,7 @@ $('#criterionSubmit').on('click', function (eventx) {
 	}
 	else if (cri == "Delivery Status") {
 		var valx = document.getElementById("deliveryStatus").value;
+		valx = valx === "ASSIGNED" ? "JUST_CREATED" : valx;
 	}
 	else if (cri == "Receiver City") {
 		cri = "District";
