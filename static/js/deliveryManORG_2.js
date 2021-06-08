@@ -57,7 +57,7 @@ function formatApproved(d) {
 		'<td>' + d.delivery_man_id + '</td>' +
 		'</tr>' +
 		'<tr>' +
-		'<td>Delivery Man\'s ID:</td > ' +
+		'<td>Delivery Man\'s Email:</td > ' +
 		'<td>' + d.email + '</td>' +
 		'</tr>' +
 		'<tr>' +
@@ -225,7 +225,7 @@ var approvedDeliveryMan = () => {
 			{ "targets": 72, "data": "reporting_boss_email" },
 			{
 				"orderable": false, "targets": 4, "data": "update", render: function (data, type, row) {
-					return '<button id="' + row.name + '$$' + row.phone_number + '$$' + row.reporting_boss_email + '$$' + row.delivery_man_id + '$$' + row.delivery_area + '" class="btn-round btn-outline btn updateDM">Update</button>'
+					return '<button id="' + row.delivery_man_id + '$$' + row.name + '$$' + row.phone_number + '$$' + row.email + '$$' + row.reporting_boss_email + '$$' + row.delivery_area + '" class="btn-round btn-outline btn updateDM">Update</button>'
 				}
 			},
 		],
@@ -631,6 +631,24 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 	$(".circle-loader").hide();
 
 	$("#sureFormD").hide();
+	$('.cancelModD').prop('disabled', false);
+	$('.btn-ok-updateD').prop('disabled', false);
+
+	arr = [];
+	arr = merId.split('$$');
+
+	$t = $(this);
+
+	document.getElementById('org_name2').value = arr[1];
+	document.getElementById('person_name2').value = arr[2];
+	document.getElementById('email2').value = arr[3];
+	document.getElementById('phone_number2').value = arr[4];
+	document.getElementById('business_filed2').value = arr[5];
+	document.getElementById('per_cost').value = arr[6];
+	document.getElementById('cod_per').value = arr[7];
+
+	document.getElementById('myModalFormHeaderD').innerHTML = `Delivery Man: <strong>${arr[1]}</strong>`;
+
 	$("#myModalFormD").modal('show');
 });
 
