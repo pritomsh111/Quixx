@@ -2464,7 +2464,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 							$('#tickD2').show();
 							$("#sureD2").html("Delivery Created!");
 							$("#sureD22").html(`Delivery ID: <strong>${data.data.delivery_Id}</strong>`);
-							if (keys[1] == 'auto_assign_done') {
+							if (keys[2] == 'auto_assign_done') {
 								if (data.data.auto_assign_done) {
 									$("#sureD2Z").html("This Delivery Has Been Auto Assigned To A Delivery Man Based On Receiver's Area and Delivery Man's Selected Area and His Availability!");
 									$("#sureD2X").html(`Assigned Delivery Man Name: <strong>${data.data.assign_delivery_man_name}</strong>`);
