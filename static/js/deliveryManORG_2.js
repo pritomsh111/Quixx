@@ -750,7 +750,7 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 	findReportingBoss();
 	findDeliveryArea();
 	document.getElementById('managersU').value = arr[4];
-	document.getElementById('districtU').value = arr[5];
+	// document.getElementById('districtU').value = arr[5];
 
 	document.getElementById('myModalFormHeaderD').innerHTML = `Delivery Man: <strong>${arr[1]}</strong>`;
 

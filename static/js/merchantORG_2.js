@@ -637,7 +637,7 @@ var addMerchant = () => {
 		}
 	}
 	var v6 = () => {
-		if (parseInt(per_delivery_cost) < 0) {
+		if ((parseInt(per_delivery_cost) < 0) || (per_delivery_cost.length > 1 && per_delivery_cost.charAt(0) == "0")) {
 			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than or equal to 0!", "per_delivery_cost");
 			return 0;
 		}
@@ -994,7 +994,7 @@ $('.btn-ok-update').on("click", function (e) {
 		}
 	}
 	var v6 = () => {
-		if (parseInt(per_delivery_cost) < 0) {
+		if ((parseInt(per_delivery_cost) < 0) || (per_delivery_cost.length > 1 && per_delivery_cost.charAt(0) == "0")) {
 			modalErrorShowForCreateUpdateMerchant("Per Delivery Cost must be greater than or equal to 0!", "per_cost");
 			return 0;
 		}

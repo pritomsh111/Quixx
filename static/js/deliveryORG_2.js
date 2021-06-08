@@ -2303,8 +2303,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v8 = () => {
-
-		if (parseInt(delivery_charge) < 0) {
+		if ((parseInt(delivery_charge) < 0) || (delivery_charge.length > 1 && delivery_charge.charAt(0) == "0")) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("delivery_charge").focus();
@@ -3820,7 +3819,7 @@ $('.btn-ok-updateDC').on("click", function () {
 	var weight = document.getElementById('productWeightU').value;
 	var cityType = document.getElementById('productCityU').value;
 	var v0 = () => {
-		if ((parseInt(delivery_charge) < 0) || (delivery_charge.length > 1 && delivery_charge.charAt(0) == "0")) {
+		if ((parseInt(delivery_cost_update) < 0) || (delivery_cost_update.length > 1 && delivery_cost_update.charAt(0) == "0")) {
 			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than or equal to 0!";
 			$('#wrongdcost').show();
 			document.getElementById("delivery_chargeQ").focus();

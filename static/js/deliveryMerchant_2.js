@@ -486,7 +486,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v11 = () => {
-		if (parseInt(product_cost) < 0) {
+		if ((parseInt(product_cost) < 0) || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_cost").focus();
@@ -822,7 +822,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	// 	}
 	// }
 	var v11 = () => {
-		if (parseInt(product_cost) < 0) {
+		if ((parseInt(product_cost) < 0) || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_costQ").focus();
@@ -1220,7 +1220,7 @@ function doIt(i, lengx) {
 			}
 		}
 		var v11 = () => {
-			if (parseInt(product_cost) < 0) {
+			if ((parseInt(product_cost) < 0) || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Product Cost must be greater than or equal to 0!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
@@ -2133,7 +2133,7 @@ $('.btn-ok-updateDC').on("click", function () {
 		}
 	}
 	var v11 = () => {
-		if (parseInt(product_cost) < 0) {
+		if ((parseInt(product_cost) < 0) || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 			document.getElementById('wrongpercost').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#wrongpercost').show();
 			document.getElementById("product_costU").focus();
