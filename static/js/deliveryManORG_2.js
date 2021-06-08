@@ -756,26 +756,12 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 
 	$("#myModalFormD").modal('show');
 });
-
-$('#dtBasicExample2').on('click', '.approveIT', function () {
-	deliveryManId = $(this).attr('id');
-	$t = $(this);
-
-	$('#tick2').hide();
-	$(".circle-loader").removeClass("load-complete");
-
-	$("#sure2").html("Are you sure?");
-	$("#myModalMer").modal('show');
-	//$(".container").show();
-	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-});
-$('.btn-ok-updateD').on("click", function () {
+$('.btn-ok-updateD').on("click", function (e) {
 	e.preventDefault();
 	var deliveryManName = document.getElementById('deliveryManNameU').value;
 	var deliveryManEmail = document.getElementById('deliveryManEmailU').value;
 	var deliveryManPhone = document.getElementById('deliveryManPhoneU').value;
 	var reportingBossEmail = document.getElementById('managersU').value;
-	var reportingBossEmail = document.getElementById('dictrictsU').value;
 	var checkedBoxes = document.querySelectorAll('input[name=mycheckboxesU]:checked');
 	var s = "";
 	var l = checkedBoxes.length, dummy = 0;
@@ -801,24 +787,21 @@ $('.btn-ok-updateD').on("click", function () {
 		if (deliveryManEmail == "" || deliveryManEmail == null) {
 			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's email cannot be empty!";
 			$('#myModalWrongDManCreate').modal('show');
-			document.getElementById("deliveryManEmail").focus();
-			return 0;
+			document.getElementById("deliveryManEmailU").focus();
 		}
 		else if (deliveryManEmail != "" || deliveryManEmail != null) {
-			var em = deliveryManEmail.split("@").length - 1;
-			var atposition = deliveryManEmail.indexOf("@");
-			var dotposition = deliveryManEmail.lastIndexOf(".");
-			if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= deliveryManEmail.length || em > 1) {
-				document.getElementById('wrongThisDManCreate').innerHTML = "Please enter a valid e-mail address!";
-				$('#myModalWrongDManCreate').modal('show');
-				document.getElementById("deliveryManEmail").focus();
-				return 0;
-			}
-			else {
+			if (/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(
+				deliveryManEmail
+			)) {
 				return 1;
 			}
+			else {
+				document.getElementById('wrongThisDManCreate').innerHTML = "Please enter a valid e-mail address!";
+				$('#myModalWrongDManCreate').modal('show');
+				document.getElementById("deliveryManEmailU").focus();
+				return 0;
+			}
 		}
-
 	}
 	var v4 = () => {
 		if (deliveryManPhone == "" || deliveryManPhone == null) {
@@ -855,13 +838,12 @@ $('.btn-ok-updateD').on("click", function () {
 		}
 	}
 	if (v1() == 1 && v3() == 1 && v4() == 1 && v5() == 1) {
-		document.getElementById('DeliveryMan_CREATION').disabled = true;
-		//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
-		//$(".container").show();
+		$('.btn-ok-updateD').attr('disabled', true);
+		$('.cancelModD').prop('disabled', true);
 		$.ajax
 			({
 				type: "POST",
-				url: urlForAll + "deliveryMan/create/" + org_ID, //loginUserID,
+				url: urlForAll + "deliveryMan/create/" + dmID,
 				data: JSON.stringify
 					({
 						"name": deliveryManName,
@@ -877,93 +859,7 @@ $('.btn-ok-updateD').on("click", function () {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					$('#tick').hide();
-					$(".circle-loader").removeClass("load-complete");
-					$("#sure").html("");
-					$("#myModal").modal('show');
-					if (data.status == 'OK') {
-						$("#sure").html("Please wait!");
-						setTimeout(function () {
-							$(".circle-loader").addClass("load-complete");
-
-							$('#tick').show();
-
-							$("#sure").html("Delivery man added!");
-						}, 500);
-						$('input[type=checkbox]').prop('checked', false);
-						document.getElementById('deliveryManName').value = "";
-						document.getElementById('deliveryManEmail').value = "";
-						document.getElementById('deliveryManPhone').value = "";
-						setTimeout(function () {
-
-							document.getElementById('DeliveryMan_CREATION').disabled = false;
-							$("#myModal").modal('hide');
-						}, 1200);
-					}
-				},
-				error: function (data) {
-					document.getElementById('DeliveryMan_CREATION').disabled = false;
-					document.getElementById('wrong').innerHTML = data.responseJSON.errorMessage + 's';
-					$('#myModal2').modal('show');
-				}
-			})
-	}
-	if (v1() == 1 && v2() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1 && v7() == 1 && v8() == 1 && v9() == 1) {
-		modalFormBeforeSuccess();
-		var trimmer = cod_per.trim();
-		trimmer = parseInt(trimmer);
-		var datap = JSON.stringify
-			({
-				"merchant_id": arr[0],
-				"user_id": org_ID,
-				"org_name": org_name,
-				"person_name": person_name,
-				"phone_number": phone_number,
-				"email": email,
-				"business_filed": business_filed,
-				"per_delivery_cost": per_delivery_cost,
-				"cod_percentage": trimmer,
-				"payment_method_mobile": mselect,
-				"payment_method_mobile_number": minput,
-				"payment_method_bank": bselect,
-				"payment_method_bank_name": bName,
-				"payment_method_bank_branch": branchName,
-				"payment_method_bank_account": accountNo
-			});
-		console.log(datap);
-		$.ajax
-			({
-				type: "PUT",
-				url: urlForAll + "deliveryMan/update/" + dmID,
-				// url: urlForAll + "orgHead/merchant",
-				data: JSON.stringify
-					({
-						"name": deliveryManName,
-						"phone_number": deliveryManPhone,
-						"email": deliveryManEmail,
-						"delivery_area": s,
-						"reporting_boss_email": reportingBossEmail
-					}),
-				headers:
-				{
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					"Authorization": 'Bearer ' + localStorage.getItem('token')
-				},
-				success: function (data) {
-					// var newArr;
-					// newArr = [
-					// 	data.data.merchant_id,
-					// 	data.data.org_name,
-					// 	data.data.person_name,
-					// 	data.data.email,
-					// 	data.data.phone_number,
-					// 	data.data.business_filed,
-					// 	data.data.per_delivery_cost,
-					// 	data.data.cod_percentage,
-					// 	'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
-					// ];
-					var table = $(`#${whichTable}`).DataTable();
+					var table = $(`#${whichTableD}`).DataTable();
 					try {
 						table.row($t.closest('tr')).data(data.data);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
@@ -975,30 +871,45 @@ $('.btn-ok-updateD').on("click", function () {
 					catch (e) {
 						//console.log(e);
 					}
-					setTimeout(function () {
-						$(".circle-loader").addClass("load-complete");
+					$('#formUpdateD').hide();
+					if (data.status == 'OK') {
+						$("#sureFormD").html("Please wait!");
+						setTimeout(function () {
+							$(".circle-loader").addClass("load-complete");
 
-						$('#tickForm').show();
+							$('#tickFormD').show();
 
-						$("#sureForm").html("Merchant Updated!");
-					}, 1000);
-
-					setTimeout(function () {
-						$("#myModalForm").modal('hide');
-						$('.btn-ok-update').attr('disabled', false);
-						$('.cancelMod').prop('disabled', false);
-					}, 2000);
+							$("#sureFormD").html("Delivery man updated!");
+						}, 500);
+						$('input[name=mycheckboxesU]').prop('checked', false);
+						setTimeout(function () {
+							$('.btn-ok-updateD').attr('disabled', false);
+							$('.cancelModD').prop('disabled', false);
+							$("#myModalFormD").modal('hide');
+						}, 1200);
+					}
 				},
 				error: function (data) {
-					$('#myModalForm').modal('hide');
-					setTimeout(function () {
-						$('.btn-ok-update').attr('disabled', false);
-						$('.cancelMod').prop('disabled', false);
-					}, 100);
-					modalError(data);
+					$('.btn-ok-updateD').attr('disabled', false);
+					$('.cancelModD').prop('disabled', false);
+					document.getElementById('wrong').innerHTML = data.responseJSON.errorMessage + 's';
+					$('#myModal2').modal('show');
 				}
-			});
+			})
 	}
+});
+
+$('#dtBasicExample2').on('click', '.approveIT', function () {
+	deliveryManId = $(this).attr('id');
+	$t = $(this);
+
+	$('#tick2').hide();
+	$(".circle-loader").removeClass("load-complete");
+
+	$("#sure2").html("Are you sure?");
+	$("#myModalMer").modal('show');
+	//$(".container").show();
+	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
 });
 $('.btn-ok').on("click", function () {
 

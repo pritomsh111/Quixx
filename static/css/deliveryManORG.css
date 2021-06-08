@@ -70,13 +70,13 @@
   background-color: red;
 }
 
-.deliveryArea {
+.deliveryArea, .deliveryAreaU {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   place-items: flex-start;
 }
 
-.deliveryArea>div {
+.deliveryArea>div, .deliveryAreaU>div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +94,7 @@ input[type="checkbox"]+label {
   margin-bottom: 0;
 }
 
-.deliveryArea>div:nth-of-type(n) {
+.deliveryArea>div:nth-of-type(n), .deliveryAreaU>div:nth-of-type(n) {
   margin-right: 0.8rem;
   margin-bottom: 0.5rem;
 }
@@ -183,7 +183,7 @@ form {
   #managers, #managersU {
     width: 150px;
   }
-  .deliveryArea {
+  .deliveryArea, .deliveryAreaU {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     place-items: flex-start;
