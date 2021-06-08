@@ -1,6 +1,8 @@
 var org_ID = localStorage.getItem('userID');
 var abtn = document.querySelector('#btn');
 abtn.onclick = checkAll;
+var abtnU = document.querySelector('#btnU');
+abtnU.onclick = checkAllU;
 
 function btnsActive() {
 	document.getElementById('twoa').style.fontSize = '13px';
@@ -83,6 +85,27 @@ function checkAll(event) {
 
 function check(checked = true) {
 	const cbs = document.querySelectorAll('input[name="mycheckboxes"]');
+	cbs.forEach((cb) => {
+		cb.checked = checked;
+	});
+}
+
+function uncheckAllU(event) {
+	event.preventDefault();
+	checkU(false);
+	// reassign click event handler
+	this.onclick = checkAllU;
+}
+
+function checkAllU(event) {
+	event.preventDefault();
+	checkU();
+	// reassign click event handler
+	this.onclick = uncheckAllU;
+}
+
+function checkU(checked = true) {
+	const cbs = document.querySelectorAll('input[name="mycheckboxesU"]');
 	cbs.forEach((cb) => {
 		cb.checked = checked;
 	});
@@ -624,7 +647,86 @@ var addDeliveryMan = () => {
 };
 
 function findReportingBoss() {
+	$('#managersU')
+		.empty()
+		.append('<option selected="selected" value=' + org_Email + '>' + org_Email + '</option>')
+		;
+	document.getElementById('managersU').selectedIndex = 0;
+}
+function findDeliveryArea() {
+	var dhakaIndex;
 
+	let deliverArea = document.querySelector(".deliveryAreaU");
+	$('#districtU')
+		.empty();
+	$.ajax
+		({
+			url: urlForAll + "approved/delivery/district",
+			type: "GET",
+
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+
+			success: function (data) {
+				for (var i = 0; i < data.data.length; i++) {
+					if (data.data[i] === "Dhaka") {
+						dhakaIndex = i;
+						dhaka = 1;
+					}
+					var option = new Option(data.data[i], data.data[i]);
+					$(option).html(data.data[i]);
+					$("#districtU").append(option);
+				}
+				document.getElementById('districtU').selectedIndex = dhakaIndex;
+			}
+		});
+
+	changedAreaU("Dhaka");
+	function changedAreaU(where) {
+		url = urlForAll + "approved/delivery/upazila/" + where;
+		if (where === "Dhaka") {
+			url = urlForAll + "approved/delivery/thana/Dhaka";
+		}
+		if (where === "Cox's Bazar") {
+			url = urlForAll + "approved/delivery/upazila/Cox'sBazar";
+		}
+		$.ajax
+			({
+				url: url,
+				type: "GET",
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					deliverArea.innerHTML = "";
+					let checkbox = "", textOfCheckBox = "", div = "";
+					for (let i of data.data) {
+						div = document.createElement("div");
+						div.setAttribute("class", "checkDiv");
+						checkbox = document.createElement("input");
+						checkbox.type = "checkbox";
+						checkbox.value = i;
+						checkbox.name = "mycheckboxesU";
+
+						textOfCheckBox = document.createElement("label");
+						textOfCheckBox.append(document.createTextNode(i));
+						div.append(checkbox, textOfCheckBox);
+						deliverArea.append(div);
+					}
+				}
+			});
+	}
+	document.querySelector("#districtU").addEventListener("change", function () {
+		var vari = this.value == "Dhaka" ? "Dhaka" : this.value;
+		changedAreaU(vari);
+	});
 }
 
 $('#dtBasicExample').on('click', '.updateDM', function () {
@@ -645,10 +747,10 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 	document.getElementById('deliveryManNameU').value = arr[1];
 	document.getElementById('deliveryManPhoneU').value = arr[2];
 	document.getElementById('deliveryManEmailU').value = arr[3];
-	// findReportingBoss();
-	// findDeliveryArea();
-	document.getElementById('reporting_boss_emailU').value = arr[4];
-	document.getElementById('delivery_areaU').value = arr[5];
+	findReportingBoss();
+	findDeliveryArea();
+	document.getElementById('managersU').value = arr[4];
+	document.getElementById('districtU').value = arr[5];
 
 	document.getElementById('myModalFormHeaderD').innerHTML = `Delivery Man: <strong>${arr[1]}</strong>`;
 
@@ -666,6 +768,237 @@ $('#dtBasicExample2').on('click', '.approveIT', function () {
 	$("#myModalMer").modal('show');
 	//$(".container").show();
 	//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+});
+$('.btn-ok-updateD').on("click", function () {
+	e.preventDefault();
+	var deliveryManName = document.getElementById('deliveryManNameU').value;
+	var deliveryManEmail = document.getElementById('deliveryManEmailU').value;
+	var deliveryManPhone = document.getElementById('deliveryManPhoneU').value;
+	var reportingBossEmail = document.getElementById('managersU').value;
+	var reportingBossEmail = document.getElementById('dictrictsU').value;
+	var checkedBoxes = document.querySelectorAll('input[name=mycheckboxesU]:checked');
+	var s = "";
+	var l = checkedBoxes.length, dummy = 0;
+	for (var i of checkedBoxes) {
+		s += String(i.value);
+		dummy++;
+		if (dummy < l) {
+			s += ",";
+		}
+	}
+	var v1 = () => {
+		if (deliveryManName == "" || deliveryManName == null) {
+			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's name cannot be empty!";
+			$('#myModalWrongDManCreate').modal('show');
+			document.getElementById("deliveryManName").focus();
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	var v3 = () => {
+		if (deliveryManEmail == "" || deliveryManEmail == null) {
+			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's email cannot be empty!";
+			$('#myModalWrongDManCreate').modal('show');
+			document.getElementById("deliveryManEmail").focus();
+			return 0;
+		}
+		else if (deliveryManEmail != "" || deliveryManEmail != null) {
+			var em = deliveryManEmail.split("@").length - 1;
+			var atposition = deliveryManEmail.indexOf("@");
+			var dotposition = deliveryManEmail.lastIndexOf(".");
+			if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= deliveryManEmail.length || em > 1) {
+				document.getElementById('wrongThisDManCreate').innerHTML = "Please enter a valid e-mail address!";
+				$('#myModalWrongDManCreate').modal('show');
+				document.getElementById("deliveryManEmail").focus();
+				return 0;
+			}
+			else {
+				return 1;
+			}
+		}
+
+	}
+	var v4 = () => {
+		if (deliveryManPhone == "" || deliveryManPhone == null) {
+			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's Phone Number cannot be empty!";
+			$('#myModalWrongDManCreate').modal('show');
+			document.getElementById("deliveryManPhone").focus();
+			return 0;
+		}
+		else if ((deliveryManPhone.length < 11 || deliveryManPhone.length > 11) || /\D/.test(deliveryManPhone) == true) {
+			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's Phone Number must be of 11 digits!";
+			$('#myModalWrongDManCreate').modal('show');
+			document.getElementById("deliveryManPhone").focus();
+			return 0;
+		}
+		else if (deliveryManPhone.match(/\d/g).length === 11 && !/\D/.test(deliveryManPhone) == true) {
+			return 1;
+		}
+		else {
+			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's Phone Number not valid!";
+			$('#myModalWrongDManCreate').modal('show');
+			document.getElementById("deliveryManPhone").focus();
+			return 0;
+		}
+
+	}
+	var v5 = () => {
+		if (l == 0) {
+			document.getElementById('wrongThisDManCreate').innerHTML = "Please select at least one Delivery Area!";
+			$('#myModalWrongDManCreate').modal('show');
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	if (v1() == 1 && v3() == 1 && v4() == 1 && v5() == 1) {
+		document.getElementById('DeliveryMan_CREATION').disabled = true;
+		//document.getElementsByClassName('blur')[0].style.filter = "blur(8px)";
+		//$(".container").show();
+		$.ajax
+			({
+				type: "POST",
+				url: urlForAll + "deliveryMan/create/" + org_ID, //loginUserID,
+				data: JSON.stringify
+					({
+						"name": deliveryManName,
+						"phone_number": deliveryManPhone,
+						"email": deliveryManEmail,
+						"delivery_area": s,
+						"reporting_boss_email": reportingBossEmail
+					}),
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					$('#tick').hide();
+					$(".circle-loader").removeClass("load-complete");
+					$("#sure").html("");
+					$("#myModal").modal('show');
+					if (data.status == 'OK') {
+						$("#sure").html("Please wait!");
+						setTimeout(function () {
+							$(".circle-loader").addClass("load-complete");
+
+							$('#tick').show();
+
+							$("#sure").html("Delivery man added!");
+						}, 500);
+						$('input[type=checkbox]').prop('checked', false);
+						document.getElementById('deliveryManName').value = "";
+						document.getElementById('deliveryManEmail').value = "";
+						document.getElementById('deliveryManPhone').value = "";
+						setTimeout(function () {
+
+							document.getElementById('DeliveryMan_CREATION').disabled = false;
+							$("#myModal").modal('hide');
+						}, 1200);
+					}
+				},
+				error: function (data) {
+					document.getElementById('DeliveryMan_CREATION').disabled = false;
+					document.getElementById('wrong').innerHTML = data.responseJSON.errorMessage + 's';
+					$('#myModal2').modal('show');
+				}
+			})
+	}
+	if (v1() == 1 && v2() == 1 && v3() == 1 && v4() == 1 && v5() == 1 && v6() == 1 && v7() == 1 && v8() == 1 && v9() == 1) {
+		modalFormBeforeSuccess();
+		var trimmer = cod_per.trim();
+		trimmer = parseInt(trimmer);
+		var datap = JSON.stringify
+			({
+				"merchant_id": arr[0],
+				"user_id": org_ID,
+				"org_name": org_name,
+				"person_name": person_name,
+				"phone_number": phone_number,
+				"email": email,
+				"business_filed": business_filed,
+				"per_delivery_cost": per_delivery_cost,
+				"cod_percentage": trimmer,
+				"payment_method_mobile": mselect,
+				"payment_method_mobile_number": minput,
+				"payment_method_bank": bselect,
+				"payment_method_bank_name": bName,
+				"payment_method_bank_branch": branchName,
+				"payment_method_bank_account": accountNo
+			});
+		console.log(datap);
+		$.ajax
+			({
+				type: "PUT",
+				url: urlForAll + "deliveryMan/update/" + dmID,
+				// url: urlForAll + "orgHead/merchant",
+				data: JSON.stringify
+					({
+						"name": deliveryManName,
+						"phone_number": deliveryManPhone,
+						"email": deliveryManEmail,
+						"delivery_area": s,
+						"reporting_boss_email": reportingBossEmail
+					}),
+				headers:
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function (data) {
+					// var newArr;
+					// newArr = [
+					// 	data.data.merchant_id,
+					// 	data.data.org_name,
+					// 	data.data.person_name,
+					// 	data.data.email,
+					// 	data.data.phone_number,
+					// 	data.data.business_filed,
+					// 	data.data.per_delivery_cost,
+					// 	data.data.cod_percentage,
+					// 	'<button id="' + data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage + '" class="btn-round btn-outline btn updateIT">Update</button>'
+					// ];
+					var table = $(`#${whichTable}`).DataTable();
+					try {
+						table.row($t.closest('tr')).data(data.data);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 2 }).data(data.data.phone_number);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.data.per_delivery_cost);
+						// table.cell({ row: table.row($t.closest('tr')).index(), column: 4 }).data(data.data.cod_percentage);
+						// document.getElementById(`${id_merchant_update}`).id = data.data.merchant_id + '$$' + data.data.org_name + '$$' + data.data.person_name + '$$' + data.data.email + '$$' + data.data.phone_number + '$$' + data.data.business_filed + '$$' + data.data.per_delivery_cost + '$$' + data.data.cod_percentage;
+					}
+					catch (e) {
+						//console.log(e);
+					}
+					setTimeout(function () {
+						$(".circle-loader").addClass("load-complete");
+
+						$('#tickForm').show();
+
+						$("#sureForm").html("Merchant Updated!");
+					}, 1000);
+
+					setTimeout(function () {
+						$("#myModalForm").modal('hide');
+						$('.btn-ok-update').attr('disabled', false);
+						$('.cancelMod').prop('disabled', false);
+					}, 2000);
+				},
+				error: function (data) {
+					$('#myModalForm').modal('hide');
+					setTimeout(function () {
+						$('.btn-ok-update').attr('disabled', false);
+						$('.cancelMod').prop('disabled', false);
+					}, 100);
+					modalError(data);
+				}
+			});
+	}
 });
 $('.btn-ok').on("click", function () {
 
