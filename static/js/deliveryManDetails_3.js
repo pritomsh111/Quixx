@@ -139,7 +139,7 @@ function initMap() {
 						marker.addListener('click', function () {
 							infowindow.open(map, marker);
 						});
-						dynamicDyliverManChange(marker, map);
+						dynamicDyliverManChange();
 					}
 				});
 			}
@@ -148,7 +148,7 @@ function initMap() {
 }
 
 var addKorbo = 0;
-function dynamicDyliverManChange(marker, map) {
+function dynamicDyliverManChange() {
 	addKorbo += 0.001;
 	$.ajax
 		({
@@ -168,10 +168,11 @@ function dynamicDyliverManChange(marker, map) {
 				geocoder.geocode({ 'latLng': latlngx }, function (results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
 						curLoc = results[0].formatted_address;
+						document.querySelector("#dmcp").innerHTML = `Delivery Man: <strong>${dataa.data[j].name}</strong>, Current Location: <strong>${curLoc}</strong>`;
 					}
 				});
 				setTimeout(() => {
-					dynamicDyliverManChange.bind(this, marker, map);
+					dynamicDyliverManChange();
 				}, 10000);
 			}
 		});
