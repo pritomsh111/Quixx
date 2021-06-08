@@ -53,6 +53,7 @@ var createDeliveryMan = () => {
 };
 
 function formatApproved(d) {
+	let delivery_district = d.delivery_district ? d.delivery_district : "";
 	return '<table id="innerRowTable" style="border-spacing: 5rem; text-align: left">' +
 		'<tr>' +
 		'<td>Delivery Man\'s ID:</td > ' +
@@ -61,6 +62,10 @@ function formatApproved(d) {
 		'<tr>' +
 		'<td>Delivery Man\'s Email:</td > ' +
 		'<td>' + d.email + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Delivery District:</td > ' +
+		'<td>' + delivery_district + '</td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>Delivery Area:</td>' +
@@ -512,6 +517,7 @@ var addDeliveryMan = () => {
 	var deliveryManEmail = document.getElementById('deliveryManEmail').value;
 	var deliveryManPhone = document.getElementById('deliveryManPhone').value;
 	var reportingBossEmail = document.getElementById('managers').value;
+	var disVal = document.getElementById('district').value;
 	var checkedBoxes = document.querySelectorAll('input[name=mycheckboxes]:checked');
 	var s = "";
 	var l = checkedBoxes.length, dummy = 0;
@@ -604,7 +610,8 @@ var addDeliveryMan = () => {
 						"phone_number": deliveryManPhone,
 						"email": deliveryManEmail,
 						"delivery_area": s,
-						"reporting_boss_email": reportingBossEmail
+						"reporting_boss_email": reportingBossEmail,
+						"delivery_district": disVal
 					}),
 				headers:
 				{
@@ -653,9 +660,7 @@ function findReportingBoss() {
 		;
 	document.getElementById('managersU').selectedIndex = 0;
 }
-function findDeliveryArea() {
-	var dhakaIndex;
-
+function findDeliveryArea(dist = "Dhaka") {
 	let deliverArea = document.querySelector(".deliveryAreaU");
 	$('#districtU')
 		.empty();
@@ -673,9 +678,8 @@ function findDeliveryArea() {
 
 			success: function (data) {
 				for (var i = 0; i < data.data.length; i++) {
-					if (data.data[i] === "Dhaka") {
+					if (data.data[i] === dist) {
 						dhakaIndex = i;
-						dhaka = 1;
 					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
@@ -684,8 +688,6 @@ function findDeliveryArea() {
 				document.getElementById('districtU').selectedIndex = dhakaIndex;
 			}
 		});
-
-	changedAreaU("Dhaka");
 	function changedAreaU(where) {
 		url = urlForAll + "approved/delivery/upazila/" + where;
 		if (where === "Dhaka") {
@@ -727,6 +729,7 @@ function findDeliveryArea() {
 		var vari = this.value == "Dhaka" ? "Dhaka" : this.value;
 		changedAreaU(vari);
 	});
+	changedAreaU(dist);
 }
 
 $('#dtBasicExample').on('click', '.updateDM', function () {

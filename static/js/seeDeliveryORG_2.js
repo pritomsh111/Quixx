@@ -60,6 +60,14 @@ function formatApproved(d) {
 		'<td>' + d.delivery_man_id + '</td>' +
 		'</tr>' +
 		'<tr>' +
+		'<td>Delivery Man\'s Email:</td > ' +
+		'<td>' + d.email + '</td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>Delivery District:</td > ' +
+		'<td>' + d.delivery_district + '</td>' +
+		'</tr>' +
+		'<tr>' +
 		'<td>Delivery Area:</td>' +
 		'<td>' + d.delivery_area.replace(/,/g, ", ") + '</td>' +
 		'</tr>' +

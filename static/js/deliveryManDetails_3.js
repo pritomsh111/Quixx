@@ -32,6 +32,12 @@ function initMap() {
 							"oSearch": { "bSmart": false, "bRegex": true }
 						});
 						table.clear().draw();
+						var table4 = $('#dtBasicExample4').DataTable({
+							"processing": true,
+							"destroy": true,
+							"oSearch": { "bSmart": false, "bRegex": true }
+						});
+						table4.clear().draw();
 
 						var table2 = $('#dtBasicExampleB').DataTable({
 							"processing": true,
@@ -55,6 +61,13 @@ function initMap() {
 							+ '</td></tr>';
 
 						table.rows.add($(table_rows)).draw();
+
+						let delivery_district = dataa.data[j].delivery_district ? dataa.data[j].delivery_district : "";
+						var table_rows = '<tr><td>'
+							+ delivery_district + '</td><td>'
+							+ dataa.data[j].delivery_area + '</td><td>'
+							+ '</td></tr>';
+						table4.rows.add($(table_rows)).draw();
 
 						$.each(dataa.data[j].pickup_locations, function (i, item) {
 							var table_rows =
