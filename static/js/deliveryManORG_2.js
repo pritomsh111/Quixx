@@ -623,9 +623,13 @@ var addDeliveryMan = () => {
 	}
 };
 
+function findReportingBoss() {
+
+}
+
 $('#dtBasicExample').on('click', '.updateDM', function () {
+	whichTableD = "#dtBasicExample";
 	deliveryManId = $(this).attr('id');
-	$t = $(this);
 	$('#tickFormD').hide();
 	$(".circle-loader").removeClass("load-complete");
 	$(".circle-loader").hide();
@@ -635,17 +639,16 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 	$('.btn-ok-updateD').prop('disabled', false);
 
 	arr = [];
-	arr = merId.split('$$');
+	arr = deliveryManId.split('$$');
 
 	$t = $(this);
-
-	document.getElementById('org_name2').value = arr[1];
-	document.getElementById('person_name2').value = arr[2];
-	document.getElementById('email2').value = arr[3];
-	document.getElementById('phone_number2').value = arr[4];
-	document.getElementById('business_filed2').value = arr[5];
-	document.getElementById('per_cost').value = arr[6];
-	document.getElementById('cod_per').value = arr[7];
+	document.getElementById('deliveryManNameU').value = arr[1];
+	document.getElementById('deliveryManPhoneU').value = arr[2];
+	document.getElementById('deliveryManEmailU').value = arr[3];
+	// findReportingBoss();
+	// findDeliveryArea();
+	document.getElementById('reporting_boss_emailU').value = arr[4];
+	document.getElementById('delivery_areaU').value = arr[5];
 
 	document.getElementById('myModalFormHeaderD').innerHTML = `Delivery Man: <strong>${arr[1]}</strong>`;
 
