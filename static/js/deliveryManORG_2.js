@@ -659,9 +659,10 @@ function findReportingBoss() {
 		;
 	document.getElementById('managersU').selectedIndex = 0;
 }
+var areaSet;
 function findDeliveryArea(dist = "Dhaka", areasD) {
 	let deliverArea = document.querySelector(".deliveryAreaU");
-	let areaSet = new Set(areasD.split(","));
+	areaSet = new Set(areasD.split(","));
 	console.log(areaSet, dist);
 	$('#districtU')
 		.empty();
@@ -720,7 +721,6 @@ function findDeliveryArea(dist = "Dhaka", areasD) {
 						if (areaSet.has(i)) {
 							checkbox.checked = true;
 						}
-
 						textOfCheckBox = document.createElement("label");
 						textOfCheckBox.append(document.createTextNode(i));
 						div.append(checkbox, textOfCheckBox);
@@ -736,6 +736,7 @@ function findDeliveryArea(dist = "Dhaka", areasD) {
 	changedAreaU(dist);
 }
 
+var whichTableD;
 $('#dtBasicExample').on('click', '.updateDM', function () {
 	whichTableD = "#dtBasicExample";
 	deliveryManId = $(this).attr('id');
@@ -761,6 +762,7 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 
 	document.getElementById('myModalFormHeaderD').innerHTML = `Delivery Man: <strong>${arr[1]}</strong>`;
 
+	$('#formUpdateD').show();
 	$("#myModalFormD").modal('show');
 });
 $('#dtBasicExample2').on('click', '.updateDM', function () {
@@ -770,6 +772,7 @@ $('#dtBasicExample2').on('click', '.updateDM', function () {
 	$(".circle-loader").removeClass("load-complete");
 	$(".circle-loader").hide();
 
+	$('#formUpdateD').hide();
 	$("#sureFormD").hide();
 	$('.cancelModD').prop('disabled', false);
 	$('.btn-ok-updateD').prop('disabled', false);
@@ -788,8 +791,16 @@ $('#dtBasicExample2').on('click', '.updateDM', function () {
 
 	document.getElementById('myModalFormHeaderD').innerHTML = `Delivery Man: <strong>${arr[1]}</strong>`;
 
+	$('#formUpdateD').show();
 	$("#myModalFormD").modal('show');
 });
+
+function errorDMan(msg, whichFocus) {
+	document.getElementById('wrongThisDManCreate').innerHTML = msg;
+	$('#myModalWrongDManCreate').modal('show');
+	document.getElementById(`${whichFocus}`).focus();
+	document.getElementById("myModalFormD").style.overflowY = "auto";
+}
 
 $('.btn-ok-updateD').on("click", function (e) {
 	e.preventDefault();
@@ -810,10 +821,7 @@ $('.btn-ok-updateD').on("click", function (e) {
 	}
 	var v1 = () => {
 		if (deliveryManName == "" || deliveryManName == null) {
-			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's name cannot be empty!";
-			$('#myModalWrongDManCreate').modal('show');
-			document.getElementById("deliveryManName").focus();
-			document.getElementById("myModalFormD").style.overflowY = "auto";
+			errorDMan("Delivery man's name cannot be empty!", "deliveryManNameU");
 			return 0;
 		}
 		else {
@@ -822,9 +830,7 @@ $('.btn-ok-updateD').on("click", function (e) {
 	}
 	var v3 = () => {
 		if (deliveryManEmail == "" || deliveryManEmail == null) {
-			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's email cannot be empty!";
-			$('#myModalWrongDManCreate').modal('show');
-			document.getElementById("deliveryManEmailU").focus();
+			errorDMan("Delivery man's email cannot be empty!", "deliveryManEmailU");
 			return 0;
 		}
 		else if (deliveryManEmail != "" || deliveryManEmail != null) {
@@ -834,41 +840,31 @@ $('.btn-ok-updateD').on("click", function (e) {
 				return 1;
 			}
 			else {
-				document.getElementById('wrongThisDManCreate').innerHTML = "Please enter a valid e-mail address!";
-				$('#myModalWrongDManCreate').modal('show');
-				document.getElementById("deliveryManEmailU").focus();
+				errorDMan("Please enter a valid e-mail address!", "deliveryManEmailU");
 				return 0;
 			}
 		}
 	}
 	var v4 = () => {
 		if (deliveryManPhone == "" || deliveryManPhone == null) {
-			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's Phone Number cannot be empty!";
-			$('#myModalWrongDManCreate').modal('show');
-			document.getElementById("deliveryManPhone").focus();
+			errorDMan("Delivery man's Phone Number cannot be empty!", "deliveryManPhoneU");
 			return 0;
 		}
 		else if ((deliveryManPhone.length < 11 || deliveryManPhone.length > 11) || /\D/.test(deliveryManPhone) == true) {
-			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's Phone Number must be of 11 digits!";
-			$('#myModalWrongDManCreate').modal('show');
-			document.getElementById("deliveryManPhone").focus();
+			errorDMan("Delivery man's Phone Number must be of 11 digits!", "deliveryManPhoneU");
 			return 0;
 		}
 		else if (deliveryManPhone.match(/\d/g).length === 11 && !/\D/.test(deliveryManPhone) == true) {
 			return 1;
 		}
 		else {
-			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's Phone Number not valid!";
-			$('#myModalWrongDManCreate').modal('show');
-			document.getElementById("deliveryManPhone").focus();
+			errorDMan("Delivery man's Phone Number not valid!", "deliveryManPhoneU");
 			return 0;
 		}
-
 	}
 	var v5 = () => {
 		if (l == 0) {
-			document.getElementById('wrongThisDManCreate').innerHTML = "Please select at least one Delivery Area!";
-			$('#myModalWrongDManCreate').modal('show');
+			errorDMan("Please select at least one Delivery Area!", "districtU");
 			return 0;
 		}
 		else {
@@ -880,7 +876,7 @@ $('.btn-ok-updateD').on("click", function (e) {
 		$('.cancelModD').prop('disabled', true);
 		$.ajax
 			({
-				type: "POST",
+				type: "PUT",
 				url: urlForAll + "deliveryMan/update/" + arr[0],
 				data: JSON.stringify
 					({
@@ -898,7 +894,7 @@ $('.btn-ok-updateD').on("click", function (e) {
 					"Authorization": 'Bearer ' + localStorage.getItem('token')
 				},
 				success: function (data) {
-					var table = $(`#${whichTableD}`).DataTable();
+					var table = $(`${whichTableD}`).DataTable();
 					try {
 						table.row($t.closest('tr')).data(data.data);
 						// table.cell({ row: table.row($t.closest('tr')).index(), column: 1 }).data(data.data.org_name);
@@ -912,6 +908,8 @@ $('.btn-ok-updateD').on("click", function (e) {
 					}
 					$('#formUpdateD').hide();
 					if (data.status == 'OK') {
+						$(".circle-loader").show();
+						$("#sureFormD").show();
 						$("#sureFormD").html("Please wait!");
 						setTimeout(function () {
 							$(".circle-loader").addClass("load-complete");
