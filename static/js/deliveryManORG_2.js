@@ -253,7 +253,7 @@ var approvedDeliveryMan = () => {
 			{ "targets": 72, "data": "reporting_boss_email" },
 			{
 				"orderable": false, "targets": 4, "data": "update", render: function (data, type, row) {
-					return '<button id="' + row.delivery_man_id + '$$' + row.name + '$$' + row.phone_number + '$$' + row.email + '$$' + row.reporting_boss_email + '$$' + row.delivery_area + '" class="btn-round btn-outline btn updateDM">Update</button>'
+					return '<button id="' + row.delivery_man_id + '$$' + row.name + '$$' + row.phone_number + '$$' + row.email + '$$' + row.reporting_boss_email + '$$' + row.delivery_district + '$$' + row.delivery_area + '" class="btn-round btn-outline btn updateDM">Update</button>'
 				}
 			},
 		],
@@ -323,7 +323,7 @@ var unApprovedDeliveryMan = () => {
 			{ "targets": 72, "data": "reporting_boss_email" },
 			{
 				"orderable": false, "targets": 7, "data": "update", render: function (data, type, row) {
-					return '<button id="' + row.delivery_man_id + '$$' + row.name + '$$' + row.phone_number + '$$' + row.email + '$$' + row.reporting_boss_email + '$$' + row.delivery_area + '" class="btn-round btn-outline btn updateDM">Update</button>'
+					return '<button id="' + row.delivery_man_id + '$$' + row.name + '$$' + row.phone_number + '$$' + row.email + '$$' + row.reporting_boss_email + '$$' + row.delivery_district + '$$' + row.delivery_area + '" class="btn-round btn-outline btn updateDM">Update</button>'
 				}
 			},
 			{
@@ -547,17 +547,16 @@ var addDeliveryMan = () => {
 			return 0;
 		}
 		else if (deliveryManEmail != "" || deliveryManEmail != null) {
-			var em = deliveryManEmail.split("@").length - 1;
-			var atposition = deliveryManEmail.indexOf("@");
-			var dotposition = deliveryManEmail.lastIndexOf(".");
-			if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= deliveryManEmail.length || em > 1) {
+			if (/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(
+				deliveryManEmail
+			)) {
+				return 1;
+			}
+			else {
 				document.getElementById('wrongThisDManCreate').innerHTML = "Please enter a valid e-mail address!";
 				$('#myModalWrongDManCreate').modal('show');
 				document.getElementById("deliveryManEmail").focus();
 				return 0;
-			}
-			else {
-				return 1;
 			}
 		}
 
@@ -660,8 +659,10 @@ function findReportingBoss() {
 		;
 	document.getElementById('managersU').selectedIndex = 0;
 }
-function findDeliveryArea(dist = "Dhaka") {
+function findDeliveryArea(dist = "Dhaka", areasD) {
 	let deliverArea = document.querySelector(".deliveryAreaU");
+	let areaSet = new Set(areasD.split(","));
+	console.log(areaSet, dist);
 	$('#districtU')
 		.empty();
 	$.ajax
@@ -716,6 +717,9 @@ function findDeliveryArea(dist = "Dhaka") {
 						checkbox.type = "checkbox";
 						checkbox.value = i;
 						checkbox.name = "mycheckboxesU";
+						if (areaSet.has(i)) {
+							checkbox.checked = true;
+						}
 
 						textOfCheckBox = document.createElement("label");
 						textOfCheckBox.append(document.createTextNode(i));
@@ -750,21 +754,50 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 	document.getElementById('deliveryManNameU').value = arr[1];
 	document.getElementById('deliveryManPhoneU').value = arr[2];
 	document.getElementById('deliveryManEmailU').value = arr[3];
-	findReportingBoss();
-	findDeliveryArea();
 	document.getElementById('managersU').value = arr[4];
-	// document.getElementById('districtU').value = arr[5];
+	findReportingBoss();
+	findDeliveryArea(arr[5] !== "null" ? arr[5] : "Dhaka", arr[6]);
+	document.getElementById('districtU').value = arr[5] !== "null" ? arr[5] : "Dhaka";
 
 	document.getElementById('myModalFormHeaderD').innerHTML = `Delivery Man: <strong>${arr[1]}</strong>`;
 
 	$("#myModalFormD").modal('show');
 });
+$('#dtBasicExample2').on('click', '.updateDM', function () {
+	whichTableD = "#dtBasicExample2";
+	deliveryManId = $(this).attr('id');
+	$('#tickFormD').hide();
+	$(".circle-loader").removeClass("load-complete");
+	$(".circle-loader").hide();
+
+	$("#sureFormD").hide();
+	$('.cancelModD').prop('disabled', false);
+	$('.btn-ok-updateD').prop('disabled', false);
+
+	arr = [];
+	arr = deliveryManId.split('$$');
+
+	$t = $(this);
+	document.getElementById('deliveryManNameU').value = arr[1];
+	document.getElementById('deliveryManPhoneU').value = arr[2];
+	document.getElementById('deliveryManEmailU').value = arr[3];
+	document.getElementById('managersU').value = arr[4];
+	findReportingBoss();
+	findDeliveryArea(arr[5] !== "null" ? arr[5] : "Dhaka", arr[6]);
+	document.getElementById('districtU').value = arr[5] !== "null" ? arr[5] : "Dhaka";
+
+	document.getElementById('myModalFormHeaderD').innerHTML = `Delivery Man: <strong>${arr[1]}</strong>`;
+
+	$("#myModalFormD").modal('show');
+});
+
 $('.btn-ok-updateD').on("click", function (e) {
 	e.preventDefault();
 	var deliveryManName = document.getElementById('deliveryManNameU').value;
 	var deliveryManEmail = document.getElementById('deliveryManEmailU').value;
 	var deliveryManPhone = document.getElementById('deliveryManPhoneU').value;
 	var reportingBossEmail = document.getElementById('managersU').value;
+	var disVal = document.getElementById('districtU').value;
 	var checkedBoxes = document.querySelectorAll('input[name=mycheckboxesU]:checked');
 	var s = "";
 	var l = checkedBoxes.length, dummy = 0;
@@ -780,6 +813,7 @@ $('.btn-ok-updateD').on("click", function (e) {
 			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's name cannot be empty!";
 			$('#myModalWrongDManCreate').modal('show');
 			document.getElementById("deliveryManName").focus();
+			document.getElementById("myModalFormD").style.overflowY = "auto";
 			return 0;
 		}
 		else {
@@ -791,6 +825,7 @@ $('.btn-ok-updateD').on("click", function (e) {
 			document.getElementById('wrongThisDManCreate').innerHTML = "Delivery man's email cannot be empty!";
 			$('#myModalWrongDManCreate').modal('show');
 			document.getElementById("deliveryManEmailU").focus();
+			return 0;
 		}
 		else if (deliveryManEmail != "" || deliveryManEmail != null) {
 			if (/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(
@@ -846,14 +881,15 @@ $('.btn-ok-updateD').on("click", function (e) {
 		$.ajax
 			({
 				type: "POST",
-				url: urlForAll + "deliveryMan/create/" + dmID,
+				url: urlForAll + "deliveryMan/update/" + arr[0],
 				data: JSON.stringify
 					({
 						"name": deliveryManName,
 						"phone_number": deliveryManPhone,
 						"email": deliveryManEmail,
 						"delivery_area": s,
-						"reporting_boss_email": reportingBossEmail
+						"reporting_boss_email": reportingBossEmail,
+						"delivery_district": disVal
 					}),
 				headers:
 				{

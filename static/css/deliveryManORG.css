@@ -99,7 +99,7 @@ input[type="checkbox"]+label {
   margin-bottom: 0.5rem;
 }
 
-#btn.btn.btn-outline.chkkk, #btn.btn.btn-outline.chkkkD, #criteriaSubmit {
+#btn.btn.btn-outline.chkkk, #btnU, #criteriaSubmit {
   padding: 0.6rem 1rem;
 }
 
@@ -132,6 +132,10 @@ input[type="checkbox"]+label {
   row-gap: 1rem;
   column-gap: 2rem;
   padding: 2rem;
+}
+
+#formUpdateD .dmc-1 {
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 #DeliveryMan_CREATION {
@@ -171,9 +175,6 @@ form {
 }
 
 @media (max-width:450px) {
-  #btn.btn.btn-outline.chkkk, #btn.btn.btn-outline.chkkkD, #criteriaSubmit {
-    padding: 0.4rem;
-  }
   #managersU, #districtU, #senderList, #district, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
     padding: 0.2rem;
     text-align-last: left;
