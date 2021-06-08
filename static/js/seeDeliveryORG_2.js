@@ -79,11 +79,11 @@ var deliveryManMapMarker = new Map();
 
 var marker;
 setTimeout(function () {
-	deliveryManMapMarker.get("Notun").setPosition(new google.maps.LatLng(23.75146, 90.45941)); //Will cause smooth animation
+	// deliveryManMapMarker.get("Notun").setPosition(new google.maps.LatLng(23.75146, 90.45941)); //Will cause smooth animation
 	//transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
 }, 9000);
 setTimeout(function () {
-	deliveryManMapMarker.get("A").setPosition(new google.maps.LatLng(23.76146, 90.45941)); //Will cause smooth animation
+	// deliveryManMapMarker.get("A").setPosition(new google.maps.LatLng(23.76146, 90.45941)); //Will cause smooth animation
 	//transition(deliveryManMapMarker.get("Arif"), parseFloat(deliveryManMap.get("Arif")[0]), parseFloat(deliveryManMap.get("Arif")[1]));
 }, 7000);
 function setMarkers(map) {
@@ -119,27 +119,25 @@ function setMarkers(map) {
 						}
 					})(marker, i));
 				}
+				dynamicDyliverManChange();
 			}
 		});
 }
 
+// $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
+// 	let data = $(this).attr('id');
 
-var mapSender, mapReceiver, mapInfoMarker, latlngx, centerx, interVal, dataP, curLoc = "";
-var geocoder = new google.maps.Geocoder();
-$('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
-	let data = $(this).attr('id');
-
-	if (mapInfoMarker) {
-		mapInfoMarker.setMap(null);
-	}
-	//Dynamic korte hobe
-	dynamicDyliverManChange();
-});
+// 	if (mapInfoMarker) {
+// 		mapInfoMarker.setMap(null);
+// 	}
+// 	//Dynamic korte hobe
+// 	dynamicDyliverManChange();
+// });
 
 function dynamicDyliverManChange() {
 	$.ajax
 		({
-			url: urlForAll + "deliveryMan/location/" + dataP[8],
+			url: urlForAll + "orgHead/deliveryMan/location/" + localStorage.getItem('userID'),
 			type: "GET",
 			headers:
 			{
@@ -148,24 +146,24 @@ function dynamicDyliverManChange() {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
-				centerx = latlngx;
-				mapWatch.setZoom(16);
-				mapWatch.panTo(centerx);
-				//delivery man info
-				mapInfoMarker = new SlidingMarker({
-					position: latlngx,
-					map: mapWatch,
-					title: dataP[0],
-					duration: 1000
-				});
-				geocoder.geocode({ 'latLng': latlngx }, function (results, status) {
-					if (status == google.maps.GeocoderStatus.OK) {
-						curLoc = results[0].formatted_address;
-						document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${dataP[0]}</strong>, Delivery ID: <strong>${dataP[1]}</strong>, Current Location: <strong>${curLoc}</strong>`;
-					}
-				});
-				doItMultipleTimes(mapInfoMarker);
+				console.log(data);
+				// latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
+				// centerx = latlngx;
+				// mapWatch.setZoom(16);
+				// mapWatch.panTo(centerx);
+				// //delivery man info
+				// mapInfoMarker = new SlidingMarker({
+				// 	position: latlngx,
+				// 	map: mapWatch,
+				// 	title: dataP[0],
+				// 	duration: 1000
+				// });
+				// geocoder.geocode({ 'latLng': latlngx }, function (results, status) {
+				// 	if (status == google.maps.GeocoderStatus.OK) {
+				// 		curLoc = results[0].formatted_address;
+				// 		document.querySelector("#infoFull").innerHTML = `Delivery Man: <strong>${dataP[0]}</strong>, Delivery ID: <strong>${dataP[1]}</strong>, Current Location: <strong>${curLoc}</strong>`;
+				// 	}
+				// });
 			}
 		});
 }
