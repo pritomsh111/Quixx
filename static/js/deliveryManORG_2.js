@@ -931,6 +931,7 @@ $('.btn-ok-updateD').on("click", function (e) {
 					$('.cancelModD').prop('disabled', false);
 					document.getElementById('wrong').innerHTML = data.responseJSON.errorMessage + 's';
 					$('#myModal2').modal('show');
+					document.getElementById("myModalFormD").style.overflowY = "auto";
 				}
 			})
 	}

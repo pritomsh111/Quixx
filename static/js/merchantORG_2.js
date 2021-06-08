@@ -863,14 +863,16 @@ $('#dtBasicExample2').on('click', '.updateIT', function () {
 	arr = merId.split('$$');
 
 	$t = $(this);
-
+	if (arr[7]) {
+		arr[7] = 0;
+	}
 	document.getElementById('org_name2').value = arr[1];
 	document.getElementById('person_name2').value = arr[2];
 	document.getElementById('email2').value = arr[3];
 	document.getElementById('phone_number2').value = arr[4];
 	document.getElementById('business_filed2').value = arr[5];
 	document.getElementById('per_cost').value = arr[6];
-	document.getElementById('cod_per').value = 0;
+	document.getElementById('cod_per').value = arr[7];
 
 	if (arr[8] && arr[8] != "no" && arr[8] !== "undefined") {
 		document.querySelector("#mobileBank2").checked = true;
