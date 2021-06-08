@@ -5,6 +5,9 @@ function two2() {
 	setTimeout(function () { $('div#hideKoro').removeClass("hidden"); $('#hideKoro').fadeIn(); }, 2900);
 }
 function three3() {
+	setTimeout(() => {
+		clearTimeout(interVal);
+	}, 1000);
 	setTimeout(function () {
 		document.getElementById('one').disabled = true;
 		document.getElementById('two').disabled = false;

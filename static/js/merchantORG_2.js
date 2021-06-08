@@ -1483,7 +1483,7 @@ function modalError(data) {
 	document.getElementById('modalCancelButton').disabled = false;
 	var ob = Object.keys(data);
 	if (ob[17] == "responseJSON") {
-		document.getElementById('error').innerHTML = data.responseJSON.errorMessage;
+		document.getElementById('error').innerHTML = data.responseJSON.errorMessage + 's';
 	}
 	else {
 		document.getElementById('error').innerHTML = "Something Went Wrong!";

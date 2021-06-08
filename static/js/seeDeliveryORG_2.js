@@ -117,7 +117,6 @@ function setMarkers(map) {
 // 		mapInfoMarker.setMap(null);
 // 	}
 var addKorbo = 0;
-
 function dynamicDyliverManChange() {
 	addKorbo += 0.001;
 	$.ajax
@@ -195,6 +194,9 @@ function tdColspan() {
 }
 
 var seeDateWise = () => {
+	setTimeout(() => {
+		clearTimeout(interVal);
+	}, 1000);
 	document.getElementById('onec').disabled = false;
 	document.getElementById('twoc').disabled = false;
 	document.getElementById('twoc').style.fontSize = '13px';
@@ -343,6 +345,9 @@ var seeDateWise = () => {
 }
 
 var deliveryManOnMap = () => {
+	setTimeout(() => {
+		clearTimeout(interVal);
+	}, 1000);
 	document.getElementById('onec').disabled = false;
 	document.getElementById('twoc').disabled = true;
 	document.getElementById('twoc').style.fontSize = '13px';
