@@ -1804,14 +1804,15 @@ function recall() {
 	var senderGuy = document.getElementById('senderList').value;
 	document.getElementById('r_name').value = "";
 	document.getElementById('r_number').value = "";
-	document.getElementById('rec_address').value = "";
 	document.getElementById('pac-input2').value = "";
-	document.getElementById('DELIVERY_NOTE').value = "";
-	document.getElementById('product_cost').value = "";
+	document.getElementById('rec_address').value = "";
 	document.getElementById('des_lat').value = "";
 	document.getElementById('des_longi').value = "";
 	document.getElementById('product_name').value = "";
+	document.getElementById('product_cost').value = "";
 	document.getElementById('product_qty').value = "";
+	document.getElementById('DELIVERY_NOTE').value = "";
+	document.querySelector(".product_information").children[2].childNodes[0].textContent = "Per Product Cost [BDT]:"
 	$.ajax
 		({
 
@@ -2003,7 +2004,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	// 	}
 	// }
 	var v11 = () => {
-		if (parseInt(product_cost) < 0) {
+		if ((parseInt(product_cost) < 0) || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_costQ").focus();
@@ -2041,7 +2042,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 		}
 	}
 	var vDC = () => {
-		if (parseInt(delivery_charge) < 0) {
+		if ((parseInt(delivery_charge) < 0) || (delivery_charge.length > 1 && delivery_charge.charAt(0) == "0")) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Delivery Charge must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("delivery_chargeQ").focus();
@@ -2351,7 +2352,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 		}
 	}
 	var v11 = () => {
-		if (parseInt(product_cost) < 0) {
+		if (parseInt(product_cost) < 0 || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 			document.getElementById('wrongThisDeliveryCreate').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById("product_cost").focus();
@@ -2824,7 +2825,7 @@ function doIt(i, lengx) {
 			}
 		}
 		var v11 = () => {
-			if (parseInt(product_cost) < 0) {
+			if (parseInt(product_cost) < 0 || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Product Cost must be greater than or equal to 0!`;
 				$('#myModalWrongDeliveryCreate').modal('show');
 				document.getElementById('CLOSEIT').disabled = false;
@@ -3819,7 +3820,7 @@ $('.btn-ok-updateDC').on("click", function () {
 	var weight = document.getElementById('productWeightU').value;
 	var cityType = document.getElementById('productCityU').value;
 	var v0 = () => {
-		if (parseInt(delivery_charge) < 0) {
+		if ((parseInt(delivery_charge) < 0) || (delivery_charge.length > 1 && delivery_charge.charAt(0) == "0")) {
 			document.getElementById('wrongdcost').innerHTML = "Delivery Charge must be greater than or equal to 0!";
 			$('#wrongdcost').show();
 			document.getElementById("delivery_chargeQ").focus();
@@ -3964,7 +3965,7 @@ $('.btn-ok-updateDC').on("click", function () {
 		}
 	}
 	var v11 = () => {
-		if (parseInt(product_cost) < 0) {
+		if ((parseInt(product_cost) < 0) || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 			document.getElementById('wrongpercost').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#wrongpercost').show();
 			document.getElementById("product_costU").focus();
@@ -4233,7 +4234,7 @@ $('.btn-okReturn').on("click", function () {
 	var product_cost = document.getElementById('product_costUR').value;
 
 	var v1 = () => {
-		if (parseInt(delivery_cost_update) < 0) {
+		if ((parseInt(delivery_cost_update) < 0) || (delivery_cost_update.length > 1 && delivery_cost_update.charAt(0) == "0")) {
 			document.getElementById('wrongdcostR').innerHTML = "Delivery Charge must be greater than or equal to 0!";
 			$('#wrongdcostR').show();
 			document.getElementById("delivery_cost_updateR").focus();
@@ -4281,7 +4282,7 @@ $('.btn-okReturn').on("click", function () {
 		}
 	}
 	var v4 = () => {
-		if (parseInt(product_cost) < 0) {
+		if ((parseInt(product_cost) < 0) || (product_cost.length > 1 && product_cost.charAt(0) == "0")) {
 			document.getElementById('wrongpercostR').innerHTML = "Product Cost must be greater than or equal to 0!";
 			$('#wrongpercostR').show();
 			document.getElementById("product_costUR").focus();
