@@ -265,6 +265,8 @@ $("#criterion").on("change", function () {
 		$("#merchantListForDate").show();
 		$("#ccDate").show();
 		$("#deliveryStatus").show();
+		document.querySelector("#deliveryStatus").selectedIndex = 0;
+		document.querySelector("#deliveryStatus option:nth-child(2)").innerHTML = "UNASSIGNED &amp; ASSIGNED";
 	}
 	else if (value == "Delivery Man") {
 		clearAll();
@@ -272,6 +274,8 @@ $("#criterion").on("change", function () {
 	}
 	else if (value == "Delivery Status") {
 		clearAll();
+		document.querySelector("#deliveryStatus").selectedIndex = 0;
+		document.querySelector("#deliveryStatus option:nth-child(2)").innerHTML = "ASSIGNED";
 		$("#deliveryStatus").show();
 	}
 	else if (value == "Payment Method") {
@@ -332,7 +336,13 @@ $('#criterionSubmit').on('click', function (eventx) {
 			if (valx) {
 				valx += "__";
 			}
-			valx += document.getElementById("deliveryStatus").value;
+			let jkWhat = document.getElementById("deliveryStatus").value;
+			if (jkWhat === "ASSIGNED") {
+				valx += "JUST_CREATED";
+			}
+			else {
+				valx += jkWhat;
+			}
 			dstat = "N";
 		}
 		else {
@@ -577,6 +587,9 @@ $('#criterionSubmit').on('click', function (eventx) {
 			if (cri == "DateWiseDelivery") {
 				if (dmer != "NA" && ddate != "NA" && dstat != "NA") {
 					let vv = valx.split("__");
+					if (vv[2] === "JUST_CREATED") {
+						vv[2] = "UNASSIGNED &amp; ASSIGNED";
+					}
 					let selected = document.querySelector(`#merchantListForDate`).selectedIndex;
 					let who = document.querySelector(`#merchantListForDate option:nth-child(${selected + 1}`).innerHTML;
 					$("#valOfTable").html(`Merchant ID: <strong>${who}</strong>, Date: <strong>${vv[1]}</strong>, Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
@@ -592,12 +605,18 @@ $('#criterionSubmit').on('click', function (eventx) {
 				}
 				else if (dmer != "NA" && dstat != "NA") {
 					let vv = valx.split("__");
+					if (vv[2] === "JUST_CREATED") {
+						vv[2] = "UNASSIGNED &amp; ASSIGNED";
+					}
 					let selected = document.querySelector(`#merchantListForDate`).selectedIndex;
 					let who = document.querySelector(`#merchantListForDate option:nth-child(${selected + 1}`).innerHTML;
 					$("#valOfTable").html(`Merchant ID: <strong>${who}</strong>, Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (ddate != "NA" && dstat != "NA") {
 					let vv = valx.split("__");
+					if (vv[2] === "JUST_CREATED") {
+						vv[2] = "UNASSIGNED &amp; ASSIGNED";
+					}
 					$("#valOfTable").html(`Date: <strong>${vv[1]}</strong>, Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (ddate != "NA") {
@@ -606,6 +625,9 @@ $('#criterionSubmit').on('click', function (eventx) {
 				}
 				else if (dstat != "NA") {
 					let vv = valx.split("__");
+					if (vv[2] === "JUST_CREATED") {
+						vv[2] = "UNASSIGNED &amp; ASSIGNED";
+					}
 					$("#valOfTable").html(`Delivery Status: <strong>${vv[2]}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				else if (dmer != "NA") {
