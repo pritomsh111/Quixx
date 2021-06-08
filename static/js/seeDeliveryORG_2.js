@@ -76,7 +76,7 @@ function formatApproved(d) {
 
 var deliveryManMapMarker = new Map();
 
-var marker, interVal;
+var marker;
 
 function setMarkers(map) {
 	var infowindow = new google.maps.InfoWindow();

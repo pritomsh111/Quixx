@@ -10,7 +10,11 @@ $(function () {
 	$('#settings').hide();
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 	totalIncome();
-
+	if (interVal) {
+		setTimeout(() => {
+			clearTimeout(interVal);
+		}, 1000);
+	}
 	// today = dd + '/' + mm + '/' + yyyy;
 	// document.getElementById("date1").innerHTML = today;
 	// //document.getElementById("date2").innerHTML = today;

@@ -1,6 +1,7 @@
+var dataa, j = 0, urlID, marker, map;
+var geocoder = new google.maps.Geocoder();
 function initMap() {
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round';
-	var dataa;
 	$.ajax
 		({
 			type: "GET",
@@ -13,10 +14,10 @@ function initMap() {
 			},
 			success: function (data) {
 				dataa = data;
-				var url = window.location.hash;
-				url = url.substring(1);
-				for (var j = 0; j < dataa.data.length; j++) {
-					if (url == dataa.data[j].delivery_man_id) {
+				urlID = window.location.hash;
+				urlID = urlID.substring(1);
+				for (j = 0; j < dataa.data.length; j++) {
+					if (urlID == dataa.data[j].delivery_man_id) {
 						if (localStorage.getItem('user') == 'SUPER_ADMIN') {
 							document.getElementById("deliveryManID").innerHTML = "Delivery Man: <b>" + dataa.data[j].name + "</b>";
 						}
@@ -112,7 +113,6 @@ function initMap() {
 					}
 				}
 
-				var geocoder = new google.maps.Geocoder();
 				var location = new google.maps.LatLng(latVal, lngVal);
 				geocoder.geocode({ 'latLng': location }, function (results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
@@ -139,6 +139,7 @@ function initMap() {
 						marker.addListener('click', function () {
 							infowindow.open(map, marker);
 						});
+						dynamicDyliverManChange(marker, map);
 					}
 				});
 			}
@@ -146,19 +147,32 @@ function initMap() {
 
 }
 
-setTimeout(function () {
-	let latlng = new google.maps.LatLng(23.74146, 90.40941);
-	marker.setPosition(latlng);
-	map.panTo(latlng);
-
-	var geocoder = new google.maps.Geocoder();
-	geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-			var add = results[0].formatted_address;
-			marker.setTitle(add);
-		}
-		infowindow.setContent('<p style="color:#0066b3;font-family:Didact Gothic;">' + add + '</p>');
-		infowindow.open(map, marker);
-	});
-
-}, 7000);
+var addKorbo = 0;
+function dynamicDyliverManChange(marker, map) {
+	addKorbo += 0.001;
+	$.ajax
+		({
+			url: urlForAll + "deliveryMan/location/" + dataa.data[j].phone_number,
+			type: "GET",
+			headers:
+			{
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				"Authorization": 'Bearer ' + localStorage.getItem('token')
+			},
+			success: function (data) {
+				console.log(data);
+				latlngx = new google.maps.LatLng(parseFloat(data.data.lat) + addKorbo, parseFloat(data.data.longi) + addKorbo);
+				marker.setPosition(latlngx);
+				map.panTo(latlngx);
+				geocoder.geocode({ 'latLng': latlngx }, function (results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						curLoc = results[0].formatted_address;
+					}
+				});
+				setTimeout(() => {
+					dynamicDyliverManChange.bind(this, marker, map);
+				}, 10000);
+			}
+		});
+}

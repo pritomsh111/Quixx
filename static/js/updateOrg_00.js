@@ -5,9 +5,11 @@ function two2x() {
 	setTimeout(function () { $('div#hideKoro5').removeClass("hidden"); $('#hideKoro5').fadeIn(); }, 2900);
 }
 function three3x() {
-	setTimeout(() => {
-		clearTimeout(interVal);
-	}, 1000);
+	if (interVal) {
+		setTimeout(() => {
+			clearTimeout(interVal);
+		}, 1000);
+	}
 	$('#mapForm').hide();
 	$('#passForm').hide();
 	setTimeout(function () {

@@ -5,9 +5,11 @@ function two2() {
 	setTimeout(function () { $('div#hideKoro2').removeClass("hidden"); $('#hideKoro2').fadeIn(); }, 2900);
 }
 function three3() {
-	setTimeout(() => {
-		clearTimeout(interVal);
-	}, 1000);
+	if (interVal) {
+		setTimeout(() => {
+			clearTimeout(interVal);
+		}, 1000);
+	}
 	setTimeout(function () {
 		document.getElementById('four').disabled = true;
 		document.getElementById('twoa').disabled = false;

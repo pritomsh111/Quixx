@@ -5,9 +5,11 @@ function two2() {
 	setTimeout(function () { $('div#hideKoro3').removeClass("hidden"); $('#hideKoro3').fadeIn(); }, 2900);
 }
 function three3() {
-	setTimeout(() => {
-		clearTimeout(interVal);
-	}, 1000);
+	if (interVal) {
+		setTimeout(() => {
+			clearTimeout(interVal);
+		}, 1000);
+	}
 	setTimeout(function () {
 
 		document.getElementById('quiccD').disabled = true;
