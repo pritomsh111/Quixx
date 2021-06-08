@@ -63,6 +63,9 @@ $(function () {
 					if (data.data[i] === "ASSIGN") {
 						continue;
 					}
+					if (data.data[i] === "JUST_CREATED") {
+						data.data[i] = "ASSIGNED";
+					}
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#deliveryStatus").append(option);
@@ -182,6 +185,8 @@ $("#criterion").on("change", function () {
 	value = $(this).val();
 	if (value == "Delivery Status") {
 		clearAll();
+		document.querySelector("#deliveryStatus").selectedIndex = 0;
+		document.querySelector("#deliveryStatus option:nth-child(2)").innerHTML = "ASSIGNED";
 		$("#deliveryStatus").show();
 	}
 	else if (value == "Payment Method") {
@@ -435,6 +440,9 @@ $('#criterionSubmit').on('click', function (eventx) {
 					$("#valOfTable").html(`Receiver City: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 				}
 				return;
+			}
+			if (cri == "Delivery Status") {
+				valx = valx === "JUST_CREATED" ? "ASSIGNED" : valx;
 			}
 			$("#valOfTable").html(`${cri}: <strong>${valx}</strong> [Total Data: <strong>${json.recordsTotal}</strong>]`);
 		});
