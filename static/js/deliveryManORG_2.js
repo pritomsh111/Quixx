@@ -741,8 +741,8 @@ $('#dtBasicExample').on('click', '.updateDM', function () {
 	whichTableD = "#dtBasicExample";
 	deliveryManId = $(this).attr('id');
 	$('#tickFormD').hide();
-	$(".circle-loader").removeClass("load-complete");
-	$(".circle-loader").hide();
+	$("#circleLoadFormD").removeClass("load-complete");
+	$("#circleLoadFormD").hide();
 
 	$("#sureFormD").hide();
 	$('.cancelModD').prop('disabled', false);
@@ -769,8 +769,8 @@ $('#dtBasicExample2').on('click', '.updateDM', function () {
 	whichTableD = "#dtBasicExample2";
 	deliveryManId = $(this).attr('id');
 	$('#tickFormD').hide();
-	$(".circle-loader").removeClass("load-complete");
-	$(".circle-loader").hide();
+	$("#circleLoadFormD").removeClass("load-complete");
+	$("#circleLoadFormD").hide();
 
 	$('#formUpdateD').hide();
 	$("#sureFormD").hide();
@@ -908,11 +908,11 @@ $('.btn-ok-updateD').on("click", function (e) {
 					}
 					$('#formUpdateD').hide();
 					if (data.status == 'OK') {
-						$(".circle-loader").show();
+						$("#circleLoadFormD").show();
 						$("#sureFormD").show();
 						$("#sureFormD").html("Please wait!");
 						setTimeout(function () {
-							$(".circle-loader").addClass("load-complete");
+							$("#circleLoadFormD").addClass("load-complete");
 
 							$('#tickFormD').show();
 
