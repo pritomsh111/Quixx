@@ -37,9 +37,15 @@
     // CompanyName
     let cn = document.querySelector(".Company>h1");
 
-    // Footer
+    // Footer Left
     let footLogo = document.querySelector(".Quixx__Logo>div")
     let aboutCompany = document.querySelector(".aboutCompany");
+    let fb_company = document.querySelector(".fb_company");
+    let i_company = document.querySelector(".i_company");
+    let li_company = document.querySelector(".li_company");
+
+    // Footer Right
+    let addressW = Array.from(document.querySelector(".Footer__R>ul:first-child").children);
     let encKey;
     function parcelboat() {
         cn.innerHTML = "Parcel Boat";
@@ -50,10 +56,18 @@
         // Change width/height of Logo
         lg.style.height = "105px";
 
-        //Footer
+        //Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
         footLogo.style.height = "105px";
         aboutCompany.innerHTML = "Fastest Delivery Company";
+
+        fb_company.href = "https://www.facebook.com";
+        i_company.href = "https://www.instagram.com";
+        li_company.href = "https://www.linkedin.com";
+
+        // Footer Right
+        addressW[1].innerHTML = "Gulshan, 12";
+        addressW[2].innerHTML = "Dhaka, Bangladesh";
     }
     function nogorbondhu() {
         cn.innerHTML = "Nogor Bondhu";
@@ -70,12 +84,21 @@
             document.querySelector(".Company").style.cssText = 'position: relative;top: -1.6rem;';
         }
         cn.style.display = "none";
-        //Footer
+
+        //Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
         footLogo.style.width = "150px";
         footLogo.style.height = "90px";
 
         aboutCompany.innerHTML = "We believe in excellence";
+
+        fb_company.href = "https://www.facebook.com";
+        i_company.href = "https://www.instagram.com";
+        li_company.href = "https://www.linkedin.com";
+
+        // Footer Right
+        addressW[1].innerHTML = "Gulshan, Banani";
+        addressW[2].innerHTML = "Dhaka, Bangladesh";
     }
     function quixxprojects() {
         cn.innerHTML = "Quixx Projects";
@@ -83,10 +106,18 @@
         lg.style.backgroundImage = "url(static-landing/img/clients/quixxprojects.png)";
         encKey = "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy";
         fc.href = "static-landing/img/clients/quixxprojects.png";
-        // Footer
+        // Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/quixxprojects.png)";
         footLogo.style.height = "105px";
         aboutCompany.innerHTML = "We believe in excellence, NOT";
+
+        fb_company.href = "https://www.facebook.com";
+        i_company.href = "https://www.instagram.com";
+        li_company.href = "https://www.linkedin.com";
+
+        // Footer Right
+        addressW[1].innerHTML = "Dhanmondi 27, Banani";
+        addressW[2].innerHTML = "Dhaka, Bangladesh";
     }
     function quixx() {
         cn.innerHTML = "Quixx";
@@ -95,9 +126,16 @@
         encKey = "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq";
         fc.href = "static-landing/img/clients/quixx.png";
 
-        //Footer
+        //Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
         aboutCompany.innerHTML = "We believe in excellence, NOT, NOT";
+
+        fb_company.href = "https://www.facebook.com";
+        i_company.href = "https://www.instagram.com";
+        li_company.href = "https://www.linkedin.com";
+        // Footer Right
+        addressW[1].innerHTML = "Dhanmondi 27, Banani";
+        addressW[2].innerHTML = "Dhaka, Bangladesh";
     }
 
     // Selection!!
