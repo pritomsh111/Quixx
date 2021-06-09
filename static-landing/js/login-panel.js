@@ -18,26 +18,42 @@
         preloader.style.visibility = "hidden";
     }, 1000);
 
-    // These will be changed dynamically based on company name!
-
-    // ClientWho
-    let cw = document.location.host.split(".");
-
-    // Logo
-    let lg = document.querySelector(".Company>div");
-
-    // Change width/height of Logo
-
-    if (cw[1] === "parcelboat") {
-        lg.style.height = "105px";
-    }
     document.querySelector(".Company>div").style.cursor = "pointer";
     document.querySelector(".Company>div").addEventListener('click', function (e) {
         e.preventDefault();
         location.reload();
     });
 
-    if (cw[1] === "nogorbondhu") {
+    // ClientWho
+    // let cw = document.location.host.split(".");
+    let cw = 'parcelboat';
+
+    // Logo
+    let lg = document.querySelector(".Company>div");
+
+    // Favicon
+    let fc = document.querySelector("link[rel='shortcut icon']");
+
+    // CompanyName
+    let cn = document.querySelector(".Company>h1");
+
+    let encKey;
+    function parcelboat() {
+        cn.innerHTML = "Parcel Boat";
+        document.title = "Parcel Boat";
+        lg.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
+        encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
+        fc.href = "static-landing/img/clients/parcelboat.png";
+        // Change width/height of Logo
+        lg.style.height = "105px";
+    }
+    function nogorbondhu() {
+        cn.innerHTML = "Nogor Bondhu";
+        document.title = "Nogor Bondhu";
+        lg.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
+        encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
+        fc.href = "static-landing/img/clients/nogorbondhu.png";
+
         lg.style.width = "200px";
         lg.style.height = "110px";
         // document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
@@ -45,43 +61,36 @@
         if (window.innerWidth < 961) {
             document.querySelector(".Company").style.cssText = 'position: relative;top: -1.6rem;';
         }
-        document.querySelector(".Company>h1").style.display = "none";
-    }
-    // Favicon
-    let fc = document.querySelector("link[rel='shortcut icon']");
-    fc.href = "static-landing/img/clients/" + cw[1] + ".png";
-
-    // CompanyName
-    let cn = document.querySelector(".Company>h1");
-
-    let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : cw[1] === "parcelboat" ? "Parcel Boat" : cw[1] === "nogorbondhu" ? "Nogor Bondhu" : "";
-
-    let encKey =
-        cw[1] === "easyparcel" ? "someKey" :
-            cw[1] === "quixx" ? "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq" :
-                cw[1] === "quixxprojects" ? "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy" :
-                    cw[1] === "nogorbondhu" ? "NONEFORNOW" :
-                        "";
-
-    //Testing
-    lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
-
-    function parcelboat() {
-        lg.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
-        encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
-    }
-    function nogorbondhu() {
-        lg.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
-        encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
+        cn.style.display = "none";
     }
     function quixxprojects() {
-        lg.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
+        cn.innerHTML = "Quixx Projects";
+        document.title = "Quixx Projects";
+        lg.style.backgroundImage = "url(static-landing/img/clients/quixxprojects.png)";
         encKey = "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy";
+        fc.href = "static-landing/img/clients/quixxprojects.png";
+    }
+    function quixx() {
+        cn.innerHTML = "Quixx";
+        document.title = "Quixx";
+        lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
+        encKey = "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq";
+        fc.href = "static-landing/img/clients/quixx.png";
     }
 
-    cn.innerHTML = vl;
-
-    document.title = vl;
+    // Selection!!
+    if (cw === "parcelboat") {
+        parcelboat();
+    }
+    else if (cw === "nogorbondhu") {
+        nogorbondhu();
+    }
+    else if (cw === "quixxprojects") {
+        quixxprojects();
+    }
+    else if (cw === "quixx") {
+        quixx();
+    }
 
     // Defaults
     let body = document.body;
