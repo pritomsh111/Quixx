@@ -574,6 +574,7 @@
         if (v6() && v5() && v4() && v3() && v2() && v1()) {
             clearError();
             body.style.pointerEvents = "none";
+            loader.classList.remove("load-complete");
             modalSignupFunc();
             // let data = JSON.stringify
             //     ({
@@ -592,13 +593,19 @@
                     url: api + "dhaka/bd/merchant/create",
                     data: JSON.stringify
                         ({
-                            "encrypted_user_id": encKey,
+                            "encrypted_user_id": "$2a$10$7FX8PAgirRaTqjXZmngkNeDboxmGfa5adoBXQgbgLz3tHzZbYAvNC",
                             "org_name": org,
                             "person_name": owner,
                             "phone_number": contact,
                             "email": email,
                             "business_filed": business,
-                            "per_delivery_cost": deliveries
+                            "per_delivery_cost": deliveries,
+                            "payment_method_mobile_number": "01971322990",
+                            "payment_method_mobile": "yes",
+                            "payment_method_bank": "yes",
+                            "payment_method_bank_name": "a",
+                            "payment_method_bank_branch": "a",
+                            "payment_method_bank_account": "a"
                         }),
                     headers:
                     {
@@ -607,16 +614,13 @@
                     },
                     success: function (data) {
                         setTimeout(function () {
-                            loader.classList.remove("load-complete");
-                            setTimeout(function () {
-                                body.style.pointerEvents = "auto";
-                                loader.classList.add("load-complete");
-                                checkmark.style.display = "block";
-                                modalErr.innerHTML = "Congratulations! You Have Registered!";
-                                modalErr.style.color = "#000";
-                                modalCloseButton.disabled = false;
-                            }, 1000);
-                        }, 2000);
+                            body.style.pointerEvents = "auto";
+                            loader.classList.add("load-complete");
+                            checkmark.style.display = "block";
+                            modalErr.innerHTML = "Congratulations! You Have Registered!";
+                            modalErr.style.color = "#000";
+                            modalCloseButton.disabled = false;
+                        }, 1200);
                     },
                     error: function (data) {
                         body.style.pointerEvents = "auto";
