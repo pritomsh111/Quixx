@@ -465,7 +465,7 @@ p.error {
 
 .circle-loader {
     margin-bottom: 1rem;
-    border: 1px solid rgb(0, 102, 179);
+    border: 1px solid #000;
     border-left-color: #ffcf5c;
     position: relative;
     display: inline-block;
@@ -478,7 +478,7 @@ p.error {
 .load-complete {
     -webkit-animation: none;
     animation: none;
-    border-color: #0066b3;
+    border-color: #000;
     transition: border 500ms ease-out;
 }
 
@@ -498,8 +498,8 @@ p.error {
     height: 3.5rem;
     width: 1.75rem;
     transform-origin: left top;
-    border-right: 3px solid #0066b3;
-    border-top: 3px solid #0066b3;
+    border-right: 3px solid #000;
+    border-top: 3px solid #000;
     content: '';
     left: 2rem;
     top: 3.8rem;

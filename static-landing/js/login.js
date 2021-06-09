@@ -152,6 +152,7 @@
                     else {
                         modalErr.innerHTML = "Please Wait! We are working!";
                     }
+                    modalErr.style.color = "#e22b2b";
                     modalErrorFunc();
                 }
             });
@@ -201,7 +202,7 @@
                                 loader.classList.add("load-complete");
                                 checkmark.style.display = "block";
                                 modalErr.innerHTML = "You will receive an SMS!";
-                                modalErr.style.color = "#0066b3";
+                                modalErr.style.color = "#000";
                                 modalCloseButton.disabled = false;
                             }, 1000);
                         }, 2000);
@@ -211,11 +212,13 @@
                         modalCloseButton.disabled = false;
                         let modalErr = document.querySelector('.modal-error>h2');
                         modalErr.innerHTML = "Wrong Code!";
+                        modalErr.style.color = "#e22b2b";
                         modalErrorFunc();
                     }
                 },
                 error: function (data) {
                     let ob = Object.keys(data);
+                    modalErr.style.color = "#e22b2b";
                     let modalErr = document.querySelector('.modal-error>h2');
                     if (ob[17] == "responseJSON") {
                         modalErr.innerHTML = data.responseJSON.errorMessage;
@@ -337,6 +340,7 @@
                     error: function (data) {
                         let ob = Object.keys(data);
                         let modalErr = document.querySelector('.modal-error>h2');
+                        modalErr.style.color = "#e22b2b";
                         if (ob[17] == "responseJSON") {
                             modalErr.innerHTML = data.responseJSON.errorMessage;
                         }
@@ -466,7 +470,7 @@
                                 loader.classList.add("load-complete");
                                 checkmark.style.display = "block";
                                 modalErr.innerHTML = "Congratulations! You Have Registered!";
-                                modalErr.style.color = "#0066b3";
+                                modalErr.style.color = "#000";
                                 modalCloseButton.disabled = false;
                             }, 1000);
                         }, 3000);
