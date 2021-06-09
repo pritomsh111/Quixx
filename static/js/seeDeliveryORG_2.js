@@ -132,7 +132,7 @@ function dynamicDyliverManChange() {
 			success: function (data) {
 				console.log(data);
 				for (let i = 0; i < data.data.length; i++) {
-					latlngx = new google.maps.LatLng(parseFloat(data.data[i].lat) + addKorbo, parseFloat(data.data[i].longi) + addKorbo);
+					latlngx = new google.maps.LatLng(parseFloat(data.data[i].lat), parseFloat(data.data[i].longi));
 					deliveryManMapMarker.get(data.data[i].name).setPosition(latlngx);
 				}
 				interVal = setTimeout(function () {
