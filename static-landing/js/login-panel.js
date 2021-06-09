@@ -26,7 +26,7 @@
 
     // ClientWho
     // let cw = document.location.host.split(".");
-    let cw = 'parcelboat';
+    let cw = 'nogorbondhu';
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -37,6 +37,9 @@
     // CompanyName
     let cn = document.querySelector(".Company>h1");
 
+    // Footer
+    let footLogo = document.querySelector(".Quixx__Logo>div")
+    let aboutCompany = document.querySelector(".aboutCompany");
     let encKey;
     function parcelboat() {
         cn.innerHTML = "Parcel Boat";
@@ -46,6 +49,11 @@
         fc.href = "static-landing/img/clients/parcelboat.png";
         // Change width/height of Logo
         lg.style.height = "105px";
+
+        //Footer
+        footLogo.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
+        footLogo.style.height = "105px";
+        aboutCompany.innerHTML = "Fastest Delivery Company";
     }
     function nogorbondhu() {
         cn.innerHTML = "Nogor Bondhu";
@@ -54,14 +62,20 @@
         encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
         fc.href = "static-landing/img/clients/nogorbondhu.png";
 
-        lg.style.width = "200px";
-        lg.style.height = "110px";
+        lg.style.width = "160px";
+        lg.style.height = "100px";
         // document.querySelector(".Company").style.cssText = 'position: relative;left: -38%;top: -55%;';
         // document.body.style.background = "url('./static-landing/img/clients/nogonbondhu-bg.png') no-repeat left bottom/138vh";
         if (window.innerWidth < 961) {
             document.querySelector(".Company").style.cssText = 'position: relative;top: -1.6rem;';
         }
         cn.style.display = "none";
+        //Footer
+        footLogo.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
+        footLogo.style.width = "150px";
+        footLogo.style.height = "90px";
+
+        aboutCompany.innerHTML = "We believe in excellence";
     }
     function quixxprojects() {
         cn.innerHTML = "Quixx Projects";
@@ -69,6 +83,10 @@
         lg.style.backgroundImage = "url(static-landing/img/clients/quixxprojects.png)";
         encKey = "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy";
         fc.href = "static-landing/img/clients/quixxprojects.png";
+        // Footer
+        footLogo.style.backgroundImage = "url(static-landing/img/clients/quixxprojects.png)";
+        footLogo.style.height = "105px";
+        aboutCompany.innerHTML = "We believe in excellence, NOT";
     }
     function quixx() {
         cn.innerHTML = "Quixx";
@@ -76,6 +94,10 @@
         lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
         encKey = "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq";
         fc.href = "static-landing/img/clients/quixx.png";
+
+        //Footer
+        footLogo.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
+        aboutCompany.innerHTML = "We believe in excellence, NOT, NOT";
     }
 
     // Selection!!

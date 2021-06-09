@@ -570,7 +570,9 @@ p.error {
 .Quixx__Logo>div {
     height: 45px;
     width: 125px;
-    background: url('../img/Logo.png') center/contain no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .Footer__L h2 {
