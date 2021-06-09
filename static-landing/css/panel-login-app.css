@@ -605,7 +605,8 @@ p.error {
 
 .Footer__R {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
 }
 
 .Footer__R ul li {
@@ -619,13 +620,13 @@ p.error {
     font-weight: 450;
 }
 
-.Footer__R ul:first-child li:last-child {
+/* .Footer__R ul:first-child li:last-child {
     cursor: pointer;
     transition: 150ms ease-in;
     margin-top: 0.3rem;
     opacity: 1;
     display: inline-block;
-}
+} */
 
 .Footer__R ul:first-child li:last-child:hover {
     opacity: 0.7;

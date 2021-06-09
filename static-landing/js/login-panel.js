@@ -25,7 +25,6 @@
 
     // Logo
     let lg = document.querySelector(".Company>div");
-    lg.style.backgroundImage = "url(static-landing/img/clients/" + cw[1] + ".png)";
 
     // Change width/height of Logo
 
@@ -61,17 +60,30 @@
         cw[1] === "easyparcel" ? "someKey" :
             cw[1] === "quixx" ? "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq" :
                 cw[1] === "quixxprojects" ? "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy" :
-                    cw[1] === "parcelboat" ? "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW" :
-                        cw[1] === "nogorbondhu" ? "NONEFORNOW" :
-                            "";
+                    cw[1] === "nogorbondhu" ? "NONEFORNOW" :
+                        "";
+
+    //Testing
+    lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
+
+    function parcelboat() {
+        lg.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
+        encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
+    }
+    function nogorbondhu() {
+        lg.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
+        encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
+    }
+    function quixxprojects() {
+        lg.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
+        encKey = "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy";
+    }
 
     cn.innerHTML = vl;
 
     document.title = vl;
 
-    //Testing
-    lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
-
+    // Defaults
     let body = document.body;
     let modal = document.querySelector(".Modal__Quixx");
     let backdrop = document.querySelector(".backdrop");
