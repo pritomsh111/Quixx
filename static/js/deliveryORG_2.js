@@ -3249,10 +3249,10 @@ document.getElementById('product_qtyU').addEventListener("keyup", function (e) {
 });
 document.getElementById('product_qtyUR').addEventListener("keyup", function (e) {
 	if (e.target.value.toUpperCase() === "NA") {
-		document.querySelector(".pqp").textContent = "Total Amount [BDT]:";
+		document.querySelector(".pqp").childNodes[0].textContent = "Total Amount [BDT]:";
 	}
 	else {
-		document.querySelector(".pqp").textContent = "Per Product Cost [BDT]:";
+		document.querySelector(".pqp").childNodes[0].textContent = "Per Product Cost [BDT]:";
 	}
 });
 
