@@ -26,7 +26,7 @@
 
     // ClientWho
     // let cw = document.location.host.split(".");
-    let cw = 'nogorbondhu';
+    let cw = 'quixx';
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -45,7 +45,10 @@
     let li_company = document.querySelector(".li_company");
 
     // Footer Right
-    let addressW = Array.from(document.querySelector(".Footer__R>ul:first-child").children);
+    let addressL = Array.from(document.querySelector(".Footer__R>ul:first-child").children);
+    let addressR = Array.from(document.querySelector(".Footer__R>ul:nth-child(2)").children);
+    let whichCompany = document.querySelector(".whichCompany");
+
     let encKey;
     function parcelboat() {
         cn.innerHTML = "Parcel Boat";
@@ -66,8 +69,14 @@
         li_company.href = "https://www.linkedin.com";
 
         // Footer Right
-        addressW[1].innerHTML = "Gulshan, 12";
-        addressW[2].innerHTML = "Dhaka, Bangladesh";
+        addressL[1].innerHTML = "Gulshan, 12";
+        addressL[2].innerHTML = "Dhaka, Bangladesh";
+
+        // Footer Right 2
+        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'> 019XXXXXXXX</a>";
+
+        whichCompany.innerHTML = "Parcel Boat";
     }
     function nogorbondhu() {
         cn.innerHTML = "Nogor Bondhu";
@@ -97,8 +106,14 @@
         li_company.href = "https://www.linkedin.com";
 
         // Footer Right
-        addressW[1].innerHTML = "Gulshan, Banani";
-        addressW[2].innerHTML = "Dhaka, Bangladesh";
+        addressL[1].innerHTML = "Gulshan, Banani";
+        addressL[2].innerHTML = "Dhaka, Bangladesh";
+
+        // Footer Right 2
+        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'> 019XXXXXXXX</a>";
+
+        whichCompany.innerHTML = "Nogor Bondhu";
     }
     function quixxprojects() {
         cn.innerHTML = "Quixx Projects";
@@ -116,8 +131,14 @@
         li_company.href = "https://www.linkedin.com";
 
         // Footer Right
-        addressW[1].innerHTML = "Dhanmondi 27, Banani";
-        addressW[2].innerHTML = "Dhaka, Bangladesh";
+        addressL[1].innerHTML = "Dhanmondi 27, Banani";
+        addressL[2].innerHTML = "Dhaka, Bangladesh";
+
+        // Footer Right 2
+        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'> 019XXXXXXXX</a>";
+
+        whichCompany.innerHTML = "Quixx Projects";
     }
     function quixx() {
         cn.innerHTML = "Quixx";
@@ -133,9 +154,16 @@
         fb_company.href = "https://www.facebook.com";
         i_company.href = "https://www.instagram.com";
         li_company.href = "https://www.linkedin.com";
+
         // Footer Right
-        addressW[1].innerHTML = "Dhanmondi 27, Banani";
-        addressW[2].innerHTML = "Dhaka, Bangladesh";
+        addressL[1].innerHTML = "Dhanmondi 27, Banani";
+        addressL[2].innerHTML = "Dhaka, Bangladesh";
+
+        // Footer Right 2
+        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'> 019XXXXXXXX</a>";
+
+        whichCompany.innerHTML = "Quixx";
     }
 
     // Selection!!
