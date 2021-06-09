@@ -69,6 +69,9 @@
 
     document.title = vl;
 
+    //Testing
+    lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
+
     let body = document.body;
     let modal = document.querySelector(".Modal__Quixx");
     let backdrop = document.querySelector(".backdrop");
@@ -132,7 +135,7 @@
         loaderDiv.style.display = "none";
         modalError.style.display = "none";
         forgotPass.style.display = "block";
-        modalFooter.style.marginTop = "10rem";
+        modalFooter.style.marginTop = "7rem";
         modal_header.innerHTML = "<h2>Forgot Password?</h2>";
         backdrop.classList.add("show");
         modal.classList.add("show");

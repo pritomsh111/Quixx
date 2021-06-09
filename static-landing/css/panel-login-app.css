@@ -105,8 +105,7 @@ ul {
 .Quixx__Form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: 8rem 5rem;
-    place-items: center;
+    padding: 4.5rem 5rem;
     position: relative;
     overflow: hidden;
 }
@@ -175,6 +174,7 @@ ul {
     padding: 2rem 5rem 3rem;
     height: 470px;
     border-radius: 10px;
+    justify-self: center;
     position: relative;
     overflow: hidden;
     background: #fff;
@@ -318,11 +318,27 @@ p.error {
     margin: 1rem 0;
 }
 
+/* Company Specific */
+
+.Company {
+    text-align: center;
+    margin-top: 8rem;
+}
+
+.Company>div {
+    height: 45px;
+    width: 140px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 1rem auto;
+}
+
 @media (max-width: 960px) {
     .Quixx__Form {
         display: grid;
         grid-template-columns: 1fr;
-        padding: 4rem 2rem;
+        padding: 0rem 2rem;
     }
     .Quixx__Form::after, .Quixx__Form::before {
         background: none;
@@ -387,7 +403,7 @@ p.error {
 }
 
 .modal-footer button {
-    padding: 0.7rem 0.9rem;
+    padding: 0.6rem 1rem;
     color: #fff;
     background: #000;
 }
@@ -518,17 +534,14 @@ p.error {
     }
 }
 
-/* Company Specific */
-
-.Company {
-    text-align: center;
-}
-
-.Company>div {
-    height: 45px;
-    width: 125px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 1rem auto;
+@media (max-width: 480px) {
+    *, *::before, *::after {
+        font-size: 0.90rem !important;
+    }
+    .Modal__Quixx .modal-footer {
+        margin-top: 7rem;
+    }
+    .modal-footer button {
+        padding: 0.4rem 1rem;
+    }
 }
