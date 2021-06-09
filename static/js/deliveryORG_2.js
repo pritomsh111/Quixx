@@ -1101,7 +1101,7 @@ async function doItMultipleTimes(mapInfoMarker) {
 		});
 	interVal = setTimeout(function () {
 		doItMultipleTimes(mapInfoMarker);
-	}, 60000);
+	}, 120000);
 }
 
 $('#myModalInfoWatch').on('hidden.bs.modal', function () {

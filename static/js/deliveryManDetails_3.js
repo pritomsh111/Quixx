@@ -133,7 +133,7 @@ function initMap() {
 						marker = new SlidingMarker({
 							position: new google.maps.LatLng(latVal, lngVal),
 							map: map,
-							title: contentString,
+							title: dataa.data[j].name,
 							duration: 2000,
 						});
 						marker.addListener('click', function () {
@@ -168,12 +168,13 @@ function dynamicDyliverManChange() {
 				geocoder.geocode({ 'latLng': latlngx }, function (results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
 						curLoc = results[0].formatted_address;
+						infowindow.setContent('<p style="color:#0066b3;font-family:Didact Gothic;">' + curLoc + '</p>');
 						document.querySelector("#dmcp").innerHTML = `Delivery Man: <strong>${dataa.data[j].name}</strong>, Current Location: <strong>${curLoc}</strong>`;
 					}
 				});
 				setTimeout(() => {
 					dynamicDyliverManChange();
-				}, 10000);
+				}, 180000);
 			}
 		});
 }
