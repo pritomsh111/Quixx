@@ -26,7 +26,7 @@
 
     // ClientWho
     // let cw = document.location.host.split(".");
-    let cw = 'quixx';
+    let cw = 'nogorbondhu';
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -74,7 +74,7 @@
 
         // Footer Right 2
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'> 019XXXXXXXX</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         whichCompany.innerHTML = "Parcel Boat";
     }
@@ -111,7 +111,7 @@
 
         // Footer Right 2
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'> 019XXXXXXXX</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         whichCompany.innerHTML = "Nogor Bondhu";
     }
@@ -136,7 +136,7 @@
 
         // Footer Right 2
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'> 019XXXXXXXX</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         whichCompany.innerHTML = "Quixx Projects";
     }
@@ -161,7 +161,7 @@
 
         // Footer Right 2
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'> 019XXXXXXXX</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         whichCompany.innerHTML = "Quixx";
     }
@@ -637,10 +637,6 @@
                         else {
                             modalErr.innerHTML = data.responseJSON.errorMessage;
                         }
-                        // else if (data.responseJSON.errorMessage.includes("Organization")) {
-                        //     createError("Organisation Exists!", "org");
-                        //     modalErr.innerHTML = "Organisation Exists!";
-                        // }
                     }
                 })
         }

@@ -723,3 +723,14 @@ p.error {
         width: 320px;
     }
 }
+
+.bankCheck {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+}
+
+.bankCheck div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
