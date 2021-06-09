@@ -403,7 +403,11 @@ p.error {
 .Modal__Quixx .modal-footer {
     padding: 1rem 0 0 1rem;
     margin-left: auto;
-    margin-top: 10rem;
+    margin-top: 8rem;
+}
+
+.Signup__Loader h2, .modal-error>h2 {
+    font-size: 1.2rem;
 }
 
 .modal-footer button {
@@ -540,12 +544,17 @@ p.error {
 
 @media (max-width: 480px) {
     *, *::before, *::after {
-        font-size: 0.90rem !important;
+        font-size: 0.85rem !important;
     }
     .Modal__Quixx .modal-footer {
         margin-top: 7rem;
     }
     .modal-footer button {
-        padding: 0.4rem 1rem;
+        padding: 0.6rem 1rem;
+    }
+    .Modal__Quixx {
+        padding: 1rem;
+        left: calc(50% - 160px);
+        width: 320px;
     }
 }

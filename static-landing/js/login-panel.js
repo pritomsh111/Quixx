@@ -135,7 +135,7 @@
         loaderDiv.style.display = "none";
         modalError.style.display = "none";
         forgotPass.style.display = "block";
-        modalFooter.style.marginTop = "8rem";
+        modalFooter.style.marginTop = "7rem";
         modal_header.innerHTML = "<h2>Forgot Password?</h2>";
         backdrop.classList.add("show");
         modal.classList.add("show");
@@ -208,7 +208,7 @@
         forgotPass.style.display = "none";
         modalError.style.display = "none";
         modalErr.innerHTML = "";
-        modalFooter.style.marginTop = "0rem";
+        modalFooter.style.marginTop = "-2.2rem";
         loader.classList.remove("load-complete");
         checkmark.style.display = "none";
         loader.style.display = "inline-block";
@@ -263,7 +263,7 @@
         loaderDiv.style.display = "none";
         forgotPass.style.display = "none";
         modalError.style.display = "block";
-        modalFooter.style.marginTop = "0rem";
+        modalFooter.style.marginTop = "-2.2rem";
         modalCloseButton.style.display = "inline";
         modalNextButton.style.display = "none";
         modalDoneButton.style.display = "none";
@@ -280,7 +280,7 @@
         loader.classList.remove("load-complete");
         checkmark.style.display = "none";
         loader.style.display = "inline-block";
-        modalFooter.style.marginTop = "0rem";
+        modalFooter.style.marginTop = "-2.2rem";
         modalCloseButton.style.display = "inline";
         modalCloseButton.disabled = true;
         modalNextButton.style.display = "none";

@@ -107,7 +107,7 @@
         loaderDiv.style.display = "none";
         modalError.style.display = "none";
         forgotPass.style.display = "block";
-        modalFooter.style.marginTop = "8rem";
+        modalFooter.style.marginTop = "7rem";
         modal_header.innerHTML = "<h2>Forgot Password?</h2>";
         backdrop.classList.add("show");
         modal.classList.add("show");
@@ -180,7 +180,7 @@
         forgotPass.style.display = "none";
         modalError.style.display = "none";
         modalErr.innerHTML = "";
-        modalFooter.style.marginTop = "0rem";
+        modalFooter.style.marginTop = "-2.2rem";
         loader.classList.remove("load-complete");
         checkmark.style.display = "none";
         loader.style.display = "inline-block";
@@ -196,19 +196,17 @@
                     //console.log(data);
                     if (data.data === true) {
                         setTimeout(function () {
-                            loader.classList.remove("load-complete");
-                            setTimeout(function () {
-                                quixxMain.style.pointerEvents = "auto";
-                                loader.classList.add("load-complete");
-                                checkmark.style.display = "block";
-                                modalErr.innerHTML = "You will receive an SMS!";
-                                modalErr.style.color = "#000";
-                                modalCloseButton.disabled = false;
-                            }, 1000);
-                        }, 2000);
+                            quixxMain.style.pointerEvents = "auto";
+                            loader.classList.add("load-complete");
+                            checkmark.style.display = "block";
+                            modalErr.innerHTML = "You will receive an SMS!";
+                            modalErr.style.color = "#000";
+                            modalCloseButton.disabled = false;
+                        }, 1200);
                     }
                     else {
                         loader.style.display = "none";
+                        loader.classList.remove("load-complete");
                         modalCloseButton.disabled = false;
                         let modalErr = document.querySelector('.modal-error>h2');
                         modalErr.innerHTML = "Wrong Code!";
@@ -235,7 +233,7 @@
         loaderDiv.style.display = "none";
         forgotPass.style.display = "none";
         modalError.style.display = "block";
-        modalFooter.style.marginTop = "0rem";
+        modalFooter.style.marginTop = "-2.2rem";
         modalCloseButton.style.display = "inline";
         modalNextButton.style.display = "none";
         modalDoneButton.style.display = "none";
@@ -252,7 +250,7 @@
         loader.classList.remove("load-complete");
         checkmark.style.display = "none";
         loader.style.display = "inline-block";
-        modalFooter.style.marginTop = "0rem";
+        modalFooter.style.marginTop = "-2.2rem";
         modalCloseButton.style.display = "inline";
         modalCloseButton.disabled = true;
         modalNextButton.style.display = "none";
@@ -442,6 +440,7 @@
             clearError();
             quixxMain.style.pointerEvents = "none";
             modalSignupFunc();
+            loader.classList.remove("load-complete");
             $.ajax
                 ({
                     type: "POST",
@@ -464,20 +463,18 @@
                     },
                     success: function (data) {
                         setTimeout(function () {
-                            loader.classList.remove("load-complete");
-                            setTimeout(function () {
-                                quixxMain.style.pointerEvents = "auto";
-                                loader.classList.add("load-complete");
-                                checkmark.style.display = "block";
-                                modalErr.innerHTML = "Congratulations! You Have Registered!";
-                                modalErr.style.color = "#000";
-                                modalCloseButton.disabled = false;
-                            }, 1000);
-                        }, 3000);
+                            quixxMain.style.pointerEvents = "auto";
+                            loader.classList.add("load-complete");
+                            checkmark.style.display = "block";
+                            modalErr.innerHTML = "Congratulations! You Have Registered!";
+                            modalErr.style.color = "#000";
+                            modalCloseButton.disabled = false;
+                        }, 1200);
                     },
                     error: function (data) {
                         quixxMain.style.pointerEvents = "auto";
                         loader.style.display = "none";
+                        loader.classList.remove("load-complete");
                         modalCloseButton.disabled = false;
                         modalErr.innerHTML = data.responseJSON.errorMessage + 's';
                         modalErr.style.color = "#e22b2b";
