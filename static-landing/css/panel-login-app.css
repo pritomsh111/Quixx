@@ -733,4 +733,9 @@ p.error {
 .bankCheck div {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.mobilebank2, .bankbank2 {
+    visibility: hidden;
 }
