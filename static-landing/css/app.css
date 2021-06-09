@@ -2269,7 +2269,11 @@ p.error {
 
 .Modal__Quixx .modal-header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
+    padding: 0rem 0 1rem;
+}
+
+.Modal__Quixx .modal-header h2 {
+    font-size: 1.2rem;
 }
 
 .Modal__Quixx .modal-body {
@@ -2293,7 +2297,7 @@ p.error {
 }
 
 .modal-footer button {
-    padding: 0.7rem 0.9rem;
+    padding: 0.6rem 1rem;
     color: #fff;
     background: #000;
 }
@@ -2311,6 +2315,11 @@ p.error {
         padding: 1rem;
         left: calc(50% - 170px);
         width: 340px;
+    }
+    .modal-footer button {
+        padding: 0.4rem 1rem;
+        color: #fff;
+        background: #000;
     }
 }
 
@@ -2351,7 +2360,7 @@ p.error {
 
 .circle-loader {
     margin-bottom: 1rem;
-    border: 1px solid rgb(0, 102, 179);
+    border: 1px solid #000;
     border-left-color: #ffcf5c;
     position: relative;
     display: inline-block;
@@ -2364,7 +2373,7 @@ p.error {
 .load-complete {
     -webkit-animation: none;
     animation: none;
-    border-color: #0066b3;
+    border-color: #000;
     transition: border 500ms ease-out;
 }
 
@@ -2384,8 +2393,8 @@ p.error {
     height: 3.5rem;
     width: 1.75rem;
     transform-origin: left top;
-    border-right: 3px solid #0066b3;
-    border-top: 3px solid #0066b3;
+    border-right: 3px solid #000;
+    border-top: 3px solid #000;
     content: '';
     left: 2rem;
     top: 3.8rem;

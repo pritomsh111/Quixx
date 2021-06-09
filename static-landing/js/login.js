@@ -107,7 +107,7 @@
         loaderDiv.style.display = "none";
         modalError.style.display = "none";
         forgotPass.style.display = "block";
-        modalFooter.style.marginTop = "10rem";
+        modalFooter.style.marginTop = "8rem";
         modal_header.innerHTML = "<h2>Forgot Password?</h2>";
         backdrop.classList.add("show");
         modal.classList.add("show");
