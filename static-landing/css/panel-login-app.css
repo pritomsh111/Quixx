@@ -635,10 +635,6 @@ p.error {
     opacity: 0.7;
 }
 
-.Footer__R ul:last-child li {
-    display: inline-block;
-}
-
 .Footer__R ul:last-child li a {
     cursor: default;
 }
