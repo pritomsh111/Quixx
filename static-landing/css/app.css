@@ -466,7 +466,7 @@ ul {
 } */
 
 .Home__R {
-    margin-top: -5rem;
+    margin-top: -4rem;
     overflow: hidden;
     flex: 0 0 50%;
 }
@@ -489,6 +489,13 @@ ul {
 @media (max-width: 1400px) {
     .Home__Quixx__Container {
         height: 100%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .Home__Quixx__Container {
+        column-gap: 2rem;
+        margin-top: 3rem;
     }
 }
 
