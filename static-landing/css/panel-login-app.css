@@ -295,9 +295,10 @@ ul {
 
 .Container {
     position: absolute;
-    width: 57%;
     transition: transform 550ms ease-in-out;
     top: 8rem;
+    left: 3rem;
+    right: 3rem;
 }
 
 .HideOut {
