@@ -472,6 +472,7 @@
         document.querySelectorAll("p.error").forEach(item => item.innerHTML = "");
     }
     function createError(errorMessage, fragmentID) {
+        console.log(errorMessage, fragmentID);
         clearError();
         if (fragmentID === "password") {
             document.querySelector(`.${fragmentID}+p`).innerHTML = errorMessage;
@@ -500,64 +501,6 @@
                 return 0;
             }
             else {
-                return 1;
-            }
-        }
-        var mbank = document.querySelector("#mobileBank2").checked;
-        var bbank = document.querySelector("#phyBank2").checked;
-        var mselect, minput;
-        var v7 = () => {
-            if (mbank) {
-                mselect = document.querySelector("#brb").value;
-                minput = document.querySelector("#brbInput").value;
-                if (minput == "" || minput == null) {
-                    modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput");
-                    return 0;
-                }
-                else if ((minput.length < 11 || minput.length > 11) || /\D/.test(minput) == true) {
-                    modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "brbInput");
-                    return 0;
-                }
-                else if (minput.match(/\d/g).length === 11 && !/\D/.test(minput) == true) {
-                    return 1;
-                }
-                else {
-                    modalErrorShowForCreateUpdateMerchant(`<strong>${mselect}</strong>: Phone Number not valid!`, "brbInput");
-                    return 0;
-                }
-            }
-            else {
-                mselect = "";
-                minput = "";
-                return 1;
-            }
-        }
-        var bselect, bName, branchName, accountNo;
-        var v8 = () => {
-            if (bbank) {
-                bselect = "yes";
-                bName = document.querySelector("#bName").value;
-                branchName = document.querySelector("#branchName").value;
-                accountNo = document.querySelector("#accountNo").value;
-                if (bName == "" || bName == null) {
-                    modalErrorShowForCreateUpdateMerchant(`<strong>Bank Name</strong> cannot be empty!`, "bName");
-                    return 0;
-                }
-                else if (branchName == "" || branchName == null) {
-                    modalErrorShowForCreateUpdateMerchant(`<strong>Branch Name</strong> cannot be empty!`, "branchName");
-                    return 0;
-                }
-                else if (accountNo == "" || accountNo == null) {
-                    modalErrorShowForCreateUpdateMerchant(`<strong>Account No</strong> cannot be empty!`, "accountNo");
-                    return 0;
-                }
-                else {
-                    return 1
-                }
-            }
-            else {
-                bselect = "no";
-                bName = branchName = accountNo = "";
                 return 1;
             }
         }
@@ -685,7 +628,65 @@
                 return 1;
             }
         }
-        if (v6() && v5() && v4() && v3() && v2() && v1()) {
+        var mbank = document.querySelector("#mobileSelect2").checked;
+        var bbank = document.querySelector("#phyBank2").checked;
+        var mselect, minput;
+        var v7 = () => {
+            if (mbank) {
+                mselect = document.querySelector("#brb2").value;
+                minput = document.querySelector("#brbInput2").value;
+                if (minput == "" || minput == null) {
+                    createError(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "mobilebank2");
+                    return 0;
+                }
+                else if ((minput.length < 11 || minput.length > 11) || /\D/.test(minput) == true) {
+                    createError(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "bmobilebank2x");
+                    return 0;
+                }
+                else if (minput.match(/\d/g).length === 11 && !/\D/.test(minput) == true) {
+                    return 1;
+                }
+                else {
+                    createError(`<strong>${mselect}</strong>: Phone Number not valid!`, "mobilebank2");
+                    return 0;
+                }
+            }
+            else {
+                mselect = "";
+                minput = "";
+                return 1;
+            }
+        }
+        var bselect, bName, branchName, accountNo;
+        var v8 = () => {
+            if (bbank) {
+                bselect = "yes";
+                bName = document.querySelector("#bName2").value;
+                branchName = document.querySelector("#branchName2").value;
+                accountNo = document.querySelector("#accountNo2").value;
+                if (bName == "" || bName == null) {
+                    createError(`<strong>Bank Name</strong> cannot be empty!`, "bName2");
+                    return 0;
+                }
+                else if (branchName == "" || branchName == null) {
+                    createError(`<strong>Branch Name</strong> cannot be empty!`, "branchName2");
+                    return 0;
+                }
+                else if (accountNo == "" || accountNo == null) {
+                    createError(`<strong>Account No</strong> cannot be empty!`, "accountNo2");
+                    return 0;
+                }
+                else {
+                    return 1
+                }
+            }
+            else {
+                bselect = "no";
+                bName = branchName = accountNo = "";
+                return 1;
+            }
+        }
+        if (v7() && v8() && v6() && v5() && v4() && v3() && v2() && v1()) {
             clearError();
             body.style.pointerEvents = "none";
             loader.classList.remove("load-complete");
