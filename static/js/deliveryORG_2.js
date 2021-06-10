@@ -1035,10 +1035,10 @@ $('#dtBasicExampleNewg').on('click', '.mapInfos', function () {
 		});
 	}
 	//Dynamic korte hobe
-	dynamicDyliverManChange();
+	dynamicDyliverManChangeX();
 });
 
-function dynamicDyliverManChange() {
+function dynamicDyliverManChangeX() {
 	$.ajax
 		({
 			url: urlForAll + "deliveryMan/location/" + dataP[8],
@@ -1071,7 +1071,7 @@ function dynamicDyliverManChange() {
 			}
 		});
 }
-var addKorbo = 0;
+// var addKorbo = 0;
 async function doItMultipleTimes(mapInfoMarker) {
 	clearTimeout(interVal);
 	// addKorbo += 0.001;

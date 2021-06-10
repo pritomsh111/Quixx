@@ -137,7 +137,7 @@ function dynamicDyliverManChange() {
 				}
 				interVal = setTimeout(function () {
 					dynamicDyliverManChange();
-				}, 120000);
+				}, 6000);
 			}
 		});
 }
@@ -194,9 +194,11 @@ function tdColspan() {
 }
 
 var seeDateWise = () => {
-	setTimeout(() => {
-		clearTimeout(interVal);
-	}, 1000);
+	if (interVal) {
+		setTimeout(() => {
+			clearTimeout(interVal);
+		}, 1000);
+	}
 	document.getElementById('onec').disabled = false;
 	document.getElementById('twoc').disabled = false;
 	document.getElementById('twoc').style.fontSize = '13px';
@@ -345,9 +347,6 @@ var seeDateWise = () => {
 }
 
 var deliveryManOnMap = () => {
-	setTimeout(() => {
-		clearTimeout(interVal);
-	}, 1000);
 	document.getElementById('onec').disabled = false;
 	document.getElementById('twoc').disabled = true;
 	document.getElementById('twoc').style.fontSize = '13px';
@@ -361,9 +360,20 @@ var deliveryManOnMap = () => {
 	$('#dtBasicExample2').hide();
 	$('.b').hide();
 	$('#map').show();
+	if (interVal) {
+		setTimeout(() => {
+			clearTimeout(interVal);
+			dynamicDyliverManChange();
+		}, 1000);
+	}
 }
 
 var deliveryManWithProduct = () => {
+	if (interVal) {
+		setTimeout(() => {
+			clearTimeout(interVal);
+		}, 1000);
+	}
 	document.getElementById('twoc').disabled = false;
 	document.getElementById('onec').disabled = true;
 	document.getElementById('onec').style.fontSize = '13px';

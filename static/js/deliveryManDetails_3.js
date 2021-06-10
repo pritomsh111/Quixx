@@ -147,9 +147,9 @@ function initMap() {
 
 }
 
-var addKorbo = 0;
+// var addKorbo = 0;
 function dynamicDyliverManChange() {
-	addKorbo += 0.001;
+	// addKorbo += 0.001;
 	$.ajax
 		({
 			url: urlForAll + "deliveryMan/location/" + dataa.data[j].phone_number,
@@ -162,7 +162,7 @@ function dynamicDyliverManChange() {
 			},
 			success: function (data) {
 				console.log(data);
-				latlngx = new google.maps.LatLng(parseFloat(data.data.lat) + addKorbo, parseFloat(data.data.longi) + addKorbo);
+				latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
 				marker.setPosition(latlngx);
 				map.panTo(latlngx);
 				geocoder.geocode({ 'latLng': latlngx }, function (results, status) {
@@ -174,7 +174,7 @@ function dynamicDyliverManChange() {
 				});
 				setTimeout(() => {
 					dynamicDyliverManChange();
-				}, 180000);
+				}, 6000);
 			}
 		});
 }
