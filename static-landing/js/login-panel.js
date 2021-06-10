@@ -665,15 +665,15 @@
                 branchName = document.querySelector("#branchName2").value;
                 accountNo = document.querySelector("#accountNo2").value;
                 if (bName == "" || bName == null) {
-                    createError(`<strong>Bank Name</strong> cannot be empty!`, "bName2");
+                    createError(`<strong>Bank Name</strong> cannot be empty!`, "ax1");
                     return 0;
                 }
                 else if (branchName == "" || branchName == null) {
-                    createError(`<strong>Branch Name</strong> cannot be empty!`, "branchName2");
+                    createError(`<strong>Branch Name</strong> cannot be empty!`, "ax2");
                     return 0;
                 }
                 else if (accountNo == "" || accountNo == null) {
-                    createError(`<strong>Account No</strong> cannot be empty!`, "accountNo2");
+                    createError(`<strong>Account No</strong> cannot be empty!`, "ax3");
                     return 0;
                 }
                 else {
