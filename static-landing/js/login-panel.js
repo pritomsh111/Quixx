@@ -230,13 +230,18 @@
         quixxFormMain.classList.remove("height_login");
     });
 
-    //Banks and Mobile Banks
+    //Banks and Mobile Banks    
 
     document.querySelector("#mobileSelect2").addEventListener("click", function () {
         document.querySelector(".bankCheck").classList.toggle("mbx");
         quixxFormMain.classList.toggle("heightForMob");
-        if (document.querySelector("#phyBank2").checked) {
-            quixxFormMain.classList.toggle("heightForBank1");
+        if (document.querySelector("#phyBank2").checked && document.querySelector("#mobileSelect2").checked) {
+            quixxFormMain.classList.add("heightForBank1");
+            quixxFormMain.classList.remove("heightForBank");
+        }
+        else if (document.querySelector("#phyBank2").checked) {
+            quixxFormMain.classList.add("heightForBank");
+            quixxFormMain.classList.remove("heightForBank1");
         }
         else {
             quixxFormMain.classList.remove("heightForBank");
@@ -245,11 +250,15 @@
     });
     document.querySelector("#phyBank2").addEventListener("click", function () {
         document.querySelector(".bankCheck").classList.toggle("bbx");
-        if (document.querySelector("#mobileSelect2").checked) {
-            quixxFormMain.classList.toggle("heightForBank1");
+        if (document.querySelector("#mobileSelect2").checked && document.querySelector("#phyBank2").checked) {
+            quixxFormMain.classList.add("heightForBank1");
+        }
+        else if (document.querySelector("#phyBank2").checked) {
+            quixxFormMain.classList.add("heightForBank");
         }
         else {
-            quixxFormMain.classList.toggle("heightForBank");
+            quixxFormMain.classList.remove("heightForBank1");
+            quixxFormMain.classList.remove("heightForBank");
         }
     });
 
