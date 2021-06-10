@@ -738,4 +738,6 @@ p.error {
 
 .mobilebank2, .bankbank2 {
     visibility: hidden;
+    position: absolute;
+    opacity: 0;
 }
