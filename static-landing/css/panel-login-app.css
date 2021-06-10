@@ -730,14 +730,35 @@ p.error {
     row-gap: 1rem;
 }
 
-.bankCheck div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-}
-
 .mobilebank2, .bankbank2 {
     visibility: hidden;
     position: absolute;
+    transform: scaleY(0);
     opacity: 0;
+    transform-origin: top left;
+    transition: transform 250ms ease-in, visibility 250ms ease-in, opacity 0ms ease-in;
+}
+
+#mobileSelect2, #phyBank2 {
+    width: unset;
+    margin: 0 0.3rem;
+    display: inline;
+}
+
+#mobileSelect2:checked+.mobilebank2, #phyBank2:checked+.bankbank2 {
+    visibility: visible;
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.bankCheck.mbx>div:nth-child(2) {
+    padding-top: 7rem;
+}
+
+.heightForMob {
+    height: 940px;
+}
+
+.heightForBank {
+    height: 1040px;
 }

@@ -181,6 +181,7 @@
     }
 
     // Defaults
+
     let body = document.body;
     let modal = document.querySelector(".Modal__Quixx");
     let backdrop = document.querySelector(".backdrop");
@@ -227,6 +228,17 @@
         signInDiv.classList.remove("Show");
         quixxFormMain.classList.add("height_signup");
         quixxFormMain.classList.remove("height_login");
+    });
+
+    //Banks and Mobile Banks
+
+    document.querySelector("#mobileSelect2").addEventListener("click", function () {
+        document.querySelector(".bankCheck").classList.toggle("mbx");
+        quixxFormMain.classList.toggle("heightForMob");
+    });
+    document.querySelector("#phyBank2").addEventListener("click", function () {
+        document.querySelector(".bankCheck").classList.toggle("bbx");
+        quixxFormMain.classList.toggle("heightForBank");
     });
 
     if (localStorage.getItem("home_cta")) {
