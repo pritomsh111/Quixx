@@ -760,5 +760,13 @@ p.error {
 }
 
 .heightForBank {
-    height: 1040px;
+    height: 1140px;
+}
+
+.heightForBank1 {
+    height: 1280px;
+}
+
+.bankCheck.bbx {
+    padding-bottom: 17rem;
 }

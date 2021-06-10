@@ -235,10 +235,22 @@
     document.querySelector("#mobileSelect2").addEventListener("click", function () {
         document.querySelector(".bankCheck").classList.toggle("mbx");
         quixxFormMain.classList.toggle("heightForMob");
+        if (document.querySelector("#phyBank2").checked) {
+            quixxFormMain.classList.toggle("heightForBank1");
+        }
+        else {
+            quixxFormMain.classList.remove("heightForBank");
+            quixxFormMain.classList.remove("heightForBank1");
+        }
     });
     document.querySelector("#phyBank2").addEventListener("click", function () {
         document.querySelector(".bankCheck").classList.toggle("bbx");
-        quixxFormMain.classList.toggle("heightForBank");
+        if (document.querySelector("#mobileSelect2").checked) {
+            quixxFormMain.classList.toggle("heightForBank1");
+        }
+        else {
+            quixxFormMain.classList.toggle("heightForBank");
+        }
     });
 
     if (localStorage.getItem("home_cta")) {
