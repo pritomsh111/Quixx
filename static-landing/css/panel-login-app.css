@@ -187,7 +187,7 @@ ul {
 }
 
 .height_signup {
-    height: 840px;
+    height: 825px;
 }
 
 .Quixx__Form__Main button:hover {
@@ -736,6 +736,7 @@ p.error {
     position: absolute;
     transform: scaleY(0);
     opacity: 0;
+    width: 100%;
     transform-origin: top left;
     transition: transform 250ms ease-in, visibility 250ms ease-in, opacity 0ms ease-in;
 }
@@ -758,11 +759,11 @@ p.error {
 }
 
 .heightForMob {
-    height: 940px;
+    height: 925px;
 }
 
 .heightForBank {
-    height: 1140px;
+    height: 1100px;
 }
 
 .heightForBank1 {

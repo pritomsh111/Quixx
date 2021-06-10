@@ -218,6 +218,9 @@
         signUpDiv.classList.remove("Show");
         quixxFormMain.classList.add("height_login");
         quixxFormMain.classList.remove("height_signup");
+        quixxFormMain.classList.remove("heightForBank");
+        quixxFormMain.classList.remove("heightForBank1");
+        quixxFormMain.classList.remove("heightForMob");
     });
     signUpButtonTop.addEventListener("click", function () {
         this.classList.add("active-btn");
@@ -226,15 +229,26 @@
         signUpDiv.classList.remove("HideOut");
         signInDiv.classList.add("HideOut");
         signInDiv.classList.remove("Show");
-        quixxFormMain.classList.add("height_signup");
         quixxFormMain.classList.remove("height_login");
+        if (document.querySelector("#phyBank2").checked && document.querySelector("#mobileSelect2").checked) {
+            quixxFormMain.classList.add("heightForBank1");
+        }
+        else if (document.querySelector("#phyBank2").checked) {
+            quixxFormMain.classList.add("heightForBank");
+        }
+        else if (document.querySelector("#mobileSelect2").checked) {
+            quixxFormMain.classList.add("heightForMob");
+        }
+        else {
+            quixxFormMain.classList.add("height_signup");
+        }
+
     });
 
     //Banks and Mobile Banks    
 
     document.querySelector("#mobileSelect2").addEventListener("click", function () {
         document.querySelector(".bankCheck").classList.toggle("mbx");
-        quixxFormMain.classList.toggle("heightForMob");
         if (document.querySelector("#phyBank2").checked && document.querySelector("#mobileSelect2").checked) {
             quixxFormMain.classList.add("heightForBank1");
             quixxFormMain.classList.remove("heightForBank");
@@ -243,9 +257,12 @@
             quixxFormMain.classList.add("heightForBank");
             quixxFormMain.classList.remove("heightForBank1");
         }
+        else if (document.querySelector("#mobileSelect2").checked) {
+            quixxFormMain.classList.add("heightForMob");
+        }
         else {
-            quixxFormMain.classList.remove("heightForBank");
-            quixxFormMain.classList.remove("heightForBank1");
+            quixxFormMain.classList.remove("heightForMob");
+            quixxFormMain.classList.add("height_signup");
         }
     });
     document.querySelector("#phyBank2").addEventListener("click", function () {
@@ -256,7 +273,13 @@
         else if (document.querySelector("#phyBank2").checked) {
             quixxFormMain.classList.add("heightForBank");
         }
+        else if (document.querySelector("#mobileSelect2").checked) {
+            quixxFormMain.classList.add("heightForMob");
+            quixxFormMain.classList.remove("heightForBank1");
+            quixxFormMain.classList.remove("heightForBank");
+        }
         else {
+            quixxFormMain.classList.add("height_signup");
             quixxFormMain.classList.remove("heightForBank1");
             quixxFormMain.classList.remove("heightForBank");
         }
