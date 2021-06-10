@@ -171,7 +171,7 @@ ul {
 .Quixx__Form__Main {
     display: flex;
     flex-direction: column;
-    padding: 2rem 5rem 3rem;
+    padding: 2rem 4rem 3rem;
     height: 470px;
     border-radius: 10px;
     justify-self: center;
@@ -547,7 +547,7 @@ p.error {
 .Quixx__Footer {
     display: grid;
     grid-template-columns: 0.7fr 1fr;
-    padding: 5rem 5rem 4rem;
+    padding: 5rem 4rem 4rem;
     color: #fff;
     background-color: #363636;
 }
