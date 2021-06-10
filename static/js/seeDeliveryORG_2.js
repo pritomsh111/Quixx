@@ -137,7 +137,7 @@ function dynamicDyliverManChange() {
 				}
 				interVal = setTimeout(function () {
 					dynamicDyliverManChange();
-				}, 6000);
+				}, 120000);
 			}
 		});
 }

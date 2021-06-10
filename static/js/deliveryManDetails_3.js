@@ -174,7 +174,7 @@ function dynamicDyliverManChange() {
 				});
 				setTimeout(() => {
 					dynamicDyliverManChange();
-				}, 6000);
+				}, 120000);
 			}
 		});
 }
