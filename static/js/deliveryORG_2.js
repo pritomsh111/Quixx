@@ -624,7 +624,7 @@ var unassignedDeliveries = () => {
 		});
 
 	var table = $('#dtBasicExampled').DataTable({
-		"processing": true,
+		"processing": false,
 		'language': {
 			'loadingRecords': '&nbsp;',
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
@@ -894,6 +894,7 @@ var onGoingDeliveries = () => {
 	document.getElementById('sevenb').disabled = true;
 	document.getElementById('sevenb').style.fontSize = '13px';
 	var table = $('#dtBasicExampleNewg').DataTable({
+		"processing": false,
 		'language': {
 			'loadingRecords': '&nbsp;',
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
@@ -1100,7 +1101,7 @@ async function doItMultipleTimes(mapInfoMarker) {
 		});
 	interVal = setTimeout(function () {
 		doItMultipleTimes(mapInfoMarker);
-	}, 120000);
+	}, 6000);
 }
 
 $('#myModalInfoWatch').on('hidden.bs.modal', function () {
@@ -1575,9 +1576,9 @@ $('.btn-okReassign').on("click", function () {
 				success: function (data) {
 					var table = $("#dtBasicExampleNewg").DataTable();
 					let xyz = table.row($t.closest('tr')).data();
-					console.log(xyz);
-					console.log(document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`));
-					console.log(document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`).id);
+					// console.log(xyz);
+					// console.log(document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`));
+					// console.log(document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`).id);
 					document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`).id = `${data.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${data.assign_delivery_man_phone}`;
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_phone);
 					table.rows().every(function (index, element) {
@@ -2098,7 +2099,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 				"delivery_distance": "delivery_distance_na",
 				"delivery_city_criteria": "delivery_city_criteria_na"
 			});
-		console.log(datap);
+		// console.log(datap);
 		$.ajax
 			({
 				type: "POST",

@@ -316,7 +316,6 @@
             localStorage.setItem('wh-user', "main");
             $.ajax
                 ({
-                    async: true,
                     type: "POST",
                     url: api + "login",
                     headers:
