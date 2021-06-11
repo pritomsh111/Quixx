@@ -894,7 +894,6 @@ var onGoingDeliveries = () => {
 	document.getElementById('sevenb').disabled = true;
 	document.getElementById('sevenb').style.fontSize = '13px';
 	var table = $('#dtBasicExampleNewg').DataTable({
-		"processing": true,
 		'language': {
 			'loadingRecords': '&nbsp;',
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
@@ -1576,13 +1575,18 @@ $('.btn-okReassign').on("click", function () {
 				success: function (data) {
 					var table = $("#dtBasicExampleNewg").DataTable();
 					let xyz = table.row($t.closest('tr')).data();
-					console.log(xyz.document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`), document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`).id);
+					console.log(xyz);
+					console.log(document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`));
+					console.log(document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`).id);
 					document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`).id = `${data.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${data.assign_delivery_man_phone}`;
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_phone);
 					table.rows().every(function (index, element) {
 						var row = $(this.node());
 						if (row.find('td').eq(3)[0].innerHTML === `${xyz.assign_delivery_man_name}, ${xyz.assign_delivery_man_phone}`) {
 							row.find('td').eq(3)[0].innerHTML = `${data.assign_delivery_man_name}, ${data.assign_delivery_man_phone}`;
+							table
+								.row($t.parents('tr'))
+								.draw(false);
 						}
 					});
 
