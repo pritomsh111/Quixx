@@ -759,13 +759,14 @@
                         body.style.pointerEvents = "auto";
                         loader.style.display = "none";
                         modalCloseButton.disabled = false;
-                        modalErr.innerHTML = data.responseJSON.errorMessage + 's';
                         modalErr.style.color = "#e22b2b";
-                        if (data.responseJSON.errorMessage.includes("Contact")) {
+                        if (data.responseJSON.errorMessage.includes("Phone")) {
+                            modalErr.innerHTML = data.responseJSON.errorMessage + 's';
                             createError("Contact Number Exists!", "contact");
                         }
                         else if (data.responseJSON.errorMessage.includes("Email")) {
                             createError("Email Exists!", "email");
+                            modalErr.innerHTML = data.responseJSON.errorMessage;
                         }
                         else {
                             modalErr.innerHTML = data.responseJSON.errorMessage;
