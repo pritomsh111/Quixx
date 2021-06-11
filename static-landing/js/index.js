@@ -132,3 +132,7 @@ function play() {
 function showMap() {
     window.open("https://www.google.com/maps/place/23%C2%B043'20.9%22N+90%C2%B023'57.0%22E/@23.7225515,90.399207,19z/data=!4m5!3m4!1s0x0:0x0!8m2!3d23.7224703!4d90.3991549?hl=en", "_blank");
 }
+
+window.addEventListener("resize", function () {
+    window.location.reload();
+});

@@ -103,6 +103,10 @@ modalCloseButton.addEventListener("click", function () {
     backdrop.classList.remove("show");
     modal.classList.remove("show");
 });
+let inputAll = document.querySelectorAll(".Quixx__Form__Main input");
+Array.from(inputAll).map(item => item.addEventListener("keyup", function () {
+    clearError();
+}));
 modalNextButton.addEventListener("click", function () {
     phone = document.querySelector("#phone_number").value;
     ////console.log(phone);

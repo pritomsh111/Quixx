@@ -350,6 +350,10 @@
         }
     });
 
+    let inputAll = document.querySelectorAll(".Quixx__Form__Main input");
+    Array.from(inputAll).map(item => item.addEventListener("keyup", function () {
+        clearError();
+    }));
     document.querySelector("#signup").addEventListener("click", function () {
         let org = document.querySelector("#org").value;
         let email = document.querySelector("#email").value;
@@ -383,7 +387,7 @@
         }
         let v3 = () => {
             if (business === "") {
-                createError("Business Field cannot be empty!", "business");
+                createError("Business Category cannot be empty!", "business");
                 return 0;
             }
             else {

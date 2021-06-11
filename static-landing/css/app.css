@@ -60,7 +60,7 @@ ul {
 }
 
 .Button__Quixx:active {
-    transform: scale(0.90);
+    transform: scale(0.95);
 }
 
 .Button__Quixx:disabled {
@@ -2257,7 +2257,7 @@ p.error {
     overflow: hidden;
     position: fixed;
     padding: 1rem;
-    top: 20%;
+    top: 8%;
     display: grid;
     left: calc(50% - 300px);
     width: 600px;

@@ -60,7 +60,7 @@ ul {
 }
 
 .Button__Quixx:active {
-    transform: scale(0.90);
+    transform: scale(0.95);
 }
 
 .Button__Quixx:disabled {
