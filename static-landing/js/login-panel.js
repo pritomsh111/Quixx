@@ -772,7 +772,7 @@
                         }
                         else if (data.responseJSON.errorMessage.includes("Email")) {
                             createError("Email Exists!", "email");
-                            modalErr.innerHTML = data.responseJSON.errorMessage;
+                            modalErr.innerHTML = data.responseJSON.errorMessage + 's';
                         }
                         else {
                             modalErr.innerHTML = data.responseJSON.errorMessage;
