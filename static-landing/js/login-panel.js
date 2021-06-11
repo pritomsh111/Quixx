@@ -26,7 +26,7 @@
 
     // ClientWho
     // let cw = document.location.host.split(".");
-    let cw = 'nogorbondhu';
+    let cw = 'quixx';
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -106,7 +106,7 @@
         li_company.href = "https://www.linkedin.com";
 
         // Footer Right
-        addressL[1].innerHTML = "Gulshan, Banani";
+        addressL[1].innerHTML = "Gulshan 2";
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
@@ -131,7 +131,7 @@
         li_company.href = "https://www.linkedin.com";
 
         // Footer Right
-        addressL[1].innerHTML = "Dhanmondi 27, Banani";
+        addressL[1].innerHTML = "Dhanmondi 27, Lake Road";
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
@@ -144,7 +144,7 @@
         cn.innerHTML = "Quixx";
         document.title = "Quixx";
         lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
-        encKey = "$2a$10$8obYcQVHCzJF7NhytzZFHewUpXrtAfkytSfP3KChjkHC9pQeSyeXq";
+        encKey = "$2a$10$7FX8PAgirRaTqjXZmngkNeDboxmGfa5adoBXQgbgLz3tHzZbYAvNC";
         fc.href = "static-landing/img/clients/quixx.png";
 
         //Footer Left
@@ -156,12 +156,12 @@
         li_company.href = "https://www.linkedin.com";
 
         // Footer Right
-        addressL[1].innerHTML = "Dhanmondi 27, Banani";
+        addressL[1].innerHTML = "Dhanmondi 27, Lake Road";
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>017XXXXXXXX</a>";
 
         whichCompany.innerHTML = "Quixx";
     }
@@ -562,17 +562,18 @@
         let deliveries = document.querySelector("#deliveries").value;
         let business = document.querySelector("#business").value;
         let v1 = () => {
-            if (parseInt(deliveries) < 0) {
-                createError("Delivery Cost must be greater than or equal to 0!", "deliveries");
-                return 0;
-            }
-            else if (isNaN(deliveries) === true || deliveries === "" || !/\D/.test(deliveries) === false) {
-                createError("Delivery Cost must be a number!", "deliveries");
-                return 0;
-            }
-            else if (!/\D/.test(deliveries) === true) {
-                return 1;
-            }
+            // if (parseInt(deliveries) < 0) {
+            //     createError("Delivery Cost must be greater than or equal to 0!", "deliveries");
+            //     return 0;
+            // }
+            // else if (isNaN(deliveries) === true || deliveries === "" || !/\D/.test(deliveries) === false) {
+            //     createError("Delivery Cost must be a number!", "deliveries");
+            //     return 0;
+            // }
+            // else if (!/\D/.test(deliveries) === true) {
+            //     return 1;
+            // }
+            return 1;
         }
         let v2 = () => {
             if (business === "") {
@@ -702,17 +703,23 @@
             body.style.pointerEvents = "none";
             loader.classList.remove("load-complete");
             modalSignupFunc();
-            // let data = JSON.stringify
-            //     ({
-            //         "encrypted_user_id": encKey,
-            //         "org_name": org,
-            //         "person_name": owner,
-            //         "phone_number": contact,
-            //         "email": email,
-            //         "business_filed": business,
-            //         "per_delivery_cost": deliveries
-            //     });
-            // console.log(data);
+            let data = JSON.stringify
+                ({
+                    "encrypted_user_id": "$2a$10$7FX8PAgirRaTqjXZmngkNeDboxmGfa5adoBXQgbgLz3tHzZbYAvNC",
+                    "org_name": org,
+                    "person_name": owner,
+                    "phone_number": contact,
+                    "email": email,
+                    "business_filed": business,
+                    "per_delivery_cost": deliveries,
+                    "payment_method_mobile_number": minput,
+                    "payment_method_mobile": mselect,
+                    "payment_method_bank": bselect,
+                    "payment_method_bank_name": bName,
+                    "payment_method_bank_branch": branchName,
+                    "payment_method_bank_account": accountNo
+                })
+            console.log(data);
             $.ajax
                 ({
                     type: "PUT",
@@ -726,12 +733,12 @@
                             "email": email,
                             "business_filed": business,
                             "per_delivery_cost": deliveries,
-                            "payment_method_mobile_number": "01971322990",
-                            "payment_method_mobile": "yes",
-                            "payment_method_bank": "yes",
-                            "payment_method_bank_name": "a",
-                            "payment_method_bank_branch": "a",
-                            "payment_method_bank_account": "a"
+                            "payment_method_mobile_number": minput,
+                            "payment_method_mobile": mselect,
+                            "payment_method_bank": bselect,
+                            "payment_method_bank_name": bName,
+                            "payment_method_bank_branch": branchName,
+                            "payment_method_bank_account": accountNo
                         }),
                     headers:
                     {

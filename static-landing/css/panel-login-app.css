@@ -183,11 +183,11 @@ ul {
 }
 
 .height_login {
-    height: 470px;
+    height: 450px;
 }
 
 .height_signup {
-    height: 825px;
+    height: 785px;
 }
 
 .Quixx__Form__Main button:hover {
@@ -250,7 +250,7 @@ ul {
     font-family: inherit;
     padding: 0.7rem;
     display: block;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     width: 100%;
     border: 1px solid #1d2b42;
     border-radius: 5px;
@@ -361,7 +361,7 @@ p.error {
     overflow: hidden;
     position: fixed;
     padding: 1rem;
-    top: 20%;
+    top: 8%;
     display: grid;
     left: calc(50% - 300px);
     width: 600px;
@@ -733,6 +733,12 @@ select {
     border-radius: 5px
 }
 
+p.error, .bankCheck p {
+    color: #e22b2b;
+    margin-top: 0.2rem;
+    font-size: 0.9rem;
+}
+
 .mobilebank2, .bankbank2 {
     display: grid;
     row-gap: 1rem;
@@ -763,19 +769,19 @@ select {
 }
 
 .heightForMob {
-    height: 955px;
+    height: 935px;
 }
 
 .heightForBank {
-    height: 1132px;
+    height: 1030px;
 }
 
 .heightForBank1 {
-    height: 1232px;
+    height: 1220px;
 }
 
 .bankCheck.bbx {
-    padding-bottom: 19rem;
+    padding-bottom: 17rem;
 }
 
 .bankbank2 [class*="a"] [id*="b"], .mobilebank2 [class*="x"] [id*="b"] {
