@@ -471,8 +471,10 @@
     function clearError() {
         document.querySelectorAll("p.error").forEach(item => item.innerHTML = "");
     }
+    function clearError2() {
+        document.querySelectorAll(".bankCheck p").forEach(item => item.innerHTML = "");
+    }
     function createError(errorMessage, fragmentID) {
-        console.log(errorMessage, fragmentID);
         clearError();
         if (fragmentID === "password") {
             document.querySelector(`.${fragmentID}+p`).innerHTML = errorMessage;
@@ -480,6 +482,12 @@
             return;
         }
         document.querySelector(`.${fragmentID}>p`).innerHTML = errorMessage;
+        document.querySelector(`#${fragmentID}`).focus();
+    }
+    function createError2(errorMessage, fragmentID) {
+        console.log(errorMessage, fragmentID);
+        clearError2();
+        document.querySelector(`#${fragmentID}+p`).innerHTML = errorMessage;
         document.querySelector(`#${fragmentID}`).focus();
     }
 
@@ -636,18 +644,19 @@
                 mselect = document.querySelector("#brb2").value;
                 minput = document.querySelector("#brbInput2").value;
                 if (minput == "" || minput == null) {
-                    createError(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "mobilebank2");
+                    createError2(`<strong>${mselect}</strong>: Phone Number cannot be empty!`, "brbInput2");
                     return 0;
                 }
                 else if ((minput.length < 11 || minput.length > 11) || /\D/.test(minput) == true) {
-                    createError(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "bmobilebank2x");
+                    createError2(`<strong>${mselect}</strong>: Phone Number must be of 11 digits!`, "brbInput2");
                     return 0;
                 }
                 else if (minput.match(/\d/g).length === 11 && !/\D/.test(minput) == true) {
+                    clearError2();
                     return 1;
                 }
                 else {
-                    createError(`<strong>${mselect}</strong>: Phone Number not valid!`, "mobilebank2");
+                    createError2(`<strong>${mselect}</strong>: Phone Number not valid!`, "brbInput2");
                     return 0;
                 }
             }
@@ -665,18 +674,19 @@
                 branchName = document.querySelector("#branchName2").value;
                 accountNo = document.querySelector("#accountNo2").value;
                 if (bName == "" || bName == null) {
-                    createError(`<strong>Bank Name</strong> cannot be empty!`, "ax1");
+                    createError2(`<strong>Bank Name</strong> cannot be empty!`, "bName2");
                     return 0;
                 }
                 else if (branchName == "" || branchName == null) {
-                    createError(`<strong>Branch Name</strong> cannot be empty!`, "ax2");
+                    createError2(`<strong>Branch Name</strong> cannot be empty!`, "branchName2");
                     return 0;
                 }
                 else if (accountNo == "" || accountNo == null) {
-                    createError(`<strong>Account No</strong> cannot be empty!`, "ax3");
+                    createError2(`<strong>Account No</strong> cannot be empty!`, "accountNo2");
                     return 0;
                 }
                 else {
+                    clearError2();
                     return 1
                 }
             }
@@ -688,6 +698,7 @@
         }
         if (v7() && v8() && v6() && v5() && v4() && v3() && v2() && v1()) {
             clearError();
+            clearError2();
             body.style.pointerEvents = "none";
             loader.classList.remove("load-complete");
             modalSignupFunc();
