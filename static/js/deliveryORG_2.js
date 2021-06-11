@@ -1579,8 +1579,9 @@ $('.btn-okReassign').on("click", function () {
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_phone);
 					table.rows().every(function (index, element) {
 						var row = $(this.node());
-						console.log(row.find('td').eq(3)[0].innerHTML);
 						console.log(table.row($t.closest('tr')).data());
+						let xyz = table.row($t.closest('tr')).data();
+						console.log(document.querySelector(`#${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`));
 						if (row.find('td').eq(3)[0].innerHTML === `${datapp.assign_delivery_man_name}, ${datapp.assign_delivery_man_phone}`) {
 							row.find('td').eq(3)[0].innerHTML = `${data.assign_delivery_man_name}, ${data.assign_delivery_man_phone}`;
 						}
