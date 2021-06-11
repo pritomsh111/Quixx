@@ -63,56 +63,46 @@
 <div class="card naV hideKoro" id="hideKoro">
     <div class="card-body table-responsive">
         <div class="row">
-            <div class="col-md-4">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="one"
-                    style="width: 100%; font-size: 13px"
-                    onclick="registeredOrg()"
-                >
-                    Registered Organizations
-                </button>
-            </div>
-            <div class="col-md-4">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="two"
-                    style="width: 100%; font-size: 13px"
-                    onclick="approvedOrg()"
-                >
-                    Approved Organizations
-                </button>
-            </div>
-            <div class="col-md-4">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="three"
-                    style="width: 100%; font-size: 13px"
-                    onclick="unApprovedOrg()"
-                >
-                    Unapproved Organizations
-                </button>
-            </div>
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="four"
-                    style="width: 100%; font-size: 13px"
-                    onclick="activated()"
-                >
-                    Activated Organizations
-                </button>
-            </div>
-            <div class="col-md-6">
-                <button
-                    class="btn-outline btn-round btn-default btn btn-info"
-                    id="five"
-                    style="width: 100%; font-size: 13px"
-                    onclick="disabledd()"
-                >
-                    Disabled Organizations
-                </button>
-            </div>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="one"
+                style="font-size: 13px"
+                onclick="registeredOrg()"
+            >
+                Registered Organizations
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="two"
+                style="font-size: 13px"
+                onclick="approvedOrg()"
+            >
+                Approved Organizations
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="three"
+                style="font-size: 13px"
+                onclick="unApprovedOrg()"
+            >
+                Unapproved Organizations
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="four"
+                style="font-size: 13px"
+                onclick="activated()"
+            >
+                Activated Organizations
+            </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="five"
+                style="font-size: 13px"
+                onclick="disabledd()"
+            >
+                Disabled Organizations
+            </button>
         </div>
     </div>
     <div class="card a">
@@ -1630,7 +1620,7 @@
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       success: function (data) {
-        //console.log(data);
+        console.log(data);
         var table = $("#dtBasicExample").DataTable();
 
         table
