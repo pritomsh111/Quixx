@@ -182,6 +182,12 @@
 
     // Defaults
 
+    let inputAll = document.querySelectorAll(".Quixx__Form__Main input");
+    Array.from(inputAll).map(item => item.addEventListener("keyup", function () {
+        clearError();
+        clearError2();
+    }));
+
     let body = document.body;
     let modal = document.querySelector(".Modal__Quixx");
     let backdrop = document.querySelector(".backdrop");
