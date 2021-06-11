@@ -1575,14 +1575,13 @@ $('.btn-okReassign').on("click", function () {
 				},
 				success: function (data) {
 					var table = $("#dtBasicExampleNewg").DataTable();
-					let datapp = table.row($t.closest('tr')).data();
+					let xyz = table.row($t.closest('tr')).data();
+					console.log(xyz.document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`), document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`).id);
+					document.getElementById(`${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`).id = `${data.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${data.assign_delivery_man_phone}`;
 					table.cell({ row: table.row($t.closest('tr')).index(), column: 3 }).data(data.assign_delivery_man_phone);
 					table.rows().every(function (index, element) {
 						var row = $(this.node());
-						console.log(table.row($t.closest('tr')).data());
-						let xyz = table.row($t.closest('tr')).data();
-						console.log(document.querySelector(`#${xyz.assign_delivery_man_name}$$${xyz.delivery_Id}$$${xyz.sender_lat}$$${xyz.sender_longi}$$${xyz.sender_address}$$${xyz.receiver_lat}$$${xyz.receiver_longi}$$${xyz.receiver_address}$$${xyz.assign_delivery_man_phone}`));
-						if (row.find('td').eq(3)[0].innerHTML === `${datapp.assign_delivery_man_name}, ${datapp.assign_delivery_man_phone}`) {
+						if (row.find('td').eq(3)[0].innerHTML === `${xyz.assign_delivery_man_name}, ${xyz.assign_delivery_man_phone}`) {
 							row.find('td').eq(3)[0].innerHTML = `${data.assign_delivery_man_name}, ${data.assign_delivery_man_phone}`;
 						}
 					});
