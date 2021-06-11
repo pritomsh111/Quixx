@@ -8,7 +8,6 @@ body {
     font-family: 'Didact Gothic';
     height: 100vh;
     display: grid;
-    place-items: center;
     background: url("../static-landing/img/bg3-mf.png") left/cover, url("../static-landing/img/mf-X2.png") left/contain;
 }
 
@@ -212,7 +211,11 @@ p.error {
 
 .Modal__Quixx .modal-header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
+    padding: 0rem 0 1rem;
+}
+
+.Modal__Quixx .modal-header h2 {
+    font-size: 1.2rem;
 }
 
 .Modal__Quixx .modal-body {
@@ -232,11 +235,15 @@ p.error {
 .Modal__Quixx .modal-footer {
     padding: 1rem 0 0 1rem;
     margin-left: auto;
-    margin-top: 10rem;
+    margin-top: 8rem;
+}
+
+.Signup__Loader h2, .modal-error>h2 {
+    font-size: 1.2rem;
 }
 
 .modal-footer button {
-    padding: 0.7rem 0.9rem;
+    padding: 0.6rem 1rem;
     color: #fff;
     background: #000;
 }
@@ -265,7 +272,7 @@ p.error {
 
 .Modal__Quixx .modal-body .forgot-pass .FP h2 {
     font-weight: 100;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .Modal__Quixx .modal-body .forgot-pass .FP h2:last-of-type {
@@ -364,5 +371,25 @@ p.error {
         height: 3.5rem;
         width: 1.75rem;
         opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    *:not(.Company>h2), *::before, *::after {
+        font-size: 0.85rem !important;
+    }
+    .Modal__Quixx .modal-footer {
+        margin-top: 7rem;
+    }
+    .modal-footer button {
+        padding: 0.6rem 1rem;
+    }
+    .Modal__Quixx {
+        padding: 1rem;
+        left: calc(50% - 150px);
+        width: 300px;
+    }
+    .Quixx__Form__Main .Container input {
+        height: 2.5rem;
     }
 }

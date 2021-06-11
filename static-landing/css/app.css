@@ -2342,7 +2342,7 @@ p.error {
 
 .Modal__Quixx .modal-body .forgot-pass .FP h2 {
     font-weight: 100;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .Modal__Quixx .modal-body .forgot-pass .FP h2:last-of-type {
@@ -2823,7 +2823,7 @@ table svg.professional {
     }
     .Modal__Quixx {
         padding: 1rem;
-        left: calc(50% - 160px);
-        width: 320px;
+        left: calc(50% - 150px);
+        width: 300px;
     }
 }

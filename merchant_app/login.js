@@ -4,11 +4,9 @@ if (document.location.host.includes("portal")) {
 
     // ClientWho
     let cw = document.location.host.split(".");
-
     // Logo
     let lg = document.querySelector(".Company>div");
     lg.style.backgroundImage = "url(../static-landing/img/clients/" + cw[1] + ".png)";
-
     // Change width/height of Logo
     if (cw[1] === "parcelboat") {
         lg.style.height = "105px";
@@ -28,7 +26,7 @@ if (document.location.host.includes("portal")) {
         if (window.innerWidth < 961) {
             document.querySelector(".Company").style.cssText = 'position: relative;top: -1.6rem;';
         }
-        document.querySelector(".Company>h1").style.display = "none";
+        document.querySelector(".Company>h2").style.display = "none";
     }
 
     // Favicon
@@ -36,7 +34,7 @@ if (document.location.host.includes("portal")) {
     fc.href = "../static-landing/img/clients/" + cw[1] + ".png";
 
     // CompanyName
-    let cn = document.querySelector(".Company>h1");
+    let cn = document.querySelector(".Company>h2");
 
     let vl = cw[1] === "easyparcel" ? "Easy Parcel" : cw[1] === "quixx" ? "Quixx" : cw[1] === "quixxprojects" ? "Quixx Projects" : cw[1] === "parcelboat" ? "Parcel Boat" : cw[1] === "nogorbondhu" ? "Nogor Bondhu" : "";
 
@@ -85,7 +83,7 @@ forgotPassword.addEventListener("click", function () {
     loaderDiv.style.display = "none";
     modalError.style.display = "none";
     forgotPass.style.display = "block";
-    modalFooter.style.marginTop = "10rem";
+    modalFooter.style.marginTop = "7rem";
     modal_header.innerHTML = "<h2>Forgot Password?</h2>";
     backdrop.classList.add("show");
     modal.classList.add("show");

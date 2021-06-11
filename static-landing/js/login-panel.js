@@ -25,8 +25,9 @@
     });
 
     // ClientWho
-    // let cw = document.location.host.split(".");
-    let cw = 'quixx';
+    let cw = document.location.host.split(".");
+    cw = cw[1];
+    cw = 'quixx';
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -76,6 +77,7 @@
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
         addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
+        // Footer Copyright Name
         whichCompany.innerHTML = "Parcel Boat";
     }
     function nogorbondhu() {
@@ -113,6 +115,7 @@
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
         addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
+        // Footer Copyright Name
         whichCompany.innerHTML = "Nogor Bondhu";
     }
     function quixxprojects() {
@@ -138,6 +141,7 @@
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
         addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
+        // Footer Copyright Name
         whichCompany.innerHTML = "Quixx Projects";
     }
     function quixx() {
@@ -163,6 +167,7 @@
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
         addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>017XXXXXXXX</a>";
 
+        // Footer Copyright Name
         whichCompany.innerHTML = "Quixx";
     }
 
@@ -181,7 +186,6 @@
     }
 
     // Defaults
-
     let inputAll = document.querySelectorAll(".Quixx__Form__Main input");
     Array.from(inputAll).map(item => item.addEventListener("keyup", function () {
         clearError();
