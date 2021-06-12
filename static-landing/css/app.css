@@ -2812,14 +2812,23 @@ table svg.professional {
 }
 
 @media (max-width: 480px) {
-    *, *::before, *::after {
-        font-size: 0.85rem !important;
+    p, li {
+        font-size: 0.9rem;
+    }
+    h2 {
+        font-size: 1.1rem;
+    }
+    h1 {
+        font-size: 1.6rem;
     }
     .Modal__Quixx .modal-footer {
         margin-top: 7rem;
     }
     .modal-footer button {
         padding: 0.6rem 1rem;
+    }
+    .Quixx__Footer {
+        padding: 4rem 3rem 2rem;
     }
     .Modal__Quixx {
         padding: 1rem;
