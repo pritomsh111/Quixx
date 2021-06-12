@@ -2,7 +2,7 @@ $(function () {
 	$("#settingsMer").hide();
 });
 
-var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
+var marker, myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
 var markers = [];
 var markers2 = [];
 
@@ -193,13 +193,14 @@ function initAutocomplete() {
 
 				// Create markers.
 				for (var i = 0; i < features.length; i++) {
-					var marker = new google.maps.Marker({
+					marker = new google.maps.Marker({
 						position: features[i].position,
 						icon: {
 							url: "static/img/p5.png"
 						},
 						map: map
 					});
+					markers.push(marker);
 				};
 
 				// Try HTML5 geolocation.

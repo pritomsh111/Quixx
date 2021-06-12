@@ -198,7 +198,7 @@ function initAutocomplete() {
 						},
 						map: map
 					});
-					markers.push(myMarker);
+					markers.push(marker);
 				};
 
 				// Try HTML5 geolocation.

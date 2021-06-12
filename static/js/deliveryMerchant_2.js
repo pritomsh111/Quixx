@@ -80,7 +80,7 @@ var unassignedDeliveries = () => {
 				}
 			}
 		},
-		"processing": true,
+		"processing": false,
 		'language': {
 			'loadingRecords': '&nbsp;',
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
