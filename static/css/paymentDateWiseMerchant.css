@@ -163,10 +163,6 @@ table.dataTable.responsive tbody tr.odd.parent, table.dataTable.display tbody tr
   max-width: 100% !important;
 }
 
-.card.d, .card.e {
-  margin-top: -.0rem;
-}
-
 .row.navBtn {
   position: relative;
   overflow-x: unset;

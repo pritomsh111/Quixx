@@ -168,12 +168,13 @@ function initAutocomplete() {
 				document.getElementById('lat').value = data.data.sender_lat;
 				document.getElementById('longi').value = data.data.sender_longi;
 				var map = new google.maps.Map(document.getElementById('map'), {
-					center: { lat: 23.8103, lng: 90.4125 },
-					zoom: 13,
+					zoom: 15,
 					mapTypeId: 'roadmap',
 					mapTypeControl: false,
 					fullscreenControl: false
 				});
+				map.setCenter(new google.maps.LatLng(data.data.sender_lat, data.data.sender_longi));
+
 				var iconBase =
 					'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
 
@@ -233,9 +234,6 @@ function initAutocomplete() {
 								window.alert('Geocoder failed due to: ' + status);
 							}
 						});
-
-
-						map.setCenter(pos);
 						//setMarkers(map);
 					}, function () {
 						//handleLocationError(true, infoWindow, map.getCenter());

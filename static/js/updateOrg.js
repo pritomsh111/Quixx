@@ -2,7 +2,7 @@ $(function () {
 	$("#settings").hide();
 });
 
-var myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
+var marker, myMarker, myMarker2, infowindow, infowindow2, contentString, contentString2;
 var markers = [];
 var markers2 = [];
 
@@ -167,12 +167,12 @@ function initAutocomplete() {
 				document.getElementById('longi').value = data.data.sender_longi;
 				document.getElementById('operations_manager_number').value = data.data.operations_manager_number ? data.data.operations_manager_number : "";
 				var map = new google.maps.Map(document.getElementById('map'), {
-					center: { lat: 23.8103, lng: 90.4125 },
-					zoom: 13,
+					zoom: 15,
 					mapTypeId: 'roadmap',
 					mapTypeControl: false,
 					fullscreenControl: false
 				});
+				map.setCenter(new google.maps.LatLng(data.data.sender_lat, data.data.sender_longi));
 				var iconBase =
 					'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
 
@@ -191,13 +191,14 @@ function initAutocomplete() {
 
 				// Create markers.
 				for (var i = 0; i < features.length; i++) {
-					var marker = new google.maps.Marker({
+					marker = new google.maps.Marker({
 						position: features[i].position,
 						icon: {
 							url: "static/img/p5.png"
 						},
 						map: map
 					});
+					markers.push(myMarker);
 				};
 
 				// Try HTML5 geolocation.
@@ -232,9 +233,6 @@ function initAutocomplete() {
 								window.alert('Geocoder failed due to: ' + status);
 							}
 						});
-
-
-						map.setCenter(pos);
 						//setMarkers(map);
 					}, function () {
 						//handleLocationError(true, infoWindow, map.getCenter());
@@ -365,6 +363,7 @@ function initAutocomplete() {
 
 function removeMarkers() {
 	for (var i = 0; i < markers.length; i++) {
+		console.log(markers[i]);
 		markers[i].setMap(null);
 	}
 }
