@@ -121,6 +121,14 @@
             >
                 Disabled Organizations
             </button>
+            <button
+                class="btn-outline btn-round btn-default btn btn-info"
+                id="fiveek"
+                style="font-size: 13px"
+                onclick="ek()"
+            >
+                Private Keys
+            </button>
         </div>
     </div>
     <div class="card a x">
@@ -149,7 +157,6 @@
                         <th class="th-sm">Update Message Count</th>
                     </tr>
                 </thead>
-                <tfoot></tfoot>
             </table>
         </div>
     </div>
@@ -175,7 +182,6 @@
                         <th class="th-sm">Approve?</th>
                     </tr>
                 </thead>
-                <tfoot></tfoot>
             </table>
         </div>
     </div>
@@ -202,7 +208,6 @@
                         <th class="th-sm">Disable?</th>
                     </tr>
                 </thead>
-                <tfoot></tfoot>
             </table>
         </div>
     </div>
@@ -229,7 +234,25 @@
                         <th class="th-sm">Activate?</th>
                     </tr>
                 </thead>
-                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="card EK x">
+        <div class="card-body table-responsive EK">
+            <table
+                id="dtBasicExampleEK"
+                class="stripe hover"
+                style="color: #0066b3"
+                cellspacing="0"
+                width="100%"
+            >
+                <thead>
+                    <tr>
+                        <th class="th-sm">Approved ID</th>
+                        <th class="th-sm">Organization Name</th>
+                        <th style="width: 60%;" class="th-sm">Private Key</th>
+                    </tr>
+                </thead>
             </table>
         </div>
     </div>
@@ -572,6 +595,7 @@
       $("#dtBasicExampleDisable").hide();
       $(".c").hide();
       $(".d").hide();
+      $(".EK").hide();
       var table = $("#dtBasicExample").DataTable({
         processing: true,
         destroy: true,
@@ -579,7 +603,7 @@
       });
       table.clear().draw();
       $.ajax({
-        async: true,
+        
         type: "GET",
         url: urlForAll + "initUser/all",
         headers: {
@@ -705,13 +729,18 @@
     document.getElementById("four").innerHTML = "Activated Organization";
     document.getElementById("four").disabled = false;
 
+    document.getElementById("fiveek").style.fontSize = "13px";
+    document.getElementById("fiveek").innerHTML = "Private Keys";
+    document.getElementById("fiveek").disabled = false;
+
     $("#dtBasicExampleAp").hide();
     $(".b").hide();
     $("#dtBasicExampleActivate").hide();
     $("#dtBasicExampleDisable").hide();
     $(".c").hide();
     $(".d").hide();
-
+    $(".EK").hide();
+    
     var table = $("#dtBasicExample").DataTable({
       processing: true,
       destroy: true,
@@ -719,7 +748,7 @@
     });
     table.clear().draw();
     $.ajax({
-      async: true,
+      
       type: "GET",
       url: urlForAll + "initUser/all",
       headers: {
@@ -799,6 +828,96 @@
     $("#dtBasicExample").show();
     $(".a").show();
   };
+  var ek = () => {
+    document.getElementById("one").innerHTML = "Registered Organization";
+    document.getElementById("three").innerHTML = "Unapproved Organization";
+
+    document.getElementById("one").disabled = false;
+    document.getElementById("two").disabled = false;
+    document.getElementById("three").disabled = false;
+    document.getElementById("one").style.fontSize = "13px";
+    document.getElementById("two").style.fontSize = "13px";
+    document.getElementById("three").style.fontSize = "13px";
+
+    document.getElementById("five").style.fontSize = "13px";
+    document.getElementById("five").innerHTML = "Disabled Organization";
+    document.getElementById("five").disabled = false;
+
+    document.getElementById("four").style.fontSize = "13px";
+    document.getElementById("four").innerHTML = "Activated Organization";
+    document.getElementById("four").disabled = false;
+    document.getElementById("fiveek").style.fontSize = "14.5px";
+    document.getElementById("fiveek").innerHTML = "Private Keys";
+    document.getElementById("fiveek").disabled = true;
+
+
+    $("#dtBasicExampleAp").hide();
+    $(".b").hide();
+    $("#dtBasicExampleActivate").hide();
+    $("#dtBasicExampleDisable").hide();
+    $(".c").hide();
+    $(".d").hide();
+    $(".EK").hide();
+    var table = $("#dtBasicExampleEK").DataTable({
+      processing: true,
+      destroy: true,
+      oSearch: { bSmart: false, bRegex: true },
+    });
+    table.clear().draw();
+    $.ajax({
+      
+      type: "GET",
+      url: urlForAll + "orgHead/all/encrypted",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      success: function (data) {
+        document.getElementById("fiveek").innerHTML =
+          "Private Keys: " + data.data.length;
+        var trHTML = "";
+        $.each(data.data, function (i, item) {
+          var table_rows =
+            "<tr><td>" +
+            data.data[i].user_id +
+            "</td><td>" +
+            data.data[i].org_name +
+            "</td><td>" +
+            data.data[i].encrypted_id +
+            "</td></tr>";
+          table.rows.add($(table_rows)).draw();
+        });
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert("Please wait, we are working!");
+      },
+    });
+    $('.dataTables_filter input[type="search"]')
+      .attr("placeholder", "Search anything!")
+      .css({ width: "220px", display: "inline-block", background: "white" });
+
+    $('.dataTables_filter input[type="search"]')
+      .attr("class", "btn btn-round")
+      .css({
+        width: "220px",
+        display: "inline-block",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
+
+    $(".dataTables_length select")
+      .attr("class", "btn btn-round")
+      .css({
+        width: "80px",
+        "background-color": "white",
+        color: "#000000",
+        background: "#FFFFFA",
+      });
+
+    $("#dtBasicExampleEK").show();
+    $(".EK").show();
+  };
   var approvedOrg = () => {
     document.getElementById("one").innerHTML = "Registered Organization";
     document.getElementById("three").innerHTML = "Unapproved Organization";
@@ -817,6 +936,10 @@
     document.getElementById("four").style.fontSize = "13px";
     document.getElementById("four").innerHTML = "Activated Organization";
     document.getElementById("four").disabled = false;
+    document.getElementById("fiveek").style.fontSize = "13px";
+    document.getElementById("fiveek").innerHTML = "Private Keys";
+    document.getElementById("fiveek").disabled = false;
+
 
     $("#dtBasicExampleAp").hide();
     $(".b").hide();
@@ -824,6 +947,7 @@
     $("#dtBasicExampleDisable").hide();
     $(".c").hide();
     $(".d").hide();
+    $(".EK").hide();
     var table = $("#dtBasicExample").DataTable({
       processing: true,
       destroy: true,
@@ -831,7 +955,7 @@
     });
     table.clear().draw();
     $.ajax({
-      async: true,
+      
       type: "GET",
       url: urlForAll + "initUser/approved",
       headers: {
@@ -921,6 +1045,7 @@
     $(".a").show();
   };
 
+
   var unApprovedOrg = () => {
     document.getElementById("one").innerHTML = "Registered Organization";
     document.getElementById("two").innerHTML = "Approved Organization";
@@ -939,6 +1064,11 @@
     document.getElementById("four").style.fontSize = "13px";
     document.getElementById("four").innerHTML = "Activated Organization";
     document.getElementById("four").disabled = false;
+    
+    document.getElementById("fiveek").style.fontSize = "13px";
+    document.getElementById("fiveek").innerHTML = "Private Keys";
+    document.getElementById("fiveek").disabled = false;
+
     $("#dtBasicExample").hide();
     $(".a").hide();
     $("#dtBasicExampleAp").hide();
@@ -948,6 +1078,7 @@
     $("#dtBasicExampleDisable").hide();
     $(".c").hide();
     $(".d").hide();
+    $(".EK").hide();
     var table = $("#dtBasicExampleAp").DataTable({
       processing: true,
       destroy: true,
@@ -955,7 +1086,7 @@
     });
     table.clear().draw();
     $.ajax({
-      async: true,
+      
       type: "GET",
       url: urlForAll + "initUser/unapproved",
       headers: {
@@ -1050,10 +1181,15 @@
     document.getElementById("four").style.fontSize = "14.5px";
     document.getElementById("four").innerHTML = "Activated Organization";
     document.getElementById("four").disabled = true;
+    document.getElementById("fiveek").style.fontSize = "13px";
+    document.getElementById("fiveek").innerHTML = "Private Keys";
+    document.getElementById("fiveek").disabled = false;
+
     $("#dtBasicExample").hide();
     $(".a").hide();
     $("#dtBasicExampleAp").hide();
     $(".b").hide();
+    $(".EK").hide();
 
     $("#dtBasicExampleActivate").hide();
     $("#dtBasicExampleDisable").hide();
@@ -1066,7 +1202,7 @@
     });
     table.clear().draw();
     $.ajax({
-      async: true,
+      
       type: "GET",
       url: urlForAll + "approved/all/enable/org",
       headers: {
@@ -1162,10 +1298,15 @@
     document.getElementById("four").style.fontSize = "13px";
     document.getElementById("four").innerHTML = "Activated Organization";
     document.getElementById("four").disabled = false;
+    document.getElementById("fiveek").style.fontSize = "13px";
+    document.getElementById("fiveek").innerHTML = "Private Keys";
+    document.getElementById("fiveek").disabled = false;
+
     $("#dtBasicExample").hide();
     $(".a").hide();
     $("#dtBasicExampleAp").hide();
     $(".b").hide();
+    $(".EK").hide();
 
     $("#dtBasicExampleActivate").hide();
     $("#dtBasicExampleDisable").hide();
@@ -1178,7 +1319,7 @@
     });
     table.clear().draw();
     $.ajax({
-      async: true,
+      
       type: "GET",
       url: urlForAll + "approved/all/disable/org",
       headers: {
@@ -1274,7 +1415,7 @@
     document.getElementById("modalCancel").disabled = true;
     document.getElementById("modalApprove").disabled = true;
     $.ajax({
-      async: true,
+      
       type: "GET",
 
       url: urlForAll + "approved/org/" + id,
@@ -1376,7 +1517,7 @@
       $("#sure3DC").html("Please wait!");
       $("#sure3DC").show();
       $.ajax({
-        async: true,
+        
         type: "PUT",
         url:
           urlForAll +
@@ -1471,7 +1612,7 @@
     document.getElementById("modalCancel1Activate").disabled = true;
     document.getElementById("modalApprove1Activate").disabled = true;
     $.ajax({
-      async: true,
+      
       type: "PUT",
       url: urlForAll + "approved/disable/org/" + orgx_id,
       headers: {
@@ -1526,7 +1667,7 @@
     document.getElementById("modalCancel1Disable").disabled = true;
     document.getElementById("modalApprove1Disable").disabled = true;
     $.ajax({
-      async: true,
+      
       type: "PUT",
       url: urlForAll + "approved/enable/org/" + orgx_id,
       headers: {
@@ -1629,7 +1770,7 @@
     $("#sure3DCX").html("Please wait!");
     $("#sure3DCX").show();
     $.ajax({
-      async: true,
+      
       type: "PUT",
       url: urlForAll + "package/" + org_ID + "/" + packageUpdate,
       headers: {
