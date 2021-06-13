@@ -103,7 +103,7 @@ input.rounded:focus {
     z-index: 9999999999;
     top: 0;
     left: 0;
-    background: #fff;
+    background: #eeeeee;
 }
 
 .loader-position {

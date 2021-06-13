@@ -52,6 +52,7 @@
             }
         </style>
         <script> 
+            var interVal;
             localStorage.setItem("wh-user", "/merchant_app/");
             var clear = () => {
                 localStorage.clear();
@@ -85,12 +86,18 @@
                 document.querySelector(".main-panel").classList.toggle("sidebar-smol");
                 document.querySelector("#namee").classList.toggle("sidebar-smol");
                 if(localStorage.getItem("user")==="MERCHANT" || localStorage.getItem("user")==="SUPER_ADMIN"){
-                    if(document.querySelector(".logo>a>div").style.height==="75px"){
-                        document.querySelector(".logo>a>div").style.height = "115px";
-                    }
-                    else{
+                    if(document.querySelector(".logo>a>div").style.height === "115px"){
                         document.querySelector(".logo>a>div").style.height = "75px";
                     }
+                    else if(document.querySelector(".logo>a>div").style.height==="75px"){
+                        document.querySelector(".logo>a>div").style.height = "115px";
+                    }
+                }
+                if (document.querySelector(".sidebar").classList.contains("sidebar-smol")) {
+                    localStorage.setItem("x-https", "1");
+                }
+                else {
+                    localStorage.setItem("x-https", "2");
                 }
             }
         </script>
@@ -98,7 +105,7 @@
     <body id="body">
         <div class="merchant-app">
             <div class="loader-position">
-                <img src="static/img/2ndloader.gif" alt="Preloader">
+                <img src="static/img/panel-loader.gif" alt="Preloader">
             </div>
         </div>
         <div class="wrapper">
@@ -111,6 +118,8 @@
                 <div class="logo" style="text-align: center">
                     <a>
                         <div onclick="dashio()"></div>
+                        <label for="filetag" style="display: none;">Change</label>
+                        <input type="file" id="filetag" style="display: none;">
                     </a>
                     <span id="namee"></span>
                 </div>
