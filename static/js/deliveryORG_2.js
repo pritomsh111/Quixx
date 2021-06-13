@@ -1243,6 +1243,12 @@ var canceledDeliveries = () => {
 				"width": "2%"
 			},
 			{ "targets": 0, "data": "delivery_Id" },
+			{
+				"targets": 7, "data": "assign_delivery_man_phone", render: function (data, type, row) {
+
+					return `${row.assign_delivery_man_name}, ${row.assign_delivery_man_phone}`;
+				}
+			},
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
@@ -1332,6 +1338,12 @@ var returnedDeliveries = () => {
 				"width": "2%"
 			},
 			{ "targets": 0, "data": "delivery_Id" },
+			{
+				"targets": 7, "data": "assign_delivery_man_phone", render: function (data, type, row) {
+
+					return `${row.assign_delivery_man_name}, ${row.assign_delivery_man_phone}`;
+				}
+			},
 			{ "targets": 15, "data": "product_name" },
 			{ "targets": 16, "data": "product_qty" },
 			{ "targets": 17, "data": "product_cost" },
