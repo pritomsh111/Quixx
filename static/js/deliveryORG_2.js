@@ -1303,7 +1303,7 @@ var returnedDeliveries = () => {
 	document.getElementById('tenb').disabled = true;
 	document.getElementById('tenb').style.fontSize = '13px';
 	var table = $('#dtBasicExampleNewj').DataTable({
-		"processing": true,
+		"processing": false,
 		'language': {
 			'loadingRecords': '&nbsp;',
 			'processing': "<div class='loader5'></div><h4 style='color:#0066b3'>Loading...</h4>"
@@ -2603,16 +2603,16 @@ function doIt(i, lengx) {
 		var senderGuyExcel = parseInt(excelData[i].Sender_ID);
 		// console.log(mapMerchant.get(senderGuyExcel)?.sender_name, mapMerchant.get(senderGuyExcel), senderGuyExcel);
 
-		// if (mapMerchant.size === 0 || !mapMerchant.get(senderGuyExcel)) {
-		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Sender Not Available!`;
-		// 	$('#myModalWrongDeliveryCreate').modal('show');
-		// 	document.getElementById('CLOSEIT').disabled = false;
-		// 	hello();
-		// 	setTimeout(function () {
-		// 		$('#myModalCreateD1').modal('hide');
-		// 	}, 2500);
-		// 	return 0;
-		// }
+		if (mapMerchant.size === 0 || !mapMerchant.get(senderGuyExcel)) {
+			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Sender Not Available!`;
+			$('#myModalWrongDeliveryCreate').modal('show');
+			document.getElementById('CLOSEIT').disabled = false;
+			hello();
+			setTimeout(function () {
+				$('#myModalCreateD1').modal('hide');
+			}, 2500);
+			return 0;
+		}
 
 		var s_name = mapMerchant.get(senderGuyExcel).sender_name;
 		var s_number = mapMerchant.get(senderGuyExcel).sender_phone_number;
@@ -2959,36 +2959,157 @@ function doIt(i, lengx) {
 		}
 		var datap;
 
-		datap = JSON.stringify
-			({
-				"delivery_status": "",
-				"delivery_type": delivery_type,
-				"sender_name": s_name,
-				"sender_phone_number": s_number,
-				"sender_address": s_address,
-				"sender_lat": pickup_lat,
-				"sender_longi": pickup_longi,
-				"receiver_name": r_name,
-				"receiver_phone_number": r_number,
-				"delivery_city": rec_city,
-				"delivery_area": area,
-				"receiver_address": rec_address,
-				"product_name": product_name,
-				"product_qty": product_qty,
-				"product_cost": product_cost,
-				"payment_method": payment_method,
-				"delivery_charge": delivery_charge,
-				"delivery_note": delivery_note,
-				"pickup_time": "",
-				"receiver_lat": "",
-				"receiver_longi": "",
-				"delivery_day_type": "delivery_day_type_na",
-				"delivery_product_type": "delivery_product_type_na",
-				"delivery_weight": "delivery_weight_na",
-				"delivery_distance": "delivery_distance_na",
-				"delivery_city_criteria": "delivery_city_criteria_na"
-			});
-		console.log(datap);
+		if (v1() == 1 && v2() == 1 && v3() == 1 && v5() == 1 && v6() == 1 && v9() == 1 && v10() == 1 && v11() == 1 && v8() == 1 && v4() == 1 && v22() == 1 && v12() == 1 && v23X() == 1 && vXPayment() == 1) {
+			if (delivery_note == undefined) {
+				delivery_note = "";
+			}
+			// if (pickup_lat == undefined) {
+			// 	pickup_lat = "";
+			// 	pickup_longi = "";
+			// }
+			// if (delivery_lat == undefined) {
+			// 	delivery_lat = "";
+			// 	delivery_longi = "";
+			// }
+			// if (pickup_time == undefined) {
+			// 	pickup_time = "";
+			// }
+			datap = JSON.stringify
+				({
+					"delivery_status": "",
+					"delivery_type": delivery_type,
+					"sender_name": s_name,
+					"sender_phone_number": s_number,
+					"sender_address": s_address,
+					"sender_lat": pickup_lat,
+					"sender_longi": pickup_longi,
+					"receiver_name": r_name,
+					"receiver_phone_number": r_number,
+					"delivery_city": rec_city,
+					"delivery_area": area,
+					"receiver_address": rec_address,
+					"product_name": product_name,
+					"product_qty": product_qty,
+					"product_cost": product_cost,
+					"payment_method": payment_method,
+					"delivery_charge": delivery_charge,
+					"delivery_note": delivery_note,
+					"pickup_time": "",
+					"receiver_lat": "",
+					"receiver_longi": "",
+					"delivery_day_type": "delivery_day_type_na",
+					"delivery_product_type": "delivery_product_type_na",
+					"delivery_weight": "delivery_weight_na",
+					"delivery_distance": "delivery_distance_na",
+					"delivery_city_criteria": "delivery_city_criteria_na"
+				});
+			// //console.log(datap);
+			$.ajax
+				({
+
+					type: "POST",
+					url: urlForAll + "delivery/create/" + senderGuyExcel + '/' + autoAssDExcel,
+					data: datap,
+					headers:
+					{
+						'Accept': 'application/json',
+						'Content-Type': 'application/json',
+						"Authorization": 'Bearer ' + localStorage.getItem('token')
+					},
+					success: function (data) {
+						if (i === 0) {
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong style="vertical-align: text-top;">${i + 1}</strong> Delivery Created!<br>`;
+						}
+						else {
+							document.getElementById("sureD2ZZ").innerHTML = `<br><strong style="vertical-align: text-top;">${i + 1}</strong> Deliveries Created!<br>`;
+						}
+						keysx[i] = Object.keys(data.data);
+						extrax1[i] = data.data;
+						deliveryList[i] = data.data.delivery_Id;
+						var stringx = "";
+						if (keysx[i][2] == 'auto_assign_done') {
+							if (extrax1[i].auto_assign_done) {
+								assignedDeliveryMan[i] = data.data.assign_delivery_man_name;
+								assignedDeliveryManPhone[i] = data.data.assign_delivery_man_phone;
+								stringx += `Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
+								stringx += `Assigned Delivery Man Name: <strong>${assignedDeliveryMan[i]}</strong><br>`;
+								stringx += `Assigned Delivery Man Phone: <strong>${assignedDeliveryManPhone[i]}</strong><hr><br>`;
+							}
+							else {
+								stringx += `<hr>Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
+								stringx += `No Delivery Man Found For Given Area!<br>`;
+							}
+						}
+						else {
+							stringx += `Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
+						}
+						divElement.innerHTML += stringx;
+
+						if (data.status == 'OK') {
+							if (i == lengx - 1) {
+								setTimeout(function () {
+									document.getElementById("sureD2ZZ").innerHTML = "";
+									if (i === 0) {
+										$("#sureD2").html(`<strong style="vertical-align: text-top;">${i + 1}</strong> Delivery Created!`);
+									}
+									else {
+										$("#sureD2").html(`<strong style="vertical-align: text-top;">${i + 1}</strong> Deliveries Created!`);
+									}
+
+									$(".circle-loader").addClass("load-complete");
+
+									$('#tickD2').show();
+
+								}, 1000);
+								setTimeout(function () {
+
+									document.getElementById('createDeliverywithExcel').disabled = false;
+									//$("#myModalCreateD1").modal('hide');
+								}, 3000);
+								document.getElementById('CLOSEIT').disabled = false;
+								document.getElementById('body').style.pointerEvents = "auto";
+								hello();
+							}
+							else {
+								doIt(++i, lengx);
+							}
+						}
+					},
+					error: function (data) {
+
+						document.getElementById('body').style.pointerEvents = "auto";
+						document.getElementById('createDeliverywithExcel').disabled = false;
+						document.getElementById('CLOSEIT').disabled = false;
+						////console.log(data.responseJSON.errorMessage);
+						////console.log(data);
+						var ob = Object.keys(data);
+						if (ob[17] == "responseJSON") {
+
+							if (data.responseJSON.errorMessage?.includes('You can not create delivery now.')) {
+
+								divElement.innerHTML += `You can not create delivery now. Please contact with Quixx!<br>`;
+							}
+							else {
+								divElement.innerHTML += `${data.responseJSON.errorMessage}<br>`;
+							}
+							$(".circle-loader").hide();
+							$("#sureD2").html("");
+							$("#sureD2ZZ").html("");
+							//$('#wrongSMS').html(data.responseJSON.errorMessage);
+							//$('#myModalWrongSMS').modal();
+							return;
+
+						}
+						else {
+							$(".circle-loader").hide();
+							$("#sureD2").html("");
+							$("#sureD2ZZ").html("");
+							divElement.innerHTML += `Something went wrong!<br>Please Wait A Bit?<br>`;
+							return;
+						}
+					}
+				})
+		}
 	}, 100);
 }
 document.getElementById("createDeliverywithExcel").addEventListener("click", function (event) {
