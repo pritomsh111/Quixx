@@ -68,6 +68,12 @@ function initAutocomplete() {
 
 	var input = document.getElementById('pac-input');
 
+	input.addEventListener("keydown", function (e) {
+		if (e.key === "Enter") {
+			e.preventDefault();
+		}
+	});
+
 	var searchBox = new google.maps.places.SearchBox(input);
 
 	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);

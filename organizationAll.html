@@ -588,8 +588,15 @@
       document.getElementById("four").style.fontSize = "13px";
       document.getElementById("four").innerHTML = "Activated Organization";
       document.getElementById("four").disabled = false;
+      
+    document.getElementById("fiveek").style.fontSize = "13px";
+    document.getElementById("fiveek").innerHTML = "Private Keys";
+    document.getElementById("fiveek").disabled = false;
+
       $("#dtBasicExampleAp").hide();
       $(".b").hide();
+      $(".a").hide();
+      $("#dtBasicExample").hide();
 
       $("#dtBasicExampleActivate").hide();
       $("#dtBasicExampleDisable").hide();
@@ -701,6 +708,8 @@
     $("#dtBasicExampleDisable").hide();
     $(".c").hide();
     $(".d").hide();
+    $(".EK").hide();
+
     $.fn.dataTable.ext.classes.sPageButton = "btn btn-outline btn-round"; // Change Pagination Button Class
     three3();
     window.addEventListener("storage", function (event) {
@@ -735,6 +744,8 @@
 
     $("#dtBasicExampleAp").hide();
     $(".b").hide();
+    $(".a").hide();
+    $("#dtBasicExample").hide();
     $("#dtBasicExampleActivate").hide();
     $("#dtBasicExampleDisable").hide();
     $(".c").hide();
@@ -839,6 +850,7 @@
     document.getElementById("two").style.fontSize = "13px";
     document.getElementById("three").style.fontSize = "13px";
 
+    document.getElementById("two").innerHTML = "Approved Organization";
     document.getElementById("five").style.fontSize = "13px";
     document.getElementById("five").innerHTML = "Disabled Organization";
     document.getElementById("five").disabled = false;
@@ -850,9 +862,10 @@
     document.getElementById("fiveek").innerHTML = "Private Keys";
     document.getElementById("fiveek").disabled = true;
 
-
-    $("#dtBasicExampleAp").hide();
     $(".b").hide();
+    $(".a").hide();
+    $("#dtBasicExample").hide();
+    $("#dtBasicExampleAp").hide();
     $("#dtBasicExampleActivate").hide();
     $("#dtBasicExampleDisable").hide();
     $(".c").hide();
@@ -943,6 +956,9 @@
 
     $("#dtBasicExampleAp").hide();
     $(".b").hide();
+    $(".a").hide();
+    $("#dtBasicExample").hide();
+
     $("#dtBasicExampleActivate").hide();
     $("#dtBasicExampleDisable").hide();
     $(".c").hide();
