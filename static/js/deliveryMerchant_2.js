@@ -118,7 +118,7 @@ var unassignedDeliveries = () => {
 			{ "targets": 10, "data": "receiver_name" },
 			{ "targets": 11, "data": "receiver_phone_number" },
 			{
-				"targets": 24, "data": "delivery_city", render: function (data, type, row) {
+				"targets": 24, "data": null, render: function (data, type, row) {
 					let a = row.delivery_city;
 					return a ? row.delivery_city : "";
 				}
@@ -131,7 +131,7 @@ var unassignedDeliveries = () => {
 			{ "targets": 18, "data": "delivery_charge" },
 			{ "targets": 19, "data": "payment_method" },
 			{
-				"targets": 25, "data": "delivery_product_type", render: function (data, type, row) {
+				"targets": 25, "data": null, render: function (data, type, row) {
 					let a = row.delivery_product_type;
 					if (a) {
 						a = a?.includes("delivery_product_type_na") ? "NOT_SELECTED" : a;
@@ -141,7 +141,7 @@ var unassignedDeliveries = () => {
 				}
 			},
 			{
-				"targets": 27, "data": "delivery_weight", render: function (data, type, row) {
+				"targets": 27, "data": null, render: function (data, type, row) {
 					let a = row.delivery_weight;
 					if (a) {
 						a = a?.includes("delivery_weight_na") ? "NOT_SELECTED" : a + "KG";
@@ -151,7 +151,7 @@ var unassignedDeliveries = () => {
 				}
 			},
 			{
-				"targets": 26, "data": "delivery_day_type", render: function (data, type, row) {
+				"targets": 26, "data": null, render: function (data, type, row) {
 					let a = row.delivery_day_type;
 					if (a) {
 						a = a?.includes("delivery_day_type_na") ? "NOT_SELECTED" : a;
@@ -161,7 +161,7 @@ var unassignedDeliveries = () => {
 				}
 			},
 			{
-				"targets": 28, "data": "delivery_distance", render: function (data, type, row) {
+				"targets": 28, "data": null, render: function (data, type, row) {
 					let a = row.delivery_distance;
 					if (a) {
 						a = a?.includes("delivery_distance_na") ? "NOT_SELECTED" : a + "KM";
@@ -171,7 +171,7 @@ var unassignedDeliveries = () => {
 				}
 			},
 			{
-				"targets": 29, "data": "delivery_city_criteria", render: function (data, type, row) {
+				"targets": 29, "data": null, render: function (data, type, row) {
 					let a = row.delivery_city_criteria;
 					if (a) {
 						a = a?.includes("delivery_city_criteria_na") ? "NOT_SELECTED" : a;
