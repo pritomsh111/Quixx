@@ -27,7 +27,7 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
-    cw = 'quixx';
+    // cw = 'quixx';
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -153,7 +153,7 @@
 
         //Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
-        aboutCompany.innerHTML = "We believe in excellence, NOT, NOT";
+        aboutCompany.innerHTML = "*Something about your company*";
 
         fb_company.href = "https://www.facebook.com";
         i_company.href = "https://www.instagram.com";
