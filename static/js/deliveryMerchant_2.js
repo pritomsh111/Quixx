@@ -1592,9 +1592,15 @@ async function cityChange(cityy, areaa) {
 					$(option).html(data.data[i]);
 					$("#delivery_cityU").append(option);
 				}
+				if (cityy==="undefined") {
+					return;
+				}
 				cityy ? document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1 : null;
 			}
 		});
+		if (cityy==="undefined") {
+			return;
+		}
 	cityy ? await thanaUpazilla(url, areaa) : null;
 }
 

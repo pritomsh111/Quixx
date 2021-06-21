@@ -3490,6 +3490,9 @@ async function cityChange(cityy, areaa) {
 				cityy ? document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1 : null;
 			}
 		});
+	if (cityy==="undefined") {
+		return;
+	}
 	cityy ? await thanaUpazilla(url, areaa) : null;
 }
 
