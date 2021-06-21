@@ -130,14 +130,14 @@ function dynamicDyliverManChange() {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				console.log(data);
+				//console.log(data);
 				for (let i = 0; i < data.data.length; i++) {
 					latlngx = new google.maps.LatLng(parseFloat(data.data[i].lat), parseFloat(data.data[i].longi));
 					deliveryManMapMarker.get(data.data[i].name).setPosition(latlngx);
 				}
 				interVal = setTimeout(function () {
 					dynamicDyliverManChange();
-				}, 6000);
+				}, 120000);
 			}
 		});
 }

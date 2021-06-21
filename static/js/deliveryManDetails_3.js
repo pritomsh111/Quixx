@@ -161,7 +161,7 @@ function dynamicDyliverManChange() {
 				"Authorization": 'Bearer ' + localStorage.getItem('token')
 			},
 			success: function (data) {
-				console.log(data);
+				//console.log(data);
 				latlngx = new google.maps.LatLng(parseFloat(data.data.lat), parseFloat(data.data.longi));
 				marker.setPosition(latlngx);
 				map.panTo(latlngx);
@@ -174,7 +174,7 @@ function dynamicDyliverManChange() {
 				});
 				setTimeout(() => {
 					dynamicDyliverManChange();
-				}, 6000);
+				}, 120000);
 			}
 		});
 }
