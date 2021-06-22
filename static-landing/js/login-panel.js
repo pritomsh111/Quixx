@@ -27,7 +27,6 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
-    // cw = 'quixx';
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -51,18 +50,20 @@
     let whichCompany = document.querySelector(".whichCompany");
 
     let encKey;
+    let deliveries;
     function parcelboat() {
         cn.innerHTML = "Parcel Boat";
+        cn.style.display = "none";
         document.title = "Parcel Boat";
         lg.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
         encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
         fc.href = "static-landing/img/clients/parcelboat.png";
         // Change width/height of Logo
-        lg.style.height = "105px";
+        lg.style.height = "115px";
 
         //Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
-        footLogo.style.height = "105px";
+        footLogo.style.height = "115px";
         aboutCompany.innerHTML = "Fastest Delivery Company";
 
         fb_company.href = "https://www.facebook.com";
@@ -79,12 +80,15 @@
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Parcel Boat";
+
+        //Per Delivery Cost
+        deliveries = "0";
     }
     function nogorbondhu() {
         cn.innerHTML = "Nogor Bondhu";
         document.title = "Nogor Bondhu";
         lg.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
-        encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
+        encKey = "$2a$10$d4t/FMRC53KruxaEkBrite9xzKXFeF3g7MbOatsdATM73udza6P5G";
         fc.href = "static-landing/img/clients/nogorbondhu.png";
 
         lg.style.width = "160px";
@@ -117,12 +121,16 @@
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Nogor Bondhu";
+
+        //Per Delivery Cost
+        deliveries = "0";
     }
     function quixxprojects() {
         cn.innerHTML = "Quixx Projects";
+        cn.style.display = "none";
         document.title = "Quixx Projects";
         lg.style.backgroundImage = "url(static-landing/img/clients/quixxprojects.png)";
-        encKey = "$2a$10$DICUs7iM8wIAF0C7RSV/8./qZK4xW3MLw3L7Im2Gf.afsIzsMWviy";
+        encKey = "$2a$10$kfCg3y4byGpITW80BFEs6.qUXnM/6a4BpqkLuX2xJSrVHUXiHw2a2";
         fc.href = "static-landing/img/clients/quixxprojects.png";
         // Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/quixxprojects.png)";
@@ -143,12 +151,16 @@
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Quixx Projects";
+
+        //Per Delivery Cost
+        deliveries = "0";
     }
     function quixx() {
         cn.innerHTML = "Quixx";
+        cn.style.display = "none";
         document.title = "Quixx";
         lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
-        encKey = "$2a$10$7FX8PAgirRaTqjXZmngkNeDboxmGfa5adoBXQgbgLz3tHzZbYAvNC";
+        encKey = "$2a$10$E1RXLYHC7rXnF1QNS3r7HenwCGvtu/almg4qp6Q.hjs8w3eRRf6eS";
         fc.href = "static-landing/img/clients/quixx.png";
 
         //Footer Left
@@ -169,6 +181,9 @@
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Quixx";
+
+        //Per Delivery Cost
+        deliveries = "80";
     }
 
     // Selection!!
@@ -569,7 +584,6 @@
         let email = document.querySelector("#email").value;
         let contact = document.querySelector("#contact").value;
         let owner = document.querySelector("#owner").value;
-        let deliveries = document.querySelector("#deliveries").value;
         let business = document.querySelector("#business").value;
         let v1 = () => {
             // if (parseInt(deliveries) < 0) {
@@ -715,7 +729,7 @@
             modalSignupFunc();
             let data = JSON.stringify
                 ({
-                    "encrypted_user_id": "$2a$10$7FX8PAgirRaTqjXZmngkNeDboxmGfa5adoBXQgbgLz3tHzZbYAvNC",
+                    "encrypted_user_id": encKey,
                     "org_name": org,
                     "person_name": owner,
                     "phone_number": contact,
@@ -736,7 +750,7 @@
                     url: api + "dhaka/bd/merchant/create",
                     data: JSON.stringify
                         ({
-                            "encrypted_user_id": "$2a$10$7FX8PAgirRaTqjXZmngkNeDboxmGfa5adoBXQgbgLz3tHzZbYAvNC",
+                            "encrypted_user_id": "$2a$10$6t.z/kxHOF7pMgdRgtdRCumEFszhQkW6nNjV7coh9Ojc208fwr6xi",
                             "org_name": org,
                             "person_name": owner,
                             "phone_number": contact,
