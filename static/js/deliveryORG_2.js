@@ -3045,7 +3045,7 @@ function doIt(i, lengx) {
 					"delivery_distance": "delivery_distance_na",
 					"delivery_city_criteria": "delivery_city_criteria_na"
 				});
-			console.log(datap);
+			//console.log(datap);
 			$.ajax
 				({
 
@@ -3073,9 +3073,9 @@ function doIt(i, lengx) {
 							if (extrax1[i].auto_assign_done) {
 								assignedDeliveryMan[i] = data.data.assign_delivery_man_name;
 								assignedDeliveryManPhone[i] = data.data.assign_delivery_man_phone;
-								stringx += `<div style='margin:0.3rem 0;border:1px solid #eee;'>Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
+								stringx += `<hr>Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
 								stringx += `Assigned Delivery Man Name: <strong>${assignedDeliveryMan[i]}</strong><br>`;
-								stringx += `Assigned Delivery Man Phone: <strong>${assignedDeliveryManPhone[i]}</strong><hr><br></div>`;
+								stringx += `Assigned Delivery Man Phone: <strong>${assignedDeliveryManPhone[i]}</strong><br>`;
 							}
 							else {
 								stringx += `<hr>Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
@@ -3083,7 +3083,7 @@ function doIt(i, lengx) {
 							}
 						}
 						else {
-							stringx += `Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
+							stringx += `<hr>Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
 						}
 						divElement.innerHTML += stringx;
 

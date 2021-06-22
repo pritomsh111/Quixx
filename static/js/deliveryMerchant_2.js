@@ -1458,7 +1458,7 @@ function doIt(i, lengx) {
 						deliveryList[i] = data.data.delivery_Id;
 
 						var stringx = "";
-						stringx += `Delivery ID: <strong>${deliveryList[i]}</strong> Created<br>`;
+						stringx += `<hr>Delivery ID: <strong>${deliveryList[i]}</strong> Created<br>`;
 						divElement.innerHTML += stringx;
 
 						if (data.status == 'OK') {
