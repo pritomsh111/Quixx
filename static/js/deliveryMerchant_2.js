@@ -1008,11 +1008,11 @@ function doIt(i, lengx) {
 		var rec_address = excelData[i].Receiver_Address;
 
 		var product_name = excelData[i].Product_Name;
-		var product_qty = excelData[i].Product_Quantity_Pieces.toUpperCase();
+		var product_qty = excelData[i].Product_Quantity_Pieces;
+		product_qty ? product_qty.toUpperCase() : product_qty;
 		var product_cost = excelData[i].Product_Cost;
 
 		var payment_method = excelData[i].Payment_Method;
-
 		//Optional
 		var delivery_note = excelData[i].Optional_Delivery_Note;
 		// var pickup_time = excelData[i].Pickup_Time;

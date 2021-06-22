@@ -2629,11 +2629,13 @@ function doIt(i, lengx) {
 
 		var product_name = excelData[i].Product_Name;
 		var product_qty = excelData[i].Product_Quantity_Pieces.toUpperCase();
+		product_qty ? product_qty.toUpperCase() : product_qty;
 		var product_cost = excelData[i].Product_Cost;
 		var payment_method = excelData[i].Payment_Method;
 		var delivery_charge = excelData[i].Delivery_Charge;
 
 		var autoAssDExcel = excelData[i].Auto_Assign_Delivery.toLowerCase();
+		autoAssDExcel ? autoAssDExcel.toUpperCase() : autoAssDExcel;
 		var delivery_note = excelData[i].Optional_Delivery_Note;
 		var delivery_lat = "";
 		var delivery_longi = "";
@@ -3003,7 +3005,7 @@ function doIt(i, lengx) {
 					"delivery_distance": "delivery_distance_na",
 					"delivery_city_criteria": "delivery_city_criteria_na"
 				});
-			// //console.log(datap);
+			console.log(datap);
 			$.ajax
 				({
 
