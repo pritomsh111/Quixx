@@ -1,3 +1,4 @@
+var aForExcel = [];
 $(async function () {
 	var dhakaIndex, url;
 	document.getElementById("fileName").innerHTML = "";
@@ -47,6 +48,7 @@ $(async function () {
 						dhakaIndex = i;
 						dhaka = 1;
 					}
+					aForExcel.push(data.data[i]);
 					var option = new Option(data.data[i], data.data[i]);
 					$(option).html(data.data[i]);
 					$("#managers").append(option);

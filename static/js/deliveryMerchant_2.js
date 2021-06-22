@@ -1036,7 +1036,7 @@ function doIt(i, lengx) {
 			aForExcel.includes(product_cost) ? count++ : null;
 			if (count>2) {
 				setTimeout(function () {
-					document.getElementById("sureD2ZZ").innerHTML = "";
+					$("#sureD2").html("");
 					
 					$(".circle-loader").addClass("load-complete");
 	
@@ -1050,11 +1050,9 @@ function doIt(i, lengx) {
 				document.getElementById('CLOSEIT').disabled = false;
 				document.getElementById('body').style.pointerEvents = "auto";
 				hello();
-				console.log("bujhlamna");
 				return;
 			}
 		}
-		console.log("Hello");
 		var v1 = () => {
 			// if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
 			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;

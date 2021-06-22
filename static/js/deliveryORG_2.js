@@ -2604,14 +2604,30 @@ function doIt(i, lengx) {
 		// console.log(mapMerchant.get(senderGuyExcel)?.sender_name, mapMerchant.get(senderGuyExcel), senderGuyExcel);
 
 		if (mapMerchant.size === 0 || !mapMerchant.get(senderGuyExcel)) {
-			document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Sender Not Available!`;
-			$('#myModalWrongDeliveryCreate').modal('show');
 			document.getElementById('CLOSEIT').disabled = false;
 			hello();
-			setTimeout(function () {
-				$('#myModalCreateD1').modal('hide');
-			}, 2500);
-			return 0;
+			let count = 0;
+			aForExcel.includes(excelData[i].Receiver_Name) ? count++ : null;
+			aForExcel.includes(excelData[i].Receiver_Phone_Number) ? count++ : null;
+			aForExcel.includes(excelData[i].Product_Quantity_Pieces) ? count++ : null;
+			if (count > 2) {
+				setTimeout(function () {
+					$("#sureD2").html("");
+					
+					$(".circle-loader").addClass("load-complete");
+	
+					$('#tickD2').show();
+				}, 1000);
+				return;
+			}
+			else {
+				document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Sender Not Available!`;
+				$('#myModalWrongDeliveryCreate').modal('show');
+				setTimeout(function () {
+					$('#myModalCreateD1').modal('hide');
+				}, 2500);
+				return;
+			}
 		}
 
 		var s_name = mapMerchant.get(senderGuyExcel).sender_name;
@@ -2641,6 +2657,30 @@ function doIt(i, lengx) {
 		var delivery_longi = "";
 		var pickup_time = "";
 		var delivery_type = "CUSTOMER";
+		if (true) {
+			let count = 0;
+			aForExcel.includes(r_name) ? count++ : null;
+			aForExcel.includes(r_number) ? count++ : null;
+			aForExcel.includes(product_cost) ? count++ : null;
+			if (count>2) {
+				setTimeout(function () {
+					$("#sureD2").html("");
+					
+					$(".circle-loader").addClass("load-complete");
+	
+					$('#tickD2').show();
+				}, 1000);
+				setTimeout(function () {
+	
+					document.getElementById('createDeliverywithExcel').disabled = false;
+					//$("#myModalCreateD1").modal('hide');
+				}, 3000);
+				document.getElementById('CLOSEIT').disabled = false;
+				document.getElementById('body').style.pointerEvents = "auto";
+				hello();
+				return;
+			}
+		}
 		var v1 = () => {
 			// if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
 			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Delivery No: ${i + 1} - Please give a Pickup Time!`;
@@ -3033,9 +3073,9 @@ function doIt(i, lengx) {
 							if (extrax1[i].auto_assign_done) {
 								assignedDeliveryMan[i] = data.data.assign_delivery_man_name;
 								assignedDeliveryManPhone[i] = data.data.assign_delivery_man_phone;
-								stringx += `Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
+								stringx += `<div style='margin:0.3rem 0;border:1px solid #eee;'>Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
 								stringx += `Assigned Delivery Man Name: <strong>${assignedDeliveryMan[i]}</strong><br>`;
-								stringx += `Assigned Delivery Man Phone: <strong>${assignedDeliveryManPhone[i]}</strong><hr><br>`;
+								stringx += `Assigned Delivery Man Phone: <strong>${assignedDeliveryManPhone[i]}</strong><hr><br></div>`;
 							}
 							else {
 								stringx += `<hr>Delivery ID: <strong>${deliveryList[i]}</strong><br>`;
