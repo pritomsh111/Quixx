@@ -331,6 +331,12 @@ document.getElementById('product_qtyU').addEventListener("keyup", function (e) {
 
 document.getElementById("createDelivery").addEventListener("click", function (event) {
 	divElement.innerHTML = "";
+	$("#sureD2X").html("");
+	$("#sureD2Y").html("");
+	$("#sureD2Z").html("");
+	$("#sureD2").html("");
+	$("#sureD22").html("");
+	$("#sureD2ZZ").html("");
 	var pickup_time = document.getElementById('timepicker-12-hr').value;
 	var s_name = document.getElementById('s_name').value;
 	var s_number = document.getElementById('s_number').value;
@@ -357,6 +363,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var distance = document.getElementById('productDistance')?.value;
 	var weight = document.getElementById('productWeight').value;
 	var cityType = document.getElementById('productCity').value;
+	
 	var v1 = () => {
 		// if (pickup_time == "" || pickup_time == null) {
 		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give a Pickup Time!";
@@ -675,6 +682,12 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	// var s_number = document.getElementById('s_number').value;
 	// var s_address = document.getElementById('pac-input').value;
 	divElement.innerHTML = "";
+	$("#sureD2").html("");
+	$("#sureD2ZZ").html("");
+	$("#sureD22").html("");
+	$("#sureD2Z").html("");
+	$("#sureD2X").html("");
+	$("#sureD2Y").html("");
 	var r_name = document.getElementById('r_nameQ').value;
 	var r_number = document.getElementById('r_numberQ').value;
 	// var r_address = document.getElementById('pac-input2').value;
@@ -1016,6 +1029,31 @@ function doIt(i, lengx) {
 		//Optional
 		var delivery_note = excelData[i].Optional_Delivery_Note;
 		// var pickup_time = excelData[i].Pickup_Time;
+		if (true) {
+			let count = 0;
+			r_name ? r_name : count++;
+			r_number ? r_number : count++;
+			product_name ? product_name : count++;
+			product_cost ? product_cost : count++;
+			if (count>2) {
+				setTimeout(function () {
+					document.getElementById("sureD2ZZ").innerHTML = "";
+					
+					$(".circle-loader").addClass("load-complete");
+	
+					$('#tickD2').show();
+				}, 1000);
+				setTimeout(function () {
+	
+					document.getElementById('createDeliverywithExcel').disabled = false;
+					//$("#myModalCreateD1").modal('hide');
+				}, 3000);
+				document.getElementById('CLOSEIT').disabled = false;
+				document.getElementById('body').style.pointerEvents = "auto";
+				hello();
+				return;
+			}
+		}
 		var v1 = () => {
 			// if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
 			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;
@@ -1484,12 +1522,20 @@ function doIt(i, lengx) {
 
 }
 document.getElementById("createDeliverywithExcel").addEventListener("click", function (event) {
+	divElement.innerHTML = "";
+	$("#sureD2").html("");
+	$("#sureD2ZZ").html("");
+	$("#sureD22").html("");
+	$("#sureD2Z").html("");
+	$("#sureD2X").html("");
+	$("#sureD2Y").html("");
 	if (flag == true) {
 		divElement.innerHTML = "";
 		$('#tickD2').hide();
 		$(".circle-loader").show();
 		$(".circle-loader").removeClass("load-complete");
 		$("#sureD2").html("");
+		$("#sureD2ZZ").html("");
 		$("#myModalCreateD1").modal('show');
 		$("#sureD2").html("Please wait!");
 		$("#sureD2Z").html("");
