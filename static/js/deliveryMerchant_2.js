@@ -1031,10 +1031,9 @@ function doIt(i, lengx) {
 		// var pickup_time = excelData[i].Pickup_Time;
 		if (true) {
 			let count = 0;
-			r_name ? r_name : count++;
-			r_number ? r_number : count++;
-			product_name ? product_name : count++;
-			product_cost ? product_cost : count++;
+			aForExcel.includes(r_name) ? count++ : null;
+			aForExcel.includes(r_number) ? count++ : null;
+			aForExcel.includes(product_cost) ? count++ : null;
 			if (count>2) {
 				setTimeout(function () {
 					document.getElementById("sureD2ZZ").innerHTML = "";
@@ -1051,9 +1050,11 @@ function doIt(i, lengx) {
 				document.getElementById('CLOSEIT').disabled = false;
 				document.getElementById('body').style.pointerEvents = "auto";
 				hello();
+				console.log("bujhlamna");
 				return;
 			}
 		}
+		console.log("Hello");
 		var v1 = () => {
 			// if (pickup_time == "" || pickup_time == null || pickup_time == undefined) {
 			// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = `Deliver No: ${i + 1} - Please give a Pickup Time!`;

@@ -11,7 +11,7 @@ $(function () {
 	document.getElementById('body').style.pointerEvents = "auto";
 	$.fn.dataTable.ext.classes.sPageButton = 'btn btn-outline btn-round'; // Change Pagination Button Class
 });
-
+var aForExcel = [];
 $('#managers')
 	.empty();
 $.ajax
@@ -32,6 +32,7 @@ $.ajax
 					dhakaIndex = i;
 					dhaka = 1;
 				}
+				aForExcel.push(data.data[i]);
 				var option = new Option(data.data[i], data.data[i]);
 				$(option).html(data.data[i]);
 				$("#managers").append(option);
