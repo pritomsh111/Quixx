@@ -750,7 +750,7 @@
                     url: api + "dhaka/bd/merchant/create",
                     data: JSON.stringify
                         ({
-                            "encrypted_user_id": "$2a$10$6t.z/kxHOF7pMgdRgtdRCumEFszhQkW6nNjV7coh9Ojc208fwr6xi",
+                            "encrypted_user_id": encKey,
                             "org_name": org,
                             "person_name": owner,
                             "phone_number": contact,
