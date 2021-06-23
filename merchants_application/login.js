@@ -44,9 +44,9 @@
         cn.innerHTML = "Parcel Boat";
         cn.style.display = "none";
         document.title = "Parcel Boat";
-        lg.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
+        lg.style.backgroundImage = "url(../../static-landing/img/clients/parcelboat.png)";
         encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
-        fc.href = "static-landing/img/clients/parcelboat.png";
+        fc.href = "../../static-landing/img/clients/parcelboat.png";
         // Change width/height of Logo
         lg.style.height = "115px";
 
@@ -56,9 +56,9 @@
     function nogorbondhu() {
         cn.innerHTML = "Nogor Bondhu";
         document.title = "Nogor Bondhu";
-        lg.style.backgroundImage = "url(static-landing/img/clients/nogorbondhu.png)";
+        lg.style.backgroundImage = "url(../../static-landing/img/clients/nogorbondhu.png)";
         encKey = "$2a$10$d4t/FMRC53KruxaEkBrite9xzKXFeF3g7MbOatsdATM73udza6P5G";
-        fc.href = "static-landing/img/clients/nogorbondhu.png";
+        fc.href = "../../static-landing/img/clients/nogorbondhu.png";
 
         lg.style.width = "160px";
         lg.style.height = "100px";
@@ -75,9 +75,9 @@
         cn.innerHTML = "Quixx Projects";
         cn.style.display = "none";
         document.title = "Quixx Projects";
-        lg.style.backgroundImage = "url(static-landing/img/clients/quixxprojects.png)";
+        lg.style.backgroundImage = "url(../../static-landing/img/clients/quixxprojects.png)";
         encKey = "$2a$10$kfCg3y4byGpITW80BFEs6.qUXnM/6a4BpqkLuX2xJSrVHUXiHw2a2";
-        fc.href = "static-landing/img/clients/quixxprojects.png";
+        fc.href = "../../static-landing/img/clients/quixxprojects.png";
         //Per Delivery Cost
         deliveries = "0";
     }
@@ -85,9 +85,9 @@
         cn.innerHTML = "Quixx";
         cn.style.display = "none";
         document.title = "Quixx";
-        lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
+        lg.style.backgroundImage = "url(../../static-landing/img/clients/quixx.png)";
         encKey = "$2a$10$E1RXLYHC7rXnF1QNS3r7HenwCGvtu/almg4qp6Q.hjs8w3eRRf6eS";
-        fc.href = "static-landing/img/clients/quixx.png";
+        fc.href = "../../static-landing/img/clients/quixx.png";
         //Per Delivery Cost
         deliveries = "80";
     }

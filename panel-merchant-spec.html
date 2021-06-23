@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" id="start">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <link rel="shortcut icon">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/datatable.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/buttons.bootstrap4.min.css">
+        <link href="static/css/quixx_sqdn298DJjw1.css" rel="stylesheet">
+        <link href="static/css/demo.css" rel="stylesheet">
+        <link rel="stylesheet" href="static/css/panelLoader.css">
+        <link rel="stylesheet" href="static/css/panelLoader2.css">
+        <link rel="stylesheet" href="static/css/pleaseWait.css">
+        <link href="static/css/template2.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
+        <script src="static/js/jquery-datatable.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+        <script src="static/js/loader-file.js"></script>
+        <script src="static/js/responsive.js"></script>
+        <script src="static/js/jszip.js"></script>
+        <script src="static/js/xlsx.js"></script>
+        <script src="static/js/scripts2.js"></script>
+        <script src="static/js/core/popper.min.js"></script>
+        <script src="static/js/core/bootstrap-design.min.js"></script>
+        <script src="static/js/quixx-dashboard.js"></script>
+        <script src="static/js/importantVar.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylkFLbDU8vlm_mojgoVxHtBiT5z3loBA&sensor=true&libraries=places"></script>
+        <link href="https://fonts.googleapis.com/css?family=Didact Gothic" rel="stylesheet">
+        <style>
+            body {
+                font-family: "Didact Gothic";
+                font-size: 20px;
+            }
+            .field-icon {
+                float: right;
+                margin-right: 1px;
+                margin-top: -22px;
+                position: relative;
+                z-index: 2;
+                cursor: pointer;
+            }
+            .fa-lg {
+                font-size: 0.93333333em;
+                line-height: 0.75em;
+                vertical-align: -15%;
+            }
+        </style>
+        <script> 
+            var interVal;
+            localStorage.setItem("wh-user", "/merchants_application/");
+            var clear = () => {
+                localStorage.clear();
+                window.location.href = "/merchants_application/";
+            }
+            var user = localStorage.getItem('user');
+            var pass = localStorage.getItem('pass');
+            if(!user || !pass){
+                clear();
+            }
+            var token = localStorage.getItem('main-token');
+            if (token) {
+                try{
+                    var decoded = jwt_decode(token);
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('userID', decoded.id);
+                    localStorage.setItem('userEmail', decoded.email);
+                    localStorage.setItem('user', decoded.role[0].roleName);
+                    user = decoded.role[0].roleName;
+                }catch(e){
+                    clear();
+                }
+            }
+            else{
+                clear();
+            }
+            function changeIT(){
+                document.querySelector(".sidebar").classList.toggle("sidebar-smol");
+                document.querySelector(".sidebar-wrapper").classList.toggle("sidebar-smol");
+                document.querySelector(".logo").classList.toggle("sidebar-smol");
+                document.querySelector(".main-panel").classList.toggle("sidebar-smol");
+                document.querySelector("#namee").classList.toggle("sidebar-smol");
+                if(localStorage.getItem("user")==="MERCHANT" || localStorage.getItem("user")==="SUPER_ADMIN"){
+                    if(document.querySelector(".logo>a>div").style.height === "115px"){
+                        document.querySelector(".logo>a>div").style.height = "75px";
+                    }
+                    else if(document.querySelector(".logo>a>div").style.height==="75px"){
+                        document.querySelector(".logo>a>div").style.height = "115px";
+                    }
+                }
+                if (document.querySelector(".sidebar").classList.contains("sidebar-smol")) {
+                    localStorage.setItem("x-https", "1");
+                }
+                else {
+                    localStorage.setItem("x-https", "2");
+                }
+            }
+        </script>
+    </head>
+    <body id="body">
+        <div class="merchant-app">
+            <div class="loader-position">
+                <img src="static/img/panel-loader.gif" alt="Preloader">
+            </div>
+        </div>
+        <div class="wrapper">
+            <div
+                class="sidebar"
+                data-color="white"
+                data-background-color="white"
+                data-image=""
+            >
+                <div class="logo" style="text-align: center">
+                    <a>
+                        <div onclick="dashio()"></div>
+                        <label for="filetag" style="display: none;">Change</label>
+                        <input type="file" id="filetag" style="display: none;">
+                    </a>
+                    <span id="namee"></span>
+                </div>
+                <div class="sidebar-wrapper">
+                    <ul class="nav">
+                        <div id="superAdmin"></div>
+                        <div id="organizationHead">
+                            <div id="alreadySet"></div>
+                            <div id="settings"></div>
+                        </div>
+                        <div id="merchant">
+                            <div id="alreadySetMer">
+                                <li class="nav-item manager">
+                                    <a class="nav-link" title="Dashboard" href="#dashboardMer">
+                                        <i class="material-icons">analytics</i>
+                                        <p>Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" title="Create Delivery" href="#deliveryMerchant">
+                                        <i class="material-icons">receipt_long</i>
+                                        <p>Create Delivery</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" title="Delivery Details" href="#deliveryDetails">
+                                        <i class="material-icons">local_shipping</i>
+                                        <p>Delivery Details</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" title="Date-wise Payment Details" href="#paymentDateWiseMerchant">
+                                        <i class="material-icons">payment</i>
+                                        <p>Date-wise Details</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" title="Search Deliveries" href="#deliverySearchMerchant">
+                                        <i class="material-icons">search</i>
+                                        <p>Search Deliveries</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager">
+                                    <a class="nav-link" title="Update Settings" href="#setUpdateMer">
+                                        <i class="material-icons">settings_applications</i>
+                                        <p>Update Settings</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item manager" style="visibility: hidden;">
+                                    <a class="nav-link" title="Selection" href="#selection">
+                                        <i class="material-icons">add_task</i>
+                                        <p>Selection</p>
+                                    </a>
+                                </li>
+                            </div>
+                            <div id="settingsMer">
+                                <li class="nav-item manager">
+                                    <a class="nav-link" href="#settingsMer">
+                                        <i class="material-icons">settings</i>
+                                        <p>Settings</p>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-panel" id="mainPanel">
+                <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top" id="navigation-example">
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <button id="changeWidth" class="btn btn-outline changeWidth" onclick="changeIT()">
+                                <i class="material-icons" style="font-size:0.7rem">arrow_back</i>
+                            </button>
+                            <a class="navbar-brand" id="dashName">Dashboard</a>
+                            <button class="btn btn-outline btn-primary selectbtnMer" style="padding: 0.2rem 0.4rem;border-width: 0;">Home</button>
+                        </div>
+                        <button
+                            class="navbar-toggler"
+                            id="navTog"
+                            type="button"
+                            data-toggle="collapse"
+                            aria-controls="navigation-index"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                            data-target="#navigation-example"
+                        >
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                        </button>
+                        <div style="visibility:hidden;" class="collapse navbar-collapse justify-content-end">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#logout">
+                                        <i class="material-icons">logout</i>
+                                        <p class="d-lg-none d-md-block">Log Out</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="content">
+                    <div class="container-fluid">
+                        <script>
+                            if(new Date() > new Date(localStorage.getItem("time"))){
+                                $.ajax
+                                    ({
+                                        async: false,
+                                        type: "POST",
+                                        url: urlForAll + "login",
+                                        headers:
+                                        {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json'
+                                        },
+                                        data: JSON.stringify
+                                            ({
+                                                "username": localStorage.getItem("username"),
+                                                "password": localStorage.getItem("pass")
+                                            }),
+                                        success: function (data) {
+                                            localStorage.setItem('login-event', 'login' + Math.random());
+                                            localStorage.setItem('main-token', data.data);
+                                            localStorage.setItem('time', new Date(Date.now() + 86400000));
+                                            let decoded = jwt_decode(data.data);
+                                            localStorage.setItem('token', data.data);
+                                            localStorage.setItem('userID', decoded.id);
+                                            localStorage.setItem('userEmail', decoded.email);
+                                            localStorage.setItem('user', decoded.role[0].roleName);
+                                            user = decoded.role[0].roleName;
+                                        },
+                                        error: function (data) {
+                                            clear();
+                                        }
+                                    });
+                            }
+                            window.addEventListener('storage', function (event) {
+                                if (event.key == 'logout-event') {
+                                    clear();
+                                }
+                            });
+                            function getOut() {
+                                $("#myModalForE2Setup").modal("show");
+                                setTimeout(function () {
+                                    clear();
+                                }, 2500);
+                            }
+                            function getOut2() {
+                                $("#myModalForE2Setup2").modal("show");
+                                setTimeout(function () {
+                                    clear();
+                                }, 2500);
+                            }
+                            $.ajaxSetup({
+                                statusCode: {
+                                    401: function () {
+                                        getOut();
+                                    },
+                                    0: function () {
+                                        getOut2();
+                                    },
+                                },
+                            });
+                        </script>
+                        <div id="contentMain"></div>
+                        <script src="static/js/indexScripts.js"></script>
+                        <script src="static/js/navigation.js"></script>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="copyright float-right"></div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="myModalForE2" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h4 style="color: #0066b3">Ooops!</h4>
+                        <p style="color: #0066b3" id="kiHoyeche">
+                            Something went wrong. Please try again!
+                        </p>
+                        <button class="btn btn-outline btn-danger btn-error" style="color: #0066b3" data-dismiss="modal">
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModalForE2Setup" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <p style="color: #0066b3">Logging Out For Security Purpose!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModalForE2Setup2" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <p style="color: #0066b3">Internet Connection Unavailable! Logging Out For Security Purpose!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="static/js/indexPanel.js"></script>
+    </body>
+</html>
