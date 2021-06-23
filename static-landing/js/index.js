@@ -1,7 +1,3 @@
-if (localStorage.getItem("wh-user")==="/merchants_application/") {
-    window.location.replace("/merchants_application/");
-}
-
 //Navigation
 let activeNav = document.querySelectorAll(".Quixx__Login__Signup li a");
 let smt;

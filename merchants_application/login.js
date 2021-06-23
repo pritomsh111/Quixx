@@ -1,8 +1,7 @@
 (() => {
-    // if (!document.location.host.includes("portal")) {
-    //     window.location.href = "/";
-    // }
-
+    if (!document.location.host.includes("testing")) {
+        window.location.href = "/";
+    }
     let phone;
 
     // DOM manipulation
@@ -21,7 +20,6 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
-    cw = "quixx";
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -463,7 +461,7 @@
                         localStorage.setItem('login-event', 'login' + Math.random());
                         localStorage.setItem('main-token', data.data);
                         localStorage.setItem('time', new Date(Date.now() + 86400000));
-                        window.location.replace("../panel-merchant-spec.html");
+                        window.location.href = "../panel-merchant-spec.html";
                     },
                     error: function (data) {
                         let ob = Object.keys(data);

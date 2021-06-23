@@ -23,6 +23,12 @@
             gtag("js", new Date());
 
             gtag("config", "UA-171039910-1");
+            if (localStorage.getItem("wh-user")==="/merchants_application/") {
+                window.location.replace("../panel-merchant-spec.html");
+            }
+            else if(localStorage.getItem("wh-user")==="/merchant_app/"){
+                window.location.replace("../panel-merchant.html");
+            }            
         </script>
         <script>
             !function(f,b,e,v,n,t,s)
