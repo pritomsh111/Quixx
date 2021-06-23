@@ -107,7 +107,7 @@ let background_image_parallax = function ($object, multiplier) {
     multiplier = 1 - multiplier;
     let $doc = $(document);
     $object.css({ "background-attatchment": "fixed" });
-    $(window).scroll(function () {
+    $(window).on("scroll", function () {
         let from_top = $doc.scrollTop(), bg_css = '0px ' + (multiplier * from_top) + 'px';
         if (multiplier * from_top > 400) {
             return;
@@ -132,7 +132,3 @@ function play() {
 function showMap() {
     window.open("https://www.google.com/maps/place/Quixx+HQ/@23.7503331,90.3808138,17z/data=!3m1!4b1!4m5!3m4!1s0x3755b97696b2735b:0x90c0b679385f740!8m2!3d23.7503277!4d90.3829628", "_blank");
 }
-
-window.addEventListener("resize", function () {
-    window.location.reload();
-});
