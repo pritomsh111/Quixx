@@ -445,9 +445,11 @@
         }
         if (v1() && v2()) {
             clearError();
+            localStorage.clear();
             localStorage.setItem('user', username);
+            localStorage.setItem('username', username);
             localStorage.setItem('pass', password);
-            localStorage.setItem('wh-user', "/");
+            localStorage.setItem('wh-user', document.location.pathname);
             $.ajax
                 ({
                     async: true,
@@ -467,7 +469,7 @@
                         localStorage.setItem('login-event', 'login' + Math.random());
                         localStorage.setItem('main-token', data.data);
                         localStorage.setItem('time', new Date(Date.now() + 86400000));
-                        window.location.href = "panel.html";
+                        window.location.href = "../panel-merchant-spec.html";
                     },
                     error: function (data) {
                         let ob = Object.keys(data);
