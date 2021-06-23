@@ -3,12 +3,6 @@
     //     window.location.href = "/";
     // }
 
-    // Storage Event
-    window.addEventListener('storage', function (event) {
-        if (event.key == 'login-event') {
-            window.location.href = "panel.html";
-        }
-    });
     let phone;
 
     // DOM manipulation
@@ -469,7 +463,7 @@
                         localStorage.setItem('login-event', 'login' + Math.random());
                         localStorage.setItem('main-token', data.data);
                         localStorage.setItem('time', new Date(Date.now() + 86400000));
-                        window.location.href = "../panel-merchant-spec.html";
+                        window.location.replace("../panel-merchant-spec.html");
                     },
                     error: function (data) {
                         let ob = Object.keys(data);
