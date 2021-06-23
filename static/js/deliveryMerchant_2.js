@@ -1020,7 +1020,7 @@ function doIt(i, lengx) {
 		var area = excelData[i].Receiver_Area;
 		var rec_address = excelData[i].Receiver_Address;
 
-		var product_name = excelData[i].Product_Name;
+		var product_name = excelData[i].Product_Details;
 		var product_qty = excelData[i].Product_Quantity_Pieces;
 		product_qty ? product_qty.toUpperCase() : product_qty;
 		var product_cost = excelData[i].Product_Cost;
