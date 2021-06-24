@@ -27,7 +27,6 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
-    cw = "parcelboat";
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -76,7 +75,7 @@
         li_company.href = "https://www.linkedin.com";
 
         fooot.style.backgroundColor = "rgb(56 98 116 / 90%)";
-        fooot2.style.backgroundColor = "rgb(36 33 34)";
+        fooot2.style.backgroundColor = "rgb(43 67 78 / 90%)";
 
         // Footer Right
         addressL[1].innerHTML = "Gulshan, 12";
