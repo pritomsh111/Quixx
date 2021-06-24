@@ -1,4 +1,4 @@
-const api = "https://prod.quixx.xyz/api/quixx/v1/";
+const api = "https://api-new.quixx.xyz/api/quixx/v1/";
 
 // function Hell() {
 //     this.hello = "ds";
