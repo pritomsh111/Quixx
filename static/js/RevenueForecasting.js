@@ -9,11 +9,16 @@ function SalesOnlyModule(orgName) {
         url: server + appdir + "/" + encodeURIComponent(org),
     }).done(function (data) {
         // console.log(data);
-        timeseries = data["data"]["delivery_charge"];
-        change_point = data["change_point"];
-        length = Object.getOwnPropertyNames(timeseries).length;
-        dates = Object.keys(timeseries);
-        sales = Object.values(timeseries);
+        dates = [new Date().toISOString().slice(0, 10)];
+        sales = [0];
+        
+        if("data" in data) {
+            timeseries = data['data']['delivery_charge'];
+            change_point = data['change_point'];
+            length_of_timeseries = Object.getOwnPropertyNames(timeseries).length;
+            dates = Object.keys(timeseries);
+            sales = Object.values(timeseries);
+        }
 
         var trace0 = {
             x: dates,
