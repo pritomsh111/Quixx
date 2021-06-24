@@ -27,6 +27,7 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
+    cw = "parcelboat";
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -36,6 +37,10 @@
 
     // CompanyName
     let cn = document.querySelector(".Company>h1");
+
+    //Footer
+    let fooot = document.querySelector(".Quixx__Footer");
+    let fooot2 = document.querySelector(".Quixx__Copyright__Issue");
 
     // Footer Left
     let footLogo = document.querySelector(".Quixx__Logo>div")
@@ -63,12 +68,15 @@
 
         //Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
-        footLogo.style.height = "115px";
-        aboutCompany.innerHTML = "Fastest Delivery Company";
+        footLogo.style.height = "100px";
+        aboutCompany.innerHTML = "A reliable, modern and on-time Ecommerce delivery solution one can ever have.";
 
         fb_company.href = "https://www.facebook.com";
         i_company.href = "https://www.instagram.com";
         li_company.href = "https://www.linkedin.com";
+
+        fooot.style.backgroundColor = "rgb(56 98 116 / 90%)";
+        fooot2.style.backgroundColor = "rgb(36 33 34)";
 
         // Footer Right
         addressL[1].innerHTML = "Gulshan, 12";
@@ -79,7 +87,7 @@
         addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         // Footer Copyright Name
-        whichCompany.innerHTML = "Parcel Boat";
+        whichCompany.innerHTML = "ParcelBoat";
 
         //Per Delivery Cost
         deliveries = "0";
@@ -105,7 +113,7 @@
         footLogo.style.width = "150px";
         footLogo.style.height = "90px";
 
-        aboutCompany.innerHTML = "We believe in excellence";
+        aboutCompany.innerHTML = "The fastest and the most dedicated courier service provider anyone can trust.";
 
         fb_company.href = "https://www.facebook.com";
         i_company.href = "https://www.instagram.com";
@@ -120,7 +128,7 @@
         addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         // Footer Copyright Name
-        whichCompany.innerHTML = "Nogor Bondhu";
+        whichCompany.innerHTML = "NogorBondhu";
 
         //Per Delivery Cost
         deliveries = "0";
