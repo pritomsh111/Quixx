@@ -15,28 +15,13 @@
     </style>
 </head>
 <body>
-    <svg width="500" height="500">
-        <rect id="recx" x="100" y="100" height="200" width="200" stroke="blue" stroke-width="10px" fill="#006666a4" opacity="0.1"/> 
+    <svg width="1000" height="1000">
+        <rect id="recx" x="100" y="100" height="200" width="200" stroke="#0066b3" stroke-width="10px" stroke-opacity="0.8" fill="#006666a4" opacity="0.1"/>
+        <circle cx="500" cy="500" r="50" stroke="blue" fill="#006600" />
+        <ellipse cx="500" cy="200" rx="100" ry="50" fill="#008899"/>
+        <polygon points="600,200 50 300 0,100"/> 
     </svg>
-    <div>
-        <div class="hello">
-            <div>Hello There</div>
-        </div>
-    </div>
-    <div>
-        <div class="hello">
-            <div>Hello There</div>
-        </div>
-    </div>
-    <div>
-        <div class="hello">
-            <div>Hello There</div>
-        </div>
-    </div>
-    <div>
-        <div class="hello">
-            <div>Hello There</div>
-        </div>
-    </div>
+    <!-- div*4>div[class="hello"]>div>{Hello There} -->
+    <!-- div*4>div[class="hello"][id="he$"]>div>{Hello There} -->
 </body>
 </html>
