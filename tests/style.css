@@ -1,3 +1,8 @@
-[id*='p-circle'] {
+/* [id*='p-circle'] {
     fill: #0066b3;
+} */
+
+#recx {
+    stroke-dasharray: 10;
+    stroke-dashoffset: 20;
 }
