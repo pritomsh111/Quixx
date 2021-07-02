@@ -2,7 +2,21 @@
     fill: #0066b3;
 } */
 
-#recx {
+/* #recx {
     stroke-dasharray: 10;
     stroke-dashoffset: 20;
+} */
+
+.parent {
+    display: grid;
+    place-items: center;
+    height: 90vh;
+}
+
+.child {
+    background-color: rgb(203, 100, 255);
+    height: 100px;
+    width: 100px;
+    display: grid;
+    place-items: center;
 }
