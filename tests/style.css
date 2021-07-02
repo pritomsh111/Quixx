@@ -11,6 +11,7 @@
     display: grid;
     place-items: center;
     height: 90vh;
+    perspective: 500px;
 }
 
 .child {
@@ -18,5 +19,12 @@
     height: 100px;
     width: 100px;
     display: grid;
+    box-shadow: 2px 20px 20px rgba(0, 0, 0, 0.1);
     place-items: center;
+    transform-origin: center;
+    transition: transform 3s ease-in;
+}
+
+.child:hover {
+    transform: rotateY(45deg);
 }
