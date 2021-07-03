@@ -87,14 +87,14 @@ text:hover+#recx {
 
 #text {
     opacity: 0;
-    animation: textx 3000ms linear;
+    animation: textx 3000ms linear forwards;
 }
 
 @keyframes textx {
-    0%, 20%, 40%, 60%, 80%, 100% {
+    0%, 20%, 40%, 60%, 80% {
         opacity: 0;
     }
-    10%, 30%, 50%, 70%, 90% {
+    10%, 30%, 50%, 70%, 100% {
         opacity: 1;
     }
 }
