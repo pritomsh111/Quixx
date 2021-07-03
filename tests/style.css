@@ -29,3 +29,23 @@
 .child:hover {
     transform: rotateY(45deg);
 } */
+
+svg {
+    height: 500px;
+    width: 500px;
+    display: block;
+    margin: auto;
+}
+
+#recx {
+    fill: none;
+    stroke-width: 5px;
+    stroke-dasharray: 10;
+    animation: svgDash 2000ms linear infinite alternate;
+}
+
+@keyframes svgDash {
+    to {
+        stroke-dashoffset: 50;
+    }
+}
