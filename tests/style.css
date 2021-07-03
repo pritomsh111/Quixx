@@ -40,7 +40,10 @@ svg {
 #recx {
     fill: none;
     stroke-width: 5px;
-    stroke-dasharray: 10;
+    stroke-dasharray: 50;
+}
+
+text:hover+#recx {
     animation: svgDash 2000ms linear infinite alternate;
 }
 
@@ -49,3 +52,7 @@ svg {
         stroke-dashoffset: 50;
     }
 }
+
+/* div>* {
+    width: 100px;
+} */
