@@ -7,6 +7,7 @@
     stroke-dashoffset: 20;
 } */
 
+/* 
 .parent {
     display: grid;
     place-items: center;
@@ -27,4 +28,4 @@
 
 .child:hover {
     transform: rotateY(45deg);
-}
+} */
