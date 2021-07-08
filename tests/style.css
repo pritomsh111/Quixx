@@ -117,3 +117,45 @@ text:hover+#recx {
 .child1 {
     align-self: center;
 }
+
+#triangle1 {
+    opacity: 1;
+    animation: t1 0.1s linear 2s forwards;
+}
+
+#triangle2 {
+    opacity: 0;
+    animation: t2 2s linear 2s forwards;
+}
+
+#Letter {
+    animation: letter 2s linear forwards;
+}
+
+@keyframes letter {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+    100% {
+        transform: translateY(60px);
+    }
+}
+
+@keyframes t1 {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes t2 {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+        d: path("M540.966 146H58.476C52.0861 146 50.1237 154.659 55.8894 157.414L299.389 273.753C301.039 274.541 302.958 274.534 304.602 273.733L543.592 157.395C549.316 154.608 547.332 146 540.966 146Z");
+    }
+}
