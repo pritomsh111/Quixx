@@ -183,6 +183,7 @@ div {
 div::after, div::before {
     height: 5px;
     left: 0;
+    padding: .1rem 0;
     right: 0;
     position: absolute;
     content: "";
@@ -196,4 +197,36 @@ div::before {
 div::after {
     background: rgb(189, 33, 33);
     bottom: -0.5rem;
+}
+
+svg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.one {
+    animation: o 2s linear forwards;
+}
+
+.two {
+    animation: t 2s linear forwards;
+}
+
+@keyframes o {
+    from {
+        r: 70;
+    }
+    to {
+        r: 1300;
+    }
+}
+
+@keyframes t {
+    from {
+        r: 1300;
+    }
+    to {
+        r: 70;
+    }
 }
