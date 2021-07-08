@@ -165,3 +165,35 @@ svg {
         d: path("M540.966 146H58.476C52.0861 146 50.1237 154.659 55.8894 157.414L299.389 273.753C301.039 274.541 302.958 274.534 304.602 273.733L543.592 157.395C549.316 154.608 547.332 146 540.966 146Z");
     }
 } */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div {
+    position: relative;
+    cursor: pointer;
+    height: 5px;
+    width: 35px;
+    background: rgb(255, 95, 95);
+}
+
+div::after, div::before {
+    height: 5px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    content: "";
+}
+
+div::before {
+    background: rgb(189, 33, 33);
+    top: -0.5rem;
+}
+
+div::after {
+    background: rgb(189, 33, 33);
+    bottom: -0.5rem;
+}
