@@ -30,12 +30,13 @@
     transform: rotateY(45deg);
 } */
 
+/* 
 svg {
     height: 500px;
     width: 500px;
     display: block;
     margin: auto;
-}
+} */
 
 /* 
 #recx {
@@ -58,6 +59,7 @@ text:hover+#recx {
     width: 100px;
 } */
 
+/* 
 #recx {
     stroke-dasharray: 736;
     animation: dash 2000ms linear infinite alternate-reverse;
@@ -97,4 +99,21 @@ text:hover+#recx {
     10%, 30%, 50%, 70%, 100% {
         opacity: 1;
     }
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 400px;
+    padding: 2rem;
+}
+
+.child1 {
+    align-self: center;
 }
