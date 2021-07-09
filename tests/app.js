@@ -14,3 +14,16 @@ document.querySelector("div").addEventListener("click", function () {
         document.querySelector("svg>circle").classList.remove("two");
     }
 });
+
+setTimeout(() => {
+    console.log("one");
+}, 1000);
+setTimeout(() => {
+    console.log("two");
+}, 1000);
+setTimeout(() => {
+    console.log("three");
+}, 1000);
+setTimeout(() => {
+    console.log("four");
+}, 1000);
