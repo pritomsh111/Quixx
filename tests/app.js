@@ -27,3 +27,15 @@ setTimeout(() => {
 setTimeout(() => {
     console.log("four");
 }, 1000);
+
+
+function a() {
+    let a = "4";
+    return function () {
+        let c = a;
+        console.log(c);
+    };
+}
+
+let f = a();
+f();
