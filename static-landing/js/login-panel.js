@@ -36,7 +36,7 @@
     let fc = document.querySelector("link[rel='shortcut icon']");
 
     // CompanyName
-    let cn = document.querySelector(".Company>h1");
+    let cn = document.querySelector(".Company>h2");
 
     //Footer
     let fooot = document.querySelector(".Quixx__Footer");
@@ -57,8 +57,8 @@
     let encKey;
     let deliveries;
     function parcelboat() {
-        cn.innerHTML = "Parcel Boat";
-        cn.style.display = "none";
+        cn.innerHTML = "<strong style=color:#B74046>Delivering</strong> Happiness <i class='fa fa-play' style='color:#B74046;font-size:0.9rem;vertical-align:middle'></i>";
+        // cn.style.display = "none";
         document.title = "Parcel Boat";
         lg.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
         encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
@@ -69,25 +69,28 @@
         //Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/parcelboat-2.png)";
         footLogo.style.height = "100px";
-        aboutCompany.innerHTML = "A SERVICE - SAFE AND AFFORDABLE";
-        aboutCompany.style.fontWeight = "600";
+        aboutCompany.innerHTML = "A Service - Safe &amp; Affordable";
+        aboutCompany.style.fontWeight = "500";
+        aboutCompany.style.width = "90%";
+
+        Array.from(document.querySelectorAll(".Footer__R ul li")).map(item => item.style.opacity = ".95");
 
         fb_company.href = "https://www.facebook.com/parcelboatdeliveries";
-        i_company.style.display = "none";
+        // i_company.style.display = "none";
         li_company.style.display = "none";
-        // i_company.href = "https://www.instagram.com";
+        i_company.href = "https://www.instagram.com/parcelboatdeliveries/";
         // li_company.href = "https://www.linkedin.com";
 
         fooot.style.backgroundColor = "#B74046";
-        fooot2.style.backgroundColor = "#B99046";
+        fooot2.style.backgroundColor = "rgb(121 27 32)";
 
         // Footer Right
         addressL[1].innerHTML = "2B, 20 Pallabi, Mirpur 11.5";
         addressL[2].innerHTML = "Dhaka 1216";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
+        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
+        addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "ParcelBoat";
@@ -127,8 +130,8 @@
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
+        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
+        addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "NogorBondhu";
@@ -157,8 +160,8 @@
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
+        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
+        addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Quixx Projects";
@@ -187,8 +190,8 @@
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>017XXXXXXXX</a>";
+        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
+        addressR[2].innerHTML = "<a href='tel:01323578062'>017XXXXXXXX</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Quixx";
