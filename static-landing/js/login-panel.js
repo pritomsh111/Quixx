@@ -27,6 +27,7 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
+    cw = "parcelboat";
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -66,7 +67,7 @@
         lg.style.height = "115px";
 
         //Footer Left
-        footLogo.style.backgroundImage = "url(static-landing/img/clients/parcelboat.png)";
+        footLogo.style.backgroundImage = "url(static-landing/img/clients/parcelboat-2.png)";
         footLogo.style.height = "100px";
         aboutCompany.innerHTML = "A reliable, modern and on-time Ecommerce delivery solution one can ever have.";
 
@@ -74,8 +75,8 @@
         i_company.href = "https://www.instagram.com";
         li_company.href = "https://www.linkedin.com";
 
-        fooot.style.backgroundColor = "rgb(56 98 116 / 90%)";
-        fooot2.style.backgroundColor = "rgb(43 67 78 / 90%)";
+        fooot.style.backgroundColor = "#B74046";
+        fooot2.style.backgroundColor = "#B99046";
 
         // Footer Right
         addressL[1].innerHTML = "Gulshan, 12";
