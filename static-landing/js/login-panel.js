@@ -81,8 +81,8 @@
         i_company.href = "https://www.instagram.com/parcelboatdeliveries/";
         // li_company.href = "https://www.linkedin.com";
 
-        fooot.style.backgroundColor = "#B74046";
-        fooot2.style.backgroundColor = "rgb(121 27 32)";
+        // fooot.style.backgroundColor = "#B74046";
+        // fooot2.style.backgroundColor = "rgb(121 27 32)";
 
         // Footer Right
         addressL[1].innerHTML = "2B, 20 Pallabi, Mirpur 11.5";
@@ -130,8 +130,8 @@
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
-        addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
+        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "NogorBondhu";
@@ -160,8 +160,8 @@
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
-        addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
+        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Quixx Projects";
@@ -190,8 +190,8 @@
         addressL[2].innerHTML = "Dhaka, Bangladesh";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
-        addressR[2].innerHTML = "<a href='tel:01323578062'>017XXXXXXXX</a>";
+        addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Quixx";
