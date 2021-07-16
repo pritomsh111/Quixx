@@ -69,18 +69,21 @@
         //Footer Left
         footLogo.style.backgroundImage = "url(static-landing/img/clients/parcelboat-2.png)";
         footLogo.style.height = "100px";
-        aboutCompany.innerHTML = "A reliable, modern and on-time Ecommerce delivery solution one can ever have.";
+        aboutCompany.innerHTML = "A SERVICE - SAFE AND AFFORDABLE";
+        aboutCompany.style.fontWeight = "600";
 
-        fb_company.href = "https://www.facebook.com";
-        i_company.href = "https://www.instagram.com";
-        li_company.href = "https://www.linkedin.com";
+        fb_company.href = "https://www.facebook.com/parcelboatdeliveries";
+        i_company.style.display = "none";
+        li_company.style.display = "none";
+        // i_company.href = "https://www.instagram.com";
+        // li_company.href = "https://www.linkedin.com";
 
         fooot.style.backgroundColor = "#B74046";
         fooot2.style.backgroundColor = "#B99046";
 
         // Footer Right
-        addressL[1].innerHTML = "Gulshan, 12";
-        addressL[2].innerHTML = "Dhaka, Bangladesh";
+        addressL[1].innerHTML = "2B, 20 Pallabi, Mirpur 11.5";
+        addressL[2].innerHTML = "Dhaka 1216";
 
         // Footer Right 2
         addressR[1].innerHTML = "<a href='mailto:your-company@domain.com'>your-company@domain.com</a>";
