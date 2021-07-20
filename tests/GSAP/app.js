@@ -1,1 +1,1 @@
-gsap.to("h1", { x: 100, duration: 1 });
+gsap.to("#recx", { x: 400, scale: 1.2, rotation: 360, duration: 3 });
