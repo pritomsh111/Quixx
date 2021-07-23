@@ -8,6 +8,7 @@ gsap.to("#recx", { x: 400, scale: 1.2, rotation: 60, duration: 3, xPercent: -300
 // for (const key in a) {
 //     console.log(key);
 // }
-console.log(b);
-let a = { a: 3, b: function () { } }
+// console.log(b);
+let a = { v: 3, b: function () { } }
+
 console.log(a);
