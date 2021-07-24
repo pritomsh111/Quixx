@@ -1,6 +1,6 @@
 gsap.to("#recx", { x: 200, scale: 1.2, rotation: 90, duration: 3, xPercent: 100 });
 gsap.to("#recx", { strokeWidth: 20 });
-gsap.to("#recx", { strokeDashoffset: 800, duration: 10, yoyo: true, repeat: -1 });
+gsap.to("#recx", { strokeDasharray: 0, duration: 10, yoyo: true, repeat: -1 });
 
 function _32() {
     console.log("HEllo");
