@@ -1222,6 +1222,75 @@ ul {
     }
 }
 
+/* Customized Options */
+
+.Customizes_Opt {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding: 0.5rem 4.8rem 0rem;
+}
+
+.Customizes_Opt .Cus__IMG {
+    order: 2;
+    height: 550px;
+    width: 550px;
+    background: url("../img/Excel\ Bulk-01.svg") center/contain no-repeat;
+}
+
+.Cus__DES {
+    order: 1;
+    display: block;
+    text-align: left;
+}
+
+.Cus__DES h2 {
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
+}
+
+.Cus__DES p {
+    opacity: 0.8;
+    width: 90%;
+}
+
+@media (max-width: 1200px) {
+    .Customizes_Opt .Cus__IMG {
+        height: 400px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 900px) {
+    .Customizes_Opt {
+        grid-template-columns: 1fr;
+    }
+    .Cus__DES {
+        order: 1;
+        text-align: center;
+        margin-top: 3rem;
+    }
+    .Customizes_Opt .Cus__IMG {
+        height: 320px;
+        width: 320px;
+        order: 2;
+    }
+    .Cus__DES p {
+        margin: auto;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .Customizes_Opt {
+        padding: 1rem 1.3rem;
+    }
+    .Customizes_Opt .Cus__IMG {
+        height: 280px;
+        width: 280px;
+    }
+}
+
 /* Section: 5  -> Merchant Panel Mobile */
 
 .Quixx__Mobile__Merchant>h1 {
