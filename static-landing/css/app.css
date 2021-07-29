@@ -1507,7 +1507,6 @@ ul {
 /* Section: 8 -> Pricing */
 
 .Quixx__Pricing {
-    display: none;
     padding: 5rem 0.2rem;
     background-color: #f2f1f7;
     z-index: 1000;
@@ -2029,7 +2028,7 @@ ul {
     display: inline-block;
 }
 
-.Footer__R ul:last-child li a {
+.Footer__R ul:last-child li div {
     cursor: default;
 }
 
@@ -2037,16 +2036,16 @@ ul {
     display: block;
 }
 
-.Footer__R ul:last-child li a div {
+.Footer__R ul:last-child li div div {
     width: 60px;
     height: 60px;
 }
 
-.Footer__R ul:last-child li:nth-child(3) a div {
+.Footer__R ul:last-child li:nth-child(3) div div {
     background: url("../img/Parrot\ logo-01.png") center/contain no-repeat;
 }
 
-.Footer__R ul:last-child li:nth-child(2) a div {
+.Footer__R ul:last-child li:nth-child(2) div div {
     background: url("../img/QUIXX\ MAPS\ ICON-02.png") center/contain no-repeat;
 }
 
@@ -2845,7 +2844,7 @@ table th:nth-child(2) button:hover {
 }
 
 table th:nth-child(3) button {
-    color: var(--essential);
+    color: var(--starter);
     border: 1px solid var(--essential);
 }
 
@@ -2854,7 +2853,7 @@ table th:nth-child(3) button:hover {
 }
 
 table th:nth-child(4) button {
-    color: var(--professional);
+    color: var(--starter);
     border: 1px solid var(--professional);
 }
 
@@ -2863,7 +2862,7 @@ table th:nth-child(4) button:hover {
 }
 
 table th:nth-child(5) button {
-    color: var(--enterprise);
+    color: var(--starter);
     border: 1px solid var(--enterprise);
 }
 
