@@ -821,7 +821,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     place-items: center;
-    padding: 5rem 4.8rem 0rem;
+    padding: 3rem 4.8rem 0rem;
 }
 
 .Real__Time__Tracking .RTT__IMG {
@@ -838,8 +838,8 @@ ul {
 }
 
 .RTT__DES h2 {
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .RTT__DES p {
@@ -1363,6 +1363,7 @@ ul {
 /* Section: 8 -> Pricing */
 
 .Quixx__Pricing {
+    display: none;
     padding: 5rem 0.2rem;
     background-color: #f2f1f7;
     z-index: 1000;
