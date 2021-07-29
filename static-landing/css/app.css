@@ -844,6 +844,7 @@ ul {
 
 .RTT__DES p {
     opacity: 0.8;
+    width: 90%;
 }
 
 @media (max-width: 1200px) {
@@ -903,11 +904,12 @@ ul {
 }
 
 .RO__DES h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .RO__DES p {
-    width: 70%;
+    width: 90%;
     opacity: 0.8;
 }
 
@@ -953,7 +955,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     place-items: center;
-    padding: 1rem 4.8rem 0rem;
+    padding: 0.5rem 4.8rem 0rem;
 }
 
 .Real__SMS .Real__IMG {
@@ -970,12 +972,13 @@ ul {
 }
 
 .Real__DES h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .Real__DES p {
     opacity: 0.8;
-    width: 70%;
+    width: 90%;
 }
 
 @media (max-width: 1200px) {
@@ -1018,14 +1021,14 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     place-items: center;
-    padding: 1rem 4.8rem 0rem;
+    padding: 0.5rem 4.8rem 0rem;
 }
 
 .Auto__Delivery .Auto__IMG {
     order: 1;
     height: 550px;
     width: 550px;
-    background: url("../img/Auto Delivery assign-01.svg") center/contain no-repeat;
+    background: url("../img/AutomaticAssign.jpg") center/contain no-repeat;
 }
 
 .Auto__DES {
@@ -1035,12 +1038,13 @@ ul {
 }
 
 .Auto__DES h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .Auto__DES p {
     opacity: 0.8;
-    width: 80%;
+    width: 90%;
 }
 
 @media (max-width: 1200px) {
@@ -1086,7 +1090,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     place-items: center;
-    padding: 1rem 4.8rem 0rem;
+    padding: 0.5rem 4.8rem 0rem;
 }
 
 .Bulk__Delivery .Bulk__IMG {
@@ -1103,12 +1107,13 @@ ul {
 }
 
 .Bulk__DES h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .Bulk__DES p {
     opacity: 0.8;
-    width: 80%;
+    width: 90%;
 }
 
 @media (max-width: 1200px) {
@@ -1154,7 +1159,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     place-items: center;
-    padding: 1rem 4.8rem 0rem;
+    padding: 0.5rem 4.8rem 0rem;
 }
 
 .Company__Analysis .Company__IMG {
@@ -1171,12 +1176,13 @@ ul {
 }
 
 .Company__DES h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .Company__DES p {
     opacity: 0.8;
-    width: 80%;
+    width: 90%;
 }
 
 @media (max-width: 1200px) {
@@ -2515,7 +2521,7 @@ p.error {
         font-size: 1.7rem;
     }
     h2 {
-        font-size: 1.2rem;
+        font-size: 1.2rem !important;
     }
     p {
         font-size: 0.9rem;
@@ -2812,7 +2818,7 @@ table svg.professional {
         font-size: 0.9rem;
     }
     h2 {
-        font-size: 1.1rem;
+        font-size: 1.1rem !important;
     }
     h1 {
         font-size: 1.6rem;
