@@ -2604,36 +2604,28 @@ p.error {
 
 .Quixx__New__Features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     padding: 5rem 5rem;
     column-gap: 2rem;
     row-gap: 2rem;
-    background: rgba(0, 0, 0, .7)
+    background: rgba(0, 0, 0, .7);
+    place-items: center;
 }
 
 .Quixx__New__Features>div {
     width: 100%;
-    height: 100%;
-}
-
-.Quixx__New__Features .Parrot {
-    background: url("../img/Items\ web-01\(1\).png") center/contain no-repeat;
+    height: 250px;
 }
 
 .Quixx__New__Features .Revenue {
-    height: 250px;
     background: url("../img/Feature icons and des-02.svg") center/contain no-repeat;
 }
 
 .Quixx__New__Features .Parrot {
-    height: 250px;
     background: url("../img/Items\ web-01\(1\).png") center/contain no-repeat;
 }
 
 .Quixx__New__Features .Maps {
-    grid-column: 1/-1;
-    height: 250px;
     background: url("../img/Items\ web-02\(1\).png") center/contain no-repeat;
 }
 
