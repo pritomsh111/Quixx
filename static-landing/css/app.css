@@ -577,11 +577,11 @@ ul {
     font-weight: 100;
     opacity: 0.7;
     padding-top: 5rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .Quixx__Mobile>h4 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     text-align: center;
     font-weight: 100;
     padding: 0.5rem 2rem 3rem;
@@ -1382,7 +1382,7 @@ ul {
 
 .Quixx__Application__Links h4 {
     font-weight: 100;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
 }
 
 .Quixx__Application__Links h4, .Quixx__Application__Links h1 {
@@ -1393,7 +1393,7 @@ ul {
     padding: 0.5rem 0rem;
     font-weight: 100;
     opacity: 0.7;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .Quixx__Application__Links h3 {
@@ -1430,6 +1430,9 @@ ul {
 }
 
 @media (max-width: 610px) {
+    .Quixx__Application__Links {
+        padding: 1rem 1.3rem;
+    }
     .Q__A__L {
         grid-template-columns: 1fr;
         padding: 0rem 2rem 2rem;
@@ -1494,11 +1497,12 @@ ul {
 }
 
 .Quixx__Panel__L h4 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
+    padding-top: 1rem;
 }
 
 .Quixx__Panel__L h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     opacity: 0.7;
     font-weight: 100;
 }
@@ -1527,13 +1531,13 @@ ul {
 }
 
 .Quixx__Pricing h1 {
-    font-size: 1.2rem;
-    padding: 0.5rem 2rem 3rem;
+    font-size: 1rem;
 }
 
 .Quixx__Pricing h4 {
     opacity: 0.7;
-    font-size: 1.8rem;
+    padding: 1rem 2rem 3rem;
+    font-size: 1.7rem;
 }
 
 .pricing-table {
@@ -1681,7 +1685,7 @@ ul {
 
 @media (max-width: 600px) {
     .Quixx__Pricing {
-        padding: 5rem 2rem;
+        padding: 4rem 1.3rem;
         background: #fff;
     }
 }
@@ -1706,12 +1710,14 @@ ul {
 }
 
 .Quixx__Video h1 {
+    font-size: 1.7rem;
     padding: 0.5rem 2rem;
 }
 
 .Quixx__Video h4 {
+    font-size: 1rem;
     padding-top: 3rem;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .Quixx__Video .video {
