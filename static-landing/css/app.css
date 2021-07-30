@@ -477,9 +477,9 @@ ul {
     position: relative;
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1500px) {
     .Home__L .Headline__Top {
-        font-size: 2.5rem;
+        font-size: 2.9rem;
     }
     .Home__L .Summmary__Bottom {
         font-size: 1.2rem;
