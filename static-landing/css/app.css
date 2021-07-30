@@ -2623,7 +2623,7 @@ p.error {
 
 .Quixx__New__Features .Revenue {
     height: 250px;
-    background: url("../img/Feature icons and des-03.svg") center/contain no-repeat;
+    background: url("../img/Feature icons and des-02.svg") center/contain no-repeat;
 }
 
 .Quixx__New__Features .Parrot {
@@ -2632,6 +2632,7 @@ p.error {
 }
 
 .Quixx__New__Features .Maps {
+    grid-column: 1/-1;
     height: 250px;
     background: url("../img/Items\ web-02\(1\).png") center/contain no-repeat;
 }
