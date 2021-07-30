@@ -1,11 +1,6 @@
 gsap.to("#recx", { x: 200, rotation: 90, duration: 3, xPercent: 100 });
 gsap.to("#recx", { strokeWidth: 5 });
 gsap.to("#recx", { strokeDashoffset: 0, duration: 10, yoyo: true, repeat: -1 });
-for (let i = 0; i < 50000000; i++) {
-
-    console.log("HEllo");
-
-}
 function _32() {
     console.log("HEllo");
 }
