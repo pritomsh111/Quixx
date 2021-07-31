@@ -1,12 +1,13 @@
 gsap.to("#recx", { x: 200, rotation: 90, duration: 3, xPercent: 100 });
 gsap.to("#recx", { strokeWidth: 5 });
 gsap.to("#recx", { strokeDashoffset: 0, duration: 10, yoyo: true, repeat: -1 });
-function _32() {
+
+function $_32() {
     console.log("HEllo");
 }
 const aa = 1;
 let a;
-_32();
+$_32();
 {
     let map = new Map();
     map.set("a", 2);
