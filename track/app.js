@@ -10,6 +10,7 @@ const status = {
 };
 function progressFull() {
     let result = "enroute_to_delivery".toLowerCase();
+    document.querySelector(".delivery__status").innerHTML = result.replace(/_/g, " ");
     let index = Object.keys(status).indexOf(result);
     let tick = document.querySelector(".delivery__progress");
     let path = document.querySelectorAll(".delivery__progress>div");
