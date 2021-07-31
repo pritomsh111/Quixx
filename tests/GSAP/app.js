@@ -4,8 +4,14 @@ gsap.to("#recx", { strokeDashoffset: 0, duration: 10, yoyo: true, repeat: -1 });
 function _32() {
     console.log("HEllo");
 }
+const aa = 1;
 let a;
 _32();
+{
+    let map = new Map();
+    map.set("a", 2);
+}
+
 // let a = Object.create({}, { one: { value: 3, enumerable: true }, two: { value: 4 } });
 
 // console.log(a);
