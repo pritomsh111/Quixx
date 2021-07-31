@@ -1,7 +1,7 @@
 (() => {
-    if (!document.location.host.includes("testing")) {
-        window.location.href = "/";
-    }
+    // if (!document.location.host.includes("portal")) {
+    //     window.location.href = "/";
+    // }
     let phone;
 
     // DOM manipulation
@@ -39,6 +39,19 @@
         lg.style.backgroundImage = "url(../../static-landing/img/clients/parcelboat.png)";
         encKey = "$2a$10$32GGf.bY5lUyawFN4SQId.b6dI8M66kBEf0zniZfvaNgFeRIlNefW";
         fc.href = "../../static-landing/img/clients/parcelboat.png";
+        // Change width/height of Logo
+        lg.style.height = "115px";
+
+        //Per Delivery Cost
+        deliveries = "0";
+    }
+    function tcexpressbd() {
+        cn.innerHTML = "Take Care Express";
+        cn.style.display = "none";
+        document.title = "Take Care Express";
+        lg.style.backgroundImage = "url(../../static-landing/img/clients/takecare.png)";
+        encKey = "$2a$10$4jjUQJoDz.od780DzZQHRe.K.CDQzEtr70Btxme4cjdFrncl6vUaq";
+        fc.href = "../../static-landing/img/clients/takecare.png";
         // Change width/height of Logo
         lg.style.height = "115px";
 
@@ -87,6 +100,9 @@
     // Selection!!
     if (cw === "parcelboat") {
         parcelboat();
+    }
+    else if (cw === "tcexpressbd") {
+        tcexpressbd();
     }
     else if (cw === "nogorbondhu") {
         nogorbondhu();

@@ -27,7 +27,7 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
-    cw = "tcexpressbd";
+    // cw = "tcexpressbd";
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -132,7 +132,7 @@
 
         // Footer Right 2
         addressR[1].innerHTML = "<a href='mailto:contact@tcexpressbd.com'>contact@tcexpressbd.com</a>";
-        addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
+        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Take Care Express";
