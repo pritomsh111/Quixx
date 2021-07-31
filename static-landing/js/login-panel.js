@@ -27,7 +27,7 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
-    cw = "parcelboat";
+    cw = "tcexpressbd";
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -98,7 +98,7 @@
         //Per Delivery Cost
         deliveries = "0";
     }
-    function takecare() {
+    function tcexpressbd() {
         cn.innerHTML = "<strong style=color:#B74046>Delivering</strong> Happiness <i class='fa fa-play' style='color:#B74046;font-size:0.9rem;vertical-align:middle'></i>";
         // cn.style.display = "none";
         document.title = "Take Care Express";
@@ -131,11 +131,11 @@
         addressL[2].innerHTML = "Dhaka-1216";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
+        addressR[1].innerHTML = "<a href='mailto:takecareexpressbd@gmail.com'>takecareexpressbd@gmail.com</a>";
         addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
 
         // Footer Copyright Name
-        whichCompany.innerHTML = "T";
+        whichCompany.innerHTML = "Take Care Express";
 
         //Per Delivery Cost
         deliveries = "0";
@@ -245,6 +245,9 @@
     // Selection!!
     if (cw === "parcelboat") {
         parcelboat();
+    }
+    else if (cw === "tcexpressbd") {
+        tcexpressbd();
     }
     else if (cw === "nogorbondhu") {
         nogorbondhu();
