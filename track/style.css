@@ -138,10 +138,6 @@ li {
     border-radius: 50%;
 }
 
-.delivery__progress>div:hover::before {
-    padding: 1.2rem;
-}
-
 .delivery__progress>div:not(:last-child)::after {
     position: absolute;
     content: "";
@@ -176,21 +172,14 @@ li {
 }
 
 .delivery__progress>div.next_delivery_status::before {
-    border: none;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 5s ease infinite;
+    border: 3px solid #fdba99a7;
+    animation: cc 1500ms ease-in alternate infinite;
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
+@keyframes cc {
+    to {
+        transform: scale(1.3);
+        opacity: 0;
     }
 }
 

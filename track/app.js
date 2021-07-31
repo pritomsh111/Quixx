@@ -8,32 +8,33 @@ const status = {
     cancelled: 7,
     on_hold: 8,
 };
+function progressFull() {
+    let result = "enroute_to_delivery".toLowerCase();
+    let index = Object.keys(status).indexOf(result);
+    let tick = document.querySelector(".delivery__progress");
+    let path = document.querySelectorAll(".delivery__progress>div");
+    let ret_can_hold = document.querySelector(".delivery__progress").children[4].children[0];
 
-let result = "picked_up".toLowerCase();
-let index = Object.keys(status).indexOf(result);
-let tick = document.querySelector(".delivery__progress");
-let path = document.querySelectorAll(".delivery__progress>div");
-let ret_can_hold = document.querySelector(".delivery__progress").children[4].children[0];
-let rco;
-for (let i = 0; i <= index; i++) {
-    if (i > 4 && result !== "delivered") {
-        result === "returned"
-            ? (ret_can_hold.innerHTML = "&#11152")
-            : result === "cancelled"
-                ? (ret_can_hold.innerHTML = "&#128473")
-                : result === "on_hold" ? (ret_can_hold.innerHTML = "&#33;") : i = 10;
-        path[i - 1].classList.add("ret_can_hold");
-        tick.children[i - 1].children[0].classList.add("ret_can_hold")
-        path[i - 2].classList.remove("complete_path");
-        break;
+    for (let i = 0; i <= index; i++) {
+        if (i > 4 && result !== "delivered") {
+            result === "returned"
+                ? (ret_can_hold.innerHTML = "&#11152")
+                : result === "cancelled"
+                    ? (ret_can_hold.innerHTML = "&#128473")
+                    : result === "on_hold" ? (ret_can_hold.innerHTML = "&#33;") : i = 10;
+            path[i - 1].classList.add("ret_can_hold");
+            tick.children[i - 1].children[0].classList.add("ret_can_hold")
+            path[i - 2].classList.remove("complete_path");
+            break;
+        }
+        tick.children[i].children[0].classList.add("tick_visible");
+        path[i].classList.add("done_status");
+        if (i < index) {
+            path[i].classList.add("complete_path");
+        }
     }
-    tick.children[i].children[0].classList.add("tick_visible");
-    path[i].classList.add("done_status");
-    if (i < index) {
-        path[i].classList.add("complete_path");
-    }
+    index < 4 && path[index + 1].classList.add("next_delivery_status");
 }
-index < 4 && path[index + 1].classList.add("next_delivery_status");
 
 let dateString = "2021-04-07";
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
