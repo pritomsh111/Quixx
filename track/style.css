@@ -1,0 +1,698 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Didact Gothic';
+}
+
+li {
+    list-style: none;
+}
+
+.track__delivery, .shipment {
+    padding: 2.5rem 4rem;
+}
+
+.track__delivery h2 {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.track__delivery h2::before {
+    position: absolute;
+    content: "";
+    height: 2rem;
+    width: 2rem;
+    background: url("./marker.png") no-repeat center/contain;
+    left: -2.2rem;
+}
+
+.main__progress {
+    padding: 2rem 4rem;
+    background: #f2f2f2a8;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
+
+.progress__full {
+    grid-column: 1/3;
+}
+
+.main__progress>div>p:first-child {
+    margin-bottom: 2rem;
+}
+
+.main__progress>div:first-child>p:nth-child(2) {
+    visibility: hidden;
+}
+
+.progress__full p span {
+    font-weight: 600;
+}
+
+.progress__status {
+    background: #fff;
+    border-radius: 5px;
+    padding: 1.2rem;
+    box-shadow: 1px 2px 2px 2px #eee;
+}
+
+.delivery__status {
+    padding-bottom: 1rem;
+}
+
+.delivery__progress {
+    position: relative;
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.delivery__progress>div {
+    padding: 0.8rem;
+    background: #ff9b69;
+    border-radius: 50%;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.delivery__progress>div>span {
+    position: absolute;
+    width: 100px;
+    left: 1rem;
+    padding: 0.2rem;
+    top: -2.3rem;
+    height: 30px;
+    display: grid;
+    color: #fff;
+    border-radius: 5px;
+    place-items: center;
+    background-color: #ff9b69;
+    transform-origin: top;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 250ms ease-in, opacity 250ms ease-in;
+}
+
+.delivery__progress>div:nth-of-type(2)>span {
+    top: -3rem;
+    height: 50px;
+}
+
+.delivery__progress>div:hover span {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.delivery__progress>div>div {
+    visibility: hidden;
+    position: absolute;
+    cursor: default;
+    color: #fff;
+}
+
+/* Dynamically handle */
+
+.delivery__progress>div>div.tick_visible {
+    visibility: visible;
+}
+
+.delivery__progress>div::before {
+    position: absolute;
+    content: "";
+    padding: 0.9rem;
+    background: transparent;
+    z-index: 0;
+    border-radius: 50%;
+}
+
+.delivery__progress>div:not(:last-child)::after {
+    position: absolute;
+    content: "";
+    height: .15rem;
+    width: calc(17vw - 2rem);
+    background: #eee;
+    top: calc(50% - .075rem);
+    left: 0;
+    z-index: -1;
+}
+
+/* Dynamically Handle */
+
+.delivery__progress>div.complete_path::after {
+    background: #fdba99a7;
+}
+
+.delivery__progress>div.ret_can_hold::after {
+    background: #ff0000;
+}
+
+.delivery__progress>div.done_status::before {
+    border: 3px solid #fdba99a7;
+}
+
+.delivery__progress>div.ret_can_hold::before {
+    border: 3px solid #ff0000a7;
+}
+
+.delivery__progress>div.ret_can_hold {
+    background: #ff0000;
+}
+
+.delivery__progress>div.next_delivery_status::before {
+    border: none;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.rest_delivery_status {
+    border: none;
+}
+
+.delivery__details {
+    margin-top: 2.8rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.delivery__details p {
+    margin-bottom: 1rem;
+}
+
+.delivered__place>p {
+    text-align: right;
+}
+
+.delivery__location {
+    background: #fff;
+    border-radius: 5px;
+    padding: 1.2rem;
+    box-shadow: 1px 2px 2px 2px #eee;
+}
+
+.delivery__location span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+/* Shipment */
+
+.shipment {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 2rem;
+    column-gap: 2rem;
+}
+
+.shipment__progress {
+    grid-column: 1/3;
+    padding: 1.2rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f2f2f2a8;
+    border-radius: 5px;
+    transition: opacity 150ms ease-in;
+}
+
+.shipment__progress__details {
+    pointer-events: none;
+    position: absolute;
+    top: 3rem;
+    background: #fff;
+    width: 100%;
+    left: 0;
+    border: 1px solid #f2f2f2a8;
+    border-top: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 250ms ease-in, visibility 250ms ease-in, opacity 250ms ease-in;
+}
+
+.shipment__progress.active .shipment__progress__details {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.shipment__progress__details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.shipment__progress__details table thead tr {
+    border-bottom: 1px solid #f2f2f2a8;
+}
+
+.shipment__progress__details table tbody tr td:nth-child(1) {
+    text-align: center;
+}
+
+.shipment__progress__details table tbody tr td:nth-child(2), .shipment__progress__details table tbody tr td:nth-child(3), .shipment__progress__details table thead tr th:nth-child(2), .shipment__progress__details table thead tr th:nth-child(3) {
+    width: 35%;
+    text-align: left;
+    line-height: 5;
+}
+
+.shipment__progress i, .shipment__details i {
+    transition: transform 250ms ease-in;
+}
+
+.shipment__progress:hover, .shipment__details:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.shipment__progress.active i {
+    transform: rotate(-180deg);
+}
+
+.shipment__progress.active .shipment__progress__details table tbody tr {
+    opacity: 0;
+}
+
+.shipment__progress.active .shipment__progress__details table tbody tr {
+    animation: animateRow 500ms ease-in forwards;
+    animation-delay: calc(var(--i) * 900ms);
+}
+
+@keyframes animateRow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot-stretching {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    border-radius: 5px;
+    background-color: #ff9b69;
+    transform: scale(1.25, 1.25);
+    animation: dotStretching 2s infinite ease-in;
+}
+
+.dot-stretching::before, .dot-stretching::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+}
+
+.dot-stretching::before {
+    width: 7px;
+    height: 7px;
+    border-radius: 5px;
+    background-color: #ff9b69;
+    animation: dotStretchingBefore 2s infinite ease-in;
+}
+
+.dot-stretching::after {
+    width: 7px;
+    height: 7px;
+    border-radius: 5px;
+    background-color: #ff9b69;
+    animation: dotStretchingAfter 2s infinite ease-in;
+}
+
+@keyframes dotStretching {
+    0% {
+        transform: scale(1.25, 1.25);
+    }
+    50%, 60% {
+        transform: scale(0.8, 0.8);
+    }
+    100% {
+        transform: scale(1.25, 1.25);
+    }
+}
+
+@keyframes dotStretchingBefore {
+    0% {
+        transform: translate(0) scale(0.7, 0.7);
+    }
+    50%, 60% {
+        transform: translate(-20px) scale(1, 1);
+    }
+    100% {
+        transform: translate(0) scale(0.7, 0.7);
+    }
+}
+
+@keyframes dotStretchingAfter {
+    0% {
+        transform: translate(0) scale(0.7, 0.7);
+    }
+    50%, 60% {
+        transform: translate(20px) scale(1, 1);
+    }
+    100% {
+        transform: translate(0) scale(0.7, 0.7);
+    }
+}
+
+.shipment__progress.active .check-wrap {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid #ff9b69;
+    position: relative;
+    overflow: hidden;
+    animation: wrap 0.6s ease-in-out forwards;
+    animation-delay: calc(var(--j) * 1000ms);
+    transform: scale(0);
+}
+
+.shipment__progress.active .check-wrap::before, .shipment__progress.active .check-wrap::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    width: 0;
+    height: 4px;
+    transform-origin: left;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.shipment__progress.active .check-wrap::before {
+    top: calc(50% - 3px);
+    left: calc(50% - 8px);
+    transform: rotate(45deg);
+    animation-name: left;
+    animation-delay: calc(var(--j) * 1000ms);
+}
+
+.shipment__progress.active .check-wrap::after {
+    top: calc(50% + 5px);
+    left: calc(50% - 3px);
+    transform: rotate(-45deg);
+    animation-name: right;
+    animation-delay: calc(var(--j) * 1200ms);
+}
+
+@keyframes wrap {
+    0% {
+        background-color: transparent;
+        transform: scale(0);
+    }
+    100% {
+        background-color: #ff9b69;
+        transform: scale(1);
+    }
+}
+
+@keyframes left {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 8px;
+    }
+}
+
+@keyframes right {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 15px;
+    }
+}
+
+.shipment__details {
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f2f2f2a8;
+    border-radius: 5px;
+    transition: opacity 150ms ease-in;
+    position: relative;
+}
+
+.shipment__details .shipment__details__products {
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+    border: 1px solid #f2f2f2a8;
+    border-top: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1.2rem;
+    pointer-events: none;
+}
+
+.shipment__details .shipment__details__products li {
+    margin-bottom: 1.3rem;
+}
+
+.shipment__details .shipment__details__products li:first-of-type {
+    margin-top: 2rem;
+    position: relative;
+}
+
+.shipment__details .shipment__details__products li span {
+    display: inline-block;
+}
+
+.shipment__details .shipment__details__products li>span:first-of-type {
+    display: block;
+}
+
+.shipment__details .shipment__details__products li>span:last-child {
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.shipment__details .shipment__details__products ul:first-child>li:last-child>span:last-child {
+    pointer-events: auto;
+    text-decoration: underline;
+}
+
+.shipment__details .shipment__details__products ul:not(:first-child) {
+    position: absolute;
+    opacity: 0;
+    top: 10rem;
+    transform: scaleY(0);
+    visibility: hidden;
+    transform-origin: top;
+    transition: opacity 50ms ease-in, transform 50ms ease-in, visibility 50ms ease-in;
+}
+
+.shipment__details .shipment__details__products ul:not(:first-child).show__list {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: opacity 150ms ease-in, transform 150ms ease-in, visibility 150ms ease-in;
+}
+
+.shipment__details .shipment__details__products ul:not(:first-child)+li {
+    transition: all 150ms;
+}
+
+.shipment__details .shipment__details__products ul:not(:first-child).show__list+li {
+    margin-top: 15rem;
+}
+
+.returnedx, .cancelledx, .on_holdx {
+    font-size: 1.5rem;
+    background: #ff9b69;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.returnedx {
+    background-color: #ee765200;
+}
+
+.cancelledx {
+    background-color: #ff0000;
+}
+
+.on_holdx {
+    background-color: rgb(255, 196, 0);
+}
+
+/* Media Queries */
+
+@media (max-width:960px) {
+    tr {
+        font-size: 0.8rem;
+    }
+    .shipment__progress.active .check-wrap {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width:820px) {
+    h2 {
+        font-size: medium;
+    }
+    .main__progress {
+        padding: 2rem 2rem;
+        grid-template-columns: 1fr;
+        row-gap: 3rem;
+    }
+    .progress__full {
+        grid-column: unset;
+    }
+    .delivered__place>p {
+        text-align: left;
+    }
+    .delivery__progress>div:not(:last-child)::after {
+        width: calc(26vw - 2rem);
+    }
+    .delivery__progress>div {
+        padding: 0.7rem;
+    }
+    .delivery__details>div:last-child>h2 {
+        margin-top: 2.01rem;
+    }
+    .shipment {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+        column-gap: 2rem;
+        padding: 2rem 2rem;
+    }
+    .shipment__progress {
+        grid-column: 1/-1;
+    }
+    tr {
+        font-size: 0.7rem;
+    }
+    .shipment__details .shipment__details__products {
+        font-size: 0.8rem;
+    }
+    .shipment__details .shipment__details__products ul:not(:first-child) {
+        top: 9rem;
+    }
+    .shipment__details .shipment__details__products ul:not(:first-child).show__list+li {
+        margin-top: 13rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .shipment__progress__details table tbody tr td:nth-child(2), .shipment__progress__details table tbody tr td:nth-child(3), .shipment__progress__details table thead tr th:nth-child(2), .shipment__progress__details table thead tr th:nth-child(3) {
+        width: 40%;
+    }
+    tr {
+        font-size: 0.7rem;
+    }
+    .shipment__progress__details {
+        padding: 1rem;
+    }
+    .shipment__progress.active .check-wrap {
+        width: 18px;
+        height: 18px;
+    }
+    .shipment__progress.active .check-wrap::before, .check-wrap::after {
+        height: 2px;
+    }
+    .shipment__progress.active .check-wrap::after {
+        top: calc(50% + 2px);
+        left: calc(50% - 2px);
+    }
+    .shipment__progress.active .check-wrap::before {
+        top: calc(50% - 1px);
+        left: calc(50% - 4px);
+    }
+    @keyframes wrap {
+        0% {
+            background-color: transparent;
+            transform: scale(0);
+        }
+        100% {
+            background-color: #ff9b69;
+            transform: scale(1);
+        }
+    }
+    @keyframes left {
+        0% {
+            width: 0;
+        }
+        100% {
+            width: 4px;
+        }
+    }
+    @keyframes right {
+        0% {
+            width: 0;
+        }
+        100% {
+            width: 8px;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .shipment__progress__details table tbody tr td:nth-child(2), .shipment__progress__details table tbody tr td:nth-child(3), .shipment__progress__details table thead tr th:nth-child(2), .shipment__progress__details table thead tr th:nth-child(3) {
+        width: 45%;
+    }
+    .shipment__progress__details table thead tr th:nth-child(3), .shipment__progress__details table tbody tr td:nth-child(3) {
+        text-align: right;
+    }
+    .dot-stretching::after {
+        animation: none;
+    }
+    .dot-stretching::before {
+        animation: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .shipment__progress__details table tbody tr td:nth-child(2), .shipment__progress__details table tbody tr td:nth-child(3), .shipment__progress__details table thead tr th:nth-child(2), .shipment__progress__details table thead tr th:nth-child(3) {
+        width: 45%;
+        line-height: 4;
+    }
+    tr {
+        font-size: 0.65rem;
+    }
+}
