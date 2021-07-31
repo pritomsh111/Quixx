@@ -98,6 +98,48 @@
         //Per Delivery Cost
         deliveries = "0";
     }
+    function takecare() {
+        cn.innerHTML = "<strong style=color:#B74046>Delivering</strong> Happiness <i class='fa fa-play' style='color:#B74046;font-size:0.9rem;vertical-align:middle'></i>";
+        // cn.style.display = "none";
+        document.title = "Take Care Express";
+        lg.style.backgroundImage = "url(static-landing/img/clients/takecare.png)";
+        encKey = "$2a$10$4jjUQJoDz.od780DzZQHRe.K.CDQzEtr70Btxme4cjdFrncl6vUaq";
+        fc.href = "static-landing/img/clients/takecare.png";
+        // Change width/height of Logo
+        lg.style.height = "115px";
+
+        //Footer Left
+        footLogo.style.backgroundImage = "url(static-landing/img/clients/takecare.png)";
+        footLogo.style.height = "100px";
+        aboutCompany.innerHTML = "A doorstep courier service for all over Bangladesh";
+        aboutCompany.style.fontWeight = "500";
+        aboutCompany.style.width = "90%";
+
+        Array.from(document.querySelectorAll(".Footer__R ul li")).map(item => item.style.opacity = ".95");
+
+        fb_company.href = "https://www.facebook.com/takecareexpressbd";
+        // i_company.style.display = "none";
+        li_company.style.display = "none";
+        i_company.href = "https://www.instagram.com/takecareexpress/";
+        // li_company.href = "https://www.linkedin.com";
+
+        // fooot.style.backgroundColor = "#B74046";
+        // fooot2.style.backgroundColor = "rgb(121 27 32)";
+
+        // Footer Right
+        addressL[1].innerHTML = "1/4-A North Pirerbag, Mirpur-2 (Behind the Yamaha Show Room, 60 feet Road)";
+        addressL[2].innerHTML = "Dhaka-1216";
+
+        // Footer Right 2
+        addressR[1].innerHTML = "<a href='mailto:parcelboat@gmail.com'>parcelboat@gmail.com</a>";
+        addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
+
+        // Footer Copyright Name
+        whichCompany.innerHTML = "T";
+
+        //Per Delivery Cost
+        deliveries = "0";
+    }
     function nogorbondhu() {
         cn.innerHTML = "Nogor Bondhu";
         document.title = "Nogor Bondhu";
