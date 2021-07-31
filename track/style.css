@@ -105,9 +105,10 @@ li {
     transition: transform 250ms ease-in, opacity 250ms ease-in;
 }
 
-.delivery__progress>div:nth-of-type(2)>span {
+.delivery__progress>div:nth-of-type(2)>span, .delivery__progress>div:nth-of-type(4)>span {
+    width: 140px;
     top: -3rem;
-    height: 50px;
+    height: 40px;
 }
 
 .delivery__progress>div:hover span {
@@ -135,6 +136,10 @@ li {
     background: transparent;
     z-index: 0;
     border-radius: 50%;
+}
+
+.delivery__progress>div:hover::before {
+    padding: 1.2rem;
 }
 
 .delivery__progress>div:not(:last-child)::after {
@@ -588,6 +593,14 @@ li {
     }
     .delivery__progress>div:not(:last-child)::after {
         width: calc(26vw - 2rem);
+    }
+    .delivery__progress>div>span {
+        position: absolute;
+        width: 100px;
+        left: -2rem;
+        padding: 0.1rem;
+        top: -2.5rem;
+        height: 30px;
     }
     .delivery__progress>div {
         padding: 0.7rem;
