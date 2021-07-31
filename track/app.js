@@ -34,19 +34,19 @@ function progressFull() {
         }
     }
     index < 4 && path[index + 1].classList.add("next_delivery_status");
+
+    let dateString = "2021-04-07";
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var d = new Date(dateString);
+    var dayName = days[d.getDay()];
+
+    document.querySelector(".delivery__details>div:nth-child(1)>h2:first-of-type").innerHTML = dayName;
+    document.querySelector(".delivery__details>div:nth-child(1)>h2:last-of-type").innerHTML = dateString.replace(/-/g, "/");
+
+    document.querySelector(".delivered__place").children[0].children[0].innerHTML = `<strong>${new Date(2021, 11, 24, 10, 33, 30)}</strong>`;
+    document.querySelector(".delivery__location>p").innerHTML = "<strong>Cumilla</strong>";
 }
-
-let dateString = "2021-04-07";
-var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-var d = new Date(dateString);
-var dayName = days[d.getDay()];
-
-document.querySelector(".delivery__details>div:nth-child(1)>h2:first-of-type").innerHTML = dayName;
-document.querySelector(".delivery__details>div:nth-child(1)>h2:last-of-type").innerHTML = dateString.replace(/-/g, "/");
-
-document.querySelector(".delivered__place").children[0].children[0].innerHTML = `<strong>${new Date(2021, 11, 24, 10, 33, 30)}</strong>`;
-document.querySelector(".delivery__location>p").innerHTML = "<strong>Cumilla</strong>";
-
+progressFull();
 
 // Table Styling
 let tbody = document.querySelector(".shipment__progress__details table tbody");
@@ -58,12 +58,12 @@ const shipment = {
     enroute_to_pickup: {
         date: "2019-21-32 13:30"
     },
-    picked_up: {
-        date: "2019-21-32 14:30"
-    },
-    enroute_to_delivery: {
-        date: "2019-21-32 15:30"
-    },
+    // picked_up: {
+    //     date: "2019-21-32 14:30"
+    // },
+    // enroute_to_delivery: {
+    //     date: "2019-21-32 15:30"
+    // },
     // delivered: {
     //     date: "2019-21-32 16:30"
     // },
