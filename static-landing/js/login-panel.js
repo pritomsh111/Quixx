@@ -99,7 +99,7 @@
         deliveries = "0";
     }
     function tcexpressbd() {
-        cn.innerHTML = "<strong style=color:#B74046>Delivering</strong> Happiness <i class='fa fa-play' style='color:#B74046;font-size:0.9rem;vertical-align:middle'></i>";
+        cn.innerHTML = "<strong style=color:#B74046>Send products </strong>to anyone on time.";
         // cn.style.display = "none";
         document.title = "Take Care Express";
         lg.style.backgroundImage = "url(static-landing/img/clients/takecare.png)";
@@ -131,7 +131,7 @@
         addressL[2].innerHTML = "Dhaka-1216";
 
         // Footer Right 2
-        addressR[1].innerHTML = "<a href='mailto:takecareexpressbd@gmail.com'>takecareexpressbd@gmail.com</a>";
+        addressR[1].innerHTML = "<a href='mailto:contact@tcexpressbd.com'>contact@tcexpressbd.com</a>";
         addressR[2].innerHTML = "<a href='tel:01323578062'>01323578062</a>";
 
         // Footer Copyright Name
