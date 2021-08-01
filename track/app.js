@@ -1,5 +1,7 @@
 axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 
+let interval;
+
 document.querySelector("#trackID").addEventListener("keyup", function (event) {
     if (event.target.value) {
         document.querySelector("#trackBtn").classList.add('show-off');
@@ -11,7 +13,10 @@ document.querySelector("#trackID").addEventListener("keyup", function (event) {
 });
 document.querySelector("#trackBtn").addEventListener("click", function (event) {
     let input = document.querySelector("#trackID").value;
-    httpFuncGet(input);
+    httpFuncGet(input); document.querySelector("#trackID").value = "";
+    setInterval(() => {
+        httpFuncGet(input);
+    }, 6000);
 });
 
 async function httpFuncGet(input) {
@@ -24,8 +29,8 @@ async function httpFuncGet(input) {
         let result = await axios(params);
         document.querySelector(".track__delivery").classList.add('show-off');
         document.querySelector("#trackBtn").classList.remove('show-off');
-        document.querySelector("#trackID").value = "";
-        document.querySelector(".errorInput>span").innerHTML = "Wrong Track ID!"
+        document.querySelector(".track__delivery>h2").innerHTML = "Tracking Details";
+        progressFull();
         console.log(result);
     }
     catch {
@@ -81,102 +86,101 @@ function progressFull() {
 
     document.querySelector(".delivered__place").children[0].children[0].innerHTML = `<strong>${new Date(2021, 11, 24, 10, 33, 30)}</strong>`;
     document.querySelector(".delivery__location>p").innerHTML = "<strong>Cumilla</strong>";
-}
-progressFull();
 
-// Table Styling
-let tbody = document.querySelector(".shipment__progress__details table tbody");
+    let tbody = document.querySelector(".shipment__progress__details table tbody");
 
-const shipment = {
-    just_created: {
-        date: "2019-21-32 20:30"
-    },
-    enroute_to_pickup: {
-        date: "2019-21-32 13:30"
-    },
-    picked_up: {
-        date: "2019-21-32 14:30"
-    },
-    // enroute_to_delivery: {
-    //     date: "2019-21-32 15:30"
-    // },
-    // delivered: {
-    //     date: "2019-21-32 16:30"
-    // },
-    // returned: {
-    //     date: "2019-21-32 19:30"
-    // },
-    // cancelled: {
-    //     date: "2019-21-32 17:30"
-    // },
-    // on_hold: {
-    //     date: "2019-21-32 18:30"
-    // },
-}
-let newRow, newCell;
-Object.keys(shipment).map((item, index) => {
-    newRow = tbody.insertRow(0);
-    newRow.style.cssText = `--i:${index}`;
-    Object.keys(shipment[item]).map(td => {
-        if (item === "delivered") {
-            newRow.insertCell(0).innerHTML = '<div style="--j:' + index + '" class="check-wrap"></div>';
-        }
-        else if (item === "returned") {
-            newRow.insertCell(0).innerHTML = "<div class='returnedx'>&#11152</div>";
-        }
-        else if (item === "cancelled") {
-            newRow.insertCell(0).innerHTML = "<div class='cancelledx'>X</div>";
-        }
-        else if (item === "on_hold") {
-            newRow.insertCell(0).innerHTML = "<div class='on_holdx'>&#33;</div>";
-        }
-        else if (index === Object.keys(shipment).length - 1) {
-            newRow.insertCell(0).innerHTML = '<div style="--j:' + index + '" class="check-wrap"></div>';
-            newRow.insertCell(1).innerHTML = item.toUpperCase().replace(/_/g, " ");
+    const shipment = {
+        just_created: {
+            date: "2019-21-32 20:30"
+        },
+        enroute_to_pickup: {
+            date: "2019-21-32 13:30"
+        },
+        picked_up: {
+            date: "2019-21-32 14:30"
+        },
+        // enroute_to_delivery: {
+        //     date: "2019-21-32 15:30"
+        // },
+        // delivered: {
+        //     date: "2019-21-32 16:30"
+        // },
+        // returned: {
+        //     date: "2019-21-32 19:30"
+        // },
+        // cancelled: {
+        //     date: "2019-21-32 17:30"
+        // },
+        // on_hold: {
+        //     date: "2019-21-32 18:30"
+        // },
+    }
+    let newRow, newCell;
+    Object.keys(shipment).map((item, index) => {
+        newRow = tbody.insertRow(0);
+        newRow.style.cssText = `--i:${index}`;
+        Object.keys(shipment[item]).map(td => {
+            if (item === "delivered") {
+                newRow.insertCell(0).innerHTML = '<div style="--j:' + index + '" class="check-wrap"></div>';
+            }
+            else if (item === "returned") {
+                newRow.insertCell(0).innerHTML = "<div class='returnedx'>&#11152</div>";
+            }
+            else if (item === "cancelled") {
+                newRow.insertCell(0).innerHTML = "<div class='cancelledx'>X</div>";
+            }
+            else if (item === "on_hold") {
+                newRow.insertCell(0).innerHTML = "<div class='on_holdx'>&#33;</div>";
+            }
+            else if (index === Object.keys(shipment).length - 1) {
+                newRow.insertCell(0).innerHTML = '<div style="--j:' + index + '" class="check-wrap"></div>';
+                newRow.insertCell(1).innerHTML = item.toUpperCase().replace(/_/g, " ");
+                newRow.insertCell(2).innerHTML = shipment[item][td];
+
+                newRow = tbody.insertRow(0);
+
+                newRow.style.cssText = `--i:${index + 1}`;
+
+                newRow.insertCell(0).innerHTML = '<div style="--j:' + index + '" class="snippet" data-title=".dot-stretching"><div class="stage"><div class="dot-stretching"></div></div></div>';
+                newRow.insertCell(1).innerHTML = Object.keys(status)[Object.keys(shipment).length].toUpperCase().replace(/_/g, " ");
+                newRow.insertCell(2).innerHTML = '<div style="--j:' + index + '" class="snippet" data-title=".dot-stretching"><div class="stage"><div class="dot-stretching"></div></div></div>';
+                return;
+            }
+            else {
+                newRow.insertCell(0).innerHTML = '<div style="--j:' + index + '" class="check-wrap"></div>';
+            }
+            newRow.insertCell(1).innerHTML = item.toUpperCase().replace(/_/g, "  ");
             newRow.insertCell(2).innerHTML = shipment[item][td];
-
-            newRow = tbody.insertRow(0);
-
-            newRow.style.cssText = `--i:${index + 1}`;
-
-            newRow.insertCell(0).innerHTML = '<div style="--j:' + index + '" class="snippet" data-title=".dot-stretching"><div class="stage"><div class="dot-stretching"></div></div></div>';
-            newRow.insertCell(1).innerHTML = Object.keys(status)[Object.keys(shipment).length].toUpperCase().replace(/_/g, " ");
-            newRow.insertCell(2).innerHTML = '<div style="--j:' + index + '" class="snippet" data-title=".dot-stretching"><div class="stage"><div class="dot-stretching"></div></div></div>';
-            return;
-        }
-        else {
-            newRow.insertCell(0).innerHTML = '<div style="--j:' + index + '" class="check-wrap"></div>';
-        }
-        newRow.insertCell(1).innerHTML = item.toUpperCase().replace(/_/g, "  ");
-        newRow.insertCell(2).innerHTML = shipment[item][td];
+        });
     });
-});
 
-// Shipment Progress visibility clickHandler
+    // Shipment Progress visibility clickHandler
 
-document.querySelector(".shipment__progress").addEventListener("click", function () {
-    this.classList.toggle("active");
-    if (window.innerWidth < 360) {
-        if (this.classList.contains("active"))
-            document.querySelector(".shipment__details").style.marginTop = "17rem";
-        else
-            document.querySelector(".shipment__details").style.marginTop = "0rem";
-    }
-    else if (window.innerWidth < 820) {
-        if (this.classList.contains("active"))
-            document.querySelector(".shipment__details").style.marginTop = "22rem";
-        else
-            document.querySelector(".shipment__details").style.marginTop = "0rem";
-    }
-    setTimeout(() => {
-        window.scrollTo(0, document.body.scrollHeight);
-    }, 350);
-});
-
-// Shipment Details - Product
-
-document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
-    .addEventListener("click", function (e) {
-        e.target.innerHTML = e.target.innerHTML.trim() === "Show Less -" ? "Show More +" : e.target.innerHTML.trim() === "Show More +" ? "Show Less -" : null;
-        document.querySelector(".shipment__details .shipment__details__products ul:not(:first-child)").classList.toggle("show__list");
+    document.querySelector(".shipment__progress").addEventListener("click", function () {
+        this.classList.toggle("active");
+        if (window.innerWidth < 360) {
+            if (this.classList.contains("active"))
+                document.querySelector(".shipment__details").style.marginTop = "17rem";
+            else
+                document.querySelector(".shipment__details").style.marginTop = "0rem";
+        }
+        else if (window.innerWidth < 820) {
+            if (this.classList.contains("active"))
+                document.querySelector(".shipment__details").style.marginTop = "22rem";
+            else
+                document.querySelector(".shipment__details").style.marginTop = "0rem";
+        }
+        setTimeout(() => {
+            window.scrollTo(0, document.body.scrollHeight);
+        }, 350);
     });
+
+    // Shipment Details - Product
+
+    document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
+        .addEventListener("click", function (e) {
+            e.target.innerHTML = e.target.innerHTML.trim() === "Show Less -" ? "Show More +" : e.target.innerHTML.trim() === "Show More +" ? "Show Less -" : null;
+            document.querySelector(".shipment__details .shipment__details__products ul:not(:first-child)").classList.toggle("show__list");
+        });
+}
+
