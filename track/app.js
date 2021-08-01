@@ -1,6 +1,12 @@
-document.querySelector("#trackID").addEventListener("input", function (event) {
-    let input = document.querySelector("#trackID").value;
-    httpFuncGet(input);
+axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
+
+document.querySelector("#trackID").addEventListener("keyup", function (event) {
+    if (event.target.value) {
+        this.nextElementSibling.classList.add('show-off');
+    }
+    else {
+        this.nextElementSibling.classList.remove('show-off');
+    }
 });
 document.querySelector("#trackBtn").addEventListener("click", function (event) {
     let input = document.querySelector("#trackID").value;
@@ -11,7 +17,7 @@ async function httpFuncGet(input) {
     let params = {
         method: "GET",
         data: input,
-        url: "https://jsonplaceholder.typicode.com/posts",
+        url: "/posts",
     }
     let result = await axios(params);
     console.log(result);

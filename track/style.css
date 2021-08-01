@@ -72,6 +72,12 @@ li {
     transition: 250ms ease-in;
 }
 
+#trackBtn.show-off {
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
 #trackBtn:hover {
     color: #fff;
     background-color: #ff9b69;
