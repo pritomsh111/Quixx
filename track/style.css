@@ -18,10 +18,24 @@ li {
 
 .track__delivery, .shipment {
     padding: 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+}
+
+.inputs_track {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+#trackID {
+    flex: 1;
+    padding: .4rem;
+    font-family: inherit;
 }
 
 .track__delivery h2 {
-    margin-bottom: 1.5rem;
     position: relative;
 }
 
