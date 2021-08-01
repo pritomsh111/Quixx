@@ -1,3 +1,9 @@
+document.querySelector("#trackBtn").addEventListener("click", function () {
+
+});
+
+
+
 const status = {
     just_created: 1,
     enroute_to_pickup: 2,

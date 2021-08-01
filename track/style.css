@@ -17,16 +17,31 @@ li {
 }
 
 .trd-9 {
-    position: absolute;
+    display: none;
 }
 
 .track__delivery {
     padding: 2.5rem 4rem;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
     align-items: center;
     height: 100vh;
     transition: all 250ms ease;
+}
+
+.track__delivery h2 {
+    position: relative;
+    margin: 0 auto;
+}
+
+.track__delivery h2::before {
+    position: absolute;
+    content: "";
+    height: 2rem;
+    width: 2rem;
+    background: url("./marker.png") no-repeat center/contain;
+    left: -2rem;
 }
 
 .inputs_track {
@@ -62,17 +77,22 @@ li {
     border-color: #ff9b69;
 }
 
-.track__delivery h2 {
-    position: relative;
-}
-
-.track__delivery h2::before {
-    position: absolute;
-    content: "";
-    height: 2rem;
-    width: 2rem;
-    background: url("./marker.png") no-repeat center/contain;
-    left: -2.2rem;
+@media (max-width:450px) {
+    .track__delivery {
+        padding: 2.5rem 2rem;
+        gap: 0.5rem;
+    }
+    .track__delivery h2::before {
+        height: 2rem;
+        width: 2rem;
+        top: -.3rem;
+    }
+    #trackID {
+        padding: .3rem;
+    }
+    #trackBtn {
+        padding: .3rem;
+    }
 }
 
 .main__progress {
