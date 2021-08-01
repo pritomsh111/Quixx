@@ -3,7 +3,7 @@ axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 document.querySelector("#trackID").addEventListener("keyup", function (event) {
     if (event.target.value) {
         document.querySelector("#trackBtn").classList.add('show-off');
-        document.querySelector(".errorInput").innerHTML = "";
+        document.querySelector(".errorInput>span").innerHTML = "";
     }
     else {
         document.querySelector("#trackBtn").classList.remove('show-off');
@@ -24,10 +24,12 @@ async function httpFuncGet(input) {
         let result = await axios(params);
         document.querySelector(".track__delivery").classList.add('show-off');
         document.querySelector("#trackBtn").classList.remove('show-off');
+        document.querySelector("#trackID").value = "";
+        document.querySelector(".errorInput>span").innerHTML = "Wrong Track ID!"
         console.log(result);
     }
     catch {
-        document.querySelector(".errorInput").innerHTML = "Wrong Track ID!"
+        document.querySelector(".errorInput>span").innerHTML = "Wrong Track ID!"
     }
 }
 

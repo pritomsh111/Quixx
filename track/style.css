@@ -100,9 +100,15 @@ li {
 }
 
 .errorInput {
+    position: absolute;
+}
+
+.errorInput>span {
     color: #ff5500;
     position: absolute;
-    top: calc(50% + 1rem);
+    left: 0;
+    right: -7rem;
+    bottom: -2.2rem;
 }
 
 @media (max-width:450px) {
