@@ -13,8 +13,14 @@ document.querySelector("#trackID").addEventListener("keyup", function (event) {
 });
 document.querySelector("#trackBtn").addEventListener("click", function (event) {
     let input = document.querySelector("#trackID").value;
-    httpFuncGet(input); document.querySelector("#trackID").value = "";
-    setInterval(() => {
+    document.querySelector("#trackID").value = "";
+    document.querySelector("#trackBtn").classList.remove('show-off');
+    httpFuncGet(input);
+    if (interval) {
+        clearInterval(interval);
+        interval = 0;
+    }
+    interval = setInterval(() => {
         httpFuncGet(input);
     }, 6000);
 });
@@ -28,7 +34,6 @@ async function httpFuncGet(input) {
     try {
         let result = await axios(params);
         document.querySelector(".track__delivery").classList.add('show-off');
-        document.querySelector("#trackBtn").classList.remove('show-off');
         document.querySelector(".track__delivery>h2").innerHTML = "Tracking Details";
         progressFull();
         console.log(result);
