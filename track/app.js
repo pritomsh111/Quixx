@@ -1,8 +1,17 @@
-document.querySelector("#trackBtn").addEventListener("click", function () {
-
+document.querySelector("#trackBtn").addEventListener("click", function (event) {
+    let input = document.querySelector("#trackID").value;
+    httpFuncGet(input);
 });
 
-
+async function httpFuncGet(input) {
+    let params = {
+        method: "GET",
+        data: input,
+        url: "https://jsonplaceholder.typicode.com/posts",
+    }
+    let result = await axios(params);
+    console.log(result);
+}
 
 const status = {
     just_created: 1,
