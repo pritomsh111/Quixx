@@ -66,12 +66,13 @@ li {
     font-family: inherit;
     border-radius: 5px;
     background-color: transparent;
-    cursor: pointer;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.4;
     transition: 250ms ease-in;
 }
 
 #trackBtn:hover {
-    opacity: 0.86;
     color: #fff;
     background-color: #ff9b69;
     border-color: #ff9b69;

@@ -1,3 +1,7 @@
+document.querySelector("#trackID").addEventListener("input", function (event) {
+    let input = document.querySelector("#trackID").value;
+    httpFuncGet(input);
+});
 document.querySelector("#trackBtn").addEventListener("click", function (event) {
     let input = document.querySelector("#trackID").value;
     httpFuncGet(input);
