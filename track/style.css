@@ -16,11 +16,17 @@ li {
     list-style: none;
 }
 
-.track__delivery, .shipment {
+.trd-9 {
+    position: absolute;
+}
+
+.track__delivery {
     padding: 2.5rem 4rem;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     align-items: center;
+    height: 100vh;
+    transition: all 250ms ease;
 }
 
 .inputs_track {
@@ -33,16 +39,27 @@ li {
     flex: 1;
     padding: .4rem;
     font-family: inherit;
+    border: 1px solid #000;
     border-radius: 5px;
     outline: none;
     font-size: 0.8rem;
 }
 
 #trackBtn {
-    padding: .4rem;
-    font-style: inherit;
+    padding: .35rem;
+    border: 1px solid #000;
+    font-family: inherit;
     border-radius: 5px;
     background-color: transparent;
+    cursor: pointer;
+    transition: 250ms ease-in;
+}
+
+#trackBtn:hover {
+    opacity: 0.86;
+    color: #fff;
+    background-color: #ff9b69;
+    border-color: #ff9b69;
 }
 
 .track__delivery h2 {
@@ -245,6 +262,7 @@ li {
     grid-template-columns: repeat(3, 1fr);
     row-gap: 2rem;
     column-gap: 2rem;
+    padding: 2.5rem 4rem;
 }
 
 .shipment__progress {
