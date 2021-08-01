@@ -2,10 +2,11 @@ axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 
 document.querySelector("#trackID").addEventListener("keyup", function (event) {
     if (event.target.value) {
-        this.nextElementSibling.classList.add('show-off');
+        document.querySelector("#trackBtn").classList.add('show-off');
+        document.querySelector(".errorInput").innerHTML = "";
     }
     else {
-        this.nextElementSibling.classList.remove('show-off');
+        document.querySelector("#trackBtn").classList.remove('show-off');
     }
 });
 document.querySelector("#trackBtn").addEventListener("click", function (event) {
@@ -19,8 +20,15 @@ async function httpFuncGet(input) {
         data: input,
         url: "/posts",
     }
-    let result = await axios(params);
-    console.log(result);
+    try {
+        let result = await axios(params);
+        document.querySelector(".track__delivery").classList.add('show-off');
+        document.querySelector("#trackBtn").classList.remove('show-off');
+        console.log(result);
+    }
+    catch {
+        document.querySelector(".errorInput").innerHTML = "Wrong Track ID!"
+    }
 }
 
 const status = {
@@ -84,9 +92,9 @@ const shipment = {
     enroute_to_pickup: {
         date: "2019-21-32 13:30"
     },
-    // picked_up: {
-    //     date: "2019-21-32 14:30"
-    // },
+    picked_up: {
+        date: "2019-21-32 14:30"
+    },
     // enroute_to_delivery: {
     //     date: "2019-21-32 15:30"
     // },
