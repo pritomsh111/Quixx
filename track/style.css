@@ -781,6 +781,9 @@ li {
     #trackBtn {
         padding: .3rem;
     }
+    .inputs_track {
+        gap: 0.2rem
+    }
     .shipment__progress__details table tbody tr td:nth-child(2), .shipment__progress__details table tbody tr td:nth-child(3), .shipment__progress__details table thead tr th:nth-child(2), .shipment__progress__details table thead tr th:nth-child(3) {
         width: 45%;
     }

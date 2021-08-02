@@ -121,6 +121,13 @@ function progressFull() {
         // },
     }
     let newRow, newCell;
+    if (tbody.rows.length) {
+        Array.from(tbody.rows).map(row => {
+            console.log(row.remove());
+            row.remove();
+        });
+    }
+
     Object.keys(shipment).map((item, index) => {
         newRow = tbody.insertRow(0);
         newRow.style.cssText = `--i:${index}`;
