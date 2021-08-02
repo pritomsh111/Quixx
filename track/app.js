@@ -166,33 +166,36 @@ function progressFull() {
         });
     });
 
-    // Shipment Progress visibility clickHandler
 
-    document.querySelector(".shipment__progress").addEventListener("click", function () {
-        this.classList.toggle("active");
-        if (window.innerWidth < 360) {
-            if (this.classList.contains("active"))
-                document.querySelector(".shipment__details").style.marginTop = "17rem";
-            else
-                document.querySelector(".shipment__details").style.marginTop = "0rem";
-        }
-        else if (window.innerWidth < 820) {
-            if (this.classList.contains("active"))
-                document.querySelector(".shipment__details").style.marginTop = "22rem";
-            else
-                document.querySelector(".shipment__details").style.marginTop = "0rem";
-        }
-        setTimeout(() => {
-            window.scrollTo(0, document.body.scrollHeight);
-        }, 350);
-    });
-
-    // Shipment Details - Product
-
-    document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
-        .addEventListener("click", function (e) {
-            e.target.innerHTML = e.target.innerHTML.trim() === "Show Less -" ? "Show More +" : e.target.innerHTML.trim() === "Show More +" ? "Show Less -" : null;
-            document.querySelector(".shipment__details .shipment__details__products ul:not(:first-child)").classList.toggle("show__list");
-        });
 }
 
+// Shipment Progress visibility clickHandler
+
+document.querySelector(".shipment__progress").addEventListener("click", function () {
+    this.classList.toggle("active");
+    if (window.innerWidth < 360) {
+        if (this.classList.contains("active"))
+            document.querySelector(".shipment__details").style.marginTop = "17rem";
+        else
+            document.querySelector(".shipment__details").style.marginTop = "0rem";
+    }
+    else if (window.innerWidth < 820) {
+        if (this.classList.contains("active"))
+            document.querySelector(".shipment__details").style.marginTop = "22rem";
+        else
+            document.querySelector(".shipment__details").style.marginTop = "0rem";
+    }
+    setTimeout(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+    }, 350);
+});
+
+
+// Shipment Details - Product
+function shipmentDetails2(e) {
+    e.target.innerHTML = e.target.innerHTML.trim() === "Show Less -" ? "Show More +" : e.target.innerHTML.trim() === "Show More +" ? "Show Less -" : null;
+    document.querySelector(".shipment__details .shipment__details__products ul:not(:first-child)").classList.toggle("show__list");
+}
+
+document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
+    .addEventListener("click", shipmentDetails2);
