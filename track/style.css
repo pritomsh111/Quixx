@@ -17,12 +17,13 @@ body {
 }
 
 .checkerLabel {
-    display: inline-block;
+    display: block;
     background-color: #ff9b69;
     width: 100px;
     height: 30px;
     border-radius: 100px;
     position: relative;
+    margin: 0 auto;
 }
 
 .checkerLabel::after {
@@ -40,6 +41,10 @@ body {
 #checker:checked~.checkerLabel::after {
     left: calc(100% - 5px);
     transform: translateX(-100%);
+}
+
+#checker:active~.checkerLabel::after {
+    width: 25px;
 }
 
 li {
