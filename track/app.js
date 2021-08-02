@@ -1,20 +1,28 @@
 axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 
+let tick = document.querySelector(".delivery__progress");
+let path = document.querySelectorAll(".delivery__progress>div");
+let ret_can_hold = document.querySelector(".delivery__progress").children[4].children[0];
+let trackBtn = document.querySelector("#trackBtn");
+let trackId = document.querySelector("#trackID");
+let errorSpan = document.querySelector(".errorInput>span");
+let trackDelivery = document.querySelector(".track__delivery");
+let trackDeliveryH2 = document.querySelector(".track__delivery>h2");
 let interval;
 
-document.querySelector("#trackID").addEventListener("keyup", function (event) {
+trackId.addEventListener("keyup", function (event) {
     if (event.target.value) {
-        document.querySelector("#trackBtn").classList.add('show-off');
-        document.querySelector(".errorInput>span").innerHTML = "";
+        trackBtn.classList.add('show-off');
+        errorSpan.innerHTML = "";
     }
     else {
-        document.querySelector("#trackBtn").classList.remove('show-off');
+        trackBtn.classList.remove('show-off');
     }
 });
-document.querySelector("#trackBtn").addEventListener("click", function (event) {
-    let input = document.querySelector("#trackID").value;
-    document.querySelector("#trackID").value = "";
-    document.querySelector("#trackBtn").classList.remove('show-off');
+trackBtn.addEventListener("click", function (event) {
+    let input = trackId.value;
+    trackId.value = "";
+    trackBtn.classList.remove('show-off');
     httpFuncGet(input);
     if (interval) {
         clearInterval(interval);
@@ -33,13 +41,13 @@ async function httpFuncGet(input) {
     }
     try {
         let result = await axios(params);
-        document.querySelector(".track__delivery").classList.add('show-off');
-        document.querySelector(".track__delivery>h2").innerHTML = "Tracking Details";
+        trackDelivery.classList.add('show-off');
+        trackDeliveryH2.innerHTML = "Tracking Details";
         progressFull();
         console.log(result);
     }
     catch {
-        document.querySelector(".errorInput>span").innerHTML = "Wrong Track ID!"
+        errorSpan.innerHTML = "Wrong Track ID!"
     }
 }
 
@@ -57,9 +65,6 @@ function progressFull() {
     let result = "enroute_to_delivery".toLowerCase();
     document.querySelector(".delivery__status").innerHTML = result.replace(/_/g, " ");
     let index = Object.keys(status).indexOf(result);
-    let tick = document.querySelector(".delivery__progress");
-    let path = document.querySelectorAll(".delivery__progress>div");
-    let ret_can_hold = document.querySelector(".delivery__progress").children[4].children[0];
 
     for (let i = 0; i <= index; i++) {
         if (i > 4 && result !== "delivered") {
@@ -120,10 +125,9 @@ function progressFull() {
         //     date: "2019-21-32 18:30"
         // },
     }
-    let newRow, newCell;
+    let newRow;
     if (tbody.rows.length) {
         Array.from(tbody.rows).map(row => {
-            console.log(row.remove());
             row.remove();
         });
     }
@@ -165,8 +169,6 @@ function progressFull() {
             newRow.insertCell(2).innerHTML = shipment[item][td];
         });
     });
-
-
 }
 
 // Shipment Progress visibility clickHandler
