@@ -30,7 +30,7 @@ trackBtn.addEventListener("click", function (event) {
     }
     interval = setInterval(() => {
         httpFuncGet(input);
-    }, 6000);
+    }, 180000);
 });
 
 async function httpFuncGet(input) {
@@ -41,7 +41,6 @@ async function httpFuncGet(input) {
     }
     try {
         let result = await axios(params);
-        document.querySelector(".flyer").style.display = "none";
         trackDelivery.classList.add('show-off');
         trackDeliveryH2.innerHTML = "Tracking Details";
         progressFull();
@@ -110,9 +109,9 @@ function progressFull() {
         picked_up: {
             date: "2019-21-32 14:30"
         },
-        // enroute_to_delivery: {
-        //     date: "2019-21-32 15:30"
-        // },
+        enroute_to_delivery: {
+            date: "2019-21-32 15:30"
+        },
         // delivered: {
         //     date: "2019-21-32 16:30"
         // },
@@ -202,6 +201,3 @@ function shipmentDetails2(e) {
 
 document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
     .addEventListener("click", shipmentDetails2);
-
-gsap.to(".flyer", { y: -20, rotation: 270, ease: "none" })
-
