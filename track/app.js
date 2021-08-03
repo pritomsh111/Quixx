@@ -41,6 +41,7 @@ async function httpFuncGet(input) {
     }
     try {
         let result = await axios(params);
+        document.querySelector(".flyer").style.display = "none";
         trackDelivery.classList.add('show-off');
         trackDeliveryH2.innerHTML = "Tracking Details";
         progressFull();
@@ -202,11 +203,5 @@ function shipmentDetails2(e) {
 document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
     .addEventListener("click", shipmentDetails2);
 
-let tl = gsap.timeline();
+gsap.to(".flyer", { y: -20, rotation: 270, ease: "none" })
 
-tl.to(".flyer", { x: -30, y: 60, rotation: 120, ease: "none" })
-    .to(".flyer", { x: -60, y: 90, rotation: 150, ease: "none" })
-    .to(".flyer", { x: -90, y: 120, rotation: 180, ease: "none" })
-    .to(".flyer", { x: -120, y: 100, rotation: 210, ease: "none" })
-    .to(".flyer", { x: -160, y: 70, rotation: 250, ease: "none" })
-    .to(".flyer", { x: -190, y: 40, rotation: 300, ease: "none" })
