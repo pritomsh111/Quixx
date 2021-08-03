@@ -201,3 +201,6 @@ function shipmentDetails2(e) {
 
 document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
     .addEventListener("click", shipmentDetails2);
+
+
+gsap.to(".flyer", { x: 100, y: -100, rotation: 90 });
