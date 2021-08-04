@@ -15,6 +15,19 @@ $_32();
 
 let a = Object.create({}, { one: { value: 3, enumerable: true }, two: { value: 4 } });
 
+
+function* gen() {
+    let i = 0;
+    while (true) {
+        yield ++i;
+    }
+}
+
+let genx = gen();
+console.log(genx.next());
+console.log(genx.next());
+console.log(genx.next());
+console.log(genx.next());
 // console.log(a);
 
 // for (const key in a) {
