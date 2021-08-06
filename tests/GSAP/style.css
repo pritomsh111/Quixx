@@ -5,9 +5,16 @@
 }
 
 div {
-    margin-left: 200px;
+    /* margin-left: 200px; */
     padding: 2rem;
+    width: 100px;
+    margin: auto;
     /* width: 100%;  */
     /* Auto refers to -> Take the space available without overflowing! */
-    width: auto;
+    /* width: auto; */
+}
+
+span {
+    /* display: grid;
+    place-items: center; */
 }
