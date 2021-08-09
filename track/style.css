@@ -12,7 +12,7 @@ body {
     font-family: 'Didact Gothic';
 }
 
-.flyer {
+/* .flyer {
     position: fixed;
     top: 50%;
     right: 1rem;
@@ -20,7 +20,7 @@ body {
     height: 40px;
     transform: rotate(90deg);
     background: url("paper.png") no-repeat center/contain;
-}
+} */
 
 /* 
 

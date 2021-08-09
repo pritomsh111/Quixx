@@ -6,15 +6,25 @@
 
 div {
     /* margin-left: 200px; */
+    top: 1rem;
+    position: relative;
     padding: 2rem;
     width: 100px;
     margin: auto;
+    box-shadow: 1px 1px 5px 1px #cccccc;
+    transition: transform 250ms ease-in;
     /* width: 100%;  */
     /* Auto refers to -> Take the space available without overflowing! */
     /* width: auto; */
 }
 
+/* div:hover {
+    transform: translateY(-.5rem);
+} */
+
+/* 
 span {
-    /* display: grid;
-    place-items: center; */
+    display: grid;
+    place-items: center;
 }
+*/
