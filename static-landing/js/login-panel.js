@@ -109,7 +109,7 @@
         lg.style.height = "115px";
 
         //Footer Left
-        footLogo.style.backgroundImage = "url(static-landing/img/clients/takecare.png)";
+        footLogo.style.backgroundImage = "url(static-landing/img/clients/takecarewhite.png)";
         footLogo.style.height = "100px";
         aboutCompany.innerHTML = "A doorstep courier service for all over Bangladesh";
         aboutCompany.style.fontWeight = "500";
