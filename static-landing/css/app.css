@@ -1678,8 +1678,12 @@ ul {
     color: #fff;
 }
 
-table th .billing-msg, table th .amount .lt-x {
+table th .amount .lt-x {
     font-size: 1rem;
+}
+
+table th .amount .lt-x {
+    text-decoration: line-through;
 }
 
 /* 
