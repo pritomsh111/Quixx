@@ -1678,6 +1678,10 @@ ul {
     color: #fff;
 }
 
+table th .billing-msg, table th .amount .lt-x {
+    font-size: 1rem;
+}
+
 /* 
 .Quixx__Pricing .pricing-card:nth-child(3) .order-btn::before {
     background: #fff;
