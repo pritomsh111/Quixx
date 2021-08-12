@@ -2816,6 +2816,12 @@ table th .popular {
     border-radius: 2px;
 }
 
+@media (max-width: 890px) {
+    table th .popular {
+        padding: 2px 4px;
+    }
+}
+
 table th .amount {
     font-size: 1.8rem;
     margin: 0.4rem 0;
