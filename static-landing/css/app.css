@@ -2626,23 +2626,23 @@ p.error {
 }
 
 .Quixx__New__Features .Revenue {
-    background: url("../img/Feature icons and des-02.svg") center/contain no-repeat;
+    background: url("../img/Items web-03.svg") center/contain no-repeat;
 }
 
-.Quixx__New__Features .Parrot {
-    background: url("../img/Items\ web-01\(1\).png") center/contain no-repeat;
-}
+/* .Quixx__New__Features .Parrot {
+    background: url("../img/Items web-03.svg") center/contain no-repeat;
+} */
 
 .Quixx__New__Features .Maps {
-    background: url("../img/Items\ web-02\(1\).png") center/contain no-repeat;
+    background: url("../img/Items web-04.svg") center/contain no-repeat;
 }
 
 .Quixx__New__Features .Vehical {
-    background: url("../img/Items\ web-03\(1\).png") center/contain no-repeat;
+    background: url("../img/Items web-05.svg") center/contain no-repeat;
 }
 
 .Quixx__New__Features .Person_App {
-    background: url("../img/Feature\ icons\ and\ des-03.svg") center/contain no-repeat;
+    background: url("../img/Items web-03.svg") center/contain no-repeat;
 }
 
 @media (max-width: 791px) {
