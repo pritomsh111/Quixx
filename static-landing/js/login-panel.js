@@ -127,12 +127,12 @@
         // fooot2.style.backgroundColor = "rgb(121 27 32)";
 
         // Footer Right
-        addressL[1].innerHTML = "1/4-A North Pirerbag, Mirpur-2 (Behind the Yamaha Show Room, 60 feet Road)";
+        addressL[1].innerHTML = "1/4-A North Pirerbag, Mirpur-2 (Behind the Yamaha Show Room, 60 feet Road), Dhaka";
         addressL[2].innerHTML = "Dhaka-1216";
 
         // Footer Right 2
         addressR[1].innerHTML = "<a href='mailto:contact@tcexpressbd.com'>contact@tcexpressbd.com</a>";
-        addressR[2].innerHTML = "<a href='tel:019XXXXXXXX'>019XXXXXXXX</a>";
+        addressR[2].innerHTML = "<a href='tel:01608404047'>01608404047</a>";
 
         // Footer Copyright Name
         whichCompany.innerHTML = "Take Care Express";
