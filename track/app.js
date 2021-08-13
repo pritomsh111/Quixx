@@ -16,6 +16,7 @@ trackId.addEventListener("keyup", function (event) {
         errorSpan.innerHTML = "";
     }
     else {
+        console.dir(event.target);
         trackBtn.classList.remove('show-off');
     }
 });

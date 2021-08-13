@@ -10,6 +10,7 @@ html {
 
 body {
     font-family: 'Didact Gothic';
+    padding: 1rem;
 }
 
 /* .flyer {
@@ -68,9 +69,13 @@ li {
 }
 
 .track__delivery {
+    border: 2px solid rgb(255, 196, 0);
     padding: 2.5rem 4rem;
     display: grid;
     grid-template-columns: 1fr 3fr;
+    background-image: url("AutomaticAssign.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
     gap: 1rem;
     align-items: center;
     height: 100vh;
