@@ -119,6 +119,12 @@ document.querySelector("#pac-input3").addEventListener("keydown", function (e) {
 		e.preventDefault();
 	}
 });
+document.querySelector("#pac-input3Q").addEventListener("keydown", function (e) {
+	if (e.keyCode === 13) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+});
 
 document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
@@ -127,6 +133,14 @@ document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 		google.maps.event.trigger(map2, "resize");
 	}, 500);
 	google.maps.event.trigger(map2, "resize");
+});
+document.querySelector(".showMapBtnQ").addEventListener("click", function (e) {
+	e.preventDefault();
+	document.querySelector(".receiver_informationQ").classList.toggle("vis-map");
+	setTimeout(() => {
+		google.maps.event.trigger(map3Q, "resize");
+	}, 500);
+	google.maps.event.trigger(map3Q, "resize");
 });
 var merchantPerDeliveryCost = 0;
 var criteriaMap = new Map();
@@ -545,6 +559,7 @@ function initialize() {
 	setTimeout(() => {
 		initAutocomplete();
 		initMap();
+		initQuickMap();
 	}, 500);
 }
 
@@ -762,4 +777,197 @@ function handleLocationError3(browserHasGeolocation, infoWindow3, pos) {
 		'Error: Your browser doesn\'t support geolocation.');
 	infoWindow.open(window.map);
 
+}
+
+// Quick Delivery Map!
+
+var myMarker3Q, infowindow3Q, contentString3Q;
+var markers3Q = [];
+var map3Q;
+function initQuickMap() {
+
+	map3Q = new google.maps.Map(document.getElementById('map3Q'), {
+		center: { lat: 23.8103, lng: 90.4125 },
+		zoom: 13,
+		mapTypeId: 'roadmap',
+		mapTypeControl: false,
+		fullscreenControl: false
+	});
+
+	// Try HTML5 geolocation.
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			var pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+
+			var geocoder = new google.maps.Geocoder;
+			geocoder.geocode({
+				'location': pos
+			}, function (results, status) {
+				if (status === 'OK') {
+					if (results[0]) {
+
+						//newMap
+						var marker3Q = new google.maps.Marker({
+							position: pos,
+							map: map3Q,
+							icon: {
+								url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+							},
+							title: 'Your current location is : ' + results[0].formatted_address
+						});
+
+
+					} else {
+						window.alert('No results found');
+					}
+				} else {
+					window.alert('Geocoder failed due to: ' + status);
+				}
+			});
+
+
+
+			//infoWindow.setPosition(pos);
+			//infoWindow.setContent('Location found.');
+			//infoWindow.open(map);
+			map3Q.setCenter(pos);
+			//setMarkers(map);
+		}, function () {
+			//handleLocationError(true, infoWindow, map.getCenter());
+			//handleLocationError2(true, infoWindow2, map2.getCenter());
+		});
+	} else {
+		// Browser doesn't support Geolocation
+		//handleLocationError(false, infoWindow, map.getCenter());
+		//handleLocationError2(false, infoWindow2, map2.getCenter());
+	}
+
+	// Create the search box and link it to the UI element.
+
+	//var input = document.getElementById('pac-input');
+	var input3Q = document.getElementById('pac-input3Q');
+
+	//var searchBox = new google.maps.places.SearchBox(input);
+	var searchBox3Q = new google.maps.places.SearchBox(input3Q);
+
+	map3Q.controls[google.maps.ControlPosition.TOP_LEFT].push(input3Q);
+
+
+	map3Q.addListener('bounds_changed', function () {
+		searchBox3Q.setBounds(map3Q.getBounds());
+	});
+
+	// Listen for the event fired when the user selects a prediction and retrieve
+	// more details for that place.
+
+	//NewMAP
+	searchBox3Q.addListener('places_changed', function () {
+		var places = searchBox3Q.getPlaces();
+
+		if (places.length == 0) {
+			return;
+		}
+
+		// Clear out the old markers.
+
+		// For each place, get the icon, name and location.
+		var bounds = new google.maps.LatLngBounds();
+		places.forEach(function (place) {
+			if (!place.geometry) {
+				////console.log("Returned place contains no geometry");
+				return;
+			}
+			// Create a marker for each place.
+			removeMarkers3Q();
+			//document.getElementById('DESTINATION_ADDRESS').value=input2.value;
+			myMarker3Q = new google.maps.Marker({
+				position: place.geometry.location,
+				draggable: true
+			});
+
+			markers3Q.push(myMarker3Q);
+			contentString3Q = '<p>Drag marker...</p>';
+			infowindow3Q = new google.maps.InfoWindow({
+				content: contentString3Q
+			});
+
+
+			var geocoder = new google.maps.Geocoder();
+			var location = new google.maps.LatLng(myMarker3Q.position.lat(), myMarker3Q.position.lng());
+			geocoder.geocode({ 'latLng': location }, function (results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					var add = results[0].formatted_address;
+					//var a = evt.latLng.lat() + evt.latLng.lng();
+					infowindow3Q.setContent(add);
+
+					document.getElementById('des_lat3Q').value = myMarker3Q.position.lat();
+					document.getElementById('des_longi3Q').value = myMarker3Q.position.lng();
+				}
+
+			});
+
+
+			google.maps.event.addListener(myMarker3Q, 'dragend', function (evt) {
+				//document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+				contentString3Q = '<p>Current Lat: ' + input3Q + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+
+				document.getElementById('des_lat3Q').value = evt.latLng.lat();
+				document.getElementById('des_longi3Q').value = evt.latLng.lng();
+
+				var geocoder = new google.maps.Geocoder();
+				var location = new google.maps.LatLng(evt.latLng.lat(), evt.latLng.lng());
+				geocoder.geocode({ 'latLng': location }, function (results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						var add = results[0].formatted_address;
+						//var a = evt.latLng.lat() + evt.latLng.lng();
+						infowindow3Q.setContent(add);
+
+						//document.getElementById('DESTINATION_ADDRESS').value=add;
+						document.getElementById('pac-input3Q').value = add;
+					}
+
+				});
+
+				//infowindow.setContent(contentString);
+			});
+
+
+
+			google.maps.event.addListener(myMarker3Q, 'dragstart', function (evt) {
+				//document.getElementById('current').innerHTML = '<p>Currently dragging marker...</p>';
+			});
+
+			myMarker3Q.addListener('click', function () {
+				infowindow3Q.open(map3Q, myMarker3Q);
+			});
+
+
+			map3Q.setCenter(myMarker3Q.position);
+			myMarker3Q.setMap(map3Q);
+			if (place.geometry.viewport) {
+				// Only geocodes have viewport.
+				bounds.union(place.geometry.viewport);
+			} else {
+				bounds.extend(place.geometry.location);
+			}
+		});
+		map3Q.fitBounds(bounds);
+	});
+	google.maps.event.trigger(map3Q, "resize");
+}
+
+function removeMarkers3Q() {
+	for (var i = 0; i < markers3Q.length; i++) {
+		markers3Q[i].setMap(null);
+	}
+}
+function handleLocationError3Q(browserHasGeolocation, infoWindow3Q, pos) {
+	infoWindow3Q.setPosition(pos);
+	infoWindow3Q.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+	infoWindow3Q.open(map3Q);
 }

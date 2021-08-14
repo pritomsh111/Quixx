@@ -277,6 +277,10 @@ function recallQ() {
 	document.getElementById('rec_addressQ').value = "";
 	document.getElementById('product_costQ').value = "";
 	document.getElementById('product_nameQ').value = "";
+	document.getElementById('pac-input3Q').value = "";
+	document.getElementById('des_lat3Q').value = "";
+	document.getElementById('des_longi3Q').value = "";
+	removeMarkers3Q();
 }
 function recall() {
 	document.getElementById('r_name').value = "";
@@ -363,7 +367,7 @@ document.getElementById("createDelivery").addEventListener("click", function (ev
 	var distance = document.getElementById('productDistance')?.value;
 	var weight = document.getElementById('productWeight').value;
 	var cityType = document.getElementById('productCity').value;
-	
+
 	var v1 = () => {
 		// if (pickup_time == "" || pickup_time == null) {
 		// 	document.getElementById('wrongThisDeliveryCreate').innerHTML = "Please give a Pickup Time!";
@@ -698,8 +702,8 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	// var area = String(document.getElementById('managers_2').value);
 	// var pickup_lat = String(document.getElementById('lat').value);
 	// var pickup_longi = String(document.getElementById('longi').value);
-	// var delivery_lat = String(document.getElementById('des_lat').value);
-	// var delivery_longi = String(document.getElementById('des_longi').value);
+	var delivery_lat = String(document.getElementById('des_lat3Q').value) ?? "";
+	var delivery_longi = String(document.getElementById('des_longi3Q').value) ?? "";
 	var product_name = String(document.getElementById('product_nameQ').value);
 	// var product_qty = String(document.getElementById('product_qty').value);
 	var product_cost = document.getElementById('product_costQ').value;
@@ -926,8 +930,8 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 				"product_cost": product_cost,
 				"payment_method": payment_method,
 				"delivery_charge": delivery_charge,
-				"receiver_lat": "",
-				"receiver_longi": "",
+				"receiver_lat": delivery_lat,
+				"receiver_longi": delivery_longi,
 				"pickup_time": "",
 				"delivery_note": "",
 				"delivery_area": "",
@@ -1034,16 +1038,16 @@ function doIt(i, lengx) {
 			aForExcel.includes(r_name) ? count++ : null;
 			aForExcel.includes(r_number) ? count++ : null;
 			aForExcel.includes(product_cost) ? count++ : null;
-			if (count>2) {
+			if (count > 2) {
 				setTimeout(function () {
 					$("#sureD2").html("");
-					
+
 					$(".circle-loader").addClass("load-complete");
-	
+
 					$('#tickD2').show();
 				}, 1000);
 				setTimeout(function () {
-	
+
 					document.getElementById('createDeliverywithExcel').disabled = false;
 					//$("#myModalCreateD1").modal('hide');
 				}, 3000);
@@ -1637,15 +1641,15 @@ async function cityChange(cityy, areaa) {
 					$(option).html(data.data[i]);
 					$("#delivery_cityU").append(option);
 				}
-				if (cityy==="undefined") {
+				if (cityy === "undefined") {
 					return;
 				}
 				cityy ? document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1 : null;
 			}
 		});
-		if (cityy==="undefined") {
-			return;
-		}
+	if (cityy === "undefined") {
+		return;
+	}
 	cityy ? await thanaUpazilla(url, areaa) : null;
 }
 
