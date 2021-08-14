@@ -374,12 +374,12 @@ input {
   display: grid;
 }
 
-.receiver_information, .receiver_informationU {
+.receiver_information, .receiver_informationQ, .receiver_informationU {
   padding-bottom: 1rem;
   transition: padding 250ms ease-in;
 }
 
-.showMap, .showMapU {
+.showMap, .showMapQ, .showMapU {
   transform: scaleY(0);
   opacity: 0;
   height: 0;
@@ -387,15 +387,15 @@ input {
   transition: transform 250ms ease-in;
 }
 
-.receiver_information.vis-map,.receiver_information.vis-mapQ .receiver_informationU.vis-map {
+.receiver_information.vis-map, .receiver_information.vis-mapQ, .receiver_informationU.vis-map {
   padding-bottom: 15.15rem;
 }
 
-.receiver_information.vis-map .smp,.receiver_informationQ.vis-map .smpQ, .receiver_informationU.vis-map .smpU {
+.receiver_information.vis-map .smp, .receiver_informationQ.vis-map .smpQ, .receiver_informationU.vis-map .smpU {
   grid-column: 1/-1;
 }
 
-.receiver_information.vis-map .smp .showMap,.receiver_informationQ.vis-map .smpQ .showMapQ, .receiver_informationU.vis-map .smpU .showMapU {
+.receiver_information.vis-map .smp .showMap, .receiver_informationQ.vis-map .smpQ .showMapQ, .receiver_informationU.vis-map .smpU .showMapU {
   transform: scaleY(1);
   opacity: 1;
   height: 100%;
@@ -453,7 +453,7 @@ input {
   padding-bottom: 0rem !important;
 }
 
-#showMapBtn, #showMapBtnU, #btnAuto {
+#showMapBtn, #showMapBtnQ, #showMapBtnU, #btnAuto {
   padding: 0.6rem 1rem;
 }
 
@@ -481,7 +481,7 @@ input {
   .receiver_information.vis-map, .receiver_informationU.vis-map {
     padding-bottom: 17.7rem;
   }
-  #showMapBtn, #showMapBtnU, #btnAuto {
+  #showMapBtn, #showMapBtnU, #showMapBtnQ, #btnAuto {
     padding: 0.4rem;
     border-width: 0;
   }

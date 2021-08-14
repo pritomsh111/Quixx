@@ -321,6 +321,13 @@ document.querySelector("#pac-input3").addEventListener("keydown", function (e) {
 	}
 });
 
+document.querySelector("#pac-input4").addEventListener("keydown", function (e) {
+	if (e.keyCode === 13) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+});
+
 document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 	e.preventDefault();
 	this.blur();
@@ -329,6 +336,16 @@ document.querySelector(".showMapBtn").addEventListener("click", function (e) {
 		google.maps.event.trigger(map2, "resize");
 	}, 500);
 	google.maps.event.trigger(map2, "resize");
+});
+
+document.querySelector(".showMapBtnQ").addEventListener("click", function (e) {
+	e.preventDefault();
+	this.blur();
+	document.querySelector(".receiver_informationQ").classList.toggle("vis-map");
+	setTimeout(() => {
+		google.maps.event.trigger(map2Q, "resize");
+	}, 500);
+	google.maps.event.trigger(map2Q, "resize");
 });
 
 document.querySelector(".showMapBtnU").addEventListener("click", function (e) {
