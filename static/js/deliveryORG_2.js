@@ -1858,6 +1858,9 @@ function recallQ() {
 	document.getElementById('rec_addressQ').value = "";
 	document.getElementById('product_costQ').value = "";
 	document.getElementById('product_nameQ').value = "";
+	document.getElementById('rec_addressQ').value = "";
+	document.getElementById('des_lat3Q').value = "";
+	document.getElementById('des_longi3Q').value = "";
 }
 
 document.getElementById("createDeliveryQ").addEventListener("click", function (event) {
@@ -1886,8 +1889,8 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 	// var delivery_note = document.getElementById('DELIVERY_NOTE').value;
 	// var delivery_type = document.getElementById('deliveryType').value;
 	// var area = String(document.getElementById('managers_2').value);
-	// var delivery_lat = String(document.getElementById('des_lat').value);
-	// var delivery_longi = String(document.getElementById('des_longi').value);
+	var delivery_lat = String(document.getElementById('des_lat3Q').value) ?? "";
+	var delivery_longi = String(document.getElementById('des_longi3Q').value) ?? "";
 	var product_name = String(document.getElementById('product_nameQ').value);
 	// var product_qty = String(document.getElementById('product_qty').value);
 	var product_cost = document.getElementById('product_costQ').value;
@@ -2099,8 +2102,8 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 				"product_cost": product_cost,
 				"payment_method": payment_method,
 				"delivery_charge": delivery_charge,
-				"receiver_lat": "",
-				"receiver_longi": "",
+				"receiver_lat": delivery_lat,
+				"receiver_longi": delivery_longi,
 				"pickup_time": "",
 				"delivery_note": "",
 				"delivery_area": "",
@@ -2613,9 +2616,9 @@ function doIt(i, lengx) {
 			if (count > 2) {
 				setTimeout(function () {
 					$("#sureD2").html("");
-					
+
 					$(".circle-loader").addClass("load-complete");
-	
+
 					$('#tickD2').show();
 				}, 1000);
 				return;
@@ -2662,16 +2665,16 @@ function doIt(i, lengx) {
 			aForExcel.includes(r_name) ? count++ : null;
 			aForExcel.includes(r_number) ? count++ : null;
 			aForExcel.includes(product_cost) ? count++ : null;
-			if (count>2) {
+			if (count > 2) {
 				setTimeout(function () {
 					$("#sureD2").html("");
-					
+
 					$(".circle-loader").addClass("load-complete");
-	
+
 					$('#tickD2').show();
 				}, 1000);
 				setTimeout(function () {
-	
+
 					document.getElementById('createDeliverywithExcel').disabled = false;
 					//$("#myModalCreateD1").modal('hide');
 				}, 3000);
@@ -3532,7 +3535,7 @@ async function cityChange(cityy, areaa) {
 				cityy ? document.getElementById('delivery_cityU').selectedIndex = cityIndex + 1 : null;
 			}
 		});
-	if (cityy==="undefined") {
+	if (cityy === "undefined") {
 		return;
 	}
 	cityy ? await thanaUpazilla(url, areaa) : null;
