@@ -2128,6 +2128,7 @@ document.getElementById("createDeliveryQ").addEventListener("click", function (e
 				},
 				success: function (data) {
 					//console.log(data);
+					removeMarkers3Q();
 					$('#tickD2').hide();
 					$(".circle-loader").removeClass("load-complete");
 					$("#sureD2").html("");
