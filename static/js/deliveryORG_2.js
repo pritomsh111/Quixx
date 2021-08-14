@@ -1859,6 +1859,7 @@ function recallQ() {
 	document.getElementById('product_costQ').value = "";
 	document.getElementById('product_nameQ').value = "";
 	document.getElementById('rec_addressQ').value = "";
+	document.getElementById('pac-input3Q').value = "";
 	document.getElementById('des_lat3Q').value = "";
 	document.getElementById('des_longi3Q').value = "";
 }
