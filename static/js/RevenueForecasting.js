@@ -1,9 +1,9 @@
 function SalesOnlyModule(orgName) {
     var server = "https://ai.quixx.xyz";
     var appdir = "/sales_only";
-    // var org = orgName;
+    var org = orgName;
 
-    var org = "Express Food Delivery_2756";
+    // var org = "Express Food Delivery_2756";
     $.ajax({
         type: "GET",
         url: server + appdir + "/" + encodeURIComponent(org),
@@ -11,8 +11,8 @@ function SalesOnlyModule(orgName) {
         // console.log(data);
         dates = [new Date().toISOString().slice(0, 10)];
         sales = [0];
-        
-        if("data" in data) {
+
+        if ("data" in data) {
             timeseries = data['data']['delivery_charge'];
             change_point = data['change_point'];
             length_of_timeseries = Object.getOwnPropertyNames(timeseries).length;
