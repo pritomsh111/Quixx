@@ -387,7 +387,7 @@ input {
   transition: transform 250ms ease-in;
 }
 
-.receiver_information.vis-map, .receiver_information.vis-mapQ, .receiver_informationU.vis-map {
+.receiver_information.vis-map, .receiver_informationQ.vis-map, .receiver_informationU.vis-map {
   padding-bottom: 15.15rem;
 }
 
