@@ -1,6 +1,3 @@
-gsap.to("#recx", { x: 200, rotation: 90, duration: 3, xPercent: 100 });
-gsap.to("#recx", { strokeWidth: 5 });
-gsap.to("#recx", { strokeDashoffset: 0, duration: 10, yoyo: true, repeat: -1 });
 
 function $_32() {
     console.log("HEllo");
@@ -64,3 +61,12 @@ console.log(genx.next());
 // }
 
 // let p = new pelllo();
+
+
+let timeLine = gsap.timeline({ defaults: { ease: "back" } });
+
+timeLine
+    .to("#Letter", { y: -30, duration: 1 })
+    .to("#Letter", { y: 55 })
+    .to("#triangle1", { autoAlpha: 0 })
+    .to("#triangle2", { visibility: "visible", attr: { d: path("M540.966 146H58.476C52.0861 146 50.1237 154.659 55.8894 157.414L299.389 273.753C301.039 274.541 302.958 274.534 304.602 273.733L543.592 157.395C549.316 154.608 547.332 146 540.966 146Z") } })
