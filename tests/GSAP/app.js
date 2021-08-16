@@ -63,10 +63,10 @@ console.log(genx.next());
 // let p = new pelllo();
 
 
-let timeLine = gsap.timeline({ defaults: { ease: "back" } });
+let timeLine = gsap.timeline();
 
 timeLine
-    .to("#Letter", { y: -30, duration: 1 })
-    .to("#Letter", { y: 55 })
-    .to("#triangle1", { autoAlpha: 0 })
-    .to("#triangle2", { visibility: "visible", attr: { d: path("M540.966 146H58.476C52.0861 146 50.1237 154.659 55.8894 157.414L299.389 273.753C301.039 274.541 302.958 274.534 304.602 273.733L543.592 157.395C549.316 154.608 547.332 146 540.966 146Z") } })
+    .to("#Letter", { y: -40, duration: 1, ease: "back(6)" })
+    .to("#Letter", { y: 60, ease: "linear" }, "-=.5")
+    .to("#triangle1", { display: "none" })
+    .to("#triangle2", { visibility: "visible", attr: { d: "M540.966 146H58.476C52.0861 146 50.1237 154.659 55.8894 157.414L299.389 273.753C301.039 274.541 302.958 274.534 304.602 273.733L543.592 157.395C549.316 154.608 547.332 146 540.966 146Z" } })
