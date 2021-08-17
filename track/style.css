@@ -76,6 +76,7 @@ li {
     background-image: url("AutomaticAssign.jpg");
     background-repeat: no-repeat;
     background-size: contain;
+    background-origin: border-box;
     gap: 1rem;
     align-items: center;
     height: 100vh;
