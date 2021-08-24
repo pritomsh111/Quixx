@@ -202,3 +202,10 @@ function shipmentDetails2(e) {
 
 document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
     .addEventListener("click", shipmentDetails2);
+
+
+
+document.querySelector("#checkX").addEventListener("input", function (e) {
+    console.dir(e.target);
+});
+
