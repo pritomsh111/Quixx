@@ -42,9 +42,9 @@ console.log(genx.next());
 
 // let b = Object.create(a);
 
-// Array.prototype.hello = 100;
 
-// let arr = [12, 12, 12];
+let arr = [12, 12, 12];
+arr.prototype.hello = 100;
 
 // class Hello {
 //     omg = "Hello";
