@@ -44,8 +44,11 @@ console.log(genx.next());
 
 
 let arr = [12, 12, 12];
-arr.prototype.hello = 100;
-
+for (let i = 0; i < 3; i++) {
+    if (i === 1)
+        break;
+    console.log(i);
+}
 // class Hello {
 //     omg = "Hello";
 // }
