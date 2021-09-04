@@ -16,7 +16,6 @@ trackId.addEventListener("keyup", function (event) {
         errorSpan.innerHTML = "";
     }
     else {
-        console.dir(event.target);
         trackBtn.classList.remove('show-off');
     }
 });
@@ -45,7 +44,7 @@ async function httpFuncGet(input) {
         trackDelivery.classList.add('show-off');
         trackDeliveryH2.innerHTML = "Tracking Details";
         progressFull();
-        console.log(result);
+        // console.log(result);
     }
     catch {
         errorSpan.innerHTML = "Wrong Track ID!"
@@ -202,10 +201,4 @@ function shipmentDetails2(e) {
 
 document.querySelector(".shipment__details .shipment__details__products>ul>li:last-child>span:last-child")
     .addEventListener("click", shipmentDetails2);
-
-
-
-document.querySelector("#checkX").addEventListener("input", function (e) {
-    console.dir(e.target);
-});
 
