@@ -103,17 +103,14 @@
     }
     imageMove();
 
-    new Swiper(".merchant-app", {
+    let mechantApp = new Swiper(".merchant-app", {
         autoplay: {
             delay: 4000,
         },
         clickable: 'true',
-        slidesPerGroup: 1,
         effect: "coverflow",
         loop: true,
         centeredSlides: true,
-        slideToClickedSlide: true,
-        allowTouchMove: true,
         grabCursor: true,
         slidesPerView: "auto",
         coverflowEffect: {
@@ -130,6 +127,9 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         }
+    });
+    mechantApp.on("slideChange", function (e) {
+        console.log(e);
     });
 
     let laptopSwipper = new Swiper(".quixx-laptop", {
