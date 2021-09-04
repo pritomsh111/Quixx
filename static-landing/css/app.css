@@ -1364,6 +1364,10 @@ ul {
 
 /* Section: 5  -> Merchant Panel Mobile */
 
+.Quixx__Mobile__Merchant {
+    overflow: hidden;
+}
+
 .Quixx__Mobile__Merchant>h1 {
     text-align: center;
     font-weight: 100;

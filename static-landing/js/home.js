@@ -103,7 +103,7 @@
     }
     imageMove();
 
-    let mechantApp = new Swiper(".merchant-app", {
+    new Swiper(".merchant-app", {
         autoplay: {
             delay: 4000,
         },
@@ -127,9 +127,6 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         }
-    });
-    mechantApp.on("slideChange", function (e) {
-        console.log(e);
     });
 
     let laptopSwipper = new Swiper(".quixx-laptop", {
