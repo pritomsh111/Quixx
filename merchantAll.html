@@ -118,10 +118,10 @@ table#dtBasicExampleAp.dataTable tbody tr:hover > .sorting_1 {
                             Phone Number
                         </th>
                         <th class="th-sm">
-                            Business Field
+                            Enable Email Notification
                         </th>
                         <th class="th-sm">
-                            Per Delivery Cost
+                            Disable Email Notification
                         </th>
                     </tr>
                 </thead>
@@ -272,8 +272,8 @@ function three3(){
 					+data.data[i].person_name+'</td><td>'
 					+data.data[i].email+'</td><td>'
 					+data.data[i].phone_number+'</td><td>'
-					+data.data[i].business_filed+'</td><td>'
-					+data.data[i].per_delivery_cost+'</td></tr>';
+					+'<button id="' + data.data[i].merchant_id + '" class="btn-round btn-outline btn enableEmail" style="font-size:13px">Enable</button>' + "</td><td>"
+					+'<button id="' + data.data[i].merchant_id + '" class="btn-round btn-outline btn disableEmail" style="font-size:13px">Disable</button>' + "</td></tr>";
 
 					table.rows.add($(table_rows)).draw();
 					});
@@ -358,9 +358,9 @@ $(document).ready(function() {
 					+data.data[i].person_name+'</td><td>'
 					+data.data[i].email+'</td><td>'
 					+data.data[i].phone_number+'</td><td>'
-					+data.data[i].business_filed+'</td><td>'
-					+data.data[i].per_delivery_cost+'</td></tr>';
-
+					+'<button id="' + data.data[i].merchant_id + '" class="btn-round btn-outline btn enableEmail" style="font-size:13px">Enable</button>' + "</td><td>"
+					+'<button id="' + data.data[i].merchant_id + '" class="btn-round btn-outline btn disableEmail" style="font-size:13px">Disable</button>' + "</td></tr>";
+		
 					table.rows.add($(table_rows)).draw();
 					});
 				},
