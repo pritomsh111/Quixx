@@ -181,6 +181,8 @@ html {
   image-rendering: -o-crisp-edges;
   /* Opera */
   image-rendering: -webkit-optimize-contrast;
+  scrollbar-width: thin;
+  scrollbar-color: #1d2b42 rgb(255, 255, 255);
   /* Webkit (non-standard naming)*/
 }
 
@@ -4956,6 +4958,8 @@ h2.title {
 }
 
 .sidebar .sidebar-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #1d2b42 rgb(255, 255, 255);
   padding-top: 12px;
   position: relative;
   height: 75%;
