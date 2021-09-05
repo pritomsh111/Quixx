@@ -1829,4 +1829,50 @@
       },
     });
   });
+  $('#dtBasicExampleAp').on('click', '.enableEmail', function () 
+	{	
+		let org_idx = $(this).attr('id');
+		$.ajax
+			({
+				async: true,
+				type: "POST",
+				url: urlForAll + "notify/delivery/creation/enable/" + org_idx,
+				headers: 
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					console.log(data);
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("Please wait, we are working!");
+				}
+			})
+	});
+	$('#dtBasicExampleAp').on('click', '.disableEmail', function () 
+	{	
+		let org_idx = $(this).attr('id');
+		$.ajax
+			({
+				async: true,
+				type: "PUT",
+				url: urlForAll + "notify/delivery/creation/disable/" + org_idx,
+				headers: 
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					console.log(data);
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("Please wait, we are working!");
+				}
+			})
+	});
 </script>

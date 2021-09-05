@@ -153,8 +153,8 @@
 }
 
 option {
-  text-align: center;
-  text-align-last: center;
+  text-align: left;
+  text-align-last: left;
 }
 
 .bd-docs.dark-edition .bd-example {
