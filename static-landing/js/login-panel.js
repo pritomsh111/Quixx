@@ -27,7 +27,7 @@
     // ClientWho
     let cw = document.location.host.split(".");
     cw = cw[1];
-    cw = "tcexpressbd";
+    cw = "quixx";
 
     // Logo
     let lg = document.querySelector(".Company>div");
@@ -216,7 +216,7 @@
         cn.style.display = "none";
         document.title = "Quixx";
         lg.style.backgroundImage = "url(static-landing/img/clients/quixx.png)";
-        encKey = "$2a$10$E1RXLYHC7rXnF1QNS3r7HenwCGvtu/almg4qp6Q.hjs8w3eRRf6eS";
+        encKey = "$2a$10$bSoVlP2rp1HMvaXXeZQG3unl2KmAqjfRr8Sn6YERpZOZOJRiuKoHq";
         fc.href = "static-landing/img/clients/quixx.png";
 
         //Footer Left

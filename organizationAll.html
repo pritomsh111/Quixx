@@ -155,10 +155,16 @@
                         <th class="th-sm">Organization Website</th>
                         <th class="th-sm">Update Package</th>
                         <th class="th-sm">
-                            Enable Email Notification
+                            Enable Merchant Creation Email Notification
                         </th>
                         <th class="th-sm">
-                            Disable Email Notification
+                            Disable Merchant Creation Email Notification
+                        </th>
+                        <th class="th-sm">
+                            Enable Delivery Creation Email Notification
+                        </th>
+                        <th class="th-sm">
+                            Disable Delivery Creation Email Notification
                         </th>
                         <th class="th-sm">Update Message Count</th>
                     </tr>
@@ -667,6 +673,10 @@
               "</td><td>" +
               '<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Disable</button>' +
               "</td><td>" +
+              '<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Enable</button>' +
+              "</td><td>" +
+              '<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Disable</button>' +
+              "</td><td>" +
               '<button class="btn-round btn-outline btn" style="font-size:14.5px" disabled>Update Message Count</button>' +
               "</td></tr>";
             table.rows.add($(table_rows)).draw();
@@ -1035,9 +1045,10 @@
             '" class="btn-round btn-outline btn updateChX" style="font-size:14.5px">Update Package</button>'  + "</td><td>"
             +'<button id="' + data.data[i].approved_id + '" class="btn-round btn-outline btn enableEmail" style="font-size:13px">Enable</button>' + "</td><td>"
             +'<button id="' + data.data[i].approved_id + '" class="btn-round btn-outline btn disableEmail" style="font-size:13px">Disable</button>' + "</td><td>"
+            +'<button id="' + data.data[i].approved_id + '" class="btn-round btn-outline btn enableEmailDelivery" style="font-size:13px">Enable</button>' + "</td><td>"
+            +'<button id="' + data.data[i].approved_id + '" class="btn-round btn-outline btn disableEmailDelivery" style="font-size:13px">Disable</button>' + "</td><td>"
         
-             +
-            '<button id="' +
+            +'<button id="' +
             data.data[i].approved_id +
             "$$" +
             data.data[i].sms_count +
@@ -1849,6 +1860,50 @@
 		let org_idx = $(this).attr('id');
 		$.ajax
 			({
+				type: "POST",
+				url: urlForAll + "notify/merchant/creation/enable/" + org_idx,
+				headers: 
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					console.log(data);
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("Please wait, we are working!");
+				}
+			})
+	});
+	$('#dtBasicExample').on('click', '.disableEmail', function () 
+	{	
+		let org_idx = $(this).attr('id');
+		$.ajax
+			({
+				type: "PUT",
+				url: urlForAll + "notify/merchant/creation/disable/" + org_idx,
+				headers: 
+				{
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					"Authorization": 'Bearer ' + localStorage.getItem('token')
+				},
+				success: function(data) 
+				{
+					console.log(data);
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("Please wait, we are working!");
+				}
+			})
+	});
+  $('#dtBasicExample').on('click', '.enableEmailDelivery', function () 
+	{	
+		let org_idx = $(this).attr('id');
+		$.ajax
+			({
 				async: true,
 				type: "POST",
 				url: urlForAll + "notify/delivery/creation/enable/" + org_idx,
@@ -1867,7 +1922,7 @@
 				}
 			})
 	});
-	$('#dtBasicExample').on('click', '.disableEmail', function () 
+	$('#dtBasicExample').on('click', '.disableEmailDelivery', function () 
 	{	
 		let org_idx = $(this).attr('id');
 		$.ajax
