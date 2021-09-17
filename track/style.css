@@ -197,8 +197,10 @@ li {
 }
 
 .delivery__status {
+    display: inline-block;
     padding-bottom: 1rem;
     text-transform: capitalize;
+    color: #ff9b69;
 }
 
 .delivery__progress {

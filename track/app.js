@@ -41,9 +41,11 @@ async function httpFuncGet(input) {
     try {
         let result = await axios(params);
         console.log(result.data.data);
-        trackDelivery.classList.add("show-off");
-        trackDeliveryH2.innerHTML = "Tracking Details";
-        progressFull();
+        if (result.data.data) {
+            trackDelivery.classList.add("show-off");
+            trackDeliveryH2.innerHTML = "Tracking Details";
+            progressFull(result.data.data);
+        }
         // console.log(result);
     } catch {
         errorSpan.innerHTML = "Wrong Track ID!";
@@ -60,12 +62,11 @@ const status = {
     cancelled: 7,
     on_hold: 8,
 };
-function progressFull() {
-    let result = "enroute_to_delivery";
-    document.querySelector(".delivery__status").innerHTML = result.replace(
-        /_/g,
-        " "
-    );
+function progressFull({ track_id, status_history, delivery_details }) {
+    console.log(track_id, status_history, delivery_details);
+    let result = delivery_details.delivery_status.toLowerCase();
+    document.querySelector("#track_IDD").innerHTML = track_id;
+    document.querySelector(".delivery__status").innerHTML = result.replace(/_/g, " ");
     let index = Object.keys(status).indexOf(result);
 
     for (let i = 0; i <= index; i++) {
@@ -90,7 +91,7 @@ function progressFull() {
     }
     index < 4 && path[index + 1].classList.add("next_delivery_status");
 
-    let dateString = "2021-04-07";
+    let dateString = delivery_details.delivery_created_date;
     var days = [
         "Sunday",
         "Monday",
@@ -121,7 +122,7 @@ function progressFull() {
         30
     )}</strong>`;
     document.querySelector(".delivery__location>p").innerHTML =
-        "<strong>Cumilla</strong>";
+        `<strong>${delivery_details.receiver_address}</strong>`;
 
     let tbody = document.querySelector(
         ".shipment__progress__details table tbody"
