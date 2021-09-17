@@ -61,7 +61,7 @@ const status = {
     on_hold: 8,
 };
 function progressFull() {
-    let result = "enroute_to_delivery".toLowerCase();
+    let result = "enroute_to_delivery";
     document.querySelector(".delivery__status").innerHTML = result.replace(
         /_/g,
         " "
