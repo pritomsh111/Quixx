@@ -250,7 +250,7 @@ document
 
 if (location.search) {
     let search = new URLSearchParams(location.search);
-
     for (let [key, value] of search.entries()) {
+        console.log(`%c${key}: %c${value}`, "font-size:1.2rem", "color:#0066b3");
     }
 }
