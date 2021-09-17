@@ -10,10 +10,6 @@ html {
 
 body {
     font-family: 'Didact Gothic';
-    background: url("78787.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0px 155px;
 }
 
 /* .flyer {
@@ -78,11 +74,16 @@ li {
     gap: 1rem;
     align-items: center;
     height: 100vh;
+    background: url(78787.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0px 155px;
     transition: all 250ms ease;
 }
 
 .track__delivery.show-off {
     gap: unset;
+    background: initial;
     grid-template-columns: 1.5fr 1fr;
     height: 17vh;
 }
