@@ -10,6 +10,10 @@ html {
 
 body {
     font-family: 'Didact Gothic';
+    background: url("78787.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0px 155px;
 }
 
 /* .flyer {
