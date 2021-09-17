@@ -128,32 +128,11 @@ function progressFull({ track_id, status_history, delivery_details }) {
         ".shipment__progress__details table tbody"
     );
 
-    const shipment = {
-        just_created: {
-            date: "2019-21-32 20:30",
-        },
-        enroute_to_pickup: {
-            date: "2019-21-32 13:30",
-        },
-        picked_up: {
-            date: "2019-21-32 14:30",
-        },
-        enroute_to_delivery: {
-            date: "2019-21-32 15:30",
-        },
-        // delivered: {
-        //     date: "2019-21-32 16:30"
-        // },
-        // returned: {
-        //     date: "2019-21-32 19:30"
-        // },
-        // cancelled: {
-        //     date: "2019-21-32 17:30"
-        // },
-        // on_hold: {
-        //     date: "2019-21-32 18:30"
-        // },
-    };
+    const shipment = status_history.reduce((accumulator, item) => {
+        accumulator[item.status.toLowerCase()] = { "date": item.time };
+        return accumulator;
+    }, {});
+
     let newRow;
     if (tbody.rows.length) {
         Array.from(tbody.rows).map((row) => {
