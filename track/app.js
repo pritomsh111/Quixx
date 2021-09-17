@@ -1,4 +1,4 @@
-axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
+axios.defaults.baseURL = "http://api-new.quixx.xyz:8080/api/quixx/v1/track/delivery/";
 
 let tick = document.querySelector(".delivery__progress");
 let path = document.querySelectorAll(".delivery__progress>div");
@@ -36,11 +36,11 @@ trackBtn.addEventListener("click", function (event) {
 async function httpFuncGet(input) {
     let params = {
         method: "GET",
-        data: input,
-        url: "/posts",
+        url: `?trackId=${input}`,
     };
     try {
         let result = await axios(params);
+        console.log(result.data.data);
         trackDelivery.classList.add("show-off");
         trackDeliveryH2.innerHTML = "Tracking Details";
         progressFull();
@@ -251,6 +251,6 @@ document
 if (location.search) {
     let search = new URLSearchParams(location.search);
     for (let [key, value] of search.entries()) {
-        console.log(`%c${key}: %c${value}`, "font-size:1.2rem", "color:#0066b3");
+        httpFuncGet(value);
     }
 }
