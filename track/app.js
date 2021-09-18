@@ -40,14 +40,17 @@ async function httpFuncGet(input) {
     };
     try {
         let result = await axios(params);
-        console.log(result.data.data);
-        if (result.data.data) {
+        if (Object.keys(result.data.data).length) {
+            console.log(result.data.data);
             trackDelivery.classList.add("show-off");
             trackDeliveryH2.innerHTML = "Tracking Details";
             progressFull(result.data.data);
         }
+        else {
+            throw new Error("Wrong Track ID");
+        }
         // console.log(result);
-    } catch {
+    } catch (e) {
         errorSpan.innerHTML = "Wrong Track ID!";
     }
 }
@@ -74,19 +77,19 @@ function progressFull({ track_id, status_history, delivery_details }) {
         if (i > 4 && result !== "delivered") {
             let step5 = document.querySelector('.step__5 span');
             if (result === "returned") {
-                ret_can_hold.innerHTML = "&#11152";
+                ret_can_hold.innerHTML = "&#11152;";
                 step5.innerHTML = "Returned";
             }
             else if (result === "cancelled") {
-                ret_can_hold.innerHTML = "&#128473";
+                ret_can_hold.innerHTML = "&#x02A2F;";
                 step5.innerHTML = "Cancelled";
             }
             else if (result === "on_hold") {
-                ret_can_hold.innerHTML = "&#33";
+                ret_can_hold.innerHTML = "&#33;";
                 step5.innerHTML = "On Hold";
             }
             else if (result === "recreated_by_org") {
-                ret_can_hold.innerHTML = "&#x021B2";
+                ret_can_hold.innerHTML = "&#x021BB;";
                 step5.innerHTML = "Recreated";
             }
             else {
@@ -156,13 +159,16 @@ function progressFull({ track_id, status_history, delivery_details }) {
                     '<div style="--j:' + index + '" class="check-wrap"></div>';
             }
             else if (item === "returned") {
-                newRow.insertCell(0).innerHTML = "<div class='returnedx'>&#11152</div>";
+                newRow.insertCell(0).innerHTML = "<div class='returnedx'>&#11152;</div>";
             }
             else if (item === "cancelled") {
-                newRow.insertCell(0).innerHTML = "<div class='cancelledx'>X</div>";
+                newRow.insertCell(0).innerHTML = "<div class='cancelledx'>&#x02A2F;</div>";
             }
             else if (item === "on_hold") {
                 newRow.insertCell(0).innerHTML = "<div class='on_holdx'>&#33;</div>";
+            }
+            else if (item === "recreated_by_org") {
+                newRow.insertCell(0).innerHTML = "<div class='recreated_by_orgx'>&#x021BB;</div>";
             }
             else if (index === Object.keys(shipment).length - 1) {
                 newRow.insertCell(0).innerHTML =
