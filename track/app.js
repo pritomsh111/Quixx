@@ -209,6 +209,17 @@ function progressFull({ track_id, status_history, delivery_details }) {
             newRow.insertCell(2).innerHTML = shipment[item][td];
         });
     });
+    product_name.innerHTML = delivery_details.product_name;
+    product_quantity_2.innerHTML = delivery_details.product_qty;
+    if (delivery_details.product_qty === 1) {
+        per_product_cost_1.innerHTML = "Total Cost";
+    }
+    else {
+        per_product_cost_1.innerHTML = "Per Product Cost";
+    }
+    per_product_cost_2.innerHTML = delivery_details.product_cost + "<sup>&#2547;</sup>";
+    receiver_name = delivery_details.receiver_name;
+    receiver_address = delivery_details.receiver_address;
 }
 
 // Shipment Progress visibility clickHandler
