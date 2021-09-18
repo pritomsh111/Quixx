@@ -678,7 +678,7 @@ li {
 }
 
 .returnedx {
-    background-color: #ee765200;
+    background-color: #ee7652;
 }
 
 .cancelledx {
@@ -690,7 +690,7 @@ li {
 }
 
 .recreated_by_orgx {
-    background-color: rgb(149, 8, 243);
+    background-color: rgb(0, 0, 0);
 }
 
 /* Media Queries */
@@ -702,6 +702,16 @@ li {
     .shipment__progress.active .check-wrap {
         width: 24px;
         height: 24px;
+    }
+    .returnedx, .cancelledx, .on_holdx, .recreated_by_orgx {
+        width: 24px;
+    }
+    .returnedx>span, .cancelledx>span, .on_holdx>span, .recreated_by_orgx>span {
+        display: inline-block;
+        top: .1rem;
+        position: relative;
+        font-size: 1.2rem;
+        left: -.01rem;
     }
 }
 
@@ -798,6 +808,10 @@ li {
         left: -.01rem;
     }
     .recreated_by_orgx>span {
+        top: .01rem;
+        font-size: .8rem;
+    }
+    .returnedx>span {
         top: .01rem;
         font-size: .8rem;
     }
