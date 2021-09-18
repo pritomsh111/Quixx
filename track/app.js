@@ -236,7 +236,7 @@ document
                 document.querySelector(".shipment__details").style.marginTop = "0rem";
         } else if (window.innerWidth < 820) {
             if (this.classList.contains("active"))
-                document.querySelector(".shipment__details").style.marginTop = "22rem";
+                document.querySelector(".shipment__details").style.marginTop = "23rem";
             else
                 document.querySelector(".shipment__details").style.marginTop = "0rem";
         }
