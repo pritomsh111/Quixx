@@ -71,13 +71,22 @@ function progressFull({ track_id, status_history, delivery_details }) {
 
     for (let i = 0; i <= index; i++) {
         if (i > 4 && result !== "delivered") {
-            result === "returned"
-                ? (ret_can_hold.innerHTML = "&#11152")
-                : result === "cancelled"
-                    ? (ret_can_hold.innerHTML = "&#128473")
-                    : result === "on_hold"
-                        ? (ret_can_hold.innerHTML = "&#33;")
-                        : (i = 10);
+            let step5 = document.querySelector('.step__5');
+            if (result === "returned") {
+                ret_can_hold.innerHTML = "&#11152";
+                step5.dataset.title = "Returned";
+            }
+            else if (result === "cancelled") {
+                ret_can_hold.innerHTML = "&#128473";
+                step5.dataset.title = "Cancelled";
+            }
+            else if (result === "on_hold") {
+                ret_can_hold.innerHTML = "&#33";
+                step5.dataset.title = "On Hold";
+            }
+            else {
+                i = 10;
+            }
             path[i - 1].classList.add("ret_can_hold");
             tick.children[i - 1].children[0].classList.add("ret_can_hold");
             path[i - 2].classList.remove("complete_path");
@@ -111,19 +120,9 @@ function progressFull({ track_id, status_history, delivery_details }) {
         ".delivery__details>div:nth-child(1)>h2:last-of-type"
     ).innerHTML = dateString.replace(/-/g, "/");
 
-    let [lastUpdateDate, lastUpdateTime] = status_history.slice(-1)[0].time.split(" ");
-    console.log({ lastUpdateDate, lastUpdateTime });
-    lastUpdateDate = lastUpdateDate.split("-");
-    lastUpdateTime = lastUpdateTime.split(":");
     document.querySelector(
         ".delivered__place"
-    ).children[0].children[0].innerHTML = `<strong>${new Date(
-        lastUpdateDate[0],
-        lastUpdateDate[1],
-        lastUpdateDate[2],
-        lastUpdateTime[0],
-        lastUpdateTime[1]
-    )}</strong>`;
+    ).children[0].children[0].innerHTML = `<strong>${new Date(status_history.slice(-1)[0].time)}</strong>`;
     document.querySelector(".delivery__location>p").innerHTML =
         `<strong>${delivery_details.receiver_address}</strong>`;
 
