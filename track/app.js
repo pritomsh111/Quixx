@@ -81,10 +81,10 @@ function progressFull({ track_id, status_history, delivery_details }) {
     document.querySelector("#track_IDD").innerHTML = track_id;
     document.querySelector(".delivery__status").innerHTML = result.replace(/_/g, " ");
     let index = Object.keys(status).indexOf(result);
+    let step5 = document.querySelector('.step__5 span');
 
     for (let i = 0; i <= index; i++) {
         if (i > 4 && result !== "delivered") {
-            let step5 = document.querySelector('.step__5 span');
             if (result === "returned") {
                 ret_can_hold.innerHTML = "&#11152;";
                 step5.innerHTML = "Returned";
@@ -101,12 +101,16 @@ function progressFull({ track_id, status_history, delivery_details }) {
                 ret_can_hold.innerHTML = "&#x021BB;";
                 step5.innerHTML = "Recreated";
             }
-            else {
-                i = 10;
-            }
             path[i - 1].classList.add("ret_can_hold");
             tick.children[i - 1].children[0].classList.add("ret_can_hold");
             path[i - 2].classList.remove("complete_path");
+            break;
+        }
+        if (result === "delivered") {
+            ret_can_hold.innerHTML = "<div>&check;</div>";
+            step5.innerHTML = "Delivered";
+            path[i - 1].classList.remove("ret_can_hold");
+            tick.children[i - 1].children[0].classList.remove("ret_can_hold");
             break;
         }
         tick.children[i].children[0].classList.add("tick_visible");
