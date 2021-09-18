@@ -76,7 +76,7 @@ const status = {
     recreated_by_org: 9
 };
 function progressFull({ track_id, status_history, delivery_details }) {
-    console.log(track_id, status_history, delivery_details);
+
     let result = delivery_details.delivery_status.toLowerCase();
     document.querySelector("#track_IDD").innerHTML = track_id;
     document.querySelector(".delivery__status").innerHTML = result.replace(/_/g, " ");
@@ -109,9 +109,8 @@ function progressFull({ track_id, status_history, delivery_details }) {
         if (result === "delivered") {
             ret_can_hold.innerHTML = "<div>&check;</div>";
             step5.innerHTML = "Delivered";
-            path[i - 1].classList.remove("ret_can_hold");
-            tick.children[i - 1].children[0].classList.remove("ret_can_hold");
-            break;
+            path[i].classList.remove("ret_can_hold");
+            tick.children[i].children[0].classList.remove("ret_can_hold");
         }
         tick.children[i].children[0].classList.add("tick_visible");
         path[i].classList.add("done_status");
