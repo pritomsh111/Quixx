@@ -111,6 +111,8 @@ function progressFull({ track_id, status_history, delivery_details }) {
         ".delivery__details>div:nth-child(1)>h2:last-of-type"
     ).innerHTML = dateString.replace(/-/g, "/");
 
+    let dateForUpdate = status_history.slice(-1).time;
+
     document.querySelector(
         ".delivered__place"
     ).children[0].children[0].innerHTML = `<strong>${new Date(
