@@ -11,13 +11,13 @@ let trackDelivery = document.querySelector(".track__delivery");
 let trackDeliveryH2 = document.querySelector(".track__delivery>h2");
 let interval;
 
-let product_name = document.querySelector(".product_name");
-let product_quantity_1 = document.querySelector(".product_quantity_1");
-let product_quantity_2 = document.querySelector(".product_quantity_2");
-let per_product_cost_1 = document.querySelector(".per_product_cost_1");
-let per_product_cost_2 = document.querySelector(".per_product_cost_2");
-let receiver_name = document.querySelector(".receiver_name");
-let receiver_address = document.querySelector(".receiver_address");
+let product_name = document.querySelector("#product_name");
+let product_quantity_1 = document.querySelector("#product_quantity_1");
+let product_quantity_2 = document.querySelector("#product_quantity_2");
+let per_product_cost_1 = document.querySelector("#per_product_cost_1");
+let per_product_cost_2 = document.querySelector("#per_product_cost_2");
+let receiver_name = document.querySelector("#receiver_name");
+let receiver_address = document.querySelector("#receiver_address");
 
 trackId.addEventListener("keyup", function (event) {
     if (event.target.value) {
@@ -209,6 +209,7 @@ function progressFull({ track_id, status_history, delivery_details }) {
             newRow.insertCell(2).innerHTML = shipment[item][td];
         });
     });
+    console.log("Helllllll");
     product_name.innerHTML = delivery_details.product_name;
     product_quantity_2.innerHTML = delivery_details.product_qty;
     if (delivery_details.product_qty === 1) {
