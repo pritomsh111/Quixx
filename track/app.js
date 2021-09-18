@@ -75,6 +75,15 @@ const status = {
     on_hold: 8,
     recreated_by_org: 9
 };
+
+function resetter() {
+    Array.from(path).map((item, index) => {
+
+        item.setAttribute('class', `step__${index + 1}`);
+        item.children[0].setAttribute('class', ``);
+    }
+    );
+}
 function progressFull({ track_id, status_history, delivery_details }) {
 
     let result = delivery_details.delivery_status.toLowerCase();
@@ -82,7 +91,7 @@ function progressFull({ track_id, status_history, delivery_details }) {
     document.querySelector(".delivery__status").innerHTML = result.replace(/_/g, " ");
     let index = Object.keys(status).indexOf(result);
     let step5 = document.querySelector('.step__5 span');
-
+    resetter();
     for (let i = 0; i <= index; i++) {
         if (i > 4 && result !== "delivered") {
             if (result === "returned") {
