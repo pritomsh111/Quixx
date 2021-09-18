@@ -168,16 +168,16 @@ function progressFull({ track_id, status_history, delivery_details }) {
                     '<div style="--j:' + index + '" class="check-wrap"></div>';
             }
             else if (item === "returned") {
-                newRow.insertCell(0).innerHTML = "<div class='returnedx'>&#11152;</div>";
+                newRow.insertCell(0).innerHTML = "<div class='returnedx'><span>&#11152;</span></div>";
             }
             else if (item === "cancelled") {
-                newRow.insertCell(0).innerHTML = "<div class='cancelledx'>&#x02A2F;</div>";
+                newRow.insertCell(0).innerHTML = "<div class='cancelledx'><span>&#x02A2F;</span></div>";
             }
             else if (item === "on_hold") {
-                newRow.insertCell(0).innerHTML = "<div class='on_holdx'>&#33;</div>";
+                newRow.insertCell(0).innerHTML = "<div class='on_holdx'><span>&#33;</span></div>";
             }
             else if (item === "recreated_by_org") {
-                newRow.insertCell(0).innerHTML = "<div class='recreated_by_orgx'>&#x021BB;</div>";
+                newRow.insertCell(0).innerHTML = "<div class='recreated_by_orgx'><span>&#x021BB;</span></div>";
             }
             else if (index === Object.keys(shipment).length - 1) {
                 newRow.insertCell(0).innerHTML =
@@ -219,8 +219,8 @@ function progressFull({ track_id, status_history, delivery_details }) {
         per_product_cost_1.innerHTML = "Per Product Cost";
     }
     per_product_cost_2.innerHTML = delivery_details.product_cost + "<sup>&#2547;</sup>";
-    receiver_name = delivery_details.receiver_name;
-    receiver_address = delivery_details.receiver_address;
+    receiver_name.innerHTML = delivery_details.receiver_name;
+    receiver_address.innerHTML = delivery_details.receiver_address;
 }
 
 // Shipment Progress visibility clickHandler

@@ -666,14 +666,15 @@ li {
     margin-top: 15rem;
 }
 
-.returnedx, .cancelledx, .on_holdx {
+.returnedx, .cancelledx, .on_holdx, .recreated_by_orgx {
     font-size: 1.5rem;
     background: #ff9b69;
     margin: 0 auto;
     width: 30px;
-    height: 30px;
     color: #fff;
     border-radius: 50%;
+    display: grid;
+    place-items: center;
 }
 
 .returnedx {
@@ -686,6 +687,10 @@ li {
 
 .on_holdx {
     background-color: rgb(255, 196, 0);
+}
+
+.recreated_by_orgx {
+    background-color: rgb(149, 8, 243);
 }
 
 /* Media Queries */
@@ -781,9 +786,20 @@ li {
     .shipment__progress__details {
         padding: 1rem;
     }
-    .shipment__progress.active .check-wrap {
+    .shipment__progress.active .check-wrap, .returnedx, .cancelledx, .on_holdx, .recreated_by_orgx {
         width: 18px;
         height: 18px;
+    }
+    .returnedx>span, .cancelledx>span, .on_holdx>span, .recreated_by_orgx>span {
+        display: inline-block;
+        top: -.3rem;
+        position: relative;
+        font-size: 1.2rem;
+        left: -.01rem;
+    }
+    .recreated_by_orgx>span {
+        top: .01rem;
+        font-size: .8rem;
     }
     .shipment__progress.active .check-wrap::before, .check-wrap::after {
         height: 2px;
