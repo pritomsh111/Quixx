@@ -731,8 +731,11 @@ li {
     #trackBtn {
         padding: .3rem;
     }
-    h2 {
-        font-size: medium;
+    h2, p {
+        font-size: .9rem;
+    }
+    span {
+        font-size: .9rem;
     }
     .main__progress {
         padding: 2rem 2rem;
@@ -760,7 +763,7 @@ li {
         padding: 0.7rem;
     }
     .delivery__details>div:last-child>h2 {
-        margin-top: 2.01rem;
+        margin-top: 2.18rem;
     }
     .shipment {
         display: grid;
