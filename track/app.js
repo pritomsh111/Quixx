@@ -20,6 +20,7 @@ trackId.addEventListener("keyup", function (event) {
     }
 });
 trackBtn.addEventListener("click", function (event) {
+    event.preventDefault();
     let input = trackId.value;
     trackId.value = "";
     trackBtn.classList.remove("show-off");
