@@ -71,18 +71,18 @@ function progressFull({ track_id, status_history, delivery_details }) {
 
     for (let i = 0; i <= index; i++) {
         if (i > 4 && result !== "delivered") {
-            let step5 = document.querySelector('.step__5');
+            let step5 = document.querySelector('.step__5 span');
             if (result === "returned") {
                 ret_can_hold.innerHTML = "&#11152";
-                step5.dataset.title = "Returned";
+                step5.innerHTML = "Returned";
             }
             else if (result === "cancelled") {
                 ret_can_hold.innerHTML = "&#128473";
-                step5.dataset.title = "Cancelled";
+                step5.innerHTML = "Cancelled";
             }
             else if (result === "on_hold") {
                 ret_can_hold.innerHTML = "&#33";
-                step5.dataset.title = "On Hold";
+                step5.innerHTML = "On Hold";
             }
             else {
                 i = 10;
