@@ -61,6 +61,7 @@ const status = {
     returned: 6,
     cancelled: 7,
     on_hold: 8,
+    recreated_by_org: 9
 };
 function progressFull({ track_id, status_history, delivery_details }) {
     console.log(track_id, status_history, delivery_details);
@@ -83,6 +84,10 @@ function progressFull({ track_id, status_history, delivery_details }) {
             else if (result === "on_hold") {
                 ret_can_hold.innerHTML = "&#33";
                 step5.innerHTML = "On Hold";
+            }
+            else if (result === "recreated_by_org") {
+                ret_can_hold.innerHTML = "&#x021B2";
+                step5.innerHTML = "Recreated";
             }
             else {
                 i = 10;
@@ -149,13 +154,17 @@ function progressFull({ track_id, status_history, delivery_details }) {
             if (item === "delivered") {
                 newRow.insertCell(0).innerHTML =
                     '<div style="--j:' + index + '" class="check-wrap"></div>';
-            } else if (item === "returned") {
+            }
+            else if (item === "returned") {
                 newRow.insertCell(0).innerHTML = "<div class='returnedx'>&#11152</div>";
-            } else if (item === "cancelled") {
+            }
+            else if (item === "cancelled") {
                 newRow.insertCell(0).innerHTML = "<div class='cancelledx'>X</div>";
-            } else if (item === "on_hold") {
+            }
+            else if (item === "on_hold") {
                 newRow.insertCell(0).innerHTML = "<div class='on_holdx'>&#33;</div>";
-            } else if (index === Object.keys(shipment).length - 1) {
+            }
+            else if (index === Object.keys(shipment).length - 1) {
                 newRow.insertCell(0).innerHTML =
                     '<div style="--j:' + index + '" class="check-wrap"></div>';
                 newRow.insertCell(1).innerHTML = item.toUpperCase().replace(/_/g, " ");
