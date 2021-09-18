@@ -111,17 +111,18 @@ function progressFull({ track_id, status_history, delivery_details }) {
         ".delivery__details>div:nth-child(1)>h2:last-of-type"
     ).innerHTML = dateString.replace(/-/g, "/");
 
-    let dateForUpdate = status_history.slice(-1).time;
-
+    let [lastUpdateDate, lastUpdateTime] = status_history.slice(-1)[0].time.split(" ");
+    console.log({ lastUpdateDate, lastUpdateTime });
+    lastUpdateDate = lastUpdateDate.split("-");
+    lastUpdateTime = lastUpdateTime.split(":");
     document.querySelector(
         ".delivered__place"
     ).children[0].children[0].innerHTML = `<strong>${new Date(
-        2021,
-        11,
-        24,
-        10,
-        33,
-        30
+        lastUpdateDate[0],
+        lastUpdateDate[1],
+        lastUpdateDate[2],
+        lastUpdateTime[0],
+        lastUpdateTime[1]
     )}</strong>`;
     document.querySelector(".delivery__location>p").innerHTML =
         `<strong>${delivery_details.receiver_address}</strong>`;
