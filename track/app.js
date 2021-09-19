@@ -50,7 +50,6 @@ async function httpFuncGet(input) {
     try {
         let result = await axios(params);
         if (Object.keys(result.data.data).length) {
-            console.log(result.data.data);
             trackDelivery.classList.add("show-off");
             trackDeliveryH2.innerHTML = "Tracking Details";
             progressFull(result.data.data);
@@ -58,7 +57,6 @@ async function httpFuncGet(input) {
         else {
             throw new Error("Wrong Track ID");
         }
-        // console.log(result);
     } catch (e) {
         errorSpan.innerHTML = "Wrong Track ID!";
     }
@@ -78,14 +76,11 @@ const status = {
 
 function resetter() {
     Array.from(path).map((item, index) => {
-
         item.setAttribute('class', `step__${index + 1}`);
         item.children[0].setAttribute('class', ``);
-    }
-    );
+    });
 }
 function progressFull({ track_id, status_history, delivery_details }) {
-
     let result = delivery_details.delivery_status.toLowerCase();
     document.querySelector("#track_IDD").innerHTML = track_id;
     document.querySelector(".delivery__status").innerHTML = result.replace(/_/g, " ");
@@ -221,7 +216,7 @@ function progressFull({ track_id, status_history, delivery_details }) {
             newRow.insertCell(2).innerHTML = shipment[item][td];
         });
     });
-    console.log("Helllllll");
+
     product_name.innerHTML = delivery_details.product_name;
     product_quantity_2.innerHTML = delivery_details.product_qty;
     if (delivery_details.product_qty === 1) {
