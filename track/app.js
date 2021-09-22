@@ -1,4 +1,4 @@
-axios.defaults.baseURL = "http://api-new.quixx.xyz:8080/api/quixx/v1/track/delivery/";
+axios.defaults.baseURL = "https://api-new.quixx.xyz/api/quixx/v1/track/delivery/";
 
 let tick = document.querySelector(".delivery__progress");
 let path = document.querySelectorAll(".delivery__progress>div");
