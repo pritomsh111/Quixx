@@ -74,7 +74,7 @@ li {
     gap: 1rem;
     align-items: center;
     height: 100vh;
-    background: url(78787.jpg);
+    background: url("78787.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0px 155px;
