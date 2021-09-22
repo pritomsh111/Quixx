@@ -20,7 +20,7 @@ let receiver_name = document.querySelector("#receiver_name");
 let receiver_address = document.querySelector("#receiver_address");
 
 trackId.addEventListener("keyup", function (event) {
-    if (event.target.value) {
+    if (/^\d+$/.test(event.target.value) === true) {
         trackBtn.classList.add("show-off");
         errorSpan.innerHTML = "";
     } else {
