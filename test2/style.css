@@ -11,4 +11,12 @@ body {
     place-items: center;
 }
 
-button {}
+.button {
+    padding: 1rem;
+    background: #0066b3;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / .2);
+}
