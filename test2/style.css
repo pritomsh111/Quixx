@@ -7,6 +7,7 @@
 body {
     height: 100vh;
     width: 100vw;
+    font-family: "Didact Gothic";
     display: grid;
     place-items: center;
 }
@@ -19,4 +20,22 @@ body {
     align-items: center;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgb(0 0 0 / .2);
+    cursor: pointer;
+    position: relative;
+    transition: 250ms ease-in;
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    box-shadow: 0 5px 10px rgb(0 0 0 / .2);
+    background: #0066b3;
+    border-radius: 10px;
+}
+
+.button i {
+    margin-right: 4px;
 }
