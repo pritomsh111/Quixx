@@ -188,10 +188,6 @@ body {
     overflow: hidden;
 }
 
-.button.active {
-    padding: 0.2rem 3rem;
-}
-
 .button:hover {
     opacity: .9;
 }
@@ -205,20 +201,6 @@ body {
     box-shadow: 0 5px 10px rgb(0 0 0 / .2);
     background: #00233d;
     border-radius: 10px;
-    /* transition: 50ms linear; */
-}
-
-.button.active::after {
-    left: 0%;
-    /* transition: 5000ms linear; */
-}
-
-.button i, .button span {
-    /* transition: transform 250ms ease-in; */
-}
-
-.button.active i, .button.active span {
-    /* transform: translateY(100px); */
 }
 
 .button i {
