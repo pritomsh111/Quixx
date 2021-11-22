@@ -1,5 +1,5 @@
-let numbers = [1, 2, 1, 4];
-let target = 5;
+let numbers = [3, 2, 4];
+let target = 6;
 let resultArray = [];
 let map = new Map();
 numbers.map((item, index) => {
@@ -11,14 +11,16 @@ numbers.map((item, index) => {
     }
 });
 
-numbers.map((item, index) => {
+numbers.some((item, index) => {
     let number1 = target - item;
     if (map.has(number1)) {
         if (index === map.get(number1)[0]) {
-            resultArray.concat(index).concat(map.get(number1)[1]);
+            resultArray = [index, map.get(number1)[1]];
+            return true;
         }
         else {
-            resultArray.concat(index).concat(map.get(number1)[0]);
+            resultArray = [index, map.get(number1)[0]];
+            return true;
         }
     }
 });
