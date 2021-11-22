@@ -1,13 +1,16 @@
-let numbers = [2, 4, 11, 3];
+let nums = [3, 3];
 let target = 6;
 let resultArray = [];
 let map = new Map();
 
-numbers.some((item, index) => {
+nums.some((item, index) => {
     if (map.has(target - item)) {
-        return [map.get(target - item), index];
+        resultArray = [map.get(target - item), index];
+        return true;
     }
     else {
         map.set(item, index);
     }
 });
+
+console.log(resultArray);
