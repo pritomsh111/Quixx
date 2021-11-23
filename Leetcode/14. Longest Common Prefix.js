@@ -1,24 +1,19 @@
 let strs = ["cir", "car"];
-let count, str;
-
-let map = new Map();
-
-[...strs[0]].map((item, index) => {
-    map.set(index, item);
-});
-
-strs.map((item, index) => {
+let l1 = strs.length - 1;
+let l2, count = 0, str = '';
+for (let i = 0; i < l1; i++) {
     count = 0;
     str = '';
-    [...item].some((innerItem, index) => {
-        if (map.get(index) === innerItem) {
+    l2 = strs[i].length < strs[i + 1].length ? strs[i].length : strs[i + 1].length;
+    for (let j = 0; j < l2; j++) {
+        if (strs[i][j] === strs[i + 1][j]) {
             count++;
-            str += innerItem;
+            strs = strs[i][j];
         }
         else {
-            return true;
+            break;
         }
-    });
-});
+    }
+}
 
 console.log(count, str);
