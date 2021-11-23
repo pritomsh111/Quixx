@@ -1,16 +1,14 @@
 var removeDuplicates = function (nums) {
     let count = 0;
 
-    for (let i = 0; i < nums.length - 1; i++) {
-        if ((nums[i] === nums[i + 1]) && nums[i] !== "-") {
-            nums.splice(nums[i + 1], 1);
-            nums.push("-");
-            i--;
-            count++;
+    for (let i = 0; i < nums.length; i++) {
+        if ((nums[i] === nums[i + 1])) {
+            continue;
         }
+        nums[count++] = nums[i];
     }
-
-    return count;
+    console.log(nums);
+    return nums.length - count;
 };
 
-console.log(removeDuplicates([1, 1, 2]));
+console.log(removeDuplicates([-1, 0, 0, 0, 0, 3, 3]));
