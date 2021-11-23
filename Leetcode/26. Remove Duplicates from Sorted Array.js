@@ -7,8 +7,7 @@ var removeDuplicates = function (nums) {
         }
         nums[count++] = nums[i];
     }
-    console.log(nums);
-    return nums.length - count;
+    return count;
 };
 
 console.log(removeDuplicates([-1, 0, 0, 0, 0, 3, 3]));
