@@ -1,19 +1,18 @@
 let s = "()({})([])(())";
-let string = [...s];
 let a = [], prev;
-string.some((item, index) => {
-    prev = item;
-    if (item === "(" || item === "{" || item === "[") {
-        a.push(item);
+for (let i = 0; i < string.length; i++) {
+    if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+        a.push(s[i]);
+        prev = s[i];
     }
     else {
-        if ((prev === "(" && item === ")") || (prev === "[" && item === "]") || (prev === "{" && item === "}")) {
-            a.slice(index - 1, 2);
+        if ((prev === "(" && s[i] === ")") || (prev === "[" && s[i] === "]") || (prev === "{" && s[i] === "}")) {
+            a.slice(index - 1, 1);
         }
         else {
-            return true;
+            break;
         }
     }
-});
+}
 
 console.log(a, a.length);
