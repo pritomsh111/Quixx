@@ -1,6 +1,6 @@
 const binarySearch = (arr, searchVal, left, right) => {
-    if (left > right) {
-        return left - 1;
+    if (left === right) {
+        return left;
     }
 
     let mid = left + (right - left) / 2;
@@ -13,4 +13,4 @@ const binarySearch = (arr, searchVal, left, right) => {
     }
 }
 let nums = [1, 3, 5, 6];
-console.log(binarySearch(nums, 7, 0, nums.length));
+console.log(binarySearch(nums, 10, 0, nums.length));
