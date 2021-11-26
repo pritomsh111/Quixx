@@ -1,14 +1,17 @@
-let nums = [5, 4, -1, 7, 8];
+let nums = [-13, -2];
 let sum = 0, max = -10000;
 nums.map(item => {
-    if (sum + item >= 0) {
-        sum += item;
+    sum += item;
+    if (sum >= 0) {
         if (sum > max) {
             max = sum;
         }
     }
-    else {
+    else if (sum < 0) {
         sum = 0;
+        if (item > max) {
+            max = item;
+        }
     }
 });
 
