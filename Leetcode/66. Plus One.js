@@ -1,13 +1,14 @@
 let digits = [1, 2, 3];
 
-for (let i = digits.length - 1, count = 0; i >= 0; i--) {
-    if (digits[i] === 9) {
-        count = 1;
-    }
-    else {
-        if (count === 1) {
+let length = digits.length - 1;
 
-        }
-        count = 0;
+let lastDigit = digits[length] + 1;
+
+if (lastDigit !== 0) {
+    digits[length] = lastDigit;
+}
+else {
+    for (i = length - 1; i >= 0; i--) {
+
     }
 }
