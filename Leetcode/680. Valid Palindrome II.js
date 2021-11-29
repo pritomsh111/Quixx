@@ -2,7 +2,7 @@ var validPalindrome = function (s) {
 
     let l1 = s.length - 1, j = l1, i = 0, count = 0;
 
-    while (i <= Math.ceil(l1 / 2)) {
+    while (i < Math.ceil(l1 / 2)) {
         if (s[i] === s[j]) {
             i++;
             j--;
@@ -25,4 +25,4 @@ var validPalindrome = function (s) {
     return true;
 };
 
-console.log(validPalindrome("abca"));
+console.log(validPalindrome("ebcbbececabbacecbbcbe"));
