@@ -7,7 +7,7 @@ var validPalindrome = function (s) {
             i++;
             j--;
         }
-        else if (count++ === 0) {
+        else if (s[i] !== s[j]) {
             if (s[i] === s[j - 1]) {
                 j--;
             }
@@ -17,9 +17,6 @@ var validPalindrome = function (s) {
             else {
                 return false;
             }
-        }
-        else {
-            return false;
         }
     }
     return true;
