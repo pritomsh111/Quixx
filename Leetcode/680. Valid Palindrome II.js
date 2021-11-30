@@ -8,15 +8,15 @@ var validPalindrome = function (s) {
             j--;
         }
         else if (s[i] !== s[j]) {
-            if (count++ === 0) {
+            if (count === 0) {
+                count++;
                 if (s[i] === s[j - 1]) {
                     i1 = i + 1;
                     j1 = j--;
                     k = 1;
                 }
                 else if (s[i + 1] === s[j]) {
-                    i++;
-                    i1 = i - 1;
+                    i1 = i++;
                     j1 = j - 1;
                     k = 2;
                 }
@@ -25,7 +25,7 @@ var validPalindrome = function (s) {
                 }
             }
             else {
-                if (count++ === 1) {
+                if (count === 1) {
                     if (k) {
                         i = i1;
                         j = j1;
@@ -37,10 +37,11 @@ var validPalindrome = function (s) {
                 else {
                     return false;
                 }
+                count++;
             }
         }
     }
     return true;
 };
 
-console.log(validPalindrome("ebcbbececabbacecbbcbe"));
+console.log(validPalindrome("axbcbaba"));
