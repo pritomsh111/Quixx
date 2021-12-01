@@ -11,13 +11,11 @@ var containsNearbyDuplicate = function (nums, k) {
                 if (Math.abs(i - map.get(nums[i])[j]) <= k) {
                     return true;
                 }
-                else {
-                    map.get(nums[i]).push(i);
-                }
             }
+            map.get(nums[i]).push(i);
         }
     }
     return false;
 };
-let nums = [99, 99], k = 2;
+let nums = [1, 0, 1, 1], k = 1;
 console.log(containsNearbyDuplicate(nums, k));
