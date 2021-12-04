@@ -9,5 +9,5 @@ var canBeTypedWords = function (text, brokenLetters) {
     }
     return text.length - count;
 };
-let text = "hello world", brokenLetters = "ad";
+let text = "leet code", brokenLetters = "e";
 console.log(canBeTypedWords(text, brokenLetters));
