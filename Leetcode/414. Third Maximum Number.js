@@ -1,6 +1,6 @@
 var thirdMax = function (nums) {
     let set = new Set(), length = nums.length;
-    let arr = [], min = 2147483647, max = -2147483648;
+    let arr = [], max = -2147483648;
 
     for (let i = 0; i < length; i++) {
         if (!set.has(nums[i])) {
@@ -14,10 +14,10 @@ var thirdMax = function (nums) {
                 }
                 else {
                     if (nums[i] > arr[1]) {
-                        arr.splice(i, 0, nums[i]);
+                        arr.splice(1, 0, nums[i]);
                     }
                     else {
-                        arr.splice(i + 1, 0, nums[i]);
+                        arr.splice(2, 0, nums[i]);
                     }
                 }
             }
@@ -27,5 +27,5 @@ var thirdMax = function (nums) {
     return arr[0] ? arr[2] : arr[0];
 };
 
-let nums = [1, 2, 2, 5, 3, 5];
+let nums = [3, 3, 4, 3, 4, 3, 0, 3, 3];
 console.log(thirdMax(nums));
