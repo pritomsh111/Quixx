@@ -8,12 +8,13 @@ var longestPalindrome = function (s) {
             sum += map[key];
         }
         else {
-            if (max < map[key]) {
-                max = map[key];
+            sum += map[key] - 1;
+            if (map[key] === 1) {
+                max = 1;
             }
         }
     }
     return sum + max;
 };
 
-console.log(longestPalindrome("bskuyhaufhwiuaaaa"));
+console.log(longestPalindrome("abccccdd"));
