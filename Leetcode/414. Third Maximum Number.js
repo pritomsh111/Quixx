@@ -17,7 +17,7 @@ var thirdMax = function (nums) {
                         arr.splice(i, 0, nums[i]);
                     }
                     else {
-                        arr.splice(i, 0, nums[i]);
+                        arr.splice(i + 1, 0, nums[i]);
                     }
                 }
             }
