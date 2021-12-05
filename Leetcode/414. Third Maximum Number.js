@@ -1,5 +1,6 @@
 var thirdMax = function (nums) {
-    let set = new Set(), length = nums.length;
+    let set = new Set();
+    let length = nums.length;
     let arr = [], max = -2147483648;
 
     for (let i = 0; i < length; i++) {
