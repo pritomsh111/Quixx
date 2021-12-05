@@ -8,8 +8,10 @@ var longestPalindrome = function (s) {
             sum += map[key];
         }
         else {
-            sum += map[key] - 1;
-            if (map[key] === 1) {
+            if (map[key] > 1) {
+                sum += map[key] - 1;
+            }
+            else if (map[key] === 1) {
                 max = 1;
             }
         }
