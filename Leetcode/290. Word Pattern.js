@@ -1,13 +1,8 @@
-/**
- * @param {string} pattern
- * @param {string} s
- * @return {boolean}
- */
 var wordPattern = function (pattern, s) {
     let mapP = new Map();
     let mapS = new Map();
-    let pLen = pattern.length;
     s = s.split(" ");
+    let pLen = pattern.length;
     let sLen = s.length;
     if (pLen !== sLen) {
         return false;
