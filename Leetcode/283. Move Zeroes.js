@@ -1,17 +1,14 @@
 var moveZeroes = function (nums) {
-    let l = nums.length, flag = false;
-    for (let i = 0, j = 0; j < l; j++) {
-        if (flag && nums[j]) {
-            nums[i++] = nums[j];
-            nums[j] = 0;
-            flag = false;
+    let l = nums.length, j = 0;
+    for (let i = 0; i < l; i++) {
+        if (!nums[j]) {
+            nums.splice(j, 1);
+            nums.push(0);
         }
         else {
-            flag = true;
-            i++;
+            j++;
         }
     }
-    console.log(nums);
 };
-let nums = [1, 0, 0, 1];
+let nums = [0, 0, 1];
 moveZeroes(nums);
