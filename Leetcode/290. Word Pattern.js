@@ -15,10 +15,10 @@ var wordPattern = function (pattern, s) {
     else {
         for (let i = 0; i < pLen; i++) {
             if (!mapP.has(pattern[i]) && !mapS.has(s[i])) {
-                map.set(pattern[i], s[i]);
+                mapP.set(pattern[i], s[i]);
                 mapS.set(s[i], pattern[i]);
             }
-            else if (s[i] !== map.get(pattern[i])) {
+            else if (mapP.get(pattern[i]) !== s[i]) {
                 return false;
             }
         }
@@ -26,5 +26,5 @@ var wordPattern = function (pattern, s) {
     return true;
 };
 
-let pattern = "abba", s = "dog cat cat fish";
+let pattern = "aaaa", s = "dog dog dog dog";
 console.log(wordPattern(pattern, s));
