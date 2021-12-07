@@ -1,6 +1,8 @@
 var reverseVowels = function (s) {
-    let i = 0, j = s.len - 1, flag1 = false, flag2 = false;
-    while (i !== j) {
+    let i = 0, j = s.length - 1, flag1 = false, flag2 = false;
+    let split = s.split("");
+    s = s.toLowerCase();
+    while (i < j) {
         if (s[i] === "a" || s[i] === "e" || s[i] === "i" || s[i] === "o" || s[i] === "u") {
             flag1 = true;
         }
@@ -14,19 +16,19 @@ var reverseVowels = function (s) {
         }
         else {
             flag2 = false;
-            j++;
+            j--;
         }
 
         if (flag1 && flag2) {
-            let temp = s[i];
-            s[i] = s[j];
-            s[j] = temp;
-            i++; j++;
+            let temp = split[i];
+            split[i] = split[j];
+            split[j] = temp;
+            i++; j--;
             flag1 = flag2 = false;
         }
     }
-    return s;
+    return split.join("");;
 };
 
-let s = "hello";
-reverseVowels(s);
+let s = "aekkkkikkjikkkou";
+console.log(reverseVowels(s));
