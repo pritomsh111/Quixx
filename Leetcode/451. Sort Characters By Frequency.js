@@ -5,14 +5,12 @@ var frequencySort = function (s) {
         map[s[i]] ? map[s[i]]++ : map[s[i]] = 1;
     }
 
-    let sorted = Object.entries(map).sort((a, b) => b[1] - a[1]).reduce((str, item) => {
-        let ss = '';
-        for (let i = 0; i < item[1]; i++) {
-            ss += item[0];
-        }
-        return str + ss;
-    }, "");
+    let sorted = Object.entries(map).sort((a, b) => b[1] - a[1]).reduce((str, item) => str + item[0].repeat(item[1]), "");
     return sorted;
+
+    // let a = { a: 2 };
+    // let mapss = new Map(Object.entries(a));
+    // console.log(mapss, Object.fromEntries(mapss));
 };
 
 let s = "Aabb";
