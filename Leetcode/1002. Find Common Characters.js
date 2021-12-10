@@ -8,15 +8,16 @@ var commonChars = function (words) {
 
     for (let i = 1; i < length; i++) {
         l = words[i].length;
-        s = '';
+        s = {};
         for (let j = 0; j < l; j++) {
             if (map[words[i][j]] > 0) {
                 map[words[i][j]]--;
-                s += words[i][j];
+                s[words[i][j]] ? s[words[i][j]]++ : s[words[i][j]] = 1;
             }
         }
+        map = s;
     }
-    return s.split("");
+    return;
 };
 
 let words = ["bella", "label", "roller"];
