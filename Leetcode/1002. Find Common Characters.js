@@ -17,8 +17,13 @@ var commonChars = function (words) {
         }
         map = s;
     }
-    return;
-};
+    s = '';
+    Object.entries(map).map(item => {
+        s += item[0].repeat(item[1]);
+    });
 
-let words = ["bella", "label", "roller"];
-commonChars(words);
+    return s.split("");
+}
+
+let words = ["cock"];
+console.log(commonChars(words));
