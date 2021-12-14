@@ -19,11 +19,15 @@ var searchRange = function (nums, target) {
         return [-1, -1];
     }
     let i = res, j = res;
-    while (nums[i] && nums[j] && nums[i] === nums[j]) {
-        i--;
-        j++;
+    while (nums[i - 1] === nums[res] || nums[j + 1] === nums[res]) {
+        if (nums[i - 1] === nums[res]) {
+            i--;
+        }
+        if (nums[j + 1] === nums[res]) {
+            j++;
+        }
     }
-    return [i + 1, j - 1];
+    return [i, j];
 };
 
 let nums = [5, 7, 7, 8, 8, 10], target = 8;
