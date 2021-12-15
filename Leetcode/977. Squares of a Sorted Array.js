@@ -10,22 +10,31 @@ var sortedSquares = function (nums) {
         neg = i;
     });
     while (pos < l || neg > -1) {
-        console.log({ pos, neg });
 
         neg >= 0 && nums[neg] < 0 ? nC = nums[neg] * nums[neg] : nC = null;
         pos < l && nums[pos] >= 0 ? pC = nums[pos] * nums[pos] : pC = null;
 
-        if (pC > nC) {
+        if (nC === null) {
+            res.push(pC);
+            pos++;
+        }
+        else if (pC === null) {
             res.push(nC);
             neg--;
         }
-        else if (pC < nC) {
-            res.push(pC);
-            pos++;
+        else {
+            if (pC >= nC) {
+                res.push(nC);
+                neg--;
+            }
+            else if (pC < nC) {
+                res.push(pC);
+                pos++;
+            }
         }
     }
     return res;
 };
 
-let nums = [0, 3, 10];
+let nums = [-7, -3, 2, 3, 11];
 console.log(sortedSquares(nums));
