@@ -9,27 +9,23 @@ var sortedSquares = function (nums) {
         }
         neg = i;
     });
-    while (true) {
+    while (pos < l || neg > -1) {
         console.log({ pos, neg });
 
-        nums[neg] < 0 ? nC = nums[neg] * nums[neg] : nC = null;
-        nums[pos] >= 0 ? pC = nums[pos] * nums[pos] : pC = null;
+        neg >= 0 && nums[neg] < 0 ? nC = nums[neg] * nums[neg] : nC = null;
+        pos < l && nums[pos] >= 0 ? pC = nums[pos] * nums[pos] : pC = null;
 
-        if ((pC > nC) || (pC === null && nC !== null)) {
+        if (pC > nC) {
             res.push(nC);
             neg--;
         }
-        else if ((pC < nC) || (pC !== null && nC === null)) {
+        else if (pC < nC) {
             res.push(pC);
             pos++;
-        }
-
-        if (pos === l && neg === -1) {
-            break;
         }
     }
     return res;
 };
 
-let nums = [-4, -1, 0, 3, 10];
+let nums = [0, 3, 10];
 console.log(sortedSquares(nums));
