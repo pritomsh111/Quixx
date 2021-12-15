@@ -1,5 +1,6 @@
 var sortedSquares = function (nums) {
-    let res = [], pos = null, neg = null;
+    let l = nums.length;
+    let res = [], pos = l, neg = -1;
     let pC = null, nC = null;
     nums.some((item, i) => {
         if (item >= 0) {
@@ -9,29 +10,26 @@ var sortedSquares = function (nums) {
         neg = i;
     });
     while (true) {
-        if (nums[neg]) {
-            nC = nums[neg] * nums[neg];
-        }
-        if (nums[pos]) {
-            pC = nums[pos] * nums[pos];
-        }
+        console.log({ pos, neg });
 
-        if ((pC > nC && pC && nC) || (pC === null && nC !== null)) {
+        nums[neg] < 0 ? nC = nums[neg] * nums[neg] : nC = null;
+        nums[pos] >= 0 ? pC = nums[pos] * nums[pos] : pC = null;
+
+        if ((pC > nC) || (pC === null && nC !== null)) {
             res.push(nC);
             neg--;
         }
-        else if ((pC < nC && pC && nC) || (pC !== null && nC === null)) {
+        else if ((pC < nC) || (pC !== null && nC === null)) {
             res.push(pC);
             pos++;
         }
 
-        if (pos > nums.length && neg < 0) {
+        if (pos === l && neg === -1) {
             break;
         }
     }
-
     return res;
 };
 
 let nums = [-4, -1, 0, 3, 10];
-sortedSquares(nums);
+console.log(sortedSquares(nums));
