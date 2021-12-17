@@ -2,11 +2,12 @@ var findDuplicates = function (nums) {
     let l = nums.length, res = [];
 
     for (let i = 0; i < l; i++) {
-        if (Math.abs(nums[nums[i] - 1]) === -nums[i]) {
-            res.push(nums[i]);
+        let t = Math.abs(nums[i]) - 1;
+        if (nums[t] < 0) {
+            res.push(Math.abs(nums[i]));
         }
         else {
-            nums[Math.abs(nums[i]) - 1] = -nums[i];
+            nums[t] = -nums[t];
         }
     }
 
