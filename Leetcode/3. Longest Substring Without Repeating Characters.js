@@ -1,5 +1,5 @@
 var lengthOfLongestSubstring = function (s) {
-    let l = s.length, slider = 0;
+    let l = s.length, slider = 0, prev = 0;
     let map = {}, max = -2147483648;
     for (let i = 0, j = 0; i < l; i++) {
         if (!map[s[i]]) {
@@ -9,11 +9,14 @@ var lengthOfLongestSubstring = function (s) {
         }
         else {
             j = map[s[i]];
-            slider = (slider - map[s[i]]) + 1;
+            map[s[i]] = 0;
+            i--;
+            slider = slider - (j - prev);
+            prev = j;
         }
     }
     return max;
 };
 
-let s = "pwwkew";
+let s = "abcabcbb123456";
 console.log(lengthOfLongestSubstring(s));
