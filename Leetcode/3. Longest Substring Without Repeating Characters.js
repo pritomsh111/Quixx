@@ -8,14 +8,11 @@ var lengthOfLongestSubstring = function (s) {
             slider > max ? max = slider : null;
         }
         else {
-            while (true) {
+            while (s[j] !== s[i]) {
                 map[s[j]] = 0;
                 j++;
-                if (s[j] === s[i]) {
-                    break;
-                }
             }
-            map[s[i]] = 1;
+            map[s[j++]] = 1;
             slider = i - j;
         }
     }
