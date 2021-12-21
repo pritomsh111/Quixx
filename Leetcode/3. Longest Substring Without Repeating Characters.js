@@ -3,20 +3,24 @@ var lengthOfLongestSubstring = function (s) {
     let map = {}, max = -2147483648;
     for (let i = 0, j = 0; i < l; i++) {
         if (!map[s[i]]) {
-            map[s[i]] = i + 1;
+            map[s[i]] = 1;
             slider++;
             slider > max ? max = slider : null;
         }
         else {
-            j = map[s[i]];
-            map[s[i]] = 0;
-            i--;
-            slider = slider - (j - prev);
-            prev = j;
+            while (true) {
+                map[s[j]] = 0;
+                j++;
+                if (s[j] === s[i]) {
+                    break;
+                }
+            }
+            map[s[i]] = 1;
+            slider = i - j;
         }
     }
     return max;
 };
 
-let s = "abcabcbb123456";
+let s = "bbbbb1";
 console.log(lengthOfLongestSubstring(s));
