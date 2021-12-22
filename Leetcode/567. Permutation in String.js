@@ -17,7 +17,7 @@ var checkInclusion = function (s1, s2) {
     for (let i = 0; i < s1L; i++) {
         map[s1[i]] ? map[s1[i]]++ : map[s1[i]] = 1;
     }
-    for (let i = 0, j = 0; i < s2L; i++) {
+    for (let i = 0, j = 0; i <= s2L; i++) {
         if (i < s1L) {
             map2[s2[i]] ? map2[s2[i]]++ : map2[s2[i]] = 1;
         }
@@ -26,7 +26,7 @@ var checkInclusion = function (s1, s2) {
                 return true;
             }
             else {
-                map2[s2[i]]++;
+                map2[s2[i]] ? map2[s2[i]]++ : map2[s2[i]] = 1;
                 map2[s2[j++]]--;
             }
         }
@@ -34,5 +34,5 @@ var checkInclusion = function (s1, s2) {
     return false;
 };
 
-let s1 = "ab", s2 = "aiiiiiibass";
+let s1 = "", s2 = "dceda";
 console.log(checkInclusion(s1, s2));
