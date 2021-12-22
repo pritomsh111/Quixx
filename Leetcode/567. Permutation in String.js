@@ -34,5 +34,5 @@ var checkInclusion = function (s1, s2) {
     return false;
 };
 
-let s1 = "", s2 = "dceda";
+let s1 = "adcdd", s2 = "dceda";
 console.log(checkInclusion(s1, s2));
