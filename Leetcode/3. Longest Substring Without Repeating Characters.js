@@ -1,6 +1,6 @@
 var lengthOfLongestSubstring = function (s) {
-    let l = s.length, slider = 0, prev = 0;
-    let map = {}, max = -2147483648;
+    let l = s.length, slider = 0;
+    let map = {}, max = 0;
     for (let i = 0, j = 0; i < l; i++) {
         if (!map[s[i]]) {
             map[s[i]] = 1;
@@ -12,7 +12,7 @@ var lengthOfLongestSubstring = function (s) {
                 map[s[j]] = 0;
                 j++;
             }
-            map[s[j++]] = 1;
+            map[s[j]] = 1;
             slider = i - j;
         }
     }
