@@ -12,12 +12,13 @@ var lengthOfLongestSubstring = function (s) {
                 map[s[j]] = 0;
                 j++;
             }
-            map[s[j]] = 1;
-            slider = i - j;
+            map[s[i]] = 1;
+            j++;
+            slider = i - j + 1;
         }
     }
     return max;
 };
 
-let s = "bbbbb1";
+let s = "pwwkeyw";
 console.log(lengthOfLongestSubstring(s));
