@@ -3,7 +3,7 @@ var floodFill = function (image, sr, sc, newColor) {
     let m = image.length, n = image[0].length;
     const dfs = (sr, sc) => {
         console.log({ sr, sc }, image);
-        if (sr < 0 || sr > m - 1 || sr > n - 1 || sc < 0 || sc > m - 1 || sc > n - 1) {
+        if (sr < 0 || sr > m - 1 || sc < 0 || sc > n - 1) {
             return;
         }
         if (image[sr][sc] !== temp) {
