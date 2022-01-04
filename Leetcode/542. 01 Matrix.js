@@ -1,24 +1,23 @@
 var updateMatrix = function (mat) {
     let row = mat.length, column = mat[0].length;
     let vis, min, i, j;
-    const dfs = (r, c, count) => {
+    const dfs = (r, c) => {
         if (r < 0 || r > row - 1 || c < 0 || c > column - 1) {
             return;
         }
         if (!mat[r][c]) {
-            min = Math.min(count, min);
+            min = Math.min(Math.abs(i - r) + Math.abs(j - c), min);
             mat[i][j] = min;
             return;
         }
         if (vis[r][c] === 2) {
             return;
         }
-        count++;
         vis[r][c] = 2;
-        dfs(r + 1, c, count);
-        dfs(r - 1, c, count);
-        dfs(r, c + 1, count);
-        dfs(r, c - 1, count);
+        dfs(r + 1, c);
+        dfs(r - 1, c);
+        dfs(r, c + 1);
+        dfs(r, c - 1);
     }
     for (i = 0; i < row; i++) {
         for (j = 0; j < column; j++) {
