@@ -15,17 +15,16 @@ div.a {
     height: 100px;
     width: 100px;
     background: #0066b3;
-    animation: fade-in 1000ms ease-in;
+    animation: fade-in 1000ms infinite alternate;
+    -webkit-animation: fade-in 1000ms infinite alternate;
 }
 
 @keyframes fade-in {
     from {
         opacity: 0;
-        display: none;
     }
 
     to {
-        display: block;
         opacity: 1;
     }
 }
