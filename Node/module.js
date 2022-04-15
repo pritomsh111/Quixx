@@ -1,4 +1,4 @@
 let a = "YO";
 
-console.log(__dirname);
 module.exports = { a };
+console.log(__dirname);
