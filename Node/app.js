@@ -9,5 +9,10 @@ const back = (fn) => {
 }
 
 back(call);
+let arr = [1, 2, 3];
 
+arr.copyWithin(2, 0);
+
+console.log(arr);
+console.log(arr.values().next().value);
 console.log(req);
