@@ -110,10 +110,12 @@ td[colspan] table:nth-child(2n) {
     padding: 15px 5px;
     width: 15rem;
   }
+
   td[colspan] table {
     display: block;
     margin-bottom: 1rem;
   }
+
   td[colspan] table:nth-child(n) {
     margin-right: 0rem;
   }
@@ -124,10 +126,12 @@ td[colspan] table:nth-child(2n) {
     padding: 15px 5px;
     width: 10rem;
   }
+
   td[colspan] table {
     display: block;
     margin-bottom: 1rem;
   }
+
   td[colspan] table:nth-child(n) {
     margin-right: 0rem;
   }
@@ -138,10 +142,12 @@ td[colspan] table:nth-child(2n) {
     padding: 15px 5px;
     width: 5rem;
   }
+
   td[colspan] table {
     display: block;
     margin-bottom: 1rem;
   }
+
   td[colspan] table:nth-child(n) {
     margin-right: 0rem;
   }
@@ -319,6 +325,7 @@ input {
   #formDQ>div:first-child {
     margin: 2.5rem 0;
   }
+
   #formD>div:nth-of-type(1) {
     margin: 2.5rem 0;
   }
@@ -348,7 +355,7 @@ input {
 
 .sender_information::before, .sender_informationQ::before, .receiver_information::before, .receiver_informationU::before, .receiver_informationQ::before, .product_information::before, .product_informationU::before, .product_informationQ::before, .delivery_information::before, .delivery_informationU::before, .delivery_informationQ::before {
   position: absolute;
-  content: attr(data-title)":";
+  content: attr(data-title);
   top: -4rem;
   left: 0;
   padding: 1rem;
@@ -472,33 +479,41 @@ input {
   .d>h4 {
     text-align: center;
   }
+
   #formD>div:not(:first-child), #formDQ>div:not(:first-child) {
     margin: 4rem 0;
   }
+
   a[download], .btn.btn-outline.btn-sm.center-block.btn-file {
     padding: 0.4rem 1rem;
   }
+
   .receiver_information.vis-map, .receiver_informationQ.vis-map, .receiver_informationU.vis-map {
     padding-bottom: 17.7rem;
   }
+
   #showMapBtn, #showMapBtnU, #showMapBtnQ, #btnAuto {
     padding: 0.4rem;
     border-width: 0;
   }
+
   #deliveryManList, #managers2Q, #quiccSender, #productTypeU, #productWeightU, #dayTypeU, #productDistanceU, #productCityU, #delivery_cityU, #managersU, #managers2U, #senderList, #managers, #managers_2, #productType, #productWeight, #dayType, #productDistance, #productCity, #managers2, #autoAss, #deliveryType {
     padding: 0.2rem;
     text-align-last: left;
     height: 40px;
     width: 130px;
   }
+
   .sender_information, .sender_informationQ, .receiver_information, .product_information, .receiver_informationU, .product_informationU, .receiver_informationQ, .product_informationQ {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     row-gap: 1rem;
   }
+
   .delivery_information, .delivery_informationU, .delivery_informationQ {
     grid-template-columns: 1fr;
     row-gap: 1rem;
   }
+
   .criteria, .criteriaU {
     display: block;
     grid-template-columns: unset;
@@ -506,16 +521,20 @@ input {
     column-gap: 0rem;
     row-gap: 0rem;
   }
+
   #productType1, #productWeight1, #dayType1, #productDistance1, #productCity1, #productType1U, #productWeight1U, #dayType1U, #productDistance1U, #productCity1U {
     display: block;
   }
+
   .sender_information::before, .sender_informationQ::before, .receiver_information::before, .product_information::before, .delivery_information::before, .receiver_informationU::before, .product_informationU::before, .delivery_informationU::before, .receiver_informationQ::before, .product_informationQ::before, .delivery_informationQ::before {
     top: -3rem;
     font-size: 1.1rem;
   }
+
   .row.navBtn>button {
     padding: 0.2rem;
   }
+
   #formUpdateDC>div:first-child {
     margin: 2rem 0 4rem;
   }
