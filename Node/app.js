@@ -13,6 +13,9 @@ let arr = [1, 2, 3];
 
 arr.copyWithin(2, 0);
 
-console.log(arr);
-console.log(arr.values().next().value);
-console.log(req);
+// console.log(arr);
+// console.log(arr.values().next().value);
+// console.log(req);
+
+// console.log(typeof __dirname, typeof __filename);
+console.log(process);
