@@ -1,7 +1,8 @@
+console.log(require("./module"));
 let req = require("./module");
 
 const call = (one, two) => {
-    console.log({ one, two });
+    // console.log({ one, two });
 }
 
 const back = (fn) => {
@@ -18,4 +19,4 @@ arr.copyWithin(2, 0);
 // console.log(req);
 
 // console.log(typeof __dirname, typeof __filename);
-console.log(process);
+// console.log(process);
