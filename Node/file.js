@@ -9,7 +9,7 @@ file.readFile(`${path.join(__dirname, 'demo', 'text.txt')}`, 'utf8', (err, data)
     console.log(data);
 })
 
-file.writeFile(`${__dirname + '\\' + 'file.txt'}`, 'utf8', (err) => {
+file.writeFile(`${__dirname + '\\' + 'file.txt'}`, 'utyyyyyyyyyf8', (err) => {
     if (err) {
         console.log(err);
         return;
