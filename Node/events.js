@@ -1,8 +1,18 @@
 const EventEmitter = require('events');
 const eventEmitter = new EventEmitter();
 
-eventEmitter.on('my_event', () => {
-    console.log('data received successfully.');
+eventEmitter.on('kiremama', (a, b) => {
+    console.log({ a, b });
+})
+
+eventEmitter.once('lolo', () => {
+    console.log("HHHHHHHHHHH");
 });
 
-eventEmitter.emit('my_event');
+// eventEmitter.emit('kiremama', 1, 2);
+// eventEmitter.emit('kiremama', 1, 2);
+
+eventEmitter.emit('lolo', 1, 2);
+eventEmitter.emit('lolo', 1, 2);
+console.log("dsudus");
+eventEmitter.emit('lolo', 1, 2);
