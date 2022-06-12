@@ -13,3 +13,16 @@ document.querySelector('.d').addEventListener('click', (e) => {
 document.querySelector('.e').addEventListener('click', (e) => {
     console.log("5");
 }, true);
+
+let obj = { a: 1 };
+
+function hello() {
+    console.log(this);
+}
+
+const h = () => {
+    console.log(this);
+}
+
+hello.call(obj);
+h.call(obj);
