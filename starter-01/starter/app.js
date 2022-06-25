@@ -11,4 +11,7 @@ app.get('/yo', (req, res) => {
 });
 
 const port = 5000;
-app.listen(port, () => console.log("running..."));
+app.listen(port, () => (
+    console.log("running..."),
+    console.log(Math.random().toString(27).slice(2))
+));
