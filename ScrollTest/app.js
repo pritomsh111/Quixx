@@ -16,3 +16,9 @@ b.addEventListener('scroll', (e) => {
     console.log('Scroll Height : ' + e.target.scrollHeight);
     console.log('Client Height : ' + e.target.clientHeight);
 });
+
+for (let i = 0; i < 101; i++) {
+    setTimeout(() => {
+        console.log(i);
+    }, i * 1000);
+}
