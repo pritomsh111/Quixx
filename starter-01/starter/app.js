@@ -16,13 +16,13 @@ app.get('/yo', (req, res) => {
 const start = async () => {
     try {
         await connectDB();
-
-        const port = 5000;
         app.listen(port, () => (
             console.log("Server running..."),
             console.log(Math.random().toString(27).slice(2))
         ));
-    } catch {
-
+    } catch (err) {
+        console.log(err);
     }
 }
+
+start();
