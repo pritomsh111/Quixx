@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
+const port = 5000;
 
+// Middlewares
 app.use(express.static('./public'));
 
 app.use(express.json());
