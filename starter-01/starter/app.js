@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
+require('dotenv').config();
+
+require('./model/Tasks');
+
 const port = 5000;
 
 // Middlewares
@@ -17,10 +21,10 @@ app.get('/yo', (req, res) => {
 
 const start = async () => {
     try {
-        await connectDB();
+        await connectDB(`${process.env.MONGO_URI}`);
         app.listen(port, () => (
             console.log("Server running..."),
-            console.log(Math.random().toString(27).slice(2))
+            console.log(Math.random().toString(10).slice(2))
         ));
     } catch (err) {
         console.log(err);
