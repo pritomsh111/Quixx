@@ -1,2 +1,8 @@
 const mongoose = require('mongoose');
-console.log(process.env.Mongo_URI);
+
+const TaskSchema = new mongoose.Schema({
+    name: String,
+    completed: Boolean,
+});
+
+module.exports = mongoose.Model('Task', TaskSchema);
