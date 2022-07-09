@@ -8,7 +8,8 @@ require('./model/Tasks');
 
 const port = 5000;
 
-// Middlewares
+// Middleware
+
 app.use(express.static('./public'));
 
 app.use(express.json());
