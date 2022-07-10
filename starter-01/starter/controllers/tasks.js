@@ -1,14 +1,14 @@
 const Task = require('../model/Tasks');
 const getAllTasks = (req, res) => {
-    console.log(req.body);
     res.json({
         name: 'sex'
     });
 };
 
 const createTask = (req, res) => {
+    console.log(req.body);
     res.json({
-        name: 'boobs'
+        body: req.body
     });
 }
 
