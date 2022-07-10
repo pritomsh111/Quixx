@@ -4,8 +4,6 @@ const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
 require('dotenv').config();
 
-require('./model/Tasks');
-
 const port = 5000;
 
 // Middleware

@@ -6,9 +6,9 @@ const getAllTasks = (req, res) => {
 };
 
 const createTask = (req, res) => {
-    console.log(req.body);
+    console.log(req);
     res.json({
-        body: req.body
+        body: "req.body"
     });
 }
 
