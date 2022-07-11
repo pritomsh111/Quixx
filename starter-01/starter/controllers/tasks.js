@@ -6,13 +6,14 @@ const getAllTasks = (req, res) => {
 };
 
 const createTask = (req, res) => {
-    console.log(req);
     res.json({
         body: "req.body"
     });
 }
 
 const updateTask = (req, res) => {
+    console.log(req.query);
+    console.log(req.params);
     res.json({
         name: "Update"
     });
