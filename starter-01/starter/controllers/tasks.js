@@ -6,9 +6,7 @@ const getAllTasks = (req, res) => {
 };
 
 const createTask = (req, res) => {
-    res.json({
-        body: "req.body"
-    });
+    res.json(req.body);
 }
 
 const updateTask = (req, res) => {
