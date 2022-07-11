@@ -5,9 +5,11 @@ const getAllTasks = (req, res) => {
     });
 };
 
-const createTask = (req, res) => {
+const createTask = async (req, res) => {
     // res.json(req.body);
-    const task = Task.create(res.body);
+    const task = await Task.create(req.body);
+    console.log(req.body);
+    console.log(task);
     res.status(201).json(task);
 }
 
