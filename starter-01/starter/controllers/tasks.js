@@ -6,7 +6,9 @@ const getAllTasks = (req, res) => {
 };
 
 const createTask = (req, res) => {
-    res.json(req.body);
+    // res.json(req.body);
+    const task = Task.create(res.body);
+    res.status(201).json(task);
 }
 
 const updateTask = (req, res) => {
