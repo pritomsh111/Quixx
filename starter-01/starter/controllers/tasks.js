@@ -5,6 +5,10 @@ const getAllTasks = (req, res) => {
     });
 };
 
+const getSingleTask = (req, res) => {
+    res.json(req.params.id);
+}
+
 const createTask = async (req, res) => {
     // res.json(req.body);
     const task = await Task.create(req.body);
@@ -28,5 +32,5 @@ const deleteTask = (req, res) => {
 }
 
 module.exports = {
-    getAllTasks, createTask, deleteTask, updateTask,
+    getAllTasks, getSingleTask, createTask, deleteTask, updateTask,
 }
