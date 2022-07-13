@@ -28,7 +28,18 @@ const start = async () => {
     } catch (err) {
         console.log(err);
     }
-
 }
+
+console.log("one");
+function doThis() {
+    console.log("YOOOo");
+}
+
+async function hello() {
+    await doThis();
+}
+hello();
+
+console.log("two");
 
 start();
