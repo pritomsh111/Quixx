@@ -18,6 +18,7 @@ body {
     background-color: lavender;
     display: grid;
     place-items: center;
+    perspective: 500px;
 }
 
 .child {
@@ -25,6 +26,10 @@ body {
     transition: .5s ease-in;
     width: 100px;
     height: 100px;
+    display: grid;
+    place-items: center;
+    background-color: black;
+    color: white;
 }
 
 .child:hover {
