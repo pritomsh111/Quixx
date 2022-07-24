@@ -33,5 +33,5 @@ body {
 }
 
 .child:hover {
-    transform: rotateX(30deg) translateX(100px);
+    transform: rotateX(30deg);
 }
