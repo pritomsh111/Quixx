@@ -14,9 +14,9 @@ app.use(express.json());
 
 app.use('/api/v1/tasks', tasks);
 
-app.get('/yo', (req, res) => {
-    res.send("Yo");
-});
+// app.get('/yo', (req, res) => {
+//     res.send("Yo");
+// });
 
 const start = async () => {
     try {
@@ -30,16 +30,16 @@ const start = async () => {
     }
 }
 
-console.log("one");
-function doThis() {
-    console.log("YOOOo");
-}
+// console.log("one");
+// function doThis() {
+//     console.log("YOOOo");
+// }
 
-async function hello() {
-    await doThis();
-}
-hello();
+// async function hello() {
+//     await doThis();
+// }
+// hello();
 
-console.log("two");
+// console.log("two");
 
 start();
