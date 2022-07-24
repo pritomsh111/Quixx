@@ -1,8 +1,14 @@
 const Task = require('../model/Tasks');
-const getAllTasks = (req, res) => {
-    res.json({
-        name: 'sex'
-    });
+const getAllTasks = async (req, res) => {
+    const tasks = await Task.find({ name: /p/i, completed: true });
+    try {
+        if (tasks) {
+            return res.status(200).json(tasks);
+        }
+        res.status(404).json(tasks);
+    } catch (error) {
+        res.status(500).json(error);
+    }
 };
 
 const getSingleTask = (req, res) => {
@@ -10,10 +16,7 @@ const getSingleTask = (req, res) => {
 }
 
 const createTask = async (req, res) => {
-    // res.json(req.body);
     const task = await Task.create(req.body);
-    // console.log(req.body);
-    // console.log(task);
     res.status(201).json(task);
 }
 
