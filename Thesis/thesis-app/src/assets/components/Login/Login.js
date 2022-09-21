@@ -4,11 +4,21 @@ import { useLocation } from 'react-router-dom';
 import classes from './Login.module.css'
 
 function Login() {
-    const { state: { result, sentence } } = useLocation();
+    const { state: { result, sentence, state } } = useLocation();
     const [password, setPassword] = useState('');
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(true);
     return (
         <div className={classes.Login}>
+            <div className={classes.input}>
+                <input placeholder='Password' type={checked ? "password" : "text"} value={password} onChange={({ target }) => { setPassword(target.value) }} />
+                <div>
+                    <input type="checkbox" onChange={() => setChecked(!checked)} /> Show Password
+                </div>
+                <button onClick={() => {
+                    if (password === state.join('')) {
+                    }
+                }}>Sumbit</button>
+            </div>
             <div className={classes.hint}>
                 {
                     result.map((item, index) => (
@@ -18,10 +28,10 @@ function Login() {
                         </details>
                     ))
                 }
-            </div>
-            <div className={classes.input}>
-                <input type={checked ? "password" : "text"} value={password} onChange={({ target }) => { setPassword(target.value) }} />
-                <input type="checkbox" onChange={() => setChecked(!checked)} />
+                <details>
+                    <summary>Hint {result.length + 1}</summary>
+                    <p style={{ padding: '1rem' }}><strong>{sentence}</strong></p>
+                </details>
             </div>
         </div>
     );

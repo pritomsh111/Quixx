@@ -33,6 +33,6 @@
     align-self: center;
 }
 
-.Sentence input {
+.Sentence.Sentence input {
     margin-left: 0;
 }
