@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import Alphanumeric from '../Alphanumeric/Alphanumeric';
-import Pronunciation from '../Pronunciation/Pronunciation';
+
+import { Data } from '../../data/image';
+import { Pronunciation } from '../../data/pronunciation';
 
 import classes from './Symbol.module.css';
 
 const path = "images/Special Symbols";
+const path2 = "images/Pronunciation";
+
 const map = {
     "?": "question mark",
     "&": "ampersand",
@@ -40,7 +44,7 @@ const Symbol = (props) => {
                     }
                 </div>
             </div>
-            : selectedOption === 'Shapes' ? <Alphanumeric {...props} path={path} char={map[props.char]} /> : selectedOption === 'Meaning/Pronunciation' ? <Pronunciation {...props} char={map[props.char]} /> : ''
+            : selectedOption === 'Shapes' ? <Alphanumeric {...props} Data={Data} path={path} char={map[props.char]} /> : selectedOption === 'Meaning/Pronunciation' ? <Alphanumeric {...props} Data={Pronunciation} path={path2} char={map[props.char]} /> : ''
     );
 
 }
