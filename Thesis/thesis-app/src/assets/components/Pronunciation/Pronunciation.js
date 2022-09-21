@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { Data } from '../../data/image';
+import { Data } from '../../data/pronunciation';
 
-import classes from './Alphanumeric.module.css';
+import classes from './Pronunciation.module.css';
 
-const Alphanumeric = ({ char, changeIndex, result, pushResult, path = "images/A-Za-z0-9" }) => {
+const Pronunciation = ({ char, changeIndex, result, pushResult }) => {
     const [active, setActive] = useState();
-    const [image, setImage] = useState('');
+    const [pronunciation, setPronunciation] = useState('');
     const [btn, setBtn] = useState('Confirm');
 
     const blurNow = () => {
         if (btn === 'Next') {
             changeIndex(prev => prev + 1);
-            pushResult([...result, `${path}/${char}/${image}`]);
+            pushResult([...result, pronunciation]);
             setBtn('Confirm');
             setActive();
         }
@@ -23,11 +23,11 @@ const Alphanumeric = ({ char, changeIndex, result, pushResult, path = "images/A-
     return (
         <>
             <h2 className={classes.heading}>Training For: {char}</h2>
-            <div className={classes.Alphanumeric}>
+            <div className={classes.Pronunciation}>
                 {
                     Data[char].map((item, index) =>
                         <div className={classes.image} key={item}>
-                            <img alt={item.slice(0, item.length - 4)} className={btn === 'Confirm' ? active === index ? classes.active : '' : active !== index ? classes.blur : ''} onClick={() => { setActive(index); setImage(item); }} src={`${path}/${char}/${item}`} />
+                            <p className={btn === 'Confirm' ? active === index ? classes.active : '' : active !== index ? classes.blur : ''} onClick={() => { setActive(index); setPronunciation(item); }}> </p>
                         </div>
                     )
                 }
@@ -38,4 +38,4 @@ const Alphanumeric = ({ char, changeIndex, result, pushResult, path = "images/A-
 
 }
 
-export default Alphanumeric;
+export default Pronunciation;

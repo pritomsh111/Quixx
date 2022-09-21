@@ -4,7 +4,6 @@ import classes from './CompletePhase.module.css';
 
 const CompletePhase = ({ result, state }) => {
     const [sentence, setSentence] = useState('');
-    console.log(result, state);
     let history = useNavigate();
     return (
         <>

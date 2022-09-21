@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import classes from './Login.module.css'
@@ -14,10 +14,10 @@ const customStyles = {
     },
 };
 
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
 function Login() {
     const { state: { result, sentence, state } } = useLocation();
+    const history = useNavigate();
     const [shown, setShown] = useState(false);
     const [password, setPassword] = useState('');
     const [checked, setChecked] = useState(true);
@@ -30,8 +30,8 @@ function Login() {
                 contentLabel=""
             >
                 <div className={classes.modalDiv}>
-                    <h3>Congratulations!</h3>
-                    <button onClick={() => window.location('/')}>Retake</button>
+                    <h3>Congratulations! You have successfully logged in!</h3>
+                    <button onClick={() => history('/training', { state })}>Retake</button>
                 </div>
             </Modal>
             <div className={classes.Login}>

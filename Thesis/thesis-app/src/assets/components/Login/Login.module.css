@@ -79,3 +79,8 @@
     padding: .4rem;
     object-fit: contain;
 }
+
+.modalDiv {
+    display: grid;
+    gap: 2rem;
+}

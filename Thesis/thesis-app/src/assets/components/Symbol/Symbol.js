@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Alphanumeric from '../Alphanumeric/Alphanumeric';
+import Pronunciation from '../Pronunciation/Pronunciation';
 
 import classes from './Symbol.module.css';
 
@@ -39,7 +40,7 @@ const Symbol = (props) => {
                     }
                 </div>
             </div>
-            : selectedOption === 'Shapes' ? <Alphanumeric {...props} path={path} char={map[props.char]} /> : ''
+            : selectedOption === 'Shapes' ? <Alphanumeric {...props} path={path} char={map[props.char]} /> : selectedOption === 'Meaning/Pronunciation' ? <Pronunciation {...props} char={map[props.char]} /> : ''
     );
 
 }

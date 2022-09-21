@@ -1,4 +1,4 @@
-.Alphanumeric {
+.Pronunciation {
     display: flex;
     flex-wrap: wrap;
     gap: 1.2rem;
@@ -21,7 +21,7 @@
     border: 3px solid #0066b3;
 }
 
-.Alphanumeric button {
+.Pronunciation button {
     align-self: center;
     margin-left: 1rem;
 }
