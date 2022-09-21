@@ -1,0 +1,25 @@
+.CompletePhase {
+    padding: 2rem;
+    display: grid;
+    place-items: center;
+}
+
+.big {
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+}
+
+.image {
+    display: flex;
+    gap: .5 rem;
+    flex-wrap: wrap;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
