@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classes from './CompletePhase.module.css';
 
 const CompletePhase = ({ result, pushResult, store }) => {
     const [sentence, setSentence] = useState('');
+    let history = useNavigate();
     return (
         <>
             <div className={classes.CompletePhase}>
@@ -16,7 +18,7 @@ const CompletePhase = ({ result, pushResult, store }) => {
             </div>
             <div className={classes.Sentence}>
                 <input type="text" value={sentence} onChange={({ target }) => setSentence(target.value)} />
-                <button onClick={() => { pushResult([...result, sentence]); }}>Next</button>
+                <button onClick={() => { history('/login', { state: { result, sentence } }); }}>Next</button>
             </div>
         </>
     );
