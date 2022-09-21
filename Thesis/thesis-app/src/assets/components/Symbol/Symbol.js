@@ -3,11 +3,13 @@ import Alphanumeric from '../Alphanumeric/Alphanumeric';
 
 import { Data } from '../../data/image';
 import { Pronunciation } from '../../data/pronunciation';
+import { Color } from '../../data/Color';
 
 import classes from './Symbol.module.css';
 
 const path = "images/Special Symbols";
 const path2 = "images/Pronunciation";
+const path3 = "images/Color";
 
 const map = {
     "?": "question mark",
@@ -44,7 +46,7 @@ const Symbol = (props) => {
                     }
                 </div>
             </div>
-            : selectedOption === 'Shapes' ? <Alphanumeric {...props} Data={Data} path={path} char={map[props.char]} /> : selectedOption === 'Meaning/Pronunciation' ? <Alphanumeric {...props} Data={Pronunciation} path={path2} char={map[props.char]} /> : ''
+            : selectedOption === 'Shapes' ? <Alphanumeric {...props} Data={Data} path={path} char={map[props.char]} /> : selectedOption === 'Meaning/Pronunciation' ? <Alphanumeric {...props} Data={Pronunciation} path={path2} char={map[props.char]} /> : selectedOption === 'Color' ? <Alphanumeric {...props} Data={Color} path={path3} char={map[props.char]} /> : ''
     );
 
 }

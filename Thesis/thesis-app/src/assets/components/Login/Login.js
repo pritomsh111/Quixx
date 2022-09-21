@@ -21,6 +21,7 @@ function Login() {
     const [shown, setShown] = useState(false);
     const [password, setPassword] = useState('');
     const [checked, setChecked] = useState(true);
+    console.log(state);
     return (
         <>
             <Modal
@@ -56,7 +57,7 @@ function Login() {
                         ))
                     }
                     <details>
-                        <summary>Hint {result.length + 1}</summary>
+                        <summary>Hint {result.length + 1}: (Sentence)</summary>
                         <p style={{ padding: '1rem' }}><strong>{sentence}</strong></p>
                     </details>
                 </div>
