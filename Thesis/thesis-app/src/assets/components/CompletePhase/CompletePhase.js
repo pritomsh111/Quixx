@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './CompletePhase.module.css';
 
-const CompletePhase = ({ result, pushResult, store }) => {
+const CompletePhase = ({ result }) => {
     const [sentence, setSentence] = useState('');
     let history = useNavigate();
     return (
         <>
             <div className={classes.CompletePhase}>
                 {
-                    store.map((item, index) =>
-                        <div key={`${item + index}`} className={`${classes.image} ${(result[pushResult, index].charCodeAt(0) >= 65 && result[pushResult, index].charCodeAt(0) <= 90) ? classes.big : ''}`}>
+                    result.map((item, index) =>
+                        <div key={`${item + index}`} className={`${classes.image} ${(result[index].charCodeAt(0) >= 65 && result[index].charCodeAt(0) <= 90) ? classes.big : ''}`}>
                             <img alt={item} src={item} />
                         </div>
                     )

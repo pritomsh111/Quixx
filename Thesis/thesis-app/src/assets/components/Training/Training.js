@@ -14,7 +14,7 @@ const Training = () => {
         index < state.length ?
             /[a-zA-Z0-9]/.test(state[index]) ?
                 <Alphanumeric result={store} pushResult={setStore} char={state[index].toLowerCase()} changeIndex={setIndex} /> :
-                <Symbol result={store} pushResult={setStore} char={state[index]} changeIndex={setIndex} /> : <CompletePhase result={store} pushResult={setStore} state={state} />;
+                <Symbol result={store} pushResult={setStore} char={state[index]} changeIndex={setIndex} /> : <CompletePhase result={store} state={state} />;
     return grid;
 }
 

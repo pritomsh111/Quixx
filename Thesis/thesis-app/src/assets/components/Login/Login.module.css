@@ -1,0 +1,20 @@
+.Login {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(to right, #cddbe6, #d8ccc7, #cdecd1);
+    background-size: 400%;
+    animation: change-back 10s ease-in infinite alternate-reverse;
+    -webkit-animation: change-back 10s ease-in infinite alternate-reverse;
+}
+
+@keyframes change-back {
+    0%, 100% {
+        background-position: 0% 100%;
+    }
+
+    50% {
+        background-position: 100% 0%;
+    }
+}
