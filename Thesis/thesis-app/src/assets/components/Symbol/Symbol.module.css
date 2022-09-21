@@ -1,0 +1,71 @@
+.Symbol {
+    display: grid;
+    padding: 2rem;
+    height: 100vh;
+    gap: 3rem;
+    background: linear-gradient(to right, #cddbe6, #d8ccc7, #cdecd1);
+    background-size: 400%;
+    animation: change-back 10s ease-in infinite alternate-reverse;
+    -webkit-animation: change-back 10s ease-in infinite alternate-reverse;
+}
+
+@keyframes change-back {
+    0%, 100% {
+        background-position: 0% 100%;
+    }
+
+    50% {
+        background-position: 100% 0%;
+    }
+}
+
+.Symbol h1 {
+    text-align: center;
+}
+
+.first {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: -4rem;
+}
+
+.first div {
+    border: 1px solid hsl(207, 100%, 98%);
+    width: 250px;
+    border-radius: 10px;
+    height: 250px;
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.first img {
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image {
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    -ms-transition: opacity 200ms ease-in;
+    -o-transition: opacity 200ms ease-in;
+}
+
+.image label {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.image:hover {
+    opacity: 0.7;
+}
