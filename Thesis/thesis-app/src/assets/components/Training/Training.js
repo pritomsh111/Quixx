@@ -7,8 +7,8 @@ const Training = () => {
     const { state } = useLocation();
     const [store, setStore] = useState([]);
     const [index, setIndex] = useState(0);
-    const grid = /[a-zA-Z0-9]/.test(state[index]) ? <Alphanumeric result={store} pushResult={setStore} char={state[index].toLowerCase()} changeIndex={setIndex} /> : <Symbol result={store} pushResult={setStore} char={state[index]} changeIndex={setIndex} />;
-    return index < state.length ? grid : '';
+    const grid = index < state.length ? /[a-zA-Z0-9]/.test(state[index]) ? <Alphanumeric result={store} pushResult={setStore} char={state[index].toLowerCase()} changeIndex={setIndex} /> : <Symbol result={store} pushResult={setStore} char={state[index]} changeIndex={setIndex} /> : "";
+    return grid;
 }
 
 export default Training;
