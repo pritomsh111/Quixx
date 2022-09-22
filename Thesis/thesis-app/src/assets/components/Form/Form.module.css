@@ -36,6 +36,7 @@
 
 .FormChild h1 {
     grid-area: header;
+    text-align: center;
 }
 
 .FormChild .Inputs {
@@ -66,4 +67,31 @@ input:not(input[type='range']) {
     width: 100%;
     display: grid;
     place-items: center;
+}
+
+
+@media (max-width: 900px) {
+    .FormChild h1 {
+        font-size: 1.5rem;
+    }
+
+    .FormChild {
+        height: 300px;
+        width: 90%;
+        display: grid;
+        place-items: center;
+        padding: 1rem;
+    }
+
+    .FormChild .Inputs {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    input:not(input[type='range']) {
+        font-family: inherit;
+        height: 2rem;
+        width: 40%;
+        padding: .6rem;
+    }
 }

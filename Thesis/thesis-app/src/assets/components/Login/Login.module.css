@@ -84,3 +84,24 @@
     display: grid;
     gap: 2rem;
 }
+
+
+@media (max-width:820px) {
+    .Login {
+        padding: 2rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .input {
+        place-items: center;
+        margin-top: unset;
+    }
+
+    .hint {
+        width: unset;
+        margin: unset;
+        place-items: center;
+    }
+
+}

@@ -16,11 +16,11 @@ const Form = () => {
                 <div className={classes.Inputs}>
                     <input type="text" placeholder='Name'
                         value={name} onChange={({ target }) => { setName(target.value) }} />
-                    <input type="email" placeholder='Email' pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$"
+                    <input type="email" placeholder='Email'
                         value={email} onChange={({ target }) => { setEmail(target.value) }} />
                     <div className={classes.slider}>
                         <label htmlFor='slider'>Password Size: {slider}</label>
-                        <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} min={8} max={12} />
+                        <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} min={4} max={14} />
                     </div>
                 </div>
                 <button type="submit" onClick={() => {

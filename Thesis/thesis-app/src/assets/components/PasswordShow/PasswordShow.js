@@ -8,8 +8,13 @@ const PasswordShow = () => {
     let { state } = useLocation();
     let history = useNavigate();
     useEffect(() => {
-        setTimeout(() => { setIsPasswordSeen(false) }, 4000);
-        setTimeout(() => { history('/training', { state: state, replace: true }) }, 7000);
+        setTimeout(() => {
+            setIsPasswordSeen(false)
+        }, 4000);
+        setTimeout(() => {
+            localStorage.setItem("Start Time", Date.now());
+            history('/training', { state: state, replace: true })
+        }, 7000);
     });
     return (
         <div className={isPasswordSeen ? classes.PasswordShow : classes.PasswordHide}>

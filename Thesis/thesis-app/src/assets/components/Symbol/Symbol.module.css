@@ -69,3 +69,35 @@
 .image:hover {
     opacity: 0.7;
 }
+
+@media (max-width:820px) {
+
+    .Symbol {
+        display: grid;
+        padding: 2rem;
+        padding-bottom: 4rem;
+        gap: 3rem;
+    }
+
+    .Symbol h1 {
+        font-size: 1.5rem;
+    }
+
+    .first {
+        margin-top: unset;
+        gap: 4rem;
+    }
+
+    .first div {
+        height: 180px;
+        width: 180px;
+    }
+
+}
+
+@media (max-width:720px) {
+
+    .Symbol {
+        height: auto;
+    }
+}

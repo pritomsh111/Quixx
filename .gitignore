@@ -1,1 +1,3 @@
 .autogit
+# Local Netlify folder
+.netlify

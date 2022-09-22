@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -21,18 +21,42 @@ function Login() {
     const [shown, setShown] = useState(false);
     const [password, setPassword] = useState('');
     const [checked, setChecked] = useState(true);
-    console.log(state);
+    const [wrongLogin, setWrongLogin] = useState(0);
+
+    const padTo2Digits = (num) => {
+        return num.toString().padStart(2, '0');
+    }
+
+    const convertMsToMinutesSeconds = (milliseconds) => {
+        const minutes = Math.floor(milliseconds / 60000);
+        const seconds = Math.round((milliseconds % 60000) / 1000);
+        return seconds === 60
+            ? `${minutes + 1} min`
+            : `${minutes} min ${padTo2Digits(seconds)} sec`;
+    }
+
+    useEffect(() => {
+        localStorage.setItem("Login Time Start", Date.now());
+        localStorage.setItem("End Time", Date.now());
+    }, []);
     return (
         <>
             <Modal
                 isOpen={shown}
                 onRequestClose={() => { setShown(false) }}
                 style={customStyles}
-                contentLabel=""
+                contentLabel="Information"
             >
                 <div className={classes.modalDiv}>
-                    <h3>Congratulations! You have successfully logged in!</h3>
-                    <button onClick={() => history('/training', { state })}>Retake</button>
+                    <h3>Congratulations!</h3>
+                    <h4>Failed Login Attempts: <strong>{wrongLogin}</strong> Times!</h4>
+                    <h4>Total Training Time: <strong>{convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time"))}</strong></h4>
+                    <h4>Login Time: <strong>{convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start"))}</strong></h4>
+                    <button onClick={() => {
+                        localStorage.setItem("Start Time", Date.now());
+                        history('/training', { state });
+                    }
+                    }>Retake</button>
                 </div>
             </Modal>
             <div className={classes.Login}>
@@ -44,6 +68,9 @@ function Login() {
                     <button onClick={() => {
                         if (password === state.join('')) {
                             setShown(true);
+                        }
+                        else {
+                            setWrongLogin(prev => prev + 1);
                         }
                     }}>Submit</button>
                 </div>
