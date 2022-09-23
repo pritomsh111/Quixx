@@ -17,7 +17,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 function Login() {
-    const { state: { result, sentence, state } } = useLocation();
+    const { state: { result, sentence, state, trainingTime = '' } } = useLocation();
     const history = useNavigate();
     const [shown, setShown] = useState(false);
     const [password, setPassword] = useState('');
@@ -42,9 +42,11 @@ function Login() {
         localStorage.setItem("Login Time Start", Date.now());
         localStorage.setItem("End Time", Date.now());
         (async () => {
-            await axios.patch(`${process.env.REACT_APP_URL}/update`, { id: localStorage.getItem("id"), obj: { images: [...result, sentence], trainingTime: convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time")) } });
+            if (!trainingTime) {
+                await axios.patch(`${process.env.REACT_APP_URL}/update`, { id: localStorage.getItem("id"), obj: { images: [...result, sentence], trainingTime: convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time")) } });
+            }
         })();
-    }, [result, sentence, convertMsToMinutesSeconds]);
+    }, [result, sentence, convertMsToMinutesSeconds, trainingTime]);
     return (
         <>
             <Modal
@@ -56,11 +58,12 @@ function Login() {
                 <div className={classes.modalDiv}>
                     <h3>Congratulations!</h3>
                     <h4>Failed Login Attempts: <strong>{wrongLogin}</strong> Times!</h4>
-                    <h4>Total Training Time: <strong>{convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time"))}</strong></h4>
+                    <h4>Total Training Time: <strong>{!trainingTime ? convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time")) : trainingTime}</strong></h4>
                     <h4>Login Time: <strong>{convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start"))}</strong></h4>
                     <button onClick={() => {
                         localStorage.setItem("Start Time", Date.now());
                         history('/training', { state });
+                        localStorage.setItem('count', 0);
                     }
                     }>Retake</button>
                     <button onClick={() => {

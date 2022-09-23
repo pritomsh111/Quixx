@@ -20,7 +20,6 @@ const Form = () => {
                 user = await axios.get(`${process.env.REACT_APP_URL}/login?name=${name}&email=${email}`);
             }
             catch (e) {
-                console.log(e);
             }
         }
         return user;
@@ -29,11 +28,10 @@ const Form = () => {
     const redirectAfterLogin = async () => {
         const user = await login();
         if (user) {
-            const { data: { images, password, _id } } = user;
+            const { data: { images, password, _id, trainingTime } } = user;
             let sentence = images.slice(-1);
             localStorage.setItem("id", _id);
-            console.log(images, password, _id, ...sentence);
-            history('/login', { state: { result: images.slice(0, -2), sentence, state: password } });
+            history('/login', { state: { result: images.slice(0, -2), sentence, state: password, trainingTime: trainingTime } });
         }
         else {
             setUserExist(`User Not Found!`);
