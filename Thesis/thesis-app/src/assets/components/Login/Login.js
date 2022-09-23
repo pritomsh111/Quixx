@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from 'react-modal';
@@ -30,21 +30,21 @@ function Login() {
     }
 
 
-    const convertMsToMinutesSeconds = (milliseconds) => {
+    const convertMsToMinutesSeconds = useCallback((milliseconds) => {
         const minutes = Math.floor(milliseconds / 60000);
         const seconds = Math.round((milliseconds % 60000) / 1000);
         return seconds === 60
             ? `${minutes + 1} min`
             : `${minutes} min ${padTo2Digits(seconds)} sec`;
-    }
+    }, []);
 
     useEffect(() => {
         localStorage.setItem("Login Time Start", Date.now());
         localStorage.setItem("End Time", Date.now());
         (async () => {
-            await axios.patch(`${process.env.REACT_APP_URL}/update`, { id: localStorage.getItem("id"), obj: { images: [...result, sentence] } });
+            await axios.patch(`${process.env.REACT_APP_URL}/update`, { id: localStorage.getItem("id"), obj: { images: [...result, sentence], trainingTime: convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time")) } });
         })();
-    }, [result, sentence]);
+    }, [result, sentence, convertMsToMinutesSeconds]);
     return (
         <>
             <Modal
@@ -58,7 +58,8 @@ function Login() {
                     <h4>Failed Login Attempts: <strong>{wrongLogin}</strong> Times!</h4>
                     <h4>Total Training Time: <strong>{convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time"))}</strong></h4>
                     <h4>Login Time: <strong>{convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start"))}</strong></h4>
-                    <button onClick={() => {
+                    <button onClick={async () => {
+                        await axios.patch(`${process.env.REACT_APP_URL}/update`, { id: localStorage.getItem("id"), obj: { failed: wrongLogin, loginTime: convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start")) } });
                         localStorage.setItem("Start Time", Date.now());
                         history('/training', { state });
                     }

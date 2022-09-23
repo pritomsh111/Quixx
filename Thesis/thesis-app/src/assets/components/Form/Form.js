@@ -29,13 +29,13 @@ const Form = () => {
     const redirectAfterLogin = async () => {
         const user = await login();
         if (user) {
-            const { data: { images, password, trainingTime, _id } } = user;
+            const { data: { images, password, _id } } = user;
             let sentence = images.slice(-1);
             localStorage.setItem("id", _id);
             history('/login', { state: { images, sentence, password } });
         }
         else {
-            setUserExist("User Not Found!");
+            setUserExist(`${name} or ${email} Not Found!`);
         }
     }
 
@@ -61,7 +61,7 @@ const Form = () => {
 
                 <div className={classes.submit}>
                     <button type="submit" onClick={async () => {
-                        let { data } = await login();
+                        let data = await login();
                         if (!data && name && email) {
                             const password = randPassGenerator(slider);
                             const { data: _id } = await axios.post(`${process.env.REACT_APP_URL}/registration`, { name, email, password });
