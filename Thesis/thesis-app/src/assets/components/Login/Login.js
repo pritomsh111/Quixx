@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Modal from 'react-modal';
 
 import classes from './Login.module.css'
@@ -28,6 +29,7 @@ function Login() {
         return num.toString().padStart(2, '0');
     }
 
+
     const convertMsToMinutesSeconds = (milliseconds) => {
         const minutes = Math.floor(milliseconds / 60000);
         const seconds = Math.round((milliseconds % 60000) / 1000);
@@ -39,7 +41,10 @@ function Login() {
     useEffect(() => {
         localStorage.setItem("Login Time Start", Date.now());
         localStorage.setItem("End Time", Date.now());
-    }, []);
+        (async () => {
+            await axios.patch(`${process.env.REACT_APP_URL}/update`, { id: localStorage.getItem("id"), obj: { images: [...result, sentence] } });
+        })();
+    }, [result, sentence]);
     return (
         <>
             <Modal
