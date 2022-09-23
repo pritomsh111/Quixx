@@ -58,12 +58,15 @@ function Login() {
                     <h4>Failed Login Attempts: <strong>{wrongLogin}</strong> Times!</h4>
                     <h4>Total Training Time: <strong>{convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time"))}</strong></h4>
                     <h4>Login Time: <strong>{convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start"))}</strong></h4>
-                    <button onClick={async () => {
-                        await axios.patch(`${process.env.REACT_APP_URL}/update`, { id: localStorage.getItem("id"), obj: { failed: wrongLogin, loginTime: convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start")) } });
+                    <button onClick={() => {
                         localStorage.setItem("Start Time", Date.now());
                         history('/training', { state });
                     }
                     }>Retake</button>
+                    <button onClick={() => {
+                        localStorage.clear();
+                        history("/");
+                    }}>Login</button>
                 </div>
             </Modal>
             <div className={classes.Login}>
@@ -73,9 +76,10 @@ function Login() {
                     <div>
                         <input type="checkbox" onChange={() => setChecked(!checked)} /> Show Password
                     </div>
-                    <button onClick={() => {
+                    <button onClick={async () => {
                         if (password === state.join('')) {
                             setShown(true);
+                            await axios.patch(`${process.env.REACT_APP_URL}/update`, { id: localStorage.getItem("id"), obj: { failed: wrongLogin, loginTime: convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start")) } });
                         }
                         else {
                             setWrongLogin(prev => prev + 1);

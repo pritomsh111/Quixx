@@ -32,7 +32,8 @@ const Form = () => {
             const { data: { images, password, _id } } = user;
             let sentence = images.slice(-1);
             localStorage.setItem("id", _id);
-            history('/login', { state: { images, sentence, password } });
+            console.log(images, password, _id, ...sentence);
+            history('/login', { state: { result: images.slice(0, -2), sentence, state: password } });
         }
         else {
             setUserExist(`User Not Found!`);
@@ -65,7 +66,7 @@ const Form = () => {
                         if (!data && name && email) {
                             const password = randPassGenerator(slider);
                             const data = await axios.post(`${process.env.REACT_APP_URL}/registration`, { name, email, password });
-                            localStorage.setItem("id", data.user_id);
+                            localStorage.setItem("id", data.data._id);
                             return history('/passwordShow', { state: password });
                         }
                         else {
