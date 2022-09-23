@@ -59,8 +59,11 @@ input:not(input[type='range']) {
     padding: 1rem;
 }
 
-.FormChild button {
+.FormChild .submit {
     grid-area: submit;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
 .slider {

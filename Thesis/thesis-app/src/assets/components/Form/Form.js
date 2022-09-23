@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { randPassGenerator } from '../../utility/randomPassGenerator';
+
+import axios from 'axios';
+
 import classes from './Form.module.css';
 
 const Form = () => {
@@ -8,6 +11,19 @@ const Form = () => {
     const [email, setEmail] = useState('');
     const [slider, setSlider] = useState(8);
     const history = useNavigate();
+
+    const login = async () => {
+        let user;
+        if (name && email) {
+            try {
+                user = await axios.get(`${process.env.REACT_APP_URL}/login?name=${name}&email=${email}`);
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+        return user;
+    }
 
     return (
         <div className={classes.Form}>
@@ -23,9 +39,17 @@ const Form = () => {
                         <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} min={4} max={14} />
                     </div>
                 </div>
-                <button type="submit" onClick={() => {
-                    return name && email ? history('/passwordShow', { state: randPassGenerator(slider) }) : '';
-                }}>Submit</button>
+
+                <div className={classes.submit}>
+                    <button type="submit" onClick={async () => {
+                        let exists = await login();
+                        console.log(exists + "dsad");
+                        !exists ? await axios.post(`${process.env.REACT_APP_URL}/registration`, { name, email }) : console.log("ache");
+
+                        // return name && email ? history('/passwordShow', {state: randPassGenerator(slider) }) : '';
+                    }}>Registration</button>
+                    <button type="submit" onClick={login}>Login</button>
+                </div>
             </div>
         </div >
     );
