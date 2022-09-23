@@ -22,6 +22,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [checked, setChecked] = useState(true);
     const [wrongLogin, setWrongLogin] = useState(0);
+    const [wrongSentence, setWrongSentence] = useState('');
 
     const padTo2Digits = (num) => {
         return num.toString().padStart(2, '0');
@@ -61,7 +62,8 @@ function Login() {
             </Modal>
             <div className={classes.Login}>
                 <div className={classes.input}>
-                    <input placeholder='Password' type={checked ? "password" : "text"} value={password} onChange={({ target }) => { setPassword(target.value) }} />
+                    <input placeholder='Password' type={checked ? "password" : "text"} value={password} onChange={({ target }) => { setPassword(target.value); setWrongSentence(); }} />
+                    <span>{wrongSentence}</span>
                     <div>
                         <input type="checkbox" onChange={() => setChecked(!checked)} /> Show Password
                     </div>
@@ -71,6 +73,7 @@ function Login() {
                         }
                         else {
                             setWrongLogin(prev => prev + 1);
+                            setWrongSentence('Wrong Password, Please Think Hard!');
                         }
                     }}>Submit</button>
                 </div>

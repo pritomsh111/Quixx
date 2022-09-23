@@ -85,6 +85,12 @@
     gap: 2rem;
 }
 
+.input span {
+    margin-top: .2rem;
+    color: rgb(233, 21, 21);
+    font-size: .8rem;
+}
+
 
 @media (max-width:820px) {
     .Login {
