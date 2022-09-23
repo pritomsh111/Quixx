@@ -42,13 +42,25 @@
 .FormChild .Inputs {
     grid-area: Inputs;
     display: flex;
-    gap: 1rem;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nameInputs {
+    display: grid;
+    place-items: center;
+}
+
+.nameInputs span {
+    font-size: .85rem;
+    color: rgb(204, 18, 18);
 }
 
 input:not(input[type='range']) {
     font-family: inherit;
     height: 3rem;
-    width: 50%;
+    width: 100%;
     margin-left: 1rem;
     border-radius: 5px;
     border: 1px solid #a9acad;
@@ -94,7 +106,7 @@ input:not(input[type='range']) {
     input:not(input[type='range']) {
         font-family: inherit;
         height: 2rem;
-        width: 40%;
+        /* width: 40%; */
         padding: .6rem;
     }
 }
