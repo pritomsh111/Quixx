@@ -1,6 +1,8 @@
 .Alphanumeric {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     padding: 2rem;
     background: linear-gradient(to right, #cddbe6, #d8ccc7, #cdecd1);
     background-size: 400%;

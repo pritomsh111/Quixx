@@ -17,7 +17,7 @@ const CompletePhase = ({ result, state }) => {
                 }
             </div>
             <div className={classes.Sentence}>
-                <input type="text" value={sentence} onChange={({ target }) => setSentence(target.value)} />
+                <input type="text" value={sentence} onChange={({ target }) => setSentence(target.value)} placeholder="You can write anything that will aid to password retrieval!" />
                 <button onClick={() => { history('/login', { state: { result, sentence, state } }); }}>Next</button>
             </div>
         </>

@@ -35,7 +35,7 @@ const Form = () => {
             history('/login', { state: { images, sentence, password } });
         }
         else {
-            setUserExist(`${name} or ${email} Not Found!`);
+            setUserExist(`User Not Found!`);
         }
     }
 
