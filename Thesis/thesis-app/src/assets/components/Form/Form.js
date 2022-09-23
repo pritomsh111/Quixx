@@ -20,7 +20,7 @@ const Form = () => {
                         value={email} onChange={({ target }) => { setEmail(target.value) }} />
                     <div className={classes.slider}>
                         <label htmlFor='slider'>Password Size: {slider}</label>
-                        <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} min={2} max={14} />
+                        <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} min={4} max={14} />
                     </div>
                 </div>
                 <button type="submit" onClick={() => {
