@@ -145,7 +145,7 @@ const Data = {
   "p": ["periodic_table.jpg",
     "player(3).jpg",
     "pour.jpg",
-    "prediction.jpg",
+    "pelvis.jpg",
     "patient.jpg",
     "paul.jpg",],
   "q": ["maya-angelou-famous-quote.webp",
