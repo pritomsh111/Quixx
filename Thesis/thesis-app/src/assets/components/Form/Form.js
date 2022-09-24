@@ -58,7 +58,7 @@ const Form = () => {
                     </div>
                     <div className={classes.slider}>
                         <label htmlFor='slider'>Password Size: {slider}</label>
-                        <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} min={4} max={14} />
+                        <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} min={4} max={12} />
                     </div>
                 </div>
 
