@@ -26,6 +26,7 @@ button {
   border: 1px solid #a9acad;
   cursor: pointer;
   border-radius: 5px;
+  font-family: inherit;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;

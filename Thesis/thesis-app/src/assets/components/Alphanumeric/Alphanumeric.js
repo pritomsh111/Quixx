@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import classes from './Alphanumeric.module.css';
+import { randPassGenerator } from './../../utility/randomPassGenerator';
 
 const Alphanumeric = ({ Data, char, changeIndex, result, pushResult, path = "images/A-Za-z0-9" }) => {
     const [active, setActive] = useState();
     const [image, setImage] = useState('');
     const [btn, setBtn] = useState('Confirm');
+    const [random, setRandom] = useState();
+
+    useEffect(() => {
+        let dummy = randPassGenerator(10);
+        dummy.splice(Math.floor(Math.random() * 10), 0, `"${char}"`)
+        setRandom(dummy);
+    }, [char]);
 
     const blurNow = () => {
         if (btn === 'Next') {
@@ -22,7 +30,7 @@ const Alphanumeric = ({ Data, char, changeIndex, result, pushResult, path = "ima
 
     return (
         <>
-            <h2 className={classes.heading} style={{ paddingTop: "1rem" }}>Training For: "{char}"</h2>
+            <h2 className={classes.heading} style={{ paddingTop: "1rem" }}>Training For: {random}</h2>
             <div className={classes.Alphanumeric}>
                 {
                     Data[char].map((item, index) =>
