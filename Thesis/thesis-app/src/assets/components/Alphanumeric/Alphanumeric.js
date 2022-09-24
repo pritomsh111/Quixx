@@ -13,6 +13,7 @@ const Alphanumeric = ({ Data, char, changeIndex, result, pushResult, path = "ima
             pushResult([...result, `${path}/${char}/${image}`]);
             setBtn('Confirm');
             setActive();
+            window.scrollTo(0, 0);
         }
         else {
             setBtn('Next');
