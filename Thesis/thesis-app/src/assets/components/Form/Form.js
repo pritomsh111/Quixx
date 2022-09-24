@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { randPassGenerator } from '../../utility/randomPassGenerator';
 
@@ -12,6 +12,10 @@ const Form = () => {
     const [slider, setSlider] = useState(8);
     const [userExist, setUserExist] = useState("");
     const history = useNavigate();
+
+    useEffect(() => {
+        localStorage.clear();
+    }, []);
 
     const login = async () => {
         let user;
