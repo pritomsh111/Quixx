@@ -1,8 +1,8 @@
 .Alphanumeric {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     padding: 2rem;
+    place-items: center;
     background: linear-gradient(to right, #cddbe6, #d8ccc7, #cdecd1);
     background-size: 400%;
     animation: change-back 10s ease-in infinite alternate-reverse;
@@ -17,6 +17,10 @@
     50% {
         background-position: 100% 0%;
     }
+}
+
+.Alphanumeric button {
+    width: 50%;
 }
 
 
@@ -86,15 +90,24 @@
 }
 
 @keyframes pulse {
-    50% {
-        opacity: 1;
-    }
 
-    15% {
-        opacity: 0;
-    }
 
     0%, 100% {
         opacity: 1;
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1000px) {
+    .Alphanumeric {
+        grid-template-columns: 1fr;
+        place-items: center;
     }
 }
