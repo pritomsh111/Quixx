@@ -68,3 +68,33 @@
         background-position: 100% 0%;
     }
 }
+
+.image>img.active {
+    border: 3px solid #0066b3;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.image>img.capital {
+    border: 3px solid #0066b3;
+    border-radius: 15px;
+    animation: pulse 1.5s ease-in infinite alternate-reverse;
+    -webkit-animation: pulse 1.5s ease-in infinite alternate-reverse;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 1;
+    }
+
+    15% {
+        opacity: 0;
+    }
+
+    0%, 100% {
+        opacity: 1;
+    }
+}

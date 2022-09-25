@@ -15,7 +15,7 @@ const map = {
     "hyphen": "-",
     "percent": "%"
 }
-const Alphanumeric = ({ Data, char, changeIndex, result, pushResult, path = "images/A-Za-z0-9" }) => {
+const Alphanumeric = ({ Data, char, changeIndex, result, pushResult, path = "images/A-Za-z0-9", capital }) => {
     const [active, setActive] = useState();
     const [image, setImage] = useState('');
     const [btn, setBtn] = useState('Confirm');
@@ -23,10 +23,10 @@ const Alphanumeric = ({ Data, char, changeIndex, result, pushResult, path = "ima
 
     useEffect(() => {
         let dummy = randPassGenerator(10);
-        dummy.splice(Math.floor(Math.random() * 10), 0, `"${map[char] ? map[char] : char}"`)
+        dummy.splice(Math.floor(Math.random() * 10), 0, `"${map[char] ? map[char] : capital ? char.toUpperCase() : char}"`);
         setRandom(dummy);
         setImage('');
-    }, [char]);
+    }, [char, capital]);
 
     const blurNow = () => {
         if (btn === 'Next') {
@@ -54,7 +54,9 @@ const Alphanumeric = ({ Data, char, changeIndex, result, pushResult, path = "ima
                 {
                     Data[char].map((item, index) =>
                         <div className={classes.image} key={`${item + item}`}>
-                            <img alt={item.slice(0, item.length - 4)} className={btn === 'Confirm' || btn === 'Please Select Image' ? active === index ? classes.active : '' : active !== index ? classes.blur : ''} onClick={() => { setActive(index); setImage(item); setBtn("Confirm"); }} src={`${path}/${char}/${item}`} />
+                            <img alt={item.slice(0, item.length - 4)} className={(btn === 'Confirm' || btn === 'Please Select Image') ? (active === index && capital) ? classes.capital : active === index ? classes.active : "" : active !== index ? classes.blur : ''} onClick={() => { setActive(index); setImage(item); setBtn("Confirm"); }} src={`${path}/${char}/${item}`} />
+
+                            {/* <img alt={item.slice(0, item.length - 4)} className={btn === 'Confirm' || btn === 'Please Select Image' ? active === index ? classes.active : '' : active !== index ? classes.blur : ''} onClick={() => { setActive(index); setImage(item); setBtn("Confirm"); }} src={`${path}/${char}/${item}`} /> */}
                         </div>
                     )
                 }

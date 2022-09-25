@@ -14,7 +14,7 @@ const Training = () => {
     const grid =
         index < state.length ?
             /[a-zA-Z0-9]/.test(state[index]) ?
-                <Alphanumeric Data={Data} result={store} pushResult={setStore} char={state[index].toLowerCase()} changeIndex={setIndex} /> :
+                <Alphanumeric Data={Data} result={store} pushResult={setStore} char={state[index].toLowerCase()} capital={state[index].charCodeAt(0) >= 65 && state[index].charCodeAt(0) <= 90} changeIndex={setIndex} /> :
                 <Symbol result={store} pushResult={setStore} char={state[index]} changeIndex={setIndex} /> : <CompletePhase result={store} state={state} />;
     return grid;
 }
