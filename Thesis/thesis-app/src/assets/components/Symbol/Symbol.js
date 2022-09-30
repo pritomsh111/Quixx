@@ -23,11 +23,12 @@ const map = {
     "-": "hyphen",
     "%": "percent"
 }
+
+const images = ["Symbols.png", "Meaning-Pronunciation.png", "Colors.png"];
+const labels = ["Shapes", "Meaning/Pronunciation", "Color"];
+
 const Symbol = (props) => {
     const [selectedOption, setSelectOption] = useState();
-
-    const images = ["Symbols.png", "Meaning-Pronunciation.png", "Colors.png"];
-    const labels = ["Shapes", "Meaning/Pronunciation", "Color"];
 
     return (
         !selectedOption ?

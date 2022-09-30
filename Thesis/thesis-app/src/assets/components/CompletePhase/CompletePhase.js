@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import classes from './CompletePhase.module.css';
 
 const CompletePhase = ({ result, state }) => {

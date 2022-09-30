@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { randPassGenerator } from '../../utility/randomPassGenerator';
 
 import axios from 'axios';
 
 import classes from './Form.module.css';
+
+import { randPassGenerator } from '../../utility/randomPassGenerator';
 
 const Form = () => {
     const [name, setName] = useState('');
