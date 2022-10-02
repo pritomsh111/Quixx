@@ -2,22 +2,9 @@ import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-import Modal from 'react-modal';
 
 import classes from './Login.module.css'
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
-
-Modal.setAppElement('#root');
 function Login() {
     const { state: { result, sentence, state, trainingTime = '' } } = useLocation();
     const history = useNavigate();
@@ -49,23 +36,6 @@ function Login() {
     }, [result, sentence, convertMsToMinutesSeconds, trainingTime]);
     return (
         <>
-            <Modal
-                isOpen={shown}
-                onRequestClose={() => { setShown(false) }}
-                style={customStyles}
-                contentLabel="Information"
-            >
-                <div className={classes.modalDiv}>
-                    <h3>Congratulations!</h3>
-                    <h4>Failed Login Attempts: <strong>{wrongLogin}</strong> Times!</h4>
-                    <h4>Total Training Time: <strong>{!trainingTime ? convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time")) : trainingTime}</strong></h4>
-                    <h4>Login Time: <strong>{convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start"))}</strong></h4>
-                    <button onClick={() => {
-                        localStorage.clear();
-                        history("/");
-                    }}>Home</button>
-                </div>
-            </Modal>
             <div className={classes.Login}>
                 <div className={classes.input}>
                     <input placeholder='Password' type={checked ? "password" : "text"} value={password} onChange={({ target }) => { setPassword(target.value); setWrongSentence(); }} />

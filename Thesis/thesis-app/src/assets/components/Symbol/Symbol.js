@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Alphanumeric from '../Alphanumeric/Alphanumeric';
 
+import classes from './Symbol.module.css';
+
 import { Data } from '../../data/image';
 import { Pronunciation } from '../../data/pronunciation';
 import { Color } from '../../data/Color';
-
-import classes from './Symbol.module.css';
 
 const path = "images/Special Symbols";
 const path2 = "images/Pronunciation";
