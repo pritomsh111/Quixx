@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Popup from '../Popup/Popup';
 
 import axios from 'axios';
 
@@ -36,6 +37,18 @@ function Login() {
     }, [result, sentence, convertMsToMinutesSeconds, trainingTime]);
     return (
         <>
+            <Popup shown={shown} setShown={setShown}>
+                <div className={classes.modalDiv}>
+                    <h3>Congratulations!</h3>
+                    <h4>Failed Login Attempts: <strong>{wrongLogin}</strong> Times!</h4>
+                    <h4>Total Training Time: <strong>{!trainingTime ? convertMsToMinutesSeconds(+localStorage.getItem("End Time") - +localStorage.getItem("Start Time")) : trainingTime}</strong></h4>
+                    <h4>Login Time: <strong>{convertMsToMinutesSeconds(Date.now() - +localStorage.getItem("Login Time Start"))}</strong></h4>
+                    <button onClick={() => {
+                        localStorage.clear();
+                        history("/");
+                    }}>Home</button>
+                </div>
+            </Popup>
             <div className={classes.Login}>
                 <div className={classes.input}>
                     <input placeholder='Password' type={checked ? "password" : "text"} value={password} onChange={({ target }) => { setPassword(target.value); setWrongSentence(); }} />

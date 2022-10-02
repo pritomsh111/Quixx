@@ -7,25 +7,11 @@ import { Data } from '../../data/image';
 import { Pronunciation } from '../../data/pronunciation';
 import { Color } from '../../data/Color';
 
+import { DiffMap, Images, Labels } from '../../utility/constants';
+
 const path = "images/Special Symbols";
 const path2 = "images/Pronunciation";
 const path3 = "images/Color";
-
-const map = {
-    "?": "question mark",
-    "&": "ampersand",
-    "*": "asterisk",
-    "@": "at the rate",
-    "^": "caret",
-    "$": "dollar",
-    "!": "exclamatory",
-    "#": "hash",
-    "-": "hyphen",
-    "%": "percent"
-}
-
-const images = ["Symbols.png", "Meaning-Pronunciation.png", "Colors.png"];
-const labels = ["Shapes", "Meaning/Pronunciation", "Color"];
 
 const Symbol = (props) => {
     const [selectedOption, setSelectOption] = useState();
@@ -36,18 +22,18 @@ const Symbol = (props) => {
                 <h1>Select Your Interest</h1>
                 <div className={classes.first}>
                     {
-                        images.map((item, index) =>
-                            <div onClick={() => setSelectOption(labels[index])} className={classes.image} key={item} >
+                        Images.map((item, index) =>
+                            <div onClick={() => setSelectOption(Labels[index])} className={classes.image} key={item} >
                                 <div className={classes.img} >
                                     <img id={item} alt={item} src={`${path}/${item}`} />
                                 </div>
-                                <label htmlFor={item}>{labels[index]}</label>
+                                <label htmlFor={item}>{Labels[index]}</label>
                             </div>
                         )
                     }
                 </div>
             </div>
-            : selectedOption === 'Shapes' ? <Alphanumeric {...props} Data={Data} path={path} char={map[props.char]} /> : selectedOption === 'Meaning/Pronunciation' ? <Alphanumeric {...props} Data={Pronunciation} path={path2} char={map[props.char]} /> : selectedOption === 'Color' ? <Alphanumeric {...props} Data={Color} path={path3} char={map[props.char]} /> : ''
+            : selectedOption === 'Shapes' ? <Alphanumeric {...props} Data={Data} path={path} char={DiffMap[props.char]} /> : selectedOption === 'Meaning/Pronunciation' ? <Alphanumeric {...props} Data={Pronunciation} path={path2} char={DiffMap[props.char]} /> : selectedOption === 'Color' ? <Alphanumeric {...props} Data={Color} path={path3} char={DiffMap[props.char]} /> : ''
     );
 
 }
