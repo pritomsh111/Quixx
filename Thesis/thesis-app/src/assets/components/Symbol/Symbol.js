@@ -32,10 +32,11 @@ const Symbol = (props) => {
                         )
                     }
                 </div>
-            </div>
-            : selectedOption === 'Shapes' ? <Alphanumeric {...props} Data={Data} path={path} char={DiffMap[props.char]} /> : selectedOption === 'Meaning/Pronunciation' ? <Alphanumeric {...props} Data={Pronunciation} path={path2} char={DiffMap[props.char]} /> : selectedOption === 'Color' ? <Alphanumeric {...props} Data={Color} path={path3} char={DiffMap[props.char]} /> : ''
+            </div> :
+            selectedOption === 'Shapes' ? <Alphanumeric {...props} Data={Data} path={path} char={DiffMap[props.char]} /> :
+                selectedOption === 'Meaning/Pronunciation' ? <Alphanumeric {...props} Data={Pronunciation} path={path2} char={DiffMap[props.char]} /> :
+                    selectedOption === 'Color' ? <Alphanumeric {...props} Data={Color} path={path3} char={DiffMap[props.char]} /> : ''
     );
-
 }
 
 export default Symbol;

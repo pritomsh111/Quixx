@@ -5,6 +5,8 @@ import Alphanumeric from '../Alphanumeric/Alphanumeric';
 import Symbol from '../Symbol/Symbol';
 import CompletePhase from '../CompletePhase/CompletePhase';
 
+import classes from './Training.module.css';
+
 import { Data } from '../../data/image';
 import Popup from './../Popup/Popup';
 
@@ -12,11 +14,22 @@ const Training = () => {
     const { state } = useLocation();
     const [store, setStore] = useState([]);
     const [index, setIndex] = useState(0);
-    const [segment, setSegment] = useState(false);
+    const [modal, setModal] = useState(false);
+    const [segmentInput, setSegmentInput] = useState('');
 
     useEffect(() => {
+        if (index % 3 === 0) {
+            setIndex(0);
+            setStore(prev => {
+                return prev.length ? prev.slice(0, prev.length - 3) : [];
+            });
+            setModal(false);
+        }
+    }, [index]);
 
-    });
+    const checkPassword = () => {
+
+    }
 
     const grid =
         index < state.length ?
@@ -25,15 +38,15 @@ const Training = () => {
                 <Symbol result={store} pushResult={setStore} char={state[index]} changeIndex={setIndex} /> : <CompletePhase result={store} state={state} />;
     return (
         <>
-            <Popup shown={segment} setShown={setSegment}>
-                <div>
+            <Popup shown={modal} setShown={setModal}>
+                <div className={classes.segmentInput}>
                     <label htmlFor="segment">Write 3 Previously Learned Characters</label>
-                    <input id="segment" type="text" placeholder="Example: $7c"></input>
+                    <input id="segment" type="text" value={segmentInput} onChange={({ target }) => { setSegmentInput(target.value) }} placeholder="Example: $7c"></input>
+                    <button type="submit" onClick={checkPassword}>Submit</button>
                 </div>
             </Popup>
             {grid}
         </>
-
     );
 }
 
