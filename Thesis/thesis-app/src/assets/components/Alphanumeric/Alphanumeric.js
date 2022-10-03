@@ -6,7 +6,7 @@ import { randPassGenerator } from './../../utility/randomPassGenerator';
 import { map } from '../../utility/constants';
 import Popup from './../Popup/Popup';
 
-const Alphanumeric = ({ indexNumber, Data, char, changeIndex, result, pushResult, path = "images/A-Za-z0-9", capital }) => {
+const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char, changeIndex, result, pushResult, path = "images/A-Za-z0-9", capital }) => {
     const [active, setActive] = useState();
     const [image, setImage] = useState('');
     const [btn, setBtn] = useState('Confirm');
@@ -14,7 +14,6 @@ const Alphanumeric = ({ indexNumber, Data, char, changeIndex, result, pushResult
 
     const [modal, setModal] = useState(false);
     const [segmentInput, setSegmentInput] = useState('');
-    const [passChar, setPassChar] = useState('');
 
     useEffect(() => {
         let dummy = randPassGenerator(10);
@@ -32,9 +31,22 @@ const Alphanumeric = ({ indexNumber, Data, char, changeIndex, result, pushResult
         window.scrollTo(0, 0);
     }
 
+    const cancelHelper = () => {
+        changeIndex(prev => prev - 2);
+        pushResult(prev => {
+            console.log(prev.slice(0, -2));
+            return prev.length ? prev.slice(0, -2) : [];
+        });
+        setModal(false);
+        setBtn('Confirm');
+        setImage('');
+        setActive();
+        window.scrollTo(0, 0);
+    }
+
     const blurNow = () => {
         if (btn === 'Next') {
-            setPassChar(prev => prev + char);
+            setPassChar(prev => prev + mainChar);
             if (indexNumber % 3 === 2) {
                 setModal(true);
             }
@@ -52,30 +64,27 @@ const Alphanumeric = ({ indexNumber, Data, char, changeIndex, result, pushResult
         }
     }
 
-    // useEffect(() => {
-    //     if (index % 3 === 0) {
-    //         setIndex(0);
-    //         setStore(prev => {
-    //             return prev.length ? prev.slice(0, prev.length - 3) : [];
-    //         });
-    //         setModal(false);
-    //     }
-    // }, [index]);
-
     const checkPassword = () => {
-        if (segmentInput !== ) {
+        if (segmentInput !== passChar) {
+            cancelHelper();
         }
+        else {
+            helper();
+        }
+        setModal(false);
+        setSegmentInput('');
+        setPassChar('');
     }
 
-    return (
-        <>
-            <Popup shown={modal} setShown={setModal}>
-                <div className={classes.segmentInput}>
-                    <label htmlFor="segment">Write 3 Previously Learned Characters</label>
-                    <input id="segment" type="text" value={segmentInput} onChange={({ target }) => { setSegmentInput(target.value) }} placeholder="Example: $7c"></input>
-                    <button type="submit" onClick={checkPassword}>Submit</button>
-                </div>
-            </Popup>
+    return (modal ?
+        <Popup setPassChar={setPassChar} shown={modal} setShown={setModal}>
+            <div className={classes.segmentInput}>
+                <label htmlFor="segment">Write 3 Previously Learned Characters</label>
+                <input autoFocus autoComplete="off" id="segment" type="text" value={segmentInput} onChange={({ target }) => { setSegmentInput(target.value) }} placeholder="Example: $7c"></input>
+                <button type="submit" onClick={checkPassword}>Submit</button>
+            </div>
+        </Popup>
+        : <>
             <h2 className={classes.heading} style={{ paddingTop: "1rem" }}>Training For: {random}</h2>
             <div className={classes.Alphanumeric}>
                 {
@@ -89,7 +98,6 @@ const Alphanumeric = ({ indexNumber, Data, char, changeIndex, result, pushResult
             </div>
         </>
     );
-
 }
 
 export default Alphanumeric;

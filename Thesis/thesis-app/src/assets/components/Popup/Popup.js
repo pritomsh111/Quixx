@@ -18,7 +18,12 @@ const Popup = (props) => {
     return (
         <Modal
             isOpen={props.shown}
-            onRequestClose={() => { props.setShown(false) }}
+            onRequestClose={() => {
+                props.setShown(false);
+                if (props.setPassChar) {
+                    props.setPassChar(prev => prev.length ? prev.slice(0, -1) : "");
+                }
+            }}
             style={customStyles}
             contentLabel="Information"
         >
