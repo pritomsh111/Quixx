@@ -1,53 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import Alphanumeric from '../Alphanumeric/Alphanumeric';
 import Symbol from '../Symbol/Symbol';
 import CompletePhase from '../CompletePhase/CompletePhase';
 
-import classes from './Training.module.css';
-
 import { Data } from '../../data/image';
-import Popup from './../Popup/Popup';
 
 const Training = () => {
     const { state } = useLocation();
     const [store, setStore] = useState([]);
     const [index, setIndex] = useState(0);
-    const [modal, setModal] = useState(false);
-    const [segmentInput, setSegmentInput] = useState('');
-
-    useEffect(() => {
-        if (index % 3 === 0) {
-            setIndex(0);
-            setStore(prev => {
-                return prev.length ? prev.slice(0, prev.length - 3) : [];
-            });
-            setModal(false);
-        }
-    }, [index]);
-
-    const checkPassword = () => {
-
-    }
 
     const grid =
         index < state.length ?
             /[a-zA-Z0-9]/.test(state[index]) ?
-                <Alphanumeric Data={Data} result={store} pushResult={setStore} char={state[index].toLowerCase()} capital={state[index].charCodeAt(0) >= 65 && state[index].charCodeAt(0) <= 90} changeIndex={setIndex} /> :
-                <Symbol result={store} pushResult={setStore} char={state[index]} changeIndex={setIndex} /> : <CompletePhase result={store} state={state} />;
-    return (
-        <>
-            <Popup shown={modal} setShown={setModal}>
-                <div className={classes.segmentInput}>
-                    <label htmlFor="segment">Write 3 Previously Learned Characters</label>
-                    <input id="segment" type="text" value={segmentInput} onChange={({ target }) => { setSegmentInput(target.value) }} placeholder="Example: $7c"></input>
-                    <button type="submit" onClick={checkPassword}>Submit</button>
-                </div>
-            </Popup>
-            {grid}
-        </>
-    );
+                <Alphanumeric indexNumber={index} Data={Data} result={store} pushResult={setStore} char={state[index].toLowerCase()} capital={state[index].charCodeAt(0) >= 65 && state[index].charCodeAt(0) <= 90} changeIndex={setIndex} /> :
+                <Symbol indexNumber={index} result={store} pushResult={setStore} char={state[index]} changeIndex={setIndex} /> : <CompletePhase result={store} state={state} />;
+    return grid;
 }
 
 export default Training;
