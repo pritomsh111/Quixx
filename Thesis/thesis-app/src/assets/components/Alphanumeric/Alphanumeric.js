@@ -10,8 +10,6 @@ const Alphanumeric = ({ Data, char, changeIndex, result, pushResult, path = "ima
     const [image, setImage] = useState('');
     const [btn, setBtn] = useState('Confirm');
     const [random, setRandom] = useState();
-    const [segment, setSegment] = useState();
-
     useEffect(() => {
         let dummy = randPassGenerator(10);
         dummy.splice(Math.floor(Math.random() * 10), 0, `"${map[char] ? map[char] : capital ? char.toUpperCase() : char}"`);
