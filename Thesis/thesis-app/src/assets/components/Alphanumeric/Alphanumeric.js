@@ -31,6 +31,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         setImage('');
         setActive();
         window.scrollTo(0, 0);
+        setModalText('');
     }
 
     const cancelHelper = () => {
@@ -44,6 +45,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         setImage('');
         setActive();
         window.scrollTo(0, 0);
+        setModalText('');
     }
 
     const blurNow = () => {
@@ -69,15 +71,17 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
     const checkPassword = () => {
         if (segmentInput !== passChar) {
             setModalText("Wrong! Taking You 3 Steps Back!");
-            setTimeout(() => { cancelHelper(); }, 5000);
+            setTimeout(() => { cancelHelper(); }, 2000);
         }
         else {
             setModalText("Congratulations! Moving Forward!");
-            setTimeout(() => { helper(); }, 1000);
+            setTimeout(() => { helper(); }, 2000);
         }
-        setModal(false);
-        setSegmentInput('');
-        setPassChar('');
+        setTimeout(() => {
+            setModal(false);
+            setSegmentInput('');
+            setPassChar('');
+        }, 2000);
     }
 
     return (modal ?
