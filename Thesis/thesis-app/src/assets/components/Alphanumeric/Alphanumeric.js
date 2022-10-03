@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 
+import Popup from './../Popup/Popup';
+
 import classes from './Alphanumeric.module.css';
 
 import { randPassGenerator } from './../../utility/randomPassGenerator';
 import { map } from '../../utility/constants';
-import Popup from './../Popup/Popup';
 
 const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char, changeIndex, result, pushResult, path = "images/A-Za-z0-9", capital }) => {
     const [active, setActive] = useState();
@@ -14,6 +15,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
 
     const [modal, setModal] = useState(false);
     const [segmentInput, setSegmentInput] = useState('');
+    const [modalText, setModalText] = useState('');
 
     useEffect(() => {
         let dummy = randPassGenerator(10);
@@ -66,10 +68,12 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
 
     const checkPassword = () => {
         if (segmentInput !== passChar) {
-            cancelHelper();
+            setModalText("Wrong! Taking You 3 Steps Back!");
+            setTimeout(() => { cancelHelper(); }, 5000);
         }
         else {
-            helper();
+            setModalText("Congratulations! Moving Forward!");
+            setTimeout(() => { helper(); }, 1000);
         }
         setModal(false);
         setSegmentInput('');
@@ -78,11 +82,15 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
 
     return (modal ?
         <Popup setPassChar={setPassChar} shown={modal} setShown={setModal}>
-            <div className={classes.segmentInput}>
-                <label htmlFor="segment">Write 3 Previously Learned Characters</label>
-                <input autoFocus autoComplete="off" id="segment" type="text" value={segmentInput} onChange={({ target }) => { setSegmentInput(target.value) }} placeholder="Example: $7c"></input>
-                <button type="submit" onClick={checkPassword}>Submit</button>
-            </div>
+            {
+                !modalText ?
+                    <div className={classes.segmentInput}>
+                        <label htmlFor="segment">Write 3 Previously Learned Characters</label>
+                        <input autoFocus autoComplete="off" id="segment" type="text" value={segmentInput} onChange={({ target }) => { setSegmentInput(target.value) }} placeholder="Example: $7c"></input>
+                        <button type="submit" onClick={checkPassword}>Submit</button>
+                    </div>
+                    : <h2>{modalText}</h2>
+            }
         </Popup>
         : <>
             <h2 className={classes.heading} style={{ paddingTop: "1rem" }}>Training For: {random}</h2>
