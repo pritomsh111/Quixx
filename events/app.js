@@ -4,7 +4,7 @@ document.querySelector('.a').addEventListener('click', function (e) {
 
 document.querySelector('.b').addEventListener('click', function (e) {
     console.log('b');
-}, false);
+}, true);
 
 document.querySelector('.c').addEventListener('click', function (e) {
     console.log('c');
@@ -12,6 +12,7 @@ document.querySelector('.c').addEventListener('click', function (e) {
 
 document.querySelector('.d').addEventListener('click', function (e) {
     console.log('d');
+    e.stopPropagation();
 }, false);
 
 document.querySelector('.e').addEventListener('click', function (e) {
