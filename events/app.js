@@ -27,11 +27,17 @@
 const speed = document.querySelector("#speed");
 
 speed.addEventListener('keypress', (e) => {
-    console.log(e.key + " keypress");
+    // e.preventDefault();
+    if (!e.repeat) {
+        console.log(e.key + " keypress");
+        // console.log(e.key + " keydown");
+    }
 });
 
 speed.addEventListener('keydown', (e) => {
-    console.log(e.key + " keydown");
+    if (!e.repeat) {
+        console.log(e.key + " keydown");
+    }
 });
 
 speed.addEventListener('keyup', (e) => {
