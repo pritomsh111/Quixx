@@ -10,7 +10,7 @@ import { randPassGenerator } from '../../utility/randomPassGenerator';
 const Form = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [slider, setSlider] = useState(8);
+    // const [slider, setSlider] = useState(8);
     const [userExist, setUserExist] = useState("");
     const history = useNavigate();
 
@@ -57,17 +57,17 @@ const Form = () => {
                         <input type="email" placeholder='Email'
                             value={email} onChange={({ target }) => { setEmail(target.value); setUserExist(""); }} />
                     </div>
-                    <div className={classes.slider}>
+                    {/* <div className={classes.slider}>
                         <label htmlFor='slider'>Password Size: {slider}</label>
-                        <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} min={4} max={12} />
-                    </div>
+                        <input id="slider" type='range' value={slider} onChange={({ target }) => { setSlider(target.value) }} max={12} />
+                    </div> */}
                 </div>
 
                 <div className={classes.submit}>
                     <button type="submit" onClick={async () => {
                         let data = await login();
                         if (!data && name && email) {
-                            const password = randPassGenerator(slider);
+                            const password = randPassGenerator();
                             const data = await axios.post(`${process.env.REACT_APP_URL}/registration`, { name, email, password });
                             localStorage.setItem("id", data.data._id);
                             return history('/passwordShow', { state: password });

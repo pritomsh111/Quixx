@@ -10,9 +10,9 @@ const generateNumber = () => {
 const generateSpecial = () => {
     return process.env.REACT_APP_SPECIAL_CHARACTERS.charAt(Math.random() * process.env.REACT_APP_SPECIAL_CHARACTERS.length);
 }
-export const randPassGenerator = (length) => {
+export const randPassGenerator = () => {
     let password = [], count = 0;
-    while (password.length <= 12) {
+    while (password.length < 12) {
         password.push(generateUppercase());
     }
     while (count++ < 3) {
