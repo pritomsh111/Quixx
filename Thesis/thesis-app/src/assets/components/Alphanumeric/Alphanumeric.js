@@ -49,7 +49,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
     }
 
     const blurNow = () => {
-        if (btn === 'Next') {
+        if (btn === 'Press Key') {
             setPassChar(prev => prev + mainChar);
             if (indexNumber % 3 === 2) {
                 setModal(true);
@@ -60,7 +60,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         }
         else {
             if (image) {
-                setBtn('Next');
+                setBtn('Press Key');
             }
             else {
                 setBtn("Please Select Image");
