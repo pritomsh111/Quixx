@@ -51,10 +51,14 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
 
     const blurNow = () => {
         if (btn === 'Press Key') {
-            if (capital && char.toUpperCase() === pressedKey) {
-
-            }
-            else if (char === pressedKey) {
+            if ((capital && char.toUpperCase() === pressedKey) || (!capital && char === pressedKey)) {
+                setPassChar(prev => prev + mainChar);
+                if (indexNumber % 3 === 2) {
+                    setModal(true);
+                }
+                else {
+                    helper();
+                }
             }
         }
         else {
@@ -105,7 +109,8 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
                         </div>
                     )
                 }
-                <button onClick={blurNow}>{btn}</button>
+                <input type='text' value={pressedKey} onChange={({ target }) => setPressedKey(target.value)} hidden></input>
+                <button onClick={blurNow} disabled={btn === 'Press Key' ? true : false}>{btn}</button>
             </div>
         </>
     );
