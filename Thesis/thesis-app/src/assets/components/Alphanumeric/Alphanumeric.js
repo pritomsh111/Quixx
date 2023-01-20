@@ -12,6 +12,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
     const [image, setImage] = useState('');
     const [btn, setBtn] = useState('Confirm');
     const [random, setRandom] = useState();
+    const [pressedKey, setPressedKey] = useState('');
 
     const [modal, setModal] = useState(false);
     const [segmentInput, setSegmentInput] = useState('');
@@ -50,12 +51,10 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
 
     const blurNow = () => {
         if (btn === 'Press Key') {
-            setPassChar(prev => prev + mainChar);
-            if (indexNumber % 3 === 2) {
-                setModal(true);
+            if (capital && char.toUpperCase() === pressedKey) {
+
             }
-            else {
-                helper();
+            else if (char === pressedKey) {
             }
         }
         else {
