@@ -1,4 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Popup from './../Popup/Popup';
 
@@ -26,13 +28,13 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
 
     const windowKeyPress = useCallback(({ key }) => {
         setPressedKey(key);
-        console.log(key);
+        setBtn('Key Pressed!');
     }, []);
 
     useEffect(() => {
-        window.addEventListener('keyup', windowKeyPress);
+        document.addEventListener('keyup', windowKeyPress);
         return () => {
-            window.removeEventListener('keyup', windowKeyPress);
+            document.removeEventListener('keyup', windowKeyPress);
         };
     }, [windowKeyPress]);
 
@@ -59,9 +61,17 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         window.scrollTo(0, 0);
         setModalText('');
     }
-
+    console.log(pressedKey);
     const blurNow = () => {
-        if (btn === 'Press Key') {
+        if (btn !== 'Press Key') {
+            if (image) {
+                setBtn('Press Key');
+            }
+            else {
+                setBtn("Please Select Image");
+            }
+        }
+        else if (btn === 'Key Pressed!') {
             if ((capital && char.toUpperCase() === pressedKey) || (!capital && char === pressedKey)) {
                 setPassChar(prev => prev + mainChar);
                 if (indexNumber % 3 === 2) {
@@ -70,14 +80,6 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
                 else {
                     helper();
                 }
-            }
-        }
-        else {
-            if (image) {
-                setBtn('Press Key');
-            }
-            else {
-                setBtn("Please Select Image");
             }
         }
     }
@@ -111,6 +113,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
             }
         </Popup>
         : <>
+            <ToastContainer />
             <h2 className={classes.heading} style={{ paddingTop: "1rem" }}>Training For: {random}</h2>
             <div className={classes.Alphanumeric}>
                 {
@@ -120,7 +123,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
                         </div>
                     )
                 }
-                <button onClick={blurNow} disabled={btn === 'Press Key' ? true : false}>{btn}</button>
+                <button onClick={blurNow}>{btn}</button>
             </div>
         </>
     );
