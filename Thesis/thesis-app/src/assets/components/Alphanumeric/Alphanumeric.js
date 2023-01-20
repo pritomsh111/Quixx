@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import Popup from './../Popup/Popup';
 
@@ -17,13 +17,24 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
     const [modal, setModal] = useState(false);
     const [segmentInput, setSegmentInput] = useState('');
     const [modalText, setModalText] = useState('');
-
     useEffect(() => {
         let dummy = randPassGenerator(10);
         dummy.splice(Math.floor(Math.random() * 10), 0, `"${map[char] ? map[char] : capital ? char.toUpperCase() : char}"`);
         setRandom(dummy);
         setImage('');
     }, [char, capital]);
+
+    const windowKeyPress = useCallback(({ key }) => {
+        setPressedKey(key);
+        console.log(key);
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener('keyup', windowKeyPress);
+        return () => {
+            window.removeEventListener('keyup', windowKeyPress);
+        };
+    }, [windowKeyPress]);
 
     const helper = () => {
         changeIndex(prev => prev + 1);
@@ -109,7 +120,6 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
                         </div>
                     )
                 }
-                <input type='text' value={pressedKey} onChange={({ target }) => setPressedKey(target.value)} hidden></input>
                 <button onClick={blurNow} disabled={btn === 'Press Key' ? true : false}>{btn}</button>
             </div>
         </>
