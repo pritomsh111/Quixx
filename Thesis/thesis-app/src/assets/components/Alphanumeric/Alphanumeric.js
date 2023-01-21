@@ -50,23 +50,24 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         setModalText('');
     }
 
-    const keyHandler = ({ key }) => {
-        setPressedKey(key);
+    const keyHandler = useCallback((e) => {
+        setPressedKey(e.key);
         setBtn('Key Pressed!');
-    }
-    const eventKeyStart = () => {
+    }, []);
+
+    const eventKeyStart = useCallback(() => {
         console.log("Start");
-        console.log({ pressedKey });
         document.addEventListener('keyup', keyHandler);
-    }
-    const eventKeyEnd = () => {
+    }, [keyHandler])
+
+    const eventKeyEnd = useCallback(() => {
         setPressedKey('');
         console.log("End");
-        console.log({ pressedKey });
         document.removeEventListener('keyup', keyHandler);
-    }
+    }, [keyHandler])
 
     const blurNow = () => {
+        eventKeyEnd();
         if (btn === 'Key Pressed!') {
             if ((capital && char.toUpperCase() === pressedKey) || (!capital && char === pressedKey)) {
                 setPassChar(prev => prev + mainChar);
@@ -77,9 +78,8 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
                     helper();
                 }
             }
-            eventKeyEnd();
         }
-        else if (btn !== 'Press Key') {
+        else if (btn === 'Confirm') {
             if (image) {
                 setBtn('Press Key');
                 eventKeyStart();
@@ -90,6 +90,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
             }
         }
     }
+    console.log(pressedKey);
 
     const checkPassword = () => {
         if (segmentInput !== passChar) {
