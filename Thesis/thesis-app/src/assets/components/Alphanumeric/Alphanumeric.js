@@ -26,17 +26,23 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         setImage('');
     }, [char, capital]);
 
-    const windowKeyPress = useCallback(({ key }) => {
-        setPressedKey(key);
-        setBtn('Key Pressed!');
-    }, []);
+    // const windowKeyPress = useCallback(({ key }) => {
+    //     setPressedKey(key);
+    //     setBtn('Key Pressed!');
+    // }, []);
 
-    useEffect(() => {
-        document.addEventListener('keyup', windowKeyPress);
-        return () => {
-            document.removeEventListener('keyup', windowKeyPress);
-        };
-    }, [windowKeyPress]);
+    // useEffect(() => {
+    //     document.addEventListener('keyup', ({ key }) => {
+    //         setPressedKey(key);
+    //         setBtn('Key Pressed!');
+    //     });
+    //     return () => {
+    //         document.removeEventListener('keyup', ({ key }) => {
+    //             setPressedKey(key);
+    //             setBtn('Key Pressed!');
+    //         });
+    //     };
+    // }, []);
 
     const helper = () => {
         changeIndex(prev => prev + 1);
@@ -61,17 +67,30 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         window.scrollTo(0, 0);
         setModalText('');
     }
-    console.log(pressedKey);
+
+    const keyHandler = ({ key }) => {
+        setPressedKey(key);
+        setBtn('Key Pressed!');
+    }
+    const eventKeyStart = () => {
+        document.addEventListener('keyup', keyHandler);
+    }
+    const eventKeyEnd = () => {
+        document.removeEventListener('keyup', keyHandler);
+    }
+
     const blurNow = () => {
         if (btn !== 'Press Key') {
             if (image) {
                 setBtn('Press Key');
+                eventKeyStart();
             }
             else {
                 setBtn("Please Select Image");
+                eventKeyEnd();
             }
         }
-        else if (btn === 'Key Pressed!') {
+        else if (btn === 'Press Key') {
             if ((capital && char.toUpperCase() === pressedKey) || (!capital && char === pressedKey)) {
                 setPassChar(prev => prev + mainChar);
                 if (indexNumber % 3 === 2) {
