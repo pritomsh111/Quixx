@@ -26,24 +26,6 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         setImage('');
     }, [char, capital]);
 
-    // const windowKeyPress = useCallback(({ key }) => {
-    //     setPressedKey(key);
-    //     setBtn('Key Pressed!');
-    // }, []);
-
-    // useEffect(() => {
-    //     document.addEventListener('keyup', ({ key }) => {
-    //         setPressedKey(key);
-    //         setBtn('Key Pressed!');
-    //     });
-    //     return () => {
-    //         document.removeEventListener('keyup', ({ key }) => {
-    //             setPressedKey(key);
-    //             setBtn('Key Pressed!');
-    //         });
-    //     };
-    // }, []);
-
     const helper = () => {
         changeIndex(prev => prev + 1);
         pushResult([...result, `${path}/${char}/${image}`]);
@@ -73,24 +55,19 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
         setBtn('Key Pressed!');
     }
     const eventKeyStart = () => {
+        console.log("Start");
+        console.log({ pressedKey });
         document.addEventListener('keyup', keyHandler);
     }
     const eventKeyEnd = () => {
+        setPressedKey('');
+        console.log("End");
+        console.log({ pressedKey });
         document.removeEventListener('keyup', keyHandler);
     }
 
     const blurNow = () => {
-        if (btn !== 'Press Key') {
-            if (image) {
-                setBtn('Press Key');
-                eventKeyStart();
-            }
-            else {
-                setBtn("Please Select Image");
-                eventKeyEnd();
-            }
-        }
-        else if (btn === 'Press Key') {
+        if (btn === 'Key Pressed!') {
             if ((capital && char.toUpperCase() === pressedKey) || (!capital && char === pressedKey)) {
                 setPassChar(prev => prev + mainChar);
                 if (indexNumber % 3 === 2) {
@@ -99,6 +76,17 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
                 else {
                     helper();
                 }
+            }
+            eventKeyEnd();
+        }
+        else if (btn !== 'Press Key') {
+            if (image) {
+                setBtn('Press Key');
+                eventKeyStart();
+            }
+            else {
+                setBtn("Please Select Image");
+                eventKeyEnd();
             }
         }
     }
@@ -138,7 +126,7 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
                 {
                     Data[char].map((item, index) =>
                         <div className={classes.image} key={`${item + item}`}>
-                            <img alt={item.slice(0, item.length - 4)} className={(btn === 'Confirm' || btn === 'Please Select Image') ? (active === index && capital) ? classes.capital : active === index ? classes.active : "" : active !== index ? classes.blur : ''} onClick={() => { setActive(index); setImage(item); setBtn("Confirm"); }} src={`${path}/${char}/${item}`} />
+                            <img alt={item.slice(0, item.length - 4)} className={(btn === 'Confirm' || btn === 'Please Select Image') ? (active === index && capital) ? classes.capital : active === index ? classes.active : "" : active !== index ? classes.blur : ''} onClick={() => { eventKeyEnd(); setActive(index); setImage(item); setBtn("Confirm"); }} src={`${path}/${char}/${item}`} />
                         </div>
                     )
                 }
