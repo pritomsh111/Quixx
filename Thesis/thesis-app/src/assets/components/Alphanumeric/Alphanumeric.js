@@ -51,8 +51,10 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
     }
 
     const keyHandler = useCallback((e) => {
-        setPressedKey(e.key);
-        setBtn('Key Pressed!');
+        if (e.key !== "Shift") {
+            setPressedKey(e.key);
+            setBtn('Key Pressed!');
+        }
     }, []);
 
     const eventKeyStart = useCallback(() => {
@@ -61,22 +63,25 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
     }, [keyHandler])
 
     const eventKeyEnd = useCallback(() => {
-        setPressedKey('');
         console.log("End");
         document.removeEventListener('keyup', keyHandler);
     }, [keyHandler])
 
     const blurNow = () => {
-        eventKeyEnd();
+        console.log(pressedKey);
         if (btn === 'Key Pressed!') {
-            if ((capital && char.toUpperCase() === pressedKey) || (!capital && char === pressedKey)) {
+            if ((capital && char.toUpperCase() === pressedKey) || (!capital && char === pressedKey) || (map[char] === pressedKey)) {
                 setPassChar(prev => prev + mainChar);
                 if (indexNumber % 3 === 2) {
                     setModal(true);
+                    eventKeyEnd();
                 }
                 else {
                     helper();
                 }
+            }
+            else {
+                toast.error('Oops Wrong Key! Try Again!');
             }
         }
         else if (btn === 'Confirm') {
@@ -90,7 +95,6 @@ const Alphanumeric = ({ passChar, setPassChar, mainChar, indexNumber, Data, char
             }
         }
     }
-    console.log(pressedKey);
 
     const checkPassword = () => {
         if (segmentInput !== passChar) {
