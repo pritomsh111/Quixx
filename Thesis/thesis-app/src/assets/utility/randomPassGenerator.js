@@ -24,7 +24,7 @@ export const randPassGenerator = () => {
             count--;
         }
     }
-    count = Math.floor(Math.random() * 4) + 2;
+    count = Math.floor(Math.random() * 3) + 2;
     while (count-- >= 0) {
         let dummy = Math.floor(Math.random() * 12);
         if (/[A-Z]/.test(password[dummy])) {
