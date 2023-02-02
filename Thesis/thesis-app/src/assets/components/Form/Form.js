@@ -68,9 +68,10 @@ const Form = () => {
                         let data = await login();
                         if (!data && name && email) {
                             const password = randPassGenerator();
-                            const data = await axios.post(`${process.env.REACT_APP_URL}/registration`, { name, email, password });
-                            localStorage.setItem("id", data.data._id);
-                            return history('/passwordShow', { state: password });
+                            console.log(password.join(''));
+                            // const data = await axios.post(`${process.env.REACT_APP_URL}/registration`, { name, email, password });
+                            // localStorage.setItem("id", data.data._id);
+                            // return history('/passwordShow', { state: password });
                         }
                         else {
                             setUserExist("User Exists! Try Login")
@@ -85,3 +86,14 @@ const Form = () => {
 }
 
 export default Form;
+
+// Yd7@^z-a5q9b
+// 7%X-9-kAnVso
+// #8wd&7#Xid8q
+// jyu5#Lm1*md?
+// OiX4v&8e9?^N
+// Y5obE!-7bf^Z
+// %z?tizo7!h00
+// n@lz*c5@w95k
+// a?q6mw0-THd#
+// -@ff4BA8xZ6^
